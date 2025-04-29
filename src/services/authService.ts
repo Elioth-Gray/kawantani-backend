@@ -1,7 +1,8 @@
 import prisma from "../prisma/prismaClient";
 import * as Yup from "yup";
-import { TRegister, TVerification } from "../types/authTypes";
+import { TRegister, TVerification, TLogin } from "../types/authTypes";
 import bcrypt from "bcryptjs";
+import { generateToken } from "../utils/jwt";
 
 const registerSchema = Yup.object({
   namaDepan: Yup.string().required("Nama depan harus diisi!"),
@@ -16,8 +17,13 @@ const registerSchema = Yup.object({
 });
 
 const verificationSchema = Yup.object({
-  emailPengguna: Yup.string().required(),
-  kodeVerifikasi: Yup.string().required(),
+  emailPengguna: Yup.string().required("Email harus diisi!"),
+  kodeVerifikasi: Yup.string().required("Kode verifikasi harus diisi!"),
+});
+
+const loginSchema = Yup.object({
+  emailPengguna: Yup.string().required("Email harus diisi!"),
+  passwordPengguna: Yup.string().required("Password harus diisi!"),
 });
 
 export const registerUser = async (data: TRegister) => {
@@ -127,6 +133,48 @@ export const verifyUser = async (data: TVerification) => {
     });
 
     return { message: "Akun berhasil diverifikasi!", data: emailPengguna };
+  } catch (error) {
+    const err = error as unknown as Error;
+    throw err;
+  }
+};
+
+export const loginUser = async (data: TLogin) => {
+  const { emailPengguna, passwordPengguna } = data;
+  try {
+    const user = await prisma.pengguna.findFirst({
+      where: {
+        email_pengguna: emailPengguna,
+      },
+    });
+
+    if (!user) {
+      throw new Error("Pengguna tidak ditemukan!");
+    }
+
+    const same = await bcrypt.compare(
+      passwordPengguna,
+      user?.password_pengguna
+    );
+
+    if (!same) {
+      throw new Error("Password pengguna salah!");
+    }
+
+    const tokenData = {
+      idPengguna: user.id_pengguna,
+      emailPengguna: user.email_pengguna,
+      namaDepanPengguna: user.nama_depan_pengguna,
+      namaBelakangPengguna: user.nama_belakang_pengguna,
+    };
+
+    const token = generateToken(tokenData);
+
+    if (!token) {
+      throw new Error("Token bermasalah!");
+    }
+
+    return token;
   } catch (error) {
     const err = error as unknown as Error;
     throw err;

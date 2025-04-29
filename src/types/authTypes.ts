@@ -17,3 +17,10 @@ export type TLogin = {
   emailPengguna: string;
   passwordPengguna: string;
 };
+
+export type TToken = {
+  idPengguna: string;
+  emailPengguna: string;
+  namaDepanPengguna: string;
+  namaBelakangPengguna: string;
+};

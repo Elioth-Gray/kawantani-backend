@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
-import { registerUser, verifyUser } from "../services/authService";
-import { TRegister, TVerification } from "../types/authTypes";
+import { loginUser, registerUser, verifyUser } from "../services/authService";
+import { TLogin, TRegister, TVerification } from "../types/authTypes";
 
 export const register = async (req: Request, res: Response) => {
   const data: TRegister = req.body;
@@ -26,6 +26,26 @@ export const verifyAccount = async (req: Request, res: Response) => {
   } catch (error) {
     const err = error as unknown as Error;
     res.status(400).json({
+      message: err.message,
+      data: null,
+    });
+  }
+};
+
+export const login = async (req: Request, res: Response) => {
+  const data: TLogin = req.body;
+
+  try {
+    const result = await loginUser(data);
+    res.status(200).json({
+      message: "Berhasil login!",
+      data: {
+        token: result,
+      },
+    });
+  } catch (error) {
+    const err = error as unknown as Error;
+    res.status(200).json({
       message: err.message,
       data: null,
     });
