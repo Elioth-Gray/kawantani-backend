@@ -13,17 +13,17 @@ const registerSchema = Yup.object({
   password: Yup.string().required("Password harus diisi!"),
   confirmPassword: Yup.string()
     .required("Konfirmasi password harus diisi")
-    .oneOf([Yup.ref("passwordPengguna"), ""], "Password harus sama!"),
+    .oneOf([Yup.ref("password"), ""], "Password harus sama!"),
 });
 
 const verificationSchema = Yup.object({
-  emailPengguna: Yup.string().required("Email harus diisi!"),
-  kodeVerifikasi: Yup.string().required("Kode verifikasi harus diisi!"),
+  email: Yup.string().required("Email harus diisi!"),
+  verificationToken: Yup.string().required("Kode verifikasi harus diisi!"),
 });
 
 const loginSchema = Yup.object({
-  emailPengguna: Yup.string().required("Email harus diisi!"),
-  passwordPengguna: Yup.string().required("Password harus diisi!"),
+  email: Yup.string().required("Email harus diisi!"),
+  password: Yup.string().required("Password harus diisi!"),
 });
 
 export const registerUser = async (data: TRegister) => {
@@ -142,6 +142,8 @@ export const verifyUser = async (data: TVerification) => {
 export const loginUser = async (data: TLogin) => {
   const { email, password } = data;
   try {
+    await loginSchema.validate({ email, password });
+
     const user = await prisma.pengguna.findFirst({
       where: {
         email_pengguna: email,
