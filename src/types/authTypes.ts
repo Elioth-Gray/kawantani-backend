@@ -1,26 +1,26 @@
 export type TRegister = {
-  namaDepan: string;
-  namaBelakang: string;
-  emailPengguna: string;
-  nomorTeleponPengguna: string;
-  tanggalLahirPengguna: string;
-  passwordPengguna: string;
-  confirmPasswordPengguna: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  phoneNumber: string;
+  dateOfBirth: string;
+  password: string;
+  confirmPassword: string;
 };
 
 export type TVerification = {
-  emailPengguna: string;
-  kodeVerifikasi: string;
+  email: string;
+  verificationToken: string;
 };
 
 export type TLogin = {
-  emailPengguna: string;
-  passwordPengguna: string;
+  email: string;
+  password: string;
 };
 
 export type TToken = {
-  idPengguna: string;
-  emailPengguna: string;
-  namaDepanPengguna: string;
-  namaBelakangPengguna: string;
+  id: string;
+  email: string;
+  firstName: string;
+  lastName: string;
 };

@@ -5,13 +5,13 @@ import bcrypt from "bcryptjs";
 import { generateToken } from "../utils/jwt";
 
 const registerSchema = Yup.object({
-  namaDepan: Yup.string().required("Nama depan harus diisi!"),
-  namaBelakang: Yup.string().required("Nama belakang harus diisi!"),
-  emailPengguna: Yup.string().email().required("Email harus diisi!"),
-  nomorTeleponPengguna: Yup.string().required("Nomor telepon harus diisi!!"),
-  tanggalLahirPengguna: Yup.string().required("Tanggal lahir harus diisi!"),
-  passwordPengguna: Yup.string().required("Password harus diisi!"),
-  confirmPasswordPengguna: Yup.string()
+  firstName: Yup.string().required("Nama depan harus diisi!"),
+  lastName: Yup.string().required("Nama belakang harus diisi!"),
+  email: Yup.string().email().required("Email harus diisi!"),
+  phoneNumber: Yup.string().required("Nomor telepon harus diisi!!"),
+  dateOfBirth: Yup.string().required("Tanggal lahir harus diisi!"),
+  password: Yup.string().required("Password harus diisi!"),
+  confirmPassword: Yup.string()
     .required("Konfirmasi password harus diisi")
     .oneOf([Yup.ref("passwordPengguna"), ""], "Password harus sama!"),
 });
@@ -28,31 +28,31 @@ const loginSchema = Yup.object({
 
 export const registerUser = async (data: TRegister) => {
   const {
-    namaDepan,
-    namaBelakang,
-    emailPengguna,
-    nomorTeleponPengguna,
-    tanggalLahirPengguna,
-    passwordPengguna,
-    confirmPasswordPengguna,
+    firstName,
+    lastName,
+    email,
+    phoneNumber,
+    dateOfBirth,
+    password,
+    confirmPassword,
   } = data;
 
   try {
     await registerSchema.validate({
-      namaDepan,
-      namaBelakang,
-      emailPengguna,
-      nomorTeleponPengguna,
-      tanggalLahirPengguna,
-      passwordPengguna,
-      confirmPasswordPengguna,
+      firstName,
+      lastName,
+      email,
+      phoneNumber,
+      dateOfBirth,
+      password,
+      confirmPassword,
     });
 
     const verifikasiKode = Math.floor(1000 + Math.random() * 9000);
 
-    const tanggalLahir = new Date(tanggalLahirPengguna);
+    const dateOfBirthNew = new Date(dateOfBirth);
 
-    if (isNaN(tanggalLahir.getTime())) {
+    if (isNaN(dateOfBirthNew.getTime())) {
       throw new Error("Tanggal lahir tidak valid.");
     }
 
@@ -61,7 +61,7 @@ export const registerUser = async (data: TRegister) => {
 
     const emailAvailable = await prisma.pengguna.findFirst({
       where: {
-        email_pengguna: emailPengguna,
+        email_pengguna: email,
       },
     });
 
@@ -71,7 +71,7 @@ export const registerUser = async (data: TRegister) => {
 
     const phoneAvailable = await prisma.pengguna.findFirst({
       where: {
-        nomor_telepon_pengguna: nomorTeleponPengguna,
+        nomor_telepon_pengguna: phoneNumber,
       },
     });
 
@@ -79,15 +79,15 @@ export const registerUser = async (data: TRegister) => {
       throw new Error("Nomor telepon telah terdaftar!");
     }
 
-    const hashedPassword = await bcrypt.hash(passwordPengguna, 10);
+    const hashedPassword = await bcrypt.hash(password, 10);
 
     const result = await prisma.pengguna.create({
       data: {
-        nama_depan_pengguna: namaDepan,
-        nama_belakang_pengguna: namaBelakang,
-        email_pengguna: emailPengguna,
-        nomor_telepon_pengguna: nomorTeleponPengguna,
-        tanggal_lahir_pengguna: tanggalLahir,
+        nama_depan_pengguna: firstName,
+        nama_belakang_pengguna: lastName,
+        email_pengguna: email,
+        nomor_telepon_pengguna: phoneNumber,
+        tanggal_lahir_pengguna: dateOfBirthNew,
         password_pengguna: hashedPassword,
         tanggal_pembuatan_akun: tanggalPembuatanAkun,
         kode_verifikasi: verifikasiKode.toString(),
@@ -103,36 +103,36 @@ export const registerUser = async (data: TRegister) => {
 };
 
 export const verifyUser = async (data: TVerification) => {
-  const { emailPengguna, kodeVerifikasi } = data;
+  const { email, verificationToken } = data;
   try {
     await verificationSchema.validate({
-      emailPengguna,
-      kodeVerifikasi,
+      email,
+      verificationToken,
     });
 
     const code = await prisma.pengguna.findFirst({
       where: {
-        email_pengguna: emailPengguna,
+        email_pengguna: email,
       },
       select: {
         kode_verifikasi: true,
       },
     });
 
-    if (kodeVerifikasi !== code?.kode_verifikasi) {
+    if (verificationToken !== code?.kode_verifikasi) {
       throw new Error("Kode verifikasi tidak sesuai!");
     }
 
     await prisma.pengguna.update({
       where: {
-        email_pengguna: emailPengguna,
+        email_pengguna: email,
       },
       data: {
         status_verfikasi: true,
       },
     });
 
-    return { message: "Akun berhasil diverifikasi!", data: emailPengguna };
+    return { message: "Akun berhasil diverifikasi!", data: email };
   } catch (error) {
     const err = error as unknown as Error;
     throw err;
@@ -140,11 +140,11 @@ export const verifyUser = async (data: TVerification) => {
 };
 
 export const loginUser = async (data: TLogin) => {
-  const { emailPengguna, passwordPengguna } = data;
+  const { email, password } = data;
   try {
     const user = await prisma.pengguna.findFirst({
       where: {
-        email_pengguna: emailPengguna,
+        email_pengguna: email,
       },
     });
 
@@ -152,20 +152,17 @@ export const loginUser = async (data: TLogin) => {
       throw new Error("Pengguna tidak ditemukan!");
     }
 
-    const same = await bcrypt.compare(
-      passwordPengguna,
-      user?.password_pengguna
-    );
+    const same = await bcrypt.compare(password, user?.password_pengguna);
 
     if (!same) {
       throw new Error("Password pengguna salah!");
     }
 
     const tokenData = {
-      idPengguna: user.id_pengguna,
-      emailPengguna: user.email_pengguna,
-      namaDepanPengguna: user.nama_depan_pengguna,
-      namaBelakangPengguna: user.nama_belakang_pengguna,
+      id: user.id_pengguna,
+      email: user.email_pengguna,
+      firstName: user.nama_depan_pengguna,
+      lastName: user.nama_belakang_pengguna,
     };
 
     const token = generateToken(tokenData);

@@ -11,9 +11,9 @@ export const generateToken = (data: TToken) => {
 
   const token = jwt.sign(
     {
-      id: tokenData.idPengguna,
-      email: tokenData.emailPengguna,
-      nama: `${tokenData.namaDepanPengguna} ${tokenData.namaBelakangPengguna}`,
+      id: tokenData.id,
+      email: tokenData.email,
+      nama: `${tokenData.firstName} ${tokenData.lastName}`,
     },
     SECRET,
     {
