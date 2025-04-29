@@ -1,0 +1,212 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Pengguna {
+  id_pengguna            String   @id @default(cuid())
+  nama_depan_pengguna    String   @db.VarChar(50)
+  nama_belakang_pengguna String   @db.VarChar(50)
+  tanggal_lahir_pengguna DateTime
+  email_pengguna         String   @db.VarChar(50)
+  nomor_telepon_pengguna String   @db.VarChar(13)
+  password_pengguna      String   @db.VarChar(100)
+  tanggal_pembuatan_akun DateTime
+  kode_verifikasi        String   @db.Char(4)
+  status_verfikasi       Boolean
+
+  workshop_terdaftar WorkshopTerdaftar[]
+  artikel            Artikel[]
+  artikel_disimpan   ArtikelDisimpan[]
+  artikel_disukai    ArtikelDisukai[]
+  komentar_artikel   KomentarArtikel[]
+  tanaman_pengguna   TanamanPengguna[]
+
+  @@unique([email_pengguna])
+  @@unique([nomor_telepon_pengguna])
+}
+
+model Facilitator {
+  id_facilitator            String     @id @default(cuid())
+  nama_facilitator          String     @db.VarChar(50)
+  email_facilitator         String     @db.VarChar(50)
+  nomor_telepon_facilitator String     @db.VarChar(13)
+  password_facilitator      String     @db.VarChar(100)
+  tanggal_pembuatan_akun    DateTime
+  workshops                 Workshop[]
+
+  @@unique([email_facilitator])
+  @@unique([nomor_telepon_facilitator])
+}
+
+model Admin {
+  id_admin               String   @id @default(cuid())
+  nama_depan_admin       String   @db.VarChar(50)
+  nama_belakang_admin    String   @db.VarChar(50)
+  email_admin            String   @db.VarChar(50)
+  password_admin         String   @db.VarChar(100)
+  tanggal_pembuatan_akun DateTime
+
+  artikel_diverifikasi  Artikel[]
+  workshop_diverifikasi Workshop[]
+
+  @@unique([email_admin])
+}
+
+model Artikel {
+  id_artikel        Int      @id @default(autoincrement())
+  judul_artikel     String   @db.VarChar(100)
+  tanggal_artikel   DateTime @default(now())
+  rating_artikel    Int
+  isi_artikel       String   @db.Text
+  status_artikel    Int
+  status_verifikasi Boolean
+
+  id_pengguna      String
+  pengguna         Pengguna          @relation(fields: [id_pengguna], references: [id_pengguna])
+  artikel_disimpan ArtikelDisimpan[]
+  artikel_disukai  ArtikelDisukai[]
+  id_verifikator   String
+  admin            Admin             @relation(fields: [id_verifikator], references: [id_admin])
+  komentar_artikel KomentarArtikel[]
+}
+
+model ArtikelDisimpan {
+  id_penyimpanan Int      @id @default(autoincrement())
+  id_artikel     Int
+  artikel        Artikel  @relation(fields: [id_artikel], references: [id_artikel])
+  id_pengguna    String
+  pengguna       Pengguna @relation(fields: [id_pengguna], references: [id_pengguna])
+
+  @@unique([id_artikel, id_pengguna])
+}
+
+model ArtikelDisukai {
+  id_disukai  Int      @id @default(autoincrement())
+  id_artikel  Int
+  artikel     Artikel  @relation(fields: [id_artikel], references: [id_artikel])
+  id_pengguna String
+  pengguna    Pengguna @relation(fields: [id_pengguna], references: [id_pengguna])
+  rating      Int
+
+  @@unique([id_artikel, id_pengguna])
+}
+
+model KomentarArtikel {
+  id_komentar Int      @id @default(autoincrement())
+  id_artikel  Int
+  artikel     Artikel  @relation(fields: [id_artikel], references: [id_artikel])
+  id_pengguna String
+  pengguna    Pengguna @relation(fields: [id_pengguna], references: [id_pengguna])
+  komentar    String   @db.Text
+
+  @@unique([id_artikel, id_pengguna])
+}
+
+model Workshop {
+  id_workshop        String   @id @default(cuid())
+  judul_workshop     String   @db.VarChar(100)
+  tanggal_workshop   DateTime @db.Date
+  lokasi_workshop    String   @db.VarChar(100)
+  deskripsi_workshop String   @db.VarChar(1000)
+  harga_workshop     Decimal  @db.Decimal(10, 2)
+  kapasitas          Int
+  status_verifikasi  Boolean
+
+  id_facilitator String
+  facilitator    Facilitator         @relation(fields: [id_facilitator], references: [id_facilitator])
+  id_verifikator String
+  admin          Admin               @relation(fields: [id_verifikator], references: [id_admin])
+  pendaftaran    WorkshopTerdaftar[]
+}
+
+model WorkshopTerdaftar {
+  id_pendaftaran        Int      @id @default(autoincrement())
+  nama_peserta          String   @db.VarChar(100)
+  email_peserta         String   @db.VarChar(100)
+  nomor_telepon_peserta String   @db.VarChar(50)
+  tanggal_pendaftaran   DateTime @default(now())
+  status_pembayaran     String   @db.VarChar(20)
+  nomor_tiket           String?  @db.VarChar(50)
+
+  pengguna    Pengguna @relation(fields: [id_pengguna], references: [id_pengguna])
+  id_pengguna String
+  workshop    Workshop @relation(fields: [id_workshop], references: [id_workshop])
+  id_workshop String
+
+  @@unique([nomor_tiket])
+}
+
+model Tanaman {
+  id_tanaman        Int    @id @default(autoincrement())
+  nama_tanaman      String @db.VarChar
+  nama_latin        String @db.VarChar
+  durasi_penanaman  Int
+  deskripsi_tanaman String @db.VarChar
+
+  instruksi_tanaman InstruksiTanaman[]
+  hari_penanaman    HariPenanaman[]
+  tanaman_pengguna  TanamanPengguna[]
+}
+
+model InstruksiTanaman {
+  id_instruksi Int    @id @default(autoincrement())
+  instruksi    String @db.Text
+
+  id_tanaman Int
+  tanaman    Tanaman @relation(fields: [id_tanaman], references: [id_tanaman])
+}
+
+model HariPenanaman {
+  id_hari_penanaman Int              @id @default(autoincrement())
+  jenis_tugas       Int
+  id_tanaman        Int
+  tanaman           Tanaman          @relation(fields: [id_tanaman], references: [id_tanaman])
+  tugas_penanaman   TugasPenanaman[]
+}
+
+model TugasPenanaman {
+  id_tugas          Int           @id @default(autoincrement())
+  nama_tugas        String        @db.Text
+  id_hari_penanaman Int
+  hari_penanaman    HariPenanaman @relation(fields: [id_hari_penanaman], references: [id_hari_penanaman])
+}
+
+model TanamanPengguna {
+  id_tanaman_pengguna Int      @id @default(autoincrement())
+  tanggal_penanaman   DateTime
+  status_penanaman    Boolean
+  nama_tanaman        String   @db.VarChar(50)
+
+  id_tanaman   Int
+  tanaman      Tanaman               @relation(fields: [id_tanaman], references: [id_tanaman])
+  id_pengguna  String
+  pengguna     Pengguna              @relation(fields: [id_pengguna], references: [id_pengguna])
+  hari_tanaman HariTanamanPengguna[]
+}
+
+model HariTanamanPengguna {
+  id_hari_tanaman_pengguna Int                      @id @default(autoincrement())
+  catatan                  String                   @db.VarChar
+  tugas_penanaman          TugasPenanamanPengguna[]
+  id_tanaman_pengguna      Int
+  tanaman_pengguna         TanamanPengguna          @relation(fields: [id_tanaman_pengguna], references: [id_tanaman_pengguna])
+}
+
+model TugasPenanamanPengguna {
+  id_tugas_penanaman_pengguna Int                 @id @default(autoincrement())
+  nama_tugas                  String              @db.VarChar
+  id_hari_tanaman_pengguna    Int
+  hari_tanaman                HariTanamanPengguna @relation(fields: [id_hari_tanaman_pengguna], references: [id_hari_tanaman_pengguna])
+}
