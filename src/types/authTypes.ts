@@ -6,6 +6,7 @@ export type TRegister = {
   dateOfBirth: string;
   password: string;
   confirmPassword: string;
+  gender: number;
 };
 
 export type TVerification = {

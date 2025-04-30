@@ -21,6 +21,7 @@ model Pengguna {
   tanggal_lahir_pengguna DateTime
   email_pengguna         String   @db.VarChar(50)
   nomor_telepon_pengguna String   @db.VarChar(13)
+  jenisKelamin           Int
   password_pengguna      String   @db.VarChar(100)
   tanggal_pembuatan_akun DateTime
   kode_verifikasi        String   @db.Char(4)

@@ -7,10 +7,13 @@ export const register = async (req: Request, res: Response) => {
 
   try {
     const result = await registerUser(data);
-    res.status(200).json(result);
+    res
+      .status(200)
+      .json({ success: true, message: "Berhasil daftar akun!", data: result });
   } catch (error) {
     const err = error as unknown as Error;
     res.status(400).json({
+      success: false,
       message: err.message,
       data: null,
     });

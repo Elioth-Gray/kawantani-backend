@@ -124,6 +124,7 @@ exports.Prisma.PenggunaScalarFieldEnum = {
   tanggal_lahir_pengguna: 'tanggal_lahir_pengguna',
   email_pengguna: 'email_pengguna',
   nomor_telepon_pengguna: 'nomor_telepon_pengguna',
+  jenisKelamin: 'jenisKelamin',
   password_pengguna: 'password_pengguna',
   tanggal_pembuatan_akun: 'tanggal_pembuatan_akun',
   kode_verifikasi: 'kode_verifikasi',

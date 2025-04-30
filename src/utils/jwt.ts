@@ -13,7 +13,8 @@ export const generateToken = (data: TToken) => {
     {
       id: tokenData.id,
       email: tokenData.email,
-      nama: `${tokenData.firstName} ${tokenData.lastName}`,
+      firstName: tokenData.firstName,
+      lastName: tokenData.lastName,
     },
     SECRET,
     {

@@ -2608,8 +2608,18 @@ export namespace Prisma {
 
   export type AggregatePengguna = {
     _count: PenggunaCountAggregateOutputType | null
+    _avg: PenggunaAvgAggregateOutputType | null
+    _sum: PenggunaSumAggregateOutputType | null
     _min: PenggunaMinAggregateOutputType | null
     _max: PenggunaMaxAggregateOutputType | null
+  }
+
+  export type PenggunaAvgAggregateOutputType = {
+    jenisKelamin: number | null
+  }
+
+  export type PenggunaSumAggregateOutputType = {
+    jenisKelamin: number | null
   }
 
   export type PenggunaMinAggregateOutputType = {
@@ -2619,6 +2629,7 @@ export namespace Prisma {
     tanggal_lahir_pengguna: Date | null
     email_pengguna: string | null
     nomor_telepon_pengguna: string | null
+    jenisKelamin: number | null
     password_pengguna: string | null
     tanggal_pembuatan_akun: Date | null
     kode_verifikasi: string | null
@@ -2632,6 +2643,7 @@ export namespace Prisma {
     tanggal_lahir_pengguna: Date | null
     email_pengguna: string | null
     nomor_telepon_pengguna: string | null
+    jenisKelamin: number | null
     password_pengguna: string | null
     tanggal_pembuatan_akun: Date | null
     kode_verifikasi: string | null
@@ -2645,6 +2657,7 @@ export namespace Prisma {
     tanggal_lahir_pengguna: number
     email_pengguna: number
     nomor_telepon_pengguna: number
+    jenisKelamin: number
     password_pengguna: number
     tanggal_pembuatan_akun: number
     kode_verifikasi: number
@@ -2653,6 +2666,14 @@ export namespace Prisma {
   }
 
 
+  export type PenggunaAvgAggregateInputType = {
+    jenisKelamin?: true
+  }
+
+  export type PenggunaSumAggregateInputType = {
+    jenisKelamin?: true
+  }
+
   export type PenggunaMinAggregateInputType = {
     id_pengguna?: true
     nama_depan_pengguna?: true
@@ -2660,6 +2681,7 @@ export namespace Prisma {
     tanggal_lahir_pengguna?: true
     email_pengguna?: true
     nomor_telepon_pengguna?: true
+    jenisKelamin?: true
     password_pengguna?: true
     tanggal_pembuatan_akun?: true
     kode_verifikasi?: true
@@ -2673,6 +2695,7 @@ export namespace Prisma {
     tanggal_lahir_pengguna?: true
     email_pengguna?: true
     nomor_telepon_pengguna?: true
+    jenisKelamin?: true
     password_pengguna?: true
     tanggal_pembuatan_akun?: true
     kode_verifikasi?: true
@@ -2686,6 +2709,7 @@ export namespace Prisma {
     tanggal_lahir_pengguna?: true
     email_pengguna?: true
     nomor_telepon_pengguna?: true
+    jenisKelamin?: true
     password_pengguna?: true
     tanggal_pembuatan_akun?: true
     kode_verifikasi?: true
@@ -2731,6 +2755,18 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
+     * Select which fields to average
+    **/
+    _avg?: PenggunaAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: PenggunaSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
      * Select which fields to find the minimum value
     **/
     _min?: PenggunaMinAggregateInputType
@@ -2761,6 +2797,8 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: PenggunaCountAggregateInputType | true
+    _avg?: PenggunaAvgAggregateInputType
+    _sum?: PenggunaSumAggregateInputType
     _min?: PenggunaMinAggregateInputType
     _max?: PenggunaMaxAggregateInputType
   }
@@ -2772,11 +2810,14 @@ export namespace Prisma {
     tanggal_lahir_pengguna: Date
     email_pengguna: string
     nomor_telepon_pengguna: string
+    jenisKelamin: number
     password_pengguna: string
     tanggal_pembuatan_akun: Date
     kode_verifikasi: string
     status_verfikasi: boolean
     _count: PenggunaCountAggregateOutputType | null
+    _avg: PenggunaAvgAggregateOutputType | null
+    _sum: PenggunaSumAggregateOutputType | null
     _min: PenggunaMinAggregateOutputType | null
     _max: PenggunaMaxAggregateOutputType | null
   }
@@ -2802,6 +2843,7 @@ export namespace Prisma {
     tanggal_lahir_pengguna?: boolean
     email_pengguna?: boolean
     nomor_telepon_pengguna?: boolean
+    jenisKelamin?: boolean
     password_pengguna?: boolean
     tanggal_pembuatan_akun?: boolean
     kode_verifikasi?: boolean
@@ -2822,6 +2864,7 @@ export namespace Prisma {
     tanggal_lahir_pengguna?: boolean
     email_pengguna?: boolean
     nomor_telepon_pengguna?: boolean
+    jenisKelamin?: boolean
     password_pengguna?: boolean
     tanggal_pembuatan_akun?: boolean
     kode_verifikasi?: boolean
@@ -2835,6 +2878,7 @@ export namespace Prisma {
     tanggal_lahir_pengguna?: boolean
     email_pengguna?: boolean
     nomor_telepon_pengguna?: boolean
+    jenisKelamin?: boolean
     password_pengguna?: boolean
     tanggal_pembuatan_akun?: boolean
     kode_verifikasi?: boolean
@@ -2848,13 +2892,14 @@ export namespace Prisma {
     tanggal_lahir_pengguna?: boolean
     email_pengguna?: boolean
     nomor_telepon_pengguna?: boolean
+    jenisKelamin?: boolean
     password_pengguna?: boolean
     tanggal_pembuatan_akun?: boolean
     kode_verifikasi?: boolean
     status_verfikasi?: boolean
   }
 
-  export type PenggunaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_pengguna" | "nama_depan_pengguna" | "nama_belakang_pengguna" | "tanggal_lahir_pengguna" | "email_pengguna" | "nomor_telepon_pengguna" | "password_pengguna" | "tanggal_pembuatan_akun" | "kode_verifikasi" | "status_verfikasi", ExtArgs["result"]["pengguna"]>
+  export type PenggunaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_pengguna" | "nama_depan_pengguna" | "nama_belakang_pengguna" | "tanggal_lahir_pengguna" | "email_pengguna" | "nomor_telepon_pengguna" | "jenisKelamin" | "password_pengguna" | "tanggal_pembuatan_akun" | "kode_verifikasi" | "status_verfikasi", ExtArgs["result"]["pengguna"]>
   export type PenggunaInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     workshop_terdaftar?: boolean | Pengguna$workshop_terdaftarArgs<ExtArgs>
     artikel?: boolean | Pengguna$artikelArgs<ExtArgs>
@@ -2884,6 +2929,7 @@ export namespace Prisma {
       tanggal_lahir_pengguna: Date
       email_pengguna: string
       nomor_telepon_pengguna: string
+      jenisKelamin: number
       password_pengguna: string
       tanggal_pembuatan_akun: Date
       kode_verifikasi: string
@@ -3323,6 +3369,7 @@ export namespace Prisma {
     readonly tanggal_lahir_pengguna: FieldRef<"Pengguna", 'DateTime'>
     readonly email_pengguna: FieldRef<"Pengguna", 'String'>
     readonly nomor_telepon_pengguna: FieldRef<"Pengguna", 'String'>
+    readonly jenisKelamin: FieldRef<"Pengguna", 'Int'>
     readonly password_pengguna: FieldRef<"Pengguna", 'String'>
     readonly tanggal_pembuatan_akun: FieldRef<"Pengguna", 'DateTime'>
     readonly kode_verifikasi: FieldRef<"Pengguna", 'String'>
@@ -20678,6 +20725,7 @@ export namespace Prisma {
     tanggal_lahir_pengguna: 'tanggal_lahir_pengguna',
     email_pengguna: 'email_pengguna',
     nomor_telepon_pengguna: 'nomor_telepon_pengguna',
+    jenisKelamin: 'jenisKelamin',
     password_pengguna: 'password_pengguna',
     tanggal_pembuatan_akun: 'tanggal_pembuatan_akun',
     kode_verifikasi: 'kode_verifikasi',
@@ -20912,13 +20960,6 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'Boolean'
-   */
-  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
-    
-
-
-  /**
    * Reference to a field of type 'Int'
    */
   export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
@@ -20929,6 +20970,13 @@ export namespace Prisma {
    * Reference to a field of type 'Int[]'
    */
   export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'Boolean'
+   */
+  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
     
 
 
@@ -20973,6 +21021,7 @@ export namespace Prisma {
     tanggal_lahir_pengguna?: DateTimeFilter<"Pengguna"> | Date | string
     email_pengguna?: StringFilter<"Pengguna"> | string
     nomor_telepon_pengguna?: StringFilter<"Pengguna"> | string
+    jenisKelamin?: IntFilter<"Pengguna"> | number
     password_pengguna?: StringFilter<"Pengguna"> | string
     tanggal_pembuatan_akun?: DateTimeFilter<"Pengguna"> | Date | string
     kode_verifikasi?: StringFilter<"Pengguna"> | string
@@ -20992,6 +21041,7 @@ export namespace Prisma {
     tanggal_lahir_pengguna?: SortOrder
     email_pengguna?: SortOrder
     nomor_telepon_pengguna?: SortOrder
+    jenisKelamin?: SortOrder
     password_pengguna?: SortOrder
     tanggal_pembuatan_akun?: SortOrder
     kode_verifikasi?: SortOrder
@@ -21014,6 +21064,7 @@ export namespace Prisma {
     nama_depan_pengguna?: StringFilter<"Pengguna"> | string
     nama_belakang_pengguna?: StringFilter<"Pengguna"> | string
     tanggal_lahir_pengguna?: DateTimeFilter<"Pengguna"> | Date | string
+    jenisKelamin?: IntFilter<"Pengguna"> | number
     password_pengguna?: StringFilter<"Pengguna"> | string
     tanggal_pembuatan_akun?: DateTimeFilter<"Pengguna"> | Date | string
     kode_verifikasi?: StringFilter<"Pengguna"> | string
@@ -21033,13 +21084,16 @@ export namespace Prisma {
     tanggal_lahir_pengguna?: SortOrder
     email_pengguna?: SortOrder
     nomor_telepon_pengguna?: SortOrder
+    jenisKelamin?: SortOrder
     password_pengguna?: SortOrder
     tanggal_pembuatan_akun?: SortOrder
     kode_verifikasi?: SortOrder
     status_verfikasi?: SortOrder
     _count?: PenggunaCountOrderByAggregateInput
+    _avg?: PenggunaAvgOrderByAggregateInput
     _max?: PenggunaMaxOrderByAggregateInput
     _min?: PenggunaMinOrderByAggregateInput
+    _sum?: PenggunaSumOrderByAggregateInput
   }
 
   export type PenggunaScalarWhereWithAggregatesInput = {
@@ -21052,6 +21106,7 @@ export namespace Prisma {
     tanggal_lahir_pengguna?: DateTimeWithAggregatesFilter<"Pengguna"> | Date | string
     email_pengguna?: StringWithAggregatesFilter<"Pengguna"> | string
     nomor_telepon_pengguna?: StringWithAggregatesFilter<"Pengguna"> | string
+    jenisKelamin?: IntWithAggregatesFilter<"Pengguna"> | number
     password_pengguna?: StringWithAggregatesFilter<"Pengguna"> | string
     tanggal_pembuatan_akun?: DateTimeWithAggregatesFilter<"Pengguna"> | Date | string
     kode_verifikasi?: StringWithAggregatesFilter<"Pengguna"> | string
@@ -21980,6 +22035,7 @@ export namespace Prisma {
     tanggal_lahir_pengguna: Date | string
     email_pengguna: string
     nomor_telepon_pengguna: string
+    jenisKelamin: number
     password_pengguna: string
     tanggal_pembuatan_akun: Date | string
     kode_verifikasi: string
@@ -21999,6 +22055,7 @@ export namespace Prisma {
     tanggal_lahir_pengguna: Date | string
     email_pengguna: string
     nomor_telepon_pengguna: string
+    jenisKelamin: number
     password_pengguna: string
     tanggal_pembuatan_akun: Date | string
     kode_verifikasi: string
@@ -22018,6 +22075,7 @@ export namespace Prisma {
     tanggal_lahir_pengguna?: DateTimeFieldUpdateOperationsInput | Date | string
     email_pengguna?: StringFieldUpdateOperationsInput | string
     nomor_telepon_pengguna?: StringFieldUpdateOperationsInput | string
+    jenisKelamin?: IntFieldUpdateOperationsInput | number
     password_pengguna?: StringFieldUpdateOperationsInput | string
     tanggal_pembuatan_akun?: DateTimeFieldUpdateOperationsInput | Date | string
     kode_verifikasi?: StringFieldUpdateOperationsInput | string
@@ -22037,6 +22095,7 @@ export namespace Prisma {
     tanggal_lahir_pengguna?: DateTimeFieldUpdateOperationsInput | Date | string
     email_pengguna?: StringFieldUpdateOperationsInput | string
     nomor_telepon_pengguna?: StringFieldUpdateOperationsInput | string
+    jenisKelamin?: IntFieldUpdateOperationsInput | number
     password_pengguna?: StringFieldUpdateOperationsInput | string
     tanggal_pembuatan_akun?: DateTimeFieldUpdateOperationsInput | Date | string
     kode_verifikasi?: StringFieldUpdateOperationsInput | string
@@ -22056,6 +22115,7 @@ export namespace Prisma {
     tanggal_lahir_pengguna: Date | string
     email_pengguna: string
     nomor_telepon_pengguna: string
+    jenisKelamin: number
     password_pengguna: string
     tanggal_pembuatan_akun: Date | string
     kode_verifikasi: string
@@ -22069,6 +22129,7 @@ export namespace Prisma {
     tanggal_lahir_pengguna?: DateTimeFieldUpdateOperationsInput | Date | string
     email_pengguna?: StringFieldUpdateOperationsInput | string
     nomor_telepon_pengguna?: StringFieldUpdateOperationsInput | string
+    jenisKelamin?: IntFieldUpdateOperationsInput | number
     password_pengguna?: StringFieldUpdateOperationsInput | string
     tanggal_pembuatan_akun?: DateTimeFieldUpdateOperationsInput | Date | string
     kode_verifikasi?: StringFieldUpdateOperationsInput | string
@@ -22082,6 +22143,7 @@ export namespace Prisma {
     tanggal_lahir_pengguna?: DateTimeFieldUpdateOperationsInput | Date | string
     email_pengguna?: StringFieldUpdateOperationsInput | string
     nomor_telepon_pengguna?: StringFieldUpdateOperationsInput | string
+    jenisKelamin?: IntFieldUpdateOperationsInput | number
     password_pengguna?: StringFieldUpdateOperationsInput | string
     tanggal_pembuatan_akun?: DateTimeFieldUpdateOperationsInput | Date | string
     kode_verifikasi?: StringFieldUpdateOperationsInput | string
@@ -22966,6 +23028,17 @@ export namespace Prisma {
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
+  export type IntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
+  }
+
   export type BoolFilter<$PrismaModel = never> = {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel>
     not?: NestedBoolFilter<$PrismaModel> | boolean
@@ -23038,10 +23111,15 @@ export namespace Prisma {
     tanggal_lahir_pengguna?: SortOrder
     email_pengguna?: SortOrder
     nomor_telepon_pengguna?: SortOrder
+    jenisKelamin?: SortOrder
     password_pengguna?: SortOrder
     tanggal_pembuatan_akun?: SortOrder
     kode_verifikasi?: SortOrder
     status_verfikasi?: SortOrder
+  }
+
+  export type PenggunaAvgOrderByAggregateInput = {
+    jenisKelamin?: SortOrder
   }
 
   export type PenggunaMaxOrderByAggregateInput = {
@@ -23051,6 +23129,7 @@ export namespace Prisma {
     tanggal_lahir_pengguna?: SortOrder
     email_pengguna?: SortOrder
     nomor_telepon_pengguna?: SortOrder
+    jenisKelamin?: SortOrder
     password_pengguna?: SortOrder
     tanggal_pembuatan_akun?: SortOrder
     kode_verifikasi?: SortOrder
@@ -23064,10 +23143,15 @@ export namespace Prisma {
     tanggal_lahir_pengguna?: SortOrder
     email_pengguna?: SortOrder
     nomor_telepon_pengguna?: SortOrder
+    jenisKelamin?: SortOrder
     password_pengguna?: SortOrder
     tanggal_pembuatan_akun?: SortOrder
     kode_verifikasi?: SortOrder
     status_verfikasi?: SortOrder
+  }
+
+  export type PenggunaSumOrderByAggregateInput = {
+    jenisKelamin?: SortOrder
   }
 
   export type StringWithAggregatesFilter<$PrismaModel = never> = {
@@ -23100,6 +23184,22 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedDateTimeFilter<$PrismaModel>
     _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type IntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
   }
 
   export type BoolWithAggregatesFilter<$PrismaModel = never> = {
@@ -23174,17 +23274,6 @@ export namespace Prisma {
     tanggal_pembuatan_akun?: SortOrder
   }
 
-  export type IntFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntFilter<$PrismaModel> | number
-  }
-
   export type PenggunaScalarRelationFilter = {
     is?: PenggunaWhereInput
     isNot?: PenggunaWhereInput
@@ -23241,22 +23330,6 @@ export namespace Prisma {
     id_artikel?: SortOrder
     rating_artikel?: SortOrder
     status_artikel?: SortOrder
-  }
-
-  export type IntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedIntFilter<$PrismaModel>
-    _min?: NestedIntFilter<$PrismaModel>
-    _max?: NestedIntFilter<$PrismaModel>
   }
 
   export type ArtikelScalarRelationFilter = {
@@ -23914,6 +23987,14 @@ export namespace Prisma {
     set?: Date | string
   }
 
+  export type IntFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
   export type BoolFieldUpdateOperationsInput = {
     set?: boolean
   }
@@ -24264,14 +24345,6 @@ export namespace Prisma {
     connectOrCreate?: KomentarArtikelCreateOrConnectWithoutArtikelInput | KomentarArtikelCreateOrConnectWithoutArtikelInput[]
     createMany?: KomentarArtikelCreateManyArtikelInputEnvelope
     connect?: KomentarArtikelWhereUniqueInput | KomentarArtikelWhereUniqueInput[]
-  }
-
-  export type IntFieldUpdateOperationsInput = {
-    set?: number
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
   }
 
   export type PenggunaUpdateOneRequiredWithoutArtikelNestedInput = {
@@ -24943,6 +25016,17 @@ export namespace Prisma {
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
+  export type NestedIntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
+  }
+
   export type NestedBoolFilter<$PrismaModel = never> = {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel>
     not?: NestedBoolFilter<$PrismaModel> | boolean
@@ -24965,17 +25049,6 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
-  export type NestedIntFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntFilter<$PrismaModel> | number
-  }
-
   export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -24988,14 +25061,6 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedDateTimeFilter<$PrismaModel>
     _max?: NestedDateTimeFilter<$PrismaModel>
-  }
-
-  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedBoolFilter<$PrismaModel>
-    _max?: NestedBoolFilter<$PrismaModel>
   }
 
   export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
@@ -25023,6 +25088,14 @@ export namespace Prisma {
     gt?: number | FloatFieldRefInput<$PrismaModel>
     gte?: number | FloatFieldRefInput<$PrismaModel>
     not?: NestedFloatFilter<$PrismaModel> | number
+  }
+
+  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
   }
 
   export type NestedDecimalFilter<$PrismaModel = never> = {
@@ -25597,6 +25670,7 @@ export namespace Prisma {
     tanggal_lahir_pengguna: Date | string
     email_pengguna: string
     nomor_telepon_pengguna: string
+    jenisKelamin: number
     password_pengguna: string
     tanggal_pembuatan_akun: Date | string
     kode_verifikasi: string
@@ -25615,6 +25689,7 @@ export namespace Prisma {
     tanggal_lahir_pengguna: Date | string
     email_pengguna: string
     nomor_telepon_pengguna: string
+    jenisKelamin: number
     password_pengguna: string
     tanggal_pembuatan_akun: Date | string
     kode_verifikasi: string
@@ -25735,6 +25810,7 @@ export namespace Prisma {
     tanggal_lahir_pengguna?: DateTimeFieldUpdateOperationsInput | Date | string
     email_pengguna?: StringFieldUpdateOperationsInput | string
     nomor_telepon_pengguna?: StringFieldUpdateOperationsInput | string
+    jenisKelamin?: IntFieldUpdateOperationsInput | number
     password_pengguna?: StringFieldUpdateOperationsInput | string
     tanggal_pembuatan_akun?: DateTimeFieldUpdateOperationsInput | Date | string
     kode_verifikasi?: StringFieldUpdateOperationsInput | string
@@ -25753,6 +25829,7 @@ export namespace Prisma {
     tanggal_lahir_pengguna?: DateTimeFieldUpdateOperationsInput | Date | string
     email_pengguna?: StringFieldUpdateOperationsInput | string
     nomor_telepon_pengguna?: StringFieldUpdateOperationsInput | string
+    jenisKelamin?: IntFieldUpdateOperationsInput | number
     password_pengguna?: StringFieldUpdateOperationsInput | string
     tanggal_pembuatan_akun?: DateTimeFieldUpdateOperationsInput | Date | string
     kode_verifikasi?: StringFieldUpdateOperationsInput | string
@@ -25882,6 +25959,7 @@ export namespace Prisma {
     tanggal_lahir_pengguna: Date | string
     email_pengguna: string
     nomor_telepon_pengguna: string
+    jenisKelamin: number
     password_pengguna: string
     tanggal_pembuatan_akun: Date | string
     kode_verifikasi: string
@@ -25900,6 +25978,7 @@ export namespace Prisma {
     tanggal_lahir_pengguna: Date | string
     email_pengguna: string
     nomor_telepon_pengguna: string
+    jenisKelamin: number
     password_pengguna: string
     tanggal_pembuatan_akun: Date | string
     kode_verifikasi: string
@@ -25972,6 +26051,7 @@ export namespace Prisma {
     tanggal_lahir_pengguna?: DateTimeFieldUpdateOperationsInput | Date | string
     email_pengguna?: StringFieldUpdateOperationsInput | string
     nomor_telepon_pengguna?: StringFieldUpdateOperationsInput | string
+    jenisKelamin?: IntFieldUpdateOperationsInput | number
     password_pengguna?: StringFieldUpdateOperationsInput | string
     tanggal_pembuatan_akun?: DateTimeFieldUpdateOperationsInput | Date | string
     kode_verifikasi?: StringFieldUpdateOperationsInput | string
@@ -25990,6 +26070,7 @@ export namespace Prisma {
     tanggal_lahir_pengguna?: DateTimeFieldUpdateOperationsInput | Date | string
     email_pengguna?: StringFieldUpdateOperationsInput | string
     nomor_telepon_pengguna?: StringFieldUpdateOperationsInput | string
+    jenisKelamin?: IntFieldUpdateOperationsInput | number
     password_pengguna?: StringFieldUpdateOperationsInput | string
     tanggal_pembuatan_akun?: DateTimeFieldUpdateOperationsInput | Date | string
     kode_verifikasi?: StringFieldUpdateOperationsInput | string
@@ -26040,6 +26121,7 @@ export namespace Prisma {
     tanggal_lahir_pengguna: Date | string
     email_pengguna: string
     nomor_telepon_pengguna: string
+    jenisKelamin: number
     password_pengguna: string
     tanggal_pembuatan_akun: Date | string
     kode_verifikasi: string
@@ -26058,6 +26140,7 @@ export namespace Prisma {
     tanggal_lahir_pengguna: Date | string
     email_pengguna: string
     nomor_telepon_pengguna: string
+    jenisKelamin: number
     password_pengguna: string
     tanggal_pembuatan_akun: Date | string
     kode_verifikasi: string
@@ -26130,6 +26213,7 @@ export namespace Prisma {
     tanggal_lahir_pengguna?: DateTimeFieldUpdateOperationsInput | Date | string
     email_pengguna?: StringFieldUpdateOperationsInput | string
     nomor_telepon_pengguna?: StringFieldUpdateOperationsInput | string
+    jenisKelamin?: IntFieldUpdateOperationsInput | number
     password_pengguna?: StringFieldUpdateOperationsInput | string
     tanggal_pembuatan_akun?: DateTimeFieldUpdateOperationsInput | Date | string
     kode_verifikasi?: StringFieldUpdateOperationsInput | string
@@ -26148,6 +26232,7 @@ export namespace Prisma {
     tanggal_lahir_pengguna?: DateTimeFieldUpdateOperationsInput | Date | string
     email_pengguna?: StringFieldUpdateOperationsInput | string
     nomor_telepon_pengguna?: StringFieldUpdateOperationsInput | string
+    jenisKelamin?: IntFieldUpdateOperationsInput | number
     password_pengguna?: StringFieldUpdateOperationsInput | string
     tanggal_pembuatan_akun?: DateTimeFieldUpdateOperationsInput | Date | string
     kode_verifikasi?: StringFieldUpdateOperationsInput | string
@@ -26198,6 +26283,7 @@ export namespace Prisma {
     tanggal_lahir_pengguna: Date | string
     email_pengguna: string
     nomor_telepon_pengguna: string
+    jenisKelamin: number
     password_pengguna: string
     tanggal_pembuatan_akun: Date | string
     kode_verifikasi: string
@@ -26216,6 +26302,7 @@ export namespace Prisma {
     tanggal_lahir_pengguna: Date | string
     email_pengguna: string
     nomor_telepon_pengguna: string
+    jenisKelamin: number
     password_pengguna: string
     tanggal_pembuatan_akun: Date | string
     kode_verifikasi: string
@@ -26288,6 +26375,7 @@ export namespace Prisma {
     tanggal_lahir_pengguna?: DateTimeFieldUpdateOperationsInput | Date | string
     email_pengguna?: StringFieldUpdateOperationsInput | string
     nomor_telepon_pengguna?: StringFieldUpdateOperationsInput | string
+    jenisKelamin?: IntFieldUpdateOperationsInput | number
     password_pengguna?: StringFieldUpdateOperationsInput | string
     tanggal_pembuatan_akun?: DateTimeFieldUpdateOperationsInput | Date | string
     kode_verifikasi?: StringFieldUpdateOperationsInput | string
@@ -26306,6 +26394,7 @@ export namespace Prisma {
     tanggal_lahir_pengguna?: DateTimeFieldUpdateOperationsInput | Date | string
     email_pengguna?: StringFieldUpdateOperationsInput | string
     nomor_telepon_pengguna?: StringFieldUpdateOperationsInput | string
+    jenisKelamin?: IntFieldUpdateOperationsInput | number
     password_pengguna?: StringFieldUpdateOperationsInput | string
     tanggal_pembuatan_akun?: DateTimeFieldUpdateOperationsInput | Date | string
     kode_verifikasi?: StringFieldUpdateOperationsInput | string
@@ -26479,6 +26568,7 @@ export namespace Prisma {
     tanggal_lahir_pengguna: Date | string
     email_pengguna: string
     nomor_telepon_pengguna: string
+    jenisKelamin: number
     password_pengguna: string
     tanggal_pembuatan_akun: Date | string
     kode_verifikasi: string
@@ -26497,6 +26587,7 @@ export namespace Prisma {
     tanggal_lahir_pengguna: Date | string
     email_pengguna: string
     nomor_telepon_pengguna: string
+    jenisKelamin: number
     password_pengguna: string
     tanggal_pembuatan_akun: Date | string
     kode_verifikasi: string
@@ -26562,6 +26653,7 @@ export namespace Prisma {
     tanggal_lahir_pengguna?: DateTimeFieldUpdateOperationsInput | Date | string
     email_pengguna?: StringFieldUpdateOperationsInput | string
     nomor_telepon_pengguna?: StringFieldUpdateOperationsInput | string
+    jenisKelamin?: IntFieldUpdateOperationsInput | number
     password_pengguna?: StringFieldUpdateOperationsInput | string
     tanggal_pembuatan_akun?: DateTimeFieldUpdateOperationsInput | Date | string
     kode_verifikasi?: StringFieldUpdateOperationsInput | string
@@ -26580,6 +26672,7 @@ export namespace Prisma {
     tanggal_lahir_pengguna?: DateTimeFieldUpdateOperationsInput | Date | string
     email_pengguna?: StringFieldUpdateOperationsInput | string
     nomor_telepon_pengguna?: StringFieldUpdateOperationsInput | string
+    jenisKelamin?: IntFieldUpdateOperationsInput | number
     password_pengguna?: StringFieldUpdateOperationsInput | string
     tanggal_pembuatan_akun?: DateTimeFieldUpdateOperationsInput | Date | string
     kode_verifikasi?: StringFieldUpdateOperationsInput | string
@@ -26982,6 +27075,7 @@ export namespace Prisma {
     tanggal_lahir_pengguna: Date | string
     email_pengguna: string
     nomor_telepon_pengguna: string
+    jenisKelamin: number
     password_pengguna: string
     tanggal_pembuatan_akun: Date | string
     kode_verifikasi: string
@@ -27000,6 +27094,7 @@ export namespace Prisma {
     tanggal_lahir_pengguna: Date | string
     email_pengguna: string
     nomor_telepon_pengguna: string
+    jenisKelamin: number
     password_pengguna: string
     tanggal_pembuatan_akun: Date | string
     kode_verifikasi: string
@@ -27085,6 +27180,7 @@ export namespace Prisma {
     tanggal_lahir_pengguna?: DateTimeFieldUpdateOperationsInput | Date | string
     email_pengguna?: StringFieldUpdateOperationsInput | string
     nomor_telepon_pengguna?: StringFieldUpdateOperationsInput | string
+    jenisKelamin?: IntFieldUpdateOperationsInput | number
     password_pengguna?: StringFieldUpdateOperationsInput | string
     tanggal_pembuatan_akun?: DateTimeFieldUpdateOperationsInput | Date | string
     kode_verifikasi?: StringFieldUpdateOperationsInput | string
@@ -27103,6 +27199,7 @@ export namespace Prisma {
     tanggal_lahir_pengguna?: DateTimeFieldUpdateOperationsInput | Date | string
     email_pengguna?: StringFieldUpdateOperationsInput | string
     nomor_telepon_pengguna?: StringFieldUpdateOperationsInput | string
+    jenisKelamin?: IntFieldUpdateOperationsInput | number
     password_pengguna?: StringFieldUpdateOperationsInput | string
     tanggal_pembuatan_akun?: DateTimeFieldUpdateOperationsInput | Date | string
     kode_verifikasi?: StringFieldUpdateOperationsInput | string

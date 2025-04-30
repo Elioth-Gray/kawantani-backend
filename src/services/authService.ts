@@ -11,6 +11,7 @@ const registerSchema = Yup.object({
   phoneNumber: Yup.string().required("Nomor telepon harus diisi!!"),
   dateOfBirth: Yup.string().required("Tanggal lahir harus diisi!"),
   password: Yup.string().required("Password harus diisi!"),
+  gender: Yup.number().required("Jenis kelamin harus diisi!"),
   confirmPassword: Yup.string()
     .required("Konfirmasi password harus diisi")
     .oneOf([Yup.ref("password"), ""], "Password harus sama!"),
@@ -35,6 +36,7 @@ export const registerUser = async (data: TRegister) => {
     dateOfBirth,
     password,
     confirmPassword,
+    gender,
   } = data;
 
   try {
@@ -46,6 +48,7 @@ export const registerUser = async (data: TRegister) => {
       dateOfBirth,
       password,
       confirmPassword,
+      gender,
     });
 
     const verifikasiKode = Math.floor(1000 + Math.random() * 9000);
@@ -92,10 +95,24 @@ export const registerUser = async (data: TRegister) => {
         tanggal_pembuatan_akun: tanggalPembuatanAkun,
         kode_verifikasi: verifikasiKode.toString(),
         status_verfikasi: false,
+        jenisKelamin: gender,
       },
     });
 
-    return { message: "Registrasi Success", data: result };
+    const tokenData = {
+      id: result.id_pengguna,
+      email: result.email_pengguna,
+      firstName: result.nama_depan_pengguna,
+      lastName: result.nama_belakang_pengguna,
+    };
+
+    const token = generateToken(tokenData);
+
+    if (!token) {
+      throw new Error("Token bermasalah!");
+    }
+
+    return token;
   } catch (error) {
     const err = error as unknown as Error;
     throw err;
