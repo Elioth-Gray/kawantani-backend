@@ -45,7 +45,7 @@ export const login = async (req: Request, res: Response) => {
     });
   } catch (error) {
     const err = error as unknown as Error;
-    res.status(200).json({
+    res.status(400).json({
       message: err.message,
       data: null,
     });
