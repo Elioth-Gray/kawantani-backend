@@ -1,6 +1,6 @@
 import prisma from "../prisma/prismaClient";
 import * as Yup from "yup";
-import { TRegister, TVerification, TLogin } from "../types/authTypes";
+import { TRegister, TVerification, TLogin, TToken } from "../types/authTypes";
 import bcrypt from "bcryptjs";
 import { generateToken } from "../utils/jwt";
 
@@ -8,13 +8,13 @@ const registerSchema = Yup.object({
   firstName: Yup.string().required("Nama depan harus diisi!"),
   lastName: Yup.string().required("Nama belakang harus diisi!"),
   email: Yup.string().email().required("Email harus diisi!"),
-  phoneNumber: Yup.string().required("Nomor telepon harus diisi!!"),
+  phoneNumber: Yup.string().required("Nomor telepon harus diisi!"),
   dateOfBirth: Yup.string().required("Tanggal lahir harus diisi!"),
   password: Yup.string().required("Password harus diisi!"),
   gender: Yup.number().required("Jenis kelamin harus diisi!"),
   confirmPassword: Yup.string()
-    .required("Konfirmasi password harus diisi")
-    .oneOf([Yup.ref("password"), ""], "Password harus sama!"),
+    .required("Konfirmasi password harus diisi!")
+    .oneOf([Yup.ref("password")], "Password harus sama!"),
 });
 
 const verificationSchema = Yup.object({
@@ -40,46 +40,30 @@ export const registerUser = async (data: TRegister) => {
   } = data;
 
   try {
-    await registerSchema.validate({
-      firstName,
-      lastName,
-      email,
-      phoneNumber,
-      dateOfBirth,
-      password,
-      confirmPassword,
-      gender,
-    });
+    await registerSchema.validate(data, { abortEarly: false });
 
-    const verifikasiKode = Math.floor(1000 + Math.random() * 9000);
+    const verifikasiKode = Math.floor(1000 + Math.random() * 9000).toString();
 
     const dateOfBirthNew = new Date(dateOfBirth);
-
     if (isNaN(dateOfBirthNew.getTime())) {
-      throw new Error("Tanggal lahir tidak valid.");
+      throw { status: 400, message: "Tanggal lahir tidak valid!" };
     }
 
     const tanggalPembuatanAkun = new Date();
     tanggalPembuatanAkun.setHours(0, 0, 0, 0);
 
-    const emailAvailable = await prisma.pengguna.findFirst({
-      where: {
-        email_pengguna: email,
-      },
+    const existingEmail = await prisma.pengguna.findUnique({
+      where: { email_pengguna: email },
     });
-
-    if (emailAvailable) {
-      throw new Error("Email telah terdaftar!");
+    if (existingEmail) {
+      throw { status: 400, message: "Email telah terdaftar!" };
     }
 
-    const phoneAvailable = await prisma.pengguna.findFirst({
-      where: {
-        nomor_telepon_pengguna: phoneNumber,
-      },
+    const existingPhone = await prisma.pengguna.findFirst({
+      where: { nomor_telepon_pengguna: phoneNumber },
     });
-
-    if (phoneAvailable) {
-      throw new Error("Nomor telepon telah terdaftar!");
+    if (existingPhone) {
+      throw { status: 400, message: "Nomor telepon telah terdaftar!" };
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
@@ -93,106 +77,147 @@ export const registerUser = async (data: TRegister) => {
         tanggal_lahir_pengguna: dateOfBirthNew,
         password_pengguna: hashedPassword,
         tanggal_pembuatan_akun: tanggalPembuatanAkun,
-        kode_verifikasi: verifikasiKode.toString(),
+        kode_verifikasi: verifikasiKode,
         status_verfikasi: false,
         jenisKelamin: gender,
       },
     });
 
-    const tokenData = {
+    const token = generateToken({
       id: result.id_pengguna,
       email: result.email_pengguna,
       firstName: result.nama_depan_pengguna,
       lastName: result.nama_belakang_pengguna,
+    });
+
+    return {
+      token,
+      user: {
+        id: result.id_pengguna,
+        firstName: result.nama_depan_pengguna,
+        lastName: result.nama_belakang_pengguna,
+        gender: result.jenisKelamin,
+        email: result.email_pengguna,
+        phoneNumber: result.nomor_telepon_pengguna,
+        dateOfBirth: result.tanggal_lahir_pengguna,
+      },
+      verificationCode: verifikasiKode,
     };
-
-    const token = generateToken(tokenData);
-
-    if (!token) {
-      throw new Error("Token bermasalah!");
+  } catch (error: any) {
+    if (error.name === "ValidationError") {
+      throw {
+        status: 400,
+        message: error.errors.join(", "),
+      };
     }
-
-    return token;
-  } catch (error) {
-    const err = error as unknown as Error;
-    throw err;
+    throw error;
   }
 };
 
 export const verifyUser = async (data: TVerification) => {
   const { email, verificationToken } = data;
+
   try {
-    await verificationSchema.validate({
-      email,
-      verificationToken,
+    await verificationSchema.validate(data, { abortEarly: false });
+
+    const user = await prisma.pengguna.findUnique({
+      where: { email_pengguna: email },
     });
 
-    const code = await prisma.pengguna.findFirst({
-      where: {
-        email_pengguna: email,
-      },
-      select: {
-        kode_verifikasi: true,
-      },
-    });
+    if (!user) {
+      throw { status: 400, message: "User tidak ditemukan!" };
+    }
 
-    if (verificationToken !== code?.kode_verifikasi) {
-      throw new Error("Kode verifikasi tidak sesuai!");
+    if (user.kode_verifikasi !== verificationToken) {
+      throw { status: 400, message: "Kode verifikasi tidak sesuai!" };
     }
 
     await prisma.pengguna.update({
-      where: {
-        email_pengguna: email,
-      },
-      data: {
-        status_verfikasi: true,
-      },
+      where: { email_pengguna: email },
+      data: { status_verfikasi: true },
     });
 
-    return { message: "Akun berhasil diverifikasi!", data: email };
-  } catch (error) {
-    const err = error as unknown as Error;
-    throw err;
+    return { message: "Akun berhasil diverifikasi!" };
+  } catch (error: any) {
+    if (error.name === "ValidationError") {
+      throw {
+        status: 400,
+        message: error.errors.join(", "),
+      };
+    }
+    throw error;
   }
 };
 
 export const loginUser = async (data: TLogin) => {
   const { email, password } = data;
-  try {
-    await loginSchema.validate({ email, password });
 
-    const user = await prisma.pengguna.findFirst({
-      where: {
-        email_pengguna: email,
-      },
+  try {
+    await loginSchema.validate(data, { abortEarly: false });
+
+    const user = await prisma.pengguna.findUnique({
+      where: { email_pengguna: email },
     });
 
-    if (!user) {
-      throw new Error("Pengguna tidak ditemukan!");
+    const isMatch =
+      user && (await bcrypt.compare(password, user.password_pengguna));
+    if (!user || !isMatch) {
+      throw { status: 401, message: "Credential invalid!" };
     }
 
-    const same = await bcrypt.compare(password, user?.password_pengguna);
-
-    if (!same) {
-      throw new Error("Password pengguna salah!");
-    }
-
-    const tokenData = {
+    const token = generateToken({
       id: user.id_pengguna,
       email: user.email_pengguna,
       firstName: user.nama_depan_pengguna,
       lastName: user.nama_belakang_pengguna,
+    });
+
+    return {
+      token,
+      user: {
+        id: user.id_pengguna,
+        firstName: user.nama_depan_pengguna,
+        lastName: user.nama_belakang_pengguna,
+        gender: user.jenisKelamin,
+        email: user.email_pengguna,
+        phoneNumber: user.nomor_telepon_pengguna,
+        dateOfBirth: user.tanggal_lahir_pengguna,
+      },
     };
+  } catch (error: any) {
+    if (error.name === "ValidationError") {
+      throw {
+        status: 400,
+        message: error.errors.join(", "),
+      };
+    }
+    throw error;
+  }
+};
 
-    const token = generateToken(tokenData);
+export const getUserData = async (data: TToken) => {
+  try {
+    const user = await prisma.pengguna.findUnique({
+      where: { email_pengguna: data.email },
+    });
 
-    if (!token) {
-      throw new Error("Token bermasalah!");
+    if (!user) {
+      throw { status: 404, message: "User tidak ditemukan!" };
     }
 
-    return token;
-  } catch (error) {
-    const err = error as unknown as Error;
-    throw err;
+    return {
+      id: user.id_pengguna,
+      firstName: user.nama_depan_pengguna,
+      lastName: user.nama_belakang_pengguna,
+      gender: user.jenisKelamin,
+      email: user.email_pengguna,
+      phoneNumber: user.nomor_telepon_pengguna,
+      dateOfBirth: user.tanggal_lahir_pengguna,
+      password: user.password_pengguna,
+      verificationSchema: user.status_verfikasi,
+      verificationCode: user.kode_verifikasi,
+    };
+  } catch (error: any) {
+    throw error;
   }
 };
