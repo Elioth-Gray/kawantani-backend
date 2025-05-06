@@ -17,11 +17,12 @@ export const register = async (req: Request, res: Response) => {
         user: result.user,
       },
     });
-  } catch (error) {
-    const err = error as unknown as Error;
-    res.status(400).json({
+  } catch (error: any) {
+    const statusCode = error.status || 500;
+    const message = error.message || "Terjadi kesalahan pada server.";
+    return res.status(statusCode).json({
       success: false,
-      message: err.message,
+      message,
       data: null,
     });
   }
@@ -36,11 +37,12 @@ export const verifyAccount = async (req: Request, res: Response) => {
       success: true,
       message: result.message,
     });
-  } catch (error) {
-    const err = error as unknown as Error;
-    res.status(400).json({
+  } catch (error: any) {
+    const statusCode = error.status || 500;
+    const message = error.message || "Terjadi kesalahan pada server.";
+    return res.status(statusCode).json({
       success: false,
-      message: err.message,
+      message,
       data: null,
     });
   }
@@ -59,11 +61,12 @@ export const login = async (req: Request, res: Response) => {
         user: result.user,
       },
     });
-  } catch (error) {
-    const err = error as unknown as Error;
-    res.status(400).json({
+  } catch (error: any) {
+    const statusCode = error.status || 500;
+    const message = error.message || "Terjadi kesalahan pada server.";
+    return res.status(statusCode).json({
       success: false,
-      message: err.message,
+      message,
       data: null,
     });
   }
@@ -80,11 +83,12 @@ export const me = async (req: IReqUser, res: Response) => {
         user: result,
       },
     });
-  } catch (error) {
-    const err = error as unknown as Error;
-    res.status(400).json({
+  } catch (error: any) {
+    const statusCode = error.status || 500;
+    const message = error.message || "Terjadi kesalahan pada server.";
+    return res.status(statusCode).json({
       success: false,
-      message: err.message,
+      message,
       data: null,
     });
   }

@@ -3,6 +3,8 @@ import * as Yup from "yup";
 import { TRegister, TVerification, TLogin, TToken } from "../types/authTypes";
 import bcrypt from "bcryptjs";
 import { generateToken } from "../utils/jwt";
+import { sendEmail, renderMailHtml } from "../utils/mail/mail";
+import { CLIENT_HOST } from "../utils/env";
 
 const registerSchema = Yup.object({
   firstName: Yup.string().required("Nama depan harus diisi!"),
@@ -10,7 +12,9 @@ const registerSchema = Yup.object({
   email: Yup.string().email().required("Email harus diisi!"),
   phoneNumber: Yup.string().required("Nomor telepon harus diisi!"),
   dateOfBirth: Yup.string().required("Tanggal lahir harus diisi!"),
-  password: Yup.string().required("Password harus diisi!"),
+  password: Yup.string()
+    .required("Password harus diisi!")
+    .min(6, "Password minimal 6 karakter!"),
   gender: Yup.number().required("Jenis kelamin harus diisi!"),
   confirmPassword: Yup.string()
     .required("Konfirmasi password harus diisi!")
@@ -89,6 +93,22 @@ export const registerUser = async (data: TRegister) => {
       firstName: result.nama_depan_pengguna,
       lastName: result.nama_belakang_pengguna,
     });
+
+    // if (result) {
+    //   const contentMail = await renderMailHtml("registrationSuccess.ejs", {
+    //     fullname: result.nama_depan_pengguna + result.nama_belakang_pengguna,
+    //     email: result.email_pengguna,
+    //     createdAt: result.tanggal_pembuatan_akun,
+    //     activationCode: result.kode_verifikasi,
+    //   });
+
+    //   await sendEmail({
+    //     from: "admin-kawantani@noreply.com",
+    //     to: result.email_pengguna,
+    //     subject: "Aktivasi Akun Anda",
+    //     html: contentMail,
+    //   });
+    // }
 
     return {
       token,
