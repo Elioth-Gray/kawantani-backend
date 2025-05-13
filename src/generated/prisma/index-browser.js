@@ -117,6 +117,18 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
   Serializable: 'Serializable'
 });
 
+exports.Prisma.ProvinsiScalarFieldEnum = {
+  id_provinsi: 'id_provinsi',
+  nama_provinsi: 'nama_provinsi'
+};
+
+exports.Prisma.KabupatenScalarFieldEnum = {
+  id_kabupaten: 'id_kabupaten',
+  nama_kabupaten: 'nama_kabupaten',
+  type: 'type',
+  id_provinsi: 'id_provinsi'
+};
+
 exports.Prisma.PenggunaScalarFieldEnum = {
   id_pengguna: 'id_pengguna',
   nama_depan_pengguna: 'nama_depan_pengguna',
@@ -137,7 +149,9 @@ exports.Prisma.FacilitatorScalarFieldEnum = {
   email_facilitator: 'email_facilitator',
   nomor_telepon_facilitator: 'nomor_telepon_facilitator',
   password_facilitator: 'password_facilitator',
-  tanggal_pembuatan_akun: 'tanggal_pembuatan_akun'
+  tanggal_pembuatan_akun: 'tanggal_pembuatan_akun',
+  alamat_lengkap_facilitator: 'alamat_lengkap_facilitator',
+  id_kabupaten: 'id_kabupaten'
 };
 
 exports.Prisma.AdminScalarFieldEnum = {
@@ -270,6 +284,8 @@ exports.Prisma.NullsOrder = {
 
 
 exports.Prisma.ModelName = {
+  Provinsi: 'Provinsi',
+  Kabupaten: 'Kabupaten',
   Pengguna: 'Pengguna',
   Facilitator: 'Facilitator',
   Admin: 'Admin',

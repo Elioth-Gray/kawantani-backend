@@ -14,6 +14,16 @@ export type PrismaPromise<T> = $Public.PrismaPromise<T>
 
 
 /**
+ * Model Provinsi
+ * 
+ */
+export type Provinsi = $Result.DefaultSelection<Prisma.$ProvinsiPayload>
+/**
+ * Model Kabupaten
+ * 
+ */
+export type Kabupaten = $Result.DefaultSelection<Prisma.$KabupatenPayload>
+/**
  * Model Pengguna
  * 
  */
@@ -101,8 +111,8 @@ export type TugasPenanamanPengguna = $Result.DefaultSelection<Prisma.$TugasPenan
  * @example
  * ```
  * const prisma = new PrismaClient()
- * // Fetch zero or more Penggunas
- * const penggunas = await prisma.pengguna.findMany()
+ * // Fetch zero or more Provinsis
+ * const provinsis = await prisma.provinsi.findMany()
  * ```
  *
  *
@@ -122,8 +132,8 @@ export class PrismaClient<
    * @example
    * ```
    * const prisma = new PrismaClient()
-   * // Fetch zero or more Penggunas
-   * const penggunas = await prisma.pengguna.findMany()
+   * // Fetch zero or more Provinsis
+   * const provinsis = await prisma.provinsi.findMany()
    * ```
    *
    *
@@ -220,6 +230,26 @@ export class PrismaClient<
   }>>
 
       /**
+   * `prisma.provinsi`: Exposes CRUD operations for the **Provinsi** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Provinsis
+    * const provinsis = await prisma.provinsi.findMany()
+    * ```
+    */
+  get provinsi(): Prisma.ProvinsiDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.kabupaten`: Exposes CRUD operations for the **Kabupaten** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Kabupatens
+    * const kabupatens = await prisma.kabupaten.findMany()
+    * ```
+    */
+  get kabupaten(): Prisma.KabupatenDelegate<ExtArgs, ClientOptions>;
+
+  /**
    * `prisma.pengguna`: Exposes CRUD operations for the **Pengguna** model.
     * Example usage:
     * ```ts
@@ -818,6 +848,8 @@ export namespace Prisma {
 
 
   export const ModelName: {
+    Provinsi: 'Provinsi',
+    Kabupaten: 'Kabupaten',
     Pengguna: 'Pengguna',
     Facilitator: 'Facilitator',
     Admin: 'Admin',
@@ -852,10 +884,158 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "pengguna" | "facilitator" | "admin" | "artikel" | "artikelDisimpan" | "artikelDisukai" | "komentarArtikel" | "workshop" | "workshopTerdaftar" | "tanaman" | "instruksiTanaman" | "hariPenanaman" | "tugasPenanaman" | "tanamanPengguna" | "hariTanamanPengguna" | "tugasPenanamanPengguna"
+      modelProps: "provinsi" | "kabupaten" | "pengguna" | "facilitator" | "admin" | "artikel" | "artikelDisimpan" | "artikelDisukai" | "komentarArtikel" | "workshop" | "workshopTerdaftar" | "tanaman" | "instruksiTanaman" | "hariPenanaman" | "tugasPenanaman" | "tanamanPengguna" | "hariTanamanPengguna" | "tugasPenanamanPengguna"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
+      Provinsi: {
+        payload: Prisma.$ProvinsiPayload<ExtArgs>
+        fields: Prisma.ProvinsiFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ProvinsiFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProvinsiPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ProvinsiFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProvinsiPayload>
+          }
+          findFirst: {
+            args: Prisma.ProvinsiFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProvinsiPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ProvinsiFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProvinsiPayload>
+          }
+          findMany: {
+            args: Prisma.ProvinsiFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProvinsiPayload>[]
+          }
+          create: {
+            args: Prisma.ProvinsiCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProvinsiPayload>
+          }
+          createMany: {
+            args: Prisma.ProvinsiCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.ProvinsiCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProvinsiPayload>[]
+          }
+          delete: {
+            args: Prisma.ProvinsiDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProvinsiPayload>
+          }
+          update: {
+            args: Prisma.ProvinsiUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProvinsiPayload>
+          }
+          deleteMany: {
+            args: Prisma.ProvinsiDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ProvinsiUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.ProvinsiUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProvinsiPayload>[]
+          }
+          upsert: {
+            args: Prisma.ProvinsiUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProvinsiPayload>
+          }
+          aggregate: {
+            args: Prisma.ProvinsiAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateProvinsi>
+          }
+          groupBy: {
+            args: Prisma.ProvinsiGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ProvinsiGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ProvinsiCountArgs<ExtArgs>
+            result: $Utils.Optional<ProvinsiCountAggregateOutputType> | number
+          }
+        }
+      }
+      Kabupaten: {
+        payload: Prisma.$KabupatenPayload<ExtArgs>
+        fields: Prisma.KabupatenFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.KabupatenFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$KabupatenPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.KabupatenFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$KabupatenPayload>
+          }
+          findFirst: {
+            args: Prisma.KabupatenFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$KabupatenPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.KabupatenFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$KabupatenPayload>
+          }
+          findMany: {
+            args: Prisma.KabupatenFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$KabupatenPayload>[]
+          }
+          create: {
+            args: Prisma.KabupatenCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$KabupatenPayload>
+          }
+          createMany: {
+            args: Prisma.KabupatenCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.KabupatenCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$KabupatenPayload>[]
+          }
+          delete: {
+            args: Prisma.KabupatenDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$KabupatenPayload>
+          }
+          update: {
+            args: Prisma.KabupatenUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$KabupatenPayload>
+          }
+          deleteMany: {
+            args: Prisma.KabupatenDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.KabupatenUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.KabupatenUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$KabupatenPayload>[]
+          }
+          upsert: {
+            args: Prisma.KabupatenUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$KabupatenPayload>
+          }
+          aggregate: {
+            args: Prisma.KabupatenAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateKabupaten>
+          }
+          groupBy: {
+            args: Prisma.KabupatenGroupByArgs<ExtArgs>
+            result: $Utils.Optional<KabupatenGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.KabupatenCountArgs<ExtArgs>
+            result: $Utils.Optional<KabupatenCountAggregateOutputType> | number
+          }
+        }
+      }
       Pengguna: {
         payload: Prisma.$PenggunaPayload<ExtArgs>
         fields: Prisma.PenggunaFieldRefs
@@ -2124,6 +2304,8 @@ export namespace Prisma {
     omit?: Prisma.GlobalOmitConfig
   }
   export type GlobalOmitConfig = {
+    provinsi?: ProvinsiOmit
+    kabupaten?: KabupatenOmit
     pengguna?: PenggunaOmit
     facilitator?: FacilitatorOmit
     admin?: AdminOmit
@@ -2227,6 +2409,68 @@ export namespace Prisma {
   /**
    * Count Types
    */
+
+
+  /**
+   * Count Type ProvinsiCountOutputType
+   */
+
+  export type ProvinsiCountOutputType = {
+    kabupaten: number
+  }
+
+  export type ProvinsiCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    kabupaten?: boolean | ProvinsiCountOutputTypeCountKabupatenArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * ProvinsiCountOutputType without action
+   */
+  export type ProvinsiCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProvinsiCountOutputType
+     */
+    select?: ProvinsiCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * ProvinsiCountOutputType without action
+   */
+  export type ProvinsiCountOutputTypeCountKabupatenArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: KabupatenWhereInput
+  }
+
+
+  /**
+   * Count Type KabupatenCountOutputType
+   */
+
+  export type KabupatenCountOutputType = {
+    facilitators: number
+  }
+
+  export type KabupatenCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    facilitators?: boolean | KabupatenCountOutputTypeCountFacilitatorsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * KabupatenCountOutputType without action
+   */
+  export type KabupatenCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the KabupatenCountOutputType
+     */
+    select?: KabupatenCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * KabupatenCountOutputType without action
+   */
+  export type KabupatenCountOutputTypeCountFacilitatorsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: FacilitatorWhereInput
+  }
 
 
   /**
@@ -2601,6 +2845,2184 @@ export namespace Prisma {
   /**
    * Models
    */
+
+  /**
+   * Model Provinsi
+   */
+
+  export type AggregateProvinsi = {
+    _count: ProvinsiCountAggregateOutputType | null
+    _avg: ProvinsiAvgAggregateOutputType | null
+    _sum: ProvinsiSumAggregateOutputType | null
+    _min: ProvinsiMinAggregateOutputType | null
+    _max: ProvinsiMaxAggregateOutputType | null
+  }
+
+  export type ProvinsiAvgAggregateOutputType = {
+    id_provinsi: number | null
+  }
+
+  export type ProvinsiSumAggregateOutputType = {
+    id_provinsi: number | null
+  }
+
+  export type ProvinsiMinAggregateOutputType = {
+    id_provinsi: number | null
+    nama_provinsi: string | null
+  }
+
+  export type ProvinsiMaxAggregateOutputType = {
+    id_provinsi: number | null
+    nama_provinsi: string | null
+  }
+
+  export type ProvinsiCountAggregateOutputType = {
+    id_provinsi: number
+    nama_provinsi: number
+    _all: number
+  }
+
+
+  export type ProvinsiAvgAggregateInputType = {
+    id_provinsi?: true
+  }
+
+  export type ProvinsiSumAggregateInputType = {
+    id_provinsi?: true
+  }
+
+  export type ProvinsiMinAggregateInputType = {
+    id_provinsi?: true
+    nama_provinsi?: true
+  }
+
+  export type ProvinsiMaxAggregateInputType = {
+    id_provinsi?: true
+    nama_provinsi?: true
+  }
+
+  export type ProvinsiCountAggregateInputType = {
+    id_provinsi?: true
+    nama_provinsi?: true
+    _all?: true
+  }
+
+  export type ProvinsiAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Provinsi to aggregate.
+     */
+    where?: ProvinsiWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Provinsis to fetch.
+     */
+    orderBy?: ProvinsiOrderByWithRelationInput | ProvinsiOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ProvinsiWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Provinsis from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Provinsis.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Provinsis
+    **/
+    _count?: true | ProvinsiCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: ProvinsiAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: ProvinsiSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ProvinsiMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ProvinsiMaxAggregateInputType
+  }
+
+  export type GetProvinsiAggregateType<T extends ProvinsiAggregateArgs> = {
+        [P in keyof T & keyof AggregateProvinsi]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateProvinsi[P]>
+      : GetScalarType<T[P], AggregateProvinsi[P]>
+  }
+
+
+
+
+  export type ProvinsiGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ProvinsiWhereInput
+    orderBy?: ProvinsiOrderByWithAggregationInput | ProvinsiOrderByWithAggregationInput[]
+    by: ProvinsiScalarFieldEnum[] | ProvinsiScalarFieldEnum
+    having?: ProvinsiScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ProvinsiCountAggregateInputType | true
+    _avg?: ProvinsiAvgAggregateInputType
+    _sum?: ProvinsiSumAggregateInputType
+    _min?: ProvinsiMinAggregateInputType
+    _max?: ProvinsiMaxAggregateInputType
+  }
+
+  export type ProvinsiGroupByOutputType = {
+    id_provinsi: number
+    nama_provinsi: string
+    _count: ProvinsiCountAggregateOutputType | null
+    _avg: ProvinsiAvgAggregateOutputType | null
+    _sum: ProvinsiSumAggregateOutputType | null
+    _min: ProvinsiMinAggregateOutputType | null
+    _max: ProvinsiMaxAggregateOutputType | null
+  }
+
+  type GetProvinsiGroupByPayload<T extends ProvinsiGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ProvinsiGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ProvinsiGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ProvinsiGroupByOutputType[P]>
+            : GetScalarType<T[P], ProvinsiGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ProvinsiSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id_provinsi?: boolean
+    nama_provinsi?: boolean
+    kabupaten?: boolean | Provinsi$kabupatenArgs<ExtArgs>
+    _count?: boolean | ProvinsiCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["provinsi"]>
+
+  export type ProvinsiSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id_provinsi?: boolean
+    nama_provinsi?: boolean
+  }, ExtArgs["result"]["provinsi"]>
+
+  export type ProvinsiSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id_provinsi?: boolean
+    nama_provinsi?: boolean
+  }, ExtArgs["result"]["provinsi"]>
+
+  export type ProvinsiSelectScalar = {
+    id_provinsi?: boolean
+    nama_provinsi?: boolean
+  }
+
+  export type ProvinsiOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_provinsi" | "nama_provinsi", ExtArgs["result"]["provinsi"]>
+  export type ProvinsiInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    kabupaten?: boolean | Provinsi$kabupatenArgs<ExtArgs>
+    _count?: boolean | ProvinsiCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type ProvinsiIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type ProvinsiIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $ProvinsiPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Provinsi"
+    objects: {
+      kabupaten: Prisma.$KabupatenPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id_provinsi: number
+      nama_provinsi: string
+    }, ExtArgs["result"]["provinsi"]>
+    composites: {}
+  }
+
+  type ProvinsiGetPayload<S extends boolean | null | undefined | ProvinsiDefaultArgs> = $Result.GetResult<Prisma.$ProvinsiPayload, S>
+
+  type ProvinsiCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ProvinsiFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ProvinsiCountAggregateInputType | true
+    }
+
+  export interface ProvinsiDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Provinsi'], meta: { name: 'Provinsi' } }
+    /**
+     * Find zero or one Provinsi that matches the filter.
+     * @param {ProvinsiFindUniqueArgs} args - Arguments to find a Provinsi
+     * @example
+     * // Get one Provinsi
+     * const provinsi = await prisma.provinsi.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ProvinsiFindUniqueArgs>(args: SelectSubset<T, ProvinsiFindUniqueArgs<ExtArgs>>): Prisma__ProvinsiClient<$Result.GetResult<Prisma.$ProvinsiPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Provinsi that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ProvinsiFindUniqueOrThrowArgs} args - Arguments to find a Provinsi
+     * @example
+     * // Get one Provinsi
+     * const provinsi = await prisma.provinsi.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ProvinsiFindUniqueOrThrowArgs>(args: SelectSubset<T, ProvinsiFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ProvinsiClient<$Result.GetResult<Prisma.$ProvinsiPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Provinsi that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProvinsiFindFirstArgs} args - Arguments to find a Provinsi
+     * @example
+     * // Get one Provinsi
+     * const provinsi = await prisma.provinsi.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ProvinsiFindFirstArgs>(args?: SelectSubset<T, ProvinsiFindFirstArgs<ExtArgs>>): Prisma__ProvinsiClient<$Result.GetResult<Prisma.$ProvinsiPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Provinsi that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProvinsiFindFirstOrThrowArgs} args - Arguments to find a Provinsi
+     * @example
+     * // Get one Provinsi
+     * const provinsi = await prisma.provinsi.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ProvinsiFindFirstOrThrowArgs>(args?: SelectSubset<T, ProvinsiFindFirstOrThrowArgs<ExtArgs>>): Prisma__ProvinsiClient<$Result.GetResult<Prisma.$ProvinsiPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Provinsis that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProvinsiFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Provinsis
+     * const provinsis = await prisma.provinsi.findMany()
+     * 
+     * // Get first 10 Provinsis
+     * const provinsis = await prisma.provinsi.findMany({ take: 10 })
+     * 
+     * // Only select the `id_provinsi`
+     * const provinsiWithId_provinsiOnly = await prisma.provinsi.findMany({ select: { id_provinsi: true } })
+     * 
+     */
+    findMany<T extends ProvinsiFindManyArgs>(args?: SelectSubset<T, ProvinsiFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProvinsiPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Provinsi.
+     * @param {ProvinsiCreateArgs} args - Arguments to create a Provinsi.
+     * @example
+     * // Create one Provinsi
+     * const Provinsi = await prisma.provinsi.create({
+     *   data: {
+     *     // ... data to create a Provinsi
+     *   }
+     * })
+     * 
+     */
+    create<T extends ProvinsiCreateArgs>(args: SelectSubset<T, ProvinsiCreateArgs<ExtArgs>>): Prisma__ProvinsiClient<$Result.GetResult<Prisma.$ProvinsiPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Provinsis.
+     * @param {ProvinsiCreateManyArgs} args - Arguments to create many Provinsis.
+     * @example
+     * // Create many Provinsis
+     * const provinsi = await prisma.provinsi.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ProvinsiCreateManyArgs>(args?: SelectSubset<T, ProvinsiCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Provinsis and returns the data saved in the database.
+     * @param {ProvinsiCreateManyAndReturnArgs} args - Arguments to create many Provinsis.
+     * @example
+     * // Create many Provinsis
+     * const provinsi = await prisma.provinsi.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Provinsis and only return the `id_provinsi`
+     * const provinsiWithId_provinsiOnly = await prisma.provinsi.createManyAndReturn({
+     *   select: { id_provinsi: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends ProvinsiCreateManyAndReturnArgs>(args?: SelectSubset<T, ProvinsiCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProvinsiPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Provinsi.
+     * @param {ProvinsiDeleteArgs} args - Arguments to delete one Provinsi.
+     * @example
+     * // Delete one Provinsi
+     * const Provinsi = await prisma.provinsi.delete({
+     *   where: {
+     *     // ... filter to delete one Provinsi
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ProvinsiDeleteArgs>(args: SelectSubset<T, ProvinsiDeleteArgs<ExtArgs>>): Prisma__ProvinsiClient<$Result.GetResult<Prisma.$ProvinsiPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Provinsi.
+     * @param {ProvinsiUpdateArgs} args - Arguments to update one Provinsi.
+     * @example
+     * // Update one Provinsi
+     * const provinsi = await prisma.provinsi.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ProvinsiUpdateArgs>(args: SelectSubset<T, ProvinsiUpdateArgs<ExtArgs>>): Prisma__ProvinsiClient<$Result.GetResult<Prisma.$ProvinsiPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Provinsis.
+     * @param {ProvinsiDeleteManyArgs} args - Arguments to filter Provinsis to delete.
+     * @example
+     * // Delete a few Provinsis
+     * const { count } = await prisma.provinsi.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ProvinsiDeleteManyArgs>(args?: SelectSubset<T, ProvinsiDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Provinsis.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProvinsiUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Provinsis
+     * const provinsi = await prisma.provinsi.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ProvinsiUpdateManyArgs>(args: SelectSubset<T, ProvinsiUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Provinsis and returns the data updated in the database.
+     * @param {ProvinsiUpdateManyAndReturnArgs} args - Arguments to update many Provinsis.
+     * @example
+     * // Update many Provinsis
+     * const provinsi = await prisma.provinsi.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Provinsis and only return the `id_provinsi`
+     * const provinsiWithId_provinsiOnly = await prisma.provinsi.updateManyAndReturn({
+     *   select: { id_provinsi: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends ProvinsiUpdateManyAndReturnArgs>(args: SelectSubset<T, ProvinsiUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProvinsiPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Provinsi.
+     * @param {ProvinsiUpsertArgs} args - Arguments to update or create a Provinsi.
+     * @example
+     * // Update or create a Provinsi
+     * const provinsi = await prisma.provinsi.upsert({
+     *   create: {
+     *     // ... data to create a Provinsi
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Provinsi we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ProvinsiUpsertArgs>(args: SelectSubset<T, ProvinsiUpsertArgs<ExtArgs>>): Prisma__ProvinsiClient<$Result.GetResult<Prisma.$ProvinsiPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Provinsis.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProvinsiCountArgs} args - Arguments to filter Provinsis to count.
+     * @example
+     * // Count the number of Provinsis
+     * const count = await prisma.provinsi.count({
+     *   where: {
+     *     // ... the filter for the Provinsis we want to count
+     *   }
+     * })
+    **/
+    count<T extends ProvinsiCountArgs>(
+      args?: Subset<T, ProvinsiCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ProvinsiCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Provinsi.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProvinsiAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ProvinsiAggregateArgs>(args: Subset<T, ProvinsiAggregateArgs>): Prisma.PrismaPromise<GetProvinsiAggregateType<T>>
+
+    /**
+     * Group by Provinsi.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProvinsiGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ProvinsiGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ProvinsiGroupByArgs['orderBy'] }
+        : { orderBy?: ProvinsiGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ProvinsiGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetProvinsiGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Provinsi model
+   */
+  readonly fields: ProvinsiFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Provinsi.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ProvinsiClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    kabupaten<T extends Provinsi$kabupatenArgs<ExtArgs> = {}>(args?: Subset<T, Provinsi$kabupatenArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$KabupatenPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Provinsi model
+   */
+  interface ProvinsiFieldRefs {
+    readonly id_provinsi: FieldRef<"Provinsi", 'Int'>
+    readonly nama_provinsi: FieldRef<"Provinsi", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Provinsi findUnique
+   */
+  export type ProvinsiFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Provinsi
+     */
+    select?: ProvinsiSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Provinsi
+     */
+    omit?: ProvinsiOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProvinsiInclude<ExtArgs> | null
+    /**
+     * Filter, which Provinsi to fetch.
+     */
+    where: ProvinsiWhereUniqueInput
+  }
+
+  /**
+   * Provinsi findUniqueOrThrow
+   */
+  export type ProvinsiFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Provinsi
+     */
+    select?: ProvinsiSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Provinsi
+     */
+    omit?: ProvinsiOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProvinsiInclude<ExtArgs> | null
+    /**
+     * Filter, which Provinsi to fetch.
+     */
+    where: ProvinsiWhereUniqueInput
+  }
+
+  /**
+   * Provinsi findFirst
+   */
+  export type ProvinsiFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Provinsi
+     */
+    select?: ProvinsiSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Provinsi
+     */
+    omit?: ProvinsiOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProvinsiInclude<ExtArgs> | null
+    /**
+     * Filter, which Provinsi to fetch.
+     */
+    where?: ProvinsiWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Provinsis to fetch.
+     */
+    orderBy?: ProvinsiOrderByWithRelationInput | ProvinsiOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Provinsis.
+     */
+    cursor?: ProvinsiWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Provinsis from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Provinsis.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Provinsis.
+     */
+    distinct?: ProvinsiScalarFieldEnum | ProvinsiScalarFieldEnum[]
+  }
+
+  /**
+   * Provinsi findFirstOrThrow
+   */
+  export type ProvinsiFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Provinsi
+     */
+    select?: ProvinsiSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Provinsi
+     */
+    omit?: ProvinsiOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProvinsiInclude<ExtArgs> | null
+    /**
+     * Filter, which Provinsi to fetch.
+     */
+    where?: ProvinsiWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Provinsis to fetch.
+     */
+    orderBy?: ProvinsiOrderByWithRelationInput | ProvinsiOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Provinsis.
+     */
+    cursor?: ProvinsiWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Provinsis from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Provinsis.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Provinsis.
+     */
+    distinct?: ProvinsiScalarFieldEnum | ProvinsiScalarFieldEnum[]
+  }
+
+  /**
+   * Provinsi findMany
+   */
+  export type ProvinsiFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Provinsi
+     */
+    select?: ProvinsiSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Provinsi
+     */
+    omit?: ProvinsiOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProvinsiInclude<ExtArgs> | null
+    /**
+     * Filter, which Provinsis to fetch.
+     */
+    where?: ProvinsiWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Provinsis to fetch.
+     */
+    orderBy?: ProvinsiOrderByWithRelationInput | ProvinsiOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Provinsis.
+     */
+    cursor?: ProvinsiWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Provinsis from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Provinsis.
+     */
+    skip?: number
+    distinct?: ProvinsiScalarFieldEnum | ProvinsiScalarFieldEnum[]
+  }
+
+  /**
+   * Provinsi create
+   */
+  export type ProvinsiCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Provinsi
+     */
+    select?: ProvinsiSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Provinsi
+     */
+    omit?: ProvinsiOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProvinsiInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Provinsi.
+     */
+    data: XOR<ProvinsiCreateInput, ProvinsiUncheckedCreateInput>
+  }
+
+  /**
+   * Provinsi createMany
+   */
+  export type ProvinsiCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Provinsis.
+     */
+    data: ProvinsiCreateManyInput | ProvinsiCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Provinsi createManyAndReturn
+   */
+  export type ProvinsiCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Provinsi
+     */
+    select?: ProvinsiSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Provinsi
+     */
+    omit?: ProvinsiOmit<ExtArgs> | null
+    /**
+     * The data used to create many Provinsis.
+     */
+    data: ProvinsiCreateManyInput | ProvinsiCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Provinsi update
+   */
+  export type ProvinsiUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Provinsi
+     */
+    select?: ProvinsiSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Provinsi
+     */
+    omit?: ProvinsiOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProvinsiInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Provinsi.
+     */
+    data: XOR<ProvinsiUpdateInput, ProvinsiUncheckedUpdateInput>
+    /**
+     * Choose, which Provinsi to update.
+     */
+    where: ProvinsiWhereUniqueInput
+  }
+
+  /**
+   * Provinsi updateMany
+   */
+  export type ProvinsiUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Provinsis.
+     */
+    data: XOR<ProvinsiUpdateManyMutationInput, ProvinsiUncheckedUpdateManyInput>
+    /**
+     * Filter which Provinsis to update
+     */
+    where?: ProvinsiWhereInput
+    /**
+     * Limit how many Provinsis to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Provinsi updateManyAndReturn
+   */
+  export type ProvinsiUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Provinsi
+     */
+    select?: ProvinsiSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Provinsi
+     */
+    omit?: ProvinsiOmit<ExtArgs> | null
+    /**
+     * The data used to update Provinsis.
+     */
+    data: XOR<ProvinsiUpdateManyMutationInput, ProvinsiUncheckedUpdateManyInput>
+    /**
+     * Filter which Provinsis to update
+     */
+    where?: ProvinsiWhereInput
+    /**
+     * Limit how many Provinsis to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Provinsi upsert
+   */
+  export type ProvinsiUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Provinsi
+     */
+    select?: ProvinsiSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Provinsi
+     */
+    omit?: ProvinsiOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProvinsiInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Provinsi to update in case it exists.
+     */
+    where: ProvinsiWhereUniqueInput
+    /**
+     * In case the Provinsi found by the `where` argument doesn't exist, create a new Provinsi with this data.
+     */
+    create: XOR<ProvinsiCreateInput, ProvinsiUncheckedCreateInput>
+    /**
+     * In case the Provinsi was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ProvinsiUpdateInput, ProvinsiUncheckedUpdateInput>
+  }
+
+  /**
+   * Provinsi delete
+   */
+  export type ProvinsiDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Provinsi
+     */
+    select?: ProvinsiSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Provinsi
+     */
+    omit?: ProvinsiOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProvinsiInclude<ExtArgs> | null
+    /**
+     * Filter which Provinsi to delete.
+     */
+    where: ProvinsiWhereUniqueInput
+  }
+
+  /**
+   * Provinsi deleteMany
+   */
+  export type ProvinsiDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Provinsis to delete
+     */
+    where?: ProvinsiWhereInput
+    /**
+     * Limit how many Provinsis to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Provinsi.kabupaten
+   */
+  export type Provinsi$kabupatenArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Kabupaten
+     */
+    select?: KabupatenSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Kabupaten
+     */
+    omit?: KabupatenOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: KabupatenInclude<ExtArgs> | null
+    where?: KabupatenWhereInput
+    orderBy?: KabupatenOrderByWithRelationInput | KabupatenOrderByWithRelationInput[]
+    cursor?: KabupatenWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: KabupatenScalarFieldEnum | KabupatenScalarFieldEnum[]
+  }
+
+  /**
+   * Provinsi without action
+   */
+  export type ProvinsiDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Provinsi
+     */
+    select?: ProvinsiSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Provinsi
+     */
+    omit?: ProvinsiOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProvinsiInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Kabupaten
+   */
+
+  export type AggregateKabupaten = {
+    _count: KabupatenCountAggregateOutputType | null
+    _avg: KabupatenAvgAggregateOutputType | null
+    _sum: KabupatenSumAggregateOutputType | null
+    _min: KabupatenMinAggregateOutputType | null
+    _max: KabupatenMaxAggregateOutputType | null
+  }
+
+  export type KabupatenAvgAggregateOutputType = {
+    id_kabupaten: number | null
+    id_provinsi: number | null
+  }
+
+  export type KabupatenSumAggregateOutputType = {
+    id_kabupaten: number | null
+    id_provinsi: number | null
+  }
+
+  export type KabupatenMinAggregateOutputType = {
+    id_kabupaten: number | null
+    nama_kabupaten: string | null
+    type: string | null
+    id_provinsi: number | null
+  }
+
+  export type KabupatenMaxAggregateOutputType = {
+    id_kabupaten: number | null
+    nama_kabupaten: string | null
+    type: string | null
+    id_provinsi: number | null
+  }
+
+  export type KabupatenCountAggregateOutputType = {
+    id_kabupaten: number
+    nama_kabupaten: number
+    type: number
+    id_provinsi: number
+    _all: number
+  }
+
+
+  export type KabupatenAvgAggregateInputType = {
+    id_kabupaten?: true
+    id_provinsi?: true
+  }
+
+  export type KabupatenSumAggregateInputType = {
+    id_kabupaten?: true
+    id_provinsi?: true
+  }
+
+  export type KabupatenMinAggregateInputType = {
+    id_kabupaten?: true
+    nama_kabupaten?: true
+    type?: true
+    id_provinsi?: true
+  }
+
+  export type KabupatenMaxAggregateInputType = {
+    id_kabupaten?: true
+    nama_kabupaten?: true
+    type?: true
+    id_provinsi?: true
+  }
+
+  export type KabupatenCountAggregateInputType = {
+    id_kabupaten?: true
+    nama_kabupaten?: true
+    type?: true
+    id_provinsi?: true
+    _all?: true
+  }
+
+  export type KabupatenAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Kabupaten to aggregate.
+     */
+    where?: KabupatenWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Kabupatens to fetch.
+     */
+    orderBy?: KabupatenOrderByWithRelationInput | KabupatenOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: KabupatenWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Kabupatens from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Kabupatens.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Kabupatens
+    **/
+    _count?: true | KabupatenCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: KabupatenAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: KabupatenSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: KabupatenMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: KabupatenMaxAggregateInputType
+  }
+
+  export type GetKabupatenAggregateType<T extends KabupatenAggregateArgs> = {
+        [P in keyof T & keyof AggregateKabupaten]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateKabupaten[P]>
+      : GetScalarType<T[P], AggregateKabupaten[P]>
+  }
+
+
+
+
+  export type KabupatenGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: KabupatenWhereInput
+    orderBy?: KabupatenOrderByWithAggregationInput | KabupatenOrderByWithAggregationInput[]
+    by: KabupatenScalarFieldEnum[] | KabupatenScalarFieldEnum
+    having?: KabupatenScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: KabupatenCountAggregateInputType | true
+    _avg?: KabupatenAvgAggregateInputType
+    _sum?: KabupatenSumAggregateInputType
+    _min?: KabupatenMinAggregateInputType
+    _max?: KabupatenMaxAggregateInputType
+  }
+
+  export type KabupatenGroupByOutputType = {
+    id_kabupaten: number
+    nama_kabupaten: string
+    type: string
+    id_provinsi: number
+    _count: KabupatenCountAggregateOutputType | null
+    _avg: KabupatenAvgAggregateOutputType | null
+    _sum: KabupatenSumAggregateOutputType | null
+    _min: KabupatenMinAggregateOutputType | null
+    _max: KabupatenMaxAggregateOutputType | null
+  }
+
+  type GetKabupatenGroupByPayload<T extends KabupatenGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<KabupatenGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof KabupatenGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], KabupatenGroupByOutputType[P]>
+            : GetScalarType<T[P], KabupatenGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type KabupatenSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id_kabupaten?: boolean
+    nama_kabupaten?: boolean
+    type?: boolean
+    id_provinsi?: boolean
+    provinsi?: boolean | ProvinsiDefaultArgs<ExtArgs>
+    facilitators?: boolean | Kabupaten$facilitatorsArgs<ExtArgs>
+    _count?: boolean | KabupatenCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["kabupaten"]>
+
+  export type KabupatenSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id_kabupaten?: boolean
+    nama_kabupaten?: boolean
+    type?: boolean
+    id_provinsi?: boolean
+    provinsi?: boolean | ProvinsiDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["kabupaten"]>
+
+  export type KabupatenSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id_kabupaten?: boolean
+    nama_kabupaten?: boolean
+    type?: boolean
+    id_provinsi?: boolean
+    provinsi?: boolean | ProvinsiDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["kabupaten"]>
+
+  export type KabupatenSelectScalar = {
+    id_kabupaten?: boolean
+    nama_kabupaten?: boolean
+    type?: boolean
+    id_provinsi?: boolean
+  }
+
+  export type KabupatenOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_kabupaten" | "nama_kabupaten" | "type" | "id_provinsi", ExtArgs["result"]["kabupaten"]>
+  export type KabupatenInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    provinsi?: boolean | ProvinsiDefaultArgs<ExtArgs>
+    facilitators?: boolean | Kabupaten$facilitatorsArgs<ExtArgs>
+    _count?: boolean | KabupatenCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type KabupatenIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    provinsi?: boolean | ProvinsiDefaultArgs<ExtArgs>
+  }
+  export type KabupatenIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    provinsi?: boolean | ProvinsiDefaultArgs<ExtArgs>
+  }
+
+  export type $KabupatenPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Kabupaten"
+    objects: {
+      provinsi: Prisma.$ProvinsiPayload<ExtArgs>
+      facilitators: Prisma.$FacilitatorPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id_kabupaten: number
+      nama_kabupaten: string
+      type: string
+      id_provinsi: number
+    }, ExtArgs["result"]["kabupaten"]>
+    composites: {}
+  }
+
+  type KabupatenGetPayload<S extends boolean | null | undefined | KabupatenDefaultArgs> = $Result.GetResult<Prisma.$KabupatenPayload, S>
+
+  type KabupatenCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<KabupatenFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: KabupatenCountAggregateInputType | true
+    }
+
+  export interface KabupatenDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Kabupaten'], meta: { name: 'Kabupaten' } }
+    /**
+     * Find zero or one Kabupaten that matches the filter.
+     * @param {KabupatenFindUniqueArgs} args - Arguments to find a Kabupaten
+     * @example
+     * // Get one Kabupaten
+     * const kabupaten = await prisma.kabupaten.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends KabupatenFindUniqueArgs>(args: SelectSubset<T, KabupatenFindUniqueArgs<ExtArgs>>): Prisma__KabupatenClient<$Result.GetResult<Prisma.$KabupatenPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Kabupaten that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {KabupatenFindUniqueOrThrowArgs} args - Arguments to find a Kabupaten
+     * @example
+     * // Get one Kabupaten
+     * const kabupaten = await prisma.kabupaten.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends KabupatenFindUniqueOrThrowArgs>(args: SelectSubset<T, KabupatenFindUniqueOrThrowArgs<ExtArgs>>): Prisma__KabupatenClient<$Result.GetResult<Prisma.$KabupatenPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Kabupaten that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {KabupatenFindFirstArgs} args - Arguments to find a Kabupaten
+     * @example
+     * // Get one Kabupaten
+     * const kabupaten = await prisma.kabupaten.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends KabupatenFindFirstArgs>(args?: SelectSubset<T, KabupatenFindFirstArgs<ExtArgs>>): Prisma__KabupatenClient<$Result.GetResult<Prisma.$KabupatenPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Kabupaten that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {KabupatenFindFirstOrThrowArgs} args - Arguments to find a Kabupaten
+     * @example
+     * // Get one Kabupaten
+     * const kabupaten = await prisma.kabupaten.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends KabupatenFindFirstOrThrowArgs>(args?: SelectSubset<T, KabupatenFindFirstOrThrowArgs<ExtArgs>>): Prisma__KabupatenClient<$Result.GetResult<Prisma.$KabupatenPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Kabupatens that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {KabupatenFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Kabupatens
+     * const kabupatens = await prisma.kabupaten.findMany()
+     * 
+     * // Get first 10 Kabupatens
+     * const kabupatens = await prisma.kabupaten.findMany({ take: 10 })
+     * 
+     * // Only select the `id_kabupaten`
+     * const kabupatenWithId_kabupatenOnly = await prisma.kabupaten.findMany({ select: { id_kabupaten: true } })
+     * 
+     */
+    findMany<T extends KabupatenFindManyArgs>(args?: SelectSubset<T, KabupatenFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$KabupatenPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Kabupaten.
+     * @param {KabupatenCreateArgs} args - Arguments to create a Kabupaten.
+     * @example
+     * // Create one Kabupaten
+     * const Kabupaten = await prisma.kabupaten.create({
+     *   data: {
+     *     // ... data to create a Kabupaten
+     *   }
+     * })
+     * 
+     */
+    create<T extends KabupatenCreateArgs>(args: SelectSubset<T, KabupatenCreateArgs<ExtArgs>>): Prisma__KabupatenClient<$Result.GetResult<Prisma.$KabupatenPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Kabupatens.
+     * @param {KabupatenCreateManyArgs} args - Arguments to create many Kabupatens.
+     * @example
+     * // Create many Kabupatens
+     * const kabupaten = await prisma.kabupaten.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends KabupatenCreateManyArgs>(args?: SelectSubset<T, KabupatenCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Kabupatens and returns the data saved in the database.
+     * @param {KabupatenCreateManyAndReturnArgs} args - Arguments to create many Kabupatens.
+     * @example
+     * // Create many Kabupatens
+     * const kabupaten = await prisma.kabupaten.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Kabupatens and only return the `id_kabupaten`
+     * const kabupatenWithId_kabupatenOnly = await prisma.kabupaten.createManyAndReturn({
+     *   select: { id_kabupaten: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends KabupatenCreateManyAndReturnArgs>(args?: SelectSubset<T, KabupatenCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$KabupatenPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Kabupaten.
+     * @param {KabupatenDeleteArgs} args - Arguments to delete one Kabupaten.
+     * @example
+     * // Delete one Kabupaten
+     * const Kabupaten = await prisma.kabupaten.delete({
+     *   where: {
+     *     // ... filter to delete one Kabupaten
+     *   }
+     * })
+     * 
+     */
+    delete<T extends KabupatenDeleteArgs>(args: SelectSubset<T, KabupatenDeleteArgs<ExtArgs>>): Prisma__KabupatenClient<$Result.GetResult<Prisma.$KabupatenPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Kabupaten.
+     * @param {KabupatenUpdateArgs} args - Arguments to update one Kabupaten.
+     * @example
+     * // Update one Kabupaten
+     * const kabupaten = await prisma.kabupaten.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends KabupatenUpdateArgs>(args: SelectSubset<T, KabupatenUpdateArgs<ExtArgs>>): Prisma__KabupatenClient<$Result.GetResult<Prisma.$KabupatenPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Kabupatens.
+     * @param {KabupatenDeleteManyArgs} args - Arguments to filter Kabupatens to delete.
+     * @example
+     * // Delete a few Kabupatens
+     * const { count } = await prisma.kabupaten.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends KabupatenDeleteManyArgs>(args?: SelectSubset<T, KabupatenDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Kabupatens.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {KabupatenUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Kabupatens
+     * const kabupaten = await prisma.kabupaten.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends KabupatenUpdateManyArgs>(args: SelectSubset<T, KabupatenUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Kabupatens and returns the data updated in the database.
+     * @param {KabupatenUpdateManyAndReturnArgs} args - Arguments to update many Kabupatens.
+     * @example
+     * // Update many Kabupatens
+     * const kabupaten = await prisma.kabupaten.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Kabupatens and only return the `id_kabupaten`
+     * const kabupatenWithId_kabupatenOnly = await prisma.kabupaten.updateManyAndReturn({
+     *   select: { id_kabupaten: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends KabupatenUpdateManyAndReturnArgs>(args: SelectSubset<T, KabupatenUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$KabupatenPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Kabupaten.
+     * @param {KabupatenUpsertArgs} args - Arguments to update or create a Kabupaten.
+     * @example
+     * // Update or create a Kabupaten
+     * const kabupaten = await prisma.kabupaten.upsert({
+     *   create: {
+     *     // ... data to create a Kabupaten
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Kabupaten we want to update
+     *   }
+     * })
+     */
+    upsert<T extends KabupatenUpsertArgs>(args: SelectSubset<T, KabupatenUpsertArgs<ExtArgs>>): Prisma__KabupatenClient<$Result.GetResult<Prisma.$KabupatenPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Kabupatens.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {KabupatenCountArgs} args - Arguments to filter Kabupatens to count.
+     * @example
+     * // Count the number of Kabupatens
+     * const count = await prisma.kabupaten.count({
+     *   where: {
+     *     // ... the filter for the Kabupatens we want to count
+     *   }
+     * })
+    **/
+    count<T extends KabupatenCountArgs>(
+      args?: Subset<T, KabupatenCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], KabupatenCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Kabupaten.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {KabupatenAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends KabupatenAggregateArgs>(args: Subset<T, KabupatenAggregateArgs>): Prisma.PrismaPromise<GetKabupatenAggregateType<T>>
+
+    /**
+     * Group by Kabupaten.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {KabupatenGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends KabupatenGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: KabupatenGroupByArgs['orderBy'] }
+        : { orderBy?: KabupatenGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, KabupatenGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetKabupatenGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Kabupaten model
+   */
+  readonly fields: KabupatenFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Kabupaten.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__KabupatenClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    provinsi<T extends ProvinsiDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ProvinsiDefaultArgs<ExtArgs>>): Prisma__ProvinsiClient<$Result.GetResult<Prisma.$ProvinsiPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    facilitators<T extends Kabupaten$facilitatorsArgs<ExtArgs> = {}>(args?: Subset<T, Kabupaten$facilitatorsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FacilitatorPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Kabupaten model
+   */
+  interface KabupatenFieldRefs {
+    readonly id_kabupaten: FieldRef<"Kabupaten", 'Int'>
+    readonly nama_kabupaten: FieldRef<"Kabupaten", 'String'>
+    readonly type: FieldRef<"Kabupaten", 'String'>
+    readonly id_provinsi: FieldRef<"Kabupaten", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Kabupaten findUnique
+   */
+  export type KabupatenFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Kabupaten
+     */
+    select?: KabupatenSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Kabupaten
+     */
+    omit?: KabupatenOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: KabupatenInclude<ExtArgs> | null
+    /**
+     * Filter, which Kabupaten to fetch.
+     */
+    where: KabupatenWhereUniqueInput
+  }
+
+  /**
+   * Kabupaten findUniqueOrThrow
+   */
+  export type KabupatenFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Kabupaten
+     */
+    select?: KabupatenSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Kabupaten
+     */
+    omit?: KabupatenOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: KabupatenInclude<ExtArgs> | null
+    /**
+     * Filter, which Kabupaten to fetch.
+     */
+    where: KabupatenWhereUniqueInput
+  }
+
+  /**
+   * Kabupaten findFirst
+   */
+  export type KabupatenFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Kabupaten
+     */
+    select?: KabupatenSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Kabupaten
+     */
+    omit?: KabupatenOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: KabupatenInclude<ExtArgs> | null
+    /**
+     * Filter, which Kabupaten to fetch.
+     */
+    where?: KabupatenWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Kabupatens to fetch.
+     */
+    orderBy?: KabupatenOrderByWithRelationInput | KabupatenOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Kabupatens.
+     */
+    cursor?: KabupatenWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Kabupatens from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Kabupatens.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Kabupatens.
+     */
+    distinct?: KabupatenScalarFieldEnum | KabupatenScalarFieldEnum[]
+  }
+
+  /**
+   * Kabupaten findFirstOrThrow
+   */
+  export type KabupatenFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Kabupaten
+     */
+    select?: KabupatenSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Kabupaten
+     */
+    omit?: KabupatenOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: KabupatenInclude<ExtArgs> | null
+    /**
+     * Filter, which Kabupaten to fetch.
+     */
+    where?: KabupatenWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Kabupatens to fetch.
+     */
+    orderBy?: KabupatenOrderByWithRelationInput | KabupatenOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Kabupatens.
+     */
+    cursor?: KabupatenWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Kabupatens from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Kabupatens.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Kabupatens.
+     */
+    distinct?: KabupatenScalarFieldEnum | KabupatenScalarFieldEnum[]
+  }
+
+  /**
+   * Kabupaten findMany
+   */
+  export type KabupatenFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Kabupaten
+     */
+    select?: KabupatenSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Kabupaten
+     */
+    omit?: KabupatenOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: KabupatenInclude<ExtArgs> | null
+    /**
+     * Filter, which Kabupatens to fetch.
+     */
+    where?: KabupatenWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Kabupatens to fetch.
+     */
+    orderBy?: KabupatenOrderByWithRelationInput | KabupatenOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Kabupatens.
+     */
+    cursor?: KabupatenWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Kabupatens from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Kabupatens.
+     */
+    skip?: number
+    distinct?: KabupatenScalarFieldEnum | KabupatenScalarFieldEnum[]
+  }
+
+  /**
+   * Kabupaten create
+   */
+  export type KabupatenCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Kabupaten
+     */
+    select?: KabupatenSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Kabupaten
+     */
+    omit?: KabupatenOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: KabupatenInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Kabupaten.
+     */
+    data: XOR<KabupatenCreateInput, KabupatenUncheckedCreateInput>
+  }
+
+  /**
+   * Kabupaten createMany
+   */
+  export type KabupatenCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Kabupatens.
+     */
+    data: KabupatenCreateManyInput | KabupatenCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Kabupaten createManyAndReturn
+   */
+  export type KabupatenCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Kabupaten
+     */
+    select?: KabupatenSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Kabupaten
+     */
+    omit?: KabupatenOmit<ExtArgs> | null
+    /**
+     * The data used to create many Kabupatens.
+     */
+    data: KabupatenCreateManyInput | KabupatenCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: KabupatenIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Kabupaten update
+   */
+  export type KabupatenUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Kabupaten
+     */
+    select?: KabupatenSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Kabupaten
+     */
+    omit?: KabupatenOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: KabupatenInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Kabupaten.
+     */
+    data: XOR<KabupatenUpdateInput, KabupatenUncheckedUpdateInput>
+    /**
+     * Choose, which Kabupaten to update.
+     */
+    where: KabupatenWhereUniqueInput
+  }
+
+  /**
+   * Kabupaten updateMany
+   */
+  export type KabupatenUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Kabupatens.
+     */
+    data: XOR<KabupatenUpdateManyMutationInput, KabupatenUncheckedUpdateManyInput>
+    /**
+     * Filter which Kabupatens to update
+     */
+    where?: KabupatenWhereInput
+    /**
+     * Limit how many Kabupatens to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Kabupaten updateManyAndReturn
+   */
+  export type KabupatenUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Kabupaten
+     */
+    select?: KabupatenSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Kabupaten
+     */
+    omit?: KabupatenOmit<ExtArgs> | null
+    /**
+     * The data used to update Kabupatens.
+     */
+    data: XOR<KabupatenUpdateManyMutationInput, KabupatenUncheckedUpdateManyInput>
+    /**
+     * Filter which Kabupatens to update
+     */
+    where?: KabupatenWhereInput
+    /**
+     * Limit how many Kabupatens to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: KabupatenIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Kabupaten upsert
+   */
+  export type KabupatenUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Kabupaten
+     */
+    select?: KabupatenSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Kabupaten
+     */
+    omit?: KabupatenOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: KabupatenInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Kabupaten to update in case it exists.
+     */
+    where: KabupatenWhereUniqueInput
+    /**
+     * In case the Kabupaten found by the `where` argument doesn't exist, create a new Kabupaten with this data.
+     */
+    create: XOR<KabupatenCreateInput, KabupatenUncheckedCreateInput>
+    /**
+     * In case the Kabupaten was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<KabupatenUpdateInput, KabupatenUncheckedUpdateInput>
+  }
+
+  /**
+   * Kabupaten delete
+   */
+  export type KabupatenDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Kabupaten
+     */
+    select?: KabupatenSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Kabupaten
+     */
+    omit?: KabupatenOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: KabupatenInclude<ExtArgs> | null
+    /**
+     * Filter which Kabupaten to delete.
+     */
+    where: KabupatenWhereUniqueInput
+  }
+
+  /**
+   * Kabupaten deleteMany
+   */
+  export type KabupatenDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Kabupatens to delete
+     */
+    where?: KabupatenWhereInput
+    /**
+     * Limit how many Kabupatens to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Kabupaten.facilitators
+   */
+  export type Kabupaten$facilitatorsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Facilitator
+     */
+    select?: FacilitatorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Facilitator
+     */
+    omit?: FacilitatorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FacilitatorInclude<ExtArgs> | null
+    where?: FacilitatorWhereInput
+    orderBy?: FacilitatorOrderByWithRelationInput | FacilitatorOrderByWithRelationInput[]
+    cursor?: FacilitatorWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: FacilitatorScalarFieldEnum | FacilitatorScalarFieldEnum[]
+  }
+
+  /**
+   * Kabupaten without action
+   */
+  export type KabupatenDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Kabupaten
+     */
+    select?: KabupatenSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Kabupaten
+     */
+    omit?: KabupatenOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: KabupatenInclude<ExtArgs> | null
+  }
+
 
   /**
    * Model Pengguna
@@ -3930,8 +6352,18 @@ export namespace Prisma {
 
   export type AggregateFacilitator = {
     _count: FacilitatorCountAggregateOutputType | null
+    _avg: FacilitatorAvgAggregateOutputType | null
+    _sum: FacilitatorSumAggregateOutputType | null
     _min: FacilitatorMinAggregateOutputType | null
     _max: FacilitatorMaxAggregateOutputType | null
+  }
+
+  export type FacilitatorAvgAggregateOutputType = {
+    id_kabupaten: number | null
+  }
+
+  export type FacilitatorSumAggregateOutputType = {
+    id_kabupaten: number | null
   }
 
   export type FacilitatorMinAggregateOutputType = {
@@ -3941,6 +6373,8 @@ export namespace Prisma {
     nomor_telepon_facilitator: string | null
     password_facilitator: string | null
     tanggal_pembuatan_akun: Date | null
+    alamat_lengkap_facilitator: string | null
+    id_kabupaten: number | null
   }
 
   export type FacilitatorMaxAggregateOutputType = {
@@ -3950,6 +6384,8 @@ export namespace Prisma {
     nomor_telepon_facilitator: string | null
     password_facilitator: string | null
     tanggal_pembuatan_akun: Date | null
+    alamat_lengkap_facilitator: string | null
+    id_kabupaten: number | null
   }
 
   export type FacilitatorCountAggregateOutputType = {
@@ -3959,9 +6395,19 @@ export namespace Prisma {
     nomor_telepon_facilitator: number
     password_facilitator: number
     tanggal_pembuatan_akun: number
+    alamat_lengkap_facilitator: number
+    id_kabupaten: number
     _all: number
   }
 
+
+  export type FacilitatorAvgAggregateInputType = {
+    id_kabupaten?: true
+  }
+
+  export type FacilitatorSumAggregateInputType = {
+    id_kabupaten?: true
+  }
 
   export type FacilitatorMinAggregateInputType = {
     id_facilitator?: true
@@ -3970,6 +6416,8 @@ export namespace Prisma {
     nomor_telepon_facilitator?: true
     password_facilitator?: true
     tanggal_pembuatan_akun?: true
+    alamat_lengkap_facilitator?: true
+    id_kabupaten?: true
   }
 
   export type FacilitatorMaxAggregateInputType = {
@@ -3979,6 +6427,8 @@ export namespace Prisma {
     nomor_telepon_facilitator?: true
     password_facilitator?: true
     tanggal_pembuatan_akun?: true
+    alamat_lengkap_facilitator?: true
+    id_kabupaten?: true
   }
 
   export type FacilitatorCountAggregateInputType = {
@@ -3988,6 +6438,8 @@ export namespace Prisma {
     nomor_telepon_facilitator?: true
     password_facilitator?: true
     tanggal_pembuatan_akun?: true
+    alamat_lengkap_facilitator?: true
+    id_kabupaten?: true
     _all?: true
   }
 
@@ -4029,6 +6481,18 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
+     * Select which fields to average
+    **/
+    _avg?: FacilitatorAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: FacilitatorSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
      * Select which fields to find the minimum value
     **/
     _min?: FacilitatorMinAggregateInputType
@@ -4059,6 +6523,8 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: FacilitatorCountAggregateInputType | true
+    _avg?: FacilitatorAvgAggregateInputType
+    _sum?: FacilitatorSumAggregateInputType
     _min?: FacilitatorMinAggregateInputType
     _max?: FacilitatorMaxAggregateInputType
   }
@@ -4070,7 +6536,11 @@ export namespace Prisma {
     nomor_telepon_facilitator: string
     password_facilitator: string
     tanggal_pembuatan_akun: Date
+    alamat_lengkap_facilitator: string
+    id_kabupaten: number
     _count: FacilitatorCountAggregateOutputType | null
+    _avg: FacilitatorAvgAggregateOutputType | null
+    _sum: FacilitatorSumAggregateOutputType | null
     _min: FacilitatorMinAggregateOutputType | null
     _max: FacilitatorMaxAggregateOutputType | null
   }
@@ -4096,6 +6566,9 @@ export namespace Prisma {
     nomor_telepon_facilitator?: boolean
     password_facilitator?: boolean
     tanggal_pembuatan_akun?: boolean
+    alamat_lengkap_facilitator?: boolean
+    id_kabupaten?: boolean
+    kabupaten?: boolean | KabupatenDefaultArgs<ExtArgs>
     workshops?: boolean | Facilitator$workshopsArgs<ExtArgs>
     _count?: boolean | FacilitatorCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["facilitator"]>
@@ -4107,6 +6580,9 @@ export namespace Prisma {
     nomor_telepon_facilitator?: boolean
     password_facilitator?: boolean
     tanggal_pembuatan_akun?: boolean
+    alamat_lengkap_facilitator?: boolean
+    id_kabupaten?: boolean
+    kabupaten?: boolean | KabupatenDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["facilitator"]>
 
   export type FacilitatorSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -4116,6 +6592,9 @@ export namespace Prisma {
     nomor_telepon_facilitator?: boolean
     password_facilitator?: boolean
     tanggal_pembuatan_akun?: boolean
+    alamat_lengkap_facilitator?: boolean
+    id_kabupaten?: boolean
+    kabupaten?: boolean | KabupatenDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["facilitator"]>
 
   export type FacilitatorSelectScalar = {
@@ -4125,19 +6604,27 @@ export namespace Prisma {
     nomor_telepon_facilitator?: boolean
     password_facilitator?: boolean
     tanggal_pembuatan_akun?: boolean
+    alamat_lengkap_facilitator?: boolean
+    id_kabupaten?: boolean
   }
 
-  export type FacilitatorOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_facilitator" | "nama_facilitator" | "email_facilitator" | "nomor_telepon_facilitator" | "password_facilitator" | "tanggal_pembuatan_akun", ExtArgs["result"]["facilitator"]>
+  export type FacilitatorOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_facilitator" | "nama_facilitator" | "email_facilitator" | "nomor_telepon_facilitator" | "password_facilitator" | "tanggal_pembuatan_akun" | "alamat_lengkap_facilitator" | "id_kabupaten", ExtArgs["result"]["facilitator"]>
   export type FacilitatorInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    kabupaten?: boolean | KabupatenDefaultArgs<ExtArgs>
     workshops?: boolean | Facilitator$workshopsArgs<ExtArgs>
     _count?: boolean | FacilitatorCountOutputTypeDefaultArgs<ExtArgs>
   }
-  export type FacilitatorIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
-  export type FacilitatorIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type FacilitatorIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    kabupaten?: boolean | KabupatenDefaultArgs<ExtArgs>
+  }
+  export type FacilitatorIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    kabupaten?: boolean | KabupatenDefaultArgs<ExtArgs>
+  }
 
   export type $FacilitatorPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Facilitator"
     objects: {
+      kabupaten: Prisma.$KabupatenPayload<ExtArgs>
       workshops: Prisma.$WorkshopPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
@@ -4147,6 +6634,8 @@ export namespace Prisma {
       nomor_telepon_facilitator: string
       password_facilitator: string
       tanggal_pembuatan_akun: Date
+      alamat_lengkap_facilitator: string
+      id_kabupaten: number
     }, ExtArgs["result"]["facilitator"]>
     composites: {}
   }
@@ -4541,6 +7030,7 @@ export namespace Prisma {
    */
   export interface Prisma__FacilitatorClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    kabupaten<T extends KabupatenDefaultArgs<ExtArgs> = {}>(args?: Subset<T, KabupatenDefaultArgs<ExtArgs>>): Prisma__KabupatenClient<$Result.GetResult<Prisma.$KabupatenPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     workshops<T extends Facilitator$workshopsArgs<ExtArgs> = {}>(args?: Subset<T, Facilitator$workshopsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WorkshopPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -4577,6 +7067,8 @@ export namespace Prisma {
     readonly nomor_telepon_facilitator: FieldRef<"Facilitator", 'String'>
     readonly password_facilitator: FieldRef<"Facilitator", 'String'>
     readonly tanggal_pembuatan_akun: FieldRef<"Facilitator", 'DateTime'>
+    readonly alamat_lengkap_facilitator: FieldRef<"Facilitator", 'String'>
+    readonly id_kabupaten: FieldRef<"Facilitator", 'Int'>
   }
     
 
@@ -4826,6 +7318,10 @@ export namespace Prisma {
      */
     data: FacilitatorCreateManyInput | FacilitatorCreateManyInput[]
     skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FacilitatorIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -4896,6 +7392,10 @@ export namespace Prisma {
      * Limit how many Facilitators to update.
      */
     limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FacilitatorIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -20718,6 +23218,24 @@ export namespace Prisma {
   export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
+  export const ProvinsiScalarFieldEnum: {
+    id_provinsi: 'id_provinsi',
+    nama_provinsi: 'nama_provinsi'
+  };
+
+  export type ProvinsiScalarFieldEnum = (typeof ProvinsiScalarFieldEnum)[keyof typeof ProvinsiScalarFieldEnum]
+
+
+  export const KabupatenScalarFieldEnum: {
+    id_kabupaten: 'id_kabupaten',
+    nama_kabupaten: 'nama_kabupaten',
+    type: 'type',
+    id_provinsi: 'id_provinsi'
+  };
+
+  export type KabupatenScalarFieldEnum = (typeof KabupatenScalarFieldEnum)[keyof typeof KabupatenScalarFieldEnum]
+
+
   export const PenggunaScalarFieldEnum: {
     id_pengguna: 'id_pengguna',
     nama_depan_pengguna: 'nama_depan_pengguna',
@@ -20741,7 +23259,9 @@ export namespace Prisma {
     email_facilitator: 'email_facilitator',
     nomor_telepon_facilitator: 'nomor_telepon_facilitator',
     password_facilitator: 'password_facilitator',
-    tanggal_pembuatan_akun: 'tanggal_pembuatan_akun'
+    tanggal_pembuatan_akun: 'tanggal_pembuatan_akun',
+    alamat_lengkap_facilitator: 'alamat_lengkap_facilitator',
+    id_kabupaten: 'id_kabupaten'
   };
 
   export type FacilitatorScalarFieldEnum = (typeof FacilitatorScalarFieldEnum)[keyof typeof FacilitatorScalarFieldEnum]
@@ -20932,6 +23452,20 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'Int'
+   */
+  export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
+    
+
+
+  /**
+   * Reference to a field of type 'Int[]'
+   */
+  export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
+    
+
+
+  /**
    * Reference to a field of type 'String'
    */
   export type StringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String'>
@@ -20956,20 +23490,6 @@ export namespace Prisma {
    * Reference to a field of type 'DateTime[]'
    */
   export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
-    
-
-
-  /**
-   * Reference to a field of type 'Int'
-   */
-  export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
-    
-
-
-  /**
-   * Reference to a field of type 'Int[]'
-   */
-  export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
     
 
 
@@ -21010,6 +23530,103 @@ export namespace Prisma {
    * Deep Input Types
    */
 
+
+  export type ProvinsiWhereInput = {
+    AND?: ProvinsiWhereInput | ProvinsiWhereInput[]
+    OR?: ProvinsiWhereInput[]
+    NOT?: ProvinsiWhereInput | ProvinsiWhereInput[]
+    id_provinsi?: IntFilter<"Provinsi"> | number
+    nama_provinsi?: StringFilter<"Provinsi"> | string
+    kabupaten?: KabupatenListRelationFilter
+  }
+
+  export type ProvinsiOrderByWithRelationInput = {
+    id_provinsi?: SortOrder
+    nama_provinsi?: SortOrder
+    kabupaten?: KabupatenOrderByRelationAggregateInput
+  }
+
+  export type ProvinsiWhereUniqueInput = Prisma.AtLeast<{
+    id_provinsi?: number
+    AND?: ProvinsiWhereInput | ProvinsiWhereInput[]
+    OR?: ProvinsiWhereInput[]
+    NOT?: ProvinsiWhereInput | ProvinsiWhereInput[]
+    nama_provinsi?: StringFilter<"Provinsi"> | string
+    kabupaten?: KabupatenListRelationFilter
+  }, "id_provinsi">
+
+  export type ProvinsiOrderByWithAggregationInput = {
+    id_provinsi?: SortOrder
+    nama_provinsi?: SortOrder
+    _count?: ProvinsiCountOrderByAggregateInput
+    _avg?: ProvinsiAvgOrderByAggregateInput
+    _max?: ProvinsiMaxOrderByAggregateInput
+    _min?: ProvinsiMinOrderByAggregateInput
+    _sum?: ProvinsiSumOrderByAggregateInput
+  }
+
+  export type ProvinsiScalarWhereWithAggregatesInput = {
+    AND?: ProvinsiScalarWhereWithAggregatesInput | ProvinsiScalarWhereWithAggregatesInput[]
+    OR?: ProvinsiScalarWhereWithAggregatesInput[]
+    NOT?: ProvinsiScalarWhereWithAggregatesInput | ProvinsiScalarWhereWithAggregatesInput[]
+    id_provinsi?: IntWithAggregatesFilter<"Provinsi"> | number
+    nama_provinsi?: StringWithAggregatesFilter<"Provinsi"> | string
+  }
+
+  export type KabupatenWhereInput = {
+    AND?: KabupatenWhereInput | KabupatenWhereInput[]
+    OR?: KabupatenWhereInput[]
+    NOT?: KabupatenWhereInput | KabupatenWhereInput[]
+    id_kabupaten?: IntFilter<"Kabupaten"> | number
+    nama_kabupaten?: StringFilter<"Kabupaten"> | string
+    type?: StringFilter<"Kabupaten"> | string
+    id_provinsi?: IntFilter<"Kabupaten"> | number
+    provinsi?: XOR<ProvinsiScalarRelationFilter, ProvinsiWhereInput>
+    facilitators?: FacilitatorListRelationFilter
+  }
+
+  export type KabupatenOrderByWithRelationInput = {
+    id_kabupaten?: SortOrder
+    nama_kabupaten?: SortOrder
+    type?: SortOrder
+    id_provinsi?: SortOrder
+    provinsi?: ProvinsiOrderByWithRelationInput
+    facilitators?: FacilitatorOrderByRelationAggregateInput
+  }
+
+  export type KabupatenWhereUniqueInput = Prisma.AtLeast<{
+    id_kabupaten?: number
+    AND?: KabupatenWhereInput | KabupatenWhereInput[]
+    OR?: KabupatenWhereInput[]
+    NOT?: KabupatenWhereInput | KabupatenWhereInput[]
+    nama_kabupaten?: StringFilter<"Kabupaten"> | string
+    type?: StringFilter<"Kabupaten"> | string
+    id_provinsi?: IntFilter<"Kabupaten"> | number
+    provinsi?: XOR<ProvinsiScalarRelationFilter, ProvinsiWhereInput>
+    facilitators?: FacilitatorListRelationFilter
+  }, "id_kabupaten">
+
+  export type KabupatenOrderByWithAggregationInput = {
+    id_kabupaten?: SortOrder
+    nama_kabupaten?: SortOrder
+    type?: SortOrder
+    id_provinsi?: SortOrder
+    _count?: KabupatenCountOrderByAggregateInput
+    _avg?: KabupatenAvgOrderByAggregateInput
+    _max?: KabupatenMaxOrderByAggregateInput
+    _min?: KabupatenMinOrderByAggregateInput
+    _sum?: KabupatenSumOrderByAggregateInput
+  }
+
+  export type KabupatenScalarWhereWithAggregatesInput = {
+    AND?: KabupatenScalarWhereWithAggregatesInput | KabupatenScalarWhereWithAggregatesInput[]
+    OR?: KabupatenScalarWhereWithAggregatesInput[]
+    NOT?: KabupatenScalarWhereWithAggregatesInput | KabupatenScalarWhereWithAggregatesInput[]
+    id_kabupaten?: IntWithAggregatesFilter<"Kabupaten"> | number
+    nama_kabupaten?: StringWithAggregatesFilter<"Kabupaten"> | string
+    type?: StringWithAggregatesFilter<"Kabupaten"> | string
+    id_provinsi?: IntWithAggregatesFilter<"Kabupaten"> | number
+  }
 
   export type PenggunaWhereInput = {
     AND?: PenggunaWhereInput | PenggunaWhereInput[]
@@ -21123,6 +23740,9 @@ export namespace Prisma {
     nomor_telepon_facilitator?: StringFilter<"Facilitator"> | string
     password_facilitator?: StringFilter<"Facilitator"> | string
     tanggal_pembuatan_akun?: DateTimeFilter<"Facilitator"> | Date | string
+    alamat_lengkap_facilitator?: StringFilter<"Facilitator"> | string
+    id_kabupaten?: IntFilter<"Facilitator"> | number
+    kabupaten?: XOR<KabupatenScalarRelationFilter, KabupatenWhereInput>
     workshops?: WorkshopListRelationFilter
   }
 
@@ -21133,6 +23753,9 @@ export namespace Prisma {
     nomor_telepon_facilitator?: SortOrder
     password_facilitator?: SortOrder
     tanggal_pembuatan_akun?: SortOrder
+    alamat_lengkap_facilitator?: SortOrder
+    id_kabupaten?: SortOrder
+    kabupaten?: KabupatenOrderByWithRelationInput
     workshops?: WorkshopOrderByRelationAggregateInput
   }
 
@@ -21146,6 +23769,9 @@ export namespace Prisma {
     nama_facilitator?: StringFilter<"Facilitator"> | string
     password_facilitator?: StringFilter<"Facilitator"> | string
     tanggal_pembuatan_akun?: DateTimeFilter<"Facilitator"> | Date | string
+    alamat_lengkap_facilitator?: StringFilter<"Facilitator"> | string
+    id_kabupaten?: IntFilter<"Facilitator"> | number
+    kabupaten?: XOR<KabupatenScalarRelationFilter, KabupatenWhereInput>
     workshops?: WorkshopListRelationFilter
   }, "id_facilitator" | "email_facilitator" | "nomor_telepon_facilitator">
 
@@ -21156,9 +23782,13 @@ export namespace Prisma {
     nomor_telepon_facilitator?: SortOrder
     password_facilitator?: SortOrder
     tanggal_pembuatan_akun?: SortOrder
+    alamat_lengkap_facilitator?: SortOrder
+    id_kabupaten?: SortOrder
     _count?: FacilitatorCountOrderByAggregateInput
+    _avg?: FacilitatorAvgOrderByAggregateInput
     _max?: FacilitatorMaxOrderByAggregateInput
     _min?: FacilitatorMinOrderByAggregateInput
+    _sum?: FacilitatorSumOrderByAggregateInput
   }
 
   export type FacilitatorScalarWhereWithAggregatesInput = {
@@ -21171,6 +23801,8 @@ export namespace Prisma {
     nomor_telepon_facilitator?: StringWithAggregatesFilter<"Facilitator"> | string
     password_facilitator?: StringWithAggregatesFilter<"Facilitator"> | string
     tanggal_pembuatan_akun?: DateTimeWithAggregatesFilter<"Facilitator"> | Date | string
+    alamat_lengkap_facilitator?: StringWithAggregatesFilter<"Facilitator"> | string
+    id_kabupaten?: IntWithAggregatesFilter<"Facilitator"> | number
   }
 
   export type AdminWhereInput = {
@@ -22028,6 +24660,91 @@ export namespace Prisma {
     id_hari_tanaman_pengguna?: IntWithAggregatesFilter<"TugasPenanamanPengguna"> | number
   }
 
+  export type ProvinsiCreateInput = {
+    nama_provinsi: string
+    kabupaten?: KabupatenCreateNestedManyWithoutProvinsiInput
+  }
+
+  export type ProvinsiUncheckedCreateInput = {
+    id_provinsi?: number
+    nama_provinsi: string
+    kabupaten?: KabupatenUncheckedCreateNestedManyWithoutProvinsiInput
+  }
+
+  export type ProvinsiUpdateInput = {
+    nama_provinsi?: StringFieldUpdateOperationsInput | string
+    kabupaten?: KabupatenUpdateManyWithoutProvinsiNestedInput
+  }
+
+  export type ProvinsiUncheckedUpdateInput = {
+    id_provinsi?: IntFieldUpdateOperationsInput | number
+    nama_provinsi?: StringFieldUpdateOperationsInput | string
+    kabupaten?: KabupatenUncheckedUpdateManyWithoutProvinsiNestedInput
+  }
+
+  export type ProvinsiCreateManyInput = {
+    id_provinsi?: number
+    nama_provinsi: string
+  }
+
+  export type ProvinsiUpdateManyMutationInput = {
+    nama_provinsi?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type ProvinsiUncheckedUpdateManyInput = {
+    id_provinsi?: IntFieldUpdateOperationsInput | number
+    nama_provinsi?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type KabupatenCreateInput = {
+    nama_kabupaten: string
+    type: string
+    provinsi: ProvinsiCreateNestedOneWithoutKabupatenInput
+    facilitators?: FacilitatorCreateNestedManyWithoutKabupatenInput
+  }
+
+  export type KabupatenUncheckedCreateInput = {
+    id_kabupaten?: number
+    nama_kabupaten: string
+    type: string
+    id_provinsi: number
+    facilitators?: FacilitatorUncheckedCreateNestedManyWithoutKabupatenInput
+  }
+
+  export type KabupatenUpdateInput = {
+    nama_kabupaten?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    provinsi?: ProvinsiUpdateOneRequiredWithoutKabupatenNestedInput
+    facilitators?: FacilitatorUpdateManyWithoutKabupatenNestedInput
+  }
+
+  export type KabupatenUncheckedUpdateInput = {
+    id_kabupaten?: IntFieldUpdateOperationsInput | number
+    nama_kabupaten?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    id_provinsi?: IntFieldUpdateOperationsInput | number
+    facilitators?: FacilitatorUncheckedUpdateManyWithoutKabupatenNestedInput
+  }
+
+  export type KabupatenCreateManyInput = {
+    id_kabupaten?: number
+    nama_kabupaten: string
+    type: string
+    id_provinsi: number
+  }
+
+  export type KabupatenUpdateManyMutationInput = {
+    nama_kabupaten?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type KabupatenUncheckedUpdateManyInput = {
+    id_kabupaten?: IntFieldUpdateOperationsInput | number
+    nama_kabupaten?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    id_provinsi?: IntFieldUpdateOperationsInput | number
+  }
+
   export type PenggunaCreateInput = {
     id_pengguna?: string
     nama_depan_pengguna: string
@@ -22157,6 +24874,8 @@ export namespace Prisma {
     nomor_telepon_facilitator: string
     password_facilitator: string
     tanggal_pembuatan_akun: Date | string
+    alamat_lengkap_facilitator: string
+    kabupaten: KabupatenCreateNestedOneWithoutFacilitatorsInput
     workshops?: WorkshopCreateNestedManyWithoutFacilitatorInput
   }
 
@@ -22167,6 +24886,8 @@ export namespace Prisma {
     nomor_telepon_facilitator: string
     password_facilitator: string
     tanggal_pembuatan_akun: Date | string
+    alamat_lengkap_facilitator: string
+    id_kabupaten: number
     workshops?: WorkshopUncheckedCreateNestedManyWithoutFacilitatorInput
   }
 
@@ -22177,6 +24898,8 @@ export namespace Prisma {
     nomor_telepon_facilitator?: StringFieldUpdateOperationsInput | string
     password_facilitator?: StringFieldUpdateOperationsInput | string
     tanggal_pembuatan_akun?: DateTimeFieldUpdateOperationsInput | Date | string
+    alamat_lengkap_facilitator?: StringFieldUpdateOperationsInput | string
+    kabupaten?: KabupatenUpdateOneRequiredWithoutFacilitatorsNestedInput
     workshops?: WorkshopUpdateManyWithoutFacilitatorNestedInput
   }
 
@@ -22187,6 +24910,8 @@ export namespace Prisma {
     nomor_telepon_facilitator?: StringFieldUpdateOperationsInput | string
     password_facilitator?: StringFieldUpdateOperationsInput | string
     tanggal_pembuatan_akun?: DateTimeFieldUpdateOperationsInput | Date | string
+    alamat_lengkap_facilitator?: StringFieldUpdateOperationsInput | string
+    id_kabupaten?: IntFieldUpdateOperationsInput | number
     workshops?: WorkshopUncheckedUpdateManyWithoutFacilitatorNestedInput
   }
 
@@ -22197,6 +24922,8 @@ export namespace Prisma {
     nomor_telepon_facilitator: string
     password_facilitator: string
     tanggal_pembuatan_akun: Date | string
+    alamat_lengkap_facilitator: string
+    id_kabupaten: number
   }
 
   export type FacilitatorUpdateManyMutationInput = {
@@ -22206,6 +24933,7 @@ export namespace Prisma {
     nomor_telepon_facilitator?: StringFieldUpdateOperationsInput | string
     password_facilitator?: StringFieldUpdateOperationsInput | string
     tanggal_pembuatan_akun?: DateTimeFieldUpdateOperationsInput | Date | string
+    alamat_lengkap_facilitator?: StringFieldUpdateOperationsInput | string
   }
 
   export type FacilitatorUncheckedUpdateManyInput = {
@@ -22215,6 +24943,8 @@ export namespace Prisma {
     nomor_telepon_facilitator?: StringFieldUpdateOperationsInput | string
     password_facilitator?: StringFieldUpdateOperationsInput | string
     tanggal_pembuatan_akun?: DateTimeFieldUpdateOperationsInput | Date | string
+    alamat_lengkap_facilitator?: StringFieldUpdateOperationsInput | string
+    id_kabupaten?: IntFieldUpdateOperationsInput | number
   }
 
   export type AdminCreateInput = {
@@ -23002,6 +25732,17 @@ export namespace Prisma {
     id_hari_tanaman_pengguna?: IntFieldUpdateOperationsInput | number
   }
 
+  export type IntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
+  }
+
   export type StringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -23017,6 +25758,119 @@ export namespace Prisma {
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
+  export type KabupatenListRelationFilter = {
+    every?: KabupatenWhereInput
+    some?: KabupatenWhereInput
+    none?: KabupatenWhereInput
+  }
+
+  export type KabupatenOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type ProvinsiCountOrderByAggregateInput = {
+    id_provinsi?: SortOrder
+    nama_provinsi?: SortOrder
+  }
+
+  export type ProvinsiAvgOrderByAggregateInput = {
+    id_provinsi?: SortOrder
+  }
+
+  export type ProvinsiMaxOrderByAggregateInput = {
+    id_provinsi?: SortOrder
+    nama_provinsi?: SortOrder
+  }
+
+  export type ProvinsiMinOrderByAggregateInput = {
+    id_provinsi?: SortOrder
+    nama_provinsi?: SortOrder
+  }
+
+  export type ProvinsiSumOrderByAggregateInput = {
+    id_provinsi?: SortOrder
+  }
+
+  export type IntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
+  export type StringWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedStringFilter<$PrismaModel>
+    _max?: NestedStringFilter<$PrismaModel>
+  }
+
+  export type ProvinsiScalarRelationFilter = {
+    is?: ProvinsiWhereInput
+    isNot?: ProvinsiWhereInput
+  }
+
+  export type FacilitatorListRelationFilter = {
+    every?: FacilitatorWhereInput
+    some?: FacilitatorWhereInput
+    none?: FacilitatorWhereInput
+  }
+
+  export type FacilitatorOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type KabupatenCountOrderByAggregateInput = {
+    id_kabupaten?: SortOrder
+    nama_kabupaten?: SortOrder
+    type?: SortOrder
+    id_provinsi?: SortOrder
+  }
+
+  export type KabupatenAvgOrderByAggregateInput = {
+    id_kabupaten?: SortOrder
+    id_provinsi?: SortOrder
+  }
+
+  export type KabupatenMaxOrderByAggregateInput = {
+    id_kabupaten?: SortOrder
+    nama_kabupaten?: SortOrder
+    type?: SortOrder
+    id_provinsi?: SortOrder
+  }
+
+  export type KabupatenMinOrderByAggregateInput = {
+    id_kabupaten?: SortOrder
+    nama_kabupaten?: SortOrder
+    type?: SortOrder
+    id_provinsi?: SortOrder
+  }
+
+  export type KabupatenSumOrderByAggregateInput = {
+    id_kabupaten?: SortOrder
+    id_provinsi?: SortOrder
+  }
+
   export type DateTimeFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -23026,17 +25880,6 @@ export namespace Prisma {
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
-  }
-
-  export type IntFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntFilter<$PrismaModel> | number
   }
 
   export type BoolFilter<$PrismaModel = never> = {
@@ -23154,24 +25997,6 @@ export namespace Prisma {
     jenisKelamin?: SortOrder
   }
 
-  export type StringWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel>
-    in?: string[] | ListStringFieldRefInput<$PrismaModel>
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    mode?: QueryMode
-    not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedStringFilter<$PrismaModel>
-    _max?: NestedStringFilter<$PrismaModel>
-  }
-
   export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -23186,28 +26011,17 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
-  export type IntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedIntFilter<$PrismaModel>
-    _min?: NestedIntFilter<$PrismaModel>
-    _max?: NestedIntFilter<$PrismaModel>
-  }
-
   export type BoolWithAggregatesFilter<$PrismaModel = never> = {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel>
     not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedBoolFilter<$PrismaModel>
     _max?: NestedBoolFilter<$PrismaModel>
+  }
+
+  export type KabupatenScalarRelationFilter = {
+    is?: KabupatenWhereInput
+    isNot?: KabupatenWhereInput
   }
 
   export type WorkshopListRelationFilter = {
@@ -23227,6 +26041,12 @@ export namespace Prisma {
     nomor_telepon_facilitator?: SortOrder
     password_facilitator?: SortOrder
     tanggal_pembuatan_akun?: SortOrder
+    alamat_lengkap_facilitator?: SortOrder
+    id_kabupaten?: SortOrder
+  }
+
+  export type FacilitatorAvgOrderByAggregateInput = {
+    id_kabupaten?: SortOrder
   }
 
   export type FacilitatorMaxOrderByAggregateInput = {
@@ -23236,6 +26056,8 @@ export namespace Prisma {
     nomor_telepon_facilitator?: SortOrder
     password_facilitator?: SortOrder
     tanggal_pembuatan_akun?: SortOrder
+    alamat_lengkap_facilitator?: SortOrder
+    id_kabupaten?: SortOrder
   }
 
   export type FacilitatorMinOrderByAggregateInput = {
@@ -23245,6 +26067,12 @@ export namespace Prisma {
     nomor_telepon_facilitator?: SortOrder
     password_facilitator?: SortOrder
     tanggal_pembuatan_akun?: SortOrder
+    alamat_lengkap_facilitator?: SortOrder
+    id_kabupaten?: SortOrder
+  }
+
+  export type FacilitatorSumOrderByAggregateInput = {
+    id_kabupaten?: SortOrder
   }
 
   export type AdminCountOrderByAggregateInput = {
@@ -23895,6 +26723,116 @@ export namespace Prisma {
     id_hari_tanaman_pengguna?: SortOrder
   }
 
+  export type KabupatenCreateNestedManyWithoutProvinsiInput = {
+    create?: XOR<KabupatenCreateWithoutProvinsiInput, KabupatenUncheckedCreateWithoutProvinsiInput> | KabupatenCreateWithoutProvinsiInput[] | KabupatenUncheckedCreateWithoutProvinsiInput[]
+    connectOrCreate?: KabupatenCreateOrConnectWithoutProvinsiInput | KabupatenCreateOrConnectWithoutProvinsiInput[]
+    createMany?: KabupatenCreateManyProvinsiInputEnvelope
+    connect?: KabupatenWhereUniqueInput | KabupatenWhereUniqueInput[]
+  }
+
+  export type KabupatenUncheckedCreateNestedManyWithoutProvinsiInput = {
+    create?: XOR<KabupatenCreateWithoutProvinsiInput, KabupatenUncheckedCreateWithoutProvinsiInput> | KabupatenCreateWithoutProvinsiInput[] | KabupatenUncheckedCreateWithoutProvinsiInput[]
+    connectOrCreate?: KabupatenCreateOrConnectWithoutProvinsiInput | KabupatenCreateOrConnectWithoutProvinsiInput[]
+    createMany?: KabupatenCreateManyProvinsiInputEnvelope
+    connect?: KabupatenWhereUniqueInput | KabupatenWhereUniqueInput[]
+  }
+
+  export type StringFieldUpdateOperationsInput = {
+    set?: string
+  }
+
+  export type KabupatenUpdateManyWithoutProvinsiNestedInput = {
+    create?: XOR<KabupatenCreateWithoutProvinsiInput, KabupatenUncheckedCreateWithoutProvinsiInput> | KabupatenCreateWithoutProvinsiInput[] | KabupatenUncheckedCreateWithoutProvinsiInput[]
+    connectOrCreate?: KabupatenCreateOrConnectWithoutProvinsiInput | KabupatenCreateOrConnectWithoutProvinsiInput[]
+    upsert?: KabupatenUpsertWithWhereUniqueWithoutProvinsiInput | KabupatenUpsertWithWhereUniqueWithoutProvinsiInput[]
+    createMany?: KabupatenCreateManyProvinsiInputEnvelope
+    set?: KabupatenWhereUniqueInput | KabupatenWhereUniqueInput[]
+    disconnect?: KabupatenWhereUniqueInput | KabupatenWhereUniqueInput[]
+    delete?: KabupatenWhereUniqueInput | KabupatenWhereUniqueInput[]
+    connect?: KabupatenWhereUniqueInput | KabupatenWhereUniqueInput[]
+    update?: KabupatenUpdateWithWhereUniqueWithoutProvinsiInput | KabupatenUpdateWithWhereUniqueWithoutProvinsiInput[]
+    updateMany?: KabupatenUpdateManyWithWhereWithoutProvinsiInput | KabupatenUpdateManyWithWhereWithoutProvinsiInput[]
+    deleteMany?: KabupatenScalarWhereInput | KabupatenScalarWhereInput[]
+  }
+
+  export type IntFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type KabupatenUncheckedUpdateManyWithoutProvinsiNestedInput = {
+    create?: XOR<KabupatenCreateWithoutProvinsiInput, KabupatenUncheckedCreateWithoutProvinsiInput> | KabupatenCreateWithoutProvinsiInput[] | KabupatenUncheckedCreateWithoutProvinsiInput[]
+    connectOrCreate?: KabupatenCreateOrConnectWithoutProvinsiInput | KabupatenCreateOrConnectWithoutProvinsiInput[]
+    upsert?: KabupatenUpsertWithWhereUniqueWithoutProvinsiInput | KabupatenUpsertWithWhereUniqueWithoutProvinsiInput[]
+    createMany?: KabupatenCreateManyProvinsiInputEnvelope
+    set?: KabupatenWhereUniqueInput | KabupatenWhereUniqueInput[]
+    disconnect?: KabupatenWhereUniqueInput | KabupatenWhereUniqueInput[]
+    delete?: KabupatenWhereUniqueInput | KabupatenWhereUniqueInput[]
+    connect?: KabupatenWhereUniqueInput | KabupatenWhereUniqueInput[]
+    update?: KabupatenUpdateWithWhereUniqueWithoutProvinsiInput | KabupatenUpdateWithWhereUniqueWithoutProvinsiInput[]
+    updateMany?: KabupatenUpdateManyWithWhereWithoutProvinsiInput | KabupatenUpdateManyWithWhereWithoutProvinsiInput[]
+    deleteMany?: KabupatenScalarWhereInput | KabupatenScalarWhereInput[]
+  }
+
+  export type ProvinsiCreateNestedOneWithoutKabupatenInput = {
+    create?: XOR<ProvinsiCreateWithoutKabupatenInput, ProvinsiUncheckedCreateWithoutKabupatenInput>
+    connectOrCreate?: ProvinsiCreateOrConnectWithoutKabupatenInput
+    connect?: ProvinsiWhereUniqueInput
+  }
+
+  export type FacilitatorCreateNestedManyWithoutKabupatenInput = {
+    create?: XOR<FacilitatorCreateWithoutKabupatenInput, FacilitatorUncheckedCreateWithoutKabupatenInput> | FacilitatorCreateWithoutKabupatenInput[] | FacilitatorUncheckedCreateWithoutKabupatenInput[]
+    connectOrCreate?: FacilitatorCreateOrConnectWithoutKabupatenInput | FacilitatorCreateOrConnectWithoutKabupatenInput[]
+    createMany?: FacilitatorCreateManyKabupatenInputEnvelope
+    connect?: FacilitatorWhereUniqueInput | FacilitatorWhereUniqueInput[]
+  }
+
+  export type FacilitatorUncheckedCreateNestedManyWithoutKabupatenInput = {
+    create?: XOR<FacilitatorCreateWithoutKabupatenInput, FacilitatorUncheckedCreateWithoutKabupatenInput> | FacilitatorCreateWithoutKabupatenInput[] | FacilitatorUncheckedCreateWithoutKabupatenInput[]
+    connectOrCreate?: FacilitatorCreateOrConnectWithoutKabupatenInput | FacilitatorCreateOrConnectWithoutKabupatenInput[]
+    createMany?: FacilitatorCreateManyKabupatenInputEnvelope
+    connect?: FacilitatorWhereUniqueInput | FacilitatorWhereUniqueInput[]
+  }
+
+  export type ProvinsiUpdateOneRequiredWithoutKabupatenNestedInput = {
+    create?: XOR<ProvinsiCreateWithoutKabupatenInput, ProvinsiUncheckedCreateWithoutKabupatenInput>
+    connectOrCreate?: ProvinsiCreateOrConnectWithoutKabupatenInput
+    upsert?: ProvinsiUpsertWithoutKabupatenInput
+    connect?: ProvinsiWhereUniqueInput
+    update?: XOR<XOR<ProvinsiUpdateToOneWithWhereWithoutKabupatenInput, ProvinsiUpdateWithoutKabupatenInput>, ProvinsiUncheckedUpdateWithoutKabupatenInput>
+  }
+
+  export type FacilitatorUpdateManyWithoutKabupatenNestedInput = {
+    create?: XOR<FacilitatorCreateWithoutKabupatenInput, FacilitatorUncheckedCreateWithoutKabupatenInput> | FacilitatorCreateWithoutKabupatenInput[] | FacilitatorUncheckedCreateWithoutKabupatenInput[]
+    connectOrCreate?: FacilitatorCreateOrConnectWithoutKabupatenInput | FacilitatorCreateOrConnectWithoutKabupatenInput[]
+    upsert?: FacilitatorUpsertWithWhereUniqueWithoutKabupatenInput | FacilitatorUpsertWithWhereUniqueWithoutKabupatenInput[]
+    createMany?: FacilitatorCreateManyKabupatenInputEnvelope
+    set?: FacilitatorWhereUniqueInput | FacilitatorWhereUniqueInput[]
+    disconnect?: FacilitatorWhereUniqueInput | FacilitatorWhereUniqueInput[]
+    delete?: FacilitatorWhereUniqueInput | FacilitatorWhereUniqueInput[]
+    connect?: FacilitatorWhereUniqueInput | FacilitatorWhereUniqueInput[]
+    update?: FacilitatorUpdateWithWhereUniqueWithoutKabupatenInput | FacilitatorUpdateWithWhereUniqueWithoutKabupatenInput[]
+    updateMany?: FacilitatorUpdateManyWithWhereWithoutKabupatenInput | FacilitatorUpdateManyWithWhereWithoutKabupatenInput[]
+    deleteMany?: FacilitatorScalarWhereInput | FacilitatorScalarWhereInput[]
+  }
+
+  export type FacilitatorUncheckedUpdateManyWithoutKabupatenNestedInput = {
+    create?: XOR<FacilitatorCreateWithoutKabupatenInput, FacilitatorUncheckedCreateWithoutKabupatenInput> | FacilitatorCreateWithoutKabupatenInput[] | FacilitatorUncheckedCreateWithoutKabupatenInput[]
+    connectOrCreate?: FacilitatorCreateOrConnectWithoutKabupatenInput | FacilitatorCreateOrConnectWithoutKabupatenInput[]
+    upsert?: FacilitatorUpsertWithWhereUniqueWithoutKabupatenInput | FacilitatorUpsertWithWhereUniqueWithoutKabupatenInput[]
+    createMany?: FacilitatorCreateManyKabupatenInputEnvelope
+    set?: FacilitatorWhereUniqueInput | FacilitatorWhereUniqueInput[]
+    disconnect?: FacilitatorWhereUniqueInput | FacilitatorWhereUniqueInput[]
+    delete?: FacilitatorWhereUniqueInput | FacilitatorWhereUniqueInput[]
+    connect?: FacilitatorWhereUniqueInput | FacilitatorWhereUniqueInput[]
+    update?: FacilitatorUpdateWithWhereUniqueWithoutKabupatenInput | FacilitatorUpdateWithWhereUniqueWithoutKabupatenInput[]
+    updateMany?: FacilitatorUpdateManyWithWhereWithoutKabupatenInput | FacilitatorUpdateManyWithWhereWithoutKabupatenInput[]
+    deleteMany?: FacilitatorScalarWhereInput | FacilitatorScalarWhereInput[]
+  }
+
   export type WorkshopTerdaftarCreateNestedManyWithoutPenggunaInput = {
     create?: XOR<WorkshopTerdaftarCreateWithoutPenggunaInput, WorkshopTerdaftarUncheckedCreateWithoutPenggunaInput> | WorkshopTerdaftarCreateWithoutPenggunaInput[] | WorkshopTerdaftarUncheckedCreateWithoutPenggunaInput[]
     connectOrCreate?: WorkshopTerdaftarCreateOrConnectWithoutPenggunaInput | WorkshopTerdaftarCreateOrConnectWithoutPenggunaInput[]
@@ -23979,20 +26917,8 @@ export namespace Prisma {
     connect?: TanamanPenggunaWhereUniqueInput | TanamanPenggunaWhereUniqueInput[]
   }
 
-  export type StringFieldUpdateOperationsInput = {
-    set?: string
-  }
-
   export type DateTimeFieldUpdateOperationsInput = {
     set?: Date | string
-  }
-
-  export type IntFieldUpdateOperationsInput = {
-    set?: number
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
   }
 
   export type BoolFieldUpdateOperationsInput = {
@@ -24167,6 +27093,12 @@ export namespace Prisma {
     deleteMany?: TanamanPenggunaScalarWhereInput | TanamanPenggunaScalarWhereInput[]
   }
 
+  export type KabupatenCreateNestedOneWithoutFacilitatorsInput = {
+    create?: XOR<KabupatenCreateWithoutFacilitatorsInput, KabupatenUncheckedCreateWithoutFacilitatorsInput>
+    connectOrCreate?: KabupatenCreateOrConnectWithoutFacilitatorsInput
+    connect?: KabupatenWhereUniqueInput
+  }
+
   export type WorkshopCreateNestedManyWithoutFacilitatorInput = {
     create?: XOR<WorkshopCreateWithoutFacilitatorInput, WorkshopUncheckedCreateWithoutFacilitatorInput> | WorkshopCreateWithoutFacilitatorInput[] | WorkshopUncheckedCreateWithoutFacilitatorInput[]
     connectOrCreate?: WorkshopCreateOrConnectWithoutFacilitatorInput | WorkshopCreateOrConnectWithoutFacilitatorInput[]
@@ -24179,6 +27111,14 @@ export namespace Prisma {
     connectOrCreate?: WorkshopCreateOrConnectWithoutFacilitatorInput | WorkshopCreateOrConnectWithoutFacilitatorInput[]
     createMany?: WorkshopCreateManyFacilitatorInputEnvelope
     connect?: WorkshopWhereUniqueInput | WorkshopWhereUniqueInput[]
+  }
+
+  export type KabupatenUpdateOneRequiredWithoutFacilitatorsNestedInput = {
+    create?: XOR<KabupatenCreateWithoutFacilitatorsInput, KabupatenUncheckedCreateWithoutFacilitatorsInput>
+    connectOrCreate?: KabupatenCreateOrConnectWithoutFacilitatorsInput
+    upsert?: KabupatenUpsertWithoutFacilitatorsInput
+    connect?: KabupatenWhereUniqueInput
+    update?: XOR<XOR<KabupatenUpdateToOneWithWhereWithoutFacilitatorsInput, KabupatenUpdateWithoutFacilitatorsInput>, KabupatenUncheckedUpdateWithoutFacilitatorsInput>
   }
 
   export type WorkshopUpdateManyWithoutFacilitatorNestedInput = {
@@ -24991,6 +27931,17 @@ export namespace Prisma {
     update?: XOR<XOR<HariTanamanPenggunaUpdateToOneWithWhereWithoutTugas_penanamanInput, HariTanamanPenggunaUpdateWithoutTugas_penanamanInput>, HariTanamanPenggunaUncheckedUpdateWithoutTugas_penanamanInput>
   }
 
+  export type NestedIntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
+  }
+
   export type NestedStringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -25003,64 +27954,6 @@ export namespace Prisma {
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     not?: NestedStringFilter<$PrismaModel> | string
-  }
-
-  export type NestedDateTimeFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
-  }
-
-  export type NestedIntFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntFilter<$PrismaModel> | number
-  }
-
-  export type NestedBoolFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolFilter<$PrismaModel> | boolean
-  }
-
-  export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel>
-    in?: string[] | ListStringFieldRefInput<$PrismaModel>
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedStringFilter<$PrismaModel>
-    _max?: NestedStringFilter<$PrismaModel>
-  }
-
-  export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedDateTimeFilter<$PrismaModel>
-    _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
   export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
@@ -25088,6 +27981,53 @@ export namespace Prisma {
     gt?: number | FloatFieldRefInput<$PrismaModel>
     gte?: number | FloatFieldRefInput<$PrismaModel>
     not?: NestedFloatFilter<$PrismaModel> | number
+  }
+
+  export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedStringFilter<$PrismaModel>
+    _max?: NestedStringFilter<$PrismaModel>
+  }
+
+  export type NestedDateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  }
+
+  export type NestedBoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
+  export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
   export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
@@ -25165,6 +28105,151 @@ export namespace Prisma {
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type KabupatenCreateWithoutProvinsiInput = {
+    nama_kabupaten: string
+    type: string
+    facilitators?: FacilitatorCreateNestedManyWithoutKabupatenInput
+  }
+
+  export type KabupatenUncheckedCreateWithoutProvinsiInput = {
+    id_kabupaten?: number
+    nama_kabupaten: string
+    type: string
+    facilitators?: FacilitatorUncheckedCreateNestedManyWithoutKabupatenInput
+  }
+
+  export type KabupatenCreateOrConnectWithoutProvinsiInput = {
+    where: KabupatenWhereUniqueInput
+    create: XOR<KabupatenCreateWithoutProvinsiInput, KabupatenUncheckedCreateWithoutProvinsiInput>
+  }
+
+  export type KabupatenCreateManyProvinsiInputEnvelope = {
+    data: KabupatenCreateManyProvinsiInput | KabupatenCreateManyProvinsiInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type KabupatenUpsertWithWhereUniqueWithoutProvinsiInput = {
+    where: KabupatenWhereUniqueInput
+    update: XOR<KabupatenUpdateWithoutProvinsiInput, KabupatenUncheckedUpdateWithoutProvinsiInput>
+    create: XOR<KabupatenCreateWithoutProvinsiInput, KabupatenUncheckedCreateWithoutProvinsiInput>
+  }
+
+  export type KabupatenUpdateWithWhereUniqueWithoutProvinsiInput = {
+    where: KabupatenWhereUniqueInput
+    data: XOR<KabupatenUpdateWithoutProvinsiInput, KabupatenUncheckedUpdateWithoutProvinsiInput>
+  }
+
+  export type KabupatenUpdateManyWithWhereWithoutProvinsiInput = {
+    where: KabupatenScalarWhereInput
+    data: XOR<KabupatenUpdateManyMutationInput, KabupatenUncheckedUpdateManyWithoutProvinsiInput>
+  }
+
+  export type KabupatenScalarWhereInput = {
+    AND?: KabupatenScalarWhereInput | KabupatenScalarWhereInput[]
+    OR?: KabupatenScalarWhereInput[]
+    NOT?: KabupatenScalarWhereInput | KabupatenScalarWhereInput[]
+    id_kabupaten?: IntFilter<"Kabupaten"> | number
+    nama_kabupaten?: StringFilter<"Kabupaten"> | string
+    type?: StringFilter<"Kabupaten"> | string
+    id_provinsi?: IntFilter<"Kabupaten"> | number
+  }
+
+  export type ProvinsiCreateWithoutKabupatenInput = {
+    nama_provinsi: string
+  }
+
+  export type ProvinsiUncheckedCreateWithoutKabupatenInput = {
+    id_provinsi?: number
+    nama_provinsi: string
+  }
+
+  export type ProvinsiCreateOrConnectWithoutKabupatenInput = {
+    where: ProvinsiWhereUniqueInput
+    create: XOR<ProvinsiCreateWithoutKabupatenInput, ProvinsiUncheckedCreateWithoutKabupatenInput>
+  }
+
+  export type FacilitatorCreateWithoutKabupatenInput = {
+    id_facilitator?: string
+    nama_facilitator: string
+    email_facilitator: string
+    nomor_telepon_facilitator: string
+    password_facilitator: string
+    tanggal_pembuatan_akun: Date | string
+    alamat_lengkap_facilitator: string
+    workshops?: WorkshopCreateNestedManyWithoutFacilitatorInput
+  }
+
+  export type FacilitatorUncheckedCreateWithoutKabupatenInput = {
+    id_facilitator?: string
+    nama_facilitator: string
+    email_facilitator: string
+    nomor_telepon_facilitator: string
+    password_facilitator: string
+    tanggal_pembuatan_akun: Date | string
+    alamat_lengkap_facilitator: string
+    workshops?: WorkshopUncheckedCreateNestedManyWithoutFacilitatorInput
+  }
+
+  export type FacilitatorCreateOrConnectWithoutKabupatenInput = {
+    where: FacilitatorWhereUniqueInput
+    create: XOR<FacilitatorCreateWithoutKabupatenInput, FacilitatorUncheckedCreateWithoutKabupatenInput>
+  }
+
+  export type FacilitatorCreateManyKabupatenInputEnvelope = {
+    data: FacilitatorCreateManyKabupatenInput | FacilitatorCreateManyKabupatenInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ProvinsiUpsertWithoutKabupatenInput = {
+    update: XOR<ProvinsiUpdateWithoutKabupatenInput, ProvinsiUncheckedUpdateWithoutKabupatenInput>
+    create: XOR<ProvinsiCreateWithoutKabupatenInput, ProvinsiUncheckedCreateWithoutKabupatenInput>
+    where?: ProvinsiWhereInput
+  }
+
+  export type ProvinsiUpdateToOneWithWhereWithoutKabupatenInput = {
+    where?: ProvinsiWhereInput
+    data: XOR<ProvinsiUpdateWithoutKabupatenInput, ProvinsiUncheckedUpdateWithoutKabupatenInput>
+  }
+
+  export type ProvinsiUpdateWithoutKabupatenInput = {
+    nama_provinsi?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type ProvinsiUncheckedUpdateWithoutKabupatenInput = {
+    id_provinsi?: IntFieldUpdateOperationsInput | number
+    nama_provinsi?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type FacilitatorUpsertWithWhereUniqueWithoutKabupatenInput = {
+    where: FacilitatorWhereUniqueInput
+    update: XOR<FacilitatorUpdateWithoutKabupatenInput, FacilitatorUncheckedUpdateWithoutKabupatenInput>
+    create: XOR<FacilitatorCreateWithoutKabupatenInput, FacilitatorUncheckedCreateWithoutKabupatenInput>
+  }
+
+  export type FacilitatorUpdateWithWhereUniqueWithoutKabupatenInput = {
+    where: FacilitatorWhereUniqueInput
+    data: XOR<FacilitatorUpdateWithoutKabupatenInput, FacilitatorUncheckedUpdateWithoutKabupatenInput>
+  }
+
+  export type FacilitatorUpdateManyWithWhereWithoutKabupatenInput = {
+    where: FacilitatorScalarWhereInput
+    data: XOR<FacilitatorUpdateManyMutationInput, FacilitatorUncheckedUpdateManyWithoutKabupatenInput>
+  }
+
+  export type FacilitatorScalarWhereInput = {
+    AND?: FacilitatorScalarWhereInput | FacilitatorScalarWhereInput[]
+    OR?: FacilitatorScalarWhereInput[]
+    NOT?: FacilitatorScalarWhereInput | FacilitatorScalarWhereInput[]
+    id_facilitator?: StringFilter<"Facilitator"> | string
+    nama_facilitator?: StringFilter<"Facilitator"> | string
+    email_facilitator?: StringFilter<"Facilitator"> | string
+    nomor_telepon_facilitator?: StringFilter<"Facilitator"> | string
+    password_facilitator?: StringFilter<"Facilitator"> | string
+    tanggal_pembuatan_akun?: DateTimeFilter<"Facilitator"> | Date | string
+    alamat_lengkap_facilitator?: StringFilter<"Facilitator"> | string
+    id_kabupaten?: IntFilter<"Facilitator"> | number
   }
 
   export type WorkshopTerdaftarCreateWithoutPenggunaInput = {
@@ -25490,6 +28575,24 @@ export namespace Prisma {
     id_pengguna?: StringFilter<"TanamanPengguna"> | string
   }
 
+  export type KabupatenCreateWithoutFacilitatorsInput = {
+    nama_kabupaten: string
+    type: string
+    provinsi: ProvinsiCreateNestedOneWithoutKabupatenInput
+  }
+
+  export type KabupatenUncheckedCreateWithoutFacilitatorsInput = {
+    id_kabupaten?: number
+    nama_kabupaten: string
+    type: string
+    id_provinsi: number
+  }
+
+  export type KabupatenCreateOrConnectWithoutFacilitatorsInput = {
+    where: KabupatenWhereUniqueInput
+    create: XOR<KabupatenCreateWithoutFacilitatorsInput, KabupatenUncheckedCreateWithoutFacilitatorsInput>
+  }
+
   export type WorkshopCreateWithoutFacilitatorInput = {
     id_workshop?: string
     judul_workshop: string
@@ -25524,6 +28627,30 @@ export namespace Prisma {
   export type WorkshopCreateManyFacilitatorInputEnvelope = {
     data: WorkshopCreateManyFacilitatorInput | WorkshopCreateManyFacilitatorInput[]
     skipDuplicates?: boolean
+  }
+
+  export type KabupatenUpsertWithoutFacilitatorsInput = {
+    update: XOR<KabupatenUpdateWithoutFacilitatorsInput, KabupatenUncheckedUpdateWithoutFacilitatorsInput>
+    create: XOR<KabupatenCreateWithoutFacilitatorsInput, KabupatenUncheckedCreateWithoutFacilitatorsInput>
+    where?: KabupatenWhereInput
+  }
+
+  export type KabupatenUpdateToOneWithWhereWithoutFacilitatorsInput = {
+    where?: KabupatenWhereInput
+    data: XOR<KabupatenUpdateWithoutFacilitatorsInput, KabupatenUncheckedUpdateWithoutFacilitatorsInput>
+  }
+
+  export type KabupatenUpdateWithoutFacilitatorsInput = {
+    nama_kabupaten?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    provinsi?: ProvinsiUpdateOneRequiredWithoutKabupatenNestedInput
+  }
+
+  export type KabupatenUncheckedUpdateWithoutFacilitatorsInput = {
+    id_kabupaten?: IntFieldUpdateOperationsInput | number
+    nama_kabupaten?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    id_provinsi?: IntFieldUpdateOperationsInput | number
   }
 
   export type WorkshopUpsertWithWhereUniqueWithoutFacilitatorInput = {
@@ -26413,6 +29540,8 @@ export namespace Prisma {
     nomor_telepon_facilitator: string
     password_facilitator: string
     tanggal_pembuatan_akun: Date | string
+    alamat_lengkap_facilitator: string
+    kabupaten: KabupatenCreateNestedOneWithoutFacilitatorsInput
   }
 
   export type FacilitatorUncheckedCreateWithoutWorkshopsInput = {
@@ -26422,6 +29551,8 @@ export namespace Prisma {
     nomor_telepon_facilitator: string
     password_facilitator: string
     tanggal_pembuatan_akun: Date | string
+    alamat_lengkap_facilitator: string
+    id_kabupaten: number
   }
 
   export type FacilitatorCreateOrConnectWithoutWorkshopsInput = {
@@ -26503,6 +29634,8 @@ export namespace Prisma {
     nomor_telepon_facilitator?: StringFieldUpdateOperationsInput | string
     password_facilitator?: StringFieldUpdateOperationsInput | string
     tanggal_pembuatan_akun?: DateTimeFieldUpdateOperationsInput | Date | string
+    alamat_lengkap_facilitator?: StringFieldUpdateOperationsInput | string
+    kabupaten?: KabupatenUpdateOneRequiredWithoutFacilitatorsNestedInput
   }
 
   export type FacilitatorUncheckedUpdateWithoutWorkshopsInput = {
@@ -26512,6 +29645,8 @@ export namespace Prisma {
     nomor_telepon_facilitator?: StringFieldUpdateOperationsInput | string
     password_facilitator?: StringFieldUpdateOperationsInput | string
     tanggal_pembuatan_akun?: DateTimeFieldUpdateOperationsInput | Date | string
+    alamat_lengkap_facilitator?: StringFieldUpdateOperationsInput | string
+    id_kabupaten?: IntFieldUpdateOperationsInput | number
   }
 
   export type AdminUpsertWithoutWorkshop_diverifikasiInput = {
@@ -27366,6 +30501,73 @@ export namespace Prisma {
     id_hari_tanaman_pengguna?: IntFieldUpdateOperationsInput | number
     catatan?: StringFieldUpdateOperationsInput | string
     id_tanaman_pengguna?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type KabupatenCreateManyProvinsiInput = {
+    id_kabupaten?: number
+    nama_kabupaten: string
+    type: string
+  }
+
+  export type KabupatenUpdateWithoutProvinsiInput = {
+    nama_kabupaten?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    facilitators?: FacilitatorUpdateManyWithoutKabupatenNestedInput
+  }
+
+  export type KabupatenUncheckedUpdateWithoutProvinsiInput = {
+    id_kabupaten?: IntFieldUpdateOperationsInput | number
+    nama_kabupaten?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    facilitators?: FacilitatorUncheckedUpdateManyWithoutKabupatenNestedInput
+  }
+
+  export type KabupatenUncheckedUpdateManyWithoutProvinsiInput = {
+    id_kabupaten?: IntFieldUpdateOperationsInput | number
+    nama_kabupaten?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type FacilitatorCreateManyKabupatenInput = {
+    id_facilitator?: string
+    nama_facilitator: string
+    email_facilitator: string
+    nomor_telepon_facilitator: string
+    password_facilitator: string
+    tanggal_pembuatan_akun: Date | string
+    alamat_lengkap_facilitator: string
+  }
+
+  export type FacilitatorUpdateWithoutKabupatenInput = {
+    id_facilitator?: StringFieldUpdateOperationsInput | string
+    nama_facilitator?: StringFieldUpdateOperationsInput | string
+    email_facilitator?: StringFieldUpdateOperationsInput | string
+    nomor_telepon_facilitator?: StringFieldUpdateOperationsInput | string
+    password_facilitator?: StringFieldUpdateOperationsInput | string
+    tanggal_pembuatan_akun?: DateTimeFieldUpdateOperationsInput | Date | string
+    alamat_lengkap_facilitator?: StringFieldUpdateOperationsInput | string
+    workshops?: WorkshopUpdateManyWithoutFacilitatorNestedInput
+  }
+
+  export type FacilitatorUncheckedUpdateWithoutKabupatenInput = {
+    id_facilitator?: StringFieldUpdateOperationsInput | string
+    nama_facilitator?: StringFieldUpdateOperationsInput | string
+    email_facilitator?: StringFieldUpdateOperationsInput | string
+    nomor_telepon_facilitator?: StringFieldUpdateOperationsInput | string
+    password_facilitator?: StringFieldUpdateOperationsInput | string
+    tanggal_pembuatan_akun?: DateTimeFieldUpdateOperationsInput | Date | string
+    alamat_lengkap_facilitator?: StringFieldUpdateOperationsInput | string
+    workshops?: WorkshopUncheckedUpdateManyWithoutFacilitatorNestedInput
+  }
+
+  export type FacilitatorUncheckedUpdateManyWithoutKabupatenInput = {
+    id_facilitator?: StringFieldUpdateOperationsInput | string
+    nama_facilitator?: StringFieldUpdateOperationsInput | string
+    email_facilitator?: StringFieldUpdateOperationsInput | string
+    nomor_telepon_facilitator?: StringFieldUpdateOperationsInput | string
+    password_facilitator?: StringFieldUpdateOperationsInput | string
+    tanggal_pembuatan_akun?: DateTimeFieldUpdateOperationsInput | Date | string
+    alamat_lengkap_facilitator?: StringFieldUpdateOperationsInput | string
   }
 
   export type WorkshopTerdaftarCreateManyPenggunaInput = {

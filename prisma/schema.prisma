@@ -14,6 +14,24 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Provinsi {
+  id_provinsi   Int         @id @default(autoincrement())
+  nama_provinsi String      @db.VarChar(100)
+
+  kabupaten     Kabupaten[]
+}
+
+model Kabupaten {
+  id_kabupaten   Int        @id @default(autoincrement())
+  nama_kabupaten String     @db.VarChar(100)
+  type           String     @db.VarChar(100)
+
+  id_provinsi    Int
+  provinsi       Provinsi   @relation(fields: [id_provinsi], references: [id_provinsi])
+
+  facilitators    Facilitator[]
+}
+
 model Pengguna {
   id_pengguna                String      @id @default(cuid())
   nama_depan_pengguna        String   @db.VarChar(50)
@@ -39,12 +57,17 @@ model Pengguna {
 }
 
 model Facilitator {
-  id_facilitator             String @id @default(cuid())
-  nama_facilitator           String @db.VarChar(50)
-  email_facilitator          String @db.VarChar(50)
-  nomor_telepon_facilitator  String @db.VarChar(13)
-  password_facilitator       String @db.VarChar(100)
+  id_facilitator             String       @id @default(cuid())
+  nama_facilitator           String       @db.VarChar(50)
+  email_facilitator          String       @db.VarChar(50)
+  nomor_telepon_facilitator  String       @db.VarChar(13)
+  password_facilitator       String       @db.VarChar(100)
   tanggal_pembuatan_akun     DateTime
+  alamat_lengkap_facilitator String       @db.VarChar(255)
+
+  id_kabupaten               Int
+  kabupaten                 Kabupaten    @relation(fields: [id_kabupaten], references: [id_kabupaten])
+
   workshops                  Workshop[]
 
   @@unique([email_facilitator])

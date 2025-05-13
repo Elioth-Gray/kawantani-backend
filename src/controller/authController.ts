@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import {
+  loginAdmin,
   loginUser,
   registerUser,
   sendActivationCode,
@@ -106,6 +107,29 @@ export const me = async (req: IReqUser, res: Response) => {
       message: 'Berhasil mendapatkan user!',
       data: {
         user: result,
+      },
+    });
+  } catch (error: any) {
+    const statusCode = error.status || 500;
+    const message = error.message || 'Terjadi kesalahan pada server.';
+    return res.status(statusCode).json({
+      success: false,
+      message,
+      data: null,
+    });
+  }
+};
+
+export const loginAdminCredential = async (req: Request, res: Response) => {
+  const data: TLogin = req.body;
+  try {
+    const result = await loginAdmin(data);
+    res.status(200).json({
+      success: true,
+      message: 'Berhasil login!',
+      data: {
+        token: result.token,
+        user: result.user,
       },
     });
   } catch (error: any) {

@@ -1,9 +1,9 @@
-import prisma from "../prisma/prismaClient";
-import * as Yup from "yup";
-import { TUser } from "../types/userTypes";
+import prisma from '../prisma/prismaClient';
+import * as Yup from 'yup';
+import { TUser } from '../types/userTypes';
 
 const userSchema = Yup.object({
-  id: Yup.string().required("Id user harus diisi!"),
+  id: Yup.string().required('Id user harus diisi!'),
 });
 
 export const getAll = async () => {
@@ -19,7 +19,7 @@ export const getAll = async () => {
     });
 
     if (!users) {
-      throw new Error("Tidak ada user dalam database!");
+      throw new Error('Tidak ada user dalam database!');
     }
 
     return users;
@@ -29,7 +29,7 @@ export const getAll = async () => {
   }
 };
 
-export const getById = async (id: string) => {
+export const getPrvinceById = async (id: string) => {
   try {
     const user = await prisma.pengguna.findFirst({
       where: {
@@ -45,7 +45,7 @@ export const getById = async (id: string) => {
     });
 
     if (!user) {
-      throw new Error("Pengguna tidak ditemukan!");
+      throw new Error('Pengguna tidak ditemukan!');
     }
 
     return user;
