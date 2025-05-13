@@ -5,7 +5,7 @@ import {
   sendActivationCode,
   verifyUser,
 } from '../services/authService';
-import { TLogin, TRegister, TToken, TVerification } from '../types/authTypes';
+import { TLogin, TRegister, TToken } from '../types/authTypes';
 import { IReqUser } from '../middlewares/authMiddleware';
 import { getUserData } from '../services/authService';
 
@@ -73,7 +73,7 @@ export const sendActivation = async (req: IReqUser, res: Response) => {
   }
 };
 
-export const login = async (req: Request, res: Response) => {
+export const loginUserCredential = async (req: Request, res: Response) => {
   const data: TLogin = req.body;
 
   try {

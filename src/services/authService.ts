@@ -323,3 +323,78 @@ export const getUserData = async (data: TToken) => {
     throw error;
   }
 };
+
+// export const loginAdmin = async (data: TLogin) => {
+//   const { email, password } = data;
+
+//   try {
+//     await loginSchema.validate(data, { abortEarly: false });
+
+//     const user = await prisma.admin.findUnique({
+//       where: { email_admin: email },
+//     });
+
+//     const isMatch =
+//       user && (await bcrypt.compare(password, user.password_pengguna));
+//     if (!user || !isMatch) {
+//       throw { status: 401, message: 'Credential invalid!' };
+//     }
+
+//     const token = generateToken({
+//       id: user.id_pengguna,
+//       email: user.email_pengguna,
+//       firstName: user.nama_depan_pengguna,
+//       lastName: user.nama_belakang_pengguna,
+//       role: 'user',
+//     });
+
+//     if (user.status_verfikasi !== true) {
+//       const verificationCode = await generateUniqueVerificationCode();
+
+//       const updatedUser = await prisma.pengguna.update({
+//         where: { email_pengguna: email },
+//         data: { kode_verifikasi: verificationCode },
+//       });
+
+//       const contentMail = await renderMailHtml('registrationSuccess.ejs', {
+//         fullname:
+//           updatedUser.nama_depan_pengguna +
+//           ' ' +
+//           updatedUser.nama_belakang_pengguna,
+//         email: updatedUser.email_pengguna,
+//         createdAt: updatedUser.tanggal_pembuatan_akun,
+//         activationCode: verificationCode,
+//       });
+
+//       await sendEmail({
+//         from: 'kawantani@zohomail.com',
+//         to: updatedUser.email_pengguna,
+//         subject: 'Aktivasi Akun Anda',
+//         html: contentMail,
+//       });
+//     }
+
+//     return {
+//       token,
+//       user: {
+//         id: user.id_pengguna,
+//         firstName: user.nama_depan_pengguna,
+//         lastName: user.nama_belakang_pengguna,
+//         gender: user.jenisKelamin,
+//         email: user.email_pengguna,
+//         phoneNumber: user.nomor_telepon_pengguna,
+//         dateOfBirth: user.tanggal_lahir_pengguna,
+//         verificationSchema: user.status_verfikasi,
+//         verificationCode: user.kode_verifikasi,
+//       },
+//     };
+//   } catch (error: any) {
+//     if (error.name === 'ValidationError') {
+//       throw {
+//         status: 400,
+//         message: error.errors.join(', '),
+//       };
+//     }
+//     throw error;
+//   }
+// };
