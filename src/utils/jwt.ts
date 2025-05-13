@@ -1,12 +1,12 @@
-import jwt from "jsonwebtoken";
-import { TToken } from "../types/authTypes";
+import jwt from 'jsonwebtoken';
+import { TToken } from '../types/authTypes';
 
 export const generateToken = (data: TToken) => {
   const tokenData: TToken = data;
 
   const SECRET = process.env.JWT_SECRET;
   if (!SECRET) {
-    throw new Error("JWT_SECRET environment variable is not set.");
+    throw new Error('JWT_SECRET environment variable is not set.');
   }
 
   const token = jwt.sign(
@@ -15,10 +15,11 @@ export const generateToken = (data: TToken) => {
       email: tokenData.email,
       firstName: tokenData.firstName,
       lastName: tokenData.lastName,
+      role: tokenData.role,
     },
     SECRET,
     {
-      expiresIn: "1d",
+      expiresIn: '1d',
     }
   );
 
@@ -29,12 +30,12 @@ export const decodeToken = (token: string): TToken | null => {
   try {
     const SECRET = process.env.JWT_SECRET;
     if (!SECRET) {
-      throw new Error("JWT_SECRET environment variable is not set.");
+      throw new Error('JWT_SECRET environment variable is not set.');
     }
     const decoded = jwt.verify(token, SECRET);
 
     if (
-      typeof decoded === "object" &&
+      typeof decoded === 'object' &&
       decoded.id &&
       decoded.email &&
       decoded.firstName &&
@@ -45,6 +46,7 @@ export const decodeToken = (token: string): TToken | null => {
         email: decoded.email,
         firstName: decoded.firstName,
         lastName: decoded.lastName,
+        role: decoded.role,
       };
     }
     return null;

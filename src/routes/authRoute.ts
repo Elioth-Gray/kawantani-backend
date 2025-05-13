@@ -1,17 +1,19 @@
-import express from "express";
+import express from 'express';
 import {
   register,
   verifyAccount,
   login,
   me,
-} from "../controller/authController";
-import authMiddleware from "../middlewares/authMiddleware";
+  sendActivation,
+} from '../controller/authController';
+import authMiddleware from '../middlewares/authMiddleware';
 
 const authRouter = express.Router();
 
-authRouter.post("/auth/register", register);
-authRouter.post("/auth/verify", verifyAccount);
-authRouter.post("/auth/login", login);
-authRouter.get("/auth/me", authMiddleware, me);
+authRouter.post('/auth/register', register);
+authRouter.post('/auth/verify', authMiddleware, verifyAccount);
+authRouter.post('/auth/login', login);
+authRouter.get('/auth/me', authMiddleware, me);
+authRouter.post('/auth/sendcode', authMiddleware, sendActivation);
 
 export default authRouter;

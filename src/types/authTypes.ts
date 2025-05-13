@@ -10,8 +10,8 @@ export type TRegister = {
 };
 
 export type TVerification = {
-  email: string;
-  verificationToken: string;
+  user: TToken;
+  verificationCode: string;
 };
 
 export type TLogin = {
@@ -24,4 +24,5 @@ export type TToken = {
   email: string;
   firstName: string;
   lastName: string;
+  role: string;
 };
