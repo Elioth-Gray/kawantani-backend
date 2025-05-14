@@ -50,6 +50,37 @@ export const getAllFacilitator = async () => {
   }
 };
 
+export const getAllFacilitatorById = async (id: string) => {
+  try {
+    const facilitator = await prisma.facilitator.findUnique({
+      where: {
+        id_facilitator: id,
+      },
+      include: {
+        kabupaten: {
+          include: {
+            provinsi: true,
+          },
+        },
+      },
+    });
+
+    if (!facilitator) {
+      throw { status: 400, message: 'Facilitator tidak ditemukan!' };
+    }
+
+    return facilitator;
+  } catch (error: any) {
+    if (error.name === 'ValidationError') {
+      throw {
+        status: 400,
+        message: error.errors.join(', '),
+      };
+    }
+    throw error;
+  }
+};
+
 export const registerFacilitator = async (data: TRegisterFacilitator) => {
   const {
     name,
@@ -144,8 +175,6 @@ export const updateFacilitator = async (data: TUpdateFacilitator) => {
       { abortEarly: false }
     );
 
-    console.log(id);
-
     const existing = await prisma.facilitator.findUnique({
       where: {
         id_facilitator: id,
@@ -176,8 +205,30 @@ export const updateFacilitator = async (data: TUpdateFacilitator) => {
     if (existingPhoneNumber && existingPhoneNumber.id_facilitator !== id) {
       throw {
         status: 400,
-        message: 'Email sudah digunakan oleh facilitator lain!',
+        message: 'Nomor telepon sudah digunakan oleh facilitator lain!',
       };
+    }
+
+    // Ensure password is a string (it should be if validation passed)
+    if (!password) {
+      throw {
+        status: 400,
+        message: 'Password harus diisi!',
+      };
+    }
+
+    // Now password is definitely a string
+    let finalPassword = existing.password_facilitator; // Default to existing password
+
+    // Check if the new password is different from the current one
+    const isSamePassword = await bcrypt.compare(
+      password,
+      existing.password_facilitator
+    );
+
+    // Only hash and update if the password has changed
+    if (!isSamePassword) {
+      finalPassword = await bcrypt.hash(password, 10);
     }
 
     const result = await prisma.facilitator.update({
@@ -188,7 +239,7 @@ export const updateFacilitator = async (data: TUpdateFacilitator) => {
         nomor_telepon_facilitator: phoneNumber,
         alamat_lengkap_facilitator: fullAddress,
         id_kabupaten: regencyId,
-        password_facilitator: password,
+        password_facilitator: finalPassword,
       },
     });
 

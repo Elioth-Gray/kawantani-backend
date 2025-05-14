@@ -29,7 +29,7 @@ export const getAll = async () => {
   }
 };
 
-export const getPrvinceById = async (id: string) => {
+export const getById = async (id: string) => {
   try {
     const user = await prisma.pengguna.findFirst({
       where: {
