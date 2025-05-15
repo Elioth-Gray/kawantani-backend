@@ -209,7 +209,6 @@ export const updateFacilitator = async (data: TUpdateFacilitator) => {
       };
     }
 
-    // Ensure password is a string (it should be if validation passed)
     if (!password) {
       throw {
         status: 400,
@@ -217,16 +216,13 @@ export const updateFacilitator = async (data: TUpdateFacilitator) => {
       };
     }
 
-    // Now password is definitely a string
-    let finalPassword = existing.password_facilitator; // Default to existing password
+    let finalPassword = existing.password_facilitator;
 
-    // Check if the new password is different from the current one
     const isSamePassword = await bcrypt.compare(
       password,
       existing.password_facilitator
     );
 
-    // Only hash and update if the password has changed
     if (!isSamePassword) {
       finalPassword = await bcrypt.hash(password, 10);
     }

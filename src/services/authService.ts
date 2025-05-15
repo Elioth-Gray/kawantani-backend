@@ -50,7 +50,7 @@ export const registerUser = async (data: TRegister) => {
   try {
     await registerSchema.validate(data, { abortEarly: false });
 
-    const verifikasiKode = Math.floor(1000 + Math.random() * 9000).toString();
+    const verifikasiKode = await generateUniqueVerificationCode();
 
     const dateOfBirthNew = new Date(dateOfBirth);
     if (isNaN(dateOfBirthNew.getTime())) {
