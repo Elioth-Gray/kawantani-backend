@@ -8,20 +8,22 @@ import {
 } from '../controller/facilitatorController';
 import authMiddleware from '../middlewares/authMiddleware';
 import roleMiddleware from '../middlewares/roleMiddleware';
+import { createMulterUploader } from '../utils/multer/multer';
 
 const facilitatorRoute = express.Router();
+const uploadFacilitatorAvatar = createMulterUploader('facilitators');
 
 facilitatorRoute.get(
   '/facilitator',
   authMiddleware,
   roleMiddleware(['admin']),
-  get
+  get,
 );
 facilitatorRoute.get(
   '/facilitator/:id',
   authMiddleware,
   roleMiddleware(['admin']),
-  getById
+  getById,
 );
 facilitatorRoute.post('/facilitator/register', authMiddleware, register);
 facilitatorRoute.put('/facilitator/:id', authMiddleware, update);

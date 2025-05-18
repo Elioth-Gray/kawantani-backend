@@ -140,7 +140,8 @@ exports.Prisma.PenggunaScalarFieldEnum = {
   password_pengguna: 'password_pengguna',
   tanggal_pembuatan_akun: 'tanggal_pembuatan_akun',
   kode_verifikasi: 'kode_verifikasi',
-  status_verfikasi: 'status_verfikasi'
+  status_verfikasi: 'status_verfikasi',
+  avatar: 'avatar'
 };
 
 exports.Prisma.FacilitatorScalarFieldEnum = {
@@ -151,6 +152,7 @@ exports.Prisma.FacilitatorScalarFieldEnum = {
   password_facilitator: 'password_facilitator',
   tanggal_pembuatan_akun: 'tanggal_pembuatan_akun',
   alamat_lengkap_facilitator: 'alamat_lengkap_facilitator',
+  avatar: 'avatar',
   id_kabupaten: 'id_kabupaten'
 };
 
@@ -160,7 +162,8 @@ exports.Prisma.AdminScalarFieldEnum = {
   nama_belakang_admin: 'nama_belakang_admin',
   email_admin: 'email_admin',
   password_admin: 'password_admin',
-  tanggal_pembuatan_akun: 'tanggal_pembuatan_akun'
+  tanggal_pembuatan_akun: 'tanggal_pembuatan_akun',
+  avatar: 'avatar'
 };
 
 exports.Prisma.ArtikelScalarFieldEnum = {

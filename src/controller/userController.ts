@@ -1,6 +1,11 @@
 import { Request, Response } from 'express';
 import { TUpdateProfile, TUser } from '../types/userTypes';
-import { getAll, getById, updateUserProfile } from '../services/userServices';
+import {
+  getAll,
+  getById,
+  updateUser,
+  updateUserProfile,
+} from '../services/userServices';
 import { IReqUser } from '../middlewares/authMiddleware';
 
 export const getAllUsers = async (req: Request, res: Response) => {
@@ -28,6 +33,28 @@ export const getUserById = async (req: Request, res: Response) => {
 
     res.status(200).json({
       message: 'Pengguna ditemukan',
+      data: result,
+    });
+  } catch (error) {
+    const err = error as unknown as Error;
+    res.status(400).json({
+      message: err.message,
+      data: null,
+    });
+  }
+};
+
+export const update = async (req: IReqUser, res: Response) => {
+  const data = {
+    id: req.params.id ,
+    ...req.body,
+  };
+  console.log(data);
+  try {
+    const result = await updateUser(data);
+
+    res.status(200).json({
+      message: 'Akun pengguna berhasil diperbarui!',
       data: result,
     });
   } catch (error) {

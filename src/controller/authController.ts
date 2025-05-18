@@ -9,9 +9,16 @@ import {
 import { TLogin, TRegister, TToken } from '../types/authTypes';
 import { IReqUser } from '../middlewares/authMiddleware';
 import { getUserData } from '../services/authService';
+import { IRequestWithFile } from '../types/multerTypes';
+import path from 'path';
+import fs from 'fs';
 
-export const register = async (req: Request, res: Response) => {
-  const data: TRegister = req.body;
+export const register = async (req: IRequestWithFile, res: Response) => {
+  const fileName = req.file?.filename;
+  const data: TRegister = {
+    ...req.body,
+    avatar: fileName,
+  };
 
   try {
     const result = await registerUser(data);
@@ -24,6 +31,13 @@ export const register = async (req: Request, res: Response) => {
       },
     });
   } catch (error: any) {
+    if (fileName) {
+      const filePath = path.join(__dirname, '..', 'uploads', 'users', fileName);
+      fs.unlink(filePath, (err) => {
+        if (err) console.error('Gagal menghapus file avatar:', err.message);
+      });
+    }
+
     const statusCode = error.status || 500;
     const message = error.message || 'Terjadi kesalahan pada server.';
     return res.status(statusCode).json({

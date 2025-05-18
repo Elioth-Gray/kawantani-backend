@@ -15,7 +15,7 @@ const registerSchema = Yup.object({
   password: Yup.string()
     .required('Password harus diisi!')
     .min(6, 'Password minimal 6 karakter!'),
-  gender: Yup.number().required('Jenis kelamin harus diisi!'),
+  gender: Yup.string().required('Jenis kelamin harus diisi!'),
   confirmPassword: Yup.string()
     .required('Konfirmasi password harus diisi!')
     .oneOf([Yup.ref('password')], 'Password harus sama!'),
@@ -45,6 +45,7 @@ export const registerUser = async (data: TRegister) => {
     password,
     confirmPassword,
     gender,
+    avatar,
   } = data;
 
   try {
@@ -87,7 +88,8 @@ export const registerUser = async (data: TRegister) => {
         tanggal_pembuatan_akun: tanggalPembuatanAkun,
         kode_verifikasi: verifikasiKode,
         status_verfikasi: false,
-        jenisKelamin: gender,
+        jenisKelamin: parseInt(gender),
+        avatar: avatar,
       },
     });
 
@@ -300,7 +302,7 @@ export const loginUser = async (data: TLogin) => {
 export const getUserData = async (data: TToken) => {
   try {
     const user = await prisma.pengguna.findUnique({
-      where: { email_pengguna: data.email },
+      where: { id_pengguna: data.id },
     });
 
     if (!user) {

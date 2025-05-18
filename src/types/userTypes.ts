@@ -4,6 +4,18 @@ export type TUser = {
   id: string;
 };
 
+export type TUpdateUser = {
+  id: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  phoneNumber: string;
+  dateOfBirth: string;
+  password: string;
+  confirmPassword: string;
+  gender: number;
+};
+
 export type TUpdateProfile = {
   user: TToken;
   firstName: string;

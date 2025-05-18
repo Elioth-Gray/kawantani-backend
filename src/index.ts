@@ -6,6 +6,8 @@ import authRoute from './routes/authRoute';
 import cors from 'cors';
 import facilitatorRoute from './routes/facilitatorRoute';
 import locationRoute from './routes/locationRoute';
+import path from 'path';
+import fs from 'fs';
 
 dotenv.config();
 
@@ -17,6 +19,7 @@ app.use(bodyParser.json());
 
 app.use(cors());
 
+app.use('/uploads', express.static(path.join(process.cwd(), 'uploads')));
 app.use('/api', authRoute);
 app.use('/api', userRoute);
 app.use('/api', facilitatorRoute);

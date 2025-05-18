@@ -1,6 +1,6 @@
 import prisma from '../prisma/prismaClient';
 import * as Yup from 'yup';
-import { TUpdateProfile } from '../types/userTypes';
+import { TUpdateProfile, TUpdateUser } from '../types/userTypes';
 import bcrypt from 'bcryptjs';
 
 const userSchema = Yup.object({
@@ -67,6 +67,112 @@ export const getById = async (id: string) => {
   } catch (error) {
     const err = error as unknown as Error;
     throw err;
+  }
+};
+
+export const updateUser = async (data: TUpdateUser) => {
+  const {
+    id,
+    firstName,
+    lastName,
+    email,
+    phoneNumber,
+    dateOfBirth,
+    password,
+    confirmPassword,
+    gender,
+  } = data;
+
+  try {
+    await updateProfileSchema.validate(data);
+
+    const existing = await prisma.pengguna.findUnique({
+      where: {
+        id_pengguna: id,
+      },
+    });
+
+    if (!existing) {
+      throw { status: 404, message: 'Terjadi kesalahan!' };
+    }
+
+    const existingEmail = await prisma.pengguna.findUnique({
+      where: {
+        email_pengguna: email,
+      },
+    });
+
+    if (existingEmail && existingEmail.id_pengguna !== id) {
+      throw {
+        status: 400,
+        message: 'Email tidak telah digunakan oleh pengguna lain!',
+      };
+    }
+
+    const existingPhoneNumber = await prisma.pengguna.findUnique({
+      where: {
+        nomor_telepon_pengguna: phoneNumber,
+      },
+    });
+
+    if (existingPhoneNumber && existingPhoneNumber.id_pengguna !== id) {
+      throw {
+        status: 400,
+        message: 'Nomor telepon sudah digunakan oleh pengguna lain!',
+      };
+    }
+
+    if (!password) {
+      throw {
+        status: 400,
+        message: 'Password harus diisi!',
+      };
+    }
+
+    let finalPassword = existing.password_pengguna;
+
+    const isSamePassword = await bcrypt.compare(
+      password,
+      existing.password_pengguna
+    );
+
+    if (!isSamePassword) {
+      finalPassword = await bcrypt.hash(password, 10);
+    }
+
+    const dateOfBirthNew = new Date(dateOfBirth);
+
+    const result = await prisma.pengguna.update({
+      where: { id_pengguna: id },
+      data: {
+        nama_depan_pengguna: firstName,
+        nama_belakang_pengguna: lastName,
+        email_pengguna: email,
+        nomor_telepon_pengguna: phoneNumber,
+        password_pengguna: finalPassword,
+        tanggal_lahir_pengguna: dateOfBirthNew,
+        jenisKelamin: gender,
+      },
+    });
+
+    return {
+      pengguna: {
+        id: result.id_pengguna,
+        fistName: result.nama_depan_pengguna,
+        lastName: result.nama_belakang_pengguna,
+        email: result.email_pengguna,
+        phoneNumber: result.nomor_telepon_pengguna,
+        gender: result.jenisKelamin,
+      },
+    };
+  } catch (error: any) {
+    if (error.name === 'ValidationError') {
+      throw {
+        status: 400,
+        message: error.errors.join(', '),
+      };
+    }
+    throw error;
   }
 };
 

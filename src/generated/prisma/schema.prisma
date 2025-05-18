@@ -44,6 +44,7 @@ model Pengguna {
   tanggal_pembuatan_akun DateTime
   kode_verifikasi        String   @db.Char(4)
   status_verfikasi       Boolean
+  avatar                 String?  @db.VarChar(255)
 
   workshop_terdaftar WorkshopTerdaftar[]
   artikel            Artikel[]
@@ -64,6 +65,7 @@ model Facilitator {
   password_facilitator       String   @db.VarChar(100)
   tanggal_pembuatan_akun     DateTime
   alamat_lengkap_facilitator String   @db.VarChar(255)
+  avatar                     String?  @db.VarChar(255)
 
   id_kabupaten Int
   kabupaten    Kabupaten @relation(fields: [id_kabupaten], references: [id_kabupaten])
@@ -81,6 +83,7 @@ model Admin {
   email_admin            String   @db.VarChar(50)
   password_admin         String   @db.VarChar(100)
   tanggal_pembuatan_akun DateTime
+  avatar                 String?  @db.VarChar(255)
 
   artikel_diverifikasi  Artikel[]
   workshop_diverifikasi Workshop[]

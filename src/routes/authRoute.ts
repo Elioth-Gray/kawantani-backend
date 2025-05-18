@@ -8,10 +8,12 @@ import {
   loginAdminCredential,
 } from '../controller/authController';
 import authMiddleware from '../middlewares/authMiddleware';
+import { createMulterUploader } from '../utils/multer/multer';
 
 const authRouter = express.Router();
+const uploadUserAvatar = createMulterUploader('users');
 
-authRouter.post('/auth/register', register);
+authRouter.post('/auth/register', uploadUserAvatar.single('avatar'), register);
 authRouter.post('/auth/activate', authMiddleware, verifyAccount);
 authRouter.post('/auth/login', loginUserCredential);
 authRouter.get('/auth/me', authMiddleware, me);
