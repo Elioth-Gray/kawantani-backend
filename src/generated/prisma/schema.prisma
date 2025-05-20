@@ -85,33 +85,45 @@ model Admin {
   tanggal_pembuatan_akun DateTime
   avatar                 String?  @db.VarChar(255)
 
-  artikel_diverifikasi  Artikel[]
   workshop_diverifikasi Workshop[]
 
   @@unique([email_admin])
 }
 
-model Artikel {
-  id_artikel        Int      @id @default(autoincrement())
-  judul_artikel     String   @db.VarChar(100)
-  tanggal_artikel   DateTime @default(now())
-  rating_artikel    Int
-  isi_artikel       String   @db.Text
-  status_artikel    Int
-  status_verifikasi Boolean
+enum StatusArtikel {
+  DRAFT
+  PUBLISHED
+}
 
-  id_pengguna      String
-  pengguna         Pengguna          @relation(fields: [id_pengguna], references: [id_pengguna])
-  artikel_disimpan ArtikelDisimpan[]
-  artikel_disukai  ArtikelDisukai[]
-  id_verifikator   String
-  admin            Admin             @relation(fields: [id_verifikator], references: [id_admin])
-  komentar_artikel KomentarArtikel[]
+model Artikel {
+  id_artikel        String        @id @db.VarChar(50)
+  judul_artikel     String        @db.VarChar(100)
+  tanggal_artikel   DateTime      @default(now())
+  deskripsi_artikel String        @db.Text
+  isi_artikel       String        @db.Text
+  status_artikel    StatusArtikel
+  status_verifikasi Boolean
+  gambar_artikel    String        @db.VarChar(255)
+
+  id_kategori_artikel Int
+  kategori            KategoriArtikel   @relation(fields: [id_kategori_artikel], references: [id_kategori_artikel])
+  id_pengguna         String
+  pengguna            Pengguna          @relation(fields: [id_pengguna], references: [id_pengguna])
+  artikel_disimpan    ArtikelDisimpan[]
+  artikel_disukai     ArtikelDisukai[]
+  komentar_artikel    KomentarArtikel[]
+}
+
+model KategoriArtikel {
+  id_kategori_artikel   Int    @id @default(autoincrement())
+  nama_kategori_artikel String @db.VarChar(100)
+
+  artikel Artikel[]
 }
 
 model ArtikelDisimpan {
   id_penyimpanan Int      @id @default(autoincrement())
-  id_artikel     Int
+  id_artikel     String
   artikel        Artikel  @relation(fields: [id_artikel], references: [id_artikel])
   id_pengguna    String
   pengguna       Pengguna @relation(fields: [id_pengguna], references: [id_pengguna])
@@ -121,7 +133,7 @@ model ArtikelDisimpan {
 
 model ArtikelDisukai {
   id_disukai  Int      @id @default(autoincrement())
-  id_artikel  Int
+  id_artikel  String
   artikel     Artikel  @relation(fields: [id_artikel], references: [id_artikel])
   id_pengguna String
   pengguna    Pengguna @relation(fields: [id_pengguna], references: [id_pengguna])
@@ -132,7 +144,7 @@ model ArtikelDisukai {
 
 model KomentarArtikel {
   id_komentar Int      @id @default(autoincrement())
-  id_artikel  Int
+  id_artikel  String
   artikel     Artikel  @relation(fields: [id_artikel], references: [id_artikel])
   id_pengguna String
   pengguna    Pengguna @relation(fields: [id_pengguna], references: [id_pengguna])

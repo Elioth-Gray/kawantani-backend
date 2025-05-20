@@ -44,6 +44,11 @@ export type Admin = $Result.DefaultSelection<Prisma.$AdminPayload>
  */
 export type Artikel = $Result.DefaultSelection<Prisma.$ArtikelPayload>
 /**
+ * Model KategoriArtikel
+ * 
+ */
+export type KategoriArtikel = $Result.DefaultSelection<Prisma.$KategoriArtikelPayload>
+/**
  * Model ArtikelDisimpan
  * 
  */
@@ -103,6 +108,23 @@ export type HariTanamanPengguna = $Result.DefaultSelection<Prisma.$HariTanamanPe
  * 
  */
 export type TugasPenanamanPengguna = $Result.DefaultSelection<Prisma.$TugasPenanamanPenggunaPayload>
+
+/**
+ * Enums
+ */
+export namespace $Enums {
+  export const StatusArtikel: {
+  DRAFT: 'DRAFT',
+  PUBLISHED: 'PUBLISHED'
+};
+
+export type StatusArtikel = (typeof StatusArtikel)[keyof typeof StatusArtikel]
+
+}
+
+export type StatusArtikel = $Enums.StatusArtikel
+
+export const StatusArtikel: typeof $Enums.StatusArtikel
 
 /**
  * ##  Prisma Client ʲˢ
@@ -288,6 +310,16 @@ export class PrismaClient<
     * ```
     */
   get artikel(): Prisma.ArtikelDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.kategoriArtikel`: Exposes CRUD operations for the **KategoriArtikel** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more KategoriArtikels
+    * const kategoriArtikels = await prisma.kategoriArtikel.findMany()
+    * ```
+    */
+  get kategoriArtikel(): Prisma.KategoriArtikelDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.artikelDisimpan`: Exposes CRUD operations for the **ArtikelDisimpan** model.
@@ -854,6 +886,7 @@ export namespace Prisma {
     Facilitator: 'Facilitator',
     Admin: 'Admin',
     Artikel: 'Artikel',
+    KategoriArtikel: 'KategoriArtikel',
     ArtikelDisimpan: 'ArtikelDisimpan',
     ArtikelDisukai: 'ArtikelDisukai',
     KomentarArtikel: 'KomentarArtikel',
@@ -884,7 +917,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "provinsi" | "kabupaten" | "pengguna" | "facilitator" | "admin" | "artikel" | "artikelDisimpan" | "artikelDisukai" | "komentarArtikel" | "workshop" | "workshopTerdaftar" | "tanaman" | "instruksiTanaman" | "hariPenanaman" | "tugasPenanaman" | "tanamanPengguna" | "hariTanamanPengguna" | "tugasPenanamanPengguna"
+      modelProps: "provinsi" | "kabupaten" | "pengguna" | "facilitator" | "admin" | "artikel" | "kategoriArtikel" | "artikelDisimpan" | "artikelDisukai" | "komentarArtikel" | "workshop" | "workshopTerdaftar" | "tanaman" | "instruksiTanaman" | "hariPenanaman" | "tugasPenanaman" | "tanamanPengguna" | "hariTanamanPengguna" | "tugasPenanamanPengguna"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1329,6 +1362,80 @@ export namespace Prisma {
           count: {
             args: Prisma.ArtikelCountArgs<ExtArgs>
             result: $Utils.Optional<ArtikelCountAggregateOutputType> | number
+          }
+        }
+      }
+      KategoriArtikel: {
+        payload: Prisma.$KategoriArtikelPayload<ExtArgs>
+        fields: Prisma.KategoriArtikelFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.KategoriArtikelFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$KategoriArtikelPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.KategoriArtikelFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$KategoriArtikelPayload>
+          }
+          findFirst: {
+            args: Prisma.KategoriArtikelFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$KategoriArtikelPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.KategoriArtikelFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$KategoriArtikelPayload>
+          }
+          findMany: {
+            args: Prisma.KategoriArtikelFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$KategoriArtikelPayload>[]
+          }
+          create: {
+            args: Prisma.KategoriArtikelCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$KategoriArtikelPayload>
+          }
+          createMany: {
+            args: Prisma.KategoriArtikelCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.KategoriArtikelCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$KategoriArtikelPayload>[]
+          }
+          delete: {
+            args: Prisma.KategoriArtikelDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$KategoriArtikelPayload>
+          }
+          update: {
+            args: Prisma.KategoriArtikelUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$KategoriArtikelPayload>
+          }
+          deleteMany: {
+            args: Prisma.KategoriArtikelDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.KategoriArtikelUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.KategoriArtikelUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$KategoriArtikelPayload>[]
+          }
+          upsert: {
+            args: Prisma.KategoriArtikelUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$KategoriArtikelPayload>
+          }
+          aggregate: {
+            args: Prisma.KategoriArtikelAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateKategoriArtikel>
+          }
+          groupBy: {
+            args: Prisma.KategoriArtikelGroupByArgs<ExtArgs>
+            result: $Utils.Optional<KategoriArtikelGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.KategoriArtikelCountArgs<ExtArgs>
+            result: $Utils.Optional<KategoriArtikelCountAggregateOutputType> | number
           }
         }
       }
@@ -2310,6 +2417,7 @@ export namespace Prisma {
     facilitator?: FacilitatorOmit
     admin?: AdminOmit
     artikel?: ArtikelOmit
+    kategoriArtikel?: KategoriArtikelOmit
     artikelDisimpan?: ArtikelDisimpanOmit
     artikelDisukai?: ArtikelDisukaiOmit
     komentarArtikel?: KomentarArtikelOmit
@@ -2585,12 +2693,10 @@ export namespace Prisma {
    */
 
   export type AdminCountOutputType = {
-    artikel_diverifikasi: number
     workshop_diverifikasi: number
   }
 
   export type AdminCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    artikel_diverifikasi?: boolean | AdminCountOutputTypeCountArtikel_diverifikasiArgs
     workshop_diverifikasi?: boolean | AdminCountOutputTypeCountWorkshop_diverifikasiArgs
   }
 
@@ -2603,13 +2709,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the AdminCountOutputType
      */
     select?: AdminCountOutputTypeSelect<ExtArgs> | null
-  }
-
-  /**
-   * AdminCountOutputType without action
-   */
-  export type AdminCountOutputTypeCountArtikel_diverifikasiArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: ArtikelWhereInput
   }
 
   /**
@@ -2666,6 +2765,37 @@ export namespace Prisma {
    */
   export type ArtikelCountOutputTypeCountKomentar_artikelArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: KomentarArtikelWhereInput
+  }
+
+
+  /**
+   * Count Type KategoriArtikelCountOutputType
+   */
+
+  export type KategoriArtikelCountOutputType = {
+    artikel: number
+  }
+
+  export type KategoriArtikelCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    artikel?: boolean | KategoriArtikelCountOutputTypeCountArtikelArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * KategoriArtikelCountOutputType without action
+   */
+  export type KategoriArtikelCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the KategoriArtikelCountOutputType
+     */
+    select?: KategoriArtikelCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * KategoriArtikelCountOutputType without action
+   */
+  export type KategoriArtikelCountOutputTypeCountArtikelArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ArtikelWhereInput
   }
 
 
@@ -7713,7 +7843,6 @@ export namespace Prisma {
     password_admin?: boolean
     tanggal_pembuatan_akun?: boolean
     avatar?: boolean
-    artikel_diverifikasi?: boolean | Admin$artikel_diverifikasiArgs<ExtArgs>
     workshop_diverifikasi?: boolean | Admin$workshop_diverifikasiArgs<ExtArgs>
     _count?: boolean | AdminCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["admin"]>
@@ -7750,7 +7879,6 @@ export namespace Prisma {
 
   export type AdminOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_admin" | "nama_depan_admin" | "nama_belakang_admin" | "email_admin" | "password_admin" | "tanggal_pembuatan_akun" | "avatar", ExtArgs["result"]["admin"]>
   export type AdminInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    artikel_diverifikasi?: boolean | Admin$artikel_diverifikasiArgs<ExtArgs>
     workshop_diverifikasi?: boolean | Admin$workshop_diverifikasiArgs<ExtArgs>
     _count?: boolean | AdminCountOutputTypeDefaultArgs<ExtArgs>
   }
@@ -7760,7 +7888,6 @@ export namespace Prisma {
   export type $AdminPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Admin"
     objects: {
-      artikel_diverifikasi: Prisma.$ArtikelPayload<ExtArgs>[]
       workshop_diverifikasi: Prisma.$WorkshopPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
@@ -8165,7 +8292,6 @@ export namespace Prisma {
    */
   export interface Prisma__AdminClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    artikel_diverifikasi<T extends Admin$artikel_diverifikasiArgs<ExtArgs> = {}>(args?: Subset<T, Admin$artikel_diverifikasiArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ArtikelPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     workshop_diverifikasi<T extends Admin$workshop_diverifikasiArgs<ExtArgs> = {}>(args?: Subset<T, Admin$workshop_diverifikasiArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WorkshopPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -8591,30 +8717,6 @@ export namespace Prisma {
   }
 
   /**
-   * Admin.artikel_diverifikasi
-   */
-  export type Admin$artikel_diverifikasiArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Artikel
-     */
-    select?: ArtikelSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Artikel
-     */
-    omit?: ArtikelOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ArtikelInclude<ExtArgs> | null
-    where?: ArtikelWhereInput
-    orderBy?: ArtikelOrderByWithRelationInput | ArtikelOrderByWithRelationInput[]
-    cursor?: ArtikelWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: ArtikelScalarFieldEnum | ArtikelScalarFieldEnum[]
-  }
-
-  /**
    * Admin.workshop_diverifikasi
    */
   export type Admin$workshop_diverifikasiArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -8670,101 +8772,99 @@ export namespace Prisma {
   }
 
   export type ArtikelAvgAggregateOutputType = {
-    id_artikel: number | null
-    rating_artikel: number | null
-    status_artikel: number | null
+    id_kategori_artikel: number | null
   }
 
   export type ArtikelSumAggregateOutputType = {
-    id_artikel: number | null
-    rating_artikel: number | null
-    status_artikel: number | null
+    id_kategori_artikel: number | null
   }
 
   export type ArtikelMinAggregateOutputType = {
-    id_artikel: number | null
+    id_artikel: string | null
     judul_artikel: string | null
     tanggal_artikel: Date | null
-    rating_artikel: number | null
+    deskripsi_artikel: string | null
     isi_artikel: string | null
-    status_artikel: number | null
+    status_artikel: $Enums.StatusArtikel | null
     status_verifikasi: boolean | null
+    gambar_artikel: string | null
+    id_kategori_artikel: number | null
     id_pengguna: string | null
-    id_verifikator: string | null
   }
 
   export type ArtikelMaxAggregateOutputType = {
-    id_artikel: number | null
+    id_artikel: string | null
     judul_artikel: string | null
     tanggal_artikel: Date | null
-    rating_artikel: number | null
+    deskripsi_artikel: string | null
     isi_artikel: string | null
-    status_artikel: number | null
+    status_artikel: $Enums.StatusArtikel | null
     status_verifikasi: boolean | null
+    gambar_artikel: string | null
+    id_kategori_artikel: number | null
     id_pengguna: string | null
-    id_verifikator: string | null
   }
 
   export type ArtikelCountAggregateOutputType = {
     id_artikel: number
     judul_artikel: number
     tanggal_artikel: number
-    rating_artikel: number
+    deskripsi_artikel: number
     isi_artikel: number
     status_artikel: number
     status_verifikasi: number
+    gambar_artikel: number
+    id_kategori_artikel: number
     id_pengguna: number
-    id_verifikator: number
     _all: number
   }
 
 
   export type ArtikelAvgAggregateInputType = {
-    id_artikel?: true
-    rating_artikel?: true
-    status_artikel?: true
+    id_kategori_artikel?: true
   }
 
   export type ArtikelSumAggregateInputType = {
-    id_artikel?: true
-    rating_artikel?: true
-    status_artikel?: true
+    id_kategori_artikel?: true
   }
 
   export type ArtikelMinAggregateInputType = {
     id_artikel?: true
     judul_artikel?: true
     tanggal_artikel?: true
-    rating_artikel?: true
+    deskripsi_artikel?: true
     isi_artikel?: true
     status_artikel?: true
     status_verifikasi?: true
+    gambar_artikel?: true
+    id_kategori_artikel?: true
     id_pengguna?: true
-    id_verifikator?: true
   }
 
   export type ArtikelMaxAggregateInputType = {
     id_artikel?: true
     judul_artikel?: true
     tanggal_artikel?: true
-    rating_artikel?: true
+    deskripsi_artikel?: true
     isi_artikel?: true
     status_artikel?: true
     status_verifikasi?: true
+    gambar_artikel?: true
+    id_kategori_artikel?: true
     id_pengguna?: true
-    id_verifikator?: true
   }
 
   export type ArtikelCountAggregateInputType = {
     id_artikel?: true
     judul_artikel?: true
     tanggal_artikel?: true
-    rating_artikel?: true
+    deskripsi_artikel?: true
     isi_artikel?: true
     status_artikel?: true
     status_verifikasi?: true
+    gambar_artikel?: true
+    id_kategori_artikel?: true
     id_pengguna?: true
-    id_verifikator?: true
     _all?: true
   }
 
@@ -8855,15 +8955,16 @@ export namespace Prisma {
   }
 
   export type ArtikelGroupByOutputType = {
-    id_artikel: number
+    id_artikel: string
     judul_artikel: string
     tanggal_artikel: Date
-    rating_artikel: number
+    deskripsi_artikel: string
     isi_artikel: string
-    status_artikel: number
+    status_artikel: $Enums.StatusArtikel
     status_verifikasi: boolean
+    gambar_artikel: string
+    id_kategori_artikel: number
     id_pengguna: string
-    id_verifikator: string
     _count: ArtikelCountAggregateOutputType | null
     _avg: ArtikelAvgAggregateOutputType | null
     _sum: ArtikelSumAggregateOutputType | null
@@ -8889,16 +8990,17 @@ export namespace Prisma {
     id_artikel?: boolean
     judul_artikel?: boolean
     tanggal_artikel?: boolean
-    rating_artikel?: boolean
+    deskripsi_artikel?: boolean
     isi_artikel?: boolean
     status_artikel?: boolean
     status_verifikasi?: boolean
+    gambar_artikel?: boolean
+    id_kategori_artikel?: boolean
     id_pengguna?: boolean
-    id_verifikator?: boolean
+    kategori?: boolean | KategoriArtikelDefaultArgs<ExtArgs>
     pengguna?: boolean | PenggunaDefaultArgs<ExtArgs>
     artikel_disimpan?: boolean | Artikel$artikel_disimpanArgs<ExtArgs>
     artikel_disukai?: boolean | Artikel$artikel_disukaiArgs<ExtArgs>
-    admin?: boolean | AdminDefaultArgs<ExtArgs>
     komentar_artikel?: boolean | Artikel$komentar_artikelArgs<ExtArgs>
     _count?: boolean | ArtikelCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["artikel"]>
@@ -8907,79 +9009,83 @@ export namespace Prisma {
     id_artikel?: boolean
     judul_artikel?: boolean
     tanggal_artikel?: boolean
-    rating_artikel?: boolean
+    deskripsi_artikel?: boolean
     isi_artikel?: boolean
     status_artikel?: boolean
     status_verifikasi?: boolean
+    gambar_artikel?: boolean
+    id_kategori_artikel?: boolean
     id_pengguna?: boolean
-    id_verifikator?: boolean
+    kategori?: boolean | KategoriArtikelDefaultArgs<ExtArgs>
     pengguna?: boolean | PenggunaDefaultArgs<ExtArgs>
-    admin?: boolean | AdminDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["artikel"]>
 
   export type ArtikelSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id_artikel?: boolean
     judul_artikel?: boolean
     tanggal_artikel?: boolean
-    rating_artikel?: boolean
+    deskripsi_artikel?: boolean
     isi_artikel?: boolean
     status_artikel?: boolean
     status_verifikasi?: boolean
+    gambar_artikel?: boolean
+    id_kategori_artikel?: boolean
     id_pengguna?: boolean
-    id_verifikator?: boolean
+    kategori?: boolean | KategoriArtikelDefaultArgs<ExtArgs>
     pengguna?: boolean | PenggunaDefaultArgs<ExtArgs>
-    admin?: boolean | AdminDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["artikel"]>
 
   export type ArtikelSelectScalar = {
     id_artikel?: boolean
     judul_artikel?: boolean
     tanggal_artikel?: boolean
-    rating_artikel?: boolean
+    deskripsi_artikel?: boolean
     isi_artikel?: boolean
     status_artikel?: boolean
     status_verifikasi?: boolean
+    gambar_artikel?: boolean
+    id_kategori_artikel?: boolean
     id_pengguna?: boolean
-    id_verifikator?: boolean
   }
 
-  export type ArtikelOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_artikel" | "judul_artikel" | "tanggal_artikel" | "rating_artikel" | "isi_artikel" | "status_artikel" | "status_verifikasi" | "id_pengguna" | "id_verifikator", ExtArgs["result"]["artikel"]>
+  export type ArtikelOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_artikel" | "judul_artikel" | "tanggal_artikel" | "deskripsi_artikel" | "isi_artikel" | "status_artikel" | "status_verifikasi" | "gambar_artikel" | "id_kategori_artikel" | "id_pengguna", ExtArgs["result"]["artikel"]>
   export type ArtikelInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    kategori?: boolean | KategoriArtikelDefaultArgs<ExtArgs>
     pengguna?: boolean | PenggunaDefaultArgs<ExtArgs>
     artikel_disimpan?: boolean | Artikel$artikel_disimpanArgs<ExtArgs>
     artikel_disukai?: boolean | Artikel$artikel_disukaiArgs<ExtArgs>
-    admin?: boolean | AdminDefaultArgs<ExtArgs>
     komentar_artikel?: boolean | Artikel$komentar_artikelArgs<ExtArgs>
     _count?: boolean | ArtikelCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type ArtikelIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    kategori?: boolean | KategoriArtikelDefaultArgs<ExtArgs>
     pengguna?: boolean | PenggunaDefaultArgs<ExtArgs>
-    admin?: boolean | AdminDefaultArgs<ExtArgs>
   }
   export type ArtikelIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    kategori?: boolean | KategoriArtikelDefaultArgs<ExtArgs>
     pengguna?: boolean | PenggunaDefaultArgs<ExtArgs>
-    admin?: boolean | AdminDefaultArgs<ExtArgs>
   }
 
   export type $ArtikelPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Artikel"
     objects: {
+      kategori: Prisma.$KategoriArtikelPayload<ExtArgs>
       pengguna: Prisma.$PenggunaPayload<ExtArgs>
       artikel_disimpan: Prisma.$ArtikelDisimpanPayload<ExtArgs>[]
       artikel_disukai: Prisma.$ArtikelDisukaiPayload<ExtArgs>[]
-      admin: Prisma.$AdminPayload<ExtArgs>
       komentar_artikel: Prisma.$KomentarArtikelPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
-      id_artikel: number
+      id_artikel: string
       judul_artikel: string
       tanggal_artikel: Date
-      rating_artikel: number
+      deskripsi_artikel: string
       isi_artikel: string
-      status_artikel: number
+      status_artikel: $Enums.StatusArtikel
       status_verifikasi: boolean
+      gambar_artikel: string
+      id_kategori_artikel: number
       id_pengguna: string
-      id_verifikator: string
     }, ExtArgs["result"]["artikel"]>
     composites: {}
   }
@@ -9374,10 +9480,10 @@ export namespace Prisma {
    */
   export interface Prisma__ArtikelClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    kategori<T extends KategoriArtikelDefaultArgs<ExtArgs> = {}>(args?: Subset<T, KategoriArtikelDefaultArgs<ExtArgs>>): Prisma__KategoriArtikelClient<$Result.GetResult<Prisma.$KategoriArtikelPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     pengguna<T extends PenggunaDefaultArgs<ExtArgs> = {}>(args?: Subset<T, PenggunaDefaultArgs<ExtArgs>>): Prisma__PenggunaClient<$Result.GetResult<Prisma.$PenggunaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     artikel_disimpan<T extends Artikel$artikel_disimpanArgs<ExtArgs> = {}>(args?: Subset<T, Artikel$artikel_disimpanArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ArtikelDisimpanPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     artikel_disukai<T extends Artikel$artikel_disukaiArgs<ExtArgs> = {}>(args?: Subset<T, Artikel$artikel_disukaiArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ArtikelDisukaiPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    admin<T extends AdminDefaultArgs<ExtArgs> = {}>(args?: Subset<T, AdminDefaultArgs<ExtArgs>>): Prisma__AdminClient<$Result.GetResult<Prisma.$AdminPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     komentar_artikel<T extends Artikel$komentar_artikelArgs<ExtArgs> = {}>(args?: Subset<T, Artikel$komentar_artikelArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$KomentarArtikelPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -9408,15 +9514,16 @@ export namespace Prisma {
    * Fields of the Artikel model
    */
   interface ArtikelFieldRefs {
-    readonly id_artikel: FieldRef<"Artikel", 'Int'>
+    readonly id_artikel: FieldRef<"Artikel", 'String'>
     readonly judul_artikel: FieldRef<"Artikel", 'String'>
     readonly tanggal_artikel: FieldRef<"Artikel", 'DateTime'>
-    readonly rating_artikel: FieldRef<"Artikel", 'Int'>
+    readonly deskripsi_artikel: FieldRef<"Artikel", 'String'>
     readonly isi_artikel: FieldRef<"Artikel", 'String'>
-    readonly status_artikel: FieldRef<"Artikel", 'Int'>
+    readonly status_artikel: FieldRef<"Artikel", 'StatusArtikel'>
     readonly status_verifikasi: FieldRef<"Artikel", 'Boolean'>
+    readonly gambar_artikel: FieldRef<"Artikel", 'String'>
+    readonly id_kategori_artikel: FieldRef<"Artikel", 'Int'>
     readonly id_pengguna: FieldRef<"Artikel", 'String'>
-    readonly id_verifikator: FieldRef<"Artikel", 'String'>
   }
     
 
@@ -9904,6 +10011,1071 @@ export namespace Prisma {
 
 
   /**
+   * Model KategoriArtikel
+   */
+
+  export type AggregateKategoriArtikel = {
+    _count: KategoriArtikelCountAggregateOutputType | null
+    _avg: KategoriArtikelAvgAggregateOutputType | null
+    _sum: KategoriArtikelSumAggregateOutputType | null
+    _min: KategoriArtikelMinAggregateOutputType | null
+    _max: KategoriArtikelMaxAggregateOutputType | null
+  }
+
+  export type KategoriArtikelAvgAggregateOutputType = {
+    id_kategori_artikel: number | null
+  }
+
+  export type KategoriArtikelSumAggregateOutputType = {
+    id_kategori_artikel: number | null
+  }
+
+  export type KategoriArtikelMinAggregateOutputType = {
+    id_kategori_artikel: number | null
+    nama_kategori_artikel: string | null
+  }
+
+  export type KategoriArtikelMaxAggregateOutputType = {
+    id_kategori_artikel: number | null
+    nama_kategori_artikel: string | null
+  }
+
+  export type KategoriArtikelCountAggregateOutputType = {
+    id_kategori_artikel: number
+    nama_kategori_artikel: number
+    _all: number
+  }
+
+
+  export type KategoriArtikelAvgAggregateInputType = {
+    id_kategori_artikel?: true
+  }
+
+  export type KategoriArtikelSumAggregateInputType = {
+    id_kategori_artikel?: true
+  }
+
+  export type KategoriArtikelMinAggregateInputType = {
+    id_kategori_artikel?: true
+    nama_kategori_artikel?: true
+  }
+
+  export type KategoriArtikelMaxAggregateInputType = {
+    id_kategori_artikel?: true
+    nama_kategori_artikel?: true
+  }
+
+  export type KategoriArtikelCountAggregateInputType = {
+    id_kategori_artikel?: true
+    nama_kategori_artikel?: true
+    _all?: true
+  }
+
+  export type KategoriArtikelAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which KategoriArtikel to aggregate.
+     */
+    where?: KategoriArtikelWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of KategoriArtikels to fetch.
+     */
+    orderBy?: KategoriArtikelOrderByWithRelationInput | KategoriArtikelOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: KategoriArtikelWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` KategoriArtikels from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` KategoriArtikels.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned KategoriArtikels
+    **/
+    _count?: true | KategoriArtikelCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: KategoriArtikelAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: KategoriArtikelSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: KategoriArtikelMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: KategoriArtikelMaxAggregateInputType
+  }
+
+  export type GetKategoriArtikelAggregateType<T extends KategoriArtikelAggregateArgs> = {
+        [P in keyof T & keyof AggregateKategoriArtikel]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateKategoriArtikel[P]>
+      : GetScalarType<T[P], AggregateKategoriArtikel[P]>
+  }
+
+
+
+
+  export type KategoriArtikelGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: KategoriArtikelWhereInput
+    orderBy?: KategoriArtikelOrderByWithAggregationInput | KategoriArtikelOrderByWithAggregationInput[]
+    by: KategoriArtikelScalarFieldEnum[] | KategoriArtikelScalarFieldEnum
+    having?: KategoriArtikelScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: KategoriArtikelCountAggregateInputType | true
+    _avg?: KategoriArtikelAvgAggregateInputType
+    _sum?: KategoriArtikelSumAggregateInputType
+    _min?: KategoriArtikelMinAggregateInputType
+    _max?: KategoriArtikelMaxAggregateInputType
+  }
+
+  export type KategoriArtikelGroupByOutputType = {
+    id_kategori_artikel: number
+    nama_kategori_artikel: string
+    _count: KategoriArtikelCountAggregateOutputType | null
+    _avg: KategoriArtikelAvgAggregateOutputType | null
+    _sum: KategoriArtikelSumAggregateOutputType | null
+    _min: KategoriArtikelMinAggregateOutputType | null
+    _max: KategoriArtikelMaxAggregateOutputType | null
+  }
+
+  type GetKategoriArtikelGroupByPayload<T extends KategoriArtikelGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<KategoriArtikelGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof KategoriArtikelGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], KategoriArtikelGroupByOutputType[P]>
+            : GetScalarType<T[P], KategoriArtikelGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type KategoriArtikelSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id_kategori_artikel?: boolean
+    nama_kategori_artikel?: boolean
+    artikel?: boolean | KategoriArtikel$artikelArgs<ExtArgs>
+    _count?: boolean | KategoriArtikelCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["kategoriArtikel"]>
+
+  export type KategoriArtikelSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id_kategori_artikel?: boolean
+    nama_kategori_artikel?: boolean
+  }, ExtArgs["result"]["kategoriArtikel"]>
+
+  export type KategoriArtikelSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id_kategori_artikel?: boolean
+    nama_kategori_artikel?: boolean
+  }, ExtArgs["result"]["kategoriArtikel"]>
+
+  export type KategoriArtikelSelectScalar = {
+    id_kategori_artikel?: boolean
+    nama_kategori_artikel?: boolean
+  }
+
+  export type KategoriArtikelOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_kategori_artikel" | "nama_kategori_artikel", ExtArgs["result"]["kategoriArtikel"]>
+  export type KategoriArtikelInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    artikel?: boolean | KategoriArtikel$artikelArgs<ExtArgs>
+    _count?: boolean | KategoriArtikelCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type KategoriArtikelIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type KategoriArtikelIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $KategoriArtikelPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "KategoriArtikel"
+    objects: {
+      artikel: Prisma.$ArtikelPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id_kategori_artikel: number
+      nama_kategori_artikel: string
+    }, ExtArgs["result"]["kategoriArtikel"]>
+    composites: {}
+  }
+
+  type KategoriArtikelGetPayload<S extends boolean | null | undefined | KategoriArtikelDefaultArgs> = $Result.GetResult<Prisma.$KategoriArtikelPayload, S>
+
+  type KategoriArtikelCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<KategoriArtikelFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: KategoriArtikelCountAggregateInputType | true
+    }
+
+  export interface KategoriArtikelDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['KategoriArtikel'], meta: { name: 'KategoriArtikel' } }
+    /**
+     * Find zero or one KategoriArtikel that matches the filter.
+     * @param {KategoriArtikelFindUniqueArgs} args - Arguments to find a KategoriArtikel
+     * @example
+     * // Get one KategoriArtikel
+     * const kategoriArtikel = await prisma.kategoriArtikel.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends KategoriArtikelFindUniqueArgs>(args: SelectSubset<T, KategoriArtikelFindUniqueArgs<ExtArgs>>): Prisma__KategoriArtikelClient<$Result.GetResult<Prisma.$KategoriArtikelPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one KategoriArtikel that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {KategoriArtikelFindUniqueOrThrowArgs} args - Arguments to find a KategoriArtikel
+     * @example
+     * // Get one KategoriArtikel
+     * const kategoriArtikel = await prisma.kategoriArtikel.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends KategoriArtikelFindUniqueOrThrowArgs>(args: SelectSubset<T, KategoriArtikelFindUniqueOrThrowArgs<ExtArgs>>): Prisma__KategoriArtikelClient<$Result.GetResult<Prisma.$KategoriArtikelPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first KategoriArtikel that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {KategoriArtikelFindFirstArgs} args - Arguments to find a KategoriArtikel
+     * @example
+     * // Get one KategoriArtikel
+     * const kategoriArtikel = await prisma.kategoriArtikel.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends KategoriArtikelFindFirstArgs>(args?: SelectSubset<T, KategoriArtikelFindFirstArgs<ExtArgs>>): Prisma__KategoriArtikelClient<$Result.GetResult<Prisma.$KategoriArtikelPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first KategoriArtikel that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {KategoriArtikelFindFirstOrThrowArgs} args - Arguments to find a KategoriArtikel
+     * @example
+     * // Get one KategoriArtikel
+     * const kategoriArtikel = await prisma.kategoriArtikel.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends KategoriArtikelFindFirstOrThrowArgs>(args?: SelectSubset<T, KategoriArtikelFindFirstOrThrowArgs<ExtArgs>>): Prisma__KategoriArtikelClient<$Result.GetResult<Prisma.$KategoriArtikelPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more KategoriArtikels that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {KategoriArtikelFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all KategoriArtikels
+     * const kategoriArtikels = await prisma.kategoriArtikel.findMany()
+     * 
+     * // Get first 10 KategoriArtikels
+     * const kategoriArtikels = await prisma.kategoriArtikel.findMany({ take: 10 })
+     * 
+     * // Only select the `id_kategori_artikel`
+     * const kategoriArtikelWithId_kategori_artikelOnly = await prisma.kategoriArtikel.findMany({ select: { id_kategori_artikel: true } })
+     * 
+     */
+    findMany<T extends KategoriArtikelFindManyArgs>(args?: SelectSubset<T, KategoriArtikelFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$KategoriArtikelPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a KategoriArtikel.
+     * @param {KategoriArtikelCreateArgs} args - Arguments to create a KategoriArtikel.
+     * @example
+     * // Create one KategoriArtikel
+     * const KategoriArtikel = await prisma.kategoriArtikel.create({
+     *   data: {
+     *     // ... data to create a KategoriArtikel
+     *   }
+     * })
+     * 
+     */
+    create<T extends KategoriArtikelCreateArgs>(args: SelectSubset<T, KategoriArtikelCreateArgs<ExtArgs>>): Prisma__KategoriArtikelClient<$Result.GetResult<Prisma.$KategoriArtikelPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many KategoriArtikels.
+     * @param {KategoriArtikelCreateManyArgs} args - Arguments to create many KategoriArtikels.
+     * @example
+     * // Create many KategoriArtikels
+     * const kategoriArtikel = await prisma.kategoriArtikel.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends KategoriArtikelCreateManyArgs>(args?: SelectSubset<T, KategoriArtikelCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many KategoriArtikels and returns the data saved in the database.
+     * @param {KategoriArtikelCreateManyAndReturnArgs} args - Arguments to create many KategoriArtikels.
+     * @example
+     * // Create many KategoriArtikels
+     * const kategoriArtikel = await prisma.kategoriArtikel.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many KategoriArtikels and only return the `id_kategori_artikel`
+     * const kategoriArtikelWithId_kategori_artikelOnly = await prisma.kategoriArtikel.createManyAndReturn({
+     *   select: { id_kategori_artikel: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends KategoriArtikelCreateManyAndReturnArgs>(args?: SelectSubset<T, KategoriArtikelCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$KategoriArtikelPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a KategoriArtikel.
+     * @param {KategoriArtikelDeleteArgs} args - Arguments to delete one KategoriArtikel.
+     * @example
+     * // Delete one KategoriArtikel
+     * const KategoriArtikel = await prisma.kategoriArtikel.delete({
+     *   where: {
+     *     // ... filter to delete one KategoriArtikel
+     *   }
+     * })
+     * 
+     */
+    delete<T extends KategoriArtikelDeleteArgs>(args: SelectSubset<T, KategoriArtikelDeleteArgs<ExtArgs>>): Prisma__KategoriArtikelClient<$Result.GetResult<Prisma.$KategoriArtikelPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one KategoriArtikel.
+     * @param {KategoriArtikelUpdateArgs} args - Arguments to update one KategoriArtikel.
+     * @example
+     * // Update one KategoriArtikel
+     * const kategoriArtikel = await prisma.kategoriArtikel.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends KategoriArtikelUpdateArgs>(args: SelectSubset<T, KategoriArtikelUpdateArgs<ExtArgs>>): Prisma__KategoriArtikelClient<$Result.GetResult<Prisma.$KategoriArtikelPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more KategoriArtikels.
+     * @param {KategoriArtikelDeleteManyArgs} args - Arguments to filter KategoriArtikels to delete.
+     * @example
+     * // Delete a few KategoriArtikels
+     * const { count } = await prisma.kategoriArtikel.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends KategoriArtikelDeleteManyArgs>(args?: SelectSubset<T, KategoriArtikelDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more KategoriArtikels.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {KategoriArtikelUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many KategoriArtikels
+     * const kategoriArtikel = await prisma.kategoriArtikel.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends KategoriArtikelUpdateManyArgs>(args: SelectSubset<T, KategoriArtikelUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more KategoriArtikels and returns the data updated in the database.
+     * @param {KategoriArtikelUpdateManyAndReturnArgs} args - Arguments to update many KategoriArtikels.
+     * @example
+     * // Update many KategoriArtikels
+     * const kategoriArtikel = await prisma.kategoriArtikel.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more KategoriArtikels and only return the `id_kategori_artikel`
+     * const kategoriArtikelWithId_kategori_artikelOnly = await prisma.kategoriArtikel.updateManyAndReturn({
+     *   select: { id_kategori_artikel: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends KategoriArtikelUpdateManyAndReturnArgs>(args: SelectSubset<T, KategoriArtikelUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$KategoriArtikelPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one KategoriArtikel.
+     * @param {KategoriArtikelUpsertArgs} args - Arguments to update or create a KategoriArtikel.
+     * @example
+     * // Update or create a KategoriArtikel
+     * const kategoriArtikel = await prisma.kategoriArtikel.upsert({
+     *   create: {
+     *     // ... data to create a KategoriArtikel
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the KategoriArtikel we want to update
+     *   }
+     * })
+     */
+    upsert<T extends KategoriArtikelUpsertArgs>(args: SelectSubset<T, KategoriArtikelUpsertArgs<ExtArgs>>): Prisma__KategoriArtikelClient<$Result.GetResult<Prisma.$KategoriArtikelPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of KategoriArtikels.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {KategoriArtikelCountArgs} args - Arguments to filter KategoriArtikels to count.
+     * @example
+     * // Count the number of KategoriArtikels
+     * const count = await prisma.kategoriArtikel.count({
+     *   where: {
+     *     // ... the filter for the KategoriArtikels we want to count
+     *   }
+     * })
+    **/
+    count<T extends KategoriArtikelCountArgs>(
+      args?: Subset<T, KategoriArtikelCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], KategoriArtikelCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a KategoriArtikel.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {KategoriArtikelAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends KategoriArtikelAggregateArgs>(args: Subset<T, KategoriArtikelAggregateArgs>): Prisma.PrismaPromise<GetKategoriArtikelAggregateType<T>>
+
+    /**
+     * Group by KategoriArtikel.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {KategoriArtikelGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends KategoriArtikelGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: KategoriArtikelGroupByArgs['orderBy'] }
+        : { orderBy?: KategoriArtikelGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, KategoriArtikelGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetKategoriArtikelGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the KategoriArtikel model
+   */
+  readonly fields: KategoriArtikelFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for KategoriArtikel.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__KategoriArtikelClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    artikel<T extends KategoriArtikel$artikelArgs<ExtArgs> = {}>(args?: Subset<T, KategoriArtikel$artikelArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ArtikelPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the KategoriArtikel model
+   */
+  interface KategoriArtikelFieldRefs {
+    readonly id_kategori_artikel: FieldRef<"KategoriArtikel", 'Int'>
+    readonly nama_kategori_artikel: FieldRef<"KategoriArtikel", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * KategoriArtikel findUnique
+   */
+  export type KategoriArtikelFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the KategoriArtikel
+     */
+    select?: KategoriArtikelSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the KategoriArtikel
+     */
+    omit?: KategoriArtikelOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: KategoriArtikelInclude<ExtArgs> | null
+    /**
+     * Filter, which KategoriArtikel to fetch.
+     */
+    where: KategoriArtikelWhereUniqueInput
+  }
+
+  /**
+   * KategoriArtikel findUniqueOrThrow
+   */
+  export type KategoriArtikelFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the KategoriArtikel
+     */
+    select?: KategoriArtikelSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the KategoriArtikel
+     */
+    omit?: KategoriArtikelOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: KategoriArtikelInclude<ExtArgs> | null
+    /**
+     * Filter, which KategoriArtikel to fetch.
+     */
+    where: KategoriArtikelWhereUniqueInput
+  }
+
+  /**
+   * KategoriArtikel findFirst
+   */
+  export type KategoriArtikelFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the KategoriArtikel
+     */
+    select?: KategoriArtikelSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the KategoriArtikel
+     */
+    omit?: KategoriArtikelOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: KategoriArtikelInclude<ExtArgs> | null
+    /**
+     * Filter, which KategoriArtikel to fetch.
+     */
+    where?: KategoriArtikelWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of KategoriArtikels to fetch.
+     */
+    orderBy?: KategoriArtikelOrderByWithRelationInput | KategoriArtikelOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for KategoriArtikels.
+     */
+    cursor?: KategoriArtikelWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` KategoriArtikels from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` KategoriArtikels.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of KategoriArtikels.
+     */
+    distinct?: KategoriArtikelScalarFieldEnum | KategoriArtikelScalarFieldEnum[]
+  }
+
+  /**
+   * KategoriArtikel findFirstOrThrow
+   */
+  export type KategoriArtikelFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the KategoriArtikel
+     */
+    select?: KategoriArtikelSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the KategoriArtikel
+     */
+    omit?: KategoriArtikelOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: KategoriArtikelInclude<ExtArgs> | null
+    /**
+     * Filter, which KategoriArtikel to fetch.
+     */
+    where?: KategoriArtikelWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of KategoriArtikels to fetch.
+     */
+    orderBy?: KategoriArtikelOrderByWithRelationInput | KategoriArtikelOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for KategoriArtikels.
+     */
+    cursor?: KategoriArtikelWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` KategoriArtikels from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` KategoriArtikels.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of KategoriArtikels.
+     */
+    distinct?: KategoriArtikelScalarFieldEnum | KategoriArtikelScalarFieldEnum[]
+  }
+
+  /**
+   * KategoriArtikel findMany
+   */
+  export type KategoriArtikelFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the KategoriArtikel
+     */
+    select?: KategoriArtikelSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the KategoriArtikel
+     */
+    omit?: KategoriArtikelOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: KategoriArtikelInclude<ExtArgs> | null
+    /**
+     * Filter, which KategoriArtikels to fetch.
+     */
+    where?: KategoriArtikelWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of KategoriArtikels to fetch.
+     */
+    orderBy?: KategoriArtikelOrderByWithRelationInput | KategoriArtikelOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing KategoriArtikels.
+     */
+    cursor?: KategoriArtikelWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` KategoriArtikels from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` KategoriArtikels.
+     */
+    skip?: number
+    distinct?: KategoriArtikelScalarFieldEnum | KategoriArtikelScalarFieldEnum[]
+  }
+
+  /**
+   * KategoriArtikel create
+   */
+  export type KategoriArtikelCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the KategoriArtikel
+     */
+    select?: KategoriArtikelSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the KategoriArtikel
+     */
+    omit?: KategoriArtikelOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: KategoriArtikelInclude<ExtArgs> | null
+    /**
+     * The data needed to create a KategoriArtikel.
+     */
+    data: XOR<KategoriArtikelCreateInput, KategoriArtikelUncheckedCreateInput>
+  }
+
+  /**
+   * KategoriArtikel createMany
+   */
+  export type KategoriArtikelCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many KategoriArtikels.
+     */
+    data: KategoriArtikelCreateManyInput | KategoriArtikelCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * KategoriArtikel createManyAndReturn
+   */
+  export type KategoriArtikelCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the KategoriArtikel
+     */
+    select?: KategoriArtikelSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the KategoriArtikel
+     */
+    omit?: KategoriArtikelOmit<ExtArgs> | null
+    /**
+     * The data used to create many KategoriArtikels.
+     */
+    data: KategoriArtikelCreateManyInput | KategoriArtikelCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * KategoriArtikel update
+   */
+  export type KategoriArtikelUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the KategoriArtikel
+     */
+    select?: KategoriArtikelSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the KategoriArtikel
+     */
+    omit?: KategoriArtikelOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: KategoriArtikelInclude<ExtArgs> | null
+    /**
+     * The data needed to update a KategoriArtikel.
+     */
+    data: XOR<KategoriArtikelUpdateInput, KategoriArtikelUncheckedUpdateInput>
+    /**
+     * Choose, which KategoriArtikel to update.
+     */
+    where: KategoriArtikelWhereUniqueInput
+  }
+
+  /**
+   * KategoriArtikel updateMany
+   */
+  export type KategoriArtikelUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update KategoriArtikels.
+     */
+    data: XOR<KategoriArtikelUpdateManyMutationInput, KategoriArtikelUncheckedUpdateManyInput>
+    /**
+     * Filter which KategoriArtikels to update
+     */
+    where?: KategoriArtikelWhereInput
+    /**
+     * Limit how many KategoriArtikels to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * KategoriArtikel updateManyAndReturn
+   */
+  export type KategoriArtikelUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the KategoriArtikel
+     */
+    select?: KategoriArtikelSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the KategoriArtikel
+     */
+    omit?: KategoriArtikelOmit<ExtArgs> | null
+    /**
+     * The data used to update KategoriArtikels.
+     */
+    data: XOR<KategoriArtikelUpdateManyMutationInput, KategoriArtikelUncheckedUpdateManyInput>
+    /**
+     * Filter which KategoriArtikels to update
+     */
+    where?: KategoriArtikelWhereInput
+    /**
+     * Limit how many KategoriArtikels to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * KategoriArtikel upsert
+   */
+  export type KategoriArtikelUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the KategoriArtikel
+     */
+    select?: KategoriArtikelSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the KategoriArtikel
+     */
+    omit?: KategoriArtikelOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: KategoriArtikelInclude<ExtArgs> | null
+    /**
+     * The filter to search for the KategoriArtikel to update in case it exists.
+     */
+    where: KategoriArtikelWhereUniqueInput
+    /**
+     * In case the KategoriArtikel found by the `where` argument doesn't exist, create a new KategoriArtikel with this data.
+     */
+    create: XOR<KategoriArtikelCreateInput, KategoriArtikelUncheckedCreateInput>
+    /**
+     * In case the KategoriArtikel was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<KategoriArtikelUpdateInput, KategoriArtikelUncheckedUpdateInput>
+  }
+
+  /**
+   * KategoriArtikel delete
+   */
+  export type KategoriArtikelDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the KategoriArtikel
+     */
+    select?: KategoriArtikelSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the KategoriArtikel
+     */
+    omit?: KategoriArtikelOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: KategoriArtikelInclude<ExtArgs> | null
+    /**
+     * Filter which KategoriArtikel to delete.
+     */
+    where: KategoriArtikelWhereUniqueInput
+  }
+
+  /**
+   * KategoriArtikel deleteMany
+   */
+  export type KategoriArtikelDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which KategoriArtikels to delete
+     */
+    where?: KategoriArtikelWhereInput
+    /**
+     * Limit how many KategoriArtikels to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * KategoriArtikel.artikel
+   */
+  export type KategoriArtikel$artikelArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Artikel
+     */
+    select?: ArtikelSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Artikel
+     */
+    omit?: ArtikelOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ArtikelInclude<ExtArgs> | null
+    where?: ArtikelWhereInput
+    orderBy?: ArtikelOrderByWithRelationInput | ArtikelOrderByWithRelationInput[]
+    cursor?: ArtikelWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ArtikelScalarFieldEnum | ArtikelScalarFieldEnum[]
+  }
+
+  /**
+   * KategoriArtikel without action
+   */
+  export type KategoriArtikelDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the KategoriArtikel
+     */
+    select?: KategoriArtikelSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the KategoriArtikel
+     */
+    omit?: KategoriArtikelOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: KategoriArtikelInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Model ArtikelDisimpan
    */
 
@@ -9917,23 +11089,21 @@ export namespace Prisma {
 
   export type ArtikelDisimpanAvgAggregateOutputType = {
     id_penyimpanan: number | null
-    id_artikel: number | null
   }
 
   export type ArtikelDisimpanSumAggregateOutputType = {
     id_penyimpanan: number | null
-    id_artikel: number | null
   }
 
   export type ArtikelDisimpanMinAggregateOutputType = {
     id_penyimpanan: number | null
-    id_artikel: number | null
+    id_artikel: string | null
     id_pengguna: string | null
   }
 
   export type ArtikelDisimpanMaxAggregateOutputType = {
     id_penyimpanan: number | null
-    id_artikel: number | null
+    id_artikel: string | null
     id_pengguna: string | null
   }
 
@@ -9947,12 +11117,10 @@ export namespace Prisma {
 
   export type ArtikelDisimpanAvgAggregateInputType = {
     id_penyimpanan?: true
-    id_artikel?: true
   }
 
   export type ArtikelDisimpanSumAggregateInputType = {
     id_penyimpanan?: true
-    id_artikel?: true
   }
 
   export type ArtikelDisimpanMinAggregateInputType = {
@@ -10062,7 +11230,7 @@ export namespace Prisma {
 
   export type ArtikelDisimpanGroupByOutputType = {
     id_penyimpanan: number
-    id_artikel: number
+    id_artikel: string
     id_pengguna: string
     _count: ArtikelDisimpanCountAggregateOutputType | null
     _avg: ArtikelDisimpanAvgAggregateOutputType | null
@@ -10137,7 +11305,7 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id_penyimpanan: number
-      id_artikel: number
+      id_artikel: string
       id_pengguna: string
     }, ExtArgs["result"]["artikelDisimpan"]>
     composites: {}
@@ -10565,7 +11733,7 @@ export namespace Prisma {
    */
   interface ArtikelDisimpanFieldRefs {
     readonly id_penyimpanan: FieldRef<"ArtikelDisimpan", 'Int'>
-    readonly id_artikel: FieldRef<"ArtikelDisimpan", 'Int'>
+    readonly id_artikel: FieldRef<"ArtikelDisimpan", 'String'>
     readonly id_pengguna: FieldRef<"ArtikelDisimpan", 'String'>
   }
     
@@ -10995,26 +12163,24 @@ export namespace Prisma {
 
   export type ArtikelDisukaiAvgAggregateOutputType = {
     id_disukai: number | null
-    id_artikel: number | null
     rating: number | null
   }
 
   export type ArtikelDisukaiSumAggregateOutputType = {
     id_disukai: number | null
-    id_artikel: number | null
     rating: number | null
   }
 
   export type ArtikelDisukaiMinAggregateOutputType = {
     id_disukai: number | null
-    id_artikel: number | null
+    id_artikel: string | null
     id_pengguna: string | null
     rating: number | null
   }
 
   export type ArtikelDisukaiMaxAggregateOutputType = {
     id_disukai: number | null
-    id_artikel: number | null
+    id_artikel: string | null
     id_pengguna: string | null
     rating: number | null
   }
@@ -11030,13 +12196,11 @@ export namespace Prisma {
 
   export type ArtikelDisukaiAvgAggregateInputType = {
     id_disukai?: true
-    id_artikel?: true
     rating?: true
   }
 
   export type ArtikelDisukaiSumAggregateInputType = {
     id_disukai?: true
-    id_artikel?: true
     rating?: true
   }
 
@@ -11150,7 +12314,7 @@ export namespace Prisma {
 
   export type ArtikelDisukaiGroupByOutputType = {
     id_disukai: number
-    id_artikel: number
+    id_artikel: string
     id_pengguna: string
     rating: number
     _count: ArtikelDisukaiCountAggregateOutputType | null
@@ -11230,7 +12394,7 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id_disukai: number
-      id_artikel: number
+      id_artikel: string
       id_pengguna: string
       rating: number
     }, ExtArgs["result"]["artikelDisukai"]>
@@ -11659,7 +12823,7 @@ export namespace Prisma {
    */
   interface ArtikelDisukaiFieldRefs {
     readonly id_disukai: FieldRef<"ArtikelDisukai", 'Int'>
-    readonly id_artikel: FieldRef<"ArtikelDisukai", 'Int'>
+    readonly id_artikel: FieldRef<"ArtikelDisukai", 'String'>
     readonly id_pengguna: FieldRef<"ArtikelDisukai", 'String'>
     readonly rating: FieldRef<"ArtikelDisukai", 'Int'>
   }
@@ -12090,24 +13254,22 @@ export namespace Prisma {
 
   export type KomentarArtikelAvgAggregateOutputType = {
     id_komentar: number | null
-    id_artikel: number | null
   }
 
   export type KomentarArtikelSumAggregateOutputType = {
     id_komentar: number | null
-    id_artikel: number | null
   }
 
   export type KomentarArtikelMinAggregateOutputType = {
     id_komentar: number | null
-    id_artikel: number | null
+    id_artikel: string | null
     id_pengguna: string | null
     komentar: string | null
   }
 
   export type KomentarArtikelMaxAggregateOutputType = {
     id_komentar: number | null
-    id_artikel: number | null
+    id_artikel: string | null
     id_pengguna: string | null
     komentar: string | null
   }
@@ -12123,12 +13285,10 @@ export namespace Prisma {
 
   export type KomentarArtikelAvgAggregateInputType = {
     id_komentar?: true
-    id_artikel?: true
   }
 
   export type KomentarArtikelSumAggregateInputType = {
     id_komentar?: true
-    id_artikel?: true
   }
 
   export type KomentarArtikelMinAggregateInputType = {
@@ -12241,7 +13401,7 @@ export namespace Prisma {
 
   export type KomentarArtikelGroupByOutputType = {
     id_komentar: number
-    id_artikel: number
+    id_artikel: string
     id_pengguna: string
     komentar: string
     _count: KomentarArtikelCountAggregateOutputType | null
@@ -12321,7 +13481,7 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id_komentar: number
-      id_artikel: number
+      id_artikel: string
       id_pengguna: string
       komentar: string
     }, ExtArgs["result"]["komentarArtikel"]>
@@ -12750,7 +13910,7 @@ export namespace Prisma {
    */
   interface KomentarArtikelFieldRefs {
     readonly id_komentar: FieldRef<"KomentarArtikel", 'Int'>
-    readonly id_artikel: FieldRef<"KomentarArtikel", 'Int'>
+    readonly id_artikel: FieldRef<"KomentarArtikel", 'String'>
     readonly id_pengguna: FieldRef<"KomentarArtikel", 'String'>
     readonly komentar: FieldRef<"KomentarArtikel", 'String'>
   }
@@ -23325,15 +24485,24 @@ export namespace Prisma {
     id_artikel: 'id_artikel',
     judul_artikel: 'judul_artikel',
     tanggal_artikel: 'tanggal_artikel',
-    rating_artikel: 'rating_artikel',
+    deskripsi_artikel: 'deskripsi_artikel',
     isi_artikel: 'isi_artikel',
     status_artikel: 'status_artikel',
     status_verifikasi: 'status_verifikasi',
-    id_pengguna: 'id_pengguna',
-    id_verifikator: 'id_verifikator'
+    gambar_artikel: 'gambar_artikel',
+    id_kategori_artikel: 'id_kategori_artikel',
+    id_pengguna: 'id_pengguna'
   };
 
   export type ArtikelScalarFieldEnum = (typeof ArtikelScalarFieldEnum)[keyof typeof ArtikelScalarFieldEnum]
+
+
+  export const KategoriArtikelScalarFieldEnum: {
+    id_kategori_artikel: 'id_kategori_artikel',
+    nama_kategori_artikel: 'nama_kategori_artikel'
+  };
+
+  export type KategoriArtikelScalarFieldEnum = (typeof KategoriArtikelScalarFieldEnum)[keyof typeof KategoriArtikelScalarFieldEnum]
 
 
   export const ArtikelDisimpanScalarFieldEnum: {
@@ -23539,6 +24708,20 @@ export namespace Prisma {
    * Reference to a field of type 'Boolean'
    */
   export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
+    
+
+
+  /**
+   * Reference to a field of type 'StatusArtikel'
+   */
+  export type EnumStatusArtikelFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'StatusArtikel'>
+    
+
+
+  /**
+   * Reference to a field of type 'StatusArtikel[]'
+   */
+  export type ListEnumStatusArtikelFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'StatusArtikel[]'>
     
 
 
@@ -23868,7 +25051,6 @@ export namespace Prisma {
     password_admin?: StringFilter<"Admin"> | string
     tanggal_pembuatan_akun?: DateTimeFilter<"Admin"> | Date | string
     avatar?: StringNullableFilter<"Admin"> | string | null
-    artikel_diverifikasi?: ArtikelListRelationFilter
     workshop_diverifikasi?: WorkshopListRelationFilter
   }
 
@@ -23880,7 +25062,6 @@ export namespace Prisma {
     password_admin?: SortOrder
     tanggal_pembuatan_akun?: SortOrder
     avatar?: SortOrderInput | SortOrder
-    artikel_diverifikasi?: ArtikelOrderByRelationAggregateInput
     workshop_diverifikasi?: WorkshopOrderByRelationAggregateInput
   }
 
@@ -23895,7 +25076,6 @@ export namespace Prisma {
     password_admin?: StringFilter<"Admin"> | string
     tanggal_pembuatan_akun?: DateTimeFilter<"Admin"> | Date | string
     avatar?: StringNullableFilter<"Admin"> | string | null
-    artikel_diverifikasi?: ArtikelListRelationFilter
     workshop_diverifikasi?: WorkshopListRelationFilter
   }, "id_admin" | "email_admin">
 
@@ -23929,19 +25109,20 @@ export namespace Prisma {
     AND?: ArtikelWhereInput | ArtikelWhereInput[]
     OR?: ArtikelWhereInput[]
     NOT?: ArtikelWhereInput | ArtikelWhereInput[]
-    id_artikel?: IntFilter<"Artikel"> | number
+    id_artikel?: StringFilter<"Artikel"> | string
     judul_artikel?: StringFilter<"Artikel"> | string
     tanggal_artikel?: DateTimeFilter<"Artikel"> | Date | string
-    rating_artikel?: IntFilter<"Artikel"> | number
+    deskripsi_artikel?: StringFilter<"Artikel"> | string
     isi_artikel?: StringFilter<"Artikel"> | string
-    status_artikel?: IntFilter<"Artikel"> | number
+    status_artikel?: EnumStatusArtikelFilter<"Artikel"> | $Enums.StatusArtikel
     status_verifikasi?: BoolFilter<"Artikel"> | boolean
+    gambar_artikel?: StringFilter<"Artikel"> | string
+    id_kategori_artikel?: IntFilter<"Artikel"> | number
     id_pengguna?: StringFilter<"Artikel"> | string
-    id_verifikator?: StringFilter<"Artikel"> | string
+    kategori?: XOR<KategoriArtikelScalarRelationFilter, KategoriArtikelWhereInput>
     pengguna?: XOR<PenggunaScalarRelationFilter, PenggunaWhereInput>
     artikel_disimpan?: ArtikelDisimpanListRelationFilter
     artikel_disukai?: ArtikelDisukaiListRelationFilter
-    admin?: XOR<AdminScalarRelationFilter, AdminWhereInput>
     komentar_artikel?: KomentarArtikelListRelationFilter
   }
 
@@ -23949,36 +25130,38 @@ export namespace Prisma {
     id_artikel?: SortOrder
     judul_artikel?: SortOrder
     tanggal_artikel?: SortOrder
-    rating_artikel?: SortOrder
+    deskripsi_artikel?: SortOrder
     isi_artikel?: SortOrder
     status_artikel?: SortOrder
     status_verifikasi?: SortOrder
+    gambar_artikel?: SortOrder
+    id_kategori_artikel?: SortOrder
     id_pengguna?: SortOrder
-    id_verifikator?: SortOrder
+    kategori?: KategoriArtikelOrderByWithRelationInput
     pengguna?: PenggunaOrderByWithRelationInput
     artikel_disimpan?: ArtikelDisimpanOrderByRelationAggregateInput
     artikel_disukai?: ArtikelDisukaiOrderByRelationAggregateInput
-    admin?: AdminOrderByWithRelationInput
     komentar_artikel?: KomentarArtikelOrderByRelationAggregateInput
   }
 
   export type ArtikelWhereUniqueInput = Prisma.AtLeast<{
-    id_artikel?: number
+    id_artikel?: string
     AND?: ArtikelWhereInput | ArtikelWhereInput[]
     OR?: ArtikelWhereInput[]
     NOT?: ArtikelWhereInput | ArtikelWhereInput[]
     judul_artikel?: StringFilter<"Artikel"> | string
     tanggal_artikel?: DateTimeFilter<"Artikel"> | Date | string
-    rating_artikel?: IntFilter<"Artikel"> | number
+    deskripsi_artikel?: StringFilter<"Artikel"> | string
     isi_artikel?: StringFilter<"Artikel"> | string
-    status_artikel?: IntFilter<"Artikel"> | number
+    status_artikel?: EnumStatusArtikelFilter<"Artikel"> | $Enums.StatusArtikel
     status_verifikasi?: BoolFilter<"Artikel"> | boolean
+    gambar_artikel?: StringFilter<"Artikel"> | string
+    id_kategori_artikel?: IntFilter<"Artikel"> | number
     id_pengguna?: StringFilter<"Artikel"> | string
-    id_verifikator?: StringFilter<"Artikel"> | string
+    kategori?: XOR<KategoriArtikelScalarRelationFilter, KategoriArtikelWhereInput>
     pengguna?: XOR<PenggunaScalarRelationFilter, PenggunaWhereInput>
     artikel_disimpan?: ArtikelDisimpanListRelationFilter
     artikel_disukai?: ArtikelDisukaiListRelationFilter
-    admin?: XOR<AdminScalarRelationFilter, AdminWhereInput>
     komentar_artikel?: KomentarArtikelListRelationFilter
   }, "id_artikel">
 
@@ -23986,12 +25169,13 @@ export namespace Prisma {
     id_artikel?: SortOrder
     judul_artikel?: SortOrder
     tanggal_artikel?: SortOrder
-    rating_artikel?: SortOrder
+    deskripsi_artikel?: SortOrder
     isi_artikel?: SortOrder
     status_artikel?: SortOrder
     status_verifikasi?: SortOrder
+    gambar_artikel?: SortOrder
+    id_kategori_artikel?: SortOrder
     id_pengguna?: SortOrder
-    id_verifikator?: SortOrder
     _count?: ArtikelCountOrderByAggregateInput
     _avg?: ArtikelAvgOrderByAggregateInput
     _max?: ArtikelMaxOrderByAggregateInput
@@ -24003,15 +25187,58 @@ export namespace Prisma {
     AND?: ArtikelScalarWhereWithAggregatesInput | ArtikelScalarWhereWithAggregatesInput[]
     OR?: ArtikelScalarWhereWithAggregatesInput[]
     NOT?: ArtikelScalarWhereWithAggregatesInput | ArtikelScalarWhereWithAggregatesInput[]
-    id_artikel?: IntWithAggregatesFilter<"Artikel"> | number
+    id_artikel?: StringWithAggregatesFilter<"Artikel"> | string
     judul_artikel?: StringWithAggregatesFilter<"Artikel"> | string
     tanggal_artikel?: DateTimeWithAggregatesFilter<"Artikel"> | Date | string
-    rating_artikel?: IntWithAggregatesFilter<"Artikel"> | number
+    deskripsi_artikel?: StringWithAggregatesFilter<"Artikel"> | string
     isi_artikel?: StringWithAggregatesFilter<"Artikel"> | string
-    status_artikel?: IntWithAggregatesFilter<"Artikel"> | number
+    status_artikel?: EnumStatusArtikelWithAggregatesFilter<"Artikel"> | $Enums.StatusArtikel
     status_verifikasi?: BoolWithAggregatesFilter<"Artikel"> | boolean
+    gambar_artikel?: StringWithAggregatesFilter<"Artikel"> | string
+    id_kategori_artikel?: IntWithAggregatesFilter<"Artikel"> | number
     id_pengguna?: StringWithAggregatesFilter<"Artikel"> | string
-    id_verifikator?: StringWithAggregatesFilter<"Artikel"> | string
+  }
+
+  export type KategoriArtikelWhereInput = {
+    AND?: KategoriArtikelWhereInput | KategoriArtikelWhereInput[]
+    OR?: KategoriArtikelWhereInput[]
+    NOT?: KategoriArtikelWhereInput | KategoriArtikelWhereInput[]
+    id_kategori_artikel?: IntFilter<"KategoriArtikel"> | number
+    nama_kategori_artikel?: StringFilter<"KategoriArtikel"> | string
+    artikel?: ArtikelListRelationFilter
+  }
+
+  export type KategoriArtikelOrderByWithRelationInput = {
+    id_kategori_artikel?: SortOrder
+    nama_kategori_artikel?: SortOrder
+    artikel?: ArtikelOrderByRelationAggregateInput
+  }
+
+  export type KategoriArtikelWhereUniqueInput = Prisma.AtLeast<{
+    id_kategori_artikel?: number
+    AND?: KategoriArtikelWhereInput | KategoriArtikelWhereInput[]
+    OR?: KategoriArtikelWhereInput[]
+    NOT?: KategoriArtikelWhereInput | KategoriArtikelWhereInput[]
+    nama_kategori_artikel?: StringFilter<"KategoriArtikel"> | string
+    artikel?: ArtikelListRelationFilter
+  }, "id_kategori_artikel">
+
+  export type KategoriArtikelOrderByWithAggregationInput = {
+    id_kategori_artikel?: SortOrder
+    nama_kategori_artikel?: SortOrder
+    _count?: KategoriArtikelCountOrderByAggregateInput
+    _avg?: KategoriArtikelAvgOrderByAggregateInput
+    _max?: KategoriArtikelMaxOrderByAggregateInput
+    _min?: KategoriArtikelMinOrderByAggregateInput
+    _sum?: KategoriArtikelSumOrderByAggregateInput
+  }
+
+  export type KategoriArtikelScalarWhereWithAggregatesInput = {
+    AND?: KategoriArtikelScalarWhereWithAggregatesInput | KategoriArtikelScalarWhereWithAggregatesInput[]
+    OR?: KategoriArtikelScalarWhereWithAggregatesInput[]
+    NOT?: KategoriArtikelScalarWhereWithAggregatesInput | KategoriArtikelScalarWhereWithAggregatesInput[]
+    id_kategori_artikel?: IntWithAggregatesFilter<"KategoriArtikel"> | number
+    nama_kategori_artikel?: StringWithAggregatesFilter<"KategoriArtikel"> | string
   }
 
   export type ArtikelDisimpanWhereInput = {
@@ -24019,7 +25246,7 @@ export namespace Prisma {
     OR?: ArtikelDisimpanWhereInput[]
     NOT?: ArtikelDisimpanWhereInput | ArtikelDisimpanWhereInput[]
     id_penyimpanan?: IntFilter<"ArtikelDisimpan"> | number
-    id_artikel?: IntFilter<"ArtikelDisimpan"> | number
+    id_artikel?: StringFilter<"ArtikelDisimpan"> | string
     id_pengguna?: StringFilter<"ArtikelDisimpan"> | string
     artikel?: XOR<ArtikelScalarRelationFilter, ArtikelWhereInput>
     pengguna?: XOR<PenggunaScalarRelationFilter, PenggunaWhereInput>
@@ -24039,7 +25266,7 @@ export namespace Prisma {
     AND?: ArtikelDisimpanWhereInput | ArtikelDisimpanWhereInput[]
     OR?: ArtikelDisimpanWhereInput[]
     NOT?: ArtikelDisimpanWhereInput | ArtikelDisimpanWhereInput[]
-    id_artikel?: IntFilter<"ArtikelDisimpan"> | number
+    id_artikel?: StringFilter<"ArtikelDisimpan"> | string
     id_pengguna?: StringFilter<"ArtikelDisimpan"> | string
     artikel?: XOR<ArtikelScalarRelationFilter, ArtikelWhereInput>
     pengguna?: XOR<PenggunaScalarRelationFilter, PenggunaWhereInput>
@@ -24061,7 +25288,7 @@ export namespace Prisma {
     OR?: ArtikelDisimpanScalarWhereWithAggregatesInput[]
     NOT?: ArtikelDisimpanScalarWhereWithAggregatesInput | ArtikelDisimpanScalarWhereWithAggregatesInput[]
     id_penyimpanan?: IntWithAggregatesFilter<"ArtikelDisimpan"> | number
-    id_artikel?: IntWithAggregatesFilter<"ArtikelDisimpan"> | number
+    id_artikel?: StringWithAggregatesFilter<"ArtikelDisimpan"> | string
     id_pengguna?: StringWithAggregatesFilter<"ArtikelDisimpan"> | string
   }
 
@@ -24070,7 +25297,7 @@ export namespace Prisma {
     OR?: ArtikelDisukaiWhereInput[]
     NOT?: ArtikelDisukaiWhereInput | ArtikelDisukaiWhereInput[]
     id_disukai?: IntFilter<"ArtikelDisukai"> | number
-    id_artikel?: IntFilter<"ArtikelDisukai"> | number
+    id_artikel?: StringFilter<"ArtikelDisukai"> | string
     id_pengguna?: StringFilter<"ArtikelDisukai"> | string
     rating?: IntFilter<"ArtikelDisukai"> | number
     artikel?: XOR<ArtikelScalarRelationFilter, ArtikelWhereInput>
@@ -24092,7 +25319,7 @@ export namespace Prisma {
     AND?: ArtikelDisukaiWhereInput | ArtikelDisukaiWhereInput[]
     OR?: ArtikelDisukaiWhereInput[]
     NOT?: ArtikelDisukaiWhereInput | ArtikelDisukaiWhereInput[]
-    id_artikel?: IntFilter<"ArtikelDisukai"> | number
+    id_artikel?: StringFilter<"ArtikelDisukai"> | string
     id_pengguna?: StringFilter<"ArtikelDisukai"> | string
     rating?: IntFilter<"ArtikelDisukai"> | number
     artikel?: XOR<ArtikelScalarRelationFilter, ArtikelWhereInput>
@@ -24116,7 +25343,7 @@ export namespace Prisma {
     OR?: ArtikelDisukaiScalarWhereWithAggregatesInput[]
     NOT?: ArtikelDisukaiScalarWhereWithAggregatesInput | ArtikelDisukaiScalarWhereWithAggregatesInput[]
     id_disukai?: IntWithAggregatesFilter<"ArtikelDisukai"> | number
-    id_artikel?: IntWithAggregatesFilter<"ArtikelDisukai"> | number
+    id_artikel?: StringWithAggregatesFilter<"ArtikelDisukai"> | string
     id_pengguna?: StringWithAggregatesFilter<"ArtikelDisukai"> | string
     rating?: IntWithAggregatesFilter<"ArtikelDisukai"> | number
   }
@@ -24126,7 +25353,7 @@ export namespace Prisma {
     OR?: KomentarArtikelWhereInput[]
     NOT?: KomentarArtikelWhereInput | KomentarArtikelWhereInput[]
     id_komentar?: IntFilter<"KomentarArtikel"> | number
-    id_artikel?: IntFilter<"KomentarArtikel"> | number
+    id_artikel?: StringFilter<"KomentarArtikel"> | string
     id_pengguna?: StringFilter<"KomentarArtikel"> | string
     komentar?: StringFilter<"KomentarArtikel"> | string
     artikel?: XOR<ArtikelScalarRelationFilter, ArtikelWhereInput>
@@ -24148,7 +25375,7 @@ export namespace Prisma {
     AND?: KomentarArtikelWhereInput | KomentarArtikelWhereInput[]
     OR?: KomentarArtikelWhereInput[]
     NOT?: KomentarArtikelWhereInput | KomentarArtikelWhereInput[]
-    id_artikel?: IntFilter<"KomentarArtikel"> | number
+    id_artikel?: StringFilter<"KomentarArtikel"> | string
     id_pengguna?: StringFilter<"KomentarArtikel"> | string
     komentar?: StringFilter<"KomentarArtikel"> | string
     artikel?: XOR<ArtikelScalarRelationFilter, ArtikelWhereInput>
@@ -24172,7 +25399,7 @@ export namespace Prisma {
     OR?: KomentarArtikelScalarWhereWithAggregatesInput[]
     NOT?: KomentarArtikelScalarWhereWithAggregatesInput | KomentarArtikelScalarWhereWithAggregatesInput[]
     id_komentar?: IntWithAggregatesFilter<"KomentarArtikel"> | number
-    id_artikel?: IntWithAggregatesFilter<"KomentarArtikel"> | number
+    id_artikel?: StringWithAggregatesFilter<"KomentarArtikel"> | string
     id_pengguna?: StringWithAggregatesFilter<"KomentarArtikel"> | string
     komentar?: StringWithAggregatesFilter<"KomentarArtikel"> | string
   }
@@ -25026,7 +26253,6 @@ export namespace Prisma {
     password_admin: string
     tanggal_pembuatan_akun: Date | string
     avatar?: string | null
-    artikel_diverifikasi?: ArtikelCreateNestedManyWithoutAdminInput
     workshop_diverifikasi?: WorkshopCreateNestedManyWithoutAdminInput
   }
 
@@ -25038,7 +26264,6 @@ export namespace Prisma {
     password_admin: string
     tanggal_pembuatan_akun: Date | string
     avatar?: string | null
-    artikel_diverifikasi?: ArtikelUncheckedCreateNestedManyWithoutAdminInput
     workshop_diverifikasi?: WorkshopUncheckedCreateNestedManyWithoutAdminInput
   }
 
@@ -25050,7 +26275,6 @@ export namespace Prisma {
     password_admin?: StringFieldUpdateOperationsInput | string
     tanggal_pembuatan_akun?: DateTimeFieldUpdateOperationsInput | Date | string
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
-    artikel_diverifikasi?: ArtikelUpdateManyWithoutAdminNestedInput
     workshop_diverifikasi?: WorkshopUpdateManyWithoutAdminNestedInput
   }
 
@@ -25062,7 +26286,6 @@ export namespace Prisma {
     password_admin?: StringFieldUpdateOperationsInput | string
     tanggal_pembuatan_akun?: DateTimeFieldUpdateOperationsInput | Date | string
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
-    artikel_diverifikasi?: ArtikelUncheckedUpdateManyWithoutAdminNestedInput
     workshop_diverifikasi?: WorkshopUncheckedUpdateManyWithoutAdminNestedInput
   }
 
@@ -25097,94 +26320,140 @@ export namespace Prisma {
   }
 
   export type ArtikelCreateInput = {
+    id_artikel: string
     judul_artikel: string
     tanggal_artikel?: Date | string
-    rating_artikel: number
+    deskripsi_artikel: string
     isi_artikel: string
-    status_artikel: number
+    status_artikel: $Enums.StatusArtikel
     status_verifikasi: boolean
+    gambar_artikel: string
+    kategori: KategoriArtikelCreateNestedOneWithoutArtikelInput
     pengguna: PenggunaCreateNestedOneWithoutArtikelInput
     artikel_disimpan?: ArtikelDisimpanCreateNestedManyWithoutArtikelInput
     artikel_disukai?: ArtikelDisukaiCreateNestedManyWithoutArtikelInput
-    admin: AdminCreateNestedOneWithoutArtikel_diverifikasiInput
     komentar_artikel?: KomentarArtikelCreateNestedManyWithoutArtikelInput
   }
 
   export type ArtikelUncheckedCreateInput = {
-    id_artikel?: number
+    id_artikel: string
     judul_artikel: string
     tanggal_artikel?: Date | string
-    rating_artikel: number
+    deskripsi_artikel: string
     isi_artikel: string
-    status_artikel: number
+    status_artikel: $Enums.StatusArtikel
     status_verifikasi: boolean
+    gambar_artikel: string
+    id_kategori_artikel: number
     id_pengguna: string
-    id_verifikator: string
     artikel_disimpan?: ArtikelDisimpanUncheckedCreateNestedManyWithoutArtikelInput
     artikel_disukai?: ArtikelDisukaiUncheckedCreateNestedManyWithoutArtikelInput
     komentar_artikel?: KomentarArtikelUncheckedCreateNestedManyWithoutArtikelInput
   }
 
   export type ArtikelUpdateInput = {
+    id_artikel?: StringFieldUpdateOperationsInput | string
     judul_artikel?: StringFieldUpdateOperationsInput | string
     tanggal_artikel?: DateTimeFieldUpdateOperationsInput | Date | string
-    rating_artikel?: IntFieldUpdateOperationsInput | number
+    deskripsi_artikel?: StringFieldUpdateOperationsInput | string
     isi_artikel?: StringFieldUpdateOperationsInput | string
-    status_artikel?: IntFieldUpdateOperationsInput | number
+    status_artikel?: EnumStatusArtikelFieldUpdateOperationsInput | $Enums.StatusArtikel
     status_verifikasi?: BoolFieldUpdateOperationsInput | boolean
+    gambar_artikel?: StringFieldUpdateOperationsInput | string
+    kategori?: KategoriArtikelUpdateOneRequiredWithoutArtikelNestedInput
     pengguna?: PenggunaUpdateOneRequiredWithoutArtikelNestedInput
     artikel_disimpan?: ArtikelDisimpanUpdateManyWithoutArtikelNestedInput
     artikel_disukai?: ArtikelDisukaiUpdateManyWithoutArtikelNestedInput
-    admin?: AdminUpdateOneRequiredWithoutArtikel_diverifikasiNestedInput
     komentar_artikel?: KomentarArtikelUpdateManyWithoutArtikelNestedInput
   }
 
   export type ArtikelUncheckedUpdateInput = {
-    id_artikel?: IntFieldUpdateOperationsInput | number
+    id_artikel?: StringFieldUpdateOperationsInput | string
     judul_artikel?: StringFieldUpdateOperationsInput | string
     tanggal_artikel?: DateTimeFieldUpdateOperationsInput | Date | string
-    rating_artikel?: IntFieldUpdateOperationsInput | number
+    deskripsi_artikel?: StringFieldUpdateOperationsInput | string
     isi_artikel?: StringFieldUpdateOperationsInput | string
-    status_artikel?: IntFieldUpdateOperationsInput | number
+    status_artikel?: EnumStatusArtikelFieldUpdateOperationsInput | $Enums.StatusArtikel
     status_verifikasi?: BoolFieldUpdateOperationsInput | boolean
+    gambar_artikel?: StringFieldUpdateOperationsInput | string
+    id_kategori_artikel?: IntFieldUpdateOperationsInput | number
     id_pengguna?: StringFieldUpdateOperationsInput | string
-    id_verifikator?: StringFieldUpdateOperationsInput | string
     artikel_disimpan?: ArtikelDisimpanUncheckedUpdateManyWithoutArtikelNestedInput
     artikel_disukai?: ArtikelDisukaiUncheckedUpdateManyWithoutArtikelNestedInput
     komentar_artikel?: KomentarArtikelUncheckedUpdateManyWithoutArtikelNestedInput
   }
 
   export type ArtikelCreateManyInput = {
-    id_artikel?: number
+    id_artikel: string
     judul_artikel: string
     tanggal_artikel?: Date | string
-    rating_artikel: number
+    deskripsi_artikel: string
     isi_artikel: string
-    status_artikel: number
+    status_artikel: $Enums.StatusArtikel
     status_verifikasi: boolean
+    gambar_artikel: string
+    id_kategori_artikel: number
     id_pengguna: string
-    id_verifikator: string
   }
 
   export type ArtikelUpdateManyMutationInput = {
+    id_artikel?: StringFieldUpdateOperationsInput | string
     judul_artikel?: StringFieldUpdateOperationsInput | string
     tanggal_artikel?: DateTimeFieldUpdateOperationsInput | Date | string
-    rating_artikel?: IntFieldUpdateOperationsInput | number
+    deskripsi_artikel?: StringFieldUpdateOperationsInput | string
     isi_artikel?: StringFieldUpdateOperationsInput | string
-    status_artikel?: IntFieldUpdateOperationsInput | number
+    status_artikel?: EnumStatusArtikelFieldUpdateOperationsInput | $Enums.StatusArtikel
     status_verifikasi?: BoolFieldUpdateOperationsInput | boolean
+    gambar_artikel?: StringFieldUpdateOperationsInput | string
   }
 
   export type ArtikelUncheckedUpdateManyInput = {
-    id_artikel?: IntFieldUpdateOperationsInput | number
+    id_artikel?: StringFieldUpdateOperationsInput | string
     judul_artikel?: StringFieldUpdateOperationsInput | string
     tanggal_artikel?: DateTimeFieldUpdateOperationsInput | Date | string
-    rating_artikel?: IntFieldUpdateOperationsInput | number
+    deskripsi_artikel?: StringFieldUpdateOperationsInput | string
     isi_artikel?: StringFieldUpdateOperationsInput | string
-    status_artikel?: IntFieldUpdateOperationsInput | number
+    status_artikel?: EnumStatusArtikelFieldUpdateOperationsInput | $Enums.StatusArtikel
     status_verifikasi?: BoolFieldUpdateOperationsInput | boolean
+    gambar_artikel?: StringFieldUpdateOperationsInput | string
+    id_kategori_artikel?: IntFieldUpdateOperationsInput | number
     id_pengguna?: StringFieldUpdateOperationsInput | string
-    id_verifikator?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type KategoriArtikelCreateInput = {
+    nama_kategori_artikel: string
+    artikel?: ArtikelCreateNestedManyWithoutKategoriInput
+  }
+
+  export type KategoriArtikelUncheckedCreateInput = {
+    id_kategori_artikel?: number
+    nama_kategori_artikel: string
+    artikel?: ArtikelUncheckedCreateNestedManyWithoutKategoriInput
+  }
+
+  export type KategoriArtikelUpdateInput = {
+    nama_kategori_artikel?: StringFieldUpdateOperationsInput | string
+    artikel?: ArtikelUpdateManyWithoutKategoriNestedInput
+  }
+
+  export type KategoriArtikelUncheckedUpdateInput = {
+    id_kategori_artikel?: IntFieldUpdateOperationsInput | number
+    nama_kategori_artikel?: StringFieldUpdateOperationsInput | string
+    artikel?: ArtikelUncheckedUpdateManyWithoutKategoriNestedInput
+  }
+
+  export type KategoriArtikelCreateManyInput = {
+    id_kategori_artikel?: number
+    nama_kategori_artikel: string
+  }
+
+  export type KategoriArtikelUpdateManyMutationInput = {
+    nama_kategori_artikel?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type KategoriArtikelUncheckedUpdateManyInput = {
+    id_kategori_artikel?: IntFieldUpdateOperationsInput | number
+    nama_kategori_artikel?: StringFieldUpdateOperationsInput | string
   }
 
   export type ArtikelDisimpanCreateInput = {
@@ -25194,7 +26463,7 @@ export namespace Prisma {
 
   export type ArtikelDisimpanUncheckedCreateInput = {
     id_penyimpanan?: number
-    id_artikel: number
+    id_artikel: string
     id_pengguna: string
   }
 
@@ -25205,13 +26474,13 @@ export namespace Prisma {
 
   export type ArtikelDisimpanUncheckedUpdateInput = {
     id_penyimpanan?: IntFieldUpdateOperationsInput | number
-    id_artikel?: IntFieldUpdateOperationsInput | number
+    id_artikel?: StringFieldUpdateOperationsInput | string
     id_pengguna?: StringFieldUpdateOperationsInput | string
   }
 
   export type ArtikelDisimpanCreateManyInput = {
     id_penyimpanan?: number
-    id_artikel: number
+    id_artikel: string
     id_pengguna: string
   }
 
@@ -25221,7 +26490,7 @@ export namespace Prisma {
 
   export type ArtikelDisimpanUncheckedUpdateManyInput = {
     id_penyimpanan?: IntFieldUpdateOperationsInput | number
-    id_artikel?: IntFieldUpdateOperationsInput | number
+    id_artikel?: StringFieldUpdateOperationsInput | string
     id_pengguna?: StringFieldUpdateOperationsInput | string
   }
 
@@ -25233,7 +26502,7 @@ export namespace Prisma {
 
   export type ArtikelDisukaiUncheckedCreateInput = {
     id_disukai?: number
-    id_artikel: number
+    id_artikel: string
     id_pengguna: string
     rating: number
   }
@@ -25246,14 +26515,14 @@ export namespace Prisma {
 
   export type ArtikelDisukaiUncheckedUpdateInput = {
     id_disukai?: IntFieldUpdateOperationsInput | number
-    id_artikel?: IntFieldUpdateOperationsInput | number
+    id_artikel?: StringFieldUpdateOperationsInput | string
     id_pengguna?: StringFieldUpdateOperationsInput | string
     rating?: IntFieldUpdateOperationsInput | number
   }
 
   export type ArtikelDisukaiCreateManyInput = {
     id_disukai?: number
-    id_artikel: number
+    id_artikel: string
     id_pengguna: string
     rating: number
   }
@@ -25264,7 +26533,7 @@ export namespace Prisma {
 
   export type ArtikelDisukaiUncheckedUpdateManyInput = {
     id_disukai?: IntFieldUpdateOperationsInput | number
-    id_artikel?: IntFieldUpdateOperationsInput | number
+    id_artikel?: StringFieldUpdateOperationsInput | string
     id_pengguna?: StringFieldUpdateOperationsInput | string
     rating?: IntFieldUpdateOperationsInput | number
   }
@@ -25277,7 +26546,7 @@ export namespace Prisma {
 
   export type KomentarArtikelUncheckedCreateInput = {
     id_komentar?: number
-    id_artikel: number
+    id_artikel: string
     id_pengguna: string
     komentar: string
   }
@@ -25290,14 +26559,14 @@ export namespace Prisma {
 
   export type KomentarArtikelUncheckedUpdateInput = {
     id_komentar?: IntFieldUpdateOperationsInput | number
-    id_artikel?: IntFieldUpdateOperationsInput | number
+    id_artikel?: StringFieldUpdateOperationsInput | string
     id_pengguna?: StringFieldUpdateOperationsInput | string
     komentar?: StringFieldUpdateOperationsInput | string
   }
 
   export type KomentarArtikelCreateManyInput = {
     id_komentar?: number
-    id_artikel: number
+    id_artikel: string
     id_pengguna: string
     komentar: string
   }
@@ -25308,7 +26577,7 @@ export namespace Prisma {
 
   export type KomentarArtikelUncheckedUpdateManyInput = {
     id_komentar?: IntFieldUpdateOperationsInput | number
-    id_artikel?: IntFieldUpdateOperationsInput | number
+    id_artikel?: StringFieldUpdateOperationsInput | string
     id_pengguna?: StringFieldUpdateOperationsInput | string
     komentar?: StringFieldUpdateOperationsInput | string
   }
@@ -26227,62 +27496,101 @@ export namespace Prisma {
     avatar?: SortOrder
   }
 
+  export type EnumStatusArtikelFilter<$PrismaModel = never> = {
+    equals?: $Enums.StatusArtikel | EnumStatusArtikelFieldRefInput<$PrismaModel>
+    in?: $Enums.StatusArtikel[] | ListEnumStatusArtikelFieldRefInput<$PrismaModel>
+    notIn?: $Enums.StatusArtikel[] | ListEnumStatusArtikelFieldRefInput<$PrismaModel>
+    not?: NestedEnumStatusArtikelFilter<$PrismaModel> | $Enums.StatusArtikel
+  }
+
+  export type KategoriArtikelScalarRelationFilter = {
+    is?: KategoriArtikelWhereInput
+    isNot?: KategoriArtikelWhereInput
+  }
+
   export type PenggunaScalarRelationFilter = {
     is?: PenggunaWhereInput
     isNot?: PenggunaWhereInput
-  }
-
-  export type AdminScalarRelationFilter = {
-    is?: AdminWhereInput
-    isNot?: AdminWhereInput
   }
 
   export type ArtikelCountOrderByAggregateInput = {
     id_artikel?: SortOrder
     judul_artikel?: SortOrder
     tanggal_artikel?: SortOrder
-    rating_artikel?: SortOrder
+    deskripsi_artikel?: SortOrder
     isi_artikel?: SortOrder
     status_artikel?: SortOrder
     status_verifikasi?: SortOrder
+    gambar_artikel?: SortOrder
+    id_kategori_artikel?: SortOrder
     id_pengguna?: SortOrder
-    id_verifikator?: SortOrder
   }
 
   export type ArtikelAvgOrderByAggregateInput = {
-    id_artikel?: SortOrder
-    rating_artikel?: SortOrder
-    status_artikel?: SortOrder
+    id_kategori_artikel?: SortOrder
   }
 
   export type ArtikelMaxOrderByAggregateInput = {
     id_artikel?: SortOrder
     judul_artikel?: SortOrder
     tanggal_artikel?: SortOrder
-    rating_artikel?: SortOrder
+    deskripsi_artikel?: SortOrder
     isi_artikel?: SortOrder
     status_artikel?: SortOrder
     status_verifikasi?: SortOrder
+    gambar_artikel?: SortOrder
+    id_kategori_artikel?: SortOrder
     id_pengguna?: SortOrder
-    id_verifikator?: SortOrder
   }
 
   export type ArtikelMinOrderByAggregateInput = {
     id_artikel?: SortOrder
     judul_artikel?: SortOrder
     tanggal_artikel?: SortOrder
-    rating_artikel?: SortOrder
+    deskripsi_artikel?: SortOrder
     isi_artikel?: SortOrder
     status_artikel?: SortOrder
     status_verifikasi?: SortOrder
+    gambar_artikel?: SortOrder
+    id_kategori_artikel?: SortOrder
     id_pengguna?: SortOrder
-    id_verifikator?: SortOrder
   }
 
   export type ArtikelSumOrderByAggregateInput = {
-    id_artikel?: SortOrder
-    rating_artikel?: SortOrder
-    status_artikel?: SortOrder
+    id_kategori_artikel?: SortOrder
+  }
+
+  export type EnumStatusArtikelWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.StatusArtikel | EnumStatusArtikelFieldRefInput<$PrismaModel>
+    in?: $Enums.StatusArtikel[] | ListEnumStatusArtikelFieldRefInput<$PrismaModel>
+    notIn?: $Enums.StatusArtikel[] | ListEnumStatusArtikelFieldRefInput<$PrismaModel>
+    not?: NestedEnumStatusArtikelWithAggregatesFilter<$PrismaModel> | $Enums.StatusArtikel
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumStatusArtikelFilter<$PrismaModel>
+    _max?: NestedEnumStatusArtikelFilter<$PrismaModel>
+  }
+
+  export type KategoriArtikelCountOrderByAggregateInput = {
+    id_kategori_artikel?: SortOrder
+    nama_kategori_artikel?: SortOrder
+  }
+
+  export type KategoriArtikelAvgOrderByAggregateInput = {
+    id_kategori_artikel?: SortOrder
+  }
+
+  export type KategoriArtikelMaxOrderByAggregateInput = {
+    id_kategori_artikel?: SortOrder
+    nama_kategori_artikel?: SortOrder
+  }
+
+  export type KategoriArtikelMinOrderByAggregateInput = {
+    id_kategori_artikel?: SortOrder
+    nama_kategori_artikel?: SortOrder
+  }
+
+  export type KategoriArtikelSumOrderByAggregateInput = {
+    id_kategori_artikel?: SortOrder
   }
 
   export type ArtikelScalarRelationFilter = {
@@ -26291,7 +27599,7 @@ export namespace Prisma {
   }
 
   export type ArtikelDisimpanId_artikelId_penggunaCompoundUniqueInput = {
-    id_artikel: number
+    id_artikel: string
     id_pengguna: string
   }
 
@@ -26303,7 +27611,6 @@ export namespace Prisma {
 
   export type ArtikelDisimpanAvgOrderByAggregateInput = {
     id_penyimpanan?: SortOrder
-    id_artikel?: SortOrder
   }
 
   export type ArtikelDisimpanMaxOrderByAggregateInput = {
@@ -26320,11 +27627,10 @@ export namespace Prisma {
 
   export type ArtikelDisimpanSumOrderByAggregateInput = {
     id_penyimpanan?: SortOrder
-    id_artikel?: SortOrder
   }
 
   export type ArtikelDisukaiId_artikelId_penggunaCompoundUniqueInput = {
-    id_artikel: number
+    id_artikel: string
     id_pengguna: string
   }
 
@@ -26337,7 +27643,6 @@ export namespace Prisma {
 
   export type ArtikelDisukaiAvgOrderByAggregateInput = {
     id_disukai?: SortOrder
-    id_artikel?: SortOrder
     rating?: SortOrder
   }
 
@@ -26357,12 +27662,11 @@ export namespace Prisma {
 
   export type ArtikelDisukaiSumOrderByAggregateInput = {
     id_disukai?: SortOrder
-    id_artikel?: SortOrder
     rating?: SortOrder
   }
 
   export type KomentarArtikelId_artikelId_penggunaCompoundUniqueInput = {
-    id_artikel: number
+    id_artikel: string
     id_pengguna: string
   }
 
@@ -26375,7 +27679,6 @@ export namespace Prisma {
 
   export type KomentarArtikelAvgOrderByAggregateInput = {
     id_komentar?: SortOrder
-    id_artikel?: SortOrder
   }
 
   export type KomentarArtikelMaxOrderByAggregateInput = {
@@ -26394,7 +27697,6 @@ export namespace Prisma {
 
   export type KomentarArtikelSumOrderByAggregateInput = {
     id_komentar?: SortOrder
-    id_artikel?: SortOrder
   }
 
   export type DecimalFilter<$PrismaModel = never> = {
@@ -26411,6 +27713,11 @@ export namespace Prisma {
   export type FacilitatorScalarRelationFilter = {
     is?: FacilitatorWhereInput
     isNot?: FacilitatorWhereInput
+  }
+
+  export type AdminScalarRelationFilter = {
+    is?: AdminWhereInput
+    isNot?: AdminWhereInput
   }
 
   export type WorkshopCountOrderByAggregateInput = {
@@ -27240,13 +28547,6 @@ export namespace Prisma {
     deleteMany?: WorkshopScalarWhereInput | WorkshopScalarWhereInput[]
   }
 
-  export type ArtikelCreateNestedManyWithoutAdminInput = {
-    create?: XOR<ArtikelCreateWithoutAdminInput, ArtikelUncheckedCreateWithoutAdminInput> | ArtikelCreateWithoutAdminInput[] | ArtikelUncheckedCreateWithoutAdminInput[]
-    connectOrCreate?: ArtikelCreateOrConnectWithoutAdminInput | ArtikelCreateOrConnectWithoutAdminInput[]
-    createMany?: ArtikelCreateManyAdminInputEnvelope
-    connect?: ArtikelWhereUniqueInput | ArtikelWhereUniqueInput[]
-  }
-
   export type WorkshopCreateNestedManyWithoutAdminInput = {
     create?: XOR<WorkshopCreateWithoutAdminInput, WorkshopUncheckedCreateWithoutAdminInput> | WorkshopCreateWithoutAdminInput[] | WorkshopUncheckedCreateWithoutAdminInput[]
     connectOrCreate?: WorkshopCreateOrConnectWithoutAdminInput | WorkshopCreateOrConnectWithoutAdminInput[]
@@ -27254,32 +28554,11 @@ export namespace Prisma {
     connect?: WorkshopWhereUniqueInput | WorkshopWhereUniqueInput[]
   }
 
-  export type ArtikelUncheckedCreateNestedManyWithoutAdminInput = {
-    create?: XOR<ArtikelCreateWithoutAdminInput, ArtikelUncheckedCreateWithoutAdminInput> | ArtikelCreateWithoutAdminInput[] | ArtikelUncheckedCreateWithoutAdminInput[]
-    connectOrCreate?: ArtikelCreateOrConnectWithoutAdminInput | ArtikelCreateOrConnectWithoutAdminInput[]
-    createMany?: ArtikelCreateManyAdminInputEnvelope
-    connect?: ArtikelWhereUniqueInput | ArtikelWhereUniqueInput[]
-  }
-
   export type WorkshopUncheckedCreateNestedManyWithoutAdminInput = {
     create?: XOR<WorkshopCreateWithoutAdminInput, WorkshopUncheckedCreateWithoutAdminInput> | WorkshopCreateWithoutAdminInput[] | WorkshopUncheckedCreateWithoutAdminInput[]
     connectOrCreate?: WorkshopCreateOrConnectWithoutAdminInput | WorkshopCreateOrConnectWithoutAdminInput[]
     createMany?: WorkshopCreateManyAdminInputEnvelope
     connect?: WorkshopWhereUniqueInput | WorkshopWhereUniqueInput[]
-  }
-
-  export type ArtikelUpdateManyWithoutAdminNestedInput = {
-    create?: XOR<ArtikelCreateWithoutAdminInput, ArtikelUncheckedCreateWithoutAdminInput> | ArtikelCreateWithoutAdminInput[] | ArtikelUncheckedCreateWithoutAdminInput[]
-    connectOrCreate?: ArtikelCreateOrConnectWithoutAdminInput | ArtikelCreateOrConnectWithoutAdminInput[]
-    upsert?: ArtikelUpsertWithWhereUniqueWithoutAdminInput | ArtikelUpsertWithWhereUniqueWithoutAdminInput[]
-    createMany?: ArtikelCreateManyAdminInputEnvelope
-    set?: ArtikelWhereUniqueInput | ArtikelWhereUniqueInput[]
-    disconnect?: ArtikelWhereUniqueInput | ArtikelWhereUniqueInput[]
-    delete?: ArtikelWhereUniqueInput | ArtikelWhereUniqueInput[]
-    connect?: ArtikelWhereUniqueInput | ArtikelWhereUniqueInput[]
-    update?: ArtikelUpdateWithWhereUniqueWithoutAdminInput | ArtikelUpdateWithWhereUniqueWithoutAdminInput[]
-    updateMany?: ArtikelUpdateManyWithWhereWithoutAdminInput | ArtikelUpdateManyWithWhereWithoutAdminInput[]
-    deleteMany?: ArtikelScalarWhereInput | ArtikelScalarWhereInput[]
   }
 
   export type WorkshopUpdateManyWithoutAdminNestedInput = {
@@ -27296,20 +28575,6 @@ export namespace Prisma {
     deleteMany?: WorkshopScalarWhereInput | WorkshopScalarWhereInput[]
   }
 
-  export type ArtikelUncheckedUpdateManyWithoutAdminNestedInput = {
-    create?: XOR<ArtikelCreateWithoutAdminInput, ArtikelUncheckedCreateWithoutAdminInput> | ArtikelCreateWithoutAdminInput[] | ArtikelUncheckedCreateWithoutAdminInput[]
-    connectOrCreate?: ArtikelCreateOrConnectWithoutAdminInput | ArtikelCreateOrConnectWithoutAdminInput[]
-    upsert?: ArtikelUpsertWithWhereUniqueWithoutAdminInput | ArtikelUpsertWithWhereUniqueWithoutAdminInput[]
-    createMany?: ArtikelCreateManyAdminInputEnvelope
-    set?: ArtikelWhereUniqueInput | ArtikelWhereUniqueInput[]
-    disconnect?: ArtikelWhereUniqueInput | ArtikelWhereUniqueInput[]
-    delete?: ArtikelWhereUniqueInput | ArtikelWhereUniqueInput[]
-    connect?: ArtikelWhereUniqueInput | ArtikelWhereUniqueInput[]
-    update?: ArtikelUpdateWithWhereUniqueWithoutAdminInput | ArtikelUpdateWithWhereUniqueWithoutAdminInput[]
-    updateMany?: ArtikelUpdateManyWithWhereWithoutAdminInput | ArtikelUpdateManyWithWhereWithoutAdminInput[]
-    deleteMany?: ArtikelScalarWhereInput | ArtikelScalarWhereInput[]
-  }
-
   export type WorkshopUncheckedUpdateManyWithoutAdminNestedInput = {
     create?: XOR<WorkshopCreateWithoutAdminInput, WorkshopUncheckedCreateWithoutAdminInput> | WorkshopCreateWithoutAdminInput[] | WorkshopUncheckedCreateWithoutAdminInput[]
     connectOrCreate?: WorkshopCreateOrConnectWithoutAdminInput | WorkshopCreateOrConnectWithoutAdminInput[]
@@ -27322,6 +28587,12 @@ export namespace Prisma {
     update?: WorkshopUpdateWithWhereUniqueWithoutAdminInput | WorkshopUpdateWithWhereUniqueWithoutAdminInput[]
     updateMany?: WorkshopUpdateManyWithWhereWithoutAdminInput | WorkshopUpdateManyWithWhereWithoutAdminInput[]
     deleteMany?: WorkshopScalarWhereInput | WorkshopScalarWhereInput[]
+  }
+
+  export type KategoriArtikelCreateNestedOneWithoutArtikelInput = {
+    create?: XOR<KategoriArtikelCreateWithoutArtikelInput, KategoriArtikelUncheckedCreateWithoutArtikelInput>
+    connectOrCreate?: KategoriArtikelCreateOrConnectWithoutArtikelInput
+    connect?: KategoriArtikelWhereUniqueInput
   }
 
   export type PenggunaCreateNestedOneWithoutArtikelInput = {
@@ -27342,12 +28613,6 @@ export namespace Prisma {
     connectOrCreate?: ArtikelDisukaiCreateOrConnectWithoutArtikelInput | ArtikelDisukaiCreateOrConnectWithoutArtikelInput[]
     createMany?: ArtikelDisukaiCreateManyArtikelInputEnvelope
     connect?: ArtikelDisukaiWhereUniqueInput | ArtikelDisukaiWhereUniqueInput[]
-  }
-
-  export type AdminCreateNestedOneWithoutArtikel_diverifikasiInput = {
-    create?: XOR<AdminCreateWithoutArtikel_diverifikasiInput, AdminUncheckedCreateWithoutArtikel_diverifikasiInput>
-    connectOrCreate?: AdminCreateOrConnectWithoutArtikel_diverifikasiInput
-    connect?: AdminWhereUniqueInput
   }
 
   export type KomentarArtikelCreateNestedManyWithoutArtikelInput = {
@@ -27376,6 +28641,18 @@ export namespace Prisma {
     connectOrCreate?: KomentarArtikelCreateOrConnectWithoutArtikelInput | KomentarArtikelCreateOrConnectWithoutArtikelInput[]
     createMany?: KomentarArtikelCreateManyArtikelInputEnvelope
     connect?: KomentarArtikelWhereUniqueInput | KomentarArtikelWhereUniqueInput[]
+  }
+
+  export type EnumStatusArtikelFieldUpdateOperationsInput = {
+    set?: $Enums.StatusArtikel
+  }
+
+  export type KategoriArtikelUpdateOneRequiredWithoutArtikelNestedInput = {
+    create?: XOR<KategoriArtikelCreateWithoutArtikelInput, KategoriArtikelUncheckedCreateWithoutArtikelInput>
+    connectOrCreate?: KategoriArtikelCreateOrConnectWithoutArtikelInput
+    upsert?: KategoriArtikelUpsertWithoutArtikelInput
+    connect?: KategoriArtikelWhereUniqueInput
+    update?: XOR<XOR<KategoriArtikelUpdateToOneWithWhereWithoutArtikelInput, KategoriArtikelUpdateWithoutArtikelInput>, KategoriArtikelUncheckedUpdateWithoutArtikelInput>
   }
 
   export type PenggunaUpdateOneRequiredWithoutArtikelNestedInput = {
@@ -27412,14 +28689,6 @@ export namespace Prisma {
     update?: ArtikelDisukaiUpdateWithWhereUniqueWithoutArtikelInput | ArtikelDisukaiUpdateWithWhereUniqueWithoutArtikelInput[]
     updateMany?: ArtikelDisukaiUpdateManyWithWhereWithoutArtikelInput | ArtikelDisukaiUpdateManyWithWhereWithoutArtikelInput[]
     deleteMany?: ArtikelDisukaiScalarWhereInput | ArtikelDisukaiScalarWhereInput[]
-  }
-
-  export type AdminUpdateOneRequiredWithoutArtikel_diverifikasiNestedInput = {
-    create?: XOR<AdminCreateWithoutArtikel_diverifikasiInput, AdminUncheckedCreateWithoutArtikel_diverifikasiInput>
-    connectOrCreate?: AdminCreateOrConnectWithoutArtikel_diverifikasiInput
-    upsert?: AdminUpsertWithoutArtikel_diverifikasiInput
-    connect?: AdminWhereUniqueInput
-    update?: XOR<XOR<AdminUpdateToOneWithWhereWithoutArtikel_diverifikasiInput, AdminUpdateWithoutArtikel_diverifikasiInput>, AdminUncheckedUpdateWithoutArtikel_diverifikasiInput>
   }
 
   export type KomentarArtikelUpdateManyWithoutArtikelNestedInput = {
@@ -27476,6 +28745,48 @@ export namespace Prisma {
     update?: KomentarArtikelUpdateWithWhereUniqueWithoutArtikelInput | KomentarArtikelUpdateWithWhereUniqueWithoutArtikelInput[]
     updateMany?: KomentarArtikelUpdateManyWithWhereWithoutArtikelInput | KomentarArtikelUpdateManyWithWhereWithoutArtikelInput[]
     deleteMany?: KomentarArtikelScalarWhereInput | KomentarArtikelScalarWhereInput[]
+  }
+
+  export type ArtikelCreateNestedManyWithoutKategoriInput = {
+    create?: XOR<ArtikelCreateWithoutKategoriInput, ArtikelUncheckedCreateWithoutKategoriInput> | ArtikelCreateWithoutKategoriInput[] | ArtikelUncheckedCreateWithoutKategoriInput[]
+    connectOrCreate?: ArtikelCreateOrConnectWithoutKategoriInput | ArtikelCreateOrConnectWithoutKategoriInput[]
+    createMany?: ArtikelCreateManyKategoriInputEnvelope
+    connect?: ArtikelWhereUniqueInput | ArtikelWhereUniqueInput[]
+  }
+
+  export type ArtikelUncheckedCreateNestedManyWithoutKategoriInput = {
+    create?: XOR<ArtikelCreateWithoutKategoriInput, ArtikelUncheckedCreateWithoutKategoriInput> | ArtikelCreateWithoutKategoriInput[] | ArtikelUncheckedCreateWithoutKategoriInput[]
+    connectOrCreate?: ArtikelCreateOrConnectWithoutKategoriInput | ArtikelCreateOrConnectWithoutKategoriInput[]
+    createMany?: ArtikelCreateManyKategoriInputEnvelope
+    connect?: ArtikelWhereUniqueInput | ArtikelWhereUniqueInput[]
+  }
+
+  export type ArtikelUpdateManyWithoutKategoriNestedInput = {
+    create?: XOR<ArtikelCreateWithoutKategoriInput, ArtikelUncheckedCreateWithoutKategoriInput> | ArtikelCreateWithoutKategoriInput[] | ArtikelUncheckedCreateWithoutKategoriInput[]
+    connectOrCreate?: ArtikelCreateOrConnectWithoutKategoriInput | ArtikelCreateOrConnectWithoutKategoriInput[]
+    upsert?: ArtikelUpsertWithWhereUniqueWithoutKategoriInput | ArtikelUpsertWithWhereUniqueWithoutKategoriInput[]
+    createMany?: ArtikelCreateManyKategoriInputEnvelope
+    set?: ArtikelWhereUniqueInput | ArtikelWhereUniqueInput[]
+    disconnect?: ArtikelWhereUniqueInput | ArtikelWhereUniqueInput[]
+    delete?: ArtikelWhereUniqueInput | ArtikelWhereUniqueInput[]
+    connect?: ArtikelWhereUniqueInput | ArtikelWhereUniqueInput[]
+    update?: ArtikelUpdateWithWhereUniqueWithoutKategoriInput | ArtikelUpdateWithWhereUniqueWithoutKategoriInput[]
+    updateMany?: ArtikelUpdateManyWithWhereWithoutKategoriInput | ArtikelUpdateManyWithWhereWithoutKategoriInput[]
+    deleteMany?: ArtikelScalarWhereInput | ArtikelScalarWhereInput[]
+  }
+
+  export type ArtikelUncheckedUpdateManyWithoutKategoriNestedInput = {
+    create?: XOR<ArtikelCreateWithoutKategoriInput, ArtikelUncheckedCreateWithoutKategoriInput> | ArtikelCreateWithoutKategoriInput[] | ArtikelUncheckedCreateWithoutKategoriInput[]
+    connectOrCreate?: ArtikelCreateOrConnectWithoutKategoriInput | ArtikelCreateOrConnectWithoutKategoriInput[]
+    upsert?: ArtikelUpsertWithWhereUniqueWithoutKategoriInput | ArtikelUpsertWithWhereUniqueWithoutKategoriInput[]
+    createMany?: ArtikelCreateManyKategoriInputEnvelope
+    set?: ArtikelWhereUniqueInput | ArtikelWhereUniqueInput[]
+    disconnect?: ArtikelWhereUniqueInput | ArtikelWhereUniqueInput[]
+    delete?: ArtikelWhereUniqueInput | ArtikelWhereUniqueInput[]
+    connect?: ArtikelWhereUniqueInput | ArtikelWhereUniqueInput[]
+    update?: ArtikelUpdateWithWhereUniqueWithoutKategoriInput | ArtikelUpdateWithWhereUniqueWithoutKategoriInput[]
+    updateMany?: ArtikelUpdateManyWithWhereWithoutKategoriInput | ArtikelUpdateManyWithWhereWithoutKategoriInput[]
+    deleteMany?: ArtikelScalarWhereInput | ArtikelScalarWhereInput[]
   }
 
   export type ArtikelCreateNestedOneWithoutArtikel_disimpanInput = {
@@ -28167,6 +29478,23 @@ export namespace Prisma {
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
+  export type NestedEnumStatusArtikelFilter<$PrismaModel = never> = {
+    equals?: $Enums.StatusArtikel | EnumStatusArtikelFieldRefInput<$PrismaModel>
+    in?: $Enums.StatusArtikel[] | ListEnumStatusArtikelFieldRefInput<$PrismaModel>
+    notIn?: $Enums.StatusArtikel[] | ListEnumStatusArtikelFieldRefInput<$PrismaModel>
+    not?: NestedEnumStatusArtikelFilter<$PrismaModel> | $Enums.StatusArtikel
+  }
+
+  export type NestedEnumStatusArtikelWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.StatusArtikel | EnumStatusArtikelFieldRefInput<$PrismaModel>
+    in?: $Enums.StatusArtikel[] | ListEnumStatusArtikelFieldRefInput<$PrismaModel>
+    notIn?: $Enums.StatusArtikel[] | ListEnumStatusArtikelFieldRefInput<$PrismaModel>
+    not?: NestedEnumStatusArtikelWithAggregatesFilter<$PrismaModel> | $Enums.StatusArtikel
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumStatusArtikelFilter<$PrismaModel>
+    _max?: NestedEnumStatusArtikelFilter<$PrismaModel>
+  }
+
   export type NestedDecimalFilter<$PrismaModel = never> = {
     equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
     in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
@@ -28374,27 +29702,30 @@ export namespace Prisma {
   }
 
   export type ArtikelCreateWithoutPenggunaInput = {
+    id_artikel: string
     judul_artikel: string
     tanggal_artikel?: Date | string
-    rating_artikel: number
+    deskripsi_artikel: string
     isi_artikel: string
-    status_artikel: number
+    status_artikel: $Enums.StatusArtikel
     status_verifikasi: boolean
+    gambar_artikel: string
+    kategori: KategoriArtikelCreateNestedOneWithoutArtikelInput
     artikel_disimpan?: ArtikelDisimpanCreateNestedManyWithoutArtikelInput
     artikel_disukai?: ArtikelDisukaiCreateNestedManyWithoutArtikelInput
-    admin: AdminCreateNestedOneWithoutArtikel_diverifikasiInput
     komentar_artikel?: KomentarArtikelCreateNestedManyWithoutArtikelInput
   }
 
   export type ArtikelUncheckedCreateWithoutPenggunaInput = {
-    id_artikel?: number
+    id_artikel: string
     judul_artikel: string
     tanggal_artikel?: Date | string
-    rating_artikel: number
+    deskripsi_artikel: string
     isi_artikel: string
-    status_artikel: number
+    status_artikel: $Enums.StatusArtikel
     status_verifikasi: boolean
-    id_verifikator: string
+    gambar_artikel: string
+    id_kategori_artikel: number
     artikel_disimpan?: ArtikelDisimpanUncheckedCreateNestedManyWithoutArtikelInput
     artikel_disukai?: ArtikelDisukaiUncheckedCreateNestedManyWithoutArtikelInput
     komentar_artikel?: KomentarArtikelUncheckedCreateNestedManyWithoutArtikelInput
@@ -28416,7 +29747,7 @@ export namespace Prisma {
 
   export type ArtikelDisimpanUncheckedCreateWithoutPenggunaInput = {
     id_penyimpanan?: number
-    id_artikel: number
+    id_artikel: string
   }
 
   export type ArtikelDisimpanCreateOrConnectWithoutPenggunaInput = {
@@ -28436,7 +29767,7 @@ export namespace Prisma {
 
   export type ArtikelDisukaiUncheckedCreateWithoutPenggunaInput = {
     id_disukai?: number
-    id_artikel: number
+    id_artikel: string
     rating: number
   }
 
@@ -28457,7 +29788,7 @@ export namespace Prisma {
 
   export type KomentarArtikelUncheckedCreateWithoutPenggunaInput = {
     id_komentar?: number
-    id_artikel: number
+    id_artikel: string
     komentar: string
   }
 
@@ -28549,15 +29880,16 @@ export namespace Prisma {
     AND?: ArtikelScalarWhereInput | ArtikelScalarWhereInput[]
     OR?: ArtikelScalarWhereInput[]
     NOT?: ArtikelScalarWhereInput | ArtikelScalarWhereInput[]
-    id_artikel?: IntFilter<"Artikel"> | number
+    id_artikel?: StringFilter<"Artikel"> | string
     judul_artikel?: StringFilter<"Artikel"> | string
     tanggal_artikel?: DateTimeFilter<"Artikel"> | Date | string
-    rating_artikel?: IntFilter<"Artikel"> | number
+    deskripsi_artikel?: StringFilter<"Artikel"> | string
     isi_artikel?: StringFilter<"Artikel"> | string
-    status_artikel?: IntFilter<"Artikel"> | number
+    status_artikel?: EnumStatusArtikelFilter<"Artikel"> | $Enums.StatusArtikel
     status_verifikasi?: BoolFilter<"Artikel"> | boolean
+    gambar_artikel?: StringFilter<"Artikel"> | string
+    id_kategori_artikel?: IntFilter<"Artikel"> | number
     id_pengguna?: StringFilter<"Artikel"> | string
-    id_verifikator?: StringFilter<"Artikel"> | string
   }
 
   export type ArtikelDisimpanUpsertWithWhereUniqueWithoutPenggunaInput = {
@@ -28581,7 +29913,7 @@ export namespace Prisma {
     OR?: ArtikelDisimpanScalarWhereInput[]
     NOT?: ArtikelDisimpanScalarWhereInput | ArtikelDisimpanScalarWhereInput[]
     id_penyimpanan?: IntFilter<"ArtikelDisimpan"> | number
-    id_artikel?: IntFilter<"ArtikelDisimpan"> | number
+    id_artikel?: StringFilter<"ArtikelDisimpan"> | string
     id_pengguna?: StringFilter<"ArtikelDisimpan"> | string
   }
 
@@ -28606,7 +29938,7 @@ export namespace Prisma {
     OR?: ArtikelDisukaiScalarWhereInput[]
     NOT?: ArtikelDisukaiScalarWhereInput | ArtikelDisukaiScalarWhereInput[]
     id_disukai?: IntFilter<"ArtikelDisukai"> | number
-    id_artikel?: IntFilter<"ArtikelDisukai"> | number
+    id_artikel?: StringFilter<"ArtikelDisukai"> | string
     id_pengguna?: StringFilter<"ArtikelDisukai"> | string
     rating?: IntFilter<"ArtikelDisukai"> | number
   }
@@ -28632,7 +29964,7 @@ export namespace Prisma {
     OR?: KomentarArtikelScalarWhereInput[]
     NOT?: KomentarArtikelScalarWhereInput | KomentarArtikelScalarWhereInput[]
     id_komentar?: IntFilter<"KomentarArtikel"> | number
-    id_artikel?: IntFilter<"KomentarArtikel"> | number
+    id_artikel?: StringFilter<"KomentarArtikel"> | string
     id_pengguna?: StringFilter<"KomentarArtikel"> | string
     komentar?: StringFilter<"KomentarArtikel"> | string
   }
@@ -28775,43 +30107,6 @@ export namespace Prisma {
     id_verifikator?: StringFilter<"Workshop"> | string
   }
 
-  export type ArtikelCreateWithoutAdminInput = {
-    judul_artikel: string
-    tanggal_artikel?: Date | string
-    rating_artikel: number
-    isi_artikel: string
-    status_artikel: number
-    status_verifikasi: boolean
-    pengguna: PenggunaCreateNestedOneWithoutArtikelInput
-    artikel_disimpan?: ArtikelDisimpanCreateNestedManyWithoutArtikelInput
-    artikel_disukai?: ArtikelDisukaiCreateNestedManyWithoutArtikelInput
-    komentar_artikel?: KomentarArtikelCreateNestedManyWithoutArtikelInput
-  }
-
-  export type ArtikelUncheckedCreateWithoutAdminInput = {
-    id_artikel?: number
-    judul_artikel: string
-    tanggal_artikel?: Date | string
-    rating_artikel: number
-    isi_artikel: string
-    status_artikel: number
-    status_verifikasi: boolean
-    id_pengguna: string
-    artikel_disimpan?: ArtikelDisimpanUncheckedCreateNestedManyWithoutArtikelInput
-    artikel_disukai?: ArtikelDisukaiUncheckedCreateNestedManyWithoutArtikelInput
-    komentar_artikel?: KomentarArtikelUncheckedCreateNestedManyWithoutArtikelInput
-  }
-
-  export type ArtikelCreateOrConnectWithoutAdminInput = {
-    where: ArtikelWhereUniqueInput
-    create: XOR<ArtikelCreateWithoutAdminInput, ArtikelUncheckedCreateWithoutAdminInput>
-  }
-
-  export type ArtikelCreateManyAdminInputEnvelope = {
-    data: ArtikelCreateManyAdminInput | ArtikelCreateManyAdminInput[]
-    skipDuplicates?: boolean
-  }
-
   export type WorkshopCreateWithoutAdminInput = {
     id_workshop?: string
     judul_workshop: string
@@ -28848,22 +30143,6 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type ArtikelUpsertWithWhereUniqueWithoutAdminInput = {
-    where: ArtikelWhereUniqueInput
-    update: XOR<ArtikelUpdateWithoutAdminInput, ArtikelUncheckedUpdateWithoutAdminInput>
-    create: XOR<ArtikelCreateWithoutAdminInput, ArtikelUncheckedCreateWithoutAdminInput>
-  }
-
-  export type ArtikelUpdateWithWhereUniqueWithoutAdminInput = {
-    where: ArtikelWhereUniqueInput
-    data: XOR<ArtikelUpdateWithoutAdminInput, ArtikelUncheckedUpdateWithoutAdminInput>
-  }
-
-  export type ArtikelUpdateManyWithWhereWithoutAdminInput = {
-    where: ArtikelScalarWhereInput
-    data: XOR<ArtikelUpdateManyMutationInput, ArtikelUncheckedUpdateManyWithoutAdminInput>
-  }
-
   export type WorkshopUpsertWithWhereUniqueWithoutAdminInput = {
     where: WorkshopWhereUniqueInput
     update: XOR<WorkshopUpdateWithoutAdminInput, WorkshopUncheckedUpdateWithoutAdminInput>
@@ -28878,6 +30157,20 @@ export namespace Prisma {
   export type WorkshopUpdateManyWithWhereWithoutAdminInput = {
     where: WorkshopScalarWhereInput
     data: XOR<WorkshopUpdateManyMutationInput, WorkshopUncheckedUpdateManyWithoutAdminInput>
+  }
+
+  export type KategoriArtikelCreateWithoutArtikelInput = {
+    nama_kategori_artikel: string
+  }
+
+  export type KategoriArtikelUncheckedCreateWithoutArtikelInput = {
+    id_kategori_artikel?: number
+    nama_kategori_artikel: string
+  }
+
+  export type KategoriArtikelCreateOrConnectWithoutArtikelInput = {
+    where: KategoriArtikelWhereUniqueInput
+    create: XOR<KategoriArtikelCreateWithoutArtikelInput, KategoriArtikelUncheckedCreateWithoutArtikelInput>
   }
 
   export type PenggunaCreateWithoutArtikelInput = {
@@ -28965,33 +30258,6 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type AdminCreateWithoutArtikel_diverifikasiInput = {
-    id_admin?: string
-    nama_depan_admin: string
-    nama_belakang_admin: string
-    email_admin: string
-    password_admin: string
-    tanggal_pembuatan_akun: Date | string
-    avatar?: string | null
-    workshop_diverifikasi?: WorkshopCreateNestedManyWithoutAdminInput
-  }
-
-  export type AdminUncheckedCreateWithoutArtikel_diverifikasiInput = {
-    id_admin?: string
-    nama_depan_admin: string
-    nama_belakang_admin: string
-    email_admin: string
-    password_admin: string
-    tanggal_pembuatan_akun: Date | string
-    avatar?: string | null
-    workshop_diverifikasi?: WorkshopUncheckedCreateNestedManyWithoutAdminInput
-  }
-
-  export type AdminCreateOrConnectWithoutArtikel_diverifikasiInput = {
-    where: AdminWhereUniqueInput
-    create: XOR<AdminCreateWithoutArtikel_diverifikasiInput, AdminUncheckedCreateWithoutArtikel_diverifikasiInput>
-  }
-
   export type KomentarArtikelCreateWithoutArtikelInput = {
     komentar: string
     pengguna: PenggunaCreateNestedOneWithoutKomentar_artikelInput
@@ -29011,6 +30277,26 @@ export namespace Prisma {
   export type KomentarArtikelCreateManyArtikelInputEnvelope = {
     data: KomentarArtikelCreateManyArtikelInput | KomentarArtikelCreateManyArtikelInput[]
     skipDuplicates?: boolean
+  }
+
+  export type KategoriArtikelUpsertWithoutArtikelInput = {
+    update: XOR<KategoriArtikelUpdateWithoutArtikelInput, KategoriArtikelUncheckedUpdateWithoutArtikelInput>
+    create: XOR<KategoriArtikelCreateWithoutArtikelInput, KategoriArtikelUncheckedCreateWithoutArtikelInput>
+    where?: KategoriArtikelWhereInput
+  }
+
+  export type KategoriArtikelUpdateToOneWithWhereWithoutArtikelInput = {
+    where?: KategoriArtikelWhereInput
+    data: XOR<KategoriArtikelUpdateWithoutArtikelInput, KategoriArtikelUncheckedUpdateWithoutArtikelInput>
+  }
+
+  export type KategoriArtikelUpdateWithoutArtikelInput = {
+    nama_kategori_artikel?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type KategoriArtikelUncheckedUpdateWithoutArtikelInput = {
+    id_kategori_artikel?: IntFieldUpdateOperationsInput | number
+    nama_kategori_artikel?: StringFieldUpdateOperationsInput | string
   }
 
   export type PenggunaUpsertWithoutArtikelInput = {
@@ -29096,39 +30382,6 @@ export namespace Prisma {
     data: XOR<ArtikelDisukaiUpdateManyMutationInput, ArtikelDisukaiUncheckedUpdateManyWithoutArtikelInput>
   }
 
-  export type AdminUpsertWithoutArtikel_diverifikasiInput = {
-    update: XOR<AdminUpdateWithoutArtikel_diverifikasiInput, AdminUncheckedUpdateWithoutArtikel_diverifikasiInput>
-    create: XOR<AdminCreateWithoutArtikel_diverifikasiInput, AdminUncheckedCreateWithoutArtikel_diverifikasiInput>
-    where?: AdminWhereInput
-  }
-
-  export type AdminUpdateToOneWithWhereWithoutArtikel_diverifikasiInput = {
-    where?: AdminWhereInput
-    data: XOR<AdminUpdateWithoutArtikel_diverifikasiInput, AdminUncheckedUpdateWithoutArtikel_diverifikasiInput>
-  }
-
-  export type AdminUpdateWithoutArtikel_diverifikasiInput = {
-    id_admin?: StringFieldUpdateOperationsInput | string
-    nama_depan_admin?: StringFieldUpdateOperationsInput | string
-    nama_belakang_admin?: StringFieldUpdateOperationsInput | string
-    email_admin?: StringFieldUpdateOperationsInput | string
-    password_admin?: StringFieldUpdateOperationsInput | string
-    tanggal_pembuatan_akun?: DateTimeFieldUpdateOperationsInput | Date | string
-    avatar?: NullableStringFieldUpdateOperationsInput | string | null
-    workshop_diverifikasi?: WorkshopUpdateManyWithoutAdminNestedInput
-  }
-
-  export type AdminUncheckedUpdateWithoutArtikel_diverifikasiInput = {
-    id_admin?: StringFieldUpdateOperationsInput | string
-    nama_depan_admin?: StringFieldUpdateOperationsInput | string
-    nama_belakang_admin?: StringFieldUpdateOperationsInput | string
-    email_admin?: StringFieldUpdateOperationsInput | string
-    password_admin?: StringFieldUpdateOperationsInput | string
-    tanggal_pembuatan_akun?: DateTimeFieldUpdateOperationsInput | Date | string
-    avatar?: NullableStringFieldUpdateOperationsInput | string | null
-    workshop_diverifikasi?: WorkshopUncheckedUpdateManyWithoutAdminNestedInput
-  }
-
   export type KomentarArtikelUpsertWithWhereUniqueWithoutArtikelInput = {
     where: KomentarArtikelWhereUniqueInput
     update: XOR<KomentarArtikelUpdateWithoutArtikelInput, KomentarArtikelUncheckedUpdateWithoutArtikelInput>
@@ -29145,29 +30398,88 @@ export namespace Prisma {
     data: XOR<KomentarArtikelUpdateManyMutationInput, KomentarArtikelUncheckedUpdateManyWithoutArtikelInput>
   }
 
-  export type ArtikelCreateWithoutArtikel_disimpanInput = {
+  export type ArtikelCreateWithoutKategoriInput = {
+    id_artikel: string
     judul_artikel: string
     tanggal_artikel?: Date | string
-    rating_artikel: number
+    deskripsi_artikel: string
     isi_artikel: string
-    status_artikel: number
+    status_artikel: $Enums.StatusArtikel
     status_verifikasi: boolean
+    gambar_artikel: string
+    pengguna: PenggunaCreateNestedOneWithoutArtikelInput
+    artikel_disimpan?: ArtikelDisimpanCreateNestedManyWithoutArtikelInput
+    artikel_disukai?: ArtikelDisukaiCreateNestedManyWithoutArtikelInput
+    komentar_artikel?: KomentarArtikelCreateNestedManyWithoutArtikelInput
+  }
+
+  export type ArtikelUncheckedCreateWithoutKategoriInput = {
+    id_artikel: string
+    judul_artikel: string
+    tanggal_artikel?: Date | string
+    deskripsi_artikel: string
+    isi_artikel: string
+    status_artikel: $Enums.StatusArtikel
+    status_verifikasi: boolean
+    gambar_artikel: string
+    id_pengguna: string
+    artikel_disimpan?: ArtikelDisimpanUncheckedCreateNestedManyWithoutArtikelInput
+    artikel_disukai?: ArtikelDisukaiUncheckedCreateNestedManyWithoutArtikelInput
+    komentar_artikel?: KomentarArtikelUncheckedCreateNestedManyWithoutArtikelInput
+  }
+
+  export type ArtikelCreateOrConnectWithoutKategoriInput = {
+    where: ArtikelWhereUniqueInput
+    create: XOR<ArtikelCreateWithoutKategoriInput, ArtikelUncheckedCreateWithoutKategoriInput>
+  }
+
+  export type ArtikelCreateManyKategoriInputEnvelope = {
+    data: ArtikelCreateManyKategoriInput | ArtikelCreateManyKategoriInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ArtikelUpsertWithWhereUniqueWithoutKategoriInput = {
+    where: ArtikelWhereUniqueInput
+    update: XOR<ArtikelUpdateWithoutKategoriInput, ArtikelUncheckedUpdateWithoutKategoriInput>
+    create: XOR<ArtikelCreateWithoutKategoriInput, ArtikelUncheckedCreateWithoutKategoriInput>
+  }
+
+  export type ArtikelUpdateWithWhereUniqueWithoutKategoriInput = {
+    where: ArtikelWhereUniqueInput
+    data: XOR<ArtikelUpdateWithoutKategoriInput, ArtikelUncheckedUpdateWithoutKategoriInput>
+  }
+
+  export type ArtikelUpdateManyWithWhereWithoutKategoriInput = {
+    where: ArtikelScalarWhereInput
+    data: XOR<ArtikelUpdateManyMutationInput, ArtikelUncheckedUpdateManyWithoutKategoriInput>
+  }
+
+  export type ArtikelCreateWithoutArtikel_disimpanInput = {
+    id_artikel: string
+    judul_artikel: string
+    tanggal_artikel?: Date | string
+    deskripsi_artikel: string
+    isi_artikel: string
+    status_artikel: $Enums.StatusArtikel
+    status_verifikasi: boolean
+    gambar_artikel: string
+    kategori: KategoriArtikelCreateNestedOneWithoutArtikelInput
     pengguna: PenggunaCreateNestedOneWithoutArtikelInput
     artikel_disukai?: ArtikelDisukaiCreateNestedManyWithoutArtikelInput
-    admin: AdminCreateNestedOneWithoutArtikel_diverifikasiInput
     komentar_artikel?: KomentarArtikelCreateNestedManyWithoutArtikelInput
   }
 
   export type ArtikelUncheckedCreateWithoutArtikel_disimpanInput = {
-    id_artikel?: number
+    id_artikel: string
     judul_artikel: string
     tanggal_artikel?: Date | string
-    rating_artikel: number
+    deskripsi_artikel: string
     isi_artikel: string
-    status_artikel: number
+    status_artikel: $Enums.StatusArtikel
     status_verifikasi: boolean
+    gambar_artikel: string
+    id_kategori_artikel: number
     id_pengguna: string
-    id_verifikator: string
     artikel_disukai?: ArtikelDisukaiUncheckedCreateNestedManyWithoutArtikelInput
     komentar_artikel?: KomentarArtikelUncheckedCreateNestedManyWithoutArtikelInput
   }
@@ -29234,28 +30546,31 @@ export namespace Prisma {
   }
 
   export type ArtikelUpdateWithoutArtikel_disimpanInput = {
+    id_artikel?: StringFieldUpdateOperationsInput | string
     judul_artikel?: StringFieldUpdateOperationsInput | string
     tanggal_artikel?: DateTimeFieldUpdateOperationsInput | Date | string
-    rating_artikel?: IntFieldUpdateOperationsInput | number
+    deskripsi_artikel?: StringFieldUpdateOperationsInput | string
     isi_artikel?: StringFieldUpdateOperationsInput | string
-    status_artikel?: IntFieldUpdateOperationsInput | number
+    status_artikel?: EnumStatusArtikelFieldUpdateOperationsInput | $Enums.StatusArtikel
     status_verifikasi?: BoolFieldUpdateOperationsInput | boolean
+    gambar_artikel?: StringFieldUpdateOperationsInput | string
+    kategori?: KategoriArtikelUpdateOneRequiredWithoutArtikelNestedInput
     pengguna?: PenggunaUpdateOneRequiredWithoutArtikelNestedInput
     artikel_disukai?: ArtikelDisukaiUpdateManyWithoutArtikelNestedInput
-    admin?: AdminUpdateOneRequiredWithoutArtikel_diverifikasiNestedInput
     komentar_artikel?: KomentarArtikelUpdateManyWithoutArtikelNestedInput
   }
 
   export type ArtikelUncheckedUpdateWithoutArtikel_disimpanInput = {
-    id_artikel?: IntFieldUpdateOperationsInput | number
+    id_artikel?: StringFieldUpdateOperationsInput | string
     judul_artikel?: StringFieldUpdateOperationsInput | string
     tanggal_artikel?: DateTimeFieldUpdateOperationsInput | Date | string
-    rating_artikel?: IntFieldUpdateOperationsInput | number
+    deskripsi_artikel?: StringFieldUpdateOperationsInput | string
     isi_artikel?: StringFieldUpdateOperationsInput | string
-    status_artikel?: IntFieldUpdateOperationsInput | number
+    status_artikel?: EnumStatusArtikelFieldUpdateOperationsInput | $Enums.StatusArtikel
     status_verifikasi?: BoolFieldUpdateOperationsInput | boolean
+    gambar_artikel?: StringFieldUpdateOperationsInput | string
+    id_kategori_artikel?: IntFieldUpdateOperationsInput | number
     id_pengguna?: StringFieldUpdateOperationsInput | string
-    id_verifikator?: StringFieldUpdateOperationsInput | string
     artikel_disukai?: ArtikelDisukaiUncheckedUpdateManyWithoutArtikelNestedInput
     komentar_artikel?: KomentarArtikelUncheckedUpdateManyWithoutArtikelNestedInput
   }
@@ -29312,28 +30627,31 @@ export namespace Prisma {
   }
 
   export type ArtikelCreateWithoutArtikel_disukaiInput = {
+    id_artikel: string
     judul_artikel: string
     tanggal_artikel?: Date | string
-    rating_artikel: number
+    deskripsi_artikel: string
     isi_artikel: string
-    status_artikel: number
+    status_artikel: $Enums.StatusArtikel
     status_verifikasi: boolean
+    gambar_artikel: string
+    kategori: KategoriArtikelCreateNestedOneWithoutArtikelInput
     pengguna: PenggunaCreateNestedOneWithoutArtikelInput
     artikel_disimpan?: ArtikelDisimpanCreateNestedManyWithoutArtikelInput
-    admin: AdminCreateNestedOneWithoutArtikel_diverifikasiInput
     komentar_artikel?: KomentarArtikelCreateNestedManyWithoutArtikelInput
   }
 
   export type ArtikelUncheckedCreateWithoutArtikel_disukaiInput = {
-    id_artikel?: number
+    id_artikel: string
     judul_artikel: string
     tanggal_artikel?: Date | string
-    rating_artikel: number
+    deskripsi_artikel: string
     isi_artikel: string
-    status_artikel: number
+    status_artikel: $Enums.StatusArtikel
     status_verifikasi: boolean
+    gambar_artikel: string
+    id_kategori_artikel: number
     id_pengguna: string
-    id_verifikator: string
     artikel_disimpan?: ArtikelDisimpanUncheckedCreateNestedManyWithoutArtikelInput
     komentar_artikel?: KomentarArtikelUncheckedCreateNestedManyWithoutArtikelInput
   }
@@ -29400,28 +30718,31 @@ export namespace Prisma {
   }
 
   export type ArtikelUpdateWithoutArtikel_disukaiInput = {
+    id_artikel?: StringFieldUpdateOperationsInput | string
     judul_artikel?: StringFieldUpdateOperationsInput | string
     tanggal_artikel?: DateTimeFieldUpdateOperationsInput | Date | string
-    rating_artikel?: IntFieldUpdateOperationsInput | number
+    deskripsi_artikel?: StringFieldUpdateOperationsInput | string
     isi_artikel?: StringFieldUpdateOperationsInput | string
-    status_artikel?: IntFieldUpdateOperationsInput | number
+    status_artikel?: EnumStatusArtikelFieldUpdateOperationsInput | $Enums.StatusArtikel
     status_verifikasi?: BoolFieldUpdateOperationsInput | boolean
+    gambar_artikel?: StringFieldUpdateOperationsInput | string
+    kategori?: KategoriArtikelUpdateOneRequiredWithoutArtikelNestedInput
     pengguna?: PenggunaUpdateOneRequiredWithoutArtikelNestedInput
     artikel_disimpan?: ArtikelDisimpanUpdateManyWithoutArtikelNestedInput
-    admin?: AdminUpdateOneRequiredWithoutArtikel_diverifikasiNestedInput
     komentar_artikel?: KomentarArtikelUpdateManyWithoutArtikelNestedInput
   }
 
   export type ArtikelUncheckedUpdateWithoutArtikel_disukaiInput = {
-    id_artikel?: IntFieldUpdateOperationsInput | number
+    id_artikel?: StringFieldUpdateOperationsInput | string
     judul_artikel?: StringFieldUpdateOperationsInput | string
     tanggal_artikel?: DateTimeFieldUpdateOperationsInput | Date | string
-    rating_artikel?: IntFieldUpdateOperationsInput | number
+    deskripsi_artikel?: StringFieldUpdateOperationsInput | string
     isi_artikel?: StringFieldUpdateOperationsInput | string
-    status_artikel?: IntFieldUpdateOperationsInput | number
+    status_artikel?: EnumStatusArtikelFieldUpdateOperationsInput | $Enums.StatusArtikel
     status_verifikasi?: BoolFieldUpdateOperationsInput | boolean
+    gambar_artikel?: StringFieldUpdateOperationsInput | string
+    id_kategori_artikel?: IntFieldUpdateOperationsInput | number
     id_pengguna?: StringFieldUpdateOperationsInput | string
-    id_verifikator?: StringFieldUpdateOperationsInput | string
     artikel_disimpan?: ArtikelDisimpanUncheckedUpdateManyWithoutArtikelNestedInput
     komentar_artikel?: KomentarArtikelUncheckedUpdateManyWithoutArtikelNestedInput
   }
@@ -29478,28 +30799,31 @@ export namespace Prisma {
   }
 
   export type ArtikelCreateWithoutKomentar_artikelInput = {
+    id_artikel: string
     judul_artikel: string
     tanggal_artikel?: Date | string
-    rating_artikel: number
+    deskripsi_artikel: string
     isi_artikel: string
-    status_artikel: number
+    status_artikel: $Enums.StatusArtikel
     status_verifikasi: boolean
+    gambar_artikel: string
+    kategori: KategoriArtikelCreateNestedOneWithoutArtikelInput
     pengguna: PenggunaCreateNestedOneWithoutArtikelInput
     artikel_disimpan?: ArtikelDisimpanCreateNestedManyWithoutArtikelInput
     artikel_disukai?: ArtikelDisukaiCreateNestedManyWithoutArtikelInput
-    admin: AdminCreateNestedOneWithoutArtikel_diverifikasiInput
   }
 
   export type ArtikelUncheckedCreateWithoutKomentar_artikelInput = {
-    id_artikel?: number
+    id_artikel: string
     judul_artikel: string
     tanggal_artikel?: Date | string
-    rating_artikel: number
+    deskripsi_artikel: string
     isi_artikel: string
-    status_artikel: number
+    status_artikel: $Enums.StatusArtikel
     status_verifikasi: boolean
+    gambar_artikel: string
+    id_kategori_artikel: number
     id_pengguna: string
-    id_verifikator: string
     artikel_disimpan?: ArtikelDisimpanUncheckedCreateNestedManyWithoutArtikelInput
     artikel_disukai?: ArtikelDisukaiUncheckedCreateNestedManyWithoutArtikelInput
   }
@@ -29566,28 +30890,31 @@ export namespace Prisma {
   }
 
   export type ArtikelUpdateWithoutKomentar_artikelInput = {
+    id_artikel?: StringFieldUpdateOperationsInput | string
     judul_artikel?: StringFieldUpdateOperationsInput | string
     tanggal_artikel?: DateTimeFieldUpdateOperationsInput | Date | string
-    rating_artikel?: IntFieldUpdateOperationsInput | number
+    deskripsi_artikel?: StringFieldUpdateOperationsInput | string
     isi_artikel?: StringFieldUpdateOperationsInput | string
-    status_artikel?: IntFieldUpdateOperationsInput | number
+    status_artikel?: EnumStatusArtikelFieldUpdateOperationsInput | $Enums.StatusArtikel
     status_verifikasi?: BoolFieldUpdateOperationsInput | boolean
+    gambar_artikel?: StringFieldUpdateOperationsInput | string
+    kategori?: KategoriArtikelUpdateOneRequiredWithoutArtikelNestedInput
     pengguna?: PenggunaUpdateOneRequiredWithoutArtikelNestedInput
     artikel_disimpan?: ArtikelDisimpanUpdateManyWithoutArtikelNestedInput
     artikel_disukai?: ArtikelDisukaiUpdateManyWithoutArtikelNestedInput
-    admin?: AdminUpdateOneRequiredWithoutArtikel_diverifikasiNestedInput
   }
 
   export type ArtikelUncheckedUpdateWithoutKomentar_artikelInput = {
-    id_artikel?: IntFieldUpdateOperationsInput | number
+    id_artikel?: StringFieldUpdateOperationsInput | string
     judul_artikel?: StringFieldUpdateOperationsInput | string
     tanggal_artikel?: DateTimeFieldUpdateOperationsInput | Date | string
-    rating_artikel?: IntFieldUpdateOperationsInput | number
+    deskripsi_artikel?: StringFieldUpdateOperationsInput | string
     isi_artikel?: StringFieldUpdateOperationsInput | string
-    status_artikel?: IntFieldUpdateOperationsInput | number
+    status_artikel?: EnumStatusArtikelFieldUpdateOperationsInput | $Enums.StatusArtikel
     status_verifikasi?: BoolFieldUpdateOperationsInput | boolean
+    gambar_artikel?: StringFieldUpdateOperationsInput | string
+    id_kategori_artikel?: IntFieldUpdateOperationsInput | number
     id_pengguna?: StringFieldUpdateOperationsInput | string
-    id_verifikator?: StringFieldUpdateOperationsInput | string
     artikel_disimpan?: ArtikelDisimpanUncheckedUpdateManyWithoutArtikelNestedInput
     artikel_disukai?: ArtikelDisukaiUncheckedUpdateManyWithoutArtikelNestedInput
   }
@@ -29680,7 +31007,6 @@ export namespace Prisma {
     password_admin: string
     tanggal_pembuatan_akun: Date | string
     avatar?: string | null
-    artikel_diverifikasi?: ArtikelCreateNestedManyWithoutAdminInput
   }
 
   export type AdminUncheckedCreateWithoutWorkshop_diverifikasiInput = {
@@ -29691,7 +31017,6 @@ export namespace Prisma {
     password_admin: string
     tanggal_pembuatan_akun: Date | string
     avatar?: string | null
-    artikel_diverifikasi?: ArtikelUncheckedCreateNestedManyWithoutAdminInput
   }
 
   export type AdminCreateOrConnectWithoutWorkshop_diverifikasiInput = {
@@ -29784,7 +31109,6 @@ export namespace Prisma {
     password_admin?: StringFieldUpdateOperationsInput | string
     tanggal_pembuatan_akun?: DateTimeFieldUpdateOperationsInput | Date | string
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
-    artikel_diverifikasi?: ArtikelUpdateManyWithoutAdminNestedInput
   }
 
   export type AdminUncheckedUpdateWithoutWorkshop_diverifikasiInput = {
@@ -29795,7 +31119,6 @@ export namespace Prisma {
     password_admin?: StringFieldUpdateOperationsInput | string
     tanggal_pembuatan_akun?: DateTimeFieldUpdateOperationsInput | Date | string
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
-    artikel_diverifikasi?: ArtikelUncheckedUpdateManyWithoutAdminNestedInput
   }
 
   export type WorkshopTerdaftarUpsertWithWhereUniqueWithoutWorkshopInput = {
@@ -30712,30 +32035,31 @@ export namespace Prisma {
   }
 
   export type ArtikelCreateManyPenggunaInput = {
-    id_artikel?: number
+    id_artikel: string
     judul_artikel: string
     tanggal_artikel?: Date | string
-    rating_artikel: number
+    deskripsi_artikel: string
     isi_artikel: string
-    status_artikel: number
+    status_artikel: $Enums.StatusArtikel
     status_verifikasi: boolean
-    id_verifikator: string
+    gambar_artikel: string
+    id_kategori_artikel: number
   }
 
   export type ArtikelDisimpanCreateManyPenggunaInput = {
     id_penyimpanan?: number
-    id_artikel: number
+    id_artikel: string
   }
 
   export type ArtikelDisukaiCreateManyPenggunaInput = {
     id_disukai?: number
-    id_artikel: number
+    id_artikel: string
     rating: number
   }
 
   export type KomentarArtikelCreateManyPenggunaInput = {
     id_komentar?: number
-    id_artikel: number
+    id_artikel: string
     komentar: string
   }
 
@@ -30780,41 +32104,45 @@ export namespace Prisma {
   }
 
   export type ArtikelUpdateWithoutPenggunaInput = {
+    id_artikel?: StringFieldUpdateOperationsInput | string
     judul_artikel?: StringFieldUpdateOperationsInput | string
     tanggal_artikel?: DateTimeFieldUpdateOperationsInput | Date | string
-    rating_artikel?: IntFieldUpdateOperationsInput | number
+    deskripsi_artikel?: StringFieldUpdateOperationsInput | string
     isi_artikel?: StringFieldUpdateOperationsInput | string
-    status_artikel?: IntFieldUpdateOperationsInput | number
+    status_artikel?: EnumStatusArtikelFieldUpdateOperationsInput | $Enums.StatusArtikel
     status_verifikasi?: BoolFieldUpdateOperationsInput | boolean
+    gambar_artikel?: StringFieldUpdateOperationsInput | string
+    kategori?: KategoriArtikelUpdateOneRequiredWithoutArtikelNestedInput
     artikel_disimpan?: ArtikelDisimpanUpdateManyWithoutArtikelNestedInput
     artikel_disukai?: ArtikelDisukaiUpdateManyWithoutArtikelNestedInput
-    admin?: AdminUpdateOneRequiredWithoutArtikel_diverifikasiNestedInput
     komentar_artikel?: KomentarArtikelUpdateManyWithoutArtikelNestedInput
   }
 
   export type ArtikelUncheckedUpdateWithoutPenggunaInput = {
-    id_artikel?: IntFieldUpdateOperationsInput | number
+    id_artikel?: StringFieldUpdateOperationsInput | string
     judul_artikel?: StringFieldUpdateOperationsInput | string
     tanggal_artikel?: DateTimeFieldUpdateOperationsInput | Date | string
-    rating_artikel?: IntFieldUpdateOperationsInput | number
+    deskripsi_artikel?: StringFieldUpdateOperationsInput | string
     isi_artikel?: StringFieldUpdateOperationsInput | string
-    status_artikel?: IntFieldUpdateOperationsInput | number
+    status_artikel?: EnumStatusArtikelFieldUpdateOperationsInput | $Enums.StatusArtikel
     status_verifikasi?: BoolFieldUpdateOperationsInput | boolean
-    id_verifikator?: StringFieldUpdateOperationsInput | string
+    gambar_artikel?: StringFieldUpdateOperationsInput | string
+    id_kategori_artikel?: IntFieldUpdateOperationsInput | number
     artikel_disimpan?: ArtikelDisimpanUncheckedUpdateManyWithoutArtikelNestedInput
     artikel_disukai?: ArtikelDisukaiUncheckedUpdateManyWithoutArtikelNestedInput
     komentar_artikel?: KomentarArtikelUncheckedUpdateManyWithoutArtikelNestedInput
   }
 
   export type ArtikelUncheckedUpdateManyWithoutPenggunaInput = {
-    id_artikel?: IntFieldUpdateOperationsInput | number
+    id_artikel?: StringFieldUpdateOperationsInput | string
     judul_artikel?: StringFieldUpdateOperationsInput | string
     tanggal_artikel?: DateTimeFieldUpdateOperationsInput | Date | string
-    rating_artikel?: IntFieldUpdateOperationsInput | number
+    deskripsi_artikel?: StringFieldUpdateOperationsInput | string
     isi_artikel?: StringFieldUpdateOperationsInput | string
-    status_artikel?: IntFieldUpdateOperationsInput | number
+    status_artikel?: EnumStatusArtikelFieldUpdateOperationsInput | $Enums.StatusArtikel
     status_verifikasi?: BoolFieldUpdateOperationsInput | boolean
-    id_verifikator?: StringFieldUpdateOperationsInput | string
+    gambar_artikel?: StringFieldUpdateOperationsInput | string
+    id_kategori_artikel?: IntFieldUpdateOperationsInput | number
   }
 
   export type ArtikelDisimpanUpdateWithoutPenggunaInput = {
@@ -30823,12 +32151,12 @@ export namespace Prisma {
 
   export type ArtikelDisimpanUncheckedUpdateWithoutPenggunaInput = {
     id_penyimpanan?: IntFieldUpdateOperationsInput | number
-    id_artikel?: IntFieldUpdateOperationsInput | number
+    id_artikel?: StringFieldUpdateOperationsInput | string
   }
 
   export type ArtikelDisimpanUncheckedUpdateManyWithoutPenggunaInput = {
     id_penyimpanan?: IntFieldUpdateOperationsInput | number
-    id_artikel?: IntFieldUpdateOperationsInput | number
+    id_artikel?: StringFieldUpdateOperationsInput | string
   }
 
   export type ArtikelDisukaiUpdateWithoutPenggunaInput = {
@@ -30838,13 +32166,13 @@ export namespace Prisma {
 
   export type ArtikelDisukaiUncheckedUpdateWithoutPenggunaInput = {
     id_disukai?: IntFieldUpdateOperationsInput | number
-    id_artikel?: IntFieldUpdateOperationsInput | number
+    id_artikel?: StringFieldUpdateOperationsInput | string
     rating?: IntFieldUpdateOperationsInput | number
   }
 
   export type ArtikelDisukaiUncheckedUpdateManyWithoutPenggunaInput = {
     id_disukai?: IntFieldUpdateOperationsInput | number
-    id_artikel?: IntFieldUpdateOperationsInput | number
+    id_artikel?: StringFieldUpdateOperationsInput | string
     rating?: IntFieldUpdateOperationsInput | number
   }
 
@@ -30855,13 +32183,13 @@ export namespace Prisma {
 
   export type KomentarArtikelUncheckedUpdateWithoutPenggunaInput = {
     id_komentar?: IntFieldUpdateOperationsInput | number
-    id_artikel?: IntFieldUpdateOperationsInput | number
+    id_artikel?: StringFieldUpdateOperationsInput | string
     komentar?: StringFieldUpdateOperationsInput | string
   }
 
   export type KomentarArtikelUncheckedUpdateManyWithoutPenggunaInput = {
     id_komentar?: IntFieldUpdateOperationsInput | number
-    id_artikel?: IntFieldUpdateOperationsInput | number
+    id_artikel?: StringFieldUpdateOperationsInput | string
     komentar?: StringFieldUpdateOperationsInput | string
   }
 
@@ -30940,17 +32268,6 @@ export namespace Prisma {
     id_verifikator?: StringFieldUpdateOperationsInput | string
   }
 
-  export type ArtikelCreateManyAdminInput = {
-    id_artikel?: number
-    judul_artikel: string
-    tanggal_artikel?: Date | string
-    rating_artikel: number
-    isi_artikel: string
-    status_artikel: number
-    status_verifikasi: boolean
-    id_pengguna: string
-  }
-
   export type WorkshopCreateManyAdminInput = {
     id_workshop?: string
     judul_workshop: string
@@ -30961,44 +32278,6 @@ export namespace Prisma {
     kapasitas: number
     status_verifikasi: boolean
     id_facilitator: string
-  }
-
-  export type ArtikelUpdateWithoutAdminInput = {
-    judul_artikel?: StringFieldUpdateOperationsInput | string
-    tanggal_artikel?: DateTimeFieldUpdateOperationsInput | Date | string
-    rating_artikel?: IntFieldUpdateOperationsInput | number
-    isi_artikel?: StringFieldUpdateOperationsInput | string
-    status_artikel?: IntFieldUpdateOperationsInput | number
-    status_verifikasi?: BoolFieldUpdateOperationsInput | boolean
-    pengguna?: PenggunaUpdateOneRequiredWithoutArtikelNestedInput
-    artikel_disimpan?: ArtikelDisimpanUpdateManyWithoutArtikelNestedInput
-    artikel_disukai?: ArtikelDisukaiUpdateManyWithoutArtikelNestedInput
-    komentar_artikel?: KomentarArtikelUpdateManyWithoutArtikelNestedInput
-  }
-
-  export type ArtikelUncheckedUpdateWithoutAdminInput = {
-    id_artikel?: IntFieldUpdateOperationsInput | number
-    judul_artikel?: StringFieldUpdateOperationsInput | string
-    tanggal_artikel?: DateTimeFieldUpdateOperationsInput | Date | string
-    rating_artikel?: IntFieldUpdateOperationsInput | number
-    isi_artikel?: StringFieldUpdateOperationsInput | string
-    status_artikel?: IntFieldUpdateOperationsInput | number
-    status_verifikasi?: BoolFieldUpdateOperationsInput | boolean
-    id_pengguna?: StringFieldUpdateOperationsInput | string
-    artikel_disimpan?: ArtikelDisimpanUncheckedUpdateManyWithoutArtikelNestedInput
-    artikel_disukai?: ArtikelDisukaiUncheckedUpdateManyWithoutArtikelNestedInput
-    komentar_artikel?: KomentarArtikelUncheckedUpdateManyWithoutArtikelNestedInput
-  }
-
-  export type ArtikelUncheckedUpdateManyWithoutAdminInput = {
-    id_artikel?: IntFieldUpdateOperationsInput | number
-    judul_artikel?: StringFieldUpdateOperationsInput | string
-    tanggal_artikel?: DateTimeFieldUpdateOperationsInput | Date | string
-    rating_artikel?: IntFieldUpdateOperationsInput | number
-    isi_artikel?: StringFieldUpdateOperationsInput | string
-    status_artikel?: IntFieldUpdateOperationsInput | number
-    status_verifikasi?: BoolFieldUpdateOperationsInput | boolean
-    id_pengguna?: StringFieldUpdateOperationsInput | string
   }
 
   export type WorkshopUpdateWithoutAdminInput = {
@@ -31102,6 +32381,60 @@ export namespace Prisma {
     id_komentar?: IntFieldUpdateOperationsInput | number
     id_pengguna?: StringFieldUpdateOperationsInput | string
     komentar?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type ArtikelCreateManyKategoriInput = {
+    id_artikel: string
+    judul_artikel: string
+    tanggal_artikel?: Date | string
+    deskripsi_artikel: string
+    isi_artikel: string
+    status_artikel: $Enums.StatusArtikel
+    status_verifikasi: boolean
+    gambar_artikel: string
+    id_pengguna: string
+  }
+
+  export type ArtikelUpdateWithoutKategoriInput = {
+    id_artikel?: StringFieldUpdateOperationsInput | string
+    judul_artikel?: StringFieldUpdateOperationsInput | string
+    tanggal_artikel?: DateTimeFieldUpdateOperationsInput | Date | string
+    deskripsi_artikel?: StringFieldUpdateOperationsInput | string
+    isi_artikel?: StringFieldUpdateOperationsInput | string
+    status_artikel?: EnumStatusArtikelFieldUpdateOperationsInput | $Enums.StatusArtikel
+    status_verifikasi?: BoolFieldUpdateOperationsInput | boolean
+    gambar_artikel?: StringFieldUpdateOperationsInput | string
+    pengguna?: PenggunaUpdateOneRequiredWithoutArtikelNestedInput
+    artikel_disimpan?: ArtikelDisimpanUpdateManyWithoutArtikelNestedInput
+    artikel_disukai?: ArtikelDisukaiUpdateManyWithoutArtikelNestedInput
+    komentar_artikel?: KomentarArtikelUpdateManyWithoutArtikelNestedInput
+  }
+
+  export type ArtikelUncheckedUpdateWithoutKategoriInput = {
+    id_artikel?: StringFieldUpdateOperationsInput | string
+    judul_artikel?: StringFieldUpdateOperationsInput | string
+    tanggal_artikel?: DateTimeFieldUpdateOperationsInput | Date | string
+    deskripsi_artikel?: StringFieldUpdateOperationsInput | string
+    isi_artikel?: StringFieldUpdateOperationsInput | string
+    status_artikel?: EnumStatusArtikelFieldUpdateOperationsInput | $Enums.StatusArtikel
+    status_verifikasi?: BoolFieldUpdateOperationsInput | boolean
+    gambar_artikel?: StringFieldUpdateOperationsInput | string
+    id_pengguna?: StringFieldUpdateOperationsInput | string
+    artikel_disimpan?: ArtikelDisimpanUncheckedUpdateManyWithoutArtikelNestedInput
+    artikel_disukai?: ArtikelDisukaiUncheckedUpdateManyWithoutArtikelNestedInput
+    komentar_artikel?: KomentarArtikelUncheckedUpdateManyWithoutArtikelNestedInput
+  }
+
+  export type ArtikelUncheckedUpdateManyWithoutKategoriInput = {
+    id_artikel?: StringFieldUpdateOperationsInput | string
+    judul_artikel?: StringFieldUpdateOperationsInput | string
+    tanggal_artikel?: DateTimeFieldUpdateOperationsInput | Date | string
+    deskripsi_artikel?: StringFieldUpdateOperationsInput | string
+    isi_artikel?: StringFieldUpdateOperationsInput | string
+    status_artikel?: EnumStatusArtikelFieldUpdateOperationsInput | $Enums.StatusArtikel
+    status_verifikasi?: BoolFieldUpdateOperationsInput | boolean
+    gambar_artikel?: StringFieldUpdateOperationsInput | string
+    id_pengguna?: StringFieldUpdateOperationsInput | string
   }
 
   export type WorkshopTerdaftarCreateManyWorkshopInput = {

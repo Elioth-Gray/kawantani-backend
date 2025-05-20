@@ -170,12 +170,18 @@ exports.Prisma.ArtikelScalarFieldEnum = {
   id_artikel: 'id_artikel',
   judul_artikel: 'judul_artikel',
   tanggal_artikel: 'tanggal_artikel',
-  rating_artikel: 'rating_artikel',
+  deskripsi_artikel: 'deskripsi_artikel',
   isi_artikel: 'isi_artikel',
   status_artikel: 'status_artikel',
   status_verifikasi: 'status_verifikasi',
-  id_pengguna: 'id_pengguna',
-  id_verifikator: 'id_verifikator'
+  gambar_artikel: 'gambar_artikel',
+  id_kategori_artikel: 'id_kategori_artikel',
+  id_pengguna: 'id_pengguna'
+};
+
+exports.Prisma.KategoriArtikelScalarFieldEnum = {
+  id_kategori_artikel: 'id_kategori_artikel',
+  nama_kategori_artikel: 'nama_kategori_artikel'
 };
 
 exports.Prisma.ArtikelDisimpanScalarFieldEnum = {
@@ -284,7 +290,10 @@ exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
 };
-
+exports.StatusArtikel = exports.$Enums.StatusArtikel = {
+  DRAFT: 'DRAFT',
+  PUBLISHED: 'PUBLISHED'
+};
 
 exports.Prisma.ModelName = {
   Provinsi: 'Provinsi',
@@ -293,6 +302,7 @@ exports.Prisma.ModelName = {
   Facilitator: 'Facilitator',
   Admin: 'Admin',
   Artikel: 'Artikel',
+  KategoriArtikel: 'KategoriArtikel',
   ArtikelDisimpan: 'ArtikelDisimpan',
   ArtikelDisukai: 'ArtikelDisukai',
   KomentarArtikel: 'KomentarArtikel',

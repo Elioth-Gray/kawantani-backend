@@ -8,6 +8,7 @@ import facilitatorRoute from './routes/facilitatorRoute';
 import locationRoute from './routes/locationRoute';
 import path from 'path';
 import fs from 'fs';
+import articlesRouter from './routes/articlesRoute';
 
 dotenv.config();
 
@@ -24,6 +25,7 @@ app.use('/api', authRoute);
 app.use('/api', userRoute);
 app.use('/api', facilitatorRoute);
 app.use('/api', locationRoute);
+app.use('/api', articlesRouter);
 
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
