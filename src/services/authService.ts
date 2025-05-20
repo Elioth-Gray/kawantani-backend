@@ -299,33 +299,6 @@ export const loginUser = async (data: TLogin) => {
   }
 };
 
-export const getUserData = async (data: TToken) => {
-  try {
-    const user = await prisma.pengguna.findUnique({
-      where: { id_pengguna: data.id },
-    });
-
-    if (!user) {
-      throw { status: 404, message: 'User tidak ditemukan!' };
-    }
-
-    return {
-      id: user.id_pengguna,
-      firstName: user.nama_depan_pengguna,
-      lastName: user.nama_belakang_pengguna,
-      gender: user.jenisKelamin,
-      email: user.email_pengguna,
-      phoneNumber: user.nomor_telepon_pengguna,
-      dateOfBirth: user.tanggal_lahir_pengguna,
-      password: user.password_pengguna,
-      verificationSchema: user.status_verfikasi,
-      verificationCode: user.kode_verifikasi,
-    };
-  } catch (error: any) {
-    throw error;
-  }
-};
-
 export const loginAdmin = async (data: TLogin) => {
   const { email, password } = data;
 

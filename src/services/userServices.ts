@@ -2,6 +2,8 @@ import prisma from '../prisma/prismaClient';
 import * as Yup from 'yup';
 import { TUpdateProfile, TUpdateUser } from '../types/userTypes';
 import bcrypt from 'bcryptjs';
+import path from 'path';
+import fs from 'fs';
 
 const userSchema = Yup.object({
   id: Yup.string().required('Id user harus diisi!'),
@@ -16,7 +18,7 @@ const updateProfileSchema = Yup.object({
   password: Yup.string()
     .required('Password harus diisi!')
     .min(6, 'Password minimal 6 karakter!'),
-  gender: Yup.number().required('Jenis kelamin harus diisi!'),
+  gender: Yup.string().required('Jenis kelamin harus diisi!'),
   confirmPassword: Yup.string()
     .required('Konfirmasi password harus diisi!')
     .oneOf([Yup.ref('password')], 'Password harus sama!'),
@@ -57,6 +59,8 @@ export const getById = async (id: string) => {
         nama_belakang_pengguna: true,
         email_pengguna: true,
         nomor_telepon_pengguna: true,
+        jenisKelamin: true,
+        avatar: true
       },
     });
     if (!user) {
@@ -69,6 +73,7 @@ export const getById = async (id: string) => {
     throw err;
   }
 };
+
 
 export const updateUser = async (data: TUpdateUser) => {
   const {
@@ -187,6 +192,7 @@ export const updateUserProfile = async (data: TUpdateProfile) => {
     password,
     confirmPassword,
     gender,
+    avatar
   } = data;
 
   try {
@@ -239,6 +245,24 @@ export const updateUserProfile = async (data: TUpdateProfile) => {
 
     const dateOfBirthNew = new Date(dateOfBirth);
 
+    if(avatar){
+      if (existing.avatar) {
+        const oldAvatarPath = path.join(process.cwd(), 'uploads', 'users', existing.avatar);
+        fs.unlink(oldAvatarPath, (err) => {
+          if (err) {
+            console.error('Gagal menghapus file avatar lama:', err.message);
+          }
+        });
+      }
+    
+      await prisma.pengguna.update({
+        where: { id_pengguna: user.id },
+        data: {
+          avatar: avatar
+        },
+      });
+    }
+
     const result = await prisma.pengguna.update({
       where: { id_pengguna: user.id },
       data: {
@@ -248,7 +272,7 @@ export const updateUserProfile = async (data: TUpdateProfile) => {
         nomor_telepon_pengguna: phoneNumber,
         password_pengguna: finalPassword,
         tanggal_lahir_pengguna: dateOfBirthNew,
-        jenisKelamin: gender,
+        jenisKelamin: parseInt(gender, 10),
       },
     });
 

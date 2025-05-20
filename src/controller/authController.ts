@@ -8,7 +8,6 @@ import {
 } from '../services/authService';
 import { TLogin, TRegister, TToken } from '../types/authTypes';
 import { IReqUser } from '../middlewares/authMiddleware';
-import { getUserData } from '../services/authService';
 import { IRequestWithFile } from '../types/multerTypes';
 import path from 'path';
 import fs from 'fs';
@@ -99,28 +98,6 @@ export const loginUserCredential = async (req: Request, res: Response) => {
       data: {
         token: result.token,
         user: result.user,
-      },
-    });
-  } catch (error: any) {
-    const statusCode = error.status || 500;
-    const message = error.message || 'Terjadi kesalahan pada server.';
-    return res.status(statusCode).json({
-      success: false,
-      message,
-      data: null,
-    });
-  }
-};
-
-export const me = async (req: IReqUser, res: Response) => {
-  const user = req.user as TToken;
-  try {
-    const result = await getUserData(user);
-    res.status(200).json({
-      success: true,
-      message: 'Berhasil mendapatkan user!',
-      data: {
-        user: result,
       },
     });
   } catch (error: any) {

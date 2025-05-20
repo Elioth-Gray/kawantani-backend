@@ -7,6 +7,10 @@ import {
   updateUserProfile,
 } from '../services/userServices';
 import { IReqUser } from '../middlewares/authMiddleware';
+import { IRequestWithFileAuth } from '../types/multerTypes';
+import path from 'path';
+import fs from 'fs';
+import { TToken } from '../types/authTypes';
 
 export const getAllUsers = async (req: Request, res: Response) => {
   try {
@@ -66,9 +70,34 @@ export const update = async (req: IReqUser, res: Response) => {
   }
 };
 
-export const updateProfile = async (req: IReqUser, res: Response) => {
+export const me = async (req: IReqUser, res: Response) => {
+  const user = req.user as TToken;
+  try {
+    const result = await getById(user.id);
+    res.status(200).json({
+      success: true,
+      message: 'Berhasil mendapatkan user!',
+      data: {
+        user: result,
+      },
+    });
+  } catch (error: any) {
+    const statusCode = error.status || 500;
+    const message = error.message || 'Terjadi kesalahan pada server.';
+    return res.status(statusCode).json({
+      success: false,
+      message,
+      data: null,
+    });
+  }
+};
+
+export const updateProfile = async (req: IRequestWithFileAuth, res: Response) => {
+  const fileName = req.file?.filename;
+
   const data = {
     user: req.user,
+    avatar: fileName,
     ...req.body,
   };
   try {
@@ -79,6 +108,13 @@ export const updateProfile = async (req: IReqUser, res: Response) => {
       data: result,
     });
   } catch (error) {
+    if (fileName) {
+      const filePath = path.join(__dirname, '..', 'uploads', 'users', fileName);
+      fs.unlink(filePath, (err) => {
+        if (err) console.error('Gagal menghapus file avatar:', err.message);
+      });
+    }
+
     const err = error as unknown as Error;
     res.status(400).json({
       message: err.message,

@@ -3,7 +3,6 @@ import {
   register,
   verifyAccount,
   loginUserCredential,
-  me,
   sendActivation,
   loginAdminCredential,
 } from '../controller/authController';
@@ -16,7 +15,6 @@ const uploadUserAvatar = createMulterUploader('users');
 authRouter.post('/auth/register', uploadUserAvatar.single('avatar'), register);
 authRouter.post('/auth/activate', authMiddleware, verifyAccount);
 authRouter.post('/auth/login', loginUserCredential);
-authRouter.get('/auth/me', authMiddleware, me);
 authRouter.post('/auth/sendcode', authMiddleware, sendActivation);
 authRouter.post('/auth/admin/login', loginAdminCredential);
 

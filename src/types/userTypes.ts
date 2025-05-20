@@ -25,5 +25,6 @@ export type TUpdateProfile = {
   dateOfBirth: string;
   password: string;
   confirmPassword: string;
-  gender: number;
+  gender: string;
+  avatar: string;
 };
