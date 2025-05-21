@@ -22,6 +22,54 @@ function simpleSlug(str: string): string {
     .replace(/[^\w-]+/g, '');
 }
 
+export const getAllArticle = async () => {
+  try {
+    const articles = await prisma.artikel.findMany();
+
+    if (!articles) {
+      throw { status: 400, message: 'Artikel tidak ditemukan!' };
+    }
+
+    return articles;
+  } catch (error: any) {
+    if (error.name === 'ValidationError') {
+      throw {
+        status: 400,
+        message: error.errors.join(', '),
+      };
+    }
+    throw error;
+  }
+};
+
+export const getArticleById = async (id: string) => {
+  try {
+    const result = await prisma.artikel.findUnique({
+      where: {
+        id_artikel: id,
+      },
+      include: {
+        kategori: true,
+        komentar_artikel: true,
+      },
+    });
+
+    if (!result) {
+      throw { status: 400, message: 'Artikel tidak ditemukan' };
+    }
+
+    return result;
+  } catch (error: any) {
+    if (error.name === 'ValidationError') {
+      throw {
+        status: 400,
+        message: error.errors.join(', '),
+      };
+    }
+    throw error;
+  }
+};
+
 export const createArticle = async (data: TCreateArticle) => {
   const { user, title, description, content, image, category, articleStatus } =
     data;
@@ -76,6 +124,101 @@ export const createArticle = async (data: TCreateArticle) => {
     });
 
     return artikel;
+  } catch (error: any) {
+    if (error.name === 'ValidationError') {
+      throw {
+        status: 400,
+        message: error.errors.join(', '),
+      };
+    }
+    throw error;
+  }
+};
+
+export const verifyArticle = async (id: string) => {
+  try {
+    const result = await prisma.artikel.update({
+      where: {
+        id_artikel: id,
+      },
+      data: {
+        status_verifikasi: true,
+      },
+    });
+
+    return result;
+  } catch (error: any) {
+    if (error.name === 'ValidationError') {
+      throw {
+        status: 400,
+        message: error.errors.join(', '),
+      };
+    }
+    throw error;
+  }
+};
+
+export const toggleArticle = async (id: string) => {
+  try {
+    const currentStatus = await prisma.artikel.findUnique({
+      where: {
+        id_artikel: id,
+      },
+      select: {
+        status_artikel: true,
+      },
+    });
+
+    if (!currentStatus) {
+      throw { status: 400, message: 'Artikel tidak ditemukan' };
+    }
+
+    let toggle: StatusArtikel;
+
+    currentStatus?.status_artikel === StatusArtikel.DRAFT
+      ? (toggle = StatusArtikel.PUBLISHED)
+      : (toggle = StatusArtikel.DRAFT);
+
+    const result = await prisma.artikel.update({
+      where: {
+        id_artikel: id,
+      },
+      data: {
+        status_artikel: toggle,
+      },
+    });
+
+    return result;
+  } catch (error: any) {
+    if (error.name === 'ValidationError') {
+      throw {
+        status: 400,
+        message: error.errors.join(', '),
+      };
+    }
+    throw error;
+  }
+};
+
+export const deleteArticle = async (id: string) => {
+  try {
+    const isAvailable = await prisma.artikel.findUnique({
+      where: {
+        id_artikel: id,
+      },
+    });
+
+    if (!isAvailable) {
+      throw { status: 400, message: 'Artikel tidak ditemukan' };
+    }
+
+    const result = await prisma.artikel.delete({
+      where: {
+        id_artikel: id,
+      },
+    });
+
+    return result;
   } catch (error: any) {
     if (error.name === 'ValidationError') {
       throw {
