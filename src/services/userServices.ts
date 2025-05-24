@@ -60,7 +60,8 @@ export const getById = async (id: string) => {
         email_pengguna: true,
         nomor_telepon_pengguna: true,
         jenisKelamin: true,
-        avatar: true
+        avatar: true,
+        status_verfikasi: true,
       },
     });
     if (!user) {
@@ -73,7 +74,6 @@ export const getById = async (id: string) => {
     throw err;
   }
 };
-
 
 export const updateUser = async (data: TUpdateUser) => {
   const {
@@ -138,7 +138,7 @@ export const updateUser = async (data: TUpdateUser) => {
 
     const isSamePassword = await bcrypt.compare(
       password,
-      existing.password_pengguna
+      existing.password_pengguna,
     );
 
     if (!isSamePassword) {
@@ -192,7 +192,7 @@ export const updateUserProfile = async (data: TUpdateProfile) => {
     password,
     confirmPassword,
     gender,
-    avatar
+    avatar,
   } = data;
 
   try {
@@ -236,7 +236,7 @@ export const updateUserProfile = async (data: TUpdateProfile) => {
 
     const isSamePassword = await bcrypt.compare(
       password,
-      existing.password_pengguna
+      existing.password_pengguna,
     );
 
     if (!isSamePassword) {
@@ -245,20 +245,25 @@ export const updateUserProfile = async (data: TUpdateProfile) => {
 
     const dateOfBirthNew = new Date(dateOfBirth);
 
-    if(avatar){
+    if (avatar) {
       if (existing.avatar) {
-        const oldAvatarPath = path.join(process.cwd(), 'uploads', 'users', existing.avatar);
+        const oldAvatarPath = path.join(
+          process.cwd(),
+          'uploads',
+          'users',
+          existing.avatar,
+        );
         fs.unlink(oldAvatarPath, (err) => {
           if (err) {
             console.error('Gagal menghapus file avatar lama:', err.message);
           }
         });
       }
-    
+
       await prisma.pengguna.update({
         where: { id_pengguna: user.id },
         data: {
-          avatar: avatar
+          avatar: avatar,
         },
       });
     }
