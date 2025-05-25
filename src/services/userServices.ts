@@ -62,6 +62,7 @@ export const getById = async (id: string) => {
         jenisKelamin: true,
         avatar: true,
         status_verfikasi: true,
+        tanggal_lahir_pengguna: true,
       },
     });
     if (!user) {
