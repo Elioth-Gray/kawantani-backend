@@ -30,6 +30,7 @@ model Kabupaten {
   provinsi    Provinsi @relation(fields: [id_provinsi], references: [id_provinsi])
 
   facilitators Facilitator[]
+  workshop     Workshop[]
 }
 
 model Pengguna {
@@ -45,6 +46,7 @@ model Pengguna {
   kode_verifikasi        String   @db.Char(4)
   status_verfikasi       Boolean
   avatar                 String?  @db.VarChar(255)
+  status_aktif           Boolean  @default(true)
 
   workshop_terdaftar WorkshopTerdaftar[]
   artikel            Artikel[]
@@ -66,6 +68,7 @@ model Facilitator {
   tanggal_pembuatan_akun     DateTime
   alamat_lengkap_facilitator String   @db.VarChar(255)
   avatar                     String?  @db.VarChar(255)
+  status_aktif               Boolean  @default(true)
 
   id_kabupaten Int
   kabupaten    Kabupaten @relation(fields: [id_kabupaten], references: [id_kabupaten])
@@ -85,8 +88,6 @@ model Admin {
   tanggal_pembuatan_akun DateTime
   avatar                 String?  @db.VarChar(255)
 
-  workshop_diverifikasi Workshop[]
-
   @@unique([email_admin])
 }
 
@@ -104,6 +105,7 @@ model Artikel {
   status_artikel    StatusArtikel
   status_verifikasi Boolean
   gambar_artikel    String        @db.VarChar(255)
+  status_aktif      Boolean       @default(true)
 
   id_kategori_artikel Int
   kategori            KategoriArtikel   @relation(fields: [id_kategori_artikel], references: [id_kategori_artikel])
@@ -154,19 +156,23 @@ model KomentarArtikel {
 }
 
 model Workshop {
-  id_workshop        String   @id @default(cuid())
-  judul_workshop     String   @db.VarChar(100)
-  tanggal_workshop   DateTime @db.Date
-  lokasi_workshop    String   @db.VarChar(100)
-  deskripsi_workshop String   @db.VarChar(1000)
-  harga_workshop     Decimal  @db.Decimal(10, 2)
-  kapasitas          Int
-  status_verifikasi  Boolean
+  id_workshop             String   @id @default(cuid())
+  judul_workshop          String   @db.VarChar(100)
+  tanggal_workshop        DateTime @db.Date
+  alaamt_lengkap_workshop String   @db.VarChar(100)
+  deskripsi_workshop      String   @db.VarChar(1000)
+  harga_workshop          Decimal  @db.Decimal(10, 2)
+  kapasitas               Int
+  status_verifikasi       Boolean
+  lat_lokasi              Int
+  long_lokasi             Int
+  gambar_workshop         String   @db.VarChar(255)
+  status_aktif            Boolean  @default(true)
 
   id_facilitator String
   facilitator    Facilitator         @relation(fields: [id_facilitator], references: [id_facilitator])
-  id_verifikator String
-  admin          Admin               @relation(fields: [id_verifikator], references: [id_admin])
+  id_kabupaten   Int
+  kabupaten      Kabupaten           @relation(fields: [id_kabupaten], references: [id_kabupaten])
   pendaftaran    WorkshopTerdaftar[]
 }
 

@@ -141,7 +141,8 @@ exports.Prisma.PenggunaScalarFieldEnum = {
   tanggal_pembuatan_akun: 'tanggal_pembuatan_akun',
   kode_verifikasi: 'kode_verifikasi',
   status_verfikasi: 'status_verfikasi',
-  avatar: 'avatar'
+  avatar: 'avatar',
+  status_aktif: 'status_aktif'
 };
 
 exports.Prisma.FacilitatorScalarFieldEnum = {
@@ -153,6 +154,7 @@ exports.Prisma.FacilitatorScalarFieldEnum = {
   tanggal_pembuatan_akun: 'tanggal_pembuatan_akun',
   alamat_lengkap_facilitator: 'alamat_lengkap_facilitator',
   avatar: 'avatar',
+  status_aktif: 'status_aktif',
   id_kabupaten: 'id_kabupaten'
 };
 
@@ -175,6 +177,7 @@ exports.Prisma.ArtikelScalarFieldEnum = {
   status_artikel: 'status_artikel',
   status_verifikasi: 'status_verifikasi',
   gambar_artikel: 'gambar_artikel',
+  status_aktif: 'status_aktif',
   id_kategori_artikel: 'id_kategori_artikel',
   id_pengguna: 'id_pengguna'
 };
@@ -208,13 +211,17 @@ exports.Prisma.WorkshopScalarFieldEnum = {
   id_workshop: 'id_workshop',
   judul_workshop: 'judul_workshop',
   tanggal_workshop: 'tanggal_workshop',
-  lokasi_workshop: 'lokasi_workshop',
+  alaamt_lengkap_workshop: 'alaamt_lengkap_workshop',
   deskripsi_workshop: 'deskripsi_workshop',
   harga_workshop: 'harga_workshop',
   kapasitas: 'kapasitas',
   status_verifikasi: 'status_verifikasi',
+  lat_lokasi: 'lat_lokasi',
+  long_lokasi: 'long_lokasi',
+  gambar_workshop: 'gambar_workshop',
+  status_aktif: 'status_aktif',
   id_facilitator: 'id_facilitator',
-  id_verifikator: 'id_verifikator'
+  id_kabupaten: 'id_kabupaten'
 };
 
 exports.Prisma.WorkshopTerdaftarScalarFieldEnum = {

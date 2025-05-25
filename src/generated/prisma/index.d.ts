@@ -2556,10 +2556,12 @@ export namespace Prisma {
 
   export type KabupatenCountOutputType = {
     facilitators: number
+    workshop: number
   }
 
   export type KabupatenCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     facilitators?: boolean | KabupatenCountOutputTypeCountFacilitatorsArgs
+    workshop?: boolean | KabupatenCountOutputTypeCountWorkshopArgs
   }
 
   // Custom InputTypes
@@ -2578,6 +2580,13 @@ export namespace Prisma {
    */
   export type KabupatenCountOutputTypeCountFacilitatorsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: FacilitatorWhereInput
+  }
+
+  /**
+   * KabupatenCountOutputType without action
+   */
+  export type KabupatenCountOutputTypeCountWorkshopArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: WorkshopWhereInput
   }
 
 
@@ -2684,37 +2693,6 @@ export namespace Prisma {
    * FacilitatorCountOutputType without action
    */
   export type FacilitatorCountOutputTypeCountWorkshopsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: WorkshopWhereInput
-  }
-
-
-  /**
-   * Count Type AdminCountOutputType
-   */
-
-  export type AdminCountOutputType = {
-    workshop_diverifikasi: number
-  }
-
-  export type AdminCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    workshop_diverifikasi?: boolean | AdminCountOutputTypeCountWorkshop_diverifikasiArgs
-  }
-
-  // Custom InputTypes
-  /**
-   * AdminCountOutputType without action
-   */
-  export type AdminCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the AdminCountOutputType
-     */
-    select?: AdminCountOutputTypeSelect<ExtArgs> | null
-  }
-
-  /**
-   * AdminCountOutputType without action
-   */
-  export type AdminCountOutputTypeCountWorkshop_diverifikasiArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: WorkshopWhereInput
   }
 
@@ -4237,6 +4215,7 @@ export namespace Prisma {
     id_provinsi?: boolean
     provinsi?: boolean | ProvinsiDefaultArgs<ExtArgs>
     facilitators?: boolean | Kabupaten$facilitatorsArgs<ExtArgs>
+    workshop?: boolean | Kabupaten$workshopArgs<ExtArgs>
     _count?: boolean | KabupatenCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["kabupaten"]>
 
@@ -4267,6 +4246,7 @@ export namespace Prisma {
   export type KabupatenInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     provinsi?: boolean | ProvinsiDefaultArgs<ExtArgs>
     facilitators?: boolean | Kabupaten$facilitatorsArgs<ExtArgs>
+    workshop?: boolean | Kabupaten$workshopArgs<ExtArgs>
     _count?: boolean | KabupatenCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type KabupatenIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -4281,6 +4261,7 @@ export namespace Prisma {
     objects: {
       provinsi: Prisma.$ProvinsiPayload<ExtArgs>
       facilitators: Prisma.$FacilitatorPayload<ExtArgs>[]
+      workshop: Prisma.$WorkshopPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id_kabupaten: number
@@ -4683,6 +4664,7 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     provinsi<T extends ProvinsiDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ProvinsiDefaultArgs<ExtArgs>>): Prisma__ProvinsiClient<$Result.GetResult<Prisma.$ProvinsiPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     facilitators<T extends Kabupaten$facilitatorsArgs<ExtArgs> = {}>(args?: Subset<T, Kabupaten$facilitatorsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FacilitatorPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    workshop<T extends Kabupaten$workshopArgs<ExtArgs> = {}>(args?: Subset<T, Kabupaten$workshopArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WorkshopPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -5136,6 +5118,30 @@ export namespace Prisma {
   }
 
   /**
+   * Kabupaten.workshop
+   */
+  export type Kabupaten$workshopArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Workshop
+     */
+    select?: WorkshopSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Workshop
+     */
+    omit?: WorkshopOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WorkshopInclude<ExtArgs> | null
+    where?: WorkshopWhereInput
+    orderBy?: WorkshopOrderByWithRelationInput | WorkshopOrderByWithRelationInput[]
+    cursor?: WorkshopWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: WorkshopScalarFieldEnum | WorkshopScalarFieldEnum[]
+  }
+
+  /**
    * Kabupaten without action
    */
   export type KabupatenDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -5187,6 +5193,7 @@ export namespace Prisma {
     kode_verifikasi: string | null
     status_verfikasi: boolean | null
     avatar: string | null
+    status_aktif: boolean | null
   }
 
   export type PenggunaMaxAggregateOutputType = {
@@ -5202,6 +5209,7 @@ export namespace Prisma {
     kode_verifikasi: string | null
     status_verfikasi: boolean | null
     avatar: string | null
+    status_aktif: boolean | null
   }
 
   export type PenggunaCountAggregateOutputType = {
@@ -5217,6 +5225,7 @@ export namespace Prisma {
     kode_verifikasi: number
     status_verfikasi: number
     avatar: number
+    status_aktif: number
     _all: number
   }
 
@@ -5242,6 +5251,7 @@ export namespace Prisma {
     kode_verifikasi?: true
     status_verfikasi?: true
     avatar?: true
+    status_aktif?: true
   }
 
   export type PenggunaMaxAggregateInputType = {
@@ -5257,6 +5267,7 @@ export namespace Prisma {
     kode_verifikasi?: true
     status_verfikasi?: true
     avatar?: true
+    status_aktif?: true
   }
 
   export type PenggunaCountAggregateInputType = {
@@ -5272,6 +5283,7 @@ export namespace Prisma {
     kode_verifikasi?: true
     status_verfikasi?: true
     avatar?: true
+    status_aktif?: true
     _all?: true
   }
 
@@ -5374,6 +5386,7 @@ export namespace Prisma {
     kode_verifikasi: string
     status_verfikasi: boolean
     avatar: string | null
+    status_aktif: boolean
     _count: PenggunaCountAggregateOutputType | null
     _avg: PenggunaAvgAggregateOutputType | null
     _sum: PenggunaSumAggregateOutputType | null
@@ -5408,6 +5421,7 @@ export namespace Prisma {
     kode_verifikasi?: boolean
     status_verfikasi?: boolean
     avatar?: boolean
+    status_aktif?: boolean
     workshop_terdaftar?: boolean | Pengguna$workshop_terdaftarArgs<ExtArgs>
     artikel?: boolean | Pengguna$artikelArgs<ExtArgs>
     artikel_disimpan?: boolean | Pengguna$artikel_disimpanArgs<ExtArgs>
@@ -5430,6 +5444,7 @@ export namespace Prisma {
     kode_verifikasi?: boolean
     status_verfikasi?: boolean
     avatar?: boolean
+    status_aktif?: boolean
   }, ExtArgs["result"]["pengguna"]>
 
   export type PenggunaSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -5445,6 +5460,7 @@ export namespace Prisma {
     kode_verifikasi?: boolean
     status_verfikasi?: boolean
     avatar?: boolean
+    status_aktif?: boolean
   }, ExtArgs["result"]["pengguna"]>
 
   export type PenggunaSelectScalar = {
@@ -5460,9 +5476,10 @@ export namespace Prisma {
     kode_verifikasi?: boolean
     status_verfikasi?: boolean
     avatar?: boolean
+    status_aktif?: boolean
   }
 
-  export type PenggunaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_pengguna" | "nama_depan_pengguna" | "nama_belakang_pengguna" | "tanggal_lahir_pengguna" | "email_pengguna" | "nomor_telepon_pengguna" | "jenisKelamin" | "password_pengguna" | "tanggal_pembuatan_akun" | "kode_verifikasi" | "status_verfikasi" | "avatar", ExtArgs["result"]["pengguna"]>
+  export type PenggunaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_pengguna" | "nama_depan_pengguna" | "nama_belakang_pengguna" | "tanggal_lahir_pengguna" | "email_pengguna" | "nomor_telepon_pengguna" | "jenisKelamin" | "password_pengguna" | "tanggal_pembuatan_akun" | "kode_verifikasi" | "status_verfikasi" | "avatar" | "status_aktif", ExtArgs["result"]["pengguna"]>
   export type PenggunaInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     workshop_terdaftar?: boolean | Pengguna$workshop_terdaftarArgs<ExtArgs>
     artikel?: boolean | Pengguna$artikelArgs<ExtArgs>
@@ -5498,6 +5515,7 @@ export namespace Prisma {
       kode_verifikasi: string
       status_verfikasi: boolean
       avatar: string | null
+      status_aktif: boolean
     }, ExtArgs["result"]["pengguna"]>
     composites: {}
   }
@@ -5939,6 +5957,7 @@ export namespace Prisma {
     readonly kode_verifikasi: FieldRef<"Pengguna", 'String'>
     readonly status_verfikasi: FieldRef<"Pengguna", 'Boolean'>
     readonly avatar: FieldRef<"Pengguna", 'String'>
+    readonly status_aktif: FieldRef<"Pengguna", 'Boolean'>
   }
     
 
@@ -6518,6 +6537,7 @@ export namespace Prisma {
     tanggal_pembuatan_akun: Date | null
     alamat_lengkap_facilitator: string | null
     avatar: string | null
+    status_aktif: boolean | null
     id_kabupaten: number | null
   }
 
@@ -6530,6 +6550,7 @@ export namespace Prisma {
     tanggal_pembuatan_akun: Date | null
     alamat_lengkap_facilitator: string | null
     avatar: string | null
+    status_aktif: boolean | null
     id_kabupaten: number | null
   }
 
@@ -6542,6 +6563,7 @@ export namespace Prisma {
     tanggal_pembuatan_akun: number
     alamat_lengkap_facilitator: number
     avatar: number
+    status_aktif: number
     id_kabupaten: number
     _all: number
   }
@@ -6564,6 +6586,7 @@ export namespace Prisma {
     tanggal_pembuatan_akun?: true
     alamat_lengkap_facilitator?: true
     avatar?: true
+    status_aktif?: true
     id_kabupaten?: true
   }
 
@@ -6576,6 +6599,7 @@ export namespace Prisma {
     tanggal_pembuatan_akun?: true
     alamat_lengkap_facilitator?: true
     avatar?: true
+    status_aktif?: true
     id_kabupaten?: true
   }
 
@@ -6588,6 +6612,7 @@ export namespace Prisma {
     tanggal_pembuatan_akun?: true
     alamat_lengkap_facilitator?: true
     avatar?: true
+    status_aktif?: true
     id_kabupaten?: true
     _all?: true
   }
@@ -6687,6 +6712,7 @@ export namespace Prisma {
     tanggal_pembuatan_akun: Date
     alamat_lengkap_facilitator: string
     avatar: string | null
+    status_aktif: boolean
     id_kabupaten: number
     _count: FacilitatorCountAggregateOutputType | null
     _avg: FacilitatorAvgAggregateOutputType | null
@@ -6718,6 +6744,7 @@ export namespace Prisma {
     tanggal_pembuatan_akun?: boolean
     alamat_lengkap_facilitator?: boolean
     avatar?: boolean
+    status_aktif?: boolean
     id_kabupaten?: boolean
     kabupaten?: boolean | KabupatenDefaultArgs<ExtArgs>
     workshops?: boolean | Facilitator$workshopsArgs<ExtArgs>
@@ -6733,6 +6760,7 @@ export namespace Prisma {
     tanggal_pembuatan_akun?: boolean
     alamat_lengkap_facilitator?: boolean
     avatar?: boolean
+    status_aktif?: boolean
     id_kabupaten?: boolean
     kabupaten?: boolean | KabupatenDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["facilitator"]>
@@ -6746,6 +6774,7 @@ export namespace Prisma {
     tanggal_pembuatan_akun?: boolean
     alamat_lengkap_facilitator?: boolean
     avatar?: boolean
+    status_aktif?: boolean
     id_kabupaten?: boolean
     kabupaten?: boolean | KabupatenDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["facilitator"]>
@@ -6759,10 +6788,11 @@ export namespace Prisma {
     tanggal_pembuatan_akun?: boolean
     alamat_lengkap_facilitator?: boolean
     avatar?: boolean
+    status_aktif?: boolean
     id_kabupaten?: boolean
   }
 
-  export type FacilitatorOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_facilitator" | "nama_facilitator" | "email_facilitator" | "nomor_telepon_facilitator" | "password_facilitator" | "tanggal_pembuatan_akun" | "alamat_lengkap_facilitator" | "avatar" | "id_kabupaten", ExtArgs["result"]["facilitator"]>
+  export type FacilitatorOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_facilitator" | "nama_facilitator" | "email_facilitator" | "nomor_telepon_facilitator" | "password_facilitator" | "tanggal_pembuatan_akun" | "alamat_lengkap_facilitator" | "avatar" | "status_aktif" | "id_kabupaten", ExtArgs["result"]["facilitator"]>
   export type FacilitatorInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     kabupaten?: boolean | KabupatenDefaultArgs<ExtArgs>
     workshops?: boolean | Facilitator$workshopsArgs<ExtArgs>
@@ -6790,6 +6820,7 @@ export namespace Prisma {
       tanggal_pembuatan_akun: Date
       alamat_lengkap_facilitator: string
       avatar: string | null
+      status_aktif: boolean
       id_kabupaten: number
     }, ExtArgs["result"]["facilitator"]>
     composites: {}
@@ -7224,6 +7255,7 @@ export namespace Prisma {
     readonly tanggal_pembuatan_akun: FieldRef<"Facilitator", 'DateTime'>
     readonly alamat_lengkap_facilitator: FieldRef<"Facilitator", 'String'>
     readonly avatar: FieldRef<"Facilitator", 'String'>
+    readonly status_aktif: FieldRef<"Facilitator", 'Boolean'>
     readonly id_kabupaten: FieldRef<"Facilitator", 'Int'>
   }
     
@@ -7843,8 +7875,6 @@ export namespace Prisma {
     password_admin?: boolean
     tanggal_pembuatan_akun?: boolean
     avatar?: boolean
-    workshop_diverifikasi?: boolean | Admin$workshop_diverifikasiArgs<ExtArgs>
-    _count?: boolean | AdminCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["admin"]>
 
   export type AdminSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -7878,18 +7908,10 @@ export namespace Prisma {
   }
 
   export type AdminOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_admin" | "nama_depan_admin" | "nama_belakang_admin" | "email_admin" | "password_admin" | "tanggal_pembuatan_akun" | "avatar", ExtArgs["result"]["admin"]>
-  export type AdminInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    workshop_diverifikasi?: boolean | Admin$workshop_diverifikasiArgs<ExtArgs>
-    _count?: boolean | AdminCountOutputTypeDefaultArgs<ExtArgs>
-  }
-  export type AdminIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
-  export type AdminIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
 
   export type $AdminPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Admin"
-    objects: {
-      workshop_diverifikasi: Prisma.$WorkshopPayload<ExtArgs>[]
-    }
+    objects: {}
     scalars: $Extensions.GetPayloadResult<{
       id_admin: string
       nama_depan_admin: string
@@ -8292,7 +8314,6 @@ export namespace Prisma {
    */
   export interface Prisma__AdminClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    workshop_diverifikasi<T extends Admin$workshop_diverifikasiArgs<ExtArgs> = {}>(args?: Subset<T, Admin$workshop_diverifikasiArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WorkshopPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -8346,10 +8367,6 @@ export namespace Prisma {
      */
     omit?: AdminOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: AdminInclude<ExtArgs> | null
-    /**
      * Filter, which Admin to fetch.
      */
     where: AdminWhereUniqueInput
@@ -8368,10 +8385,6 @@ export namespace Prisma {
      */
     omit?: AdminOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: AdminInclude<ExtArgs> | null
-    /**
      * Filter, which Admin to fetch.
      */
     where: AdminWhereUniqueInput
@@ -8389,10 +8402,6 @@ export namespace Prisma {
      * Omit specific fields from the Admin
      */
     omit?: AdminOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: AdminInclude<ExtArgs> | null
     /**
      * Filter, which Admin to fetch.
      */
@@ -8442,10 +8451,6 @@ export namespace Prisma {
      */
     omit?: AdminOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: AdminInclude<ExtArgs> | null
-    /**
      * Filter, which Admin to fetch.
      */
     where?: AdminWhereInput
@@ -8494,10 +8499,6 @@ export namespace Prisma {
      */
     omit?: AdminOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: AdminInclude<ExtArgs> | null
-    /**
      * Filter, which Admins to fetch.
      */
     where?: AdminWhereInput
@@ -8540,10 +8541,6 @@ export namespace Prisma {
      * Omit specific fields from the Admin
      */
     omit?: AdminOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: AdminInclude<ExtArgs> | null
     /**
      * The data needed to create a Admin.
      */
@@ -8592,10 +8589,6 @@ export namespace Prisma {
      * Omit specific fields from the Admin
      */
     omit?: AdminOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: AdminInclude<ExtArgs> | null
     /**
      * The data needed to update a Admin.
      */
@@ -8663,10 +8656,6 @@ export namespace Prisma {
      */
     omit?: AdminOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: AdminInclude<ExtArgs> | null
-    /**
      * The filter to search for the Admin to update in case it exists.
      */
     where: AdminWhereUniqueInput
@@ -8693,10 +8682,6 @@ export namespace Prisma {
      */
     omit?: AdminOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: AdminInclude<ExtArgs> | null
-    /**
      * Filter which Admin to delete.
      */
     where: AdminWhereUniqueInput
@@ -8717,30 +8702,6 @@ export namespace Prisma {
   }
 
   /**
-   * Admin.workshop_diverifikasi
-   */
-  export type Admin$workshop_diverifikasiArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Workshop
-     */
-    select?: WorkshopSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Workshop
-     */
-    omit?: WorkshopOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: WorkshopInclude<ExtArgs> | null
-    where?: WorkshopWhereInput
-    orderBy?: WorkshopOrderByWithRelationInput | WorkshopOrderByWithRelationInput[]
-    cursor?: WorkshopWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: WorkshopScalarFieldEnum | WorkshopScalarFieldEnum[]
-  }
-
-  /**
    * Admin without action
    */
   export type AdminDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -8752,10 +8713,6 @@ export namespace Prisma {
      * Omit specific fields from the Admin
      */
     omit?: AdminOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: AdminInclude<ExtArgs> | null
   }
 
 
@@ -8788,6 +8745,7 @@ export namespace Prisma {
     status_artikel: $Enums.StatusArtikel | null
     status_verifikasi: boolean | null
     gambar_artikel: string | null
+    status_aktif: boolean | null
     id_kategori_artikel: number | null
     id_pengguna: string | null
   }
@@ -8801,6 +8759,7 @@ export namespace Prisma {
     status_artikel: $Enums.StatusArtikel | null
     status_verifikasi: boolean | null
     gambar_artikel: string | null
+    status_aktif: boolean | null
     id_kategori_artikel: number | null
     id_pengguna: string | null
   }
@@ -8814,6 +8773,7 @@ export namespace Prisma {
     status_artikel: number
     status_verifikasi: number
     gambar_artikel: number
+    status_aktif: number
     id_kategori_artikel: number
     id_pengguna: number
     _all: number
@@ -8837,6 +8797,7 @@ export namespace Prisma {
     status_artikel?: true
     status_verifikasi?: true
     gambar_artikel?: true
+    status_aktif?: true
     id_kategori_artikel?: true
     id_pengguna?: true
   }
@@ -8850,6 +8811,7 @@ export namespace Prisma {
     status_artikel?: true
     status_verifikasi?: true
     gambar_artikel?: true
+    status_aktif?: true
     id_kategori_artikel?: true
     id_pengguna?: true
   }
@@ -8863,6 +8825,7 @@ export namespace Prisma {
     status_artikel?: true
     status_verifikasi?: true
     gambar_artikel?: true
+    status_aktif?: true
     id_kategori_artikel?: true
     id_pengguna?: true
     _all?: true
@@ -8963,6 +8926,7 @@ export namespace Prisma {
     status_artikel: $Enums.StatusArtikel
     status_verifikasi: boolean
     gambar_artikel: string
+    status_aktif: boolean
     id_kategori_artikel: number
     id_pengguna: string
     _count: ArtikelCountAggregateOutputType | null
@@ -8995,6 +8959,7 @@ export namespace Prisma {
     status_artikel?: boolean
     status_verifikasi?: boolean
     gambar_artikel?: boolean
+    status_aktif?: boolean
     id_kategori_artikel?: boolean
     id_pengguna?: boolean
     kategori?: boolean | KategoriArtikelDefaultArgs<ExtArgs>
@@ -9014,6 +8979,7 @@ export namespace Prisma {
     status_artikel?: boolean
     status_verifikasi?: boolean
     gambar_artikel?: boolean
+    status_aktif?: boolean
     id_kategori_artikel?: boolean
     id_pengguna?: boolean
     kategori?: boolean | KategoriArtikelDefaultArgs<ExtArgs>
@@ -9029,6 +8995,7 @@ export namespace Prisma {
     status_artikel?: boolean
     status_verifikasi?: boolean
     gambar_artikel?: boolean
+    status_aktif?: boolean
     id_kategori_artikel?: boolean
     id_pengguna?: boolean
     kategori?: boolean | KategoriArtikelDefaultArgs<ExtArgs>
@@ -9044,11 +9011,12 @@ export namespace Prisma {
     status_artikel?: boolean
     status_verifikasi?: boolean
     gambar_artikel?: boolean
+    status_aktif?: boolean
     id_kategori_artikel?: boolean
     id_pengguna?: boolean
   }
 
-  export type ArtikelOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_artikel" | "judul_artikel" | "tanggal_artikel" | "deskripsi_artikel" | "isi_artikel" | "status_artikel" | "status_verifikasi" | "gambar_artikel" | "id_kategori_artikel" | "id_pengguna", ExtArgs["result"]["artikel"]>
+  export type ArtikelOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_artikel" | "judul_artikel" | "tanggal_artikel" | "deskripsi_artikel" | "isi_artikel" | "status_artikel" | "status_verifikasi" | "gambar_artikel" | "status_aktif" | "id_kategori_artikel" | "id_pengguna", ExtArgs["result"]["artikel"]>
   export type ArtikelInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     kategori?: boolean | KategoriArtikelDefaultArgs<ExtArgs>
     pengguna?: boolean | PenggunaDefaultArgs<ExtArgs>
@@ -9084,6 +9052,7 @@ export namespace Prisma {
       status_artikel: $Enums.StatusArtikel
       status_verifikasi: boolean
       gambar_artikel: string
+      status_aktif: boolean
       id_kategori_artikel: number
       id_pengguna: string
     }, ExtArgs["result"]["artikel"]>
@@ -9522,6 +9491,7 @@ export namespace Prisma {
     readonly status_artikel: FieldRef<"Artikel", 'StatusArtikel'>
     readonly status_verifikasi: FieldRef<"Artikel", 'Boolean'>
     readonly gambar_artikel: FieldRef<"Artikel", 'String'>
+    readonly status_aktif: FieldRef<"Artikel", 'Boolean'>
     readonly id_kategori_artikel: FieldRef<"Artikel", 'Int'>
     readonly id_pengguna: FieldRef<"Artikel", 'String'>
   }
@@ -14342,50 +14312,68 @@ export namespace Prisma {
   export type WorkshopAvgAggregateOutputType = {
     harga_workshop: Decimal | null
     kapasitas: number | null
+    lat_lokasi: number | null
+    long_lokasi: number | null
+    id_kabupaten: number | null
   }
 
   export type WorkshopSumAggregateOutputType = {
     harga_workshop: Decimal | null
     kapasitas: number | null
+    lat_lokasi: number | null
+    long_lokasi: number | null
+    id_kabupaten: number | null
   }
 
   export type WorkshopMinAggregateOutputType = {
     id_workshop: string | null
     judul_workshop: string | null
     tanggal_workshop: Date | null
-    lokasi_workshop: string | null
+    alaamt_lengkap_workshop: string | null
     deskripsi_workshop: string | null
     harga_workshop: Decimal | null
     kapasitas: number | null
     status_verifikasi: boolean | null
+    lat_lokasi: number | null
+    long_lokasi: number | null
+    gambar_workshop: string | null
+    status_aktif: boolean | null
     id_facilitator: string | null
-    id_verifikator: string | null
+    id_kabupaten: number | null
   }
 
   export type WorkshopMaxAggregateOutputType = {
     id_workshop: string | null
     judul_workshop: string | null
     tanggal_workshop: Date | null
-    lokasi_workshop: string | null
+    alaamt_lengkap_workshop: string | null
     deskripsi_workshop: string | null
     harga_workshop: Decimal | null
     kapasitas: number | null
     status_verifikasi: boolean | null
+    lat_lokasi: number | null
+    long_lokasi: number | null
+    gambar_workshop: string | null
+    status_aktif: boolean | null
     id_facilitator: string | null
-    id_verifikator: string | null
+    id_kabupaten: number | null
   }
 
   export type WorkshopCountAggregateOutputType = {
     id_workshop: number
     judul_workshop: number
     tanggal_workshop: number
-    lokasi_workshop: number
+    alaamt_lengkap_workshop: number
     deskripsi_workshop: number
     harga_workshop: number
     kapasitas: number
     status_verifikasi: number
+    lat_lokasi: number
+    long_lokasi: number
+    gambar_workshop: number
+    status_aktif: number
     id_facilitator: number
-    id_verifikator: number
+    id_kabupaten: number
     _all: number
   }
 
@@ -14393,50 +14381,68 @@ export namespace Prisma {
   export type WorkshopAvgAggregateInputType = {
     harga_workshop?: true
     kapasitas?: true
+    lat_lokasi?: true
+    long_lokasi?: true
+    id_kabupaten?: true
   }
 
   export type WorkshopSumAggregateInputType = {
     harga_workshop?: true
     kapasitas?: true
+    lat_lokasi?: true
+    long_lokasi?: true
+    id_kabupaten?: true
   }
 
   export type WorkshopMinAggregateInputType = {
     id_workshop?: true
     judul_workshop?: true
     tanggal_workshop?: true
-    lokasi_workshop?: true
+    alaamt_lengkap_workshop?: true
     deskripsi_workshop?: true
     harga_workshop?: true
     kapasitas?: true
     status_verifikasi?: true
+    lat_lokasi?: true
+    long_lokasi?: true
+    gambar_workshop?: true
+    status_aktif?: true
     id_facilitator?: true
-    id_verifikator?: true
+    id_kabupaten?: true
   }
 
   export type WorkshopMaxAggregateInputType = {
     id_workshop?: true
     judul_workshop?: true
     tanggal_workshop?: true
-    lokasi_workshop?: true
+    alaamt_lengkap_workshop?: true
     deskripsi_workshop?: true
     harga_workshop?: true
     kapasitas?: true
     status_verifikasi?: true
+    lat_lokasi?: true
+    long_lokasi?: true
+    gambar_workshop?: true
+    status_aktif?: true
     id_facilitator?: true
-    id_verifikator?: true
+    id_kabupaten?: true
   }
 
   export type WorkshopCountAggregateInputType = {
     id_workshop?: true
     judul_workshop?: true
     tanggal_workshop?: true
-    lokasi_workshop?: true
+    alaamt_lengkap_workshop?: true
     deskripsi_workshop?: true
     harga_workshop?: true
     kapasitas?: true
     status_verifikasi?: true
+    lat_lokasi?: true
+    long_lokasi?: true
+    gambar_workshop?: true
+    status_aktif?: true
     id_facilitator?: true
-    id_verifikator?: true
+    id_kabupaten?: true
     _all?: true
   }
 
@@ -14530,13 +14536,17 @@ export namespace Prisma {
     id_workshop: string
     judul_workshop: string
     tanggal_workshop: Date
-    lokasi_workshop: string
+    alaamt_lengkap_workshop: string
     deskripsi_workshop: string
     harga_workshop: Decimal
     kapasitas: number
     status_verifikasi: boolean
+    lat_lokasi: number
+    long_lokasi: number
+    gambar_workshop: string
+    status_aktif: boolean
     id_facilitator: string
-    id_verifikator: string
+    id_kabupaten: number
     _count: WorkshopCountAggregateOutputType | null
     _avg: WorkshopAvgAggregateOutputType | null
     _sum: WorkshopSumAggregateOutputType | null
@@ -14562,15 +14572,19 @@ export namespace Prisma {
     id_workshop?: boolean
     judul_workshop?: boolean
     tanggal_workshop?: boolean
-    lokasi_workshop?: boolean
+    alaamt_lengkap_workshop?: boolean
     deskripsi_workshop?: boolean
     harga_workshop?: boolean
     kapasitas?: boolean
     status_verifikasi?: boolean
+    lat_lokasi?: boolean
+    long_lokasi?: boolean
+    gambar_workshop?: boolean
+    status_aktif?: boolean
     id_facilitator?: boolean
-    id_verifikator?: boolean
+    id_kabupaten?: boolean
     facilitator?: boolean | FacilitatorDefaultArgs<ExtArgs>
-    admin?: boolean | AdminDefaultArgs<ExtArgs>
+    kabupaten?: boolean | KabupatenDefaultArgs<ExtArgs>
     pendaftaran?: boolean | Workshop$pendaftaranArgs<ExtArgs>
     _count?: boolean | WorkshopCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["workshop"]>
@@ -14579,79 +14593,95 @@ export namespace Prisma {
     id_workshop?: boolean
     judul_workshop?: boolean
     tanggal_workshop?: boolean
-    lokasi_workshop?: boolean
+    alaamt_lengkap_workshop?: boolean
     deskripsi_workshop?: boolean
     harga_workshop?: boolean
     kapasitas?: boolean
     status_verifikasi?: boolean
+    lat_lokasi?: boolean
+    long_lokasi?: boolean
+    gambar_workshop?: boolean
+    status_aktif?: boolean
     id_facilitator?: boolean
-    id_verifikator?: boolean
+    id_kabupaten?: boolean
     facilitator?: boolean | FacilitatorDefaultArgs<ExtArgs>
-    admin?: boolean | AdminDefaultArgs<ExtArgs>
+    kabupaten?: boolean | KabupatenDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["workshop"]>
 
   export type WorkshopSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id_workshop?: boolean
     judul_workshop?: boolean
     tanggal_workshop?: boolean
-    lokasi_workshop?: boolean
+    alaamt_lengkap_workshop?: boolean
     deskripsi_workshop?: boolean
     harga_workshop?: boolean
     kapasitas?: boolean
     status_verifikasi?: boolean
+    lat_lokasi?: boolean
+    long_lokasi?: boolean
+    gambar_workshop?: boolean
+    status_aktif?: boolean
     id_facilitator?: boolean
-    id_verifikator?: boolean
+    id_kabupaten?: boolean
     facilitator?: boolean | FacilitatorDefaultArgs<ExtArgs>
-    admin?: boolean | AdminDefaultArgs<ExtArgs>
+    kabupaten?: boolean | KabupatenDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["workshop"]>
 
   export type WorkshopSelectScalar = {
     id_workshop?: boolean
     judul_workshop?: boolean
     tanggal_workshop?: boolean
-    lokasi_workshop?: boolean
+    alaamt_lengkap_workshop?: boolean
     deskripsi_workshop?: boolean
     harga_workshop?: boolean
     kapasitas?: boolean
     status_verifikasi?: boolean
+    lat_lokasi?: boolean
+    long_lokasi?: boolean
+    gambar_workshop?: boolean
+    status_aktif?: boolean
     id_facilitator?: boolean
-    id_verifikator?: boolean
+    id_kabupaten?: boolean
   }
 
-  export type WorkshopOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_workshop" | "judul_workshop" | "tanggal_workshop" | "lokasi_workshop" | "deskripsi_workshop" | "harga_workshop" | "kapasitas" | "status_verifikasi" | "id_facilitator" | "id_verifikator", ExtArgs["result"]["workshop"]>
+  export type WorkshopOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_workshop" | "judul_workshop" | "tanggal_workshop" | "alaamt_lengkap_workshop" | "deskripsi_workshop" | "harga_workshop" | "kapasitas" | "status_verifikasi" | "lat_lokasi" | "long_lokasi" | "gambar_workshop" | "status_aktif" | "id_facilitator" | "id_kabupaten", ExtArgs["result"]["workshop"]>
   export type WorkshopInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     facilitator?: boolean | FacilitatorDefaultArgs<ExtArgs>
-    admin?: boolean | AdminDefaultArgs<ExtArgs>
+    kabupaten?: boolean | KabupatenDefaultArgs<ExtArgs>
     pendaftaran?: boolean | Workshop$pendaftaranArgs<ExtArgs>
     _count?: boolean | WorkshopCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type WorkshopIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     facilitator?: boolean | FacilitatorDefaultArgs<ExtArgs>
-    admin?: boolean | AdminDefaultArgs<ExtArgs>
+    kabupaten?: boolean | KabupatenDefaultArgs<ExtArgs>
   }
   export type WorkshopIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     facilitator?: boolean | FacilitatorDefaultArgs<ExtArgs>
-    admin?: boolean | AdminDefaultArgs<ExtArgs>
+    kabupaten?: boolean | KabupatenDefaultArgs<ExtArgs>
   }
 
   export type $WorkshopPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Workshop"
     objects: {
       facilitator: Prisma.$FacilitatorPayload<ExtArgs>
-      admin: Prisma.$AdminPayload<ExtArgs>
+      kabupaten: Prisma.$KabupatenPayload<ExtArgs>
       pendaftaran: Prisma.$WorkshopTerdaftarPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id_workshop: string
       judul_workshop: string
       tanggal_workshop: Date
-      lokasi_workshop: string
+      alaamt_lengkap_workshop: string
       deskripsi_workshop: string
       harga_workshop: Prisma.Decimal
       kapasitas: number
       status_verifikasi: boolean
+      lat_lokasi: number
+      long_lokasi: number
+      gambar_workshop: string
+      status_aktif: boolean
       id_facilitator: string
-      id_verifikator: string
+      id_kabupaten: number
     }, ExtArgs["result"]["workshop"]>
     composites: {}
   }
@@ -15047,7 +15077,7 @@ export namespace Prisma {
   export interface Prisma__WorkshopClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     facilitator<T extends FacilitatorDefaultArgs<ExtArgs> = {}>(args?: Subset<T, FacilitatorDefaultArgs<ExtArgs>>): Prisma__FacilitatorClient<$Result.GetResult<Prisma.$FacilitatorPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    admin<T extends AdminDefaultArgs<ExtArgs> = {}>(args?: Subset<T, AdminDefaultArgs<ExtArgs>>): Prisma__AdminClient<$Result.GetResult<Prisma.$AdminPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    kabupaten<T extends KabupatenDefaultArgs<ExtArgs> = {}>(args?: Subset<T, KabupatenDefaultArgs<ExtArgs>>): Prisma__KabupatenClient<$Result.GetResult<Prisma.$KabupatenPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     pendaftaran<T extends Workshop$pendaftaranArgs<ExtArgs> = {}>(args?: Subset<T, Workshop$pendaftaranArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WorkshopTerdaftarPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -15081,13 +15111,17 @@ export namespace Prisma {
     readonly id_workshop: FieldRef<"Workshop", 'String'>
     readonly judul_workshop: FieldRef<"Workshop", 'String'>
     readonly tanggal_workshop: FieldRef<"Workshop", 'DateTime'>
-    readonly lokasi_workshop: FieldRef<"Workshop", 'String'>
+    readonly alaamt_lengkap_workshop: FieldRef<"Workshop", 'String'>
     readonly deskripsi_workshop: FieldRef<"Workshop", 'String'>
     readonly harga_workshop: FieldRef<"Workshop", 'Decimal'>
     readonly kapasitas: FieldRef<"Workshop", 'Int'>
     readonly status_verifikasi: FieldRef<"Workshop", 'Boolean'>
+    readonly lat_lokasi: FieldRef<"Workshop", 'Int'>
+    readonly long_lokasi: FieldRef<"Workshop", 'Int'>
+    readonly gambar_workshop: FieldRef<"Workshop", 'String'>
+    readonly status_aktif: FieldRef<"Workshop", 'Boolean'>
     readonly id_facilitator: FieldRef<"Workshop", 'String'>
-    readonly id_verifikator: FieldRef<"Workshop", 'String'>
+    readonly id_kabupaten: FieldRef<"Workshop", 'Int'>
   }
     
 
@@ -24447,7 +24481,8 @@ export namespace Prisma {
     tanggal_pembuatan_akun: 'tanggal_pembuatan_akun',
     kode_verifikasi: 'kode_verifikasi',
     status_verfikasi: 'status_verfikasi',
-    avatar: 'avatar'
+    avatar: 'avatar',
+    status_aktif: 'status_aktif'
   };
 
   export type PenggunaScalarFieldEnum = (typeof PenggunaScalarFieldEnum)[keyof typeof PenggunaScalarFieldEnum]
@@ -24462,6 +24497,7 @@ export namespace Prisma {
     tanggal_pembuatan_akun: 'tanggal_pembuatan_akun',
     alamat_lengkap_facilitator: 'alamat_lengkap_facilitator',
     avatar: 'avatar',
+    status_aktif: 'status_aktif',
     id_kabupaten: 'id_kabupaten'
   };
 
@@ -24490,6 +24526,7 @@ export namespace Prisma {
     status_artikel: 'status_artikel',
     status_verifikasi: 'status_verifikasi',
     gambar_artikel: 'gambar_artikel',
+    status_aktif: 'status_aktif',
     id_kategori_artikel: 'id_kategori_artikel',
     id_pengguna: 'id_pengguna'
   };
@@ -24538,13 +24575,17 @@ export namespace Prisma {
     id_workshop: 'id_workshop',
     judul_workshop: 'judul_workshop',
     tanggal_workshop: 'tanggal_workshop',
-    lokasi_workshop: 'lokasi_workshop',
+    alaamt_lengkap_workshop: 'alaamt_lengkap_workshop',
     deskripsi_workshop: 'deskripsi_workshop',
     harga_workshop: 'harga_workshop',
     kapasitas: 'kapasitas',
     status_verifikasi: 'status_verifikasi',
+    lat_lokasi: 'lat_lokasi',
+    long_lokasi: 'long_lokasi',
+    gambar_workshop: 'gambar_workshop',
+    status_aktif: 'status_aktif',
     id_facilitator: 'id_facilitator',
-    id_verifikator: 'id_verifikator'
+    id_kabupaten: 'id_kabupaten'
   };
 
   export type WorkshopScalarFieldEnum = (typeof WorkshopScalarFieldEnum)[keyof typeof WorkshopScalarFieldEnum]
@@ -24808,6 +24849,7 @@ export namespace Prisma {
     id_provinsi?: IntFilter<"Kabupaten"> | number
     provinsi?: XOR<ProvinsiScalarRelationFilter, ProvinsiWhereInput>
     facilitators?: FacilitatorListRelationFilter
+    workshop?: WorkshopListRelationFilter
   }
 
   export type KabupatenOrderByWithRelationInput = {
@@ -24817,6 +24859,7 @@ export namespace Prisma {
     id_provinsi?: SortOrder
     provinsi?: ProvinsiOrderByWithRelationInput
     facilitators?: FacilitatorOrderByRelationAggregateInput
+    workshop?: WorkshopOrderByRelationAggregateInput
   }
 
   export type KabupatenWhereUniqueInput = Prisma.AtLeast<{
@@ -24829,6 +24872,7 @@ export namespace Prisma {
     id_provinsi?: IntFilter<"Kabupaten"> | number
     provinsi?: XOR<ProvinsiScalarRelationFilter, ProvinsiWhereInput>
     facilitators?: FacilitatorListRelationFilter
+    workshop?: WorkshopListRelationFilter
   }, "id_kabupaten">
 
   export type KabupatenOrderByWithAggregationInput = {
@@ -24869,6 +24913,7 @@ export namespace Prisma {
     kode_verifikasi?: StringFilter<"Pengguna"> | string
     status_verfikasi?: BoolFilter<"Pengguna"> | boolean
     avatar?: StringNullableFilter<"Pengguna"> | string | null
+    status_aktif?: BoolFilter<"Pengguna"> | boolean
     workshop_terdaftar?: WorkshopTerdaftarListRelationFilter
     artikel?: ArtikelListRelationFilter
     artikel_disimpan?: ArtikelDisimpanListRelationFilter
@@ -24890,6 +24935,7 @@ export namespace Prisma {
     kode_verifikasi?: SortOrder
     status_verfikasi?: SortOrder
     avatar?: SortOrderInput | SortOrder
+    status_aktif?: SortOrder
     workshop_terdaftar?: WorkshopTerdaftarOrderByRelationAggregateInput
     artikel?: ArtikelOrderByRelationAggregateInput
     artikel_disimpan?: ArtikelDisimpanOrderByRelationAggregateInput
@@ -24914,6 +24960,7 @@ export namespace Prisma {
     kode_verifikasi?: StringFilter<"Pengguna"> | string
     status_verfikasi?: BoolFilter<"Pengguna"> | boolean
     avatar?: StringNullableFilter<"Pengguna"> | string | null
+    status_aktif?: BoolFilter<"Pengguna"> | boolean
     workshop_terdaftar?: WorkshopTerdaftarListRelationFilter
     artikel?: ArtikelListRelationFilter
     artikel_disimpan?: ArtikelDisimpanListRelationFilter
@@ -24935,6 +24982,7 @@ export namespace Prisma {
     kode_verifikasi?: SortOrder
     status_verfikasi?: SortOrder
     avatar?: SortOrderInput | SortOrder
+    status_aktif?: SortOrder
     _count?: PenggunaCountOrderByAggregateInput
     _avg?: PenggunaAvgOrderByAggregateInput
     _max?: PenggunaMaxOrderByAggregateInput
@@ -24958,6 +25006,7 @@ export namespace Prisma {
     kode_verifikasi?: StringWithAggregatesFilter<"Pengguna"> | string
     status_verfikasi?: BoolWithAggregatesFilter<"Pengguna"> | boolean
     avatar?: StringNullableWithAggregatesFilter<"Pengguna"> | string | null
+    status_aktif?: BoolWithAggregatesFilter<"Pengguna"> | boolean
   }
 
   export type FacilitatorWhereInput = {
@@ -24972,6 +25021,7 @@ export namespace Prisma {
     tanggal_pembuatan_akun?: DateTimeFilter<"Facilitator"> | Date | string
     alamat_lengkap_facilitator?: StringFilter<"Facilitator"> | string
     avatar?: StringNullableFilter<"Facilitator"> | string | null
+    status_aktif?: BoolFilter<"Facilitator"> | boolean
     id_kabupaten?: IntFilter<"Facilitator"> | number
     kabupaten?: XOR<KabupatenScalarRelationFilter, KabupatenWhereInput>
     workshops?: WorkshopListRelationFilter
@@ -24986,6 +25036,7 @@ export namespace Prisma {
     tanggal_pembuatan_akun?: SortOrder
     alamat_lengkap_facilitator?: SortOrder
     avatar?: SortOrderInput | SortOrder
+    status_aktif?: SortOrder
     id_kabupaten?: SortOrder
     kabupaten?: KabupatenOrderByWithRelationInput
     workshops?: WorkshopOrderByRelationAggregateInput
@@ -25003,6 +25054,7 @@ export namespace Prisma {
     tanggal_pembuatan_akun?: DateTimeFilter<"Facilitator"> | Date | string
     alamat_lengkap_facilitator?: StringFilter<"Facilitator"> | string
     avatar?: StringNullableFilter<"Facilitator"> | string | null
+    status_aktif?: BoolFilter<"Facilitator"> | boolean
     id_kabupaten?: IntFilter<"Facilitator"> | number
     kabupaten?: XOR<KabupatenScalarRelationFilter, KabupatenWhereInput>
     workshops?: WorkshopListRelationFilter
@@ -25017,6 +25069,7 @@ export namespace Prisma {
     tanggal_pembuatan_akun?: SortOrder
     alamat_lengkap_facilitator?: SortOrder
     avatar?: SortOrderInput | SortOrder
+    status_aktif?: SortOrder
     id_kabupaten?: SortOrder
     _count?: FacilitatorCountOrderByAggregateInput
     _avg?: FacilitatorAvgOrderByAggregateInput
@@ -25037,6 +25090,7 @@ export namespace Prisma {
     tanggal_pembuatan_akun?: DateTimeWithAggregatesFilter<"Facilitator"> | Date | string
     alamat_lengkap_facilitator?: StringWithAggregatesFilter<"Facilitator"> | string
     avatar?: StringNullableWithAggregatesFilter<"Facilitator"> | string | null
+    status_aktif?: BoolWithAggregatesFilter<"Facilitator"> | boolean
     id_kabupaten?: IntWithAggregatesFilter<"Facilitator"> | number
   }
 
@@ -25051,7 +25105,6 @@ export namespace Prisma {
     password_admin?: StringFilter<"Admin"> | string
     tanggal_pembuatan_akun?: DateTimeFilter<"Admin"> | Date | string
     avatar?: StringNullableFilter<"Admin"> | string | null
-    workshop_diverifikasi?: WorkshopListRelationFilter
   }
 
   export type AdminOrderByWithRelationInput = {
@@ -25062,7 +25115,6 @@ export namespace Prisma {
     password_admin?: SortOrder
     tanggal_pembuatan_akun?: SortOrder
     avatar?: SortOrderInput | SortOrder
-    workshop_diverifikasi?: WorkshopOrderByRelationAggregateInput
   }
 
   export type AdminWhereUniqueInput = Prisma.AtLeast<{
@@ -25076,7 +25128,6 @@ export namespace Prisma {
     password_admin?: StringFilter<"Admin"> | string
     tanggal_pembuatan_akun?: DateTimeFilter<"Admin"> | Date | string
     avatar?: StringNullableFilter<"Admin"> | string | null
-    workshop_diverifikasi?: WorkshopListRelationFilter
   }, "id_admin" | "email_admin">
 
   export type AdminOrderByWithAggregationInput = {
@@ -25117,6 +25168,7 @@ export namespace Prisma {
     status_artikel?: EnumStatusArtikelFilter<"Artikel"> | $Enums.StatusArtikel
     status_verifikasi?: BoolFilter<"Artikel"> | boolean
     gambar_artikel?: StringFilter<"Artikel"> | string
+    status_aktif?: BoolFilter<"Artikel"> | boolean
     id_kategori_artikel?: IntFilter<"Artikel"> | number
     id_pengguna?: StringFilter<"Artikel"> | string
     kategori?: XOR<KategoriArtikelScalarRelationFilter, KategoriArtikelWhereInput>
@@ -25135,6 +25187,7 @@ export namespace Prisma {
     status_artikel?: SortOrder
     status_verifikasi?: SortOrder
     gambar_artikel?: SortOrder
+    status_aktif?: SortOrder
     id_kategori_artikel?: SortOrder
     id_pengguna?: SortOrder
     kategori?: KategoriArtikelOrderByWithRelationInput
@@ -25156,6 +25209,7 @@ export namespace Prisma {
     status_artikel?: EnumStatusArtikelFilter<"Artikel"> | $Enums.StatusArtikel
     status_verifikasi?: BoolFilter<"Artikel"> | boolean
     gambar_artikel?: StringFilter<"Artikel"> | string
+    status_aktif?: BoolFilter<"Artikel"> | boolean
     id_kategori_artikel?: IntFilter<"Artikel"> | number
     id_pengguna?: StringFilter<"Artikel"> | string
     kategori?: XOR<KategoriArtikelScalarRelationFilter, KategoriArtikelWhereInput>
@@ -25174,6 +25228,7 @@ export namespace Prisma {
     status_artikel?: SortOrder
     status_verifikasi?: SortOrder
     gambar_artikel?: SortOrder
+    status_aktif?: SortOrder
     id_kategori_artikel?: SortOrder
     id_pengguna?: SortOrder
     _count?: ArtikelCountOrderByAggregateInput
@@ -25195,6 +25250,7 @@ export namespace Prisma {
     status_artikel?: EnumStatusArtikelWithAggregatesFilter<"Artikel"> | $Enums.StatusArtikel
     status_verifikasi?: BoolWithAggregatesFilter<"Artikel"> | boolean
     gambar_artikel?: StringWithAggregatesFilter<"Artikel"> | string
+    status_aktif?: BoolWithAggregatesFilter<"Artikel"> | boolean
     id_kategori_artikel?: IntWithAggregatesFilter<"Artikel"> | number
     id_pengguna?: StringWithAggregatesFilter<"Artikel"> | string
   }
@@ -25411,15 +25467,19 @@ export namespace Prisma {
     id_workshop?: StringFilter<"Workshop"> | string
     judul_workshop?: StringFilter<"Workshop"> | string
     tanggal_workshop?: DateTimeFilter<"Workshop"> | Date | string
-    lokasi_workshop?: StringFilter<"Workshop"> | string
+    alaamt_lengkap_workshop?: StringFilter<"Workshop"> | string
     deskripsi_workshop?: StringFilter<"Workshop"> | string
     harga_workshop?: DecimalFilter<"Workshop"> | Decimal | DecimalJsLike | number | string
     kapasitas?: IntFilter<"Workshop"> | number
     status_verifikasi?: BoolFilter<"Workshop"> | boolean
+    lat_lokasi?: IntFilter<"Workshop"> | number
+    long_lokasi?: IntFilter<"Workshop"> | number
+    gambar_workshop?: StringFilter<"Workshop"> | string
+    status_aktif?: BoolFilter<"Workshop"> | boolean
     id_facilitator?: StringFilter<"Workshop"> | string
-    id_verifikator?: StringFilter<"Workshop"> | string
+    id_kabupaten?: IntFilter<"Workshop"> | number
     facilitator?: XOR<FacilitatorScalarRelationFilter, FacilitatorWhereInput>
-    admin?: XOR<AdminScalarRelationFilter, AdminWhereInput>
+    kabupaten?: XOR<KabupatenScalarRelationFilter, KabupatenWhereInput>
     pendaftaran?: WorkshopTerdaftarListRelationFilter
   }
 
@@ -25427,15 +25487,19 @@ export namespace Prisma {
     id_workshop?: SortOrder
     judul_workshop?: SortOrder
     tanggal_workshop?: SortOrder
-    lokasi_workshop?: SortOrder
+    alaamt_lengkap_workshop?: SortOrder
     deskripsi_workshop?: SortOrder
     harga_workshop?: SortOrder
     kapasitas?: SortOrder
     status_verifikasi?: SortOrder
+    lat_lokasi?: SortOrder
+    long_lokasi?: SortOrder
+    gambar_workshop?: SortOrder
+    status_aktif?: SortOrder
     id_facilitator?: SortOrder
-    id_verifikator?: SortOrder
+    id_kabupaten?: SortOrder
     facilitator?: FacilitatorOrderByWithRelationInput
-    admin?: AdminOrderByWithRelationInput
+    kabupaten?: KabupatenOrderByWithRelationInput
     pendaftaran?: WorkshopTerdaftarOrderByRelationAggregateInput
   }
 
@@ -25446,15 +25510,19 @@ export namespace Prisma {
     NOT?: WorkshopWhereInput | WorkshopWhereInput[]
     judul_workshop?: StringFilter<"Workshop"> | string
     tanggal_workshop?: DateTimeFilter<"Workshop"> | Date | string
-    lokasi_workshop?: StringFilter<"Workshop"> | string
+    alaamt_lengkap_workshop?: StringFilter<"Workshop"> | string
     deskripsi_workshop?: StringFilter<"Workshop"> | string
     harga_workshop?: DecimalFilter<"Workshop"> | Decimal | DecimalJsLike | number | string
     kapasitas?: IntFilter<"Workshop"> | number
     status_verifikasi?: BoolFilter<"Workshop"> | boolean
+    lat_lokasi?: IntFilter<"Workshop"> | number
+    long_lokasi?: IntFilter<"Workshop"> | number
+    gambar_workshop?: StringFilter<"Workshop"> | string
+    status_aktif?: BoolFilter<"Workshop"> | boolean
     id_facilitator?: StringFilter<"Workshop"> | string
-    id_verifikator?: StringFilter<"Workshop"> | string
+    id_kabupaten?: IntFilter<"Workshop"> | number
     facilitator?: XOR<FacilitatorScalarRelationFilter, FacilitatorWhereInput>
-    admin?: XOR<AdminScalarRelationFilter, AdminWhereInput>
+    kabupaten?: XOR<KabupatenScalarRelationFilter, KabupatenWhereInput>
     pendaftaran?: WorkshopTerdaftarListRelationFilter
   }, "id_workshop">
 
@@ -25462,13 +25530,17 @@ export namespace Prisma {
     id_workshop?: SortOrder
     judul_workshop?: SortOrder
     tanggal_workshop?: SortOrder
-    lokasi_workshop?: SortOrder
+    alaamt_lengkap_workshop?: SortOrder
     deskripsi_workshop?: SortOrder
     harga_workshop?: SortOrder
     kapasitas?: SortOrder
     status_verifikasi?: SortOrder
+    lat_lokasi?: SortOrder
+    long_lokasi?: SortOrder
+    gambar_workshop?: SortOrder
+    status_aktif?: SortOrder
     id_facilitator?: SortOrder
-    id_verifikator?: SortOrder
+    id_kabupaten?: SortOrder
     _count?: WorkshopCountOrderByAggregateInput
     _avg?: WorkshopAvgOrderByAggregateInput
     _max?: WorkshopMaxOrderByAggregateInput
@@ -25483,13 +25555,17 @@ export namespace Prisma {
     id_workshop?: StringWithAggregatesFilter<"Workshop"> | string
     judul_workshop?: StringWithAggregatesFilter<"Workshop"> | string
     tanggal_workshop?: DateTimeWithAggregatesFilter<"Workshop"> | Date | string
-    lokasi_workshop?: StringWithAggregatesFilter<"Workshop"> | string
+    alaamt_lengkap_workshop?: StringWithAggregatesFilter<"Workshop"> | string
     deskripsi_workshop?: StringWithAggregatesFilter<"Workshop"> | string
     harga_workshop?: DecimalWithAggregatesFilter<"Workshop"> | Decimal | DecimalJsLike | number | string
     kapasitas?: IntWithAggregatesFilter<"Workshop"> | number
     status_verifikasi?: BoolWithAggregatesFilter<"Workshop"> | boolean
+    lat_lokasi?: IntWithAggregatesFilter<"Workshop"> | number
+    long_lokasi?: IntWithAggregatesFilter<"Workshop"> | number
+    gambar_workshop?: StringWithAggregatesFilter<"Workshop"> | string
+    status_aktif?: BoolWithAggregatesFilter<"Workshop"> | boolean
     id_facilitator?: StringWithAggregatesFilter<"Workshop"> | string
-    id_verifikator?: StringWithAggregatesFilter<"Workshop"> | string
+    id_kabupaten?: IntWithAggregatesFilter<"Workshop"> | number
   }
 
   export type WorkshopTerdaftarWhereInput = {
@@ -25985,6 +26061,7 @@ export namespace Prisma {
     type: string
     provinsi: ProvinsiCreateNestedOneWithoutKabupatenInput
     facilitators?: FacilitatorCreateNestedManyWithoutKabupatenInput
+    workshop?: WorkshopCreateNestedManyWithoutKabupatenInput
   }
 
   export type KabupatenUncheckedCreateInput = {
@@ -25993,6 +26070,7 @@ export namespace Prisma {
     type: string
     id_provinsi: number
     facilitators?: FacilitatorUncheckedCreateNestedManyWithoutKabupatenInput
+    workshop?: WorkshopUncheckedCreateNestedManyWithoutKabupatenInput
   }
 
   export type KabupatenUpdateInput = {
@@ -26000,6 +26078,7 @@ export namespace Prisma {
     type?: StringFieldUpdateOperationsInput | string
     provinsi?: ProvinsiUpdateOneRequiredWithoutKabupatenNestedInput
     facilitators?: FacilitatorUpdateManyWithoutKabupatenNestedInput
+    workshop?: WorkshopUpdateManyWithoutKabupatenNestedInput
   }
 
   export type KabupatenUncheckedUpdateInput = {
@@ -26008,6 +26087,7 @@ export namespace Prisma {
     type?: StringFieldUpdateOperationsInput | string
     id_provinsi?: IntFieldUpdateOperationsInput | number
     facilitators?: FacilitatorUncheckedUpdateManyWithoutKabupatenNestedInput
+    workshop?: WorkshopUncheckedUpdateManyWithoutKabupatenNestedInput
   }
 
   export type KabupatenCreateManyInput = {
@@ -26042,6 +26122,7 @@ export namespace Prisma {
     kode_verifikasi: string
     status_verfikasi: boolean
     avatar?: string | null
+    status_aktif?: boolean
     workshop_terdaftar?: WorkshopTerdaftarCreateNestedManyWithoutPenggunaInput
     artikel?: ArtikelCreateNestedManyWithoutPenggunaInput
     artikel_disimpan?: ArtikelDisimpanCreateNestedManyWithoutPenggunaInput
@@ -26063,6 +26144,7 @@ export namespace Prisma {
     kode_verifikasi: string
     status_verfikasi: boolean
     avatar?: string | null
+    status_aktif?: boolean
     workshop_terdaftar?: WorkshopTerdaftarUncheckedCreateNestedManyWithoutPenggunaInput
     artikel?: ArtikelUncheckedCreateNestedManyWithoutPenggunaInput
     artikel_disimpan?: ArtikelDisimpanUncheckedCreateNestedManyWithoutPenggunaInput
@@ -26084,6 +26166,7 @@ export namespace Prisma {
     kode_verifikasi?: StringFieldUpdateOperationsInput | string
     status_verfikasi?: BoolFieldUpdateOperationsInput | boolean
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    status_aktif?: BoolFieldUpdateOperationsInput | boolean
     workshop_terdaftar?: WorkshopTerdaftarUpdateManyWithoutPenggunaNestedInput
     artikel?: ArtikelUpdateManyWithoutPenggunaNestedInput
     artikel_disimpan?: ArtikelDisimpanUpdateManyWithoutPenggunaNestedInput
@@ -26105,6 +26188,7 @@ export namespace Prisma {
     kode_verifikasi?: StringFieldUpdateOperationsInput | string
     status_verfikasi?: BoolFieldUpdateOperationsInput | boolean
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    status_aktif?: BoolFieldUpdateOperationsInput | boolean
     workshop_terdaftar?: WorkshopTerdaftarUncheckedUpdateManyWithoutPenggunaNestedInput
     artikel?: ArtikelUncheckedUpdateManyWithoutPenggunaNestedInput
     artikel_disimpan?: ArtikelDisimpanUncheckedUpdateManyWithoutPenggunaNestedInput
@@ -26126,6 +26210,7 @@ export namespace Prisma {
     kode_verifikasi: string
     status_verfikasi: boolean
     avatar?: string | null
+    status_aktif?: boolean
   }
 
   export type PenggunaUpdateManyMutationInput = {
@@ -26141,6 +26226,7 @@ export namespace Prisma {
     kode_verifikasi?: StringFieldUpdateOperationsInput | string
     status_verfikasi?: BoolFieldUpdateOperationsInput | boolean
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    status_aktif?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type PenggunaUncheckedUpdateManyInput = {
@@ -26156,6 +26242,7 @@ export namespace Prisma {
     kode_verifikasi?: StringFieldUpdateOperationsInput | string
     status_verfikasi?: BoolFieldUpdateOperationsInput | boolean
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    status_aktif?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type FacilitatorCreateInput = {
@@ -26167,6 +26254,7 @@ export namespace Prisma {
     tanggal_pembuatan_akun: Date | string
     alamat_lengkap_facilitator: string
     avatar?: string | null
+    status_aktif?: boolean
     kabupaten: KabupatenCreateNestedOneWithoutFacilitatorsInput
     workshops?: WorkshopCreateNestedManyWithoutFacilitatorInput
   }
@@ -26180,6 +26268,7 @@ export namespace Prisma {
     tanggal_pembuatan_akun: Date | string
     alamat_lengkap_facilitator: string
     avatar?: string | null
+    status_aktif?: boolean
     id_kabupaten: number
     workshops?: WorkshopUncheckedCreateNestedManyWithoutFacilitatorInput
   }
@@ -26193,6 +26282,7 @@ export namespace Prisma {
     tanggal_pembuatan_akun?: DateTimeFieldUpdateOperationsInput | Date | string
     alamat_lengkap_facilitator?: StringFieldUpdateOperationsInput | string
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    status_aktif?: BoolFieldUpdateOperationsInput | boolean
     kabupaten?: KabupatenUpdateOneRequiredWithoutFacilitatorsNestedInput
     workshops?: WorkshopUpdateManyWithoutFacilitatorNestedInput
   }
@@ -26206,6 +26296,7 @@ export namespace Prisma {
     tanggal_pembuatan_akun?: DateTimeFieldUpdateOperationsInput | Date | string
     alamat_lengkap_facilitator?: StringFieldUpdateOperationsInput | string
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    status_aktif?: BoolFieldUpdateOperationsInput | boolean
     id_kabupaten?: IntFieldUpdateOperationsInput | number
     workshops?: WorkshopUncheckedUpdateManyWithoutFacilitatorNestedInput
   }
@@ -26219,6 +26310,7 @@ export namespace Prisma {
     tanggal_pembuatan_akun: Date | string
     alamat_lengkap_facilitator: string
     avatar?: string | null
+    status_aktif?: boolean
     id_kabupaten: number
   }
 
@@ -26231,6 +26323,7 @@ export namespace Prisma {
     tanggal_pembuatan_akun?: DateTimeFieldUpdateOperationsInput | Date | string
     alamat_lengkap_facilitator?: StringFieldUpdateOperationsInput | string
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    status_aktif?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type FacilitatorUncheckedUpdateManyInput = {
@@ -26242,6 +26335,7 @@ export namespace Prisma {
     tanggal_pembuatan_akun?: DateTimeFieldUpdateOperationsInput | Date | string
     alamat_lengkap_facilitator?: StringFieldUpdateOperationsInput | string
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    status_aktif?: BoolFieldUpdateOperationsInput | boolean
     id_kabupaten?: IntFieldUpdateOperationsInput | number
   }
 
@@ -26253,7 +26347,6 @@ export namespace Prisma {
     password_admin: string
     tanggal_pembuatan_akun: Date | string
     avatar?: string | null
-    workshop_diverifikasi?: WorkshopCreateNestedManyWithoutAdminInput
   }
 
   export type AdminUncheckedCreateInput = {
@@ -26264,7 +26357,6 @@ export namespace Prisma {
     password_admin: string
     tanggal_pembuatan_akun: Date | string
     avatar?: string | null
-    workshop_diverifikasi?: WorkshopUncheckedCreateNestedManyWithoutAdminInput
   }
 
   export type AdminUpdateInput = {
@@ -26275,7 +26367,6 @@ export namespace Prisma {
     password_admin?: StringFieldUpdateOperationsInput | string
     tanggal_pembuatan_akun?: DateTimeFieldUpdateOperationsInput | Date | string
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
-    workshop_diverifikasi?: WorkshopUpdateManyWithoutAdminNestedInput
   }
 
   export type AdminUncheckedUpdateInput = {
@@ -26286,7 +26377,6 @@ export namespace Prisma {
     password_admin?: StringFieldUpdateOperationsInput | string
     tanggal_pembuatan_akun?: DateTimeFieldUpdateOperationsInput | Date | string
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
-    workshop_diverifikasi?: WorkshopUncheckedUpdateManyWithoutAdminNestedInput
   }
 
   export type AdminCreateManyInput = {
@@ -26328,6 +26418,7 @@ export namespace Prisma {
     status_artikel: $Enums.StatusArtikel
     status_verifikasi: boolean
     gambar_artikel: string
+    status_aktif?: boolean
     kategori: KategoriArtikelCreateNestedOneWithoutArtikelInput
     pengguna: PenggunaCreateNestedOneWithoutArtikelInput
     artikel_disimpan?: ArtikelDisimpanCreateNestedManyWithoutArtikelInput
@@ -26344,6 +26435,7 @@ export namespace Prisma {
     status_artikel: $Enums.StatusArtikel
     status_verifikasi: boolean
     gambar_artikel: string
+    status_aktif?: boolean
     id_kategori_artikel: number
     id_pengguna: string
     artikel_disimpan?: ArtikelDisimpanUncheckedCreateNestedManyWithoutArtikelInput
@@ -26360,6 +26452,7 @@ export namespace Prisma {
     status_artikel?: EnumStatusArtikelFieldUpdateOperationsInput | $Enums.StatusArtikel
     status_verifikasi?: BoolFieldUpdateOperationsInput | boolean
     gambar_artikel?: StringFieldUpdateOperationsInput | string
+    status_aktif?: BoolFieldUpdateOperationsInput | boolean
     kategori?: KategoriArtikelUpdateOneRequiredWithoutArtikelNestedInput
     pengguna?: PenggunaUpdateOneRequiredWithoutArtikelNestedInput
     artikel_disimpan?: ArtikelDisimpanUpdateManyWithoutArtikelNestedInput
@@ -26376,6 +26469,7 @@ export namespace Prisma {
     status_artikel?: EnumStatusArtikelFieldUpdateOperationsInput | $Enums.StatusArtikel
     status_verifikasi?: BoolFieldUpdateOperationsInput | boolean
     gambar_artikel?: StringFieldUpdateOperationsInput | string
+    status_aktif?: BoolFieldUpdateOperationsInput | boolean
     id_kategori_artikel?: IntFieldUpdateOperationsInput | number
     id_pengguna?: StringFieldUpdateOperationsInput | string
     artikel_disimpan?: ArtikelDisimpanUncheckedUpdateManyWithoutArtikelNestedInput
@@ -26392,6 +26486,7 @@ export namespace Prisma {
     status_artikel: $Enums.StatusArtikel
     status_verifikasi: boolean
     gambar_artikel: string
+    status_aktif?: boolean
     id_kategori_artikel: number
     id_pengguna: string
   }
@@ -26405,6 +26500,7 @@ export namespace Prisma {
     status_artikel?: EnumStatusArtikelFieldUpdateOperationsInput | $Enums.StatusArtikel
     status_verifikasi?: BoolFieldUpdateOperationsInput | boolean
     gambar_artikel?: StringFieldUpdateOperationsInput | string
+    status_aktif?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type ArtikelUncheckedUpdateManyInput = {
@@ -26416,6 +26512,7 @@ export namespace Prisma {
     status_artikel?: EnumStatusArtikelFieldUpdateOperationsInput | $Enums.StatusArtikel
     status_verifikasi?: BoolFieldUpdateOperationsInput | boolean
     gambar_artikel?: StringFieldUpdateOperationsInput | string
+    status_aktif?: BoolFieldUpdateOperationsInput | boolean
     id_kategori_artikel?: IntFieldUpdateOperationsInput | number
     id_pengguna?: StringFieldUpdateOperationsInput | string
   }
@@ -26586,13 +26683,17 @@ export namespace Prisma {
     id_workshop?: string
     judul_workshop: string
     tanggal_workshop: Date | string
-    lokasi_workshop: string
+    alaamt_lengkap_workshop: string
     deskripsi_workshop: string
     harga_workshop: Decimal | DecimalJsLike | number | string
     kapasitas: number
     status_verifikasi: boolean
+    lat_lokasi: number
+    long_lokasi: number
+    gambar_workshop: string
+    status_aktif?: boolean
     facilitator: FacilitatorCreateNestedOneWithoutWorkshopsInput
-    admin: AdminCreateNestedOneWithoutWorkshop_diverifikasiInput
+    kabupaten: KabupatenCreateNestedOneWithoutWorkshopInput
     pendaftaran?: WorkshopTerdaftarCreateNestedManyWithoutWorkshopInput
   }
 
@@ -26600,13 +26701,17 @@ export namespace Prisma {
     id_workshop?: string
     judul_workshop: string
     tanggal_workshop: Date | string
-    lokasi_workshop: string
+    alaamt_lengkap_workshop: string
     deskripsi_workshop: string
     harga_workshop: Decimal | DecimalJsLike | number | string
     kapasitas: number
     status_verifikasi: boolean
+    lat_lokasi: number
+    long_lokasi: number
+    gambar_workshop: string
+    status_aktif?: boolean
     id_facilitator: string
-    id_verifikator: string
+    id_kabupaten: number
     pendaftaran?: WorkshopTerdaftarUncheckedCreateNestedManyWithoutWorkshopInput
   }
 
@@ -26614,13 +26719,17 @@ export namespace Prisma {
     id_workshop?: StringFieldUpdateOperationsInput | string
     judul_workshop?: StringFieldUpdateOperationsInput | string
     tanggal_workshop?: DateTimeFieldUpdateOperationsInput | Date | string
-    lokasi_workshop?: StringFieldUpdateOperationsInput | string
+    alaamt_lengkap_workshop?: StringFieldUpdateOperationsInput | string
     deskripsi_workshop?: StringFieldUpdateOperationsInput | string
     harga_workshop?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     kapasitas?: IntFieldUpdateOperationsInput | number
     status_verifikasi?: BoolFieldUpdateOperationsInput | boolean
+    lat_lokasi?: IntFieldUpdateOperationsInput | number
+    long_lokasi?: IntFieldUpdateOperationsInput | number
+    gambar_workshop?: StringFieldUpdateOperationsInput | string
+    status_aktif?: BoolFieldUpdateOperationsInput | boolean
     facilitator?: FacilitatorUpdateOneRequiredWithoutWorkshopsNestedInput
-    admin?: AdminUpdateOneRequiredWithoutWorkshop_diverifikasiNestedInput
+    kabupaten?: KabupatenUpdateOneRequiredWithoutWorkshopNestedInput
     pendaftaran?: WorkshopTerdaftarUpdateManyWithoutWorkshopNestedInput
   }
 
@@ -26628,13 +26737,17 @@ export namespace Prisma {
     id_workshop?: StringFieldUpdateOperationsInput | string
     judul_workshop?: StringFieldUpdateOperationsInput | string
     tanggal_workshop?: DateTimeFieldUpdateOperationsInput | Date | string
-    lokasi_workshop?: StringFieldUpdateOperationsInput | string
+    alaamt_lengkap_workshop?: StringFieldUpdateOperationsInput | string
     deskripsi_workshop?: StringFieldUpdateOperationsInput | string
     harga_workshop?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     kapasitas?: IntFieldUpdateOperationsInput | number
     status_verifikasi?: BoolFieldUpdateOperationsInput | boolean
+    lat_lokasi?: IntFieldUpdateOperationsInput | number
+    long_lokasi?: IntFieldUpdateOperationsInput | number
+    gambar_workshop?: StringFieldUpdateOperationsInput | string
+    status_aktif?: BoolFieldUpdateOperationsInput | boolean
     id_facilitator?: StringFieldUpdateOperationsInput | string
-    id_verifikator?: StringFieldUpdateOperationsInput | string
+    id_kabupaten?: IntFieldUpdateOperationsInput | number
     pendaftaran?: WorkshopTerdaftarUncheckedUpdateManyWithoutWorkshopNestedInput
   }
 
@@ -26642,37 +26755,49 @@ export namespace Prisma {
     id_workshop?: string
     judul_workshop: string
     tanggal_workshop: Date | string
-    lokasi_workshop: string
+    alaamt_lengkap_workshop: string
     deskripsi_workshop: string
     harga_workshop: Decimal | DecimalJsLike | number | string
     kapasitas: number
     status_verifikasi: boolean
+    lat_lokasi: number
+    long_lokasi: number
+    gambar_workshop: string
+    status_aktif?: boolean
     id_facilitator: string
-    id_verifikator: string
+    id_kabupaten: number
   }
 
   export type WorkshopUpdateManyMutationInput = {
     id_workshop?: StringFieldUpdateOperationsInput | string
     judul_workshop?: StringFieldUpdateOperationsInput | string
     tanggal_workshop?: DateTimeFieldUpdateOperationsInput | Date | string
-    lokasi_workshop?: StringFieldUpdateOperationsInput | string
+    alaamt_lengkap_workshop?: StringFieldUpdateOperationsInput | string
     deskripsi_workshop?: StringFieldUpdateOperationsInput | string
     harga_workshop?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     kapasitas?: IntFieldUpdateOperationsInput | number
     status_verifikasi?: BoolFieldUpdateOperationsInput | boolean
+    lat_lokasi?: IntFieldUpdateOperationsInput | number
+    long_lokasi?: IntFieldUpdateOperationsInput | number
+    gambar_workshop?: StringFieldUpdateOperationsInput | string
+    status_aktif?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type WorkshopUncheckedUpdateManyInput = {
     id_workshop?: StringFieldUpdateOperationsInput | string
     judul_workshop?: StringFieldUpdateOperationsInput | string
     tanggal_workshop?: DateTimeFieldUpdateOperationsInput | Date | string
-    lokasi_workshop?: StringFieldUpdateOperationsInput | string
+    alaamt_lengkap_workshop?: StringFieldUpdateOperationsInput | string
     deskripsi_workshop?: StringFieldUpdateOperationsInput | string
     harga_workshop?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     kapasitas?: IntFieldUpdateOperationsInput | number
     status_verifikasi?: BoolFieldUpdateOperationsInput | boolean
+    lat_lokasi?: IntFieldUpdateOperationsInput | number
+    long_lokasi?: IntFieldUpdateOperationsInput | number
+    gambar_workshop?: StringFieldUpdateOperationsInput | string
+    status_aktif?: BoolFieldUpdateOperationsInput | boolean
     id_facilitator?: StringFieldUpdateOperationsInput | string
-    id_verifikator?: StringFieldUpdateOperationsInput | string
+    id_kabupaten?: IntFieldUpdateOperationsInput | number
   }
 
   export type WorkshopTerdaftarCreateInput = {
@@ -27183,7 +27308,17 @@ export namespace Prisma {
     none?: FacilitatorWhereInput
   }
 
+  export type WorkshopListRelationFilter = {
+    every?: WorkshopWhereInput
+    some?: WorkshopWhereInput
+    none?: WorkshopWhereInput
+  }
+
   export type FacilitatorOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type WorkshopOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -27327,6 +27462,7 @@ export namespace Prisma {
     kode_verifikasi?: SortOrder
     status_verfikasi?: SortOrder
     avatar?: SortOrder
+    status_aktif?: SortOrder
   }
 
   export type PenggunaAvgOrderByAggregateInput = {
@@ -27346,6 +27482,7 @@ export namespace Prisma {
     kode_verifikasi?: SortOrder
     status_verfikasi?: SortOrder
     avatar?: SortOrder
+    status_aktif?: SortOrder
   }
 
   export type PenggunaMinOrderByAggregateInput = {
@@ -27361,6 +27498,7 @@ export namespace Prisma {
     kode_verifikasi?: SortOrder
     status_verfikasi?: SortOrder
     avatar?: SortOrder
+    status_aktif?: SortOrder
   }
 
   export type PenggunaSumOrderByAggregateInput = {
@@ -27412,16 +27550,6 @@ export namespace Prisma {
     isNot?: KabupatenWhereInput
   }
 
-  export type WorkshopListRelationFilter = {
-    every?: WorkshopWhereInput
-    some?: WorkshopWhereInput
-    none?: WorkshopWhereInput
-  }
-
-  export type WorkshopOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
   export type FacilitatorCountOrderByAggregateInput = {
     id_facilitator?: SortOrder
     nama_facilitator?: SortOrder
@@ -27431,6 +27559,7 @@ export namespace Prisma {
     tanggal_pembuatan_akun?: SortOrder
     alamat_lengkap_facilitator?: SortOrder
     avatar?: SortOrder
+    status_aktif?: SortOrder
     id_kabupaten?: SortOrder
   }
 
@@ -27447,6 +27576,7 @@ export namespace Prisma {
     tanggal_pembuatan_akun?: SortOrder
     alamat_lengkap_facilitator?: SortOrder
     avatar?: SortOrder
+    status_aktif?: SortOrder
     id_kabupaten?: SortOrder
   }
 
@@ -27459,6 +27589,7 @@ export namespace Prisma {
     tanggal_pembuatan_akun?: SortOrder
     alamat_lengkap_facilitator?: SortOrder
     avatar?: SortOrder
+    status_aktif?: SortOrder
     id_kabupaten?: SortOrder
   }
 
@@ -27522,6 +27653,7 @@ export namespace Prisma {
     status_artikel?: SortOrder
     status_verifikasi?: SortOrder
     gambar_artikel?: SortOrder
+    status_aktif?: SortOrder
     id_kategori_artikel?: SortOrder
     id_pengguna?: SortOrder
   }
@@ -27539,6 +27671,7 @@ export namespace Prisma {
     status_artikel?: SortOrder
     status_verifikasi?: SortOrder
     gambar_artikel?: SortOrder
+    status_aktif?: SortOrder
     id_kategori_artikel?: SortOrder
     id_pengguna?: SortOrder
   }
@@ -27552,6 +27685,7 @@ export namespace Prisma {
     status_artikel?: SortOrder
     status_verifikasi?: SortOrder
     gambar_artikel?: SortOrder
+    status_aktif?: SortOrder
     id_kategori_artikel?: SortOrder
     id_pengguna?: SortOrder
   }
@@ -27715,58 +27849,71 @@ export namespace Prisma {
     isNot?: FacilitatorWhereInput
   }
 
-  export type AdminScalarRelationFilter = {
-    is?: AdminWhereInput
-    isNot?: AdminWhereInput
-  }
-
   export type WorkshopCountOrderByAggregateInput = {
     id_workshop?: SortOrder
     judul_workshop?: SortOrder
     tanggal_workshop?: SortOrder
-    lokasi_workshop?: SortOrder
+    alaamt_lengkap_workshop?: SortOrder
     deskripsi_workshop?: SortOrder
     harga_workshop?: SortOrder
     kapasitas?: SortOrder
     status_verifikasi?: SortOrder
+    lat_lokasi?: SortOrder
+    long_lokasi?: SortOrder
+    gambar_workshop?: SortOrder
+    status_aktif?: SortOrder
     id_facilitator?: SortOrder
-    id_verifikator?: SortOrder
+    id_kabupaten?: SortOrder
   }
 
   export type WorkshopAvgOrderByAggregateInput = {
     harga_workshop?: SortOrder
     kapasitas?: SortOrder
+    lat_lokasi?: SortOrder
+    long_lokasi?: SortOrder
+    id_kabupaten?: SortOrder
   }
 
   export type WorkshopMaxOrderByAggregateInput = {
     id_workshop?: SortOrder
     judul_workshop?: SortOrder
     tanggal_workshop?: SortOrder
-    lokasi_workshop?: SortOrder
+    alaamt_lengkap_workshop?: SortOrder
     deskripsi_workshop?: SortOrder
     harga_workshop?: SortOrder
     kapasitas?: SortOrder
     status_verifikasi?: SortOrder
+    lat_lokasi?: SortOrder
+    long_lokasi?: SortOrder
+    gambar_workshop?: SortOrder
+    status_aktif?: SortOrder
     id_facilitator?: SortOrder
-    id_verifikator?: SortOrder
+    id_kabupaten?: SortOrder
   }
 
   export type WorkshopMinOrderByAggregateInput = {
     id_workshop?: SortOrder
     judul_workshop?: SortOrder
     tanggal_workshop?: SortOrder
-    lokasi_workshop?: SortOrder
+    alaamt_lengkap_workshop?: SortOrder
     deskripsi_workshop?: SortOrder
     harga_workshop?: SortOrder
     kapasitas?: SortOrder
     status_verifikasi?: SortOrder
+    lat_lokasi?: SortOrder
+    long_lokasi?: SortOrder
+    gambar_workshop?: SortOrder
+    status_aktif?: SortOrder
     id_facilitator?: SortOrder
-    id_verifikator?: SortOrder
+    id_kabupaten?: SortOrder
   }
 
   export type WorkshopSumOrderByAggregateInput = {
     harga_workshop?: SortOrder
     kapasitas?: SortOrder
+    lat_lokasi?: SortOrder
+    long_lokasi?: SortOrder
+    id_kabupaten?: SortOrder
   }
 
   export type DecimalWithAggregatesFilter<$PrismaModel = never> = {
@@ -28184,11 +28331,25 @@ export namespace Prisma {
     connect?: FacilitatorWhereUniqueInput | FacilitatorWhereUniqueInput[]
   }
 
+  export type WorkshopCreateNestedManyWithoutKabupatenInput = {
+    create?: XOR<WorkshopCreateWithoutKabupatenInput, WorkshopUncheckedCreateWithoutKabupatenInput> | WorkshopCreateWithoutKabupatenInput[] | WorkshopUncheckedCreateWithoutKabupatenInput[]
+    connectOrCreate?: WorkshopCreateOrConnectWithoutKabupatenInput | WorkshopCreateOrConnectWithoutKabupatenInput[]
+    createMany?: WorkshopCreateManyKabupatenInputEnvelope
+    connect?: WorkshopWhereUniqueInput | WorkshopWhereUniqueInput[]
+  }
+
   export type FacilitatorUncheckedCreateNestedManyWithoutKabupatenInput = {
     create?: XOR<FacilitatorCreateWithoutKabupatenInput, FacilitatorUncheckedCreateWithoutKabupatenInput> | FacilitatorCreateWithoutKabupatenInput[] | FacilitatorUncheckedCreateWithoutKabupatenInput[]
     connectOrCreate?: FacilitatorCreateOrConnectWithoutKabupatenInput | FacilitatorCreateOrConnectWithoutKabupatenInput[]
     createMany?: FacilitatorCreateManyKabupatenInputEnvelope
     connect?: FacilitatorWhereUniqueInput | FacilitatorWhereUniqueInput[]
+  }
+
+  export type WorkshopUncheckedCreateNestedManyWithoutKabupatenInput = {
+    create?: XOR<WorkshopCreateWithoutKabupatenInput, WorkshopUncheckedCreateWithoutKabupatenInput> | WorkshopCreateWithoutKabupatenInput[] | WorkshopUncheckedCreateWithoutKabupatenInput[]
+    connectOrCreate?: WorkshopCreateOrConnectWithoutKabupatenInput | WorkshopCreateOrConnectWithoutKabupatenInput[]
+    createMany?: WorkshopCreateManyKabupatenInputEnvelope
+    connect?: WorkshopWhereUniqueInput | WorkshopWhereUniqueInput[]
   }
 
   export type ProvinsiUpdateOneRequiredWithoutKabupatenNestedInput = {
@@ -28213,6 +28374,20 @@ export namespace Prisma {
     deleteMany?: FacilitatorScalarWhereInput | FacilitatorScalarWhereInput[]
   }
 
+  export type WorkshopUpdateManyWithoutKabupatenNestedInput = {
+    create?: XOR<WorkshopCreateWithoutKabupatenInput, WorkshopUncheckedCreateWithoutKabupatenInput> | WorkshopCreateWithoutKabupatenInput[] | WorkshopUncheckedCreateWithoutKabupatenInput[]
+    connectOrCreate?: WorkshopCreateOrConnectWithoutKabupatenInput | WorkshopCreateOrConnectWithoutKabupatenInput[]
+    upsert?: WorkshopUpsertWithWhereUniqueWithoutKabupatenInput | WorkshopUpsertWithWhereUniqueWithoutKabupatenInput[]
+    createMany?: WorkshopCreateManyKabupatenInputEnvelope
+    set?: WorkshopWhereUniqueInput | WorkshopWhereUniqueInput[]
+    disconnect?: WorkshopWhereUniqueInput | WorkshopWhereUniqueInput[]
+    delete?: WorkshopWhereUniqueInput | WorkshopWhereUniqueInput[]
+    connect?: WorkshopWhereUniqueInput | WorkshopWhereUniqueInput[]
+    update?: WorkshopUpdateWithWhereUniqueWithoutKabupatenInput | WorkshopUpdateWithWhereUniqueWithoutKabupatenInput[]
+    updateMany?: WorkshopUpdateManyWithWhereWithoutKabupatenInput | WorkshopUpdateManyWithWhereWithoutKabupatenInput[]
+    deleteMany?: WorkshopScalarWhereInput | WorkshopScalarWhereInput[]
+  }
+
   export type FacilitatorUncheckedUpdateManyWithoutKabupatenNestedInput = {
     create?: XOR<FacilitatorCreateWithoutKabupatenInput, FacilitatorUncheckedCreateWithoutKabupatenInput> | FacilitatorCreateWithoutKabupatenInput[] | FacilitatorUncheckedCreateWithoutKabupatenInput[]
     connectOrCreate?: FacilitatorCreateOrConnectWithoutKabupatenInput | FacilitatorCreateOrConnectWithoutKabupatenInput[]
@@ -28225,6 +28400,20 @@ export namespace Prisma {
     update?: FacilitatorUpdateWithWhereUniqueWithoutKabupatenInput | FacilitatorUpdateWithWhereUniqueWithoutKabupatenInput[]
     updateMany?: FacilitatorUpdateManyWithWhereWithoutKabupatenInput | FacilitatorUpdateManyWithWhereWithoutKabupatenInput[]
     deleteMany?: FacilitatorScalarWhereInput | FacilitatorScalarWhereInput[]
+  }
+
+  export type WorkshopUncheckedUpdateManyWithoutKabupatenNestedInput = {
+    create?: XOR<WorkshopCreateWithoutKabupatenInput, WorkshopUncheckedCreateWithoutKabupatenInput> | WorkshopCreateWithoutKabupatenInput[] | WorkshopUncheckedCreateWithoutKabupatenInput[]
+    connectOrCreate?: WorkshopCreateOrConnectWithoutKabupatenInput | WorkshopCreateOrConnectWithoutKabupatenInput[]
+    upsert?: WorkshopUpsertWithWhereUniqueWithoutKabupatenInput | WorkshopUpsertWithWhereUniqueWithoutKabupatenInput[]
+    createMany?: WorkshopCreateManyKabupatenInputEnvelope
+    set?: WorkshopWhereUniqueInput | WorkshopWhereUniqueInput[]
+    disconnect?: WorkshopWhereUniqueInput | WorkshopWhereUniqueInput[]
+    delete?: WorkshopWhereUniqueInput | WorkshopWhereUniqueInput[]
+    connect?: WorkshopWhereUniqueInput | WorkshopWhereUniqueInput[]
+    update?: WorkshopUpdateWithWhereUniqueWithoutKabupatenInput | WorkshopUpdateWithWhereUniqueWithoutKabupatenInput[]
+    updateMany?: WorkshopUpdateManyWithWhereWithoutKabupatenInput | WorkshopUpdateManyWithWhereWithoutKabupatenInput[]
+    deleteMany?: WorkshopScalarWhereInput | WorkshopScalarWhereInput[]
   }
 
   export type WorkshopTerdaftarCreateNestedManyWithoutPenggunaInput = {
@@ -28547,48 +28736,6 @@ export namespace Prisma {
     deleteMany?: WorkshopScalarWhereInput | WorkshopScalarWhereInput[]
   }
 
-  export type WorkshopCreateNestedManyWithoutAdminInput = {
-    create?: XOR<WorkshopCreateWithoutAdminInput, WorkshopUncheckedCreateWithoutAdminInput> | WorkshopCreateWithoutAdminInput[] | WorkshopUncheckedCreateWithoutAdminInput[]
-    connectOrCreate?: WorkshopCreateOrConnectWithoutAdminInput | WorkshopCreateOrConnectWithoutAdminInput[]
-    createMany?: WorkshopCreateManyAdminInputEnvelope
-    connect?: WorkshopWhereUniqueInput | WorkshopWhereUniqueInput[]
-  }
-
-  export type WorkshopUncheckedCreateNestedManyWithoutAdminInput = {
-    create?: XOR<WorkshopCreateWithoutAdminInput, WorkshopUncheckedCreateWithoutAdminInput> | WorkshopCreateWithoutAdminInput[] | WorkshopUncheckedCreateWithoutAdminInput[]
-    connectOrCreate?: WorkshopCreateOrConnectWithoutAdminInput | WorkshopCreateOrConnectWithoutAdminInput[]
-    createMany?: WorkshopCreateManyAdminInputEnvelope
-    connect?: WorkshopWhereUniqueInput | WorkshopWhereUniqueInput[]
-  }
-
-  export type WorkshopUpdateManyWithoutAdminNestedInput = {
-    create?: XOR<WorkshopCreateWithoutAdminInput, WorkshopUncheckedCreateWithoutAdminInput> | WorkshopCreateWithoutAdminInput[] | WorkshopUncheckedCreateWithoutAdminInput[]
-    connectOrCreate?: WorkshopCreateOrConnectWithoutAdminInput | WorkshopCreateOrConnectWithoutAdminInput[]
-    upsert?: WorkshopUpsertWithWhereUniqueWithoutAdminInput | WorkshopUpsertWithWhereUniqueWithoutAdminInput[]
-    createMany?: WorkshopCreateManyAdminInputEnvelope
-    set?: WorkshopWhereUniqueInput | WorkshopWhereUniqueInput[]
-    disconnect?: WorkshopWhereUniqueInput | WorkshopWhereUniqueInput[]
-    delete?: WorkshopWhereUniqueInput | WorkshopWhereUniqueInput[]
-    connect?: WorkshopWhereUniqueInput | WorkshopWhereUniqueInput[]
-    update?: WorkshopUpdateWithWhereUniqueWithoutAdminInput | WorkshopUpdateWithWhereUniqueWithoutAdminInput[]
-    updateMany?: WorkshopUpdateManyWithWhereWithoutAdminInput | WorkshopUpdateManyWithWhereWithoutAdminInput[]
-    deleteMany?: WorkshopScalarWhereInput | WorkshopScalarWhereInput[]
-  }
-
-  export type WorkshopUncheckedUpdateManyWithoutAdminNestedInput = {
-    create?: XOR<WorkshopCreateWithoutAdminInput, WorkshopUncheckedCreateWithoutAdminInput> | WorkshopCreateWithoutAdminInput[] | WorkshopUncheckedCreateWithoutAdminInput[]
-    connectOrCreate?: WorkshopCreateOrConnectWithoutAdminInput | WorkshopCreateOrConnectWithoutAdminInput[]
-    upsert?: WorkshopUpsertWithWhereUniqueWithoutAdminInput | WorkshopUpsertWithWhereUniqueWithoutAdminInput[]
-    createMany?: WorkshopCreateManyAdminInputEnvelope
-    set?: WorkshopWhereUniqueInput | WorkshopWhereUniqueInput[]
-    disconnect?: WorkshopWhereUniqueInput | WorkshopWhereUniqueInput[]
-    delete?: WorkshopWhereUniqueInput | WorkshopWhereUniqueInput[]
-    connect?: WorkshopWhereUniqueInput | WorkshopWhereUniqueInput[]
-    update?: WorkshopUpdateWithWhereUniqueWithoutAdminInput | WorkshopUpdateWithWhereUniqueWithoutAdminInput[]
-    updateMany?: WorkshopUpdateManyWithWhereWithoutAdminInput | WorkshopUpdateManyWithWhereWithoutAdminInput[]
-    deleteMany?: WorkshopScalarWhereInput | WorkshopScalarWhereInput[]
-  }
-
   export type KategoriArtikelCreateNestedOneWithoutArtikelInput = {
     create?: XOR<KategoriArtikelCreateWithoutArtikelInput, KategoriArtikelUncheckedCreateWithoutArtikelInput>
     connectOrCreate?: KategoriArtikelCreateOrConnectWithoutArtikelInput
@@ -28879,10 +29026,10 @@ export namespace Prisma {
     connect?: FacilitatorWhereUniqueInput
   }
 
-  export type AdminCreateNestedOneWithoutWorkshop_diverifikasiInput = {
-    create?: XOR<AdminCreateWithoutWorkshop_diverifikasiInput, AdminUncheckedCreateWithoutWorkshop_diverifikasiInput>
-    connectOrCreate?: AdminCreateOrConnectWithoutWorkshop_diverifikasiInput
-    connect?: AdminWhereUniqueInput
+  export type KabupatenCreateNestedOneWithoutWorkshopInput = {
+    create?: XOR<KabupatenCreateWithoutWorkshopInput, KabupatenUncheckedCreateWithoutWorkshopInput>
+    connectOrCreate?: KabupatenCreateOrConnectWithoutWorkshopInput
+    connect?: KabupatenWhereUniqueInput
   }
 
   export type WorkshopTerdaftarCreateNestedManyWithoutWorkshopInput = {
@@ -28915,12 +29062,12 @@ export namespace Prisma {
     update?: XOR<XOR<FacilitatorUpdateToOneWithWhereWithoutWorkshopsInput, FacilitatorUpdateWithoutWorkshopsInput>, FacilitatorUncheckedUpdateWithoutWorkshopsInput>
   }
 
-  export type AdminUpdateOneRequiredWithoutWorkshop_diverifikasiNestedInput = {
-    create?: XOR<AdminCreateWithoutWorkshop_diverifikasiInput, AdminUncheckedCreateWithoutWorkshop_diverifikasiInput>
-    connectOrCreate?: AdminCreateOrConnectWithoutWorkshop_diverifikasiInput
-    upsert?: AdminUpsertWithoutWorkshop_diverifikasiInput
-    connect?: AdminWhereUniqueInput
-    update?: XOR<XOR<AdminUpdateToOneWithWhereWithoutWorkshop_diverifikasiInput, AdminUpdateWithoutWorkshop_diverifikasiInput>, AdminUncheckedUpdateWithoutWorkshop_diverifikasiInput>
+  export type KabupatenUpdateOneRequiredWithoutWorkshopNestedInput = {
+    create?: XOR<KabupatenCreateWithoutWorkshopInput, KabupatenUncheckedCreateWithoutWorkshopInput>
+    connectOrCreate?: KabupatenCreateOrConnectWithoutWorkshopInput
+    upsert?: KabupatenUpsertWithoutWorkshopInput
+    connect?: KabupatenWhereUniqueInput
+    update?: XOR<XOR<KabupatenUpdateToOneWithWhereWithoutWorkshopInput, KabupatenUpdateWithoutWorkshopInput>, KabupatenUncheckedUpdateWithoutWorkshopInput>
   }
 
   export type WorkshopTerdaftarUpdateManyWithoutWorkshopNestedInput = {
@@ -29526,6 +29673,7 @@ export namespace Prisma {
     nama_kabupaten: string
     type: string
     facilitators?: FacilitatorCreateNestedManyWithoutKabupatenInput
+    workshop?: WorkshopCreateNestedManyWithoutKabupatenInput
   }
 
   export type KabupatenUncheckedCreateWithoutProvinsiInput = {
@@ -29533,6 +29681,7 @@ export namespace Prisma {
     nama_kabupaten: string
     type: string
     facilitators?: FacilitatorUncheckedCreateNestedManyWithoutKabupatenInput
+    workshop?: WorkshopUncheckedCreateNestedManyWithoutKabupatenInput
   }
 
   export type KabupatenCreateOrConnectWithoutProvinsiInput = {
@@ -29594,6 +29743,7 @@ export namespace Prisma {
     tanggal_pembuatan_akun: Date | string
     alamat_lengkap_facilitator: string
     avatar?: string | null
+    status_aktif?: boolean
     workshops?: WorkshopCreateNestedManyWithoutFacilitatorInput
   }
 
@@ -29606,6 +29756,7 @@ export namespace Prisma {
     tanggal_pembuatan_akun: Date | string
     alamat_lengkap_facilitator: string
     avatar?: string | null
+    status_aktif?: boolean
     workshops?: WorkshopUncheckedCreateNestedManyWithoutFacilitatorInput
   }
 
@@ -29616,6 +29767,50 @@ export namespace Prisma {
 
   export type FacilitatorCreateManyKabupatenInputEnvelope = {
     data: FacilitatorCreateManyKabupatenInput | FacilitatorCreateManyKabupatenInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type WorkshopCreateWithoutKabupatenInput = {
+    id_workshop?: string
+    judul_workshop: string
+    tanggal_workshop: Date | string
+    alaamt_lengkap_workshop: string
+    deskripsi_workshop: string
+    harga_workshop: Decimal | DecimalJsLike | number | string
+    kapasitas: number
+    status_verifikasi: boolean
+    lat_lokasi: number
+    long_lokasi: number
+    gambar_workshop: string
+    status_aktif?: boolean
+    facilitator: FacilitatorCreateNestedOneWithoutWorkshopsInput
+    pendaftaran?: WorkshopTerdaftarCreateNestedManyWithoutWorkshopInput
+  }
+
+  export type WorkshopUncheckedCreateWithoutKabupatenInput = {
+    id_workshop?: string
+    judul_workshop: string
+    tanggal_workshop: Date | string
+    alaamt_lengkap_workshop: string
+    deskripsi_workshop: string
+    harga_workshop: Decimal | DecimalJsLike | number | string
+    kapasitas: number
+    status_verifikasi: boolean
+    lat_lokasi: number
+    long_lokasi: number
+    gambar_workshop: string
+    status_aktif?: boolean
+    id_facilitator: string
+    pendaftaran?: WorkshopTerdaftarUncheckedCreateNestedManyWithoutWorkshopInput
+  }
+
+  export type WorkshopCreateOrConnectWithoutKabupatenInput = {
+    where: WorkshopWhereUniqueInput
+    create: XOR<WorkshopCreateWithoutKabupatenInput, WorkshopUncheckedCreateWithoutKabupatenInput>
+  }
+
+  export type WorkshopCreateManyKabupatenInputEnvelope = {
+    data: WorkshopCreateManyKabupatenInput | WorkshopCreateManyKabupatenInput[]
     skipDuplicates?: boolean
   }
 
@@ -29667,7 +29862,44 @@ export namespace Prisma {
     tanggal_pembuatan_akun?: DateTimeFilter<"Facilitator"> | Date | string
     alamat_lengkap_facilitator?: StringFilter<"Facilitator"> | string
     avatar?: StringNullableFilter<"Facilitator"> | string | null
+    status_aktif?: BoolFilter<"Facilitator"> | boolean
     id_kabupaten?: IntFilter<"Facilitator"> | number
+  }
+
+  export type WorkshopUpsertWithWhereUniqueWithoutKabupatenInput = {
+    where: WorkshopWhereUniqueInput
+    update: XOR<WorkshopUpdateWithoutKabupatenInput, WorkshopUncheckedUpdateWithoutKabupatenInput>
+    create: XOR<WorkshopCreateWithoutKabupatenInput, WorkshopUncheckedCreateWithoutKabupatenInput>
+  }
+
+  export type WorkshopUpdateWithWhereUniqueWithoutKabupatenInput = {
+    where: WorkshopWhereUniqueInput
+    data: XOR<WorkshopUpdateWithoutKabupatenInput, WorkshopUncheckedUpdateWithoutKabupatenInput>
+  }
+
+  export type WorkshopUpdateManyWithWhereWithoutKabupatenInput = {
+    where: WorkshopScalarWhereInput
+    data: XOR<WorkshopUpdateManyMutationInput, WorkshopUncheckedUpdateManyWithoutKabupatenInput>
+  }
+
+  export type WorkshopScalarWhereInput = {
+    AND?: WorkshopScalarWhereInput | WorkshopScalarWhereInput[]
+    OR?: WorkshopScalarWhereInput[]
+    NOT?: WorkshopScalarWhereInput | WorkshopScalarWhereInput[]
+    id_workshop?: StringFilter<"Workshop"> | string
+    judul_workshop?: StringFilter<"Workshop"> | string
+    tanggal_workshop?: DateTimeFilter<"Workshop"> | Date | string
+    alaamt_lengkap_workshop?: StringFilter<"Workshop"> | string
+    deskripsi_workshop?: StringFilter<"Workshop"> | string
+    harga_workshop?: DecimalFilter<"Workshop"> | Decimal | DecimalJsLike | number | string
+    kapasitas?: IntFilter<"Workshop"> | number
+    status_verifikasi?: BoolFilter<"Workshop"> | boolean
+    lat_lokasi?: IntFilter<"Workshop"> | number
+    long_lokasi?: IntFilter<"Workshop"> | number
+    gambar_workshop?: StringFilter<"Workshop"> | string
+    status_aktif?: BoolFilter<"Workshop"> | boolean
+    id_facilitator?: StringFilter<"Workshop"> | string
+    id_kabupaten?: IntFilter<"Workshop"> | number
   }
 
   export type WorkshopTerdaftarCreateWithoutPenggunaInput = {
@@ -29710,6 +29942,7 @@ export namespace Prisma {
     status_artikel: $Enums.StatusArtikel
     status_verifikasi: boolean
     gambar_artikel: string
+    status_aktif?: boolean
     kategori: KategoriArtikelCreateNestedOneWithoutArtikelInput
     artikel_disimpan?: ArtikelDisimpanCreateNestedManyWithoutArtikelInput
     artikel_disukai?: ArtikelDisukaiCreateNestedManyWithoutArtikelInput
@@ -29725,6 +29958,7 @@ export namespace Prisma {
     status_artikel: $Enums.StatusArtikel
     status_verifikasi: boolean
     gambar_artikel: string
+    status_aktif?: boolean
     id_kategori_artikel: number
     artikel_disimpan?: ArtikelDisimpanUncheckedCreateNestedManyWithoutArtikelInput
     artikel_disukai?: ArtikelDisukaiUncheckedCreateNestedManyWithoutArtikelInput
@@ -29888,6 +30122,7 @@ export namespace Prisma {
     status_artikel?: EnumStatusArtikelFilter<"Artikel"> | $Enums.StatusArtikel
     status_verifikasi?: BoolFilter<"Artikel"> | boolean
     gambar_artikel?: StringFilter<"Artikel"> | string
+    status_aktif?: BoolFilter<"Artikel"> | boolean
     id_kategori_artikel?: IntFilter<"Artikel"> | number
     id_pengguna?: StringFilter<"Artikel"> | string
   }
@@ -30001,6 +30236,7 @@ export namespace Prisma {
     nama_kabupaten: string
     type: string
     provinsi: ProvinsiCreateNestedOneWithoutKabupatenInput
+    workshop?: WorkshopCreateNestedManyWithoutKabupatenInput
   }
 
   export type KabupatenUncheckedCreateWithoutFacilitatorsInput = {
@@ -30008,6 +30244,7 @@ export namespace Prisma {
     nama_kabupaten: string
     type: string
     id_provinsi: number
+    workshop?: WorkshopUncheckedCreateNestedManyWithoutKabupatenInput
   }
 
   export type KabupatenCreateOrConnectWithoutFacilitatorsInput = {
@@ -30019,12 +30256,16 @@ export namespace Prisma {
     id_workshop?: string
     judul_workshop: string
     tanggal_workshop: Date | string
-    lokasi_workshop: string
+    alaamt_lengkap_workshop: string
     deskripsi_workshop: string
     harga_workshop: Decimal | DecimalJsLike | number | string
     kapasitas: number
     status_verifikasi: boolean
-    admin: AdminCreateNestedOneWithoutWorkshop_diverifikasiInput
+    lat_lokasi: number
+    long_lokasi: number
+    gambar_workshop: string
+    status_aktif?: boolean
+    kabupaten: KabupatenCreateNestedOneWithoutWorkshopInput
     pendaftaran?: WorkshopTerdaftarCreateNestedManyWithoutWorkshopInput
   }
 
@@ -30032,12 +30273,16 @@ export namespace Prisma {
     id_workshop?: string
     judul_workshop: string
     tanggal_workshop: Date | string
-    lokasi_workshop: string
+    alaamt_lengkap_workshop: string
     deskripsi_workshop: string
     harga_workshop: Decimal | DecimalJsLike | number | string
     kapasitas: number
     status_verifikasi: boolean
-    id_verifikator: string
+    lat_lokasi: number
+    long_lokasi: number
+    gambar_workshop: string
+    status_aktif?: boolean
+    id_kabupaten: number
     pendaftaran?: WorkshopTerdaftarUncheckedCreateNestedManyWithoutWorkshopInput
   }
 
@@ -30066,6 +30311,7 @@ export namespace Prisma {
     nama_kabupaten?: StringFieldUpdateOperationsInput | string
     type?: StringFieldUpdateOperationsInput | string
     provinsi?: ProvinsiUpdateOneRequiredWithoutKabupatenNestedInput
+    workshop?: WorkshopUpdateManyWithoutKabupatenNestedInput
   }
 
   export type KabupatenUncheckedUpdateWithoutFacilitatorsInput = {
@@ -30073,6 +30319,7 @@ export namespace Prisma {
     nama_kabupaten?: StringFieldUpdateOperationsInput | string
     type?: StringFieldUpdateOperationsInput | string
     id_provinsi?: IntFieldUpdateOperationsInput | number
+    workshop?: WorkshopUncheckedUpdateManyWithoutKabupatenNestedInput
   }
 
   export type WorkshopUpsertWithWhereUniqueWithoutFacilitatorInput = {
@@ -30089,74 +30336,6 @@ export namespace Prisma {
   export type WorkshopUpdateManyWithWhereWithoutFacilitatorInput = {
     where: WorkshopScalarWhereInput
     data: XOR<WorkshopUpdateManyMutationInput, WorkshopUncheckedUpdateManyWithoutFacilitatorInput>
-  }
-
-  export type WorkshopScalarWhereInput = {
-    AND?: WorkshopScalarWhereInput | WorkshopScalarWhereInput[]
-    OR?: WorkshopScalarWhereInput[]
-    NOT?: WorkshopScalarWhereInput | WorkshopScalarWhereInput[]
-    id_workshop?: StringFilter<"Workshop"> | string
-    judul_workshop?: StringFilter<"Workshop"> | string
-    tanggal_workshop?: DateTimeFilter<"Workshop"> | Date | string
-    lokasi_workshop?: StringFilter<"Workshop"> | string
-    deskripsi_workshop?: StringFilter<"Workshop"> | string
-    harga_workshop?: DecimalFilter<"Workshop"> | Decimal | DecimalJsLike | number | string
-    kapasitas?: IntFilter<"Workshop"> | number
-    status_verifikasi?: BoolFilter<"Workshop"> | boolean
-    id_facilitator?: StringFilter<"Workshop"> | string
-    id_verifikator?: StringFilter<"Workshop"> | string
-  }
-
-  export type WorkshopCreateWithoutAdminInput = {
-    id_workshop?: string
-    judul_workshop: string
-    tanggal_workshop: Date | string
-    lokasi_workshop: string
-    deskripsi_workshop: string
-    harga_workshop: Decimal | DecimalJsLike | number | string
-    kapasitas: number
-    status_verifikasi: boolean
-    facilitator: FacilitatorCreateNestedOneWithoutWorkshopsInput
-    pendaftaran?: WorkshopTerdaftarCreateNestedManyWithoutWorkshopInput
-  }
-
-  export type WorkshopUncheckedCreateWithoutAdminInput = {
-    id_workshop?: string
-    judul_workshop: string
-    tanggal_workshop: Date | string
-    lokasi_workshop: string
-    deskripsi_workshop: string
-    harga_workshop: Decimal | DecimalJsLike | number | string
-    kapasitas: number
-    status_verifikasi: boolean
-    id_facilitator: string
-    pendaftaran?: WorkshopTerdaftarUncheckedCreateNestedManyWithoutWorkshopInput
-  }
-
-  export type WorkshopCreateOrConnectWithoutAdminInput = {
-    where: WorkshopWhereUniqueInput
-    create: XOR<WorkshopCreateWithoutAdminInput, WorkshopUncheckedCreateWithoutAdminInput>
-  }
-
-  export type WorkshopCreateManyAdminInputEnvelope = {
-    data: WorkshopCreateManyAdminInput | WorkshopCreateManyAdminInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type WorkshopUpsertWithWhereUniqueWithoutAdminInput = {
-    where: WorkshopWhereUniqueInput
-    update: XOR<WorkshopUpdateWithoutAdminInput, WorkshopUncheckedUpdateWithoutAdminInput>
-    create: XOR<WorkshopCreateWithoutAdminInput, WorkshopUncheckedCreateWithoutAdminInput>
-  }
-
-  export type WorkshopUpdateWithWhereUniqueWithoutAdminInput = {
-    where: WorkshopWhereUniqueInput
-    data: XOR<WorkshopUpdateWithoutAdminInput, WorkshopUncheckedUpdateWithoutAdminInput>
-  }
-
-  export type WorkshopUpdateManyWithWhereWithoutAdminInput = {
-    where: WorkshopScalarWhereInput
-    data: XOR<WorkshopUpdateManyMutationInput, WorkshopUncheckedUpdateManyWithoutAdminInput>
   }
 
   export type KategoriArtikelCreateWithoutArtikelInput = {
@@ -30186,6 +30365,7 @@ export namespace Prisma {
     kode_verifikasi: string
     status_verfikasi: boolean
     avatar?: string | null
+    status_aktif?: boolean
     workshop_terdaftar?: WorkshopTerdaftarCreateNestedManyWithoutPenggunaInput
     artikel_disimpan?: ArtikelDisimpanCreateNestedManyWithoutPenggunaInput
     artikel_disukai?: ArtikelDisukaiCreateNestedManyWithoutPenggunaInput
@@ -30206,6 +30386,7 @@ export namespace Prisma {
     kode_verifikasi: string
     status_verfikasi: boolean
     avatar?: string | null
+    status_aktif?: boolean
     workshop_terdaftar?: WorkshopTerdaftarUncheckedCreateNestedManyWithoutPenggunaInput
     artikel_disimpan?: ArtikelDisimpanUncheckedCreateNestedManyWithoutPenggunaInput
     artikel_disukai?: ArtikelDisukaiUncheckedCreateNestedManyWithoutPenggunaInput
@@ -30323,6 +30504,7 @@ export namespace Prisma {
     kode_verifikasi?: StringFieldUpdateOperationsInput | string
     status_verfikasi?: BoolFieldUpdateOperationsInput | boolean
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    status_aktif?: BoolFieldUpdateOperationsInput | boolean
     workshop_terdaftar?: WorkshopTerdaftarUpdateManyWithoutPenggunaNestedInput
     artikel_disimpan?: ArtikelDisimpanUpdateManyWithoutPenggunaNestedInput
     artikel_disukai?: ArtikelDisukaiUpdateManyWithoutPenggunaNestedInput
@@ -30343,6 +30525,7 @@ export namespace Prisma {
     kode_verifikasi?: StringFieldUpdateOperationsInput | string
     status_verfikasi?: BoolFieldUpdateOperationsInput | boolean
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    status_aktif?: BoolFieldUpdateOperationsInput | boolean
     workshop_terdaftar?: WorkshopTerdaftarUncheckedUpdateManyWithoutPenggunaNestedInput
     artikel_disimpan?: ArtikelDisimpanUncheckedUpdateManyWithoutPenggunaNestedInput
     artikel_disukai?: ArtikelDisukaiUncheckedUpdateManyWithoutPenggunaNestedInput
@@ -30407,6 +30590,7 @@ export namespace Prisma {
     status_artikel: $Enums.StatusArtikel
     status_verifikasi: boolean
     gambar_artikel: string
+    status_aktif?: boolean
     pengguna: PenggunaCreateNestedOneWithoutArtikelInput
     artikel_disimpan?: ArtikelDisimpanCreateNestedManyWithoutArtikelInput
     artikel_disukai?: ArtikelDisukaiCreateNestedManyWithoutArtikelInput
@@ -30422,6 +30606,7 @@ export namespace Prisma {
     status_artikel: $Enums.StatusArtikel
     status_verifikasi: boolean
     gambar_artikel: string
+    status_aktif?: boolean
     id_pengguna: string
     artikel_disimpan?: ArtikelDisimpanUncheckedCreateNestedManyWithoutArtikelInput
     artikel_disukai?: ArtikelDisukaiUncheckedCreateNestedManyWithoutArtikelInput
@@ -30463,6 +30648,7 @@ export namespace Prisma {
     status_artikel: $Enums.StatusArtikel
     status_verifikasi: boolean
     gambar_artikel: string
+    status_aktif?: boolean
     kategori: KategoriArtikelCreateNestedOneWithoutArtikelInput
     pengguna: PenggunaCreateNestedOneWithoutArtikelInput
     artikel_disukai?: ArtikelDisukaiCreateNestedManyWithoutArtikelInput
@@ -30478,6 +30664,7 @@ export namespace Prisma {
     status_artikel: $Enums.StatusArtikel
     status_verifikasi: boolean
     gambar_artikel: string
+    status_aktif?: boolean
     id_kategori_artikel: number
     id_pengguna: string
     artikel_disukai?: ArtikelDisukaiUncheckedCreateNestedManyWithoutArtikelInput
@@ -30502,6 +30689,7 @@ export namespace Prisma {
     kode_verifikasi: string
     status_verfikasi: boolean
     avatar?: string | null
+    status_aktif?: boolean
     workshop_terdaftar?: WorkshopTerdaftarCreateNestedManyWithoutPenggunaInput
     artikel?: ArtikelCreateNestedManyWithoutPenggunaInput
     artikel_disukai?: ArtikelDisukaiCreateNestedManyWithoutPenggunaInput
@@ -30522,6 +30710,7 @@ export namespace Prisma {
     kode_verifikasi: string
     status_verfikasi: boolean
     avatar?: string | null
+    status_aktif?: boolean
     workshop_terdaftar?: WorkshopTerdaftarUncheckedCreateNestedManyWithoutPenggunaInput
     artikel?: ArtikelUncheckedCreateNestedManyWithoutPenggunaInput
     artikel_disukai?: ArtikelDisukaiUncheckedCreateNestedManyWithoutPenggunaInput
@@ -30554,6 +30743,7 @@ export namespace Prisma {
     status_artikel?: EnumStatusArtikelFieldUpdateOperationsInput | $Enums.StatusArtikel
     status_verifikasi?: BoolFieldUpdateOperationsInput | boolean
     gambar_artikel?: StringFieldUpdateOperationsInput | string
+    status_aktif?: BoolFieldUpdateOperationsInput | boolean
     kategori?: KategoriArtikelUpdateOneRequiredWithoutArtikelNestedInput
     pengguna?: PenggunaUpdateOneRequiredWithoutArtikelNestedInput
     artikel_disukai?: ArtikelDisukaiUpdateManyWithoutArtikelNestedInput
@@ -30569,6 +30759,7 @@ export namespace Prisma {
     status_artikel?: EnumStatusArtikelFieldUpdateOperationsInput | $Enums.StatusArtikel
     status_verifikasi?: BoolFieldUpdateOperationsInput | boolean
     gambar_artikel?: StringFieldUpdateOperationsInput | string
+    status_aktif?: BoolFieldUpdateOperationsInput | boolean
     id_kategori_artikel?: IntFieldUpdateOperationsInput | number
     id_pengguna?: StringFieldUpdateOperationsInput | string
     artikel_disukai?: ArtikelDisukaiUncheckedUpdateManyWithoutArtikelNestedInput
@@ -30599,6 +30790,7 @@ export namespace Prisma {
     kode_verifikasi?: StringFieldUpdateOperationsInput | string
     status_verfikasi?: BoolFieldUpdateOperationsInput | boolean
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    status_aktif?: BoolFieldUpdateOperationsInput | boolean
     workshop_terdaftar?: WorkshopTerdaftarUpdateManyWithoutPenggunaNestedInput
     artikel?: ArtikelUpdateManyWithoutPenggunaNestedInput
     artikel_disukai?: ArtikelDisukaiUpdateManyWithoutPenggunaNestedInput
@@ -30619,6 +30811,7 @@ export namespace Prisma {
     kode_verifikasi?: StringFieldUpdateOperationsInput | string
     status_verfikasi?: BoolFieldUpdateOperationsInput | boolean
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    status_aktif?: BoolFieldUpdateOperationsInput | boolean
     workshop_terdaftar?: WorkshopTerdaftarUncheckedUpdateManyWithoutPenggunaNestedInput
     artikel?: ArtikelUncheckedUpdateManyWithoutPenggunaNestedInput
     artikel_disukai?: ArtikelDisukaiUncheckedUpdateManyWithoutPenggunaNestedInput
@@ -30635,6 +30828,7 @@ export namespace Prisma {
     status_artikel: $Enums.StatusArtikel
     status_verifikasi: boolean
     gambar_artikel: string
+    status_aktif?: boolean
     kategori: KategoriArtikelCreateNestedOneWithoutArtikelInput
     pengguna: PenggunaCreateNestedOneWithoutArtikelInput
     artikel_disimpan?: ArtikelDisimpanCreateNestedManyWithoutArtikelInput
@@ -30650,6 +30844,7 @@ export namespace Prisma {
     status_artikel: $Enums.StatusArtikel
     status_verifikasi: boolean
     gambar_artikel: string
+    status_aktif?: boolean
     id_kategori_artikel: number
     id_pengguna: string
     artikel_disimpan?: ArtikelDisimpanUncheckedCreateNestedManyWithoutArtikelInput
@@ -30674,6 +30869,7 @@ export namespace Prisma {
     kode_verifikasi: string
     status_verfikasi: boolean
     avatar?: string | null
+    status_aktif?: boolean
     workshop_terdaftar?: WorkshopTerdaftarCreateNestedManyWithoutPenggunaInput
     artikel?: ArtikelCreateNestedManyWithoutPenggunaInput
     artikel_disimpan?: ArtikelDisimpanCreateNestedManyWithoutPenggunaInput
@@ -30694,6 +30890,7 @@ export namespace Prisma {
     kode_verifikasi: string
     status_verfikasi: boolean
     avatar?: string | null
+    status_aktif?: boolean
     workshop_terdaftar?: WorkshopTerdaftarUncheckedCreateNestedManyWithoutPenggunaInput
     artikel?: ArtikelUncheckedCreateNestedManyWithoutPenggunaInput
     artikel_disimpan?: ArtikelDisimpanUncheckedCreateNestedManyWithoutPenggunaInput
@@ -30726,6 +30923,7 @@ export namespace Prisma {
     status_artikel?: EnumStatusArtikelFieldUpdateOperationsInput | $Enums.StatusArtikel
     status_verifikasi?: BoolFieldUpdateOperationsInput | boolean
     gambar_artikel?: StringFieldUpdateOperationsInput | string
+    status_aktif?: BoolFieldUpdateOperationsInput | boolean
     kategori?: KategoriArtikelUpdateOneRequiredWithoutArtikelNestedInput
     pengguna?: PenggunaUpdateOneRequiredWithoutArtikelNestedInput
     artikel_disimpan?: ArtikelDisimpanUpdateManyWithoutArtikelNestedInput
@@ -30741,6 +30939,7 @@ export namespace Prisma {
     status_artikel?: EnumStatusArtikelFieldUpdateOperationsInput | $Enums.StatusArtikel
     status_verifikasi?: BoolFieldUpdateOperationsInput | boolean
     gambar_artikel?: StringFieldUpdateOperationsInput | string
+    status_aktif?: BoolFieldUpdateOperationsInput | boolean
     id_kategori_artikel?: IntFieldUpdateOperationsInput | number
     id_pengguna?: StringFieldUpdateOperationsInput | string
     artikel_disimpan?: ArtikelDisimpanUncheckedUpdateManyWithoutArtikelNestedInput
@@ -30771,6 +30970,7 @@ export namespace Prisma {
     kode_verifikasi?: StringFieldUpdateOperationsInput | string
     status_verfikasi?: BoolFieldUpdateOperationsInput | boolean
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    status_aktif?: BoolFieldUpdateOperationsInput | boolean
     workshop_terdaftar?: WorkshopTerdaftarUpdateManyWithoutPenggunaNestedInput
     artikel?: ArtikelUpdateManyWithoutPenggunaNestedInput
     artikel_disimpan?: ArtikelDisimpanUpdateManyWithoutPenggunaNestedInput
@@ -30791,6 +30991,7 @@ export namespace Prisma {
     kode_verifikasi?: StringFieldUpdateOperationsInput | string
     status_verfikasi?: BoolFieldUpdateOperationsInput | boolean
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    status_aktif?: BoolFieldUpdateOperationsInput | boolean
     workshop_terdaftar?: WorkshopTerdaftarUncheckedUpdateManyWithoutPenggunaNestedInput
     artikel?: ArtikelUncheckedUpdateManyWithoutPenggunaNestedInput
     artikel_disimpan?: ArtikelDisimpanUncheckedUpdateManyWithoutPenggunaNestedInput
@@ -30807,6 +31008,7 @@ export namespace Prisma {
     status_artikel: $Enums.StatusArtikel
     status_verifikasi: boolean
     gambar_artikel: string
+    status_aktif?: boolean
     kategori: KategoriArtikelCreateNestedOneWithoutArtikelInput
     pengguna: PenggunaCreateNestedOneWithoutArtikelInput
     artikel_disimpan?: ArtikelDisimpanCreateNestedManyWithoutArtikelInput
@@ -30822,6 +31024,7 @@ export namespace Prisma {
     status_artikel: $Enums.StatusArtikel
     status_verifikasi: boolean
     gambar_artikel: string
+    status_aktif?: boolean
     id_kategori_artikel: number
     id_pengguna: string
     artikel_disimpan?: ArtikelDisimpanUncheckedCreateNestedManyWithoutArtikelInput
@@ -30846,6 +31049,7 @@ export namespace Prisma {
     kode_verifikasi: string
     status_verfikasi: boolean
     avatar?: string | null
+    status_aktif?: boolean
     workshop_terdaftar?: WorkshopTerdaftarCreateNestedManyWithoutPenggunaInput
     artikel?: ArtikelCreateNestedManyWithoutPenggunaInput
     artikel_disimpan?: ArtikelDisimpanCreateNestedManyWithoutPenggunaInput
@@ -30866,6 +31070,7 @@ export namespace Prisma {
     kode_verifikasi: string
     status_verfikasi: boolean
     avatar?: string | null
+    status_aktif?: boolean
     workshop_terdaftar?: WorkshopTerdaftarUncheckedCreateNestedManyWithoutPenggunaInput
     artikel?: ArtikelUncheckedCreateNestedManyWithoutPenggunaInput
     artikel_disimpan?: ArtikelDisimpanUncheckedCreateNestedManyWithoutPenggunaInput
@@ -30898,6 +31103,7 @@ export namespace Prisma {
     status_artikel?: EnumStatusArtikelFieldUpdateOperationsInput | $Enums.StatusArtikel
     status_verifikasi?: BoolFieldUpdateOperationsInput | boolean
     gambar_artikel?: StringFieldUpdateOperationsInput | string
+    status_aktif?: BoolFieldUpdateOperationsInput | boolean
     kategori?: KategoriArtikelUpdateOneRequiredWithoutArtikelNestedInput
     pengguna?: PenggunaUpdateOneRequiredWithoutArtikelNestedInput
     artikel_disimpan?: ArtikelDisimpanUpdateManyWithoutArtikelNestedInput
@@ -30913,6 +31119,7 @@ export namespace Prisma {
     status_artikel?: EnumStatusArtikelFieldUpdateOperationsInput | $Enums.StatusArtikel
     status_verifikasi?: BoolFieldUpdateOperationsInput | boolean
     gambar_artikel?: StringFieldUpdateOperationsInput | string
+    status_aktif?: BoolFieldUpdateOperationsInput | boolean
     id_kategori_artikel?: IntFieldUpdateOperationsInput | number
     id_pengguna?: StringFieldUpdateOperationsInput | string
     artikel_disimpan?: ArtikelDisimpanUncheckedUpdateManyWithoutArtikelNestedInput
@@ -30943,6 +31150,7 @@ export namespace Prisma {
     kode_verifikasi?: StringFieldUpdateOperationsInput | string
     status_verfikasi?: BoolFieldUpdateOperationsInput | boolean
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    status_aktif?: BoolFieldUpdateOperationsInput | boolean
     workshop_terdaftar?: WorkshopTerdaftarUpdateManyWithoutPenggunaNestedInput
     artikel?: ArtikelUpdateManyWithoutPenggunaNestedInput
     artikel_disimpan?: ArtikelDisimpanUpdateManyWithoutPenggunaNestedInput
@@ -30963,6 +31171,7 @@ export namespace Prisma {
     kode_verifikasi?: StringFieldUpdateOperationsInput | string
     status_verfikasi?: BoolFieldUpdateOperationsInput | boolean
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    status_aktif?: BoolFieldUpdateOperationsInput | boolean
     workshop_terdaftar?: WorkshopTerdaftarUncheckedUpdateManyWithoutPenggunaNestedInput
     artikel?: ArtikelUncheckedUpdateManyWithoutPenggunaNestedInput
     artikel_disimpan?: ArtikelDisimpanUncheckedUpdateManyWithoutPenggunaNestedInput
@@ -30979,6 +31188,7 @@ export namespace Prisma {
     tanggal_pembuatan_akun: Date | string
     alamat_lengkap_facilitator: string
     avatar?: string | null
+    status_aktif?: boolean
     kabupaten: KabupatenCreateNestedOneWithoutFacilitatorsInput
   }
 
@@ -30991,6 +31201,7 @@ export namespace Prisma {
     tanggal_pembuatan_akun: Date | string
     alamat_lengkap_facilitator: string
     avatar?: string | null
+    status_aktif?: boolean
     id_kabupaten: number
   }
 
@@ -30999,29 +31210,24 @@ export namespace Prisma {
     create: XOR<FacilitatorCreateWithoutWorkshopsInput, FacilitatorUncheckedCreateWithoutWorkshopsInput>
   }
 
-  export type AdminCreateWithoutWorkshop_diverifikasiInput = {
-    id_admin?: string
-    nama_depan_admin: string
-    nama_belakang_admin: string
-    email_admin: string
-    password_admin: string
-    tanggal_pembuatan_akun: Date | string
-    avatar?: string | null
+  export type KabupatenCreateWithoutWorkshopInput = {
+    nama_kabupaten: string
+    type: string
+    provinsi: ProvinsiCreateNestedOneWithoutKabupatenInput
+    facilitators?: FacilitatorCreateNestedManyWithoutKabupatenInput
   }
 
-  export type AdminUncheckedCreateWithoutWorkshop_diverifikasiInput = {
-    id_admin?: string
-    nama_depan_admin: string
-    nama_belakang_admin: string
-    email_admin: string
-    password_admin: string
-    tanggal_pembuatan_akun: Date | string
-    avatar?: string | null
+  export type KabupatenUncheckedCreateWithoutWorkshopInput = {
+    id_kabupaten?: number
+    nama_kabupaten: string
+    type: string
+    id_provinsi: number
+    facilitators?: FacilitatorUncheckedCreateNestedManyWithoutKabupatenInput
   }
 
-  export type AdminCreateOrConnectWithoutWorkshop_diverifikasiInput = {
-    where: AdminWhereUniqueInput
-    create: XOR<AdminCreateWithoutWorkshop_diverifikasiInput, AdminUncheckedCreateWithoutWorkshop_diverifikasiInput>
+  export type KabupatenCreateOrConnectWithoutWorkshopInput = {
+    where: KabupatenWhereUniqueInput
+    create: XOR<KabupatenCreateWithoutWorkshopInput, KabupatenUncheckedCreateWithoutWorkshopInput>
   }
 
   export type WorkshopTerdaftarCreateWithoutWorkshopInput = {
@@ -31075,6 +31281,7 @@ export namespace Prisma {
     tanggal_pembuatan_akun?: DateTimeFieldUpdateOperationsInput | Date | string
     alamat_lengkap_facilitator?: StringFieldUpdateOperationsInput | string
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    status_aktif?: BoolFieldUpdateOperationsInput | boolean
     kabupaten?: KabupatenUpdateOneRequiredWithoutFacilitatorsNestedInput
   }
 
@@ -31087,38 +31294,34 @@ export namespace Prisma {
     tanggal_pembuatan_akun?: DateTimeFieldUpdateOperationsInput | Date | string
     alamat_lengkap_facilitator?: StringFieldUpdateOperationsInput | string
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    status_aktif?: BoolFieldUpdateOperationsInput | boolean
     id_kabupaten?: IntFieldUpdateOperationsInput | number
   }
 
-  export type AdminUpsertWithoutWorkshop_diverifikasiInput = {
-    update: XOR<AdminUpdateWithoutWorkshop_diverifikasiInput, AdminUncheckedUpdateWithoutWorkshop_diverifikasiInput>
-    create: XOR<AdminCreateWithoutWorkshop_diverifikasiInput, AdminUncheckedCreateWithoutWorkshop_diverifikasiInput>
-    where?: AdminWhereInput
+  export type KabupatenUpsertWithoutWorkshopInput = {
+    update: XOR<KabupatenUpdateWithoutWorkshopInput, KabupatenUncheckedUpdateWithoutWorkshopInput>
+    create: XOR<KabupatenCreateWithoutWorkshopInput, KabupatenUncheckedCreateWithoutWorkshopInput>
+    where?: KabupatenWhereInput
   }
 
-  export type AdminUpdateToOneWithWhereWithoutWorkshop_diverifikasiInput = {
-    where?: AdminWhereInput
-    data: XOR<AdminUpdateWithoutWorkshop_diverifikasiInput, AdminUncheckedUpdateWithoutWorkshop_diverifikasiInput>
+  export type KabupatenUpdateToOneWithWhereWithoutWorkshopInput = {
+    where?: KabupatenWhereInput
+    data: XOR<KabupatenUpdateWithoutWorkshopInput, KabupatenUncheckedUpdateWithoutWorkshopInput>
   }
 
-  export type AdminUpdateWithoutWorkshop_diverifikasiInput = {
-    id_admin?: StringFieldUpdateOperationsInput | string
-    nama_depan_admin?: StringFieldUpdateOperationsInput | string
-    nama_belakang_admin?: StringFieldUpdateOperationsInput | string
-    email_admin?: StringFieldUpdateOperationsInput | string
-    password_admin?: StringFieldUpdateOperationsInput | string
-    tanggal_pembuatan_akun?: DateTimeFieldUpdateOperationsInput | Date | string
-    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+  export type KabupatenUpdateWithoutWorkshopInput = {
+    nama_kabupaten?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    provinsi?: ProvinsiUpdateOneRequiredWithoutKabupatenNestedInput
+    facilitators?: FacilitatorUpdateManyWithoutKabupatenNestedInput
   }
 
-  export type AdminUncheckedUpdateWithoutWorkshop_diverifikasiInput = {
-    id_admin?: StringFieldUpdateOperationsInput | string
-    nama_depan_admin?: StringFieldUpdateOperationsInput | string
-    nama_belakang_admin?: StringFieldUpdateOperationsInput | string
-    email_admin?: StringFieldUpdateOperationsInput | string
-    password_admin?: StringFieldUpdateOperationsInput | string
-    tanggal_pembuatan_akun?: DateTimeFieldUpdateOperationsInput | Date | string
-    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+  export type KabupatenUncheckedUpdateWithoutWorkshopInput = {
+    id_kabupaten?: IntFieldUpdateOperationsInput | number
+    nama_kabupaten?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    id_provinsi?: IntFieldUpdateOperationsInput | number
+    facilitators?: FacilitatorUncheckedUpdateManyWithoutKabupatenNestedInput
   }
 
   export type WorkshopTerdaftarUpsertWithWhereUniqueWithoutWorkshopInput = {
@@ -31150,6 +31353,7 @@ export namespace Prisma {
     kode_verifikasi: string
     status_verfikasi: boolean
     avatar?: string | null
+    status_aktif?: boolean
     artikel?: ArtikelCreateNestedManyWithoutPenggunaInput
     artikel_disimpan?: ArtikelDisimpanCreateNestedManyWithoutPenggunaInput
     artikel_disukai?: ArtikelDisukaiCreateNestedManyWithoutPenggunaInput
@@ -31170,6 +31374,7 @@ export namespace Prisma {
     kode_verifikasi: string
     status_verfikasi: boolean
     avatar?: string | null
+    status_aktif?: boolean
     artikel?: ArtikelUncheckedCreateNestedManyWithoutPenggunaInput
     artikel_disimpan?: ArtikelDisimpanUncheckedCreateNestedManyWithoutPenggunaInput
     artikel_disukai?: ArtikelDisukaiUncheckedCreateNestedManyWithoutPenggunaInput
@@ -31186,26 +31391,34 @@ export namespace Prisma {
     id_workshop?: string
     judul_workshop: string
     tanggal_workshop: Date | string
-    lokasi_workshop: string
+    alaamt_lengkap_workshop: string
     deskripsi_workshop: string
     harga_workshop: Decimal | DecimalJsLike | number | string
     kapasitas: number
     status_verifikasi: boolean
+    lat_lokasi: number
+    long_lokasi: number
+    gambar_workshop: string
+    status_aktif?: boolean
     facilitator: FacilitatorCreateNestedOneWithoutWorkshopsInput
-    admin: AdminCreateNestedOneWithoutWorkshop_diverifikasiInput
+    kabupaten: KabupatenCreateNestedOneWithoutWorkshopInput
   }
 
   export type WorkshopUncheckedCreateWithoutPendaftaranInput = {
     id_workshop?: string
     judul_workshop: string
     tanggal_workshop: Date | string
-    lokasi_workshop: string
+    alaamt_lengkap_workshop: string
     deskripsi_workshop: string
     harga_workshop: Decimal | DecimalJsLike | number | string
     kapasitas: number
     status_verifikasi: boolean
+    lat_lokasi: number
+    long_lokasi: number
+    gambar_workshop: string
+    status_aktif?: boolean
     id_facilitator: string
-    id_verifikator: string
+    id_kabupaten: number
   }
 
   export type WorkshopCreateOrConnectWithoutPendaftaranInput = {
@@ -31237,6 +31450,7 @@ export namespace Prisma {
     kode_verifikasi?: StringFieldUpdateOperationsInput | string
     status_verfikasi?: BoolFieldUpdateOperationsInput | boolean
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    status_aktif?: BoolFieldUpdateOperationsInput | boolean
     artikel?: ArtikelUpdateManyWithoutPenggunaNestedInput
     artikel_disimpan?: ArtikelDisimpanUpdateManyWithoutPenggunaNestedInput
     artikel_disukai?: ArtikelDisukaiUpdateManyWithoutPenggunaNestedInput
@@ -31257,6 +31471,7 @@ export namespace Prisma {
     kode_verifikasi?: StringFieldUpdateOperationsInput | string
     status_verfikasi?: BoolFieldUpdateOperationsInput | boolean
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    status_aktif?: BoolFieldUpdateOperationsInput | boolean
     artikel?: ArtikelUncheckedUpdateManyWithoutPenggunaNestedInput
     artikel_disimpan?: ArtikelDisimpanUncheckedUpdateManyWithoutPenggunaNestedInput
     artikel_disukai?: ArtikelDisukaiUncheckedUpdateManyWithoutPenggunaNestedInput
@@ -31279,26 +31494,34 @@ export namespace Prisma {
     id_workshop?: StringFieldUpdateOperationsInput | string
     judul_workshop?: StringFieldUpdateOperationsInput | string
     tanggal_workshop?: DateTimeFieldUpdateOperationsInput | Date | string
-    lokasi_workshop?: StringFieldUpdateOperationsInput | string
+    alaamt_lengkap_workshop?: StringFieldUpdateOperationsInput | string
     deskripsi_workshop?: StringFieldUpdateOperationsInput | string
     harga_workshop?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     kapasitas?: IntFieldUpdateOperationsInput | number
     status_verifikasi?: BoolFieldUpdateOperationsInput | boolean
+    lat_lokasi?: IntFieldUpdateOperationsInput | number
+    long_lokasi?: IntFieldUpdateOperationsInput | number
+    gambar_workshop?: StringFieldUpdateOperationsInput | string
+    status_aktif?: BoolFieldUpdateOperationsInput | boolean
     facilitator?: FacilitatorUpdateOneRequiredWithoutWorkshopsNestedInput
-    admin?: AdminUpdateOneRequiredWithoutWorkshop_diverifikasiNestedInput
+    kabupaten?: KabupatenUpdateOneRequiredWithoutWorkshopNestedInput
   }
 
   export type WorkshopUncheckedUpdateWithoutPendaftaranInput = {
     id_workshop?: StringFieldUpdateOperationsInput | string
     judul_workshop?: StringFieldUpdateOperationsInput | string
     tanggal_workshop?: DateTimeFieldUpdateOperationsInput | Date | string
-    lokasi_workshop?: StringFieldUpdateOperationsInput | string
+    alaamt_lengkap_workshop?: StringFieldUpdateOperationsInput | string
     deskripsi_workshop?: StringFieldUpdateOperationsInput | string
     harga_workshop?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     kapasitas?: IntFieldUpdateOperationsInput | number
     status_verifikasi?: BoolFieldUpdateOperationsInput | boolean
+    lat_lokasi?: IntFieldUpdateOperationsInput | number
+    long_lokasi?: IntFieldUpdateOperationsInput | number
+    gambar_workshop?: StringFieldUpdateOperationsInput | string
+    status_aktif?: BoolFieldUpdateOperationsInput | boolean
     id_facilitator?: StringFieldUpdateOperationsInput | string
-    id_verifikator?: StringFieldUpdateOperationsInput | string
+    id_kabupaten?: IntFieldUpdateOperationsInput | number
   }
 
   export type InstruksiTanamanCreateWithoutTanamanInput = {
@@ -31661,6 +31884,7 @@ export namespace Prisma {
     kode_verifikasi: string
     status_verfikasi: boolean
     avatar?: string | null
+    status_aktif?: boolean
     workshop_terdaftar?: WorkshopTerdaftarCreateNestedManyWithoutPenggunaInput
     artikel?: ArtikelCreateNestedManyWithoutPenggunaInput
     artikel_disimpan?: ArtikelDisimpanCreateNestedManyWithoutPenggunaInput
@@ -31681,6 +31905,7 @@ export namespace Prisma {
     kode_verifikasi: string
     status_verfikasi: boolean
     avatar?: string | null
+    status_aktif?: boolean
     workshop_terdaftar?: WorkshopTerdaftarUncheckedCreateNestedManyWithoutPenggunaInput
     artikel?: ArtikelUncheckedCreateNestedManyWithoutPenggunaInput
     artikel_disimpan?: ArtikelDisimpanUncheckedCreateNestedManyWithoutPenggunaInput
@@ -31768,6 +31993,7 @@ export namespace Prisma {
     kode_verifikasi?: StringFieldUpdateOperationsInput | string
     status_verfikasi?: BoolFieldUpdateOperationsInput | boolean
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    status_aktif?: BoolFieldUpdateOperationsInput | boolean
     workshop_terdaftar?: WorkshopTerdaftarUpdateManyWithoutPenggunaNestedInput
     artikel?: ArtikelUpdateManyWithoutPenggunaNestedInput
     artikel_disimpan?: ArtikelDisimpanUpdateManyWithoutPenggunaNestedInput
@@ -31788,6 +32014,7 @@ export namespace Prisma {
     kode_verifikasi?: StringFieldUpdateOperationsInput | string
     status_verfikasi?: BoolFieldUpdateOperationsInput | boolean
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    status_aktif?: BoolFieldUpdateOperationsInput | boolean
     workshop_terdaftar?: WorkshopTerdaftarUncheckedUpdateManyWithoutPenggunaNestedInput
     artikel?: ArtikelUncheckedUpdateManyWithoutPenggunaNestedInput
     artikel_disimpan?: ArtikelDisimpanUncheckedUpdateManyWithoutPenggunaNestedInput
@@ -31962,6 +32189,7 @@ export namespace Prisma {
     nama_kabupaten?: StringFieldUpdateOperationsInput | string
     type?: StringFieldUpdateOperationsInput | string
     facilitators?: FacilitatorUpdateManyWithoutKabupatenNestedInput
+    workshop?: WorkshopUpdateManyWithoutKabupatenNestedInput
   }
 
   export type KabupatenUncheckedUpdateWithoutProvinsiInput = {
@@ -31969,6 +32197,7 @@ export namespace Prisma {
     nama_kabupaten?: StringFieldUpdateOperationsInput | string
     type?: StringFieldUpdateOperationsInput | string
     facilitators?: FacilitatorUncheckedUpdateManyWithoutKabupatenNestedInput
+    workshop?: WorkshopUncheckedUpdateManyWithoutKabupatenNestedInput
   }
 
   export type KabupatenUncheckedUpdateManyWithoutProvinsiInput = {
@@ -31986,6 +32215,23 @@ export namespace Prisma {
     tanggal_pembuatan_akun: Date | string
     alamat_lengkap_facilitator: string
     avatar?: string | null
+    status_aktif?: boolean
+  }
+
+  export type WorkshopCreateManyKabupatenInput = {
+    id_workshop?: string
+    judul_workshop: string
+    tanggal_workshop: Date | string
+    alaamt_lengkap_workshop: string
+    deskripsi_workshop: string
+    harga_workshop: Decimal | DecimalJsLike | number | string
+    kapasitas: number
+    status_verifikasi: boolean
+    lat_lokasi: number
+    long_lokasi: number
+    gambar_workshop: string
+    status_aktif?: boolean
+    id_facilitator: string
   }
 
   export type FacilitatorUpdateWithoutKabupatenInput = {
@@ -31997,6 +32243,7 @@ export namespace Prisma {
     tanggal_pembuatan_akun?: DateTimeFieldUpdateOperationsInput | Date | string
     alamat_lengkap_facilitator?: StringFieldUpdateOperationsInput | string
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    status_aktif?: BoolFieldUpdateOperationsInput | boolean
     workshops?: WorkshopUpdateManyWithoutFacilitatorNestedInput
   }
 
@@ -32009,6 +32256,7 @@ export namespace Prisma {
     tanggal_pembuatan_akun?: DateTimeFieldUpdateOperationsInput | Date | string
     alamat_lengkap_facilitator?: StringFieldUpdateOperationsInput | string
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    status_aktif?: BoolFieldUpdateOperationsInput | boolean
     workshops?: WorkshopUncheckedUpdateManyWithoutFacilitatorNestedInput
   }
 
@@ -32021,6 +32269,57 @@ export namespace Prisma {
     tanggal_pembuatan_akun?: DateTimeFieldUpdateOperationsInput | Date | string
     alamat_lengkap_facilitator?: StringFieldUpdateOperationsInput | string
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    status_aktif?: BoolFieldUpdateOperationsInput | boolean
+  }
+
+  export type WorkshopUpdateWithoutKabupatenInput = {
+    id_workshop?: StringFieldUpdateOperationsInput | string
+    judul_workshop?: StringFieldUpdateOperationsInput | string
+    tanggal_workshop?: DateTimeFieldUpdateOperationsInput | Date | string
+    alaamt_lengkap_workshop?: StringFieldUpdateOperationsInput | string
+    deskripsi_workshop?: StringFieldUpdateOperationsInput | string
+    harga_workshop?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    kapasitas?: IntFieldUpdateOperationsInput | number
+    status_verifikasi?: BoolFieldUpdateOperationsInput | boolean
+    lat_lokasi?: IntFieldUpdateOperationsInput | number
+    long_lokasi?: IntFieldUpdateOperationsInput | number
+    gambar_workshop?: StringFieldUpdateOperationsInput | string
+    status_aktif?: BoolFieldUpdateOperationsInput | boolean
+    facilitator?: FacilitatorUpdateOneRequiredWithoutWorkshopsNestedInput
+    pendaftaran?: WorkshopTerdaftarUpdateManyWithoutWorkshopNestedInput
+  }
+
+  export type WorkshopUncheckedUpdateWithoutKabupatenInput = {
+    id_workshop?: StringFieldUpdateOperationsInput | string
+    judul_workshop?: StringFieldUpdateOperationsInput | string
+    tanggal_workshop?: DateTimeFieldUpdateOperationsInput | Date | string
+    alaamt_lengkap_workshop?: StringFieldUpdateOperationsInput | string
+    deskripsi_workshop?: StringFieldUpdateOperationsInput | string
+    harga_workshop?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    kapasitas?: IntFieldUpdateOperationsInput | number
+    status_verifikasi?: BoolFieldUpdateOperationsInput | boolean
+    lat_lokasi?: IntFieldUpdateOperationsInput | number
+    long_lokasi?: IntFieldUpdateOperationsInput | number
+    gambar_workshop?: StringFieldUpdateOperationsInput | string
+    status_aktif?: BoolFieldUpdateOperationsInput | boolean
+    id_facilitator?: StringFieldUpdateOperationsInput | string
+    pendaftaran?: WorkshopTerdaftarUncheckedUpdateManyWithoutWorkshopNestedInput
+  }
+
+  export type WorkshopUncheckedUpdateManyWithoutKabupatenInput = {
+    id_workshop?: StringFieldUpdateOperationsInput | string
+    judul_workshop?: StringFieldUpdateOperationsInput | string
+    tanggal_workshop?: DateTimeFieldUpdateOperationsInput | Date | string
+    alaamt_lengkap_workshop?: StringFieldUpdateOperationsInput | string
+    deskripsi_workshop?: StringFieldUpdateOperationsInput | string
+    harga_workshop?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    kapasitas?: IntFieldUpdateOperationsInput | number
+    status_verifikasi?: BoolFieldUpdateOperationsInput | boolean
+    lat_lokasi?: IntFieldUpdateOperationsInput | number
+    long_lokasi?: IntFieldUpdateOperationsInput | number
+    gambar_workshop?: StringFieldUpdateOperationsInput | string
+    status_aktif?: BoolFieldUpdateOperationsInput | boolean
+    id_facilitator?: StringFieldUpdateOperationsInput | string
   }
 
   export type WorkshopTerdaftarCreateManyPenggunaInput = {
@@ -32043,6 +32342,7 @@ export namespace Prisma {
     status_artikel: $Enums.StatusArtikel
     status_verifikasi: boolean
     gambar_artikel: string
+    status_aktif?: boolean
     id_kategori_artikel: number
   }
 
@@ -32112,6 +32412,7 @@ export namespace Prisma {
     status_artikel?: EnumStatusArtikelFieldUpdateOperationsInput | $Enums.StatusArtikel
     status_verifikasi?: BoolFieldUpdateOperationsInput | boolean
     gambar_artikel?: StringFieldUpdateOperationsInput | string
+    status_aktif?: BoolFieldUpdateOperationsInput | boolean
     kategori?: KategoriArtikelUpdateOneRequiredWithoutArtikelNestedInput
     artikel_disimpan?: ArtikelDisimpanUpdateManyWithoutArtikelNestedInput
     artikel_disukai?: ArtikelDisukaiUpdateManyWithoutArtikelNestedInput
@@ -32127,6 +32428,7 @@ export namespace Prisma {
     status_artikel?: EnumStatusArtikelFieldUpdateOperationsInput | $Enums.StatusArtikel
     status_verifikasi?: BoolFieldUpdateOperationsInput | boolean
     gambar_artikel?: StringFieldUpdateOperationsInput | string
+    status_aktif?: BoolFieldUpdateOperationsInput | boolean
     id_kategori_artikel?: IntFieldUpdateOperationsInput | number
     artikel_disimpan?: ArtikelDisimpanUncheckedUpdateManyWithoutArtikelNestedInput
     artikel_disukai?: ArtikelDisukaiUncheckedUpdateManyWithoutArtikelNestedInput
@@ -32142,6 +32444,7 @@ export namespace Prisma {
     status_artikel?: EnumStatusArtikelFieldUpdateOperationsInput | $Enums.StatusArtikel
     status_verifikasi?: BoolFieldUpdateOperationsInput | boolean
     gambar_artikel?: StringFieldUpdateOperationsInput | string
+    status_aktif?: BoolFieldUpdateOperationsInput | boolean
     id_kategori_artikel?: IntFieldUpdateOperationsInput | number
   }
 
@@ -32222,24 +32525,32 @@ export namespace Prisma {
     id_workshop?: string
     judul_workshop: string
     tanggal_workshop: Date | string
-    lokasi_workshop: string
+    alaamt_lengkap_workshop: string
     deskripsi_workshop: string
     harga_workshop: Decimal | DecimalJsLike | number | string
     kapasitas: number
     status_verifikasi: boolean
-    id_verifikator: string
+    lat_lokasi: number
+    long_lokasi: number
+    gambar_workshop: string
+    status_aktif?: boolean
+    id_kabupaten: number
   }
 
   export type WorkshopUpdateWithoutFacilitatorInput = {
     id_workshop?: StringFieldUpdateOperationsInput | string
     judul_workshop?: StringFieldUpdateOperationsInput | string
     tanggal_workshop?: DateTimeFieldUpdateOperationsInput | Date | string
-    lokasi_workshop?: StringFieldUpdateOperationsInput | string
+    alaamt_lengkap_workshop?: StringFieldUpdateOperationsInput | string
     deskripsi_workshop?: StringFieldUpdateOperationsInput | string
     harga_workshop?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     kapasitas?: IntFieldUpdateOperationsInput | number
     status_verifikasi?: BoolFieldUpdateOperationsInput | boolean
-    admin?: AdminUpdateOneRequiredWithoutWorkshop_diverifikasiNestedInput
+    lat_lokasi?: IntFieldUpdateOperationsInput | number
+    long_lokasi?: IntFieldUpdateOperationsInput | number
+    gambar_workshop?: StringFieldUpdateOperationsInput | string
+    status_aktif?: BoolFieldUpdateOperationsInput | boolean
+    kabupaten?: KabupatenUpdateOneRequiredWithoutWorkshopNestedInput
     pendaftaran?: WorkshopTerdaftarUpdateManyWithoutWorkshopNestedInput
   }
 
@@ -32247,12 +32558,16 @@ export namespace Prisma {
     id_workshop?: StringFieldUpdateOperationsInput | string
     judul_workshop?: StringFieldUpdateOperationsInput | string
     tanggal_workshop?: DateTimeFieldUpdateOperationsInput | Date | string
-    lokasi_workshop?: StringFieldUpdateOperationsInput | string
+    alaamt_lengkap_workshop?: StringFieldUpdateOperationsInput | string
     deskripsi_workshop?: StringFieldUpdateOperationsInput | string
     harga_workshop?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     kapasitas?: IntFieldUpdateOperationsInput | number
     status_verifikasi?: BoolFieldUpdateOperationsInput | boolean
-    id_verifikator?: StringFieldUpdateOperationsInput | string
+    lat_lokasi?: IntFieldUpdateOperationsInput | number
+    long_lokasi?: IntFieldUpdateOperationsInput | number
+    gambar_workshop?: StringFieldUpdateOperationsInput | string
+    status_aktif?: BoolFieldUpdateOperationsInput | boolean
+    id_kabupaten?: IntFieldUpdateOperationsInput | number
     pendaftaran?: WorkshopTerdaftarUncheckedUpdateManyWithoutWorkshopNestedInput
   }
 
@@ -32260,62 +32575,16 @@ export namespace Prisma {
     id_workshop?: StringFieldUpdateOperationsInput | string
     judul_workshop?: StringFieldUpdateOperationsInput | string
     tanggal_workshop?: DateTimeFieldUpdateOperationsInput | Date | string
-    lokasi_workshop?: StringFieldUpdateOperationsInput | string
+    alaamt_lengkap_workshop?: StringFieldUpdateOperationsInput | string
     deskripsi_workshop?: StringFieldUpdateOperationsInput | string
     harga_workshop?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     kapasitas?: IntFieldUpdateOperationsInput | number
     status_verifikasi?: BoolFieldUpdateOperationsInput | boolean
-    id_verifikator?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type WorkshopCreateManyAdminInput = {
-    id_workshop?: string
-    judul_workshop: string
-    tanggal_workshop: Date | string
-    lokasi_workshop: string
-    deskripsi_workshop: string
-    harga_workshop: Decimal | DecimalJsLike | number | string
-    kapasitas: number
-    status_verifikasi: boolean
-    id_facilitator: string
-  }
-
-  export type WorkshopUpdateWithoutAdminInput = {
-    id_workshop?: StringFieldUpdateOperationsInput | string
-    judul_workshop?: StringFieldUpdateOperationsInput | string
-    tanggal_workshop?: DateTimeFieldUpdateOperationsInput | Date | string
-    lokasi_workshop?: StringFieldUpdateOperationsInput | string
-    deskripsi_workshop?: StringFieldUpdateOperationsInput | string
-    harga_workshop?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    kapasitas?: IntFieldUpdateOperationsInput | number
-    status_verifikasi?: BoolFieldUpdateOperationsInput | boolean
-    facilitator?: FacilitatorUpdateOneRequiredWithoutWorkshopsNestedInput
-    pendaftaran?: WorkshopTerdaftarUpdateManyWithoutWorkshopNestedInput
-  }
-
-  export type WorkshopUncheckedUpdateWithoutAdminInput = {
-    id_workshop?: StringFieldUpdateOperationsInput | string
-    judul_workshop?: StringFieldUpdateOperationsInput | string
-    tanggal_workshop?: DateTimeFieldUpdateOperationsInput | Date | string
-    lokasi_workshop?: StringFieldUpdateOperationsInput | string
-    deskripsi_workshop?: StringFieldUpdateOperationsInput | string
-    harga_workshop?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    kapasitas?: IntFieldUpdateOperationsInput | number
-    status_verifikasi?: BoolFieldUpdateOperationsInput | boolean
-    id_facilitator?: StringFieldUpdateOperationsInput | string
-    pendaftaran?: WorkshopTerdaftarUncheckedUpdateManyWithoutWorkshopNestedInput
-  }
-
-  export type WorkshopUncheckedUpdateManyWithoutAdminInput = {
-    id_workshop?: StringFieldUpdateOperationsInput | string
-    judul_workshop?: StringFieldUpdateOperationsInput | string
-    tanggal_workshop?: DateTimeFieldUpdateOperationsInput | Date | string
-    lokasi_workshop?: StringFieldUpdateOperationsInput | string
-    deskripsi_workshop?: StringFieldUpdateOperationsInput | string
-    harga_workshop?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    kapasitas?: IntFieldUpdateOperationsInput | number
-    status_verifikasi?: BoolFieldUpdateOperationsInput | boolean
-    id_facilitator?: StringFieldUpdateOperationsInput | string
+    lat_lokasi?: IntFieldUpdateOperationsInput | number
+    long_lokasi?: IntFieldUpdateOperationsInput | number
+    gambar_workshop?: StringFieldUpdateOperationsInput | string
+    status_aktif?: BoolFieldUpdateOperationsInput | boolean
+    id_kabupaten?: IntFieldUpdateOperationsInput | number
   }
 
   export type ArtikelDisimpanCreateManyArtikelInput = {
@@ -32392,6 +32661,7 @@ export namespace Prisma {
     status_artikel: $Enums.StatusArtikel
     status_verifikasi: boolean
     gambar_artikel: string
+    status_aktif?: boolean
     id_pengguna: string
   }
 
@@ -32404,6 +32674,7 @@ export namespace Prisma {
     status_artikel?: EnumStatusArtikelFieldUpdateOperationsInput | $Enums.StatusArtikel
     status_verifikasi?: BoolFieldUpdateOperationsInput | boolean
     gambar_artikel?: StringFieldUpdateOperationsInput | string
+    status_aktif?: BoolFieldUpdateOperationsInput | boolean
     pengguna?: PenggunaUpdateOneRequiredWithoutArtikelNestedInput
     artikel_disimpan?: ArtikelDisimpanUpdateManyWithoutArtikelNestedInput
     artikel_disukai?: ArtikelDisukaiUpdateManyWithoutArtikelNestedInput
@@ -32419,6 +32690,7 @@ export namespace Prisma {
     status_artikel?: EnumStatusArtikelFieldUpdateOperationsInput | $Enums.StatusArtikel
     status_verifikasi?: BoolFieldUpdateOperationsInput | boolean
     gambar_artikel?: StringFieldUpdateOperationsInput | string
+    status_aktif?: BoolFieldUpdateOperationsInput | boolean
     id_pengguna?: StringFieldUpdateOperationsInput | string
     artikel_disimpan?: ArtikelDisimpanUncheckedUpdateManyWithoutArtikelNestedInput
     artikel_disukai?: ArtikelDisukaiUncheckedUpdateManyWithoutArtikelNestedInput
@@ -32434,6 +32706,7 @@ export namespace Prisma {
     status_artikel?: EnumStatusArtikelFieldUpdateOperationsInput | $Enums.StatusArtikel
     status_verifikasi?: BoolFieldUpdateOperationsInput | boolean
     gambar_artikel?: StringFieldUpdateOperationsInput | string
+    status_aktif?: BoolFieldUpdateOperationsInput | boolean
     id_pengguna?: StringFieldUpdateOperationsInput | string
   }
 

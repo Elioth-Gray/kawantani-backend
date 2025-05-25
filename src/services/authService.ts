@@ -342,3 +342,47 @@ export const loginAdmin = async (data: TLogin) => {
     throw error;
   }
 };
+
+export const loginFacilitator = async (data: TLogin) => {
+  const { email, password } = data;
+
+  try {
+    await loginSchema.validate(data, { abortEarly: false });
+
+    const facilitator = await prisma.facilitator.findUnique({
+      where: { email_facilitator: email },
+    });
+
+    const isMatch =
+      facilitator &&
+      (await bcrypt.compare(password, facilitator.password_facilitator));
+    if (!facilitator || !isMatch) {
+      throw { status: 401, message: 'Credential invalid!' };
+    }
+
+    const token = generateToken({
+      id: facilitator.id_facilitator,
+      email: facilitator.email_facilitator,
+      firstName: facilitator.nama_facilitator,
+      lastName: '',
+      role: 'facilitator',
+    });
+
+    return {
+      token,
+      facilitator: {
+        id: facilitator.id_facilitator,
+        firstName: facilitator.nama_facilitator,
+        email: facilitator.email_facilitator,
+      },
+    };
+  } catch (error: any) {
+    if (error.name === 'ValidationError') {
+      throw {
+        status: 400,
+        message: error.errors.join(', '),
+      };
+    }
+    throw error;
+  }
+};

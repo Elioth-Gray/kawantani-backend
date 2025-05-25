@@ -5,6 +5,7 @@ import {
   loginUserCredential,
   sendActivation,
   loginAdminCredential,
+  loginFacilitatorCredential,
 } from '../controller/authController';
 import authMiddleware from '../middlewares/authMiddleware';
 import { createMulterUploader } from '../utils/multer/multer';
@@ -17,5 +18,6 @@ authRouter.post('/auth/activate', authMiddleware, verifyAccount);
 authRouter.post('/auth/login', loginUserCredential);
 authRouter.post('/auth/sendcode', authMiddleware, sendActivation);
 authRouter.post('/auth/admin/login', loginAdminCredential);
+authRouter.post('/auth/facilitator/login', loginFacilitatorCredential);
 
 export default authRouter;
