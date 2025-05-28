@@ -10,6 +10,9 @@ import {
   TRegisterFacilitator,
   TUpdateFacilitator,
 } from '../types/facilitatorTypes';
+import { IRequestWithFile } from '../types/multerTypes';
+import path from 'path';
+import fs from 'fs';
 
 export const get = async (req: Request, res: Response) => {
   try {
@@ -54,8 +57,12 @@ export const getById = async (req: Request, res: Response) => {
   }
 };
 
-export const register = async (req: Request, res: Response) => {
-  const data: TRegisterFacilitator = req.body;
+export const register = async (req: IRequestWithFile, res: Response) => {
+  const fileName = req.file?.filename;
+  const data: TRegisterFacilitator = {
+    ...req.body,
+    avatar: fileName,
+  };
 
   try {
     const result = await registerFacilitator(data);
@@ -67,6 +74,19 @@ export const register = async (req: Request, res: Response) => {
       },
     });
   } catch (error: any) {
+    if (fileName) {
+      const filePath = path.join(
+        __dirname,
+        '..',
+        'uploads',
+        'facilitators',
+        fileName,
+      );
+      fs.unlink(filePath, (err) => {
+        if (err) console.error('Gagal menghapus file avatar:', err.message);
+      });
+    }
+
     const statusCode = error.status || 500;
     const message = error.message || 'Terjadi kesalahan pada server.';
     return res.status(statusCode).json({
@@ -77,10 +97,12 @@ export const register = async (req: Request, res: Response) => {
   }
 };
 
-export const update = async (req: Request, res: Response) => {
-  const id = req.params.id;
-  const { id: _, ...body }: TUpdateFacilitator = req.body;
-  const data = { id, ...body };
+export const update = async (req: IRequestWithFile, res: Response) => {
+  const fileName = req.file?.filename;
+  const data: TUpdateFacilitator = {
+    ...req.body,
+    avatar: fileName,
+  };
   try {
     const result = await updateFacilitator(data);
     res.status(200).json({
@@ -91,6 +113,19 @@ export const update = async (req: Request, res: Response) => {
       },
     });
   } catch (error: any) {
+    if (fileName) {
+      const filePath = path.join(
+        __dirname,
+        '..',
+        'uploads',
+        'facilitators',
+        fileName,
+      );
+      fs.unlink(filePath, (err) => {
+        if (err) console.error('Gagal menghapus file avatar:', err.message);
+      });
+    }
+
     const statusCode = error.status || 500;
     const message = error.message || 'Terjadi kesalahan pada server.';
     return res.status(statusCode).json({

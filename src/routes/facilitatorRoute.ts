@@ -25,8 +25,20 @@ facilitatorRoute.get(
   roleMiddleware(['admin']),
   getById,
 );
-facilitatorRoute.post('/facilitator/register', authMiddleware, register);
-facilitatorRoute.put('/facilitator/:id', authMiddleware, update);
+facilitatorRoute.post(
+  '/facilitator/register',
+  authMiddleware,
+  roleMiddleware(['admin']),
+  uploadFacilitatorAvatar.single('avatar'),
+  register,
+);
+facilitatorRoute.put(
+  '/facilitator/:id',
+  authMiddleware,
+  roleMiddleware(['admin', 'facilitator']),
+  uploadFacilitatorAvatar.single('avatar'),
+  update,
+);
 facilitatorRoute.delete('/facilitator/:id', authMiddleware, deleteFac);
 
 export default facilitatorRoute;

@@ -95,6 +95,7 @@ export const registerFacilitator = async (data: TRegisterFacilitator) => {
     confirmPassword,
     fullAddress,
     regencyId,
+    avatar,
   } = data;
 
   try {
@@ -130,7 +131,8 @@ export const registerFacilitator = async (data: TRegisterFacilitator) => {
         password_facilitator: hashedPassword,
         tanggal_pembuatan_akun: tanggalPembuatanAkun,
         alamat_lengkap_facilitator: fullAddress,
-        id_kabupaten: regencyId,
+        id_kabupaten: parseInt(regencyId, 10),
+        avatar: avatar,
       },
     });
 
@@ -164,6 +166,7 @@ export const updateFacilitator = async (data: TUpdateFacilitator) => {
     regencyId,
     password,
     confirmPassword,
+    avatar,
   } = data;
 
   try {
@@ -239,8 +242,9 @@ export const updateFacilitator = async (data: TUpdateFacilitator) => {
         email_facilitator: email,
         nomor_telepon_facilitator: phoneNumber,
         alamat_lengkap_facilitator: fullAddress,
-        id_kabupaten: regencyId,
+        id_kabupaten: parseInt(regencyId, 10),
         password_facilitator: finalPassword,
+        avatar: avatar,
       },
     });
 

@@ -87,9 +87,10 @@ export const create = async (req: IRequestWithFileAuth, res: Response) => {
 };
 
 export const update = async (req: IRequestWithFileAuth, res: Response) => {
-  const { id } = req.params;
+  const fileName = req.file?.filename;
   const data = {
-    id,
+    user: req.user,
+    image: fileName,
     ...req.body,
   };
   try {
@@ -100,6 +101,18 @@ export const update = async (req: IRequestWithFileAuth, res: Response) => {
       data: result,
     });
   } catch (error) {
+    if (fileName) {
+      const filePath = path.join(
+        __dirname,
+        '..',
+        'uploads',
+        'articles',
+        fileName,
+      );
+      fs.unlink(filePath, (err) => {
+        if (err) console.error('Gagal menghapus file avatar:', err.message);
+      });
+    }
     const err = error as unknown as Error;
     res.status(400).json({
       message: err.message,

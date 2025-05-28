@@ -5,7 +5,8 @@ export type TRegisterFacilitator = {
   password: string;
   confirmPassword: string;
   fullAddress: string;
-  regencyId: number;
+  regencyId: string;
+  avatar: string;
 };
 
 export type TUpdateFacilitator = {
@@ -14,7 +15,8 @@ export type TUpdateFacilitator = {
   email?: string;
   phoneNumber?: string;
   fullAddress?: string;
-  regencyId?: number;
+  regencyId: string;
   password?: string;
   confirmPassword?: string;
+  avatar?: string;
 };
