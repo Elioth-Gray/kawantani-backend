@@ -34,6 +34,9 @@ export const getAll = async () => {
         email_pengguna: true,
         nomor_telepon_pengguna: true,
       },
+      where: {
+        status_aktif: true,
+      },
     });
 
     if (!users) {
@@ -52,6 +55,7 @@ export const getById = async (id: string) => {
     const user = await prisma.pengguna.findFirst({
       where: {
         id_pengguna: id,
+        status_aktif: true,
       },
       select: {
         id_pengguna: true,

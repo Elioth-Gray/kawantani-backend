@@ -89,6 +89,11 @@ export const getAllWorkshops = async () => {
         status_verifikasi: true,
         status_aktif: true,
         gambar_workshop: true,
+        facilitator: {
+          select: {
+            nama_facilitator: true,
+          },
+        },
       },
     });
 
@@ -113,6 +118,9 @@ export const getWorkshopById = async (id: string) => {
     const result = await prisma.workshop.findUnique({
       where: {
         id_workshop: id,
+      },
+      include: {
+        facilitator: true,
       },
     });
 

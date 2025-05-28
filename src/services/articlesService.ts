@@ -39,8 +39,23 @@ function simpleSlug(str: string): string {
 export const getAllArticle = async () => {
   try {
     const articles = await prisma.artikel.findMany({
-      include: {
-        kategori: true,
+      select: {
+        id_artikel: true,
+        judul_artikel: true,
+        kategori: {
+          select: {
+            nama_kategori_artikel: true,
+          },
+        },
+        pengguna: {
+          select: {
+            nama_depan_pengguna: true,
+            nama_belakang_pengguna: true,
+          },
+        },
+        tanggal_artikel: true,
+        status_aktif: true,
+        status_artikel: true,
       },
     });
 
@@ -69,6 +84,7 @@ export const getArticleById = async (id: string) => {
       include: {
         kategori: true,
         komentar_artikel: true,
+        pengguna: true,
       },
     });
 

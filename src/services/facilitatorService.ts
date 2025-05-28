@@ -36,7 +36,11 @@ const updateSchema = Yup.object({
 
 export const getAllFacilitator = async () => {
   try {
-    const facilitators = await prisma.facilitator.findMany();
+    const facilitators = await prisma.facilitator.findMany({
+      where: {
+        status_aktif: true,
+      },
+    });
 
     return facilitators;
   } catch (error: any) {
@@ -55,6 +59,7 @@ export const getAllFacilitatorById = async (id: string) => {
     const facilitator = await prisma.facilitator.findUnique({
       where: {
         id_facilitator: id,
+        status_aktif: true,
       },
       include: {
         kabupaten: {
