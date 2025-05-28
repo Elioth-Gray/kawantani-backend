@@ -9,3 +9,18 @@ export type TCreateArticle = {
   category: string;
   articleStatus: string;
 };
+
+export type TEditArticle = {
+  user: TToken;
+  id: string;
+};
+
+export type TUpdateArticle = {
+  id: string;
+  user: TToken;
+  title: string;
+  description: string;
+  content: string;
+  image: string;
+  articleStatus: string;
+};

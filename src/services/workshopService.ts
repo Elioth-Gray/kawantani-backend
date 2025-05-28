@@ -1,8 +1,6 @@
 import prisma from '../prisma/prismaClient';
 import * as Yup from 'yup';
-import { TCreateArticle } from '../types/articlesType';
-import { StatusArtikel } from '../generated/prisma';
-import { TCreateWorskhop } from '../types/workshopTypes';
+import { TCreateWorskhop, TEditWorkshop } from '../types/workshopTypes';
 
 const createSchema = Yup.object({
   title: Yup.string().required('Judul workshop harus diisi!'),
@@ -25,7 +23,7 @@ function simpleSlug(str: string): string {
     .replace(/[^\w-]+/g, '');
 }
 
-const create = async (data: TCreateWorskhop) => {
+export const createWorkshop = async (data: TCreateWorskhop) => {
   const {
     user,
     title,
@@ -52,7 +50,7 @@ const create = async (data: TCreateWorskhop) => {
     const nomorUrut = String(count + 1).padStart(3, '0');
     const id_workshop = `${kategoriSlug}-${nomorUrut}`;
 
-    const artikel = await prisma.workshop.create({
+    const workshop = await prisma.workshop.create({
       data: {
         id_workshop: id_workshop,
         judul_workshop: title,
@@ -69,7 +67,122 @@ const create = async (data: TCreateWorskhop) => {
       },
     });
 
-    return artikel;
+    return workshop;
+  } catch (error: any) {
+    if (error.name === 'ValidationError') {
+      throw {
+        status: 400,
+        message: error.errors.join(', '),
+      };
+    }
+    throw error;
+  }
+};
+
+export const getAllWorkshops = async () => {
+  try {
+    const workshops = await prisma.workshop.findMany({
+      select: {
+        id_workshop: true,
+        judul_workshop: true,
+        tanggal_workshop: true,
+        status_verifikasi: true,
+        status_aktif: true,
+        gambar_workshop: true,
+      },
+    });
+
+    if (!workshops) {
+      throw { status: 400, message: 'Artikel tidak ditemukan!' };
+    }
+
+    return workshops;
+  } catch (error: any) {
+    if (error.name === 'ValidationError') {
+      throw {
+        status: 400,
+        message: error.errors.join(', '),
+      };
+    }
+    throw error;
+  }
+};
+
+export const getWorkshopById = async (id: string) => {
+  try {
+    const result = await prisma.workshop.findUnique({
+      where: {
+        id_workshop: id,
+      },
+    });
+
+    if (!result) {
+      throw { status: 400, message: 'Workshop tidak ditemukan' };
+    }
+
+    return result;
+  } catch (error: any) {
+    if (error.name === 'ValidationError') {
+      throw {
+        status: 400,
+        message: error.errors.join(', '),
+      };
+    }
+    throw error;
+  }
+};
+
+export const verifyWorkshop = async (id: string) => {
+  try {
+    const result = await prisma.workshop.update({
+      where: {
+        id_workshop: id,
+      },
+      data: {
+        status_verifikasi: true,
+      },
+    });
+
+    return result;
+  } catch (error: any) {
+    if (error.name === 'ValidationError') {
+      throw {
+        status: 400,
+        message: error.errors.join(', '),
+      };
+    }
+    throw error;
+  }
+};
+
+export const deleteWorkshop = async (data: TEditWorkshop) => {
+  const { user, id } = data;
+  try {
+    const workshop = await prisma.workshop.findUnique({
+      where: {
+        id_workshop: id,
+      },
+    });
+
+    if (!workshop) {
+      throw { status: 404, message: 'Artikel tidak ditemukan' };
+    }
+
+    const isOwner = workshop.id_facilitator === user.id;
+    const isAdmin = user.role === 'admin';
+
+    if (!isOwner && !isAdmin) {
+      throw { status: 403, message: 'Tidak diizinkan menghapus artikel ini' };
+    }
+
+    const result = await prisma.workshop.update({
+      where: { id_workshop: id },
+      data: {
+        status_aktif: false,
+      },
+    });
+
+    return result;
   } catch (error: any) {
     if (error.name === 'ValidationError') {
       throw {

@@ -1,6 +1,10 @@
 import prisma from '../prisma/prismaClient';
 import * as Yup from 'yup';
-import { TCreateArticle } from '../types/articlesType';
+import {
+  TCreateArticle,
+  TEditArticle,
+  TUpdateArticle,
+} from '../types/articlesType';
 import { StatusArtikel } from '../generated/prisma';
 
 const createSchema = Yup.object({
@@ -9,6 +13,16 @@ const createSchema = Yup.object({
   content: Yup.string().required('Konten artikel harus diisi!'),
   image: Yup.string().required('Gambar artikel harus diisi!'),
   category: Yup.string().required('Kategori artikel harus diisi!'),
+  articleStatus: Yup.mixed<'DRAFT' | 'PUBLISHED'>()
+    .oneOf(['DRAFT', 'PUBLISHED'])
+    .required('Status artikel tidak valid!'),
+});
+
+const updateSchema = Yup.object({
+  title: Yup.string().required('Judul artikel harus diisi!'),
+  description: Yup.string().required('Deskripsi artikel harus diisi!'),
+  content: Yup.string().required('Konten artikel harus diisi!'),
+  image: Yup.string().required('Gambar artikel harus diisi!'),
   articleStatus: Yup.mixed<'DRAFT' | 'PUBLISHED'>()
     .oneOf(['DRAFT', 'PUBLISHED'])
     .required('Status artikel tidak valid!'),
@@ -24,7 +38,11 @@ function simpleSlug(str: string): string {
 
 export const getAllArticle = async () => {
   try {
-    const articles = await prisma.artikel.findMany();
+    const articles = await prisma.artikel.findMany({
+      include: {
+        kategori: true,
+      },
+    });
 
     if (!articles) {
       throw { status: 400, message: 'Artikel tidak ditemukan!' };
@@ -134,6 +152,62 @@ export const createArticle = async (data: TCreateArticle) => {
   }
 };
 
+export const updateArticle = async (data: TUpdateArticle) => {
+  const { id, user, title, description, image, content, articleStatus } = data;
+  try {
+    await updateSchema.validate({
+      title,
+      description,
+      image,
+      content,
+      articleStatus,
+    });
+
+    const available = await prisma.artikel.findUnique({
+      where: {
+        id_artikel: id,
+        id_pengguna: user.id,
+      },
+    });
+
+    if (!available) {
+      throw { status: 400, message: 'Artikel tidak ditemukan!' };
+    }
+
+    if (
+      !Object.values(StatusArtikel).includes(articleStatus as StatusArtikel)
+    ) {
+      throw {
+        status: 400,
+        message: 'Status artikel tidak valid!',
+      };
+    }
+
+    const artikel = await prisma.artikel.update({
+      where: {
+        id_artikel: id,
+      },
+      data: {
+        judul_artikel: title,
+        deskripsi_artikel: description,
+        isi_artikel: content,
+        gambar_artikel: image,
+        status_artikel: articleStatus as StatusArtikel,
+      },
+    });
+
+    return artikel;
+  } catch (error) {
+    if (error.name === 'ValidationError') {
+      throw {
+        status: 400,
+        message: error.errors.join(', '),
+      };
+    }
+    throw error;
+  }
+};
+
 export const verifyArticle = async (id: string) => {
   try {
     const result = await prisma.artikel.update({
@@ -157,11 +231,13 @@ export const verifyArticle = async (id: string) => {
   }
 };
 
-export const toggleArticle = async (id: string) => {
+export const toggleArticle = async (data: TEditArticle) => {
+  const { id, user } = data;
   try {
     const currentStatus = await prisma.artikel.findUnique({
       where: {
         id_artikel: id,
+        id_pengguna: user.id,
       },
       select: {
         status_artikel: true,
@@ -199,21 +275,32 @@ export const toggleArticle = async (id: string) => {
   }
 };
 
-export const deleteArticle = async (id: string) => {
+export const deleteArticle = async (data: TEditArticle) => {
+  const { user, id } = data;
   try {
-    const isAvailable = await prisma.artikel.findUnique({
+    const article = await prisma.artikel.findUnique({
       where: {
         id_artikel: id,
       },
     });
 
-    if (!isAvailable) {
-      throw { status: 400, message: 'Artikel tidak ditemukan' };
+    if (!article) {
+      throw { status: 404, message: 'Artikel tidak ditemukan' };
     }
 
-    const result = await prisma.artikel.delete({
+    const isOwner = article.id_pengguna === user.id;
+    const isAdmin = user.role === 'admin';
+
+    if (!isOwner && !isAdmin) {
+      throw { status: 403, message: 'Tidak diizinkan menghapus artikel ini' };
+    }
+
+    const result = await prisma.artikel.update({
       where: {
         id_artikel: id,
+      },
+      data: {
+        status_aktif: false,
       },
     });
 

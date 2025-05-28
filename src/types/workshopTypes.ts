@@ -13,3 +13,8 @@ export type TCreateWorskhop = {
   image: string;
   regency: string;
 };
+
+export type TEditWorkshop = {
+  user: TToken;
+  id: string;
+};

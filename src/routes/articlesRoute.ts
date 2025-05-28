@@ -29,6 +29,12 @@ articlesRouter.get(
   getById,
 );
 articlesRouter.patch(
+  '/articles/:id/update',
+  authMiddleware,
+  roleMiddleware(['user']),
+  verify,
+);
+articlesRouter.patch(
   '/articles/:id/verify',
   authMiddleware,
   roleMiddleware(['admin']),
@@ -37,7 +43,7 @@ articlesRouter.patch(
 articlesRouter.delete(
   '/articles/:id',
   authMiddleware,
-  roleMiddleware(['admin']),
+  roleMiddleware(['admin', 'user']),
   deleteArtic,
 );
 articlesRouter.patch(

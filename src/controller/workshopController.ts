@@ -3,19 +3,54 @@ import path from 'path';
 import fs from 'fs';
 import { IRequestWithFileAuth } from '../types/multerTypes';
 import {
-  createArticle,
-  deleteArticle,
-  getAllArticle,
-  getArticleById,
-  toggleArticle,
-  updateArticle,
-  verifyArticle,
-} from '../services/articlesService';
+  createWorkshop,
+  deleteWorkshop,
+  getAllWorkshops,
+  getWorkshopById,
+  verifyWorkshop,
+} from '../services/workshopService';
 import { IReqUser } from '../middlewares/authMiddleware';
+
+export const create = async (req: IRequestWithFileAuth, res: Response) => {
+  const fileName = req.file?.filename;
+  const data = {
+    user: req.user,
+    image: fileName,
+    ...req.body,
+  };
+
+  try {
+    const result = await createWorkshop(data);
+
+    res.status(200).json({
+      message: 'Artikel berhasil dibuat',
+      data: result,
+    });
+  } catch (error) {
+    if (fileName) {
+      const filePath = path.join(
+        __dirname,
+        '..',
+        'uploads',
+        'workshops',
+        fileName,
+      );
+      fs.unlink(filePath, (err) => {
+        if (err) console.error('Gagal menghapus file avatar:', err.message);
+      });
+    }
+
+    const err = error as unknown as Error;
+    res.status(400).json({
+      message: err.message,
+      data: null,
+    });
+  }
+};
 
 export const getAll = async (req: Request, res: Response) => {
   try {
-    const result = await getAllArticle();
+    const result = await getAllWorkshops();
 
     res.status(200).json({
       message: 'Artikel berhasil didapatkan',
@@ -34,10 +69,10 @@ export const getById = async (req: Request, res: Response) => {
   const { id } = req.params;
 
   try {
-    const result = await getArticleById(id);
+    const result = await getWorkshopById(id);
 
     res.status(200).json({
-      message: 'Artikel berhasil didapatkan',
+      message: 'Workshop berhasil didapatkan',
       data: result,
     });
   } catch (error) {
@@ -49,117 +84,36 @@ export const getById = async (req: Request, res: Response) => {
   }
 };
 
-export const create = async (req: IRequestWithFileAuth, res: Response) => {
-  const fileName = req.file?.filename;
-  const data = {
-    user: req.user,
-    image: fileName,
-    ...req.body,
-  };
-
-  try {
-    const result = await createArticle(data);
-
-    res.status(200).json({
-      message: 'Artikel berhasil dibuat',
-      data: result,
-    });
-  } catch (error) {
-    if (fileName) {
-      const filePath = path.join(
-        __dirname,
-        '..',
-        'uploads',
-        'articles',
-        fileName,
-      );
-      fs.unlink(filePath, (err) => {
-        if (err) console.error('Gagal menghapus file avatar:', err.message);
-      });
-    }
-
-    const err = error as unknown as Error;
-    res.status(400).json({
-      message: err.message,
-      data: null,
-    });
-  }
-};
-
-export const update = async (req: IRequestWithFileAuth, res: Response) => {
+export const verify = async (req: Request, res: Response) => {
   const { id } = req.params;
+  try {
+    const result = await verifyWorkshop(id);
+
+    res.status(200).json({
+      message: 'Workshop berhasil diverifikasi',
+      data: result,
+    });
+  } catch (error) {
+    const err = error as unknown as Error;
+    res.status(400).json({
+      message: err.message,
+      data: null,
+    });
+  }
+};
+
+export const deleteWorks = async (req: IReqUser, res: Response) => {
+  const { id } = req.params;
+  const user = req.body;
   const data = {
     id,
-    ...req.body,
+    user,
   };
   try {
-    const result = await updateArticle(data);
+    const result = await deleteWorkshop(data);
 
     res.status(200).json({
-      message: 'Artikel berhasil dihapus',
-      data: result,
-    });
-  } catch (error) {
-    const err = error as unknown as Error;
-    res.status(400).json({
-      message: err.message,
-      data: null,
-    });
-  }
-};
-
-export const verify = async (req: IReqUser, res: Response) => {
-  const { id } = req.params;
-
-  try {
-    const result = await verifyArticle(id);
-
-    res.status(200).json({
-      message: 'Artikel berhasil diverifikasi',
-      data: result,
-    });
-  } catch (error) {
-    const err = error as unknown as Error;
-    res.status(400).json({
-      message: err.message,
-      data: null,
-    });
-  }
-};
-
-export const toggle = async (req: IReqUser, res: Response) => {
-  const { id } = req.params;
-  const data = {
-    id,
-    ...req.body,
-  };
-  try {
-    const result = await toggleArticle(data);
-
-    res.status(200).json({
-      message: 'Artikel berhasil diperbarui',
-      data: result,
-    });
-  } catch (error) {
-    const err = error as unknown as Error;
-    res.status(400).json({
-      message: err.message,
-      data: null,
-    });
-  }
-};
-
-export const deleteArtic = async (req: IReqUser, res: Response) => {
-  const { id } = req.params;
-  const data = {
-    id,
-    ...req.body,
-  };
-  try {
-    const result = await deleteArticle(data);
-
-    res.status(200).json({
-      message: 'Artikel berhasil dihapus',
+      message: 'Workshop berhasil dihapus',
       data: result,
     });
   } catch (error) {

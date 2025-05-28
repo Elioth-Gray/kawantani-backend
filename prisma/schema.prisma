@@ -106,7 +106,6 @@ model Artikel {
   status_verifikasi         Boolean @default(false)
   gambar_artikel            String @db.VarChar(255)
   status_aktif              Boolean @default(true)
-
   id_kategori_artikel       Int
   kategori                  KategoriArtikel @relation(fields: [id_kategori_artikel], references: [id_kategori_artikel])
   id_pengguna               String
