@@ -1,6 +1,6 @@
-import { Request, Response, NextFunction } from "express";
-import { TToken } from "../types/authTypes";
-import { decodeToken } from "../utils/jwt";
+import { Request, Response, NextFunction } from 'express';
+import { TToken } from '../types/authTypes';
+import { decodeToken } from '../utils/jwt';
 
 export interface IReqUser extends Request {
   user?: TToken;
@@ -11,16 +11,16 @@ export default (req: Request, res: Response, next: NextFunction) => {
 
   if (!authorization) {
     return res.status(403).json({
-      message: "Unauthorized",
+      message: 'Unauthorized',
       data: null,
     });
   }
 
-  const [prefix, accessToken] = authorization.split(" ");
+  const [prefix, accessToken] = authorization.split(' ');
 
-  if (!(prefix === "Bearer" && accessToken)) {
+  if (!(prefix === 'Bearer' && accessToken)) {
     return res.status(403).json({
-      message: "Unauthorized",
+      message: 'Unauthorized',
       data: null,
     });
   }
@@ -29,7 +29,7 @@ export default (req: Request, res: Response, next: NextFunction) => {
 
   if (!user) {
     return res.status(403).json({
-      message: "Unauthorized",
+      message: 'Unauthorized',
       data: null,
     });
   }

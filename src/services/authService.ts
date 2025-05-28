@@ -364,7 +364,7 @@ export const loginFacilitator = async (data: TLogin) => {
       id: facilitator.id_facilitator,
       email: facilitator.email_facilitator,
       firstName: facilitator.nama_facilitator,
-      lastName: '',
+      lastName: 'Facilitator',
       role: 'facilitator',
     });
 

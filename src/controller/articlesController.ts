@@ -164,9 +164,13 @@ export const toggle = async (req: IReqUser, res: Response) => {
 
 export const deleteArtic = async (req: IReqUser, res: Response) => {
   const { id } = req.params;
+  const user = req.user;
+  if (!user) {
+    return res.status(401).json({ message: 'Unauthorized', data: null });
+  }
   const data = {
     id,
-    ...req.body,
+    user,
   };
   try {
     const result = await deleteArticle(data);

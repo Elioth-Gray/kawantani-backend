@@ -1,22 +1,32 @@
 import express from 'express';
-import { create, deleteWorks } from '../controller/workshopController';
+import {
+  create,
+  deleteWorks,
+  getAll,
+  verify,
+  getById,
+} from '../controller/workshopController';
 import authMiddleware from '../middlewares/authMiddleware';
 import { createMulterUploader } from '../utils/multer/multer';
 import roleMiddleware from '../middlewares/roleMiddleware';
-import { get } from '../controller/facilitatorController';
-import { getById } from '../services/userServices';
 
 const workshopsRouter = express.Router();
-const uploadWorkshopImage = createMulterUploader('users');
+const uploadWorkshopImage = createMulterUploader('workshops');
 
 workshopsRouter.post(
   '/workshops/create',
   authMiddleware,
   roleMiddleware(['facilitator']),
-  uploadWorkshopImage.single('avatar'),
+  uploadWorkshopImage.single('image'),
   create,
 );
-workshopsRouter.get('/workshops', get);
+workshopsRouter.put(
+  '/workshops/:id',
+  authMiddleware,
+  roleMiddleware(['admin']),
+  verify,
+);
+workshopsRouter.get('/workshops', getAll);
 workshopsRouter.get('/workshops/:id', authMiddleware, getById);
 workshopsRouter.delete(
   '/workshops/:id',

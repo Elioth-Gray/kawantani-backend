@@ -57,6 +57,9 @@ export const getAllArticle = async () => {
         status_aktif: true,
         status_artikel: true,
       },
+      where: {
+        status_aktif: true,
+      },
     });
 
     if (!articles) {
@@ -80,6 +83,7 @@ export const getArticleById = async (id: string) => {
     const result = await prisma.artikel.findUnique({
       where: {
         id_artikel: id,
+        status_aktif: true,
       },
       include: {
         kategori: true,

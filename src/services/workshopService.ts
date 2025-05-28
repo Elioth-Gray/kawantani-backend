@@ -82,6 +82,9 @@ export const createWorkshop = async (data: TCreateWorskhop) => {
 export const getAllWorkshops = async () => {
   try {
     const workshops = await prisma.workshop.findMany({
+      where: {
+        status_aktif: true,
+      },
       select: {
         id_workshop: true,
         judul_workshop: true,
@@ -118,6 +121,7 @@ export const getWorkshopById = async (id: string) => {
     const result = await prisma.workshop.findUnique({
       where: {
         id_workshop: id,
+        status_aktif: true,
       },
       include: {
         facilitator: true,
@@ -164,7 +168,7 @@ export const verifyWorkshop = async (id: string) => {
 };
 
 export const deleteWorkshop = async (data: TEditWorkshop) => {
-  const { user, id } = data;
+  const { id, user } = data;
   try {
     const workshop = await prisma.workshop.findUnique({
       where: {
@@ -175,6 +179,9 @@ export const deleteWorkshop = async (data: TEditWorkshop) => {
     if (!workshop) {
       throw { status: 404, message: 'Artikel tidak ditemukan' };
     }
+
+    console.log(`Id fac artikel ${workshop.id_facilitator}`);
+    console.log(user.id);
 
     const isOwner = workshop.id_facilitator === user.id;
     const isAdmin = user.role === 'admin';
