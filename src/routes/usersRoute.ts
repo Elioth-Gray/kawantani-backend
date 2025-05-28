@@ -11,7 +11,7 @@ import roleMiddleware from '../middlewares/roleMiddleware';
 import { createMulterUploader } from '../utils/multer/multer';
 
 const usersRoute = express.Router();
-const uploadUserAvatar = createMulterUploader("users")
+const uploadUserAvatar = createMulterUploader('users');
 
 usersRoute.get('/users/me', authMiddleware, me);
 
@@ -19,13 +19,13 @@ usersRoute.get(
   '/users',
   authMiddleware,
   roleMiddleware(['admin']),
-  getAllUsers
+  getAllUsers,
 );
 usersRoute.get(
   '/users/:id',
   authMiddleware,
   roleMiddleware(['admin']),
-  getUserById
+  getUserById,
 );
 
 usersRoute.put(
@@ -33,13 +33,19 @@ usersRoute.put(
   authMiddleware,
   roleMiddleware(['user']),
   uploadUserAvatar.single('avatar'),
-  updateProfile
+  updateProfile,
 );
 usersRoute.put(
   '/users/edit/:id',
   authMiddleware,
   roleMiddleware(['admin']),
-  update
+  update,
+);
+usersRoute.delete(
+  '/users/:id',
+  authMiddleware,
+  roleMiddleware(['admin', 'user']),
+  update,
 );
 
 export default usersRoute;

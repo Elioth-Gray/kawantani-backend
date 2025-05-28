@@ -6,23 +6,23 @@ import roleMiddleware from '../middlewares/roleMiddleware';
 import { get } from '../controller/facilitatorController';
 import { getById } from '../services/userServices';
 
-const wokrshopRouter = express.Router();
+const workshopsRouter = express.Router();
 const uploadWorkshopImage = createMulterUploader('users');
 
-wokrshopRouter.post(
+workshopsRouter.post(
   '/workshops/create',
   authMiddleware,
   roleMiddleware(['facilitator']),
   uploadWorkshopImage.single('avatar'),
   create,
 );
-wokrshopRouter.get('/workshops', get);
-wokrshopRouter.get('/workshops/:id', authMiddleware, getById);
-wokrshopRouter.delete(
+workshopsRouter.get('/workshops', get);
+workshopsRouter.get('/workshops/:id', authMiddleware, getById);
+workshopsRouter.delete(
   '/workshops/:id',
   authMiddleware,
   roleMiddleware(['admin', 'facilitator']),
   deleteWorks,
 );
 
-export default wokrshopRouter;
+export default workshopsRouter;

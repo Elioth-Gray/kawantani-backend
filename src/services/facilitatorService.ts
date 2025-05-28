@@ -172,7 +172,7 @@ export const updateFacilitator = async (data: TUpdateFacilitator) => {
         password,
         confirmPassword,
       },
-      { abortEarly: false }
+      { abortEarly: false },
     );
 
     const existing = await prisma.facilitator.findUnique({
@@ -220,7 +220,7 @@ export const updateFacilitator = async (data: TUpdateFacilitator) => {
 
     const isSamePassword = await bcrypt.compare(
       password,
-      existing.password_facilitator
+      existing.password_facilitator,
     );
 
     if (!isSamePassword) {
@@ -273,9 +273,12 @@ export const deleteFacilitator = async (data: string) => {
       throw { status: 400, message: 'Facilitator tidak ditemukan' };
     }
 
-    const result = await prisma.facilitator.delete({
+    const result = await prisma.facilitator.update({
       where: {
         id_facilitator: id,
+      },
+      data: {
+        status_aktif: false,
       },
     });
 

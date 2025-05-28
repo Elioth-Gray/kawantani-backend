@@ -28,3 +28,8 @@ export type TUpdateProfile = {
   gender: string;
   avatar: string;
 };
+
+export type TEditUser = {
+  user: TToken;
+  id: string;
+};

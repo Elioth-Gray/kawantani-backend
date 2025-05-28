@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import { TUpdateProfile, TUser } from '../types/userTypes';
 import {
+  deleteUser,
   getAll,
   getById,
   updateUser,
@@ -50,7 +51,7 @@ export const getUserById = async (req: Request, res: Response) => {
 
 export const update = async (req: IReqUser, res: Response) => {
   const data = {
-    id: req.params.id ,
+    id: req.params.id,
     ...req.body,
   };
   console.log(data);
@@ -92,7 +93,10 @@ export const me = async (req: IReqUser, res: Response) => {
   }
 };
 
-export const updateProfile = async (req: IRequestWithFileAuth, res: Response) => {
+export const updateProfile = async (
+  req: IRequestWithFileAuth,
+  res: Response,
+) => {
   const fileName = req.file?.filename;
 
   const data = {
@@ -115,6 +119,29 @@ export const updateProfile = async (req: IRequestWithFileAuth, res: Response) =>
       });
     }
 
+    const err = error as unknown as Error;
+    res.status(400).json({
+      message: err.message,
+      data: null,
+    });
+  }
+};
+
+const deleteUs = async (req: IReqUser, res: Response) => {
+  const { id } = req.params;
+  const user = req.body;
+  const data = {
+    id,
+    user,
+  };
+  try {
+    const result = await deleteUser(data);
+
+    res.status(200).json({
+      message: 'Pengguna berhasil dihapus',
+      data: result,
+    });
+  } catch (error: any) {
     const err = error as unknown as Error;
     res.status(400).json({
       message: err.message,

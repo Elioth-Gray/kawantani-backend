@@ -1,6 +1,6 @@
 import prisma from '../prisma/prismaClient';
 import * as Yup from 'yup';
-import { TUpdateProfile, TUpdateUser } from '../types/userTypes';
+import { TEditUser, TUpdateProfile, TUpdateUser } from '../types/userTypes';
 import bcrypt from 'bcryptjs';
 import path from 'path';
 import fs from 'fs';
@@ -292,6 +292,45 @@ export const updateUserProfile = async (data: TUpdateProfile) => {
         gender: result.jenisKelamin,
       },
     };
+  } catch (error: any) {
+    if (error.name === 'ValidationError') {
+      throw {
+        status: 400,
+        message: error.errors.join(', '),
+      };
+    }
+    throw error;
+  }
+};
+
+export const deleteUser = async (data: TEditUser) => {
+  const { user, id } = data;
+  try {
+    const pengguna = await prisma.pengguna.findUnique({
+      where: {
+        id_pengguna: id,
+      },
+    });
+
+    if (!pengguna) {
+      throw { status: 404, message: 'Artikel tidak ditemukan' };
+    }
+
+    const isOwner = pengguna.id_pengguna === user.id;
+    const isAdmin = user.role === 'admin';
+
+    if (!isOwner && !isAdmin) {
+      throw { status: 403, message: 'Tidak diizinkan menghapus artikel ini' };
+    }
+
+    const result = await prisma.pengguna.update({
+      where: { id_pengguna: id },
+      data: {
+        status_aktif: false,
+      },
+    });
+
+    return result;
   } catch (error: any) {
     if (error.name === 'ValidationError') {
       throw {

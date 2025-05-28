@@ -197,7 +197,7 @@ export const updateArticle = async (data: TUpdateArticle) => {
     });
 
     return artikel;
-  } catch (error) {
+  } catch (error: any) {
     if (error.name === 'ValidationError') {
       throw {
         status: 400,
