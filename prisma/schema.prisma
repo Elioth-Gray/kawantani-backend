@@ -67,11 +67,11 @@ model Facilitator {
   password_facilitator       String       @db.VarChar(100)
   tanggal_pembuatan_akun     DateTime
   alamat_lengkap_facilitator String       @db.VarChar(255)
-  avatar                     String?     @db.VarChar(255)
-  status_aktif               Boolean @default(true)
+  avatar                     String?      @db.VarChar(255)
+  status_aktif               Boolean      @default(true)
 
   id_kabupaten               Int
-  kabupaten                 Kabupaten    @relation(fields: [id_kabupaten], references: [id_kabupaten])
+  kabupaten                  Kabupaten    @relation(fields: [id_kabupaten], references: [id_kabupaten])
 
   workshops                  Workshop[]
 
@@ -103,7 +103,7 @@ model Artikel {
   deskripsi_artikel         String @db.Text
   isi_artikel               String @db.Text
   status_artikel            StatusArtikel
-  status_verifikasi         Boolean
+  status_verifikasi         Boolean @default(false)
   gambar_artikel            String @db.VarChar(255)
   status_aktif              Boolean @default(true)
 
@@ -156,18 +156,18 @@ model KomentarArtikel {
 }
 
 model Workshop {
-  id_workshop                String @id @default(cuid())
+  id_workshop                String    @id @db.VarChar(50)
   judul_workshop             String    @db.VarChar(100)
   tanggal_workshop           DateTime  @db.Date
   alaamt_lengkap_workshop    String    @db.VarChar(100)
   deskripsi_workshop         String    @db.VarChar(1000)
   harga_workshop             Decimal   @db.Decimal(10,2)
   kapasitas                  Int
-  status_verifikasi          Boolean
-  lat_lokasi                 Int
-  long_lokasi                Int
-  gambar_workshop             String @db.VarChar(255)
-  status_aktif               Boolean @default(true)
+  status_verifikasi          Boolean   @default(false)
+  lat_lokasi                 Float
+  long_lokasi                Float
+  gambar_workshop            String    @db.VarChar(255)
+  status_aktif               Boolean   @default(true)
 
 
   id_facilitator             String
@@ -194,13 +194,22 @@ model WorkshopTerdaftar {
   @@unique([nomor_tiket])
 }
 
+model kategoriTanaman {
+  id_kategori_tanaman Int @id @default(autoincrement())
+  nama_kategori_tanaman String @db.VarChar()
+
+  tanaman                  Tanaman[]
+}
+
 model Tanaman {
-  id_tanaman         Int @id @default(autoincrement())
+  id_tanaman         String @id @db.VarChar
   nama_tanaman       String @db.VarChar
   nama_latin         String @db.VarChar
   durasi_penanaman   Int
   deskripsi_tanaman  String @db.VarChar
 
+  id_kategori_tanaman Int
+  kategori           kategoriTanaman @relation(fields: [id_kategori_tanaman], references: [id_kategori_tanaman])
   instruksi_tanaman  InstruksiTanaman[]
   hari_penanaman     HariPenanaman[] 
   tanaman_pengguna   TanamanPengguna[]
@@ -210,14 +219,14 @@ model InstruksiTanaman {
   id_instruksi       Int @id @default(autoincrement())
   instruksi          String @db.Text
 
-  id_tanaman         Int
+  id_tanaman         String
   tanaman            Tanaman @relation(fields: [id_tanaman], references: [id_tanaman])
 }
 
 model HariPenanaman {
   id_hari_penanaman   Int @id @default(autoincrement())
   jenis_tugas         Int 
-  id_tanaman          Int
+  id_tanaman          String
   tanaman             Tanaman @relation(fields: [id_tanaman], references: [id_tanaman])
   tugas_penanaman     TugasPenanaman[]
 }
@@ -230,12 +239,12 @@ model TugasPenanaman {
 }
 
 model TanamanPengguna {
-  id_tanaman_pengguna Int @id @default(autoincrement())
+  id_tanaman_pengguna  String @id @db.VarChar
   tanggal_penanaman    DateTime
   status_penanaman     Boolean
   nama_tanaman         String @db.VarChar(50)
 
-  id_tanaman           Int
+  id_tanaman           String
   tanaman              Tanaman @relation(fields: [id_tanaman], references: [id_tanaman])
   id_pengguna          String
   pengguna             Pengguna @relation(fields: [id_pengguna], references: [id_pengguna])
@@ -246,7 +255,7 @@ model HariTanamanPengguna {
   id_hari_tanaman_pengguna    Int @id @default(autoincrement())
   catatan                     String @db.VarChar
   tugas_penanaman             TugasPenanamanPengguna[]
-  id_tanaman_pengguna         Int
+  id_tanaman_pengguna         String
   tanaman_pengguna            TanamanPengguna @relation(fields: [id_tanaman_pengguna], references: [id_tanaman_pengguna])
 }
 

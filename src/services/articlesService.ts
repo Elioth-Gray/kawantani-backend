@@ -116,7 +116,6 @@ export const createArticle = async (data: TCreateArticle) => {
         isi_artikel: content,
         gambar_artikel: image,
         status_artikel: articleStatus as StatusArtikel,
-        status_verifikasi: false,
         id_kategori_artikel: kategori.id_kategori_artikel,
         id_pengguna: user.id,
         tanggal_artikel: new Date(),

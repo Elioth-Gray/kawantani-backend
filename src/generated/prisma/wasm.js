@@ -236,12 +236,18 @@ exports.Prisma.WorkshopTerdaftarScalarFieldEnum = {
   id_workshop: 'id_workshop'
 };
 
+exports.Prisma.KategoriTanamanScalarFieldEnum = {
+  id_kategori_tanaman: 'id_kategori_tanaman',
+  nama_kategori_tanaman: 'nama_kategori_tanaman'
+};
+
 exports.Prisma.TanamanScalarFieldEnum = {
   id_tanaman: 'id_tanaman',
   nama_tanaman: 'nama_tanaman',
   nama_latin: 'nama_latin',
   durasi_penanaman: 'durasi_penanaman',
-  deskripsi_tanaman: 'deskripsi_tanaman'
+  deskripsi_tanaman: 'deskripsi_tanaman',
+  id_kategori_tanaman: 'id_kategori_tanaman'
 };
 
 exports.Prisma.InstruksiTanamanScalarFieldEnum = {
@@ -315,6 +321,7 @@ exports.Prisma.ModelName = {
   KomentarArtikel: 'KomentarArtikel',
   Workshop: 'Workshop',
   WorkshopTerdaftar: 'WorkshopTerdaftar',
+  kategoriTanaman: 'kategoriTanaman',
   Tanaman: 'Tanaman',
   InstruksiTanaman: 'InstruksiTanaman',
   HariPenanaman: 'HariPenanaman',
