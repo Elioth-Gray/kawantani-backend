@@ -97,16 +97,15 @@ enum StatusArtikel {
 }
 
 model Artikel {
-  id_artikel        String        @id @db.VarChar(50)
-  judul_artikel     String        @db.VarChar(100)
-  tanggal_artikel   DateTime      @default(now())
-  deskripsi_artikel String        @db.Text
-  isi_artikel       String        @db.Text
-  status_artikel    StatusArtikel
-  status_verifikasi Boolean       @default(false)
-  gambar_artikel    String        @db.VarChar(255)
-  status_aktif      Boolean       @default(true)
-
+  id_artikel          String            @id @db.VarChar(50)
+  judul_artikel       String            @db.VarChar(100)
+  tanggal_artikel     DateTime          @default(now())
+  deskripsi_artikel   String            @db.Text
+  isi_artikel         String            @db.Text
+  status_artikel      StatusArtikel
+  status_verifikasi   Boolean           @default(false)
+  gambar_artikel      String            @db.VarChar(255)
+  status_aktif        Boolean           @default(true)
   id_kategori_artikel Int
   kategori            KategoriArtikel   @relation(fields: [id_kategori_artikel], references: [id_kategori_artikel])
   id_pengguna         String
@@ -145,12 +144,13 @@ model ArtikelDisukai {
 }
 
 model KomentarArtikel {
-  id_komentar Int      @id @default(autoincrement())
-  id_artikel  String
-  artikel     Artikel  @relation(fields: [id_artikel], references: [id_artikel])
-  id_pengguna String
-  pengguna    Pengguna @relation(fields: [id_pengguna], references: [id_pengguna])
-  komentar    String   @db.Text
+  id_komentar      Int      @id @default(autoincrement())
+  id_artikel       String
+  artikel          Artikel  @relation(fields: [id_artikel], references: [id_artikel])
+  id_pengguna      String
+  pengguna         Pengguna @relation(fields: [id_pengguna], references: [id_pengguna])
+  komentar         String   @db.Text
+  tanggal_komentar DateTime
 
   @@unique([id_artikel, id_pengguna])
 }

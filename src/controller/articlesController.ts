@@ -3,10 +3,13 @@ import path from 'path';
 import fs from 'fs';
 import { IRequestWithFileAuth } from '../types/multerTypes';
 import {
+  addComment,
   createArticle,
   deleteArticle,
   getAllArticle,
   getArticleById,
+  likeArticle,
+  saveArticle,
   toggleArticle,
   updateArticle,
   verifyArticle,
@@ -180,6 +183,87 @@ export const deleteArtic = async (req: IReqUser, res: Response) => {
       data: result,
     });
   } catch (error) {
+    const err = error as unknown as Error;
+    res.status(400).json({
+      message: err.message,
+      data: null,
+    });
+  }
+};
+
+export const comment = async (req: IReqUser, res: Response) => {
+  const { id } = req.params;
+  const user = req.user;
+  if (!user) {
+    return res.status(401).json({ message: 'Unauthorized', data: null });
+  }
+  const data = {
+    id,
+    user,
+    ...req.body,
+  };
+  try {
+    const result = await addComment(data);
+
+    res.status(200).json({
+      message: 'Komentar berhasil dibuat!',
+      data: result,
+    });
+  } catch (error) {
+    const err = error as unknown as Error;
+    res.status(400).json({
+      message: err.message,
+      data: null,
+    });
+  }
+};
+
+export const save = async (req: IReqUser, res: Response) => {
+  const { id } = req.params;
+  const user = req.user;
+  if (!user) {
+    return res.status(401).json({ message: 'Unauthorized', data: null });
+  }
+  const data = {
+    id,
+    user,
+    ...req.body,
+  };
+  try {
+    const result = await saveArticle(data);
+
+    res.status(200).json({
+      message: 'Artikel berhasil disimpan',
+      data: result,
+    });
+  } catch (error: any) {
+    const err = error as unknown as Error;
+    res.status(400).json({
+      message: err.message,
+      data: null,
+    });
+  }
+};
+
+export const like = async (req: IReqUser, res: Response) => {
+  const { id } = req.params;
+  const user = req.user;
+  if (!user) {
+    return res.status(401).json({ message: 'Unauthorized', data: null });
+  }
+  const data = {
+    id,
+    user,
+    ...req.body,
+  };
+  try {
+    const result = await likeArticle(data);
+
+    res.status(200).json({
+      message: 'Artikel berhasil disukai',
+      data: result,
+    });
+  } catch (error: any) {
     const err = error as unknown as Error;
     res.status(400).json({
       message: err.message,

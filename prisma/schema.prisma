@@ -150,6 +150,7 @@ model KomentarArtikel {
   id_pengguna               String
   pengguna                  Pengguna @relation(fields: [id_pengguna], references: [id_pengguna])
   komentar                  String @db.Text
+  tanggal_komentar          DateTime
 
   @@unique([id_artikel, id_pengguna])
 }

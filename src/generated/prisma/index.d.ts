@@ -13357,6 +13357,7 @@ export namespace Prisma {
     id_artikel: string | null
     id_pengguna: string | null
     komentar: string | null
+    tanggal_komentar: Date | null
   }
 
   export type KomentarArtikelMaxAggregateOutputType = {
@@ -13364,6 +13365,7 @@ export namespace Prisma {
     id_artikel: string | null
     id_pengguna: string | null
     komentar: string | null
+    tanggal_komentar: Date | null
   }
 
   export type KomentarArtikelCountAggregateOutputType = {
@@ -13371,6 +13373,7 @@ export namespace Prisma {
     id_artikel: number
     id_pengguna: number
     komentar: number
+    tanggal_komentar: number
     _all: number
   }
 
@@ -13388,6 +13391,7 @@ export namespace Prisma {
     id_artikel?: true
     id_pengguna?: true
     komentar?: true
+    tanggal_komentar?: true
   }
 
   export type KomentarArtikelMaxAggregateInputType = {
@@ -13395,6 +13399,7 @@ export namespace Prisma {
     id_artikel?: true
     id_pengguna?: true
     komentar?: true
+    tanggal_komentar?: true
   }
 
   export type KomentarArtikelCountAggregateInputType = {
@@ -13402,6 +13407,7 @@ export namespace Prisma {
     id_artikel?: true
     id_pengguna?: true
     komentar?: true
+    tanggal_komentar?: true
     _all?: true
   }
 
@@ -13496,6 +13502,7 @@ export namespace Prisma {
     id_artikel: string
     id_pengguna: string
     komentar: string
+    tanggal_komentar: Date
     _count: KomentarArtikelCountAggregateOutputType | null
     _avg: KomentarArtikelAvgAggregateOutputType | null
     _sum: KomentarArtikelSumAggregateOutputType | null
@@ -13522,6 +13529,7 @@ export namespace Prisma {
     id_artikel?: boolean
     id_pengguna?: boolean
     komentar?: boolean
+    tanggal_komentar?: boolean
     artikel?: boolean | ArtikelDefaultArgs<ExtArgs>
     pengguna?: boolean | PenggunaDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["komentarArtikel"]>
@@ -13531,6 +13539,7 @@ export namespace Prisma {
     id_artikel?: boolean
     id_pengguna?: boolean
     komentar?: boolean
+    tanggal_komentar?: boolean
     artikel?: boolean | ArtikelDefaultArgs<ExtArgs>
     pengguna?: boolean | PenggunaDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["komentarArtikel"]>
@@ -13540,6 +13549,7 @@ export namespace Prisma {
     id_artikel?: boolean
     id_pengguna?: boolean
     komentar?: boolean
+    tanggal_komentar?: boolean
     artikel?: boolean | ArtikelDefaultArgs<ExtArgs>
     pengguna?: boolean | PenggunaDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["komentarArtikel"]>
@@ -13549,9 +13559,10 @@ export namespace Prisma {
     id_artikel?: boolean
     id_pengguna?: boolean
     komentar?: boolean
+    tanggal_komentar?: boolean
   }
 
-  export type KomentarArtikelOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_komentar" | "id_artikel" | "id_pengguna" | "komentar", ExtArgs["result"]["komentarArtikel"]>
+  export type KomentarArtikelOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_komentar" | "id_artikel" | "id_pengguna" | "komentar" | "tanggal_komentar", ExtArgs["result"]["komentarArtikel"]>
   export type KomentarArtikelInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     artikel?: boolean | ArtikelDefaultArgs<ExtArgs>
     pengguna?: boolean | PenggunaDefaultArgs<ExtArgs>
@@ -13576,6 +13587,7 @@ export namespace Prisma {
       id_artikel: string
       id_pengguna: string
       komentar: string
+      tanggal_komentar: Date
     }, ExtArgs["result"]["komentarArtikel"]>
     composites: {}
   }
@@ -14005,6 +14017,7 @@ export namespace Prisma {
     readonly id_artikel: FieldRef<"KomentarArtikel", 'String'>
     readonly id_pengguna: FieldRef<"KomentarArtikel", 'String'>
     readonly komentar: FieldRef<"KomentarArtikel", 'String'>
+    readonly tanggal_komentar: FieldRef<"KomentarArtikel", 'DateTime'>
   }
     
 
@@ -25733,7 +25746,8 @@ export namespace Prisma {
     id_komentar: 'id_komentar',
     id_artikel: 'id_artikel',
     id_pengguna: 'id_pengguna',
-    komentar: 'komentar'
+    komentar: 'komentar',
+    tanggal_komentar: 'tanggal_komentar'
   };
 
   export type KomentarArtikelScalarFieldEnum = (typeof KomentarArtikelScalarFieldEnum)[keyof typeof KomentarArtikelScalarFieldEnum]
@@ -26589,6 +26603,7 @@ export namespace Prisma {
     id_artikel?: StringFilter<"KomentarArtikel"> | string
     id_pengguna?: StringFilter<"KomentarArtikel"> | string
     komentar?: StringFilter<"KomentarArtikel"> | string
+    tanggal_komentar?: DateTimeFilter<"KomentarArtikel"> | Date | string
     artikel?: XOR<ArtikelScalarRelationFilter, ArtikelWhereInput>
     pengguna?: XOR<PenggunaScalarRelationFilter, PenggunaWhereInput>
   }
@@ -26598,6 +26613,7 @@ export namespace Prisma {
     id_artikel?: SortOrder
     id_pengguna?: SortOrder
     komentar?: SortOrder
+    tanggal_komentar?: SortOrder
     artikel?: ArtikelOrderByWithRelationInput
     pengguna?: PenggunaOrderByWithRelationInput
   }
@@ -26611,6 +26627,7 @@ export namespace Prisma {
     id_artikel?: StringFilter<"KomentarArtikel"> | string
     id_pengguna?: StringFilter<"KomentarArtikel"> | string
     komentar?: StringFilter<"KomentarArtikel"> | string
+    tanggal_komentar?: DateTimeFilter<"KomentarArtikel"> | Date | string
     artikel?: XOR<ArtikelScalarRelationFilter, ArtikelWhereInput>
     pengguna?: XOR<PenggunaScalarRelationFilter, PenggunaWhereInput>
   }, "id_komentar" | "id_artikel_id_pengguna">
@@ -26620,6 +26637,7 @@ export namespace Prisma {
     id_artikel?: SortOrder
     id_pengguna?: SortOrder
     komentar?: SortOrder
+    tanggal_komentar?: SortOrder
     _count?: KomentarArtikelCountOrderByAggregateInput
     _avg?: KomentarArtikelAvgOrderByAggregateInput
     _max?: KomentarArtikelMaxOrderByAggregateInput
@@ -26635,6 +26653,7 @@ export namespace Prisma {
     id_artikel?: StringWithAggregatesFilter<"KomentarArtikel"> | string
     id_pengguna?: StringWithAggregatesFilter<"KomentarArtikel"> | string
     komentar?: StringWithAggregatesFilter<"KomentarArtikel"> | string
+    tanggal_komentar?: DateTimeWithAggregatesFilter<"KomentarArtikel"> | Date | string
   }
 
   export type WorkshopWhereInput = {
@@ -27862,6 +27881,7 @@ export namespace Prisma {
 
   export type KomentarArtikelCreateInput = {
     komentar: string
+    tanggal_komentar: Date | string
     artikel: ArtikelCreateNestedOneWithoutKomentar_artikelInput
     pengguna: PenggunaCreateNestedOneWithoutKomentar_artikelInput
   }
@@ -27871,10 +27891,12 @@ export namespace Prisma {
     id_artikel: string
     id_pengguna: string
     komentar: string
+    tanggal_komentar: Date | string
   }
 
   export type KomentarArtikelUpdateInput = {
     komentar?: StringFieldUpdateOperationsInput | string
+    tanggal_komentar?: DateTimeFieldUpdateOperationsInput | Date | string
     artikel?: ArtikelUpdateOneRequiredWithoutKomentar_artikelNestedInput
     pengguna?: PenggunaUpdateOneRequiredWithoutKomentar_artikelNestedInput
   }
@@ -27884,6 +27906,7 @@ export namespace Prisma {
     id_artikel?: StringFieldUpdateOperationsInput | string
     id_pengguna?: StringFieldUpdateOperationsInput | string
     komentar?: StringFieldUpdateOperationsInput | string
+    tanggal_komentar?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type KomentarArtikelCreateManyInput = {
@@ -27891,10 +27914,12 @@ export namespace Prisma {
     id_artikel: string
     id_pengguna: string
     komentar: string
+    tanggal_komentar: Date | string
   }
 
   export type KomentarArtikelUpdateManyMutationInput = {
     komentar?: StringFieldUpdateOperationsInput | string
+    tanggal_komentar?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type KomentarArtikelUncheckedUpdateManyInput = {
@@ -27902,6 +27927,7 @@ export namespace Prisma {
     id_artikel?: StringFieldUpdateOperationsInput | string
     id_pengguna?: StringFieldUpdateOperationsInput | string
     komentar?: StringFieldUpdateOperationsInput | string
+    tanggal_komentar?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type WorkshopCreateInput = {
@@ -29082,6 +29108,7 @@ export namespace Prisma {
     id_artikel?: SortOrder
     id_pengguna?: SortOrder
     komentar?: SortOrder
+    tanggal_komentar?: SortOrder
   }
 
   export type KomentarArtikelAvgOrderByAggregateInput = {
@@ -29093,6 +29120,7 @@ export namespace Prisma {
     id_artikel?: SortOrder
     id_pengguna?: SortOrder
     komentar?: SortOrder
+    tanggal_komentar?: SortOrder
   }
 
   export type KomentarArtikelMinOrderByAggregateInput = {
@@ -29100,6 +29128,7 @@ export namespace Prisma {
     id_artikel?: SortOrder
     id_pengguna?: SortOrder
     komentar?: SortOrder
+    tanggal_komentar?: SortOrder
   }
 
   export type KomentarArtikelSumOrderByAggregateInput = {
@@ -31422,6 +31451,7 @@ export namespace Prisma {
 
   export type KomentarArtikelCreateWithoutPenggunaInput = {
     komentar: string
+    tanggal_komentar: Date | string
     artikel: ArtikelCreateNestedOneWithoutKomentar_artikelInput
   }
 
@@ -31429,6 +31459,7 @@ export namespace Prisma {
     id_komentar?: number
     id_artikel: string
     komentar: string
+    tanggal_komentar: Date | string
   }
 
   export type KomentarArtikelCreateOrConnectWithoutPenggunaInput = {
@@ -31608,6 +31639,7 @@ export namespace Prisma {
     id_artikel?: StringFilter<"KomentarArtikel"> | string
     id_pengguna?: StringFilter<"KomentarArtikel"> | string
     komentar?: StringFilter<"KomentarArtikel"> | string
+    tanggal_komentar?: DateTimeFilter<"KomentarArtikel"> | Date | string
   }
 
   export type TanamanPenggunaUpsertWithWhereUniqueWithoutPenggunaInput = {
@@ -31847,6 +31879,7 @@ export namespace Prisma {
 
   export type KomentarArtikelCreateWithoutArtikelInput = {
     komentar: string
+    tanggal_komentar: Date | string
     pengguna: PenggunaCreateNestedOneWithoutKomentar_artikelInput
   }
 
@@ -31854,6 +31887,7 @@ export namespace Prisma {
     id_komentar?: number
     id_pengguna: string
     komentar: string
+    tanggal_komentar: Date | string
   }
 
   export type KomentarArtikelCreateOrConnectWithoutArtikelInput = {
@@ -33882,6 +33916,7 @@ export namespace Prisma {
     id_komentar?: number
     id_artikel: string
     komentar: string
+    tanggal_komentar: Date | string
   }
 
   export type TanamanPenggunaCreateManyPenggunaInput = {
@@ -34002,6 +34037,7 @@ export namespace Prisma {
 
   export type KomentarArtikelUpdateWithoutPenggunaInput = {
     komentar?: StringFieldUpdateOperationsInput | string
+    tanggal_komentar?: DateTimeFieldUpdateOperationsInput | Date | string
     artikel?: ArtikelUpdateOneRequiredWithoutKomentar_artikelNestedInput
   }
 
@@ -34009,12 +34045,14 @@ export namespace Prisma {
     id_komentar?: IntFieldUpdateOperationsInput | number
     id_artikel?: StringFieldUpdateOperationsInput | string
     komentar?: StringFieldUpdateOperationsInput | string
+    tanggal_komentar?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type KomentarArtikelUncheckedUpdateManyWithoutPenggunaInput = {
     id_komentar?: IntFieldUpdateOperationsInput | number
     id_artikel?: StringFieldUpdateOperationsInput | string
     komentar?: StringFieldUpdateOperationsInput | string
+    tanggal_komentar?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type TanamanPenggunaUpdateWithoutPenggunaInput = {
@@ -34124,6 +34162,7 @@ export namespace Prisma {
     id_komentar?: number
     id_pengguna: string
     komentar: string
+    tanggal_komentar: Date | string
   }
 
   export type ArtikelDisimpanUpdateWithoutArtikelInput = {
@@ -34159,6 +34198,7 @@ export namespace Prisma {
 
   export type KomentarArtikelUpdateWithoutArtikelInput = {
     komentar?: StringFieldUpdateOperationsInput | string
+    tanggal_komentar?: DateTimeFieldUpdateOperationsInput | Date | string
     pengguna?: PenggunaUpdateOneRequiredWithoutKomentar_artikelNestedInput
   }
 
@@ -34166,12 +34206,14 @@ export namespace Prisma {
     id_komentar?: IntFieldUpdateOperationsInput | number
     id_pengguna?: StringFieldUpdateOperationsInput | string
     komentar?: StringFieldUpdateOperationsInput | string
+    tanggal_komentar?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type KomentarArtikelUncheckedUpdateManyWithoutArtikelInput = {
     id_komentar?: IntFieldUpdateOperationsInput | number
     id_pengguna?: StringFieldUpdateOperationsInput | string
     komentar?: StringFieldUpdateOperationsInput | string
+    tanggal_komentar?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ArtikelCreateManyKategoriInput = {

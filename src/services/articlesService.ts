@@ -1,11 +1,15 @@
 import prisma from '../prisma/prismaClient';
 import * as Yup from 'yup';
 import {
+  TCommentArticle,
   TCreateArticle,
   TEditArticle,
+  TLikeArticle,
+  TSaveArticle,
   TUpdateArticle,
 } from '../types/articlesType';
 import { StatusArtikel } from '../generated/prisma';
+import e from 'express';
 
 const createSchema = Yup.object({
   title: Yup.string().required('Judul artikel harus diisi!'),
@@ -26,6 +30,11 @@ const updateSchema = Yup.object({
   articleStatus: Yup.mixed<'DRAFT' | 'PUBLISHED'>()
     .oneOf(['DRAFT', 'PUBLISHED'])
     .required('Status artikel tidak valid!'),
+});
+
+const commentSchema = Yup.object({
+  id: Yup.string().required('ID artikel harus diisi!'),
+  content: Yup.string().required('Komentar harus ada isinya!'),
 });
 
 function simpleSlug(str: string): string {
@@ -89,6 +98,7 @@ export const getArticleById = async (id: string) => {
         kategori: true,
         komentar_artikel: true,
         pengguna: true,
+        artikel_disukai: true,
       },
     });
 
@@ -146,6 +156,9 @@ export const createArticle = async (data: TCreateArticle) => {
       };
     }
 
+    const tanggalPembuatanArtikel = new Date();
+    tanggalPembuatanArtikel.setHours(0, 0, 0, 0);
+
     const artikel = await prisma.artikel.create({
       data: {
         id_artikel,
@@ -156,7 +169,7 @@ export const createArticle = async (data: TCreateArticle) => {
         status_artikel: articleStatus as StatusArtikel,
         id_kategori_artikel: kategori.id_kategori_artikel,
         id_pengguna: user.id,
-        tanggal_artikel: new Date(),
+        tanggal_artikel: tanggalPembuatanArtikel,
       },
     });
 
@@ -324,6 +337,107 @@ export const deleteArticle = async (data: TEditArticle) => {
       },
     });
 
+    return result;
+  } catch (error: any) {
+    if (error.name === 'ValidationError') {
+      throw {
+        status: 400,
+        message: error.errors.join(', '),
+      };
+    }
+    throw error;
+  }
+};
+
+export const addComment = async (data: TCommentArticle) => {
+  const { user, id, content } = data;
+  try {
+    await commentSchema.validate(data);
+
+    const available = await prisma.artikel.findUnique({
+      where: {
+        id_artikel: id,
+      },
+    });
+
+    if (!available) {
+      throw { status: 200, message: 'Artikel tidak ditemukan!' };
+    }
+
+    const tanggalPembuatanKomentar = new Date();
+    tanggalPembuatanKomentar.setHours(0, 0, 0, 0);
+
+    const result = await prisma.komentarArtikel.create({
+      data: {
+        id_artikel: id,
+        id_pengguna: user.id,
+        komentar: content,
+        tanggal_komentar: tanggalPembuatanKomentar,
+      },
+    });
+  } catch (error: any) {
+    if (error.name === 'ValidationError') {
+      throw {
+        status: 400,
+        message: error.errors.join(', '),
+      };
+    }
+    throw error;
+  }
+};
+
+export const saveArticle = async (data: TSaveArticle) => {
+  const { user, id } = data;
+  try {
+    const available = await prisma.artikel.findUnique({
+      where: {
+        id_artikel: id,
+      },
+    });
+
+    if (!available) {
+      throw { status: 200, message: 'Artikel tidak ditemukan!' };
+    }
+
+    const result = await prisma.artikelDisimpan.create({
+      data: {
+        id_artikel: id,
+        id_pengguna: user.id,
+      },
+    });
+
+    return result;
+  } catch (error: any) {
+    if (error.name === 'ValidationError') {
+      throw {
+        status: 400,
+        message: error.errors.join(', '),
+      };
+    }
+    throw error;
+  }
+};
+
+export const likeArticle = async (data: TLikeArticle) => {
+  const { user, id, rating } = data;
+  try {
+    const available = await prisma.artikel.findUnique({
+      where: {
+        id_artikel: id,
+      },
+    });
+
+    if (!available) {
+      throw { status: 200, message: 'Artikel tidak ditemukan!' };
+    }
+
+    const result = await prisma.artikelDisukai.create({
+      data: {
+        id_artikel: id,
+        id_pengguna: user.id,
+        rating: rating,
+      },
+    });
     return result;
   } catch (error: any) {
     if (error.name === 'ValidationError') {

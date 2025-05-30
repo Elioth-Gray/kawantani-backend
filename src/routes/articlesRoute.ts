@@ -1,9 +1,12 @@
 import express from 'express';
 import {
+  comment,
   create,
   deleteArtic,
   getAll,
   getById,
+  like,
+  save,
   toggle,
   verify,
 } from '../controller/articlesController';
@@ -51,6 +54,24 @@ articlesRouter.patch(
   authMiddleware,
   roleMiddleware(['user']),
   toggle,
+);
+articlesRouter.post(
+  '/articles/:id/comments',
+  authMiddleware,
+  roleMiddleware(['user']),
+  comment,
+);
+articlesRouter.post(
+  '/articles/:id/save',
+  authMiddleware,
+  roleMiddleware(['user']),
+  save,
+);
+articlesRouter.post(
+  '/articles/:id/like',
+  authMiddleware,
+  roleMiddleware(['user']),
+  like,
 );
 
 export default articlesRouter;

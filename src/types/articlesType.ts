@@ -24,3 +24,20 @@ export type TUpdateArticle = {
   image: string;
   articleStatus: string;
 };
+
+export type TCommentArticle = {
+  user: TToken;
+  id: string;
+  content: string;
+};
+
+export type TSaveArticle = {
+  user: TToken;
+  id: string;
+};
+
+export type TLikeArticle = {
+  user: TToken;
+  id: string;
+  rating: number;
+};

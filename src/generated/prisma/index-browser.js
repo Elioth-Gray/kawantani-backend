@@ -204,7 +204,8 @@ exports.Prisma.KomentarArtikelScalarFieldEnum = {
   id_komentar: 'id_komentar',
   id_artikel: 'id_artikel',
   id_pengguna: 'id_pengguna',
-  komentar: 'komentar'
+  komentar: 'komentar',
+  tanggal_komentar: 'tanggal_komentar'
 };
 
 exports.Prisma.WorkshopScalarFieldEnum = {
