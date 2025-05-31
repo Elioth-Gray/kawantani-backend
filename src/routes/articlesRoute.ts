@@ -5,9 +5,12 @@ import {
   deleteArtic,
   getAll,
   getById,
+  getSaved,
   like,
   save,
   toggle,
+  unLike,
+  unSave,
   verify,
 } from '../controller/articlesController';
 import authMiddleware from '../middlewares/authMiddleware';
@@ -16,6 +19,13 @@ import { createMulterUploader } from '../utils/multer/multer';
 
 const articlesRouter = express.Router();
 const uploadArticleImage = createMulterUploader('articles');
+
+articlesRouter.get(
+  '/articles/saved',
+  authMiddleware,
+  roleMiddleware(['user']),
+  getSaved,
+);
 
 articlesRouter.post(
   '/articles/create',
@@ -67,11 +77,23 @@ articlesRouter.post(
   roleMiddleware(['user']),
   save,
 );
+articlesRouter.delete(
+  '/articles/:id/save',
+  authMiddleware,
+  roleMiddleware(['user']),
+  unSave,
+);
 articlesRouter.post(
   '/articles/:id/like',
   authMiddleware,
   roleMiddleware(['user']),
   like,
+);
+articlesRouter.delete(
+  '/articles/:id/like',
+  authMiddleware,
+  roleMiddleware(['user']),
+  unLike,
 );
 
 export default articlesRouter;

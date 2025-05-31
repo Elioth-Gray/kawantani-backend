@@ -8,9 +8,12 @@ import {
   deleteArticle,
   getAllArticle,
   getArticleById,
+  getSavedArticle,
   likeArticle,
   saveArticle,
   toggleArticle,
+  unlikeArticle,
+  unsaveArticle,
   updateArticle,
   verifyArticle,
 } from '../services/articlesService';
@@ -145,10 +148,15 @@ export const verify = async (req: IReqUser, res: Response) => {
 
 export const toggle = async (req: IReqUser, res: Response) => {
   const { id } = req.params;
+  const user = req.user;
+  if (!user) {
+    return res.status(401).json({ message: 'Unauthorized', data: null });
+  }
   const data = {
     id,
-    ...req.body,
+    user,
   };
+  console.log(data);
   try {
     const result = await toggleArticle(data);
 
@@ -245,6 +253,33 @@ export const save = async (req: IReqUser, res: Response) => {
   }
 };
 
+export const unSave = async (req: IReqUser, res: Response) => {
+  const { id } = req.params;
+  const user = req.user;
+  if (!user) {
+    return res.status(401).json({ message: 'Unauthorized', data: null });
+  }
+  const data = {
+    id,
+    user,
+    ...req.body,
+  };
+  try {
+    const result = await unsaveArticle(data);
+
+    res.status(200).json({
+      message: 'Simpan artikel berhasil dibatalkan',
+      data: result,
+    });
+  } catch (error: any) {
+    const err = error as unknown as Error;
+    res.status(400).json({
+      message: err.message,
+      data: null,
+    });
+  }
+};
+
 export const like = async (req: IReqUser, res: Response) => {
   const { id } = req.params;
   const user = req.user;
@@ -261,6 +296,52 @@ export const like = async (req: IReqUser, res: Response) => {
 
     res.status(200).json({
       message: 'Artikel berhasil disukai',
+      data: result,
+    });
+  } catch (error: any) {
+    const err = error as unknown as Error;
+    res.status(400).json({
+      message: err.message,
+      data: null,
+    });
+  }
+};
+
+export const unLike = async (req: IReqUser, res: Response) => {
+  const { id } = req.params;
+  const user = req.user;
+  if (!user) {
+    return res.status(401).json({ message: 'Unauthorized', data: null });
+  }
+  const data = {
+    id,
+    user,
+    ...req.body,
+  };
+  try {
+    const result = await unlikeArticle(data);
+
+    res.status(200).json({
+      message: 'Artikel berhasil batalkan disukai',
+      data: result,
+    });
+  } catch (error: any) {
+    const err = error as unknown as Error;
+    res.status(400).json({
+      message: err.message,
+      data: null,
+    });
+  }
+};
+
+export const getSaved = async (req: IReqUser, res: Response) => {
+  const { id } = req.params;
+
+  try {
+    const result = await getSavedArticle(id);
+
+    res.status(200).json({
+      message: 'Artikel berhasil didapatkan!',
       data: result,
     });
   } catch (error: any) {

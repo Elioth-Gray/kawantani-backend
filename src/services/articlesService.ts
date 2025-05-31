@@ -9,7 +9,6 @@ import {
   TUpdateArticle,
 } from '../types/articlesType';
 import { StatusArtikel } from '../generated/prisma';
-import e from 'express';
 
 const createSchema = Yup.object({
   title: Yup.string().required('Judul artikel harus diisi!'),
@@ -68,6 +67,7 @@ export const getAllArticle = async () => {
       },
       where: {
         status_aktif: true,
+        status_artikel: 'PUBLISHED',
       },
     });
 
@@ -375,6 +375,8 @@ export const addComment = async (data: TCommentArticle) => {
         tanggal_komentar: tanggalPembuatanKomentar,
       },
     });
+
+    return result;
   } catch (error: any) {
     if (error.name === 'ValidationError') {
       throw {
@@ -418,6 +420,40 @@ export const saveArticle = async (data: TSaveArticle) => {
   }
 };
 
+export const unsaveArticle = async (data: TSaveArticle) => {
+  const { user, id } = data;
+  try {
+    const available = await prisma.artikel.findUnique({
+      where: {
+        id_artikel: id,
+      },
+    });
+
+    if (!available) {
+      throw { status: 200, message: 'Artikel tidak ditemukan!' };
+    }
+
+    const result = await prisma.artikelDisimpan.delete({
+      where: {
+        id_artikel_id_pengguna: {
+          id_artikel: id,
+          id_pengguna: user.id,
+        },
+      },
+    });
+
+    return result;
+  } catch (error: any) {
+    if (error.name === 'ValidationError') {
+      throw {
+        status: 400,
+        message: error.errors.join(', '),
+      };
+    }
+    throw error;
+  }
+};
+
 export const likeArticle = async (data: TLikeArticle) => {
   const { user, id, rating } = data;
   try {
@@ -438,7 +474,76 @@ export const likeArticle = async (data: TLikeArticle) => {
         rating: rating,
       },
     });
+
+    if (!result) {
+      throw { status: 200, message: 'Artikel disimpan tidak ditemukan!' };
+    }
+
     return result;
+  } catch (error: any) {
+    if (error.name === 'ValidationError') {
+      throw {
+        status: 400,
+        message: error.errors.join(', '),
+      };
+    }
+    throw error;
+  }
+};
+
+export const unlikeArticle = async (data: TLikeArticle) => {
+  const { user, id, rating } = data;
+  try {
+    const available = await prisma.artikel.findUnique({
+      where: {
+        id_artikel: id,
+      },
+    });
+
+    if (!available) {
+      throw { status: 200, message: 'Artikel tidak ditemukan!' };
+    }
+
+    const result = await prisma.artikelDisukai.delete({
+      where: {
+        id_artikel_id_pengguna: {
+          id_artikel: id,
+          id_pengguna: user.id,
+        },
+      },
+    });
+
+    if (!result) {
+      throw { status: 200, message: 'Like tidak ditemukan!' };
+    }
+
+    return result;
+  } catch (error: any) {
+    if (error.name === 'ValidationError') {
+      throw {
+        status: 400,
+        message: error.errors.join(', '),
+      };
+    }
+    throw error;
+  }
+};
+
+export const getSavedArticle = async (id: string) => {
+  try {
+    const articles = await prisma.artikelDisimpan.findMany({
+      where: {
+        id_pengguna: id,
+        artikel: {
+          status_aktif: true,
+        },
+      },
+      include: {
+        artikel: true,
+      },
+    });
+
+    return articles;
   } catch (error: any) {
     if (error.name === 'ValidationError') {
       throw {
