@@ -64,6 +64,7 @@ export const getAllArticle = async () => {
         tanggal_artikel: true,
         status_aktif: true,
         status_artikel: true,
+        gambar_artikel: true,
       },
       where: {
         status_aktif: true,
