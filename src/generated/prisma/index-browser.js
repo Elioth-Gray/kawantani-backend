@@ -227,9 +227,11 @@ exports.Prisma.WorkshopScalarFieldEnum = {
 
 exports.Prisma.WorkshopTerdaftarScalarFieldEnum = {
   id_pendaftaran: 'id_pendaftaran',
-  nama_peserta: 'nama_peserta',
+  nama_depan_peserta: 'nama_depan_peserta',
+  nama_belakang_peserta: 'nama_belakang_peserta',
   email_peserta: 'email_peserta',
   nomor_telepon_peserta: 'nomor_telepon_peserta',
+  jenis_kelamin_peserta: 'jenis_kelamin_peserta',
   tanggal_pendaftaran: 'tanggal_pendaftaran',
   status_pembayaran: 'status_pembayaran',
   nomor_tiket: 'nomor_tiket',

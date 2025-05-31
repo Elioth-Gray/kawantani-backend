@@ -5,6 +5,8 @@ import {
   getAll,
   verify,
   getById,
+  register,
+  pay,
 } from '../controller/workshopController';
 import authMiddleware from '../middlewares/authMiddleware';
 import { createMulterUploader } from '../utils/multer/multer';
@@ -33,6 +35,18 @@ workshopsRouter.delete(
   authMiddleware,
   roleMiddleware(['admin', 'facilitator']),
   deleteWorks,
+);
+workshopsRouter.post(
+  '/workshops/:id/register',
+  authMiddleware,
+  roleMiddleware(['user']),
+  register,
+);
+workshopsRouter.patch(
+  '/workshops/:id/register',
+  authMiddleware,
+  roleMiddleware(['user']),
+  pay,
 );
 
 export default workshopsRouter;

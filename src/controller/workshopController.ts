@@ -7,6 +7,8 @@ import {
   deleteWorkshop,
   getAllWorkshops,
   getWorkshopById,
+  payRegistration,
+  registerWorkshop,
   verifyWorkshop,
 } from '../services/workshopService';
 import { IReqUser } from '../middlewares/authMiddleware';
@@ -117,6 +119,58 @@ export const deleteWorks = async (req: IReqUser, res: Response) => {
 
     res.status(200).json({
       message: 'Workshop berhasil dihapus',
+      data: result,
+    });
+  } catch (error) {
+    const err = error as unknown as Error;
+    res.status(400).json({
+      message: err.message,
+      data: null,
+    });
+  }
+};
+
+export const register = async (req: IReqUser, res: Response) => {
+  const { id } = req.params;
+  const user = req.user;
+  if (!user) {
+    return res.status(401).json({ message: 'Unauthorized', data: null });
+  }
+  const data = {
+    id,
+    user,
+    ...req.body,
+  };
+  try {
+    const result = await registerWorkshop(data);
+
+    res.status(200).json({
+      message: 'Berhasil daftar workshop!',
+      data: result,
+    });
+  } catch (error) {
+    const err = error as unknown as Error;
+    res.status(400).json({
+      message: err.message,
+      data: null,
+    });
+  }
+};
+
+export const pay = async (req: IReqUser, res: Response) => {
+  const user = req.user;
+  if (!user) {
+    return res.status(401).json({ message: 'Unauthorized', data: null });
+  }
+  const data = {
+    user,
+    ...req.body,
+  };
+  try {
+    const result = await payRegistration(data);
+
+    res.status(200).json({
+      message: 'Berhasil membayar pendaftaran!',
       data: result,
     });
   } catch (error) {

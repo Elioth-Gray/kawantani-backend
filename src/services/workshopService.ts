@@ -3,6 +3,7 @@ import * as Yup from 'yup';
 import {
   TCreateWorskhop,
   TEditWorkshop,
+  TPayWorkshop,
   TRegisterWorkshop,
 } from '../types/workshopTypes';
 
@@ -17,6 +18,15 @@ const createSchema = Yup.object({
   lat: Yup.string().required('Koordinat harus lengkap'),
   long: Yup.string().required('Koordinat harus lengkap!'),
   regency: Yup.string().required('Kabupaten harus diisi!'),
+});
+
+const registerScehma = Yup.object({
+  firstName: Yup.string().required('Nama Depan harus diisi!'),
+  lastName: Yup.string().required('Nama belakang harus diisi!'),
+  email: Yup.string().required('Email harus diisi!'),
+  phoneNumber: Yup.string().required('Nomor telepon harus diisi!'),
+  gender: Yup.number().required('Jenis kelmain harus diisi!'),
+  paymentMethod: Yup.number().required('Metode pembayaran harus diisi!'),
 });
 
 function simpleSlug(str: string): string {
@@ -213,6 +223,102 @@ export const deleteWorkshop = async (data: TEditWorkshop) => {
   }
 };
 
-const registerWorkshop = async (data: TRegisterWorkshop) => {
-  const { id, user } = data;
+export const registerWorkshop = async (data: TRegisterWorkshop) => {
+  const {
+    id,
+    user,
+    firstName,
+    lastName,
+    email,
+    phoneNumber,
+    gender,
+    paymentMethod,
+  } = data;
+  try {
+    await registerScehma.validate(data);
+
+    const available = await prisma.workshop.findFirst({
+      where: {
+        id_workshop: id,
+        status_aktif: true,
+      },
+    });
+
+    if (!available) {
+      throw { status: 300, message: 'Workshop tidak ditemukan!' };
+    }
+
+    const registrationDate = new Date();
+    registrationDate.setHours(0, 0, 0, 0);
+
+    const cleanId = id.replace(/[^a-zA-Z0-9]/g, '').toUpperCase();
+    const date = new Date().toISOString().slice(0, 10).replace(/-/g, '');
+    const random = Math.random().toString(36).substring(2, 7).toUpperCase();
+    const nomorTiket = `TKT-${cleanId}-${date}-${random}`;
+
+    const result = await prisma.workshopTerdaftar.create({
+      data: {
+        nama_depan_peserta: firstName,
+        nama_belakang_peserta: lastName,
+        email_peserta: email,
+        nomor_telepon_peserta: phoneNumber,
+        jenis_kelamin_peserta: gender,
+        tanggal_pendaftaran: registrationDate,
+        nomor_tiket: nomorTiket,
+        id_pengguna: user.id,
+        id_workshop: id,
+        id_metode_pembayaran: paymentMethod,
+      },
+    });
+
+    if (!result) {
+      throw { status: 400, message: 'Ada kesalahan!' };
+    }
+
+    return result;
+  } catch (error: any) {
+    if (error.name === 'ValidationError') {
+      throw {
+        status: 400,
+        message: error.errors.join(', '),
+      };
+    }
+    throw error;
+  }
+};
+
+export const payRegistration = async (data: TPayWorkshop) => {
+  const { ticketNumber, user } = data;
+  try {
+    const available = await prisma.workshopTerdaftar.findUnique({
+      where: {
+        nomor_tiket: ticketNumber,
+        id_pengguna: user.id,
+      },
+    });
+
+    if (!available) {
+      throw { status: 400, message: 'Pendaftaran tidak ditemukan!' };
+    }
+
+    const result = await prisma.workshopTerdaftar.update({
+      where: {
+        nomor_tiket: ticketNumber,
+        id_pengguna: user.id,
+      },
+      data: {
+        status_pembayaran: true,
+      },
+    });
+
+    return result;
+  } catch (error: any) {
+    if (error.name === 'ValidationError') {
+      throw {
+        status: 400,
+        message: error.errors.join(', '),
+      };
+    }
+    throw error;
+  }
 };

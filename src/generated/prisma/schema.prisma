@@ -178,11 +178,13 @@ model Workshop {
 
 model WorkshopTerdaftar {
   id_pendaftaran        Int      @id @default(autoincrement())
-  nama_peserta          String   @db.VarChar(100)
+  nama_depan_peserta    String   @db.VarChar(100)
+  nama_belakang_peserta String   @db.VarChar(100)
   email_peserta         String   @db.VarChar(100)
   nomor_telepon_peserta String   @db.VarChar(50)
+  jenis_kelamin_peserta Int
   tanggal_pendaftaran   DateTime @default(now())
-  status_pembayaran     String   @db.VarChar(20)
+  status_pembayaran     Boolean  @default(false)
   nomor_tiket           String?  @db.VarChar(50)
 
   pengguna             Pengguna         @relation(fields: [id_pengguna], references: [id_pengguna])

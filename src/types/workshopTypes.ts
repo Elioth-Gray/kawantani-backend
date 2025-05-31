@@ -19,7 +19,18 @@ export type TEditWorkshop = {
   id: string;
 };
 
+export type TPayWorkshop = {
+  ticketNumber: string;
+  user: TToken;
+};
+
 export type TRegisterWorkshop = {
   user: TToken;
   id: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  phoneNumber: string;
+  gender: number;
+  paymentMethod: number;
 };

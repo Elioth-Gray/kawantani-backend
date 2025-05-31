@@ -15831,21 +15831,25 @@ export namespace Prisma {
 
   export type WorkshopTerdaftarAvgAggregateOutputType = {
     id_pendaftaran: number | null
+    jenis_kelamin_peserta: number | null
     id_metode_pembayaran: number | null
   }
 
   export type WorkshopTerdaftarSumAggregateOutputType = {
     id_pendaftaran: number | null
+    jenis_kelamin_peserta: number | null
     id_metode_pembayaran: number | null
   }
 
   export type WorkshopTerdaftarMinAggregateOutputType = {
     id_pendaftaran: number | null
-    nama_peserta: string | null
+    nama_depan_peserta: string | null
+    nama_belakang_peserta: string | null
     email_peserta: string | null
     nomor_telepon_peserta: string | null
+    jenis_kelamin_peserta: number | null
     tanggal_pendaftaran: Date | null
-    status_pembayaran: string | null
+    status_pembayaran: boolean | null
     nomor_tiket: string | null
     id_pengguna: string | null
     id_workshop: string | null
@@ -15854,11 +15858,13 @@ export namespace Prisma {
 
   export type WorkshopTerdaftarMaxAggregateOutputType = {
     id_pendaftaran: number | null
-    nama_peserta: string | null
+    nama_depan_peserta: string | null
+    nama_belakang_peserta: string | null
     email_peserta: string | null
     nomor_telepon_peserta: string | null
+    jenis_kelamin_peserta: number | null
     tanggal_pendaftaran: Date | null
-    status_pembayaran: string | null
+    status_pembayaran: boolean | null
     nomor_tiket: string | null
     id_pengguna: string | null
     id_workshop: string | null
@@ -15867,9 +15873,11 @@ export namespace Prisma {
 
   export type WorkshopTerdaftarCountAggregateOutputType = {
     id_pendaftaran: number
-    nama_peserta: number
+    nama_depan_peserta: number
+    nama_belakang_peserta: number
     email_peserta: number
     nomor_telepon_peserta: number
+    jenis_kelamin_peserta: number
     tanggal_pendaftaran: number
     status_pembayaran: number
     nomor_tiket: number
@@ -15882,19 +15890,23 @@ export namespace Prisma {
 
   export type WorkshopTerdaftarAvgAggregateInputType = {
     id_pendaftaran?: true
+    jenis_kelamin_peserta?: true
     id_metode_pembayaran?: true
   }
 
   export type WorkshopTerdaftarSumAggregateInputType = {
     id_pendaftaran?: true
+    jenis_kelamin_peserta?: true
     id_metode_pembayaran?: true
   }
 
   export type WorkshopTerdaftarMinAggregateInputType = {
     id_pendaftaran?: true
-    nama_peserta?: true
+    nama_depan_peserta?: true
+    nama_belakang_peserta?: true
     email_peserta?: true
     nomor_telepon_peserta?: true
+    jenis_kelamin_peserta?: true
     tanggal_pendaftaran?: true
     status_pembayaran?: true
     nomor_tiket?: true
@@ -15905,9 +15917,11 @@ export namespace Prisma {
 
   export type WorkshopTerdaftarMaxAggregateInputType = {
     id_pendaftaran?: true
-    nama_peserta?: true
+    nama_depan_peserta?: true
+    nama_belakang_peserta?: true
     email_peserta?: true
     nomor_telepon_peserta?: true
+    jenis_kelamin_peserta?: true
     tanggal_pendaftaran?: true
     status_pembayaran?: true
     nomor_tiket?: true
@@ -15918,9 +15932,11 @@ export namespace Prisma {
 
   export type WorkshopTerdaftarCountAggregateInputType = {
     id_pendaftaran?: true
-    nama_peserta?: true
+    nama_depan_peserta?: true
+    nama_belakang_peserta?: true
     email_peserta?: true
     nomor_telepon_peserta?: true
+    jenis_kelamin_peserta?: true
     tanggal_pendaftaran?: true
     status_pembayaran?: true
     nomor_tiket?: true
@@ -16018,11 +16034,13 @@ export namespace Prisma {
 
   export type WorkshopTerdaftarGroupByOutputType = {
     id_pendaftaran: number
-    nama_peserta: string
+    nama_depan_peserta: string
+    nama_belakang_peserta: string
     email_peserta: string
     nomor_telepon_peserta: string
+    jenis_kelamin_peserta: number
     tanggal_pendaftaran: Date
-    status_pembayaran: string
+    status_pembayaran: boolean
     nomor_tiket: string | null
     id_pengguna: string
     id_workshop: string
@@ -16050,9 +16068,11 @@ export namespace Prisma {
 
   export type WorkshopTerdaftarSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id_pendaftaran?: boolean
-    nama_peserta?: boolean
+    nama_depan_peserta?: boolean
+    nama_belakang_peserta?: boolean
     email_peserta?: boolean
     nomor_telepon_peserta?: boolean
+    jenis_kelamin_peserta?: boolean
     tanggal_pendaftaran?: boolean
     status_pembayaran?: boolean
     nomor_tiket?: boolean
@@ -16066,9 +16086,11 @@ export namespace Prisma {
 
   export type WorkshopTerdaftarSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id_pendaftaran?: boolean
-    nama_peserta?: boolean
+    nama_depan_peserta?: boolean
+    nama_belakang_peserta?: boolean
     email_peserta?: boolean
     nomor_telepon_peserta?: boolean
+    jenis_kelamin_peserta?: boolean
     tanggal_pendaftaran?: boolean
     status_pembayaran?: boolean
     nomor_tiket?: boolean
@@ -16082,9 +16104,11 @@ export namespace Prisma {
 
   export type WorkshopTerdaftarSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id_pendaftaran?: boolean
-    nama_peserta?: boolean
+    nama_depan_peserta?: boolean
+    nama_belakang_peserta?: boolean
     email_peserta?: boolean
     nomor_telepon_peserta?: boolean
+    jenis_kelamin_peserta?: boolean
     tanggal_pendaftaran?: boolean
     status_pembayaran?: boolean
     nomor_tiket?: boolean
@@ -16098,9 +16122,11 @@ export namespace Prisma {
 
   export type WorkshopTerdaftarSelectScalar = {
     id_pendaftaran?: boolean
-    nama_peserta?: boolean
+    nama_depan_peserta?: boolean
+    nama_belakang_peserta?: boolean
     email_peserta?: boolean
     nomor_telepon_peserta?: boolean
+    jenis_kelamin_peserta?: boolean
     tanggal_pendaftaran?: boolean
     status_pembayaran?: boolean
     nomor_tiket?: boolean
@@ -16109,7 +16135,7 @@ export namespace Prisma {
     id_metode_pembayaran?: boolean
   }
 
-  export type WorkshopTerdaftarOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_pendaftaran" | "nama_peserta" | "email_peserta" | "nomor_telepon_peserta" | "tanggal_pendaftaran" | "status_pembayaran" | "nomor_tiket" | "id_pengguna" | "id_workshop" | "id_metode_pembayaran", ExtArgs["result"]["workshopTerdaftar"]>
+  export type WorkshopTerdaftarOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_pendaftaran" | "nama_depan_peserta" | "nama_belakang_peserta" | "email_peserta" | "nomor_telepon_peserta" | "jenis_kelamin_peserta" | "tanggal_pendaftaran" | "status_pembayaran" | "nomor_tiket" | "id_pengguna" | "id_workshop" | "id_metode_pembayaran", ExtArgs["result"]["workshopTerdaftar"]>
   export type WorkshopTerdaftarInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     pengguna?: boolean | PenggunaDefaultArgs<ExtArgs>
     workshop?: boolean | WorkshopDefaultArgs<ExtArgs>
@@ -16135,11 +16161,13 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id_pendaftaran: number
-      nama_peserta: string
+      nama_depan_peserta: string
+      nama_belakang_peserta: string
       email_peserta: string
       nomor_telepon_peserta: string
+      jenis_kelamin_peserta: number
       tanggal_pendaftaran: Date
-      status_pembayaran: string
+      status_pembayaran: boolean
       nomor_tiket: string | null
       id_pengguna: string
       id_workshop: string
@@ -16571,11 +16599,13 @@ export namespace Prisma {
    */
   interface WorkshopTerdaftarFieldRefs {
     readonly id_pendaftaran: FieldRef<"WorkshopTerdaftar", 'Int'>
-    readonly nama_peserta: FieldRef<"WorkshopTerdaftar", 'String'>
+    readonly nama_depan_peserta: FieldRef<"WorkshopTerdaftar", 'String'>
+    readonly nama_belakang_peserta: FieldRef<"WorkshopTerdaftar", 'String'>
     readonly email_peserta: FieldRef<"WorkshopTerdaftar", 'String'>
     readonly nomor_telepon_peserta: FieldRef<"WorkshopTerdaftar", 'String'>
+    readonly jenis_kelamin_peserta: FieldRef<"WorkshopTerdaftar", 'Int'>
     readonly tanggal_pendaftaran: FieldRef<"WorkshopTerdaftar", 'DateTime'>
-    readonly status_pembayaran: FieldRef<"WorkshopTerdaftar", 'String'>
+    readonly status_pembayaran: FieldRef<"WorkshopTerdaftar", 'Boolean'>
     readonly nomor_tiket: FieldRef<"WorkshopTerdaftar", 'String'>
     readonly id_pengguna: FieldRef<"WorkshopTerdaftar", 'String'>
     readonly id_workshop: FieldRef<"WorkshopTerdaftar", 'String'>
@@ -27000,9 +27030,11 @@ export namespace Prisma {
 
   export const WorkshopTerdaftarScalarFieldEnum: {
     id_pendaftaran: 'id_pendaftaran',
-    nama_peserta: 'nama_peserta',
+    nama_depan_peserta: 'nama_depan_peserta',
+    nama_belakang_peserta: 'nama_belakang_peserta',
     email_peserta: 'email_peserta',
     nomor_telepon_peserta: 'nomor_telepon_peserta',
+    jenis_kelamin_peserta: 'jenis_kelamin_peserta',
     tanggal_pendaftaran: 'tanggal_pendaftaran',
     status_pembayaran: 'status_pembayaran',
     nomor_tiket: 'nomor_tiket',
@@ -28004,11 +28036,13 @@ export namespace Prisma {
     OR?: WorkshopTerdaftarWhereInput[]
     NOT?: WorkshopTerdaftarWhereInput | WorkshopTerdaftarWhereInput[]
     id_pendaftaran?: IntFilter<"WorkshopTerdaftar"> | number
-    nama_peserta?: StringFilter<"WorkshopTerdaftar"> | string
+    nama_depan_peserta?: StringFilter<"WorkshopTerdaftar"> | string
+    nama_belakang_peserta?: StringFilter<"WorkshopTerdaftar"> | string
     email_peserta?: StringFilter<"WorkshopTerdaftar"> | string
     nomor_telepon_peserta?: StringFilter<"WorkshopTerdaftar"> | string
+    jenis_kelamin_peserta?: IntFilter<"WorkshopTerdaftar"> | number
     tanggal_pendaftaran?: DateTimeFilter<"WorkshopTerdaftar"> | Date | string
-    status_pembayaran?: StringFilter<"WorkshopTerdaftar"> | string
+    status_pembayaran?: BoolFilter<"WorkshopTerdaftar"> | boolean
     nomor_tiket?: StringNullableFilter<"WorkshopTerdaftar"> | string | null
     id_pengguna?: StringFilter<"WorkshopTerdaftar"> | string
     id_workshop?: StringFilter<"WorkshopTerdaftar"> | string
@@ -28020,9 +28054,11 @@ export namespace Prisma {
 
   export type WorkshopTerdaftarOrderByWithRelationInput = {
     id_pendaftaran?: SortOrder
-    nama_peserta?: SortOrder
+    nama_depan_peserta?: SortOrder
+    nama_belakang_peserta?: SortOrder
     email_peserta?: SortOrder
     nomor_telepon_peserta?: SortOrder
+    jenis_kelamin_peserta?: SortOrder
     tanggal_pendaftaran?: SortOrder
     status_pembayaran?: SortOrder
     nomor_tiket?: SortOrderInput | SortOrder
@@ -28040,11 +28076,13 @@ export namespace Prisma {
     AND?: WorkshopTerdaftarWhereInput | WorkshopTerdaftarWhereInput[]
     OR?: WorkshopTerdaftarWhereInput[]
     NOT?: WorkshopTerdaftarWhereInput | WorkshopTerdaftarWhereInput[]
-    nama_peserta?: StringFilter<"WorkshopTerdaftar"> | string
+    nama_depan_peserta?: StringFilter<"WorkshopTerdaftar"> | string
+    nama_belakang_peserta?: StringFilter<"WorkshopTerdaftar"> | string
     email_peserta?: StringFilter<"WorkshopTerdaftar"> | string
     nomor_telepon_peserta?: StringFilter<"WorkshopTerdaftar"> | string
+    jenis_kelamin_peserta?: IntFilter<"WorkshopTerdaftar"> | number
     tanggal_pendaftaran?: DateTimeFilter<"WorkshopTerdaftar"> | Date | string
-    status_pembayaran?: StringFilter<"WorkshopTerdaftar"> | string
+    status_pembayaran?: BoolFilter<"WorkshopTerdaftar"> | boolean
     id_pengguna?: StringFilter<"WorkshopTerdaftar"> | string
     id_workshop?: StringFilter<"WorkshopTerdaftar"> | string
     id_metode_pembayaran?: IntFilter<"WorkshopTerdaftar"> | number
@@ -28055,9 +28093,11 @@ export namespace Prisma {
 
   export type WorkshopTerdaftarOrderByWithAggregationInput = {
     id_pendaftaran?: SortOrder
-    nama_peserta?: SortOrder
+    nama_depan_peserta?: SortOrder
+    nama_belakang_peserta?: SortOrder
     email_peserta?: SortOrder
     nomor_telepon_peserta?: SortOrder
+    jenis_kelamin_peserta?: SortOrder
     tanggal_pendaftaran?: SortOrder
     status_pembayaran?: SortOrder
     nomor_tiket?: SortOrderInput | SortOrder
@@ -28076,11 +28116,13 @@ export namespace Prisma {
     OR?: WorkshopTerdaftarScalarWhereWithAggregatesInput[]
     NOT?: WorkshopTerdaftarScalarWhereWithAggregatesInput | WorkshopTerdaftarScalarWhereWithAggregatesInput[]
     id_pendaftaran?: IntWithAggregatesFilter<"WorkshopTerdaftar"> | number
-    nama_peserta?: StringWithAggregatesFilter<"WorkshopTerdaftar"> | string
+    nama_depan_peserta?: StringWithAggregatesFilter<"WorkshopTerdaftar"> | string
+    nama_belakang_peserta?: StringWithAggregatesFilter<"WorkshopTerdaftar"> | string
     email_peserta?: StringWithAggregatesFilter<"WorkshopTerdaftar"> | string
     nomor_telepon_peserta?: StringWithAggregatesFilter<"WorkshopTerdaftar"> | string
+    jenis_kelamin_peserta?: IntWithAggregatesFilter<"WorkshopTerdaftar"> | number
     tanggal_pendaftaran?: DateTimeWithAggregatesFilter<"WorkshopTerdaftar"> | Date | string
-    status_pembayaran?: StringWithAggregatesFilter<"WorkshopTerdaftar"> | string
+    status_pembayaran?: BoolWithAggregatesFilter<"WorkshopTerdaftar"> | boolean
     nomor_tiket?: StringNullableWithAggregatesFilter<"WorkshopTerdaftar"> | string | null
     id_pengguna?: StringWithAggregatesFilter<"WorkshopTerdaftar"> | string
     id_workshop?: StringWithAggregatesFilter<"WorkshopTerdaftar"> | string
@@ -29342,11 +29384,13 @@ export namespace Prisma {
   }
 
   export type WorkshopTerdaftarCreateInput = {
-    nama_peserta: string
+    nama_depan_peserta: string
+    nama_belakang_peserta: string
     email_peserta: string
     nomor_telepon_peserta: string
+    jenis_kelamin_peserta: number
     tanggal_pendaftaran?: Date | string
-    status_pembayaran: string
+    status_pembayaran?: boolean
     nomor_tiket?: string | null
     pengguna: PenggunaCreateNestedOneWithoutWorkshop_terdaftarInput
     workshop: WorkshopCreateNestedOneWithoutPendaftaranInput
@@ -29355,11 +29399,13 @@ export namespace Prisma {
 
   export type WorkshopTerdaftarUncheckedCreateInput = {
     id_pendaftaran?: number
-    nama_peserta: string
+    nama_depan_peserta: string
+    nama_belakang_peserta: string
     email_peserta: string
     nomor_telepon_peserta: string
+    jenis_kelamin_peserta: number
     tanggal_pendaftaran?: Date | string
-    status_pembayaran: string
+    status_pembayaran?: boolean
     nomor_tiket?: string | null
     id_pengguna: string
     id_workshop: string
@@ -29367,11 +29413,13 @@ export namespace Prisma {
   }
 
   export type WorkshopTerdaftarUpdateInput = {
-    nama_peserta?: StringFieldUpdateOperationsInput | string
+    nama_depan_peserta?: StringFieldUpdateOperationsInput | string
+    nama_belakang_peserta?: StringFieldUpdateOperationsInput | string
     email_peserta?: StringFieldUpdateOperationsInput | string
     nomor_telepon_peserta?: StringFieldUpdateOperationsInput | string
+    jenis_kelamin_peserta?: IntFieldUpdateOperationsInput | number
     tanggal_pendaftaran?: DateTimeFieldUpdateOperationsInput | Date | string
-    status_pembayaran?: StringFieldUpdateOperationsInput | string
+    status_pembayaran?: BoolFieldUpdateOperationsInput | boolean
     nomor_tiket?: NullableStringFieldUpdateOperationsInput | string | null
     pengguna?: PenggunaUpdateOneRequiredWithoutWorkshop_terdaftarNestedInput
     workshop?: WorkshopUpdateOneRequiredWithoutPendaftaranNestedInput
@@ -29380,11 +29428,13 @@ export namespace Prisma {
 
   export type WorkshopTerdaftarUncheckedUpdateInput = {
     id_pendaftaran?: IntFieldUpdateOperationsInput | number
-    nama_peserta?: StringFieldUpdateOperationsInput | string
+    nama_depan_peserta?: StringFieldUpdateOperationsInput | string
+    nama_belakang_peserta?: StringFieldUpdateOperationsInput | string
     email_peserta?: StringFieldUpdateOperationsInput | string
     nomor_telepon_peserta?: StringFieldUpdateOperationsInput | string
+    jenis_kelamin_peserta?: IntFieldUpdateOperationsInput | number
     tanggal_pendaftaran?: DateTimeFieldUpdateOperationsInput | Date | string
-    status_pembayaran?: StringFieldUpdateOperationsInput | string
+    status_pembayaran?: BoolFieldUpdateOperationsInput | boolean
     nomor_tiket?: NullableStringFieldUpdateOperationsInput | string | null
     id_pengguna?: StringFieldUpdateOperationsInput | string
     id_workshop?: StringFieldUpdateOperationsInput | string
@@ -29393,11 +29443,13 @@ export namespace Prisma {
 
   export type WorkshopTerdaftarCreateManyInput = {
     id_pendaftaran?: number
-    nama_peserta: string
+    nama_depan_peserta: string
+    nama_belakang_peserta: string
     email_peserta: string
     nomor_telepon_peserta: string
+    jenis_kelamin_peserta: number
     tanggal_pendaftaran?: Date | string
-    status_pembayaran: string
+    status_pembayaran?: boolean
     nomor_tiket?: string | null
     id_pengguna: string
     id_workshop: string
@@ -29405,21 +29457,25 @@ export namespace Prisma {
   }
 
   export type WorkshopTerdaftarUpdateManyMutationInput = {
-    nama_peserta?: StringFieldUpdateOperationsInput | string
+    nama_depan_peserta?: StringFieldUpdateOperationsInput | string
+    nama_belakang_peserta?: StringFieldUpdateOperationsInput | string
     email_peserta?: StringFieldUpdateOperationsInput | string
     nomor_telepon_peserta?: StringFieldUpdateOperationsInput | string
+    jenis_kelamin_peserta?: IntFieldUpdateOperationsInput | number
     tanggal_pendaftaran?: DateTimeFieldUpdateOperationsInput | Date | string
-    status_pembayaran?: StringFieldUpdateOperationsInput | string
+    status_pembayaran?: BoolFieldUpdateOperationsInput | boolean
     nomor_tiket?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type WorkshopTerdaftarUncheckedUpdateManyInput = {
     id_pendaftaran?: IntFieldUpdateOperationsInput | number
-    nama_peserta?: StringFieldUpdateOperationsInput | string
+    nama_depan_peserta?: StringFieldUpdateOperationsInput | string
+    nama_belakang_peserta?: StringFieldUpdateOperationsInput | string
     email_peserta?: StringFieldUpdateOperationsInput | string
     nomor_telepon_peserta?: StringFieldUpdateOperationsInput | string
+    jenis_kelamin_peserta?: IntFieldUpdateOperationsInput | number
     tanggal_pendaftaran?: DateTimeFieldUpdateOperationsInput | Date | string
-    status_pembayaran?: StringFieldUpdateOperationsInput | string
+    status_pembayaran?: BoolFieldUpdateOperationsInput | boolean
     nomor_tiket?: NullableStringFieldUpdateOperationsInput | string | null
     id_pengguna?: StringFieldUpdateOperationsInput | string
     id_workshop?: StringFieldUpdateOperationsInput | string
@@ -30612,9 +30668,11 @@ export namespace Prisma {
 
   export type WorkshopTerdaftarCountOrderByAggregateInput = {
     id_pendaftaran?: SortOrder
-    nama_peserta?: SortOrder
+    nama_depan_peserta?: SortOrder
+    nama_belakang_peserta?: SortOrder
     email_peserta?: SortOrder
     nomor_telepon_peserta?: SortOrder
+    jenis_kelamin_peserta?: SortOrder
     tanggal_pendaftaran?: SortOrder
     status_pembayaran?: SortOrder
     nomor_tiket?: SortOrder
@@ -30625,14 +30683,17 @@ export namespace Prisma {
 
   export type WorkshopTerdaftarAvgOrderByAggregateInput = {
     id_pendaftaran?: SortOrder
+    jenis_kelamin_peserta?: SortOrder
     id_metode_pembayaran?: SortOrder
   }
 
   export type WorkshopTerdaftarMaxOrderByAggregateInput = {
     id_pendaftaran?: SortOrder
-    nama_peserta?: SortOrder
+    nama_depan_peserta?: SortOrder
+    nama_belakang_peserta?: SortOrder
     email_peserta?: SortOrder
     nomor_telepon_peserta?: SortOrder
+    jenis_kelamin_peserta?: SortOrder
     tanggal_pendaftaran?: SortOrder
     status_pembayaran?: SortOrder
     nomor_tiket?: SortOrder
@@ -30643,9 +30704,11 @@ export namespace Prisma {
 
   export type WorkshopTerdaftarMinOrderByAggregateInput = {
     id_pendaftaran?: SortOrder
-    nama_peserta?: SortOrder
+    nama_depan_peserta?: SortOrder
+    nama_belakang_peserta?: SortOrder
     email_peserta?: SortOrder
     nomor_telepon_peserta?: SortOrder
+    jenis_kelamin_peserta?: SortOrder
     tanggal_pendaftaran?: SortOrder
     status_pembayaran?: SortOrder
     nomor_tiket?: SortOrder
@@ -30656,6 +30719,7 @@ export namespace Prisma {
 
   export type WorkshopTerdaftarSumOrderByAggregateInput = {
     id_pendaftaran?: SortOrder
+    jenis_kelamin_peserta?: SortOrder
     id_metode_pembayaran?: SortOrder
   }
 
@@ -32768,11 +32832,13 @@ export namespace Prisma {
   }
 
   export type WorkshopTerdaftarCreateWithoutPenggunaInput = {
-    nama_peserta: string
+    nama_depan_peserta: string
+    nama_belakang_peserta: string
     email_peserta: string
     nomor_telepon_peserta: string
+    jenis_kelamin_peserta: number
     tanggal_pendaftaran?: Date | string
-    status_pembayaran: string
+    status_pembayaran?: boolean
     nomor_tiket?: string | null
     workshop: WorkshopCreateNestedOneWithoutPendaftaranInput
     metode_pembayaran: MetodePembayaranCreateNestedOneWithoutWorkshop_terdaftarInput
@@ -32780,11 +32846,13 @@ export namespace Prisma {
 
   export type WorkshopTerdaftarUncheckedCreateWithoutPenggunaInput = {
     id_pendaftaran?: number
-    nama_peserta: string
+    nama_depan_peserta: string
+    nama_belakang_peserta: string
     email_peserta: string
     nomor_telepon_peserta: string
+    jenis_kelamin_peserta: number
     tanggal_pendaftaran?: Date | string
-    status_pembayaran: string
+    status_pembayaran?: boolean
     nomor_tiket?: string | null
     id_workshop: string
     id_metode_pembayaran: number
@@ -32954,11 +33022,13 @@ export namespace Prisma {
     OR?: WorkshopTerdaftarScalarWhereInput[]
     NOT?: WorkshopTerdaftarScalarWhereInput | WorkshopTerdaftarScalarWhereInput[]
     id_pendaftaran?: IntFilter<"WorkshopTerdaftar"> | number
-    nama_peserta?: StringFilter<"WorkshopTerdaftar"> | string
+    nama_depan_peserta?: StringFilter<"WorkshopTerdaftar"> | string
+    nama_belakang_peserta?: StringFilter<"WorkshopTerdaftar"> | string
     email_peserta?: StringFilter<"WorkshopTerdaftar"> | string
     nomor_telepon_peserta?: StringFilter<"WorkshopTerdaftar"> | string
+    jenis_kelamin_peserta?: IntFilter<"WorkshopTerdaftar"> | number
     tanggal_pendaftaran?: DateTimeFilter<"WorkshopTerdaftar"> | Date | string
-    status_pembayaran?: StringFilter<"WorkshopTerdaftar"> | string
+    status_pembayaran?: BoolFilter<"WorkshopTerdaftar"> | boolean
     nomor_tiket?: StringNullableFilter<"WorkshopTerdaftar"> | string | null
     id_pengguna?: StringFilter<"WorkshopTerdaftar"> | string
     id_workshop?: StringFilter<"WorkshopTerdaftar"> | string
@@ -34105,11 +34175,13 @@ export namespace Prisma {
   }
 
   export type WorkshopTerdaftarCreateWithoutWorkshopInput = {
-    nama_peserta: string
+    nama_depan_peserta: string
+    nama_belakang_peserta: string
     email_peserta: string
     nomor_telepon_peserta: string
+    jenis_kelamin_peserta: number
     tanggal_pendaftaran?: Date | string
-    status_pembayaran: string
+    status_pembayaran?: boolean
     nomor_tiket?: string | null
     pengguna: PenggunaCreateNestedOneWithoutWorkshop_terdaftarInput
     metode_pembayaran: MetodePembayaranCreateNestedOneWithoutWorkshop_terdaftarInput
@@ -34117,11 +34189,13 @@ export namespace Prisma {
 
   export type WorkshopTerdaftarUncheckedCreateWithoutWorkshopInput = {
     id_pendaftaran?: number
-    nama_peserta: string
+    nama_depan_peserta: string
+    nama_belakang_peserta: string
     email_peserta: string
     nomor_telepon_peserta: string
+    jenis_kelamin_peserta: number
     tanggal_pendaftaran?: Date | string
-    status_pembayaran: string
+    status_pembayaran?: boolean
     nomor_tiket?: string | null
     id_pengguna: string
     id_metode_pembayaran: number
@@ -34439,11 +34513,13 @@ export namespace Prisma {
   }
 
   export type WorkshopTerdaftarCreateWithoutMetode_pembayaranInput = {
-    nama_peserta: string
+    nama_depan_peserta: string
+    nama_belakang_peserta: string
     email_peserta: string
     nomor_telepon_peserta: string
+    jenis_kelamin_peserta: number
     tanggal_pendaftaran?: Date | string
-    status_pembayaran: string
+    status_pembayaran?: boolean
     nomor_tiket?: string | null
     pengguna: PenggunaCreateNestedOneWithoutWorkshop_terdaftarInput
     workshop: WorkshopCreateNestedOneWithoutPendaftaranInput
@@ -34451,11 +34527,13 @@ export namespace Prisma {
 
   export type WorkshopTerdaftarUncheckedCreateWithoutMetode_pembayaranInput = {
     id_pendaftaran?: number
-    nama_peserta: string
+    nama_depan_peserta: string
+    nama_belakang_peserta: string
     email_peserta: string
     nomor_telepon_peserta: string
+    jenis_kelamin_peserta: number
     tanggal_pendaftaran?: Date | string
-    status_pembayaran: string
+    status_pembayaran?: boolean
     nomor_tiket?: string | null
     id_pengguna: string
     id_workshop: string
@@ -35402,11 +35480,13 @@ export namespace Prisma {
 
   export type WorkshopTerdaftarCreateManyPenggunaInput = {
     id_pendaftaran?: number
-    nama_peserta: string
+    nama_depan_peserta: string
+    nama_belakang_peserta: string
     email_peserta: string
     nomor_telepon_peserta: string
+    jenis_kelamin_peserta: number
     tanggal_pendaftaran?: Date | string
-    status_pembayaran: string
+    status_pembayaran?: boolean
     nomor_tiket?: string | null
     id_workshop: string
     id_metode_pembayaran: number
@@ -35452,11 +35532,13 @@ export namespace Prisma {
   }
 
   export type WorkshopTerdaftarUpdateWithoutPenggunaInput = {
-    nama_peserta?: StringFieldUpdateOperationsInput | string
+    nama_depan_peserta?: StringFieldUpdateOperationsInput | string
+    nama_belakang_peserta?: StringFieldUpdateOperationsInput | string
     email_peserta?: StringFieldUpdateOperationsInput | string
     nomor_telepon_peserta?: StringFieldUpdateOperationsInput | string
+    jenis_kelamin_peserta?: IntFieldUpdateOperationsInput | number
     tanggal_pendaftaran?: DateTimeFieldUpdateOperationsInput | Date | string
-    status_pembayaran?: StringFieldUpdateOperationsInput | string
+    status_pembayaran?: BoolFieldUpdateOperationsInput | boolean
     nomor_tiket?: NullableStringFieldUpdateOperationsInput | string | null
     workshop?: WorkshopUpdateOneRequiredWithoutPendaftaranNestedInput
     metode_pembayaran?: MetodePembayaranUpdateOneRequiredWithoutWorkshop_terdaftarNestedInput
@@ -35464,11 +35546,13 @@ export namespace Prisma {
 
   export type WorkshopTerdaftarUncheckedUpdateWithoutPenggunaInput = {
     id_pendaftaran?: IntFieldUpdateOperationsInput | number
-    nama_peserta?: StringFieldUpdateOperationsInput | string
+    nama_depan_peserta?: StringFieldUpdateOperationsInput | string
+    nama_belakang_peserta?: StringFieldUpdateOperationsInput | string
     email_peserta?: StringFieldUpdateOperationsInput | string
     nomor_telepon_peserta?: StringFieldUpdateOperationsInput | string
+    jenis_kelamin_peserta?: IntFieldUpdateOperationsInput | number
     tanggal_pendaftaran?: DateTimeFieldUpdateOperationsInput | Date | string
-    status_pembayaran?: StringFieldUpdateOperationsInput | string
+    status_pembayaran?: BoolFieldUpdateOperationsInput | boolean
     nomor_tiket?: NullableStringFieldUpdateOperationsInput | string | null
     id_workshop?: StringFieldUpdateOperationsInput | string
     id_metode_pembayaran?: IntFieldUpdateOperationsInput | number
@@ -35476,11 +35560,13 @@ export namespace Prisma {
 
   export type WorkshopTerdaftarUncheckedUpdateManyWithoutPenggunaInput = {
     id_pendaftaran?: IntFieldUpdateOperationsInput | number
-    nama_peserta?: StringFieldUpdateOperationsInput | string
+    nama_depan_peserta?: StringFieldUpdateOperationsInput | string
+    nama_belakang_peserta?: StringFieldUpdateOperationsInput | string
     email_peserta?: StringFieldUpdateOperationsInput | string
     nomor_telepon_peserta?: StringFieldUpdateOperationsInput | string
+    jenis_kelamin_peserta?: IntFieldUpdateOperationsInput | number
     tanggal_pendaftaran?: DateTimeFieldUpdateOperationsInput | Date | string
-    status_pembayaran?: StringFieldUpdateOperationsInput | string
+    status_pembayaran?: BoolFieldUpdateOperationsInput | boolean
     nomor_tiket?: NullableStringFieldUpdateOperationsInput | string | null
     id_workshop?: StringFieldUpdateOperationsInput | string
     id_metode_pembayaran?: IntFieldUpdateOperationsInput | number
@@ -35803,22 +35889,26 @@ export namespace Prisma {
 
   export type WorkshopTerdaftarCreateManyWorkshopInput = {
     id_pendaftaran?: number
-    nama_peserta: string
+    nama_depan_peserta: string
+    nama_belakang_peserta: string
     email_peserta: string
     nomor_telepon_peserta: string
+    jenis_kelamin_peserta: number
     tanggal_pendaftaran?: Date | string
-    status_pembayaran: string
+    status_pembayaran?: boolean
     nomor_tiket?: string | null
     id_pengguna: string
     id_metode_pembayaran: number
   }
 
   export type WorkshopTerdaftarUpdateWithoutWorkshopInput = {
-    nama_peserta?: StringFieldUpdateOperationsInput | string
+    nama_depan_peserta?: StringFieldUpdateOperationsInput | string
+    nama_belakang_peserta?: StringFieldUpdateOperationsInput | string
     email_peserta?: StringFieldUpdateOperationsInput | string
     nomor_telepon_peserta?: StringFieldUpdateOperationsInput | string
+    jenis_kelamin_peserta?: IntFieldUpdateOperationsInput | number
     tanggal_pendaftaran?: DateTimeFieldUpdateOperationsInput | Date | string
-    status_pembayaran?: StringFieldUpdateOperationsInput | string
+    status_pembayaran?: BoolFieldUpdateOperationsInput | boolean
     nomor_tiket?: NullableStringFieldUpdateOperationsInput | string | null
     pengguna?: PenggunaUpdateOneRequiredWithoutWorkshop_terdaftarNestedInput
     metode_pembayaran?: MetodePembayaranUpdateOneRequiredWithoutWorkshop_terdaftarNestedInput
@@ -35826,11 +35916,13 @@ export namespace Prisma {
 
   export type WorkshopTerdaftarUncheckedUpdateWithoutWorkshopInput = {
     id_pendaftaran?: IntFieldUpdateOperationsInput | number
-    nama_peserta?: StringFieldUpdateOperationsInput | string
+    nama_depan_peserta?: StringFieldUpdateOperationsInput | string
+    nama_belakang_peserta?: StringFieldUpdateOperationsInput | string
     email_peserta?: StringFieldUpdateOperationsInput | string
     nomor_telepon_peserta?: StringFieldUpdateOperationsInput | string
+    jenis_kelamin_peserta?: IntFieldUpdateOperationsInput | number
     tanggal_pendaftaran?: DateTimeFieldUpdateOperationsInput | Date | string
-    status_pembayaran?: StringFieldUpdateOperationsInput | string
+    status_pembayaran?: BoolFieldUpdateOperationsInput | boolean
     nomor_tiket?: NullableStringFieldUpdateOperationsInput | string | null
     id_pengguna?: StringFieldUpdateOperationsInput | string
     id_metode_pembayaran?: IntFieldUpdateOperationsInput | number
@@ -35838,11 +35930,13 @@ export namespace Prisma {
 
   export type WorkshopTerdaftarUncheckedUpdateManyWithoutWorkshopInput = {
     id_pendaftaran?: IntFieldUpdateOperationsInput | number
-    nama_peserta?: StringFieldUpdateOperationsInput | string
+    nama_depan_peserta?: StringFieldUpdateOperationsInput | string
+    nama_belakang_peserta?: StringFieldUpdateOperationsInput | string
     email_peserta?: StringFieldUpdateOperationsInput | string
     nomor_telepon_peserta?: StringFieldUpdateOperationsInput | string
+    jenis_kelamin_peserta?: IntFieldUpdateOperationsInput | number
     tanggal_pendaftaran?: DateTimeFieldUpdateOperationsInput | Date | string
-    status_pembayaran?: StringFieldUpdateOperationsInput | string
+    status_pembayaran?: BoolFieldUpdateOperationsInput | boolean
     nomor_tiket?: NullableStringFieldUpdateOperationsInput | string | null
     id_pengguna?: StringFieldUpdateOperationsInput | string
     id_metode_pembayaran?: IntFieldUpdateOperationsInput | number
@@ -35850,22 +35944,26 @@ export namespace Prisma {
 
   export type WorkshopTerdaftarCreateManyMetode_pembayaranInput = {
     id_pendaftaran?: number
-    nama_peserta: string
+    nama_depan_peserta: string
+    nama_belakang_peserta: string
     email_peserta: string
     nomor_telepon_peserta: string
+    jenis_kelamin_peserta: number
     tanggal_pendaftaran?: Date | string
-    status_pembayaran: string
+    status_pembayaran?: boolean
     nomor_tiket?: string | null
     id_pengguna: string
     id_workshop: string
   }
 
   export type WorkshopTerdaftarUpdateWithoutMetode_pembayaranInput = {
-    nama_peserta?: StringFieldUpdateOperationsInput | string
+    nama_depan_peserta?: StringFieldUpdateOperationsInput | string
+    nama_belakang_peserta?: StringFieldUpdateOperationsInput | string
     email_peserta?: StringFieldUpdateOperationsInput | string
     nomor_telepon_peserta?: StringFieldUpdateOperationsInput | string
+    jenis_kelamin_peserta?: IntFieldUpdateOperationsInput | number
     tanggal_pendaftaran?: DateTimeFieldUpdateOperationsInput | Date | string
-    status_pembayaran?: StringFieldUpdateOperationsInput | string
+    status_pembayaran?: BoolFieldUpdateOperationsInput | boolean
     nomor_tiket?: NullableStringFieldUpdateOperationsInput | string | null
     pengguna?: PenggunaUpdateOneRequiredWithoutWorkshop_terdaftarNestedInput
     workshop?: WorkshopUpdateOneRequiredWithoutPendaftaranNestedInput
@@ -35873,11 +35971,13 @@ export namespace Prisma {
 
   export type WorkshopTerdaftarUncheckedUpdateWithoutMetode_pembayaranInput = {
     id_pendaftaran?: IntFieldUpdateOperationsInput | number
-    nama_peserta?: StringFieldUpdateOperationsInput | string
+    nama_depan_peserta?: StringFieldUpdateOperationsInput | string
+    nama_belakang_peserta?: StringFieldUpdateOperationsInput | string
     email_peserta?: StringFieldUpdateOperationsInput | string
     nomor_telepon_peserta?: StringFieldUpdateOperationsInput | string
+    jenis_kelamin_peserta?: IntFieldUpdateOperationsInput | number
     tanggal_pendaftaran?: DateTimeFieldUpdateOperationsInput | Date | string
-    status_pembayaran?: StringFieldUpdateOperationsInput | string
+    status_pembayaran?: BoolFieldUpdateOperationsInput | boolean
     nomor_tiket?: NullableStringFieldUpdateOperationsInput | string | null
     id_pengguna?: StringFieldUpdateOperationsInput | string
     id_workshop?: StringFieldUpdateOperationsInput | string
@@ -35885,11 +35985,13 @@ export namespace Prisma {
 
   export type WorkshopTerdaftarUncheckedUpdateManyWithoutMetode_pembayaranInput = {
     id_pendaftaran?: IntFieldUpdateOperationsInput | number
-    nama_peserta?: StringFieldUpdateOperationsInput | string
+    nama_depan_peserta?: StringFieldUpdateOperationsInput | string
+    nama_belakang_peserta?: StringFieldUpdateOperationsInput | string
     email_peserta?: StringFieldUpdateOperationsInput | string
     nomor_telepon_peserta?: StringFieldUpdateOperationsInput | string
+    jenis_kelamin_peserta?: IntFieldUpdateOperationsInput | number
     tanggal_pendaftaran?: DateTimeFieldUpdateOperationsInput | Date | string
-    status_pembayaran?: StringFieldUpdateOperationsInput | string
+    status_pembayaran?: BoolFieldUpdateOperationsInput | boolean
     nomor_tiket?: NullableStringFieldUpdateOperationsInput | string | null
     id_pengguna?: StringFieldUpdateOperationsInput | string
     id_workshop?: StringFieldUpdateOperationsInput | string
