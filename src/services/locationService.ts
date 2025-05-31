@@ -1,5 +1,4 @@
 import prisma from '../prisma/prismaClient';
-import * as Yup from 'yup';
 
 export const getAllProvince = async () => {
   try {

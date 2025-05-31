@@ -9,6 +9,7 @@ import locationRoute from './routes/locationRoute';
 import path from 'path';
 import articlesRouter from './routes/articlesRoute';
 import workshopsRouter from './routes/workshopsRoute';
+import articleCategoriesRoute from './routes/articleCategoryRoute';
 
 dotenv.config();
 
@@ -27,6 +28,7 @@ app.use('/api', facilitatorRoute);
 app.use('/api', locationRoute);
 app.use('/api', articlesRouter);
 app.use('/api', workshopsRouter);
+app.use('/api', articleCategoriesRoute);
 
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
