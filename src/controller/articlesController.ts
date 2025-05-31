@@ -336,7 +336,6 @@ export const unLike = async (req: IReqUser, res: Response) => {
 
 export const getSaved = async (req: IReqUser, res: Response) => {
   const { id } = req.params;
-
   try {
     const result = await getSavedArticle(id);
 

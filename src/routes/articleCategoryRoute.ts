@@ -1,11 +1,4 @@
 import express from 'express';
-import {
-  getProvince,
-  getProvinceId,
-  getRegency,
-  getRegencyId,
-  getRegencyProvinceId,
-} from '../controller/locationController';
 import authMiddleware from '../middlewares/authMiddleware';
 import {
   getCategory,

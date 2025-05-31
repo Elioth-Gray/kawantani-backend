@@ -18,3 +18,8 @@ export type TEditWorkshop = {
   user: TToken;
   id: string;
 };
+
+export type TRegisterWorkshop = {
+  user: TToken;
+  id: string;
+};

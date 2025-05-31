@@ -74,6 +74,11 @@ export type Workshop = $Result.DefaultSelection<Prisma.$WorkshopPayload>
  */
 export type WorkshopTerdaftar = $Result.DefaultSelection<Prisma.$WorkshopTerdaftarPayload>
 /**
+ * Model MetodePembayaran
+ * 
+ */
+export type MetodePembayaran = $Result.DefaultSelection<Prisma.$MetodePembayaranPayload>
+/**
  * Model kategoriTanaman
  * 
  */
@@ -375,6 +380,16 @@ export class PrismaClient<
     * ```
     */
   get workshopTerdaftar(): Prisma.WorkshopTerdaftarDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.metodePembayaran`: Exposes CRUD operations for the **MetodePembayaran** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more MetodePembayarans
+    * const metodePembayarans = await prisma.metodePembayaran.findMany()
+    * ```
+    */
+  get metodePembayaran(): Prisma.MetodePembayaranDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.kategoriTanaman`: Exposes CRUD operations for the **kategoriTanaman** model.
@@ -907,6 +922,7 @@ export namespace Prisma {
     KomentarArtikel: 'KomentarArtikel',
     Workshop: 'Workshop',
     WorkshopTerdaftar: 'WorkshopTerdaftar',
+    MetodePembayaran: 'MetodePembayaran',
     kategoriTanaman: 'kategoriTanaman',
     Tanaman: 'Tanaman',
     InstruksiTanaman: 'InstruksiTanaman',
@@ -933,7 +949,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "provinsi" | "kabupaten" | "pengguna" | "facilitator" | "admin" | "artikel" | "kategoriArtikel" | "artikelDisimpan" | "artikelDisukai" | "komentarArtikel" | "workshop" | "workshopTerdaftar" | "kategoriTanaman" | "tanaman" | "instruksiTanaman" | "hariPenanaman" | "tugasPenanaman" | "tanamanPengguna" | "hariTanamanPengguna" | "tugasPenanamanPengguna"
+      modelProps: "provinsi" | "kabupaten" | "pengguna" | "facilitator" | "admin" | "artikel" | "kategoriArtikel" | "artikelDisimpan" | "artikelDisukai" | "komentarArtikel" | "workshop" | "workshopTerdaftar" | "metodePembayaran" | "kategoriTanaman" | "tanaman" | "instruksiTanaman" | "hariPenanaman" | "tugasPenanaman" | "tanamanPengguna" | "hariTanamanPengguna" | "tugasPenanamanPengguna"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1825,6 +1841,80 @@ export namespace Prisma {
           }
         }
       }
+      MetodePembayaran: {
+        payload: Prisma.$MetodePembayaranPayload<ExtArgs>
+        fields: Prisma.MetodePembayaranFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.MetodePembayaranFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MetodePembayaranPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.MetodePembayaranFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MetodePembayaranPayload>
+          }
+          findFirst: {
+            args: Prisma.MetodePembayaranFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MetodePembayaranPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.MetodePembayaranFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MetodePembayaranPayload>
+          }
+          findMany: {
+            args: Prisma.MetodePembayaranFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MetodePembayaranPayload>[]
+          }
+          create: {
+            args: Prisma.MetodePembayaranCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MetodePembayaranPayload>
+          }
+          createMany: {
+            args: Prisma.MetodePembayaranCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.MetodePembayaranCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MetodePembayaranPayload>[]
+          }
+          delete: {
+            args: Prisma.MetodePembayaranDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MetodePembayaranPayload>
+          }
+          update: {
+            args: Prisma.MetodePembayaranUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MetodePembayaranPayload>
+          }
+          deleteMany: {
+            args: Prisma.MetodePembayaranDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.MetodePembayaranUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.MetodePembayaranUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MetodePembayaranPayload>[]
+          }
+          upsert: {
+            args: Prisma.MetodePembayaranUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MetodePembayaranPayload>
+          }
+          aggregate: {
+            args: Prisma.MetodePembayaranAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateMetodePembayaran>
+          }
+          groupBy: {
+            args: Prisma.MetodePembayaranGroupByArgs<ExtArgs>
+            result: $Utils.Optional<MetodePembayaranGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.MetodePembayaranCountArgs<ExtArgs>
+            result: $Utils.Optional<MetodePembayaranCountAggregateOutputType> | number
+          }
+        }
+      }
       kategoriTanaman: {
         payload: Prisma.$kategoriTanamanPayload<ExtArgs>
         fields: Prisma.kategoriTanamanFieldRefs
@@ -2513,6 +2603,7 @@ export namespace Prisma {
     komentarArtikel?: KomentarArtikelOmit
     workshop?: WorkshopOmit
     workshopTerdaftar?: WorkshopTerdaftarOmit
+    metodePembayaran?: MetodePembayaranOmit
     kategoriTanaman?: kategoriTanamanOmit
     tanaman?: TanamanOmit
     instruksiTanaman?: InstruksiTanamanOmit
@@ -2895,6 +2986,37 @@ export namespace Prisma {
    * WorkshopCountOutputType without action
    */
   export type WorkshopCountOutputTypeCountPendaftaranArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: WorkshopTerdaftarWhereInput
+  }
+
+
+  /**
+   * Count Type MetodePembayaranCountOutputType
+   */
+
+  export type MetodePembayaranCountOutputType = {
+    workshop_terdaftar: number
+  }
+
+  export type MetodePembayaranCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    workshop_terdaftar?: boolean | MetodePembayaranCountOutputTypeCountWorkshop_terdaftarArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * MetodePembayaranCountOutputType without action
+   */
+  export type MetodePembayaranCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetodePembayaranCountOutputType
+     */
+    select?: MetodePembayaranCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * MetodePembayaranCountOutputType without action
+   */
+  export type MetodePembayaranCountOutputTypeCountWorkshop_terdaftarArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: WorkshopTerdaftarWhereInput
   }
 
@@ -15709,10 +15831,12 @@ export namespace Prisma {
 
   export type WorkshopTerdaftarAvgAggregateOutputType = {
     id_pendaftaran: number | null
+    id_metode_pembayaran: number | null
   }
 
   export type WorkshopTerdaftarSumAggregateOutputType = {
     id_pendaftaran: number | null
+    id_metode_pembayaran: number | null
   }
 
   export type WorkshopTerdaftarMinAggregateOutputType = {
@@ -15725,6 +15849,7 @@ export namespace Prisma {
     nomor_tiket: string | null
     id_pengguna: string | null
     id_workshop: string | null
+    id_metode_pembayaran: number | null
   }
 
   export type WorkshopTerdaftarMaxAggregateOutputType = {
@@ -15737,6 +15862,7 @@ export namespace Prisma {
     nomor_tiket: string | null
     id_pengguna: string | null
     id_workshop: string | null
+    id_metode_pembayaran: number | null
   }
 
   export type WorkshopTerdaftarCountAggregateOutputType = {
@@ -15749,16 +15875,19 @@ export namespace Prisma {
     nomor_tiket: number
     id_pengguna: number
     id_workshop: number
+    id_metode_pembayaran: number
     _all: number
   }
 
 
   export type WorkshopTerdaftarAvgAggregateInputType = {
     id_pendaftaran?: true
+    id_metode_pembayaran?: true
   }
 
   export type WorkshopTerdaftarSumAggregateInputType = {
     id_pendaftaran?: true
+    id_metode_pembayaran?: true
   }
 
   export type WorkshopTerdaftarMinAggregateInputType = {
@@ -15771,6 +15900,7 @@ export namespace Prisma {
     nomor_tiket?: true
     id_pengguna?: true
     id_workshop?: true
+    id_metode_pembayaran?: true
   }
 
   export type WorkshopTerdaftarMaxAggregateInputType = {
@@ -15783,6 +15913,7 @@ export namespace Prisma {
     nomor_tiket?: true
     id_pengguna?: true
     id_workshop?: true
+    id_metode_pembayaran?: true
   }
 
   export type WorkshopTerdaftarCountAggregateInputType = {
@@ -15795,6 +15926,7 @@ export namespace Prisma {
     nomor_tiket?: true
     id_pengguna?: true
     id_workshop?: true
+    id_metode_pembayaran?: true
     _all?: true
   }
 
@@ -15894,6 +16026,7 @@ export namespace Prisma {
     nomor_tiket: string | null
     id_pengguna: string
     id_workshop: string
+    id_metode_pembayaran: number
     _count: WorkshopTerdaftarCountAggregateOutputType | null
     _avg: WorkshopTerdaftarAvgAggregateOutputType | null
     _sum: WorkshopTerdaftarSumAggregateOutputType | null
@@ -15925,8 +16058,10 @@ export namespace Prisma {
     nomor_tiket?: boolean
     id_pengguna?: boolean
     id_workshop?: boolean
+    id_metode_pembayaran?: boolean
     pengguna?: boolean | PenggunaDefaultArgs<ExtArgs>
     workshop?: boolean | WorkshopDefaultArgs<ExtArgs>
+    metode_pembayaran?: boolean | MetodePembayaranDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["workshopTerdaftar"]>
 
   export type WorkshopTerdaftarSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -15939,8 +16074,10 @@ export namespace Prisma {
     nomor_tiket?: boolean
     id_pengguna?: boolean
     id_workshop?: boolean
+    id_metode_pembayaran?: boolean
     pengguna?: boolean | PenggunaDefaultArgs<ExtArgs>
     workshop?: boolean | WorkshopDefaultArgs<ExtArgs>
+    metode_pembayaran?: boolean | MetodePembayaranDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["workshopTerdaftar"]>
 
   export type WorkshopTerdaftarSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -15953,8 +16090,10 @@ export namespace Prisma {
     nomor_tiket?: boolean
     id_pengguna?: boolean
     id_workshop?: boolean
+    id_metode_pembayaran?: boolean
     pengguna?: boolean | PenggunaDefaultArgs<ExtArgs>
     workshop?: boolean | WorkshopDefaultArgs<ExtArgs>
+    metode_pembayaran?: boolean | MetodePembayaranDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["workshopTerdaftar"]>
 
   export type WorkshopTerdaftarSelectScalar = {
@@ -15967,20 +16106,24 @@ export namespace Prisma {
     nomor_tiket?: boolean
     id_pengguna?: boolean
     id_workshop?: boolean
+    id_metode_pembayaran?: boolean
   }
 
-  export type WorkshopTerdaftarOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_pendaftaran" | "nama_peserta" | "email_peserta" | "nomor_telepon_peserta" | "tanggal_pendaftaran" | "status_pembayaran" | "nomor_tiket" | "id_pengguna" | "id_workshop", ExtArgs["result"]["workshopTerdaftar"]>
+  export type WorkshopTerdaftarOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_pendaftaran" | "nama_peserta" | "email_peserta" | "nomor_telepon_peserta" | "tanggal_pendaftaran" | "status_pembayaran" | "nomor_tiket" | "id_pengguna" | "id_workshop" | "id_metode_pembayaran", ExtArgs["result"]["workshopTerdaftar"]>
   export type WorkshopTerdaftarInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     pengguna?: boolean | PenggunaDefaultArgs<ExtArgs>
     workshop?: boolean | WorkshopDefaultArgs<ExtArgs>
+    metode_pembayaran?: boolean | MetodePembayaranDefaultArgs<ExtArgs>
   }
   export type WorkshopTerdaftarIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     pengguna?: boolean | PenggunaDefaultArgs<ExtArgs>
     workshop?: boolean | WorkshopDefaultArgs<ExtArgs>
+    metode_pembayaran?: boolean | MetodePembayaranDefaultArgs<ExtArgs>
   }
   export type WorkshopTerdaftarIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     pengguna?: boolean | PenggunaDefaultArgs<ExtArgs>
     workshop?: boolean | WorkshopDefaultArgs<ExtArgs>
+    metode_pembayaran?: boolean | MetodePembayaranDefaultArgs<ExtArgs>
   }
 
   export type $WorkshopTerdaftarPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -15988,6 +16131,7 @@ export namespace Prisma {
     objects: {
       pengguna: Prisma.$PenggunaPayload<ExtArgs>
       workshop: Prisma.$WorkshopPayload<ExtArgs>
+      metode_pembayaran: Prisma.$MetodePembayaranPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id_pendaftaran: number
@@ -15999,6 +16143,7 @@ export namespace Prisma {
       nomor_tiket: string | null
       id_pengguna: string
       id_workshop: string
+      id_metode_pembayaran: number
     }, ExtArgs["result"]["workshopTerdaftar"]>
     composites: {}
   }
@@ -16395,6 +16540,7 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     pengguna<T extends PenggunaDefaultArgs<ExtArgs> = {}>(args?: Subset<T, PenggunaDefaultArgs<ExtArgs>>): Prisma__PenggunaClient<$Result.GetResult<Prisma.$PenggunaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     workshop<T extends WorkshopDefaultArgs<ExtArgs> = {}>(args?: Subset<T, WorkshopDefaultArgs<ExtArgs>>): Prisma__WorkshopClient<$Result.GetResult<Prisma.$WorkshopPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    metode_pembayaran<T extends MetodePembayaranDefaultArgs<ExtArgs> = {}>(args?: Subset<T, MetodePembayaranDefaultArgs<ExtArgs>>): Prisma__MetodePembayaranClient<$Result.GetResult<Prisma.$MetodePembayaranPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -16433,6 +16579,7 @@ export namespace Prisma {
     readonly nomor_tiket: FieldRef<"WorkshopTerdaftar", 'String'>
     readonly id_pengguna: FieldRef<"WorkshopTerdaftar", 'String'>
     readonly id_workshop: FieldRef<"WorkshopTerdaftar", 'String'>
+    readonly id_metode_pembayaran: FieldRef<"WorkshopTerdaftar", 'Int'>
   }
     
 
@@ -16844,6 +16991,1084 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: WorkshopTerdaftarInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model MetodePembayaran
+   */
+
+  export type AggregateMetodePembayaran = {
+    _count: MetodePembayaranCountAggregateOutputType | null
+    _avg: MetodePembayaranAvgAggregateOutputType | null
+    _sum: MetodePembayaranSumAggregateOutputType | null
+    _min: MetodePembayaranMinAggregateOutputType | null
+    _max: MetodePembayaranMaxAggregateOutputType | null
+  }
+
+  export type MetodePembayaranAvgAggregateOutputType = {
+    id_metode_pembayaran: number | null
+  }
+
+  export type MetodePembayaranSumAggregateOutputType = {
+    id_metode_pembayaran: number | null
+  }
+
+  export type MetodePembayaranMinAggregateOutputType = {
+    id_metode_pembayaran: number | null
+    nama_metode_pembayaran: string | null
+    gambar_metode_pembayaran: string | null
+  }
+
+  export type MetodePembayaranMaxAggregateOutputType = {
+    id_metode_pembayaran: number | null
+    nama_metode_pembayaran: string | null
+    gambar_metode_pembayaran: string | null
+  }
+
+  export type MetodePembayaranCountAggregateOutputType = {
+    id_metode_pembayaran: number
+    nama_metode_pembayaran: number
+    gambar_metode_pembayaran: number
+    _all: number
+  }
+
+
+  export type MetodePembayaranAvgAggregateInputType = {
+    id_metode_pembayaran?: true
+  }
+
+  export type MetodePembayaranSumAggregateInputType = {
+    id_metode_pembayaran?: true
+  }
+
+  export type MetodePembayaranMinAggregateInputType = {
+    id_metode_pembayaran?: true
+    nama_metode_pembayaran?: true
+    gambar_metode_pembayaran?: true
+  }
+
+  export type MetodePembayaranMaxAggregateInputType = {
+    id_metode_pembayaran?: true
+    nama_metode_pembayaran?: true
+    gambar_metode_pembayaran?: true
+  }
+
+  export type MetodePembayaranCountAggregateInputType = {
+    id_metode_pembayaran?: true
+    nama_metode_pembayaran?: true
+    gambar_metode_pembayaran?: true
+    _all?: true
+  }
+
+  export type MetodePembayaranAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which MetodePembayaran to aggregate.
+     */
+    where?: MetodePembayaranWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MetodePembayarans to fetch.
+     */
+    orderBy?: MetodePembayaranOrderByWithRelationInput | MetodePembayaranOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: MetodePembayaranWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MetodePembayarans from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MetodePembayarans.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned MetodePembayarans
+    **/
+    _count?: true | MetodePembayaranCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: MetodePembayaranAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: MetodePembayaranSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: MetodePembayaranMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: MetodePembayaranMaxAggregateInputType
+  }
+
+  export type GetMetodePembayaranAggregateType<T extends MetodePembayaranAggregateArgs> = {
+        [P in keyof T & keyof AggregateMetodePembayaran]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateMetodePembayaran[P]>
+      : GetScalarType<T[P], AggregateMetodePembayaran[P]>
+  }
+
+
+
+
+  export type MetodePembayaranGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MetodePembayaranWhereInput
+    orderBy?: MetodePembayaranOrderByWithAggregationInput | MetodePembayaranOrderByWithAggregationInput[]
+    by: MetodePembayaranScalarFieldEnum[] | MetodePembayaranScalarFieldEnum
+    having?: MetodePembayaranScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: MetodePembayaranCountAggregateInputType | true
+    _avg?: MetodePembayaranAvgAggregateInputType
+    _sum?: MetodePembayaranSumAggregateInputType
+    _min?: MetodePembayaranMinAggregateInputType
+    _max?: MetodePembayaranMaxAggregateInputType
+  }
+
+  export type MetodePembayaranGroupByOutputType = {
+    id_metode_pembayaran: number
+    nama_metode_pembayaran: string
+    gambar_metode_pembayaran: string
+    _count: MetodePembayaranCountAggregateOutputType | null
+    _avg: MetodePembayaranAvgAggregateOutputType | null
+    _sum: MetodePembayaranSumAggregateOutputType | null
+    _min: MetodePembayaranMinAggregateOutputType | null
+    _max: MetodePembayaranMaxAggregateOutputType | null
+  }
+
+  type GetMetodePembayaranGroupByPayload<T extends MetodePembayaranGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<MetodePembayaranGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof MetodePembayaranGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], MetodePembayaranGroupByOutputType[P]>
+            : GetScalarType<T[P], MetodePembayaranGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type MetodePembayaranSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id_metode_pembayaran?: boolean
+    nama_metode_pembayaran?: boolean
+    gambar_metode_pembayaran?: boolean
+    workshop_terdaftar?: boolean | MetodePembayaran$workshop_terdaftarArgs<ExtArgs>
+    _count?: boolean | MetodePembayaranCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["metodePembayaran"]>
+
+  export type MetodePembayaranSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id_metode_pembayaran?: boolean
+    nama_metode_pembayaran?: boolean
+    gambar_metode_pembayaran?: boolean
+  }, ExtArgs["result"]["metodePembayaran"]>
+
+  export type MetodePembayaranSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id_metode_pembayaran?: boolean
+    nama_metode_pembayaran?: boolean
+    gambar_metode_pembayaran?: boolean
+  }, ExtArgs["result"]["metodePembayaran"]>
+
+  export type MetodePembayaranSelectScalar = {
+    id_metode_pembayaran?: boolean
+    nama_metode_pembayaran?: boolean
+    gambar_metode_pembayaran?: boolean
+  }
+
+  export type MetodePembayaranOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_metode_pembayaran" | "nama_metode_pembayaran" | "gambar_metode_pembayaran", ExtArgs["result"]["metodePembayaran"]>
+  export type MetodePembayaranInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    workshop_terdaftar?: boolean | MetodePembayaran$workshop_terdaftarArgs<ExtArgs>
+    _count?: boolean | MetodePembayaranCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type MetodePembayaranIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type MetodePembayaranIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $MetodePembayaranPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "MetodePembayaran"
+    objects: {
+      workshop_terdaftar: Prisma.$WorkshopTerdaftarPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id_metode_pembayaran: number
+      nama_metode_pembayaran: string
+      gambar_metode_pembayaran: string
+    }, ExtArgs["result"]["metodePembayaran"]>
+    composites: {}
+  }
+
+  type MetodePembayaranGetPayload<S extends boolean | null | undefined | MetodePembayaranDefaultArgs> = $Result.GetResult<Prisma.$MetodePembayaranPayload, S>
+
+  type MetodePembayaranCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<MetodePembayaranFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: MetodePembayaranCountAggregateInputType | true
+    }
+
+  export interface MetodePembayaranDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['MetodePembayaran'], meta: { name: 'MetodePembayaran' } }
+    /**
+     * Find zero or one MetodePembayaran that matches the filter.
+     * @param {MetodePembayaranFindUniqueArgs} args - Arguments to find a MetodePembayaran
+     * @example
+     * // Get one MetodePembayaran
+     * const metodePembayaran = await prisma.metodePembayaran.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends MetodePembayaranFindUniqueArgs>(args: SelectSubset<T, MetodePembayaranFindUniqueArgs<ExtArgs>>): Prisma__MetodePembayaranClient<$Result.GetResult<Prisma.$MetodePembayaranPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one MetodePembayaran that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {MetodePembayaranFindUniqueOrThrowArgs} args - Arguments to find a MetodePembayaran
+     * @example
+     * // Get one MetodePembayaran
+     * const metodePembayaran = await prisma.metodePembayaran.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends MetodePembayaranFindUniqueOrThrowArgs>(args: SelectSubset<T, MetodePembayaranFindUniqueOrThrowArgs<ExtArgs>>): Prisma__MetodePembayaranClient<$Result.GetResult<Prisma.$MetodePembayaranPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first MetodePembayaran that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MetodePembayaranFindFirstArgs} args - Arguments to find a MetodePembayaran
+     * @example
+     * // Get one MetodePembayaran
+     * const metodePembayaran = await prisma.metodePembayaran.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends MetodePembayaranFindFirstArgs>(args?: SelectSubset<T, MetodePembayaranFindFirstArgs<ExtArgs>>): Prisma__MetodePembayaranClient<$Result.GetResult<Prisma.$MetodePembayaranPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first MetodePembayaran that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MetodePembayaranFindFirstOrThrowArgs} args - Arguments to find a MetodePembayaran
+     * @example
+     * // Get one MetodePembayaran
+     * const metodePembayaran = await prisma.metodePembayaran.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends MetodePembayaranFindFirstOrThrowArgs>(args?: SelectSubset<T, MetodePembayaranFindFirstOrThrowArgs<ExtArgs>>): Prisma__MetodePembayaranClient<$Result.GetResult<Prisma.$MetodePembayaranPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more MetodePembayarans that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MetodePembayaranFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all MetodePembayarans
+     * const metodePembayarans = await prisma.metodePembayaran.findMany()
+     * 
+     * // Get first 10 MetodePembayarans
+     * const metodePembayarans = await prisma.metodePembayaran.findMany({ take: 10 })
+     * 
+     * // Only select the `id_metode_pembayaran`
+     * const metodePembayaranWithId_metode_pembayaranOnly = await prisma.metodePembayaran.findMany({ select: { id_metode_pembayaran: true } })
+     * 
+     */
+    findMany<T extends MetodePembayaranFindManyArgs>(args?: SelectSubset<T, MetodePembayaranFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MetodePembayaranPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a MetodePembayaran.
+     * @param {MetodePembayaranCreateArgs} args - Arguments to create a MetodePembayaran.
+     * @example
+     * // Create one MetodePembayaran
+     * const MetodePembayaran = await prisma.metodePembayaran.create({
+     *   data: {
+     *     // ... data to create a MetodePembayaran
+     *   }
+     * })
+     * 
+     */
+    create<T extends MetodePembayaranCreateArgs>(args: SelectSubset<T, MetodePembayaranCreateArgs<ExtArgs>>): Prisma__MetodePembayaranClient<$Result.GetResult<Prisma.$MetodePembayaranPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many MetodePembayarans.
+     * @param {MetodePembayaranCreateManyArgs} args - Arguments to create many MetodePembayarans.
+     * @example
+     * // Create many MetodePembayarans
+     * const metodePembayaran = await prisma.metodePembayaran.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends MetodePembayaranCreateManyArgs>(args?: SelectSubset<T, MetodePembayaranCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many MetodePembayarans and returns the data saved in the database.
+     * @param {MetodePembayaranCreateManyAndReturnArgs} args - Arguments to create many MetodePembayarans.
+     * @example
+     * // Create many MetodePembayarans
+     * const metodePembayaran = await prisma.metodePembayaran.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many MetodePembayarans and only return the `id_metode_pembayaran`
+     * const metodePembayaranWithId_metode_pembayaranOnly = await prisma.metodePembayaran.createManyAndReturn({
+     *   select: { id_metode_pembayaran: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends MetodePembayaranCreateManyAndReturnArgs>(args?: SelectSubset<T, MetodePembayaranCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MetodePembayaranPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a MetodePembayaran.
+     * @param {MetodePembayaranDeleteArgs} args - Arguments to delete one MetodePembayaran.
+     * @example
+     * // Delete one MetodePembayaran
+     * const MetodePembayaran = await prisma.metodePembayaran.delete({
+     *   where: {
+     *     // ... filter to delete one MetodePembayaran
+     *   }
+     * })
+     * 
+     */
+    delete<T extends MetodePembayaranDeleteArgs>(args: SelectSubset<T, MetodePembayaranDeleteArgs<ExtArgs>>): Prisma__MetodePembayaranClient<$Result.GetResult<Prisma.$MetodePembayaranPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one MetodePembayaran.
+     * @param {MetodePembayaranUpdateArgs} args - Arguments to update one MetodePembayaran.
+     * @example
+     * // Update one MetodePembayaran
+     * const metodePembayaran = await prisma.metodePembayaran.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends MetodePembayaranUpdateArgs>(args: SelectSubset<T, MetodePembayaranUpdateArgs<ExtArgs>>): Prisma__MetodePembayaranClient<$Result.GetResult<Prisma.$MetodePembayaranPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more MetodePembayarans.
+     * @param {MetodePembayaranDeleteManyArgs} args - Arguments to filter MetodePembayarans to delete.
+     * @example
+     * // Delete a few MetodePembayarans
+     * const { count } = await prisma.metodePembayaran.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends MetodePembayaranDeleteManyArgs>(args?: SelectSubset<T, MetodePembayaranDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more MetodePembayarans.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MetodePembayaranUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many MetodePembayarans
+     * const metodePembayaran = await prisma.metodePembayaran.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends MetodePembayaranUpdateManyArgs>(args: SelectSubset<T, MetodePembayaranUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more MetodePembayarans and returns the data updated in the database.
+     * @param {MetodePembayaranUpdateManyAndReturnArgs} args - Arguments to update many MetodePembayarans.
+     * @example
+     * // Update many MetodePembayarans
+     * const metodePembayaran = await prisma.metodePembayaran.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more MetodePembayarans and only return the `id_metode_pembayaran`
+     * const metodePembayaranWithId_metode_pembayaranOnly = await prisma.metodePembayaran.updateManyAndReturn({
+     *   select: { id_metode_pembayaran: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends MetodePembayaranUpdateManyAndReturnArgs>(args: SelectSubset<T, MetodePembayaranUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MetodePembayaranPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one MetodePembayaran.
+     * @param {MetodePembayaranUpsertArgs} args - Arguments to update or create a MetodePembayaran.
+     * @example
+     * // Update or create a MetodePembayaran
+     * const metodePembayaran = await prisma.metodePembayaran.upsert({
+     *   create: {
+     *     // ... data to create a MetodePembayaran
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the MetodePembayaran we want to update
+     *   }
+     * })
+     */
+    upsert<T extends MetodePembayaranUpsertArgs>(args: SelectSubset<T, MetodePembayaranUpsertArgs<ExtArgs>>): Prisma__MetodePembayaranClient<$Result.GetResult<Prisma.$MetodePembayaranPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of MetodePembayarans.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MetodePembayaranCountArgs} args - Arguments to filter MetodePembayarans to count.
+     * @example
+     * // Count the number of MetodePembayarans
+     * const count = await prisma.metodePembayaran.count({
+     *   where: {
+     *     // ... the filter for the MetodePembayarans we want to count
+     *   }
+     * })
+    **/
+    count<T extends MetodePembayaranCountArgs>(
+      args?: Subset<T, MetodePembayaranCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], MetodePembayaranCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a MetodePembayaran.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MetodePembayaranAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends MetodePembayaranAggregateArgs>(args: Subset<T, MetodePembayaranAggregateArgs>): Prisma.PrismaPromise<GetMetodePembayaranAggregateType<T>>
+
+    /**
+     * Group by MetodePembayaran.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MetodePembayaranGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends MetodePembayaranGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: MetodePembayaranGroupByArgs['orderBy'] }
+        : { orderBy?: MetodePembayaranGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, MetodePembayaranGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetMetodePembayaranGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the MetodePembayaran model
+   */
+  readonly fields: MetodePembayaranFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for MetodePembayaran.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__MetodePembayaranClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    workshop_terdaftar<T extends MetodePembayaran$workshop_terdaftarArgs<ExtArgs> = {}>(args?: Subset<T, MetodePembayaran$workshop_terdaftarArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WorkshopTerdaftarPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the MetodePembayaran model
+   */
+  interface MetodePembayaranFieldRefs {
+    readonly id_metode_pembayaran: FieldRef<"MetodePembayaran", 'Int'>
+    readonly nama_metode_pembayaran: FieldRef<"MetodePembayaran", 'String'>
+    readonly gambar_metode_pembayaran: FieldRef<"MetodePembayaran", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * MetodePembayaran findUnique
+   */
+  export type MetodePembayaranFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetodePembayaran
+     */
+    select?: MetodePembayaranSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MetodePembayaran
+     */
+    omit?: MetodePembayaranOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MetodePembayaranInclude<ExtArgs> | null
+    /**
+     * Filter, which MetodePembayaran to fetch.
+     */
+    where: MetodePembayaranWhereUniqueInput
+  }
+
+  /**
+   * MetodePembayaran findUniqueOrThrow
+   */
+  export type MetodePembayaranFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetodePembayaran
+     */
+    select?: MetodePembayaranSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MetodePembayaran
+     */
+    omit?: MetodePembayaranOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MetodePembayaranInclude<ExtArgs> | null
+    /**
+     * Filter, which MetodePembayaran to fetch.
+     */
+    where: MetodePembayaranWhereUniqueInput
+  }
+
+  /**
+   * MetodePembayaran findFirst
+   */
+  export type MetodePembayaranFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetodePembayaran
+     */
+    select?: MetodePembayaranSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MetodePembayaran
+     */
+    omit?: MetodePembayaranOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MetodePembayaranInclude<ExtArgs> | null
+    /**
+     * Filter, which MetodePembayaran to fetch.
+     */
+    where?: MetodePembayaranWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MetodePembayarans to fetch.
+     */
+    orderBy?: MetodePembayaranOrderByWithRelationInput | MetodePembayaranOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for MetodePembayarans.
+     */
+    cursor?: MetodePembayaranWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MetodePembayarans from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MetodePembayarans.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of MetodePembayarans.
+     */
+    distinct?: MetodePembayaranScalarFieldEnum | MetodePembayaranScalarFieldEnum[]
+  }
+
+  /**
+   * MetodePembayaran findFirstOrThrow
+   */
+  export type MetodePembayaranFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetodePembayaran
+     */
+    select?: MetodePembayaranSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MetodePembayaran
+     */
+    omit?: MetodePembayaranOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MetodePembayaranInclude<ExtArgs> | null
+    /**
+     * Filter, which MetodePembayaran to fetch.
+     */
+    where?: MetodePembayaranWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MetodePembayarans to fetch.
+     */
+    orderBy?: MetodePembayaranOrderByWithRelationInput | MetodePembayaranOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for MetodePembayarans.
+     */
+    cursor?: MetodePembayaranWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MetodePembayarans from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MetodePembayarans.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of MetodePembayarans.
+     */
+    distinct?: MetodePembayaranScalarFieldEnum | MetodePembayaranScalarFieldEnum[]
+  }
+
+  /**
+   * MetodePembayaran findMany
+   */
+  export type MetodePembayaranFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetodePembayaran
+     */
+    select?: MetodePembayaranSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MetodePembayaran
+     */
+    omit?: MetodePembayaranOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MetodePembayaranInclude<ExtArgs> | null
+    /**
+     * Filter, which MetodePembayarans to fetch.
+     */
+    where?: MetodePembayaranWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MetodePembayarans to fetch.
+     */
+    orderBy?: MetodePembayaranOrderByWithRelationInput | MetodePembayaranOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing MetodePembayarans.
+     */
+    cursor?: MetodePembayaranWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MetodePembayarans from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MetodePembayarans.
+     */
+    skip?: number
+    distinct?: MetodePembayaranScalarFieldEnum | MetodePembayaranScalarFieldEnum[]
+  }
+
+  /**
+   * MetodePembayaran create
+   */
+  export type MetodePembayaranCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetodePembayaran
+     */
+    select?: MetodePembayaranSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MetodePembayaran
+     */
+    omit?: MetodePembayaranOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MetodePembayaranInclude<ExtArgs> | null
+    /**
+     * The data needed to create a MetodePembayaran.
+     */
+    data: XOR<MetodePembayaranCreateInput, MetodePembayaranUncheckedCreateInput>
+  }
+
+  /**
+   * MetodePembayaran createMany
+   */
+  export type MetodePembayaranCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many MetodePembayarans.
+     */
+    data: MetodePembayaranCreateManyInput | MetodePembayaranCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * MetodePembayaran createManyAndReturn
+   */
+  export type MetodePembayaranCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetodePembayaran
+     */
+    select?: MetodePembayaranSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the MetodePembayaran
+     */
+    omit?: MetodePembayaranOmit<ExtArgs> | null
+    /**
+     * The data used to create many MetodePembayarans.
+     */
+    data: MetodePembayaranCreateManyInput | MetodePembayaranCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * MetodePembayaran update
+   */
+  export type MetodePembayaranUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetodePembayaran
+     */
+    select?: MetodePembayaranSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MetodePembayaran
+     */
+    omit?: MetodePembayaranOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MetodePembayaranInclude<ExtArgs> | null
+    /**
+     * The data needed to update a MetodePembayaran.
+     */
+    data: XOR<MetodePembayaranUpdateInput, MetodePembayaranUncheckedUpdateInput>
+    /**
+     * Choose, which MetodePembayaran to update.
+     */
+    where: MetodePembayaranWhereUniqueInput
+  }
+
+  /**
+   * MetodePembayaran updateMany
+   */
+  export type MetodePembayaranUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update MetodePembayarans.
+     */
+    data: XOR<MetodePembayaranUpdateManyMutationInput, MetodePembayaranUncheckedUpdateManyInput>
+    /**
+     * Filter which MetodePembayarans to update
+     */
+    where?: MetodePembayaranWhereInput
+    /**
+     * Limit how many MetodePembayarans to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * MetodePembayaran updateManyAndReturn
+   */
+  export type MetodePembayaranUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetodePembayaran
+     */
+    select?: MetodePembayaranSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the MetodePembayaran
+     */
+    omit?: MetodePembayaranOmit<ExtArgs> | null
+    /**
+     * The data used to update MetodePembayarans.
+     */
+    data: XOR<MetodePembayaranUpdateManyMutationInput, MetodePembayaranUncheckedUpdateManyInput>
+    /**
+     * Filter which MetodePembayarans to update
+     */
+    where?: MetodePembayaranWhereInput
+    /**
+     * Limit how many MetodePembayarans to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * MetodePembayaran upsert
+   */
+  export type MetodePembayaranUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetodePembayaran
+     */
+    select?: MetodePembayaranSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MetodePembayaran
+     */
+    omit?: MetodePembayaranOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MetodePembayaranInclude<ExtArgs> | null
+    /**
+     * The filter to search for the MetodePembayaran to update in case it exists.
+     */
+    where: MetodePembayaranWhereUniqueInput
+    /**
+     * In case the MetodePembayaran found by the `where` argument doesn't exist, create a new MetodePembayaran with this data.
+     */
+    create: XOR<MetodePembayaranCreateInput, MetodePembayaranUncheckedCreateInput>
+    /**
+     * In case the MetodePembayaran was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<MetodePembayaranUpdateInput, MetodePembayaranUncheckedUpdateInput>
+  }
+
+  /**
+   * MetodePembayaran delete
+   */
+  export type MetodePembayaranDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetodePembayaran
+     */
+    select?: MetodePembayaranSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MetodePembayaran
+     */
+    omit?: MetodePembayaranOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MetodePembayaranInclude<ExtArgs> | null
+    /**
+     * Filter which MetodePembayaran to delete.
+     */
+    where: MetodePembayaranWhereUniqueInput
+  }
+
+  /**
+   * MetodePembayaran deleteMany
+   */
+  export type MetodePembayaranDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which MetodePembayarans to delete
+     */
+    where?: MetodePembayaranWhereInput
+    /**
+     * Limit how many MetodePembayarans to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * MetodePembayaran.workshop_terdaftar
+   */
+  export type MetodePembayaran$workshop_terdaftarArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WorkshopTerdaftar
+     */
+    select?: WorkshopTerdaftarSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the WorkshopTerdaftar
+     */
+    omit?: WorkshopTerdaftarOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WorkshopTerdaftarInclude<ExtArgs> | null
+    where?: WorkshopTerdaftarWhereInput
+    orderBy?: WorkshopTerdaftarOrderByWithRelationInput | WorkshopTerdaftarOrderByWithRelationInput[]
+    cursor?: WorkshopTerdaftarWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: WorkshopTerdaftarScalarFieldEnum | WorkshopTerdaftarScalarFieldEnum[]
+  }
+
+  /**
+   * MetodePembayaran without action
+   */
+  export type MetodePembayaranDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MetodePembayaran
+     */
+    select?: MetodePembayaranSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MetodePembayaran
+     */
+    omit?: MetodePembayaranOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MetodePembayaranInclude<ExtArgs> | null
   }
 
 
@@ -25782,10 +27007,20 @@ export namespace Prisma {
     status_pembayaran: 'status_pembayaran',
     nomor_tiket: 'nomor_tiket',
     id_pengguna: 'id_pengguna',
-    id_workshop: 'id_workshop'
+    id_workshop: 'id_workshop',
+    id_metode_pembayaran: 'id_metode_pembayaran'
   };
 
   export type WorkshopTerdaftarScalarFieldEnum = (typeof WorkshopTerdaftarScalarFieldEnum)[keyof typeof WorkshopTerdaftarScalarFieldEnum]
+
+
+  export const MetodePembayaranScalarFieldEnum: {
+    id_metode_pembayaran: 'id_metode_pembayaran',
+    nama_metode_pembayaran: 'nama_metode_pembayaran',
+    gambar_metode_pembayaran: 'gambar_metode_pembayaran'
+  };
+
+  export type MetodePembayaranScalarFieldEnum = (typeof MetodePembayaranScalarFieldEnum)[keyof typeof MetodePembayaranScalarFieldEnum]
 
 
   export const KategoriTanamanScalarFieldEnum: {
@@ -26777,8 +28012,10 @@ export namespace Prisma {
     nomor_tiket?: StringNullableFilter<"WorkshopTerdaftar"> | string | null
     id_pengguna?: StringFilter<"WorkshopTerdaftar"> | string
     id_workshop?: StringFilter<"WorkshopTerdaftar"> | string
+    id_metode_pembayaran?: IntFilter<"WorkshopTerdaftar"> | number
     pengguna?: XOR<PenggunaScalarRelationFilter, PenggunaWhereInput>
     workshop?: XOR<WorkshopScalarRelationFilter, WorkshopWhereInput>
+    metode_pembayaran?: XOR<MetodePembayaranScalarRelationFilter, MetodePembayaranWhereInput>
   }
 
   export type WorkshopTerdaftarOrderByWithRelationInput = {
@@ -26791,8 +28028,10 @@ export namespace Prisma {
     nomor_tiket?: SortOrderInput | SortOrder
     id_pengguna?: SortOrder
     id_workshop?: SortOrder
+    id_metode_pembayaran?: SortOrder
     pengguna?: PenggunaOrderByWithRelationInput
     workshop?: WorkshopOrderByWithRelationInput
+    metode_pembayaran?: MetodePembayaranOrderByWithRelationInput
   }
 
   export type WorkshopTerdaftarWhereUniqueInput = Prisma.AtLeast<{
@@ -26808,8 +28047,10 @@ export namespace Prisma {
     status_pembayaran?: StringFilter<"WorkshopTerdaftar"> | string
     id_pengguna?: StringFilter<"WorkshopTerdaftar"> | string
     id_workshop?: StringFilter<"WorkshopTerdaftar"> | string
+    id_metode_pembayaran?: IntFilter<"WorkshopTerdaftar"> | number
     pengguna?: XOR<PenggunaScalarRelationFilter, PenggunaWhereInput>
     workshop?: XOR<WorkshopScalarRelationFilter, WorkshopWhereInput>
+    metode_pembayaran?: XOR<MetodePembayaranScalarRelationFilter, MetodePembayaranWhereInput>
   }, "id_pendaftaran" | "nomor_tiket">
 
   export type WorkshopTerdaftarOrderByWithAggregationInput = {
@@ -26822,6 +28063,7 @@ export namespace Prisma {
     nomor_tiket?: SortOrderInput | SortOrder
     id_pengguna?: SortOrder
     id_workshop?: SortOrder
+    id_metode_pembayaran?: SortOrder
     _count?: WorkshopTerdaftarCountOrderByAggregateInput
     _avg?: WorkshopTerdaftarAvgOrderByAggregateInput
     _max?: WorkshopTerdaftarMaxOrderByAggregateInput
@@ -26842,6 +28084,54 @@ export namespace Prisma {
     nomor_tiket?: StringNullableWithAggregatesFilter<"WorkshopTerdaftar"> | string | null
     id_pengguna?: StringWithAggregatesFilter<"WorkshopTerdaftar"> | string
     id_workshop?: StringWithAggregatesFilter<"WorkshopTerdaftar"> | string
+    id_metode_pembayaran?: IntWithAggregatesFilter<"WorkshopTerdaftar"> | number
+  }
+
+  export type MetodePembayaranWhereInput = {
+    AND?: MetodePembayaranWhereInput | MetodePembayaranWhereInput[]
+    OR?: MetodePembayaranWhereInput[]
+    NOT?: MetodePembayaranWhereInput | MetodePembayaranWhereInput[]
+    id_metode_pembayaran?: IntFilter<"MetodePembayaran"> | number
+    nama_metode_pembayaran?: StringFilter<"MetodePembayaran"> | string
+    gambar_metode_pembayaran?: StringFilter<"MetodePembayaran"> | string
+    workshop_terdaftar?: WorkshopTerdaftarListRelationFilter
+  }
+
+  export type MetodePembayaranOrderByWithRelationInput = {
+    id_metode_pembayaran?: SortOrder
+    nama_metode_pembayaran?: SortOrder
+    gambar_metode_pembayaran?: SortOrder
+    workshop_terdaftar?: WorkshopTerdaftarOrderByRelationAggregateInput
+  }
+
+  export type MetodePembayaranWhereUniqueInput = Prisma.AtLeast<{
+    id_metode_pembayaran?: number
+    AND?: MetodePembayaranWhereInput | MetodePembayaranWhereInput[]
+    OR?: MetodePembayaranWhereInput[]
+    NOT?: MetodePembayaranWhereInput | MetodePembayaranWhereInput[]
+    nama_metode_pembayaran?: StringFilter<"MetodePembayaran"> | string
+    gambar_metode_pembayaran?: StringFilter<"MetodePembayaran"> | string
+    workshop_terdaftar?: WorkshopTerdaftarListRelationFilter
+  }, "id_metode_pembayaran">
+
+  export type MetodePembayaranOrderByWithAggregationInput = {
+    id_metode_pembayaran?: SortOrder
+    nama_metode_pembayaran?: SortOrder
+    gambar_metode_pembayaran?: SortOrder
+    _count?: MetodePembayaranCountOrderByAggregateInput
+    _avg?: MetodePembayaranAvgOrderByAggregateInput
+    _max?: MetodePembayaranMaxOrderByAggregateInput
+    _min?: MetodePembayaranMinOrderByAggregateInput
+    _sum?: MetodePembayaranSumOrderByAggregateInput
+  }
+
+  export type MetodePembayaranScalarWhereWithAggregatesInput = {
+    AND?: MetodePembayaranScalarWhereWithAggregatesInput | MetodePembayaranScalarWhereWithAggregatesInput[]
+    OR?: MetodePembayaranScalarWhereWithAggregatesInput[]
+    NOT?: MetodePembayaranScalarWhereWithAggregatesInput | MetodePembayaranScalarWhereWithAggregatesInput[]
+    id_metode_pembayaran?: IntWithAggregatesFilter<"MetodePembayaran"> | number
+    nama_metode_pembayaran?: StringWithAggregatesFilter<"MetodePembayaran"> | string
+    gambar_metode_pembayaran?: StringWithAggregatesFilter<"MetodePembayaran"> | string
   }
 
   export type kategoriTanamanWhereInput = {
@@ -28060,6 +29350,7 @@ export namespace Prisma {
     nomor_tiket?: string | null
     pengguna: PenggunaCreateNestedOneWithoutWorkshop_terdaftarInput
     workshop: WorkshopCreateNestedOneWithoutPendaftaranInput
+    metode_pembayaran: MetodePembayaranCreateNestedOneWithoutWorkshop_terdaftarInput
   }
 
   export type WorkshopTerdaftarUncheckedCreateInput = {
@@ -28072,6 +29363,7 @@ export namespace Prisma {
     nomor_tiket?: string | null
     id_pengguna: string
     id_workshop: string
+    id_metode_pembayaran: number
   }
 
   export type WorkshopTerdaftarUpdateInput = {
@@ -28083,6 +29375,7 @@ export namespace Prisma {
     nomor_tiket?: NullableStringFieldUpdateOperationsInput | string | null
     pengguna?: PenggunaUpdateOneRequiredWithoutWorkshop_terdaftarNestedInput
     workshop?: WorkshopUpdateOneRequiredWithoutPendaftaranNestedInput
+    metode_pembayaran?: MetodePembayaranUpdateOneRequiredWithoutWorkshop_terdaftarNestedInput
   }
 
   export type WorkshopTerdaftarUncheckedUpdateInput = {
@@ -28095,6 +29388,7 @@ export namespace Prisma {
     nomor_tiket?: NullableStringFieldUpdateOperationsInput | string | null
     id_pengguna?: StringFieldUpdateOperationsInput | string
     id_workshop?: StringFieldUpdateOperationsInput | string
+    id_metode_pembayaran?: IntFieldUpdateOperationsInput | number
   }
 
   export type WorkshopTerdaftarCreateManyInput = {
@@ -28107,6 +29401,7 @@ export namespace Prisma {
     nomor_tiket?: string | null
     id_pengguna: string
     id_workshop: string
+    id_metode_pembayaran: number
   }
 
   export type WorkshopTerdaftarUpdateManyMutationInput = {
@@ -28128,6 +29423,50 @@ export namespace Prisma {
     nomor_tiket?: NullableStringFieldUpdateOperationsInput | string | null
     id_pengguna?: StringFieldUpdateOperationsInput | string
     id_workshop?: StringFieldUpdateOperationsInput | string
+    id_metode_pembayaran?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type MetodePembayaranCreateInput = {
+    nama_metode_pembayaran: string
+    gambar_metode_pembayaran: string
+    workshop_terdaftar?: WorkshopTerdaftarCreateNestedManyWithoutMetode_pembayaranInput
+  }
+
+  export type MetodePembayaranUncheckedCreateInput = {
+    id_metode_pembayaran?: number
+    nama_metode_pembayaran: string
+    gambar_metode_pembayaran: string
+    workshop_terdaftar?: WorkshopTerdaftarUncheckedCreateNestedManyWithoutMetode_pembayaranInput
+  }
+
+  export type MetodePembayaranUpdateInput = {
+    nama_metode_pembayaran?: StringFieldUpdateOperationsInput | string
+    gambar_metode_pembayaran?: StringFieldUpdateOperationsInput | string
+    workshop_terdaftar?: WorkshopTerdaftarUpdateManyWithoutMetode_pembayaranNestedInput
+  }
+
+  export type MetodePembayaranUncheckedUpdateInput = {
+    id_metode_pembayaran?: IntFieldUpdateOperationsInput | number
+    nama_metode_pembayaran?: StringFieldUpdateOperationsInput | string
+    gambar_metode_pembayaran?: StringFieldUpdateOperationsInput | string
+    workshop_terdaftar?: WorkshopTerdaftarUncheckedUpdateManyWithoutMetode_pembayaranNestedInput
+  }
+
+  export type MetodePembayaranCreateManyInput = {
+    id_metode_pembayaran?: number
+    nama_metode_pembayaran: string
+    gambar_metode_pembayaran: string
+  }
+
+  export type MetodePembayaranUpdateManyMutationInput = {
+    nama_metode_pembayaran?: StringFieldUpdateOperationsInput | string
+    gambar_metode_pembayaran?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type MetodePembayaranUncheckedUpdateManyInput = {
+    id_metode_pembayaran?: IntFieldUpdateOperationsInput | number
+    nama_metode_pembayaran?: StringFieldUpdateOperationsInput | string
+    gambar_metode_pembayaran?: StringFieldUpdateOperationsInput | string
   }
 
   export type kategoriTanamanCreateInput = {
@@ -29266,6 +30605,11 @@ export namespace Prisma {
     isNot?: WorkshopWhereInput
   }
 
+  export type MetodePembayaranScalarRelationFilter = {
+    is?: MetodePembayaranWhereInput
+    isNot?: MetodePembayaranWhereInput
+  }
+
   export type WorkshopTerdaftarCountOrderByAggregateInput = {
     id_pendaftaran?: SortOrder
     nama_peserta?: SortOrder
@@ -29276,10 +30620,12 @@ export namespace Prisma {
     nomor_tiket?: SortOrder
     id_pengguna?: SortOrder
     id_workshop?: SortOrder
+    id_metode_pembayaran?: SortOrder
   }
 
   export type WorkshopTerdaftarAvgOrderByAggregateInput = {
     id_pendaftaran?: SortOrder
+    id_metode_pembayaran?: SortOrder
   }
 
   export type WorkshopTerdaftarMaxOrderByAggregateInput = {
@@ -29292,6 +30638,7 @@ export namespace Prisma {
     nomor_tiket?: SortOrder
     id_pengguna?: SortOrder
     id_workshop?: SortOrder
+    id_metode_pembayaran?: SortOrder
   }
 
   export type WorkshopTerdaftarMinOrderByAggregateInput = {
@@ -29304,10 +30651,38 @@ export namespace Prisma {
     nomor_tiket?: SortOrder
     id_pengguna?: SortOrder
     id_workshop?: SortOrder
+    id_metode_pembayaran?: SortOrder
   }
 
   export type WorkshopTerdaftarSumOrderByAggregateInput = {
     id_pendaftaran?: SortOrder
+    id_metode_pembayaran?: SortOrder
+  }
+
+  export type MetodePembayaranCountOrderByAggregateInput = {
+    id_metode_pembayaran?: SortOrder
+    nama_metode_pembayaran?: SortOrder
+    gambar_metode_pembayaran?: SortOrder
+  }
+
+  export type MetodePembayaranAvgOrderByAggregateInput = {
+    id_metode_pembayaran?: SortOrder
+  }
+
+  export type MetodePembayaranMaxOrderByAggregateInput = {
+    id_metode_pembayaran?: SortOrder
+    nama_metode_pembayaran?: SortOrder
+    gambar_metode_pembayaran?: SortOrder
+  }
+
+  export type MetodePembayaranMinOrderByAggregateInput = {
+    id_metode_pembayaran?: SortOrder
+    nama_metode_pembayaran?: SortOrder
+    gambar_metode_pembayaran?: SortOrder
+  }
+
+  export type MetodePembayaranSumOrderByAggregateInput = {
+    id_metode_pembayaran?: SortOrder
   }
 
   export type TanamanListRelationFilter = {
@@ -30472,6 +31847,12 @@ export namespace Prisma {
     connect?: WorkshopWhereUniqueInput
   }
 
+  export type MetodePembayaranCreateNestedOneWithoutWorkshop_terdaftarInput = {
+    create?: XOR<MetodePembayaranCreateWithoutWorkshop_terdaftarInput, MetodePembayaranUncheckedCreateWithoutWorkshop_terdaftarInput>
+    connectOrCreate?: MetodePembayaranCreateOrConnectWithoutWorkshop_terdaftarInput
+    connect?: MetodePembayaranWhereUniqueInput
+  }
+
   export type PenggunaUpdateOneRequiredWithoutWorkshop_terdaftarNestedInput = {
     create?: XOR<PenggunaCreateWithoutWorkshop_terdaftarInput, PenggunaUncheckedCreateWithoutWorkshop_terdaftarInput>
     connectOrCreate?: PenggunaCreateOrConnectWithoutWorkshop_terdaftarInput
@@ -30486,6 +31867,56 @@ export namespace Prisma {
     upsert?: WorkshopUpsertWithoutPendaftaranInput
     connect?: WorkshopWhereUniqueInput
     update?: XOR<XOR<WorkshopUpdateToOneWithWhereWithoutPendaftaranInput, WorkshopUpdateWithoutPendaftaranInput>, WorkshopUncheckedUpdateWithoutPendaftaranInput>
+  }
+
+  export type MetodePembayaranUpdateOneRequiredWithoutWorkshop_terdaftarNestedInput = {
+    create?: XOR<MetodePembayaranCreateWithoutWorkshop_terdaftarInput, MetodePembayaranUncheckedCreateWithoutWorkshop_terdaftarInput>
+    connectOrCreate?: MetodePembayaranCreateOrConnectWithoutWorkshop_terdaftarInput
+    upsert?: MetodePembayaranUpsertWithoutWorkshop_terdaftarInput
+    connect?: MetodePembayaranWhereUniqueInput
+    update?: XOR<XOR<MetodePembayaranUpdateToOneWithWhereWithoutWorkshop_terdaftarInput, MetodePembayaranUpdateWithoutWorkshop_terdaftarInput>, MetodePembayaranUncheckedUpdateWithoutWorkshop_terdaftarInput>
+  }
+
+  export type WorkshopTerdaftarCreateNestedManyWithoutMetode_pembayaranInput = {
+    create?: XOR<WorkshopTerdaftarCreateWithoutMetode_pembayaranInput, WorkshopTerdaftarUncheckedCreateWithoutMetode_pembayaranInput> | WorkshopTerdaftarCreateWithoutMetode_pembayaranInput[] | WorkshopTerdaftarUncheckedCreateWithoutMetode_pembayaranInput[]
+    connectOrCreate?: WorkshopTerdaftarCreateOrConnectWithoutMetode_pembayaranInput | WorkshopTerdaftarCreateOrConnectWithoutMetode_pembayaranInput[]
+    createMany?: WorkshopTerdaftarCreateManyMetode_pembayaranInputEnvelope
+    connect?: WorkshopTerdaftarWhereUniqueInput | WorkshopTerdaftarWhereUniqueInput[]
+  }
+
+  export type WorkshopTerdaftarUncheckedCreateNestedManyWithoutMetode_pembayaranInput = {
+    create?: XOR<WorkshopTerdaftarCreateWithoutMetode_pembayaranInput, WorkshopTerdaftarUncheckedCreateWithoutMetode_pembayaranInput> | WorkshopTerdaftarCreateWithoutMetode_pembayaranInput[] | WorkshopTerdaftarUncheckedCreateWithoutMetode_pembayaranInput[]
+    connectOrCreate?: WorkshopTerdaftarCreateOrConnectWithoutMetode_pembayaranInput | WorkshopTerdaftarCreateOrConnectWithoutMetode_pembayaranInput[]
+    createMany?: WorkshopTerdaftarCreateManyMetode_pembayaranInputEnvelope
+    connect?: WorkshopTerdaftarWhereUniqueInput | WorkshopTerdaftarWhereUniqueInput[]
+  }
+
+  export type WorkshopTerdaftarUpdateManyWithoutMetode_pembayaranNestedInput = {
+    create?: XOR<WorkshopTerdaftarCreateWithoutMetode_pembayaranInput, WorkshopTerdaftarUncheckedCreateWithoutMetode_pembayaranInput> | WorkshopTerdaftarCreateWithoutMetode_pembayaranInput[] | WorkshopTerdaftarUncheckedCreateWithoutMetode_pembayaranInput[]
+    connectOrCreate?: WorkshopTerdaftarCreateOrConnectWithoutMetode_pembayaranInput | WorkshopTerdaftarCreateOrConnectWithoutMetode_pembayaranInput[]
+    upsert?: WorkshopTerdaftarUpsertWithWhereUniqueWithoutMetode_pembayaranInput | WorkshopTerdaftarUpsertWithWhereUniqueWithoutMetode_pembayaranInput[]
+    createMany?: WorkshopTerdaftarCreateManyMetode_pembayaranInputEnvelope
+    set?: WorkshopTerdaftarWhereUniqueInput | WorkshopTerdaftarWhereUniqueInput[]
+    disconnect?: WorkshopTerdaftarWhereUniqueInput | WorkshopTerdaftarWhereUniqueInput[]
+    delete?: WorkshopTerdaftarWhereUniqueInput | WorkshopTerdaftarWhereUniqueInput[]
+    connect?: WorkshopTerdaftarWhereUniqueInput | WorkshopTerdaftarWhereUniqueInput[]
+    update?: WorkshopTerdaftarUpdateWithWhereUniqueWithoutMetode_pembayaranInput | WorkshopTerdaftarUpdateWithWhereUniqueWithoutMetode_pembayaranInput[]
+    updateMany?: WorkshopTerdaftarUpdateManyWithWhereWithoutMetode_pembayaranInput | WorkshopTerdaftarUpdateManyWithWhereWithoutMetode_pembayaranInput[]
+    deleteMany?: WorkshopTerdaftarScalarWhereInput | WorkshopTerdaftarScalarWhereInput[]
+  }
+
+  export type WorkshopTerdaftarUncheckedUpdateManyWithoutMetode_pembayaranNestedInput = {
+    create?: XOR<WorkshopTerdaftarCreateWithoutMetode_pembayaranInput, WorkshopTerdaftarUncheckedCreateWithoutMetode_pembayaranInput> | WorkshopTerdaftarCreateWithoutMetode_pembayaranInput[] | WorkshopTerdaftarUncheckedCreateWithoutMetode_pembayaranInput[]
+    connectOrCreate?: WorkshopTerdaftarCreateOrConnectWithoutMetode_pembayaranInput | WorkshopTerdaftarCreateOrConnectWithoutMetode_pembayaranInput[]
+    upsert?: WorkshopTerdaftarUpsertWithWhereUniqueWithoutMetode_pembayaranInput | WorkshopTerdaftarUpsertWithWhereUniqueWithoutMetode_pembayaranInput[]
+    createMany?: WorkshopTerdaftarCreateManyMetode_pembayaranInputEnvelope
+    set?: WorkshopTerdaftarWhereUniqueInput | WorkshopTerdaftarWhereUniqueInput[]
+    disconnect?: WorkshopTerdaftarWhereUniqueInput | WorkshopTerdaftarWhereUniqueInput[]
+    delete?: WorkshopTerdaftarWhereUniqueInput | WorkshopTerdaftarWhereUniqueInput[]
+    connect?: WorkshopTerdaftarWhereUniqueInput | WorkshopTerdaftarWhereUniqueInput[]
+    update?: WorkshopTerdaftarUpdateWithWhereUniqueWithoutMetode_pembayaranInput | WorkshopTerdaftarUpdateWithWhereUniqueWithoutMetode_pembayaranInput[]
+    updateMany?: WorkshopTerdaftarUpdateManyWithWhereWithoutMetode_pembayaranInput | WorkshopTerdaftarUpdateManyWithWhereWithoutMetode_pembayaranInput[]
+    deleteMany?: WorkshopTerdaftarScalarWhereInput | WorkshopTerdaftarScalarWhereInput[]
   }
 
   export type TanamanCreateNestedManyWithoutKategoriInput = {
@@ -31344,6 +32775,7 @@ export namespace Prisma {
     status_pembayaran: string
     nomor_tiket?: string | null
     workshop: WorkshopCreateNestedOneWithoutPendaftaranInput
+    metode_pembayaran: MetodePembayaranCreateNestedOneWithoutWorkshop_terdaftarInput
   }
 
   export type WorkshopTerdaftarUncheckedCreateWithoutPenggunaInput = {
@@ -31355,6 +32787,7 @@ export namespace Prisma {
     status_pembayaran: string
     nomor_tiket?: string | null
     id_workshop: string
+    id_metode_pembayaran: number
   }
 
   export type WorkshopTerdaftarCreateOrConnectWithoutPenggunaInput = {
@@ -31529,6 +32962,7 @@ export namespace Prisma {
     nomor_tiket?: StringNullableFilter<"WorkshopTerdaftar"> | string | null
     id_pengguna?: StringFilter<"WorkshopTerdaftar"> | string
     id_workshop?: StringFilter<"WorkshopTerdaftar"> | string
+    id_metode_pembayaran?: IntFilter<"WorkshopTerdaftar"> | number
   }
 
   export type ArtikelUpsertWithWhereUniqueWithoutPenggunaInput = {
@@ -32678,6 +34112,7 @@ export namespace Prisma {
     status_pembayaran: string
     nomor_tiket?: string | null
     pengguna: PenggunaCreateNestedOneWithoutWorkshop_terdaftarInput
+    metode_pembayaran: MetodePembayaranCreateNestedOneWithoutWorkshop_terdaftarInput
   }
 
   export type WorkshopTerdaftarUncheckedCreateWithoutWorkshopInput = {
@@ -32689,6 +34124,7 @@ export namespace Prisma {
     status_pembayaran: string
     nomor_tiket?: string | null
     id_pengguna: string
+    id_metode_pembayaran: number
   }
 
   export type WorkshopTerdaftarCreateOrConnectWithoutWorkshopInput = {
@@ -32866,6 +34302,22 @@ export namespace Prisma {
     create: XOR<WorkshopCreateWithoutPendaftaranInput, WorkshopUncheckedCreateWithoutPendaftaranInput>
   }
 
+  export type MetodePembayaranCreateWithoutWorkshop_terdaftarInput = {
+    nama_metode_pembayaran: string
+    gambar_metode_pembayaran: string
+  }
+
+  export type MetodePembayaranUncheckedCreateWithoutWorkshop_terdaftarInput = {
+    id_metode_pembayaran?: number
+    nama_metode_pembayaran: string
+    gambar_metode_pembayaran: string
+  }
+
+  export type MetodePembayaranCreateOrConnectWithoutWorkshop_terdaftarInput = {
+    where: MetodePembayaranWhereUniqueInput
+    create: XOR<MetodePembayaranCreateWithoutWorkshop_terdaftarInput, MetodePembayaranUncheckedCreateWithoutWorkshop_terdaftarInput>
+  }
+
   export type PenggunaUpsertWithoutWorkshop_terdaftarInput = {
     update: XOR<PenggunaUpdateWithoutWorkshop_terdaftarInput, PenggunaUncheckedUpdateWithoutWorkshop_terdaftarInput>
     create: XOR<PenggunaCreateWithoutWorkshop_terdaftarInput, PenggunaUncheckedCreateWithoutWorkshop_terdaftarInput>
@@ -32962,6 +34414,77 @@ export namespace Prisma {
     status_aktif?: BoolFieldUpdateOperationsInput | boolean
     id_facilitator?: StringFieldUpdateOperationsInput | string
     id_kabupaten?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type MetodePembayaranUpsertWithoutWorkshop_terdaftarInput = {
+    update: XOR<MetodePembayaranUpdateWithoutWorkshop_terdaftarInput, MetodePembayaranUncheckedUpdateWithoutWorkshop_terdaftarInput>
+    create: XOR<MetodePembayaranCreateWithoutWorkshop_terdaftarInput, MetodePembayaranUncheckedCreateWithoutWorkshop_terdaftarInput>
+    where?: MetodePembayaranWhereInput
+  }
+
+  export type MetodePembayaranUpdateToOneWithWhereWithoutWorkshop_terdaftarInput = {
+    where?: MetodePembayaranWhereInput
+    data: XOR<MetodePembayaranUpdateWithoutWorkshop_terdaftarInput, MetodePembayaranUncheckedUpdateWithoutWorkshop_terdaftarInput>
+  }
+
+  export type MetodePembayaranUpdateWithoutWorkshop_terdaftarInput = {
+    nama_metode_pembayaran?: StringFieldUpdateOperationsInput | string
+    gambar_metode_pembayaran?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type MetodePembayaranUncheckedUpdateWithoutWorkshop_terdaftarInput = {
+    id_metode_pembayaran?: IntFieldUpdateOperationsInput | number
+    nama_metode_pembayaran?: StringFieldUpdateOperationsInput | string
+    gambar_metode_pembayaran?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type WorkshopTerdaftarCreateWithoutMetode_pembayaranInput = {
+    nama_peserta: string
+    email_peserta: string
+    nomor_telepon_peserta: string
+    tanggal_pendaftaran?: Date | string
+    status_pembayaran: string
+    nomor_tiket?: string | null
+    pengguna: PenggunaCreateNestedOneWithoutWorkshop_terdaftarInput
+    workshop: WorkshopCreateNestedOneWithoutPendaftaranInput
+  }
+
+  export type WorkshopTerdaftarUncheckedCreateWithoutMetode_pembayaranInput = {
+    id_pendaftaran?: number
+    nama_peserta: string
+    email_peserta: string
+    nomor_telepon_peserta: string
+    tanggal_pendaftaran?: Date | string
+    status_pembayaran: string
+    nomor_tiket?: string | null
+    id_pengguna: string
+    id_workshop: string
+  }
+
+  export type WorkshopTerdaftarCreateOrConnectWithoutMetode_pembayaranInput = {
+    where: WorkshopTerdaftarWhereUniqueInput
+    create: XOR<WorkshopTerdaftarCreateWithoutMetode_pembayaranInput, WorkshopTerdaftarUncheckedCreateWithoutMetode_pembayaranInput>
+  }
+
+  export type WorkshopTerdaftarCreateManyMetode_pembayaranInputEnvelope = {
+    data: WorkshopTerdaftarCreateManyMetode_pembayaranInput | WorkshopTerdaftarCreateManyMetode_pembayaranInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type WorkshopTerdaftarUpsertWithWhereUniqueWithoutMetode_pembayaranInput = {
+    where: WorkshopTerdaftarWhereUniqueInput
+    update: XOR<WorkshopTerdaftarUpdateWithoutMetode_pembayaranInput, WorkshopTerdaftarUncheckedUpdateWithoutMetode_pembayaranInput>
+    create: XOR<WorkshopTerdaftarCreateWithoutMetode_pembayaranInput, WorkshopTerdaftarUncheckedCreateWithoutMetode_pembayaranInput>
+  }
+
+  export type WorkshopTerdaftarUpdateWithWhereUniqueWithoutMetode_pembayaranInput = {
+    where: WorkshopTerdaftarWhereUniqueInput
+    data: XOR<WorkshopTerdaftarUpdateWithoutMetode_pembayaranInput, WorkshopTerdaftarUncheckedUpdateWithoutMetode_pembayaranInput>
+  }
+
+  export type WorkshopTerdaftarUpdateManyWithWhereWithoutMetode_pembayaranInput = {
+    where: WorkshopTerdaftarScalarWhereInput
+    data: XOR<WorkshopTerdaftarUpdateManyMutationInput, WorkshopTerdaftarUncheckedUpdateManyWithoutMetode_pembayaranInput>
   }
 
   export type TanamanCreateWithoutKategoriInput = {
@@ -33886,6 +35409,7 @@ export namespace Prisma {
     status_pembayaran: string
     nomor_tiket?: string | null
     id_workshop: string
+    id_metode_pembayaran: number
   }
 
   export type ArtikelCreateManyPenggunaInput = {
@@ -33935,6 +35459,7 @@ export namespace Prisma {
     status_pembayaran?: StringFieldUpdateOperationsInput | string
     nomor_tiket?: NullableStringFieldUpdateOperationsInput | string | null
     workshop?: WorkshopUpdateOneRequiredWithoutPendaftaranNestedInput
+    metode_pembayaran?: MetodePembayaranUpdateOneRequiredWithoutWorkshop_terdaftarNestedInput
   }
 
   export type WorkshopTerdaftarUncheckedUpdateWithoutPenggunaInput = {
@@ -33946,6 +35471,7 @@ export namespace Prisma {
     status_pembayaran?: StringFieldUpdateOperationsInput | string
     nomor_tiket?: NullableStringFieldUpdateOperationsInput | string | null
     id_workshop?: StringFieldUpdateOperationsInput | string
+    id_metode_pembayaran?: IntFieldUpdateOperationsInput | number
   }
 
   export type WorkshopTerdaftarUncheckedUpdateManyWithoutPenggunaInput = {
@@ -33957,6 +35483,7 @@ export namespace Prisma {
     status_pembayaran?: StringFieldUpdateOperationsInput | string
     nomor_tiket?: NullableStringFieldUpdateOperationsInput | string | null
     id_workshop?: StringFieldUpdateOperationsInput | string
+    id_metode_pembayaran?: IntFieldUpdateOperationsInput | number
   }
 
   export type ArtikelUpdateWithoutPenggunaInput = {
@@ -34283,6 +35810,7 @@ export namespace Prisma {
     status_pembayaran: string
     nomor_tiket?: string | null
     id_pengguna: string
+    id_metode_pembayaran: number
   }
 
   export type WorkshopTerdaftarUpdateWithoutWorkshopInput = {
@@ -34293,6 +35821,7 @@ export namespace Prisma {
     status_pembayaran?: StringFieldUpdateOperationsInput | string
     nomor_tiket?: NullableStringFieldUpdateOperationsInput | string | null
     pengguna?: PenggunaUpdateOneRequiredWithoutWorkshop_terdaftarNestedInput
+    metode_pembayaran?: MetodePembayaranUpdateOneRequiredWithoutWorkshop_terdaftarNestedInput
   }
 
   export type WorkshopTerdaftarUncheckedUpdateWithoutWorkshopInput = {
@@ -34304,6 +35833,7 @@ export namespace Prisma {
     status_pembayaran?: StringFieldUpdateOperationsInput | string
     nomor_tiket?: NullableStringFieldUpdateOperationsInput | string | null
     id_pengguna?: StringFieldUpdateOperationsInput | string
+    id_metode_pembayaran?: IntFieldUpdateOperationsInput | number
   }
 
   export type WorkshopTerdaftarUncheckedUpdateManyWithoutWorkshopInput = {
@@ -34315,6 +35845,54 @@ export namespace Prisma {
     status_pembayaran?: StringFieldUpdateOperationsInput | string
     nomor_tiket?: NullableStringFieldUpdateOperationsInput | string | null
     id_pengguna?: StringFieldUpdateOperationsInput | string
+    id_metode_pembayaran?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type WorkshopTerdaftarCreateManyMetode_pembayaranInput = {
+    id_pendaftaran?: number
+    nama_peserta: string
+    email_peserta: string
+    nomor_telepon_peserta: string
+    tanggal_pendaftaran?: Date | string
+    status_pembayaran: string
+    nomor_tiket?: string | null
+    id_pengguna: string
+    id_workshop: string
+  }
+
+  export type WorkshopTerdaftarUpdateWithoutMetode_pembayaranInput = {
+    nama_peserta?: StringFieldUpdateOperationsInput | string
+    email_peserta?: StringFieldUpdateOperationsInput | string
+    nomor_telepon_peserta?: StringFieldUpdateOperationsInput | string
+    tanggal_pendaftaran?: DateTimeFieldUpdateOperationsInput | Date | string
+    status_pembayaran?: StringFieldUpdateOperationsInput | string
+    nomor_tiket?: NullableStringFieldUpdateOperationsInput | string | null
+    pengguna?: PenggunaUpdateOneRequiredWithoutWorkshop_terdaftarNestedInput
+    workshop?: WorkshopUpdateOneRequiredWithoutPendaftaranNestedInput
+  }
+
+  export type WorkshopTerdaftarUncheckedUpdateWithoutMetode_pembayaranInput = {
+    id_pendaftaran?: IntFieldUpdateOperationsInput | number
+    nama_peserta?: StringFieldUpdateOperationsInput | string
+    email_peserta?: StringFieldUpdateOperationsInput | string
+    nomor_telepon_peserta?: StringFieldUpdateOperationsInput | string
+    tanggal_pendaftaran?: DateTimeFieldUpdateOperationsInput | Date | string
+    status_pembayaran?: StringFieldUpdateOperationsInput | string
+    nomor_tiket?: NullableStringFieldUpdateOperationsInput | string | null
+    id_pengguna?: StringFieldUpdateOperationsInput | string
+    id_workshop?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type WorkshopTerdaftarUncheckedUpdateManyWithoutMetode_pembayaranInput = {
+    id_pendaftaran?: IntFieldUpdateOperationsInput | number
+    nama_peserta?: StringFieldUpdateOperationsInput | string
+    email_peserta?: StringFieldUpdateOperationsInput | string
+    nomor_telepon_peserta?: StringFieldUpdateOperationsInput | string
+    tanggal_pendaftaran?: DateTimeFieldUpdateOperationsInput | Date | string
+    status_pembayaran?: StringFieldUpdateOperationsInput | string
+    nomor_tiket?: NullableStringFieldUpdateOperationsInput | string | null
+    id_pengguna?: StringFieldUpdateOperationsInput | string
+    id_workshop?: StringFieldUpdateOperationsInput | string
   }
 
   export type TanamanCreateManyKategoriInput = {

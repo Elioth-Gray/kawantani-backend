@@ -1,6 +1,10 @@
 import prisma from '../prisma/prismaClient';
 import * as Yup from 'yup';
-import { TCreateWorskhop, TEditWorkshop } from '../types/workshopTypes';
+import {
+  TCreateWorskhop,
+  TEditWorkshop,
+  TRegisterWorkshop,
+} from '../types/workshopTypes';
 
 const createSchema = Yup.object({
   title: Yup.string().required('Judul workshop harus diisi!'),
@@ -207,4 +211,8 @@ export const deleteWorkshop = async (data: TEditWorkshop) => {
     }
     throw error;
   }
+};
+
+const registerWorkshop = async (data: TRegisterWorkshop) => {
+  const { id, user } = data;
 };

@@ -190,8 +190,18 @@ model WorkshopTerdaftar {
   id_pengguna                String      
   workshop                   Workshop  @relation(fields: [id_workshop], references: [id_workshop])
   id_workshop                String
+  metode_pembayaran          MetodePembayaran @relation(fields: [id_metode_pembayaran], references: [id_metode_pembayaran])
+  id_metode_pembayaran       Int
 
   @@unique([nomor_tiket])
+}
+
+model MetodePembayaran {
+  id_metode_pembayaran      Int @id @default(autoincrement())
+  nama_metode_pembayaran    String @db.VarChar(100)
+  gambar_metode_pembayaran  String @db.VarChar(50)
+
+  workshop_terdaftar        WorkshopTerdaftar[]
 }
 
 model kategoriTanaman {

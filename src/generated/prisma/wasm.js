@@ -234,7 +234,14 @@ exports.Prisma.WorkshopTerdaftarScalarFieldEnum = {
   status_pembayaran: 'status_pembayaran',
   nomor_tiket: 'nomor_tiket',
   id_pengguna: 'id_pengguna',
-  id_workshop: 'id_workshop'
+  id_workshop: 'id_workshop',
+  id_metode_pembayaran: 'id_metode_pembayaran'
+};
+
+exports.Prisma.MetodePembayaranScalarFieldEnum = {
+  id_metode_pembayaran: 'id_metode_pembayaran',
+  nama_metode_pembayaran: 'nama_metode_pembayaran',
+  gambar_metode_pembayaran: 'gambar_metode_pembayaran'
 };
 
 exports.Prisma.KategoriTanamanScalarFieldEnum = {
@@ -322,6 +329,7 @@ exports.Prisma.ModelName = {
   KomentarArtikel: 'KomentarArtikel',
   Workshop: 'Workshop',
   WorkshopTerdaftar: 'WorkshopTerdaftar',
+  MetodePembayaran: 'MetodePembayaran',
   kategoriTanaman: 'kategoriTanaman',
   Tanaman: 'Tanaman',
   InstruksiTanaman: 'InstruksiTanaman',
