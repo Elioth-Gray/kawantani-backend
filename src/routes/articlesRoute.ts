@@ -5,6 +5,7 @@ import {
   deleteArtic,
   getAll,
   getById,
+  getOwnArticle,
   getSaved,
   like,
   save,
@@ -12,6 +13,7 @@ import {
   unLike,
   unSave,
   verify,
+  getAllActive,
 } from '../controller/articlesController';
 import authMiddleware from '../middlewares/authMiddleware';
 import roleMiddleware from '../middlewares/roleMiddleware';
@@ -26,7 +28,6 @@ articlesRouter.get(
   roleMiddleware(['user']),
   getSaved,
 );
-
 articlesRouter.post(
   '/articles/create',
   authMiddleware,
@@ -34,7 +35,19 @@ articlesRouter.post(
   uploadArticleImage.single('image'),
   create,
 );
-articlesRouter.get('/articles', getAll);
+articlesRouter.get(
+  '/articles',
+  authMiddleware,
+  roleMiddleware(['admin']),
+  getAll,
+);
+articlesRouter.get('/articles/active', getAllActive);
+articlesRouter.get(
+  '/articles/own',
+  authMiddleware,
+  roleMiddleware(['user', 'admin']),
+  getOwnArticle,
+);
 articlesRouter.get(
   '/articles/:id',
   authMiddleware,

@@ -6,6 +6,7 @@ import {
   TPayWorkshop,
   TRegisterWorkshop,
 } from '../types/workshopTypes';
+import { TToken } from '../types/authTypes';
 
 const createSchema = Yup.object({
   title: Yup.string().required('Judul workshop harus diisi!'),
@@ -130,12 +131,49 @@ export const getAllWorkshops = async () => {
   }
 };
 
+export const getActiveWorkshops = async () => {
+  try {
+    const workshops = await prisma.workshop.findMany({
+      where: {
+        status_aktif: true,
+        status_verifikasi: true,
+      },
+      select: {
+        id_workshop: true,
+        judul_workshop: true,
+        tanggal_workshop: true,
+        status_verifikasi: true,
+        status_aktif: true,
+        gambar_workshop: true,
+        facilitator: {
+          select: {
+            nama_facilitator: true,
+          },
+        },
+      },
+    });
+
+    if (!workshops) {
+      throw { status: 400, message: 'Artikel tidak ditemukan!' };
+    }
+
+    return workshops;
+  } catch (error: any) {
+    if (error.name === 'ValidationError') {
+      throw {
+        status: 400,
+        message: error.errors.join(', '),
+      };
+    }
+    throw error;
+  }
+};
+
 export const getWorkshopById = async (id: string) => {
   try {
     const result = await prisma.workshop.findUnique({
       where: {
         id_workshop: id,
-        status_aktif: true,
       },
       include: {
         facilitator: true,
@@ -312,6 +350,52 @@ export const payRegistration = async (data: TPayWorkshop) => {
     });
 
     return result;
+  } catch (error: any) {
+    if (error.name === 'ValidationError') {
+      throw {
+        status: 400,
+        message: error.errors.join(', '),
+      };
+    }
+    throw error;
+  }
+};
+
+export const getWorkshopParticipant = async (user: TToken) => {
+  try {
+    const result = await prisma.workshopTerdaftar.findMany({
+      where: {
+        workshop: {
+          id_facilitator: user.id,
+        },
+      },
+      include: {
+        workshop: true,
+        pengguna: true,
+        metode_pembayaran: true,
+      },
+    });
+    return result;
+  } catch (error: any) {
+    if (error.name === 'ValidationError') {
+      throw {
+        status: 400,
+        message: error.errors.join(', '),
+      };
+    }
+    throw error;
+  }
+};
+
+export const getWorkshopByFacilitator = async (user: TToken) => {
+  try {
+    const workshop = await prisma.workshop.findMany({
+      where: {
+        id_facilitator: user.id,
+      },
+    });
+
+    return workshop;
   } catch (error: any) {
     if (error.name === 'ValidationError') {
       throw {

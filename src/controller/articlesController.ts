@@ -6,8 +6,10 @@ import {
   addComment,
   createArticle,
   deleteArticle,
+  getActiveArticle,
   getAllArticle,
   getArticleById,
+  getArticleByUser,
   getSavedArticle,
   likeArticle,
   saveArticle,
@@ -25,6 +27,45 @@ export const getAll = async (req: Request, res: Response) => {
 
     res.status(200).json({
       message: 'Artikel berhasil didapatkan',
+      data: result,
+    });
+  } catch (error) {
+    const err = error as unknown as Error;
+    res.status(400).json({
+      message: err.message,
+      data: null,
+    });
+  }
+};
+
+export const getAllActive = async (req: Request, res: Response) => {
+  try {
+    const result = await getActiveArticle();
+
+    res.status(200).json({
+      message: 'Artikel berhasil didapatkan',
+      data: result,
+    });
+  } catch (error) {
+    const err = error as unknown as Error;
+    res.status(400).json({
+      message: err.message,
+      data: null,
+    });
+  }
+};
+
+export const getOwnArticle = async (req: IReqUser, res: Response) => {
+  const user = req.user;
+
+  if (!user) {
+    return res.status(401).json({ message: 'Unauthorized', data: null });
+  }
+  try {
+    const result = await getArticleByUser(user);
+
+    res.status(200).json({
+      message: 'Berhasil mendapatkan data artikel!',
       data: result,
     });
   } catch (error) {

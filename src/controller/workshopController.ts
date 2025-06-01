@@ -5,8 +5,11 @@ import { IRequestWithFileAuth } from '../types/multerTypes';
 import {
   createWorkshop,
   deleteWorkshop,
+  getActiveWorkshops,
   getAllWorkshops,
+  getWorkshopByFacilitator,
   getWorkshopById,
+  getWorkshopParticipant,
   payRegistration,
   registerWorkshop,
   verifyWorkshop,
@@ -55,7 +58,24 @@ export const getAll = async (req: Request, res: Response) => {
     const result = await getAllWorkshops();
 
     res.status(200).json({
-      message: 'Artikel berhasil didapatkan',
+      message: 'Workshop berhasil didapatkan',
+      data: result,
+    });
+  } catch (error) {
+    const err = error as unknown as Error;
+    res.status(400).json({
+      message: err.message,
+      data: null,
+    });
+  }
+};
+
+export const getAllActive = async (req: Request, res: Response) => {
+  try {
+    const result = await getActiveWorkshops();
+
+    res.status(200).json({
+      message: 'Workshop berhasil didapatkan',
       data: result,
     });
   } catch (error) {
@@ -171,6 +191,50 @@ export const pay = async (req: IReqUser, res: Response) => {
 
     res.status(200).json({
       message: 'Berhasil membayar pendaftaran!',
+      data: result,
+    });
+  } catch (error) {
+    const err = error as unknown as Error;
+    res.status(400).json({
+      message: err.message,
+      data: null,
+    });
+  }
+};
+
+export const getParticipant = async (req: IReqUser, res: Response) => {
+  const user = req.user;
+
+  if (!user) {
+    return res.status(401).json({ message: 'Unauthorized', data: null });
+  }
+  try {
+    const result = await getWorkshopParticipant(user);
+
+    res.status(200).json({
+      message: 'Berhasil mendapatkan partisipan workshop!',
+      data: result,
+    });
+  } catch (error) {
+    const err = error as unknown as Error;
+    res.status(400).json({
+      message: err.message,
+      data: null,
+    });
+  }
+};
+
+export const getOwnWorkshop = async (req: IReqUser, res: Response) => {
+  const user = req.user;
+
+  if (!user) {
+    return res.status(401).json({ message: 'Unauthorized', data: null });
+  }
+  try {
+    const result = await getWorkshopByFacilitator(user);
+
+    res.status(200).json({
+      message: 'Berhasil mendapatkan data workshop!',
       data: result,
     });
   } catch (error) {

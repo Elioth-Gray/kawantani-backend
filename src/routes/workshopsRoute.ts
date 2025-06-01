@@ -7,6 +7,9 @@ import {
   getById,
   register,
   pay,
+  getOwnWorkshop,
+  getParticipant,
+  getAllActive,
 } from '../controller/workshopController';
 import authMiddleware from '../middlewares/authMiddleware';
 import { createMulterUploader } from '../utils/multer/multer';
@@ -28,7 +31,25 @@ workshopsRouter.put(
   roleMiddleware(['admin']),
   verify,
 );
-workshopsRouter.get('/workshops', getAll);
+workshopsRouter.get(
+  '/workshops',
+  authMiddleware,
+  roleMiddleware(['facilitator', 'admin']),
+  getAll,
+);
+workshopsRouter.get('/workshops/verified', getAllActive);
+workshopsRouter.get(
+  '/workshops/own',
+  authMiddleware,
+  roleMiddleware(['facilitator', 'admin']),
+  getOwnWorkshop,
+);
+workshopsRouter.get(
+  '/workshops/participants',
+  authMiddleware,
+  roleMiddleware(['facilitator']),
+  getParticipant,
+);
 workshopsRouter.get('/workshops/:id', authMiddleware, getById);
 workshopsRouter.delete(
   '/workshops/:id',

@@ -9,6 +9,7 @@ import {
   TUpdateArticle,
 } from '../types/articlesType';
 import { StatusArtikel } from '../generated/prisma';
+import { TToken } from '../types/authTypes';
 
 const createSchema = Yup.object({
   title: Yup.string().required('Judul artikel harus diisi!'),
@@ -47,6 +48,55 @@ function simpleSlug(str: string): string {
 export const getAllArticle = async () => {
   try {
     const articles = await prisma.artikel.findMany({
+      where: {
+        status_aktif: true,
+      },
+      select: {
+        id_artikel: true,
+        judul_artikel: true,
+        kategori: {
+          select: {
+            nama_kategori_artikel: true,
+          },
+        },
+        pengguna: {
+          select: {
+            nama_depan_pengguna: true,
+            nama_belakang_pengguna: true,
+          },
+        },
+        tanggal_artikel: true,
+        status_aktif: true,
+        status_artikel: true,
+        gambar_artikel: true,
+        status_verifikasi: true,
+      },
+    });
+
+    if (!articles) {
+      throw { status: 400, message: 'Artikel tidak ditemukan!' };
+    }
+
+    return articles;
+  } catch (error: any) {
+    if (error.name === 'ValidationError') {
+      throw {
+        status: 400,
+        message: error.errors.join(', '),
+      };
+    }
+    throw error;
+  }
+};
+
+export const getActiveArticle = async () => {
+  try {
+    const articles = await prisma.artikel.findMany({
+      where: {
+        status_aktif: true,
+        status_verifikasi: true,
+        status_artikel: StatusArtikel.PUBLISHED,
+      },
       select: {
         id_artikel: true,
         judul_artikel: true,
@@ -541,6 +591,26 @@ export const getSavedArticle = async (id: string) => {
     });
 
     return articles;
+  } catch (error: any) {
+    if (error.name === 'ValidationError') {
+      throw {
+        status: 400,
+        message: error.errors.join(', '),
+      };
+    }
+    throw error;
+  }
+};
+
+export const getArticleByUser = async (user: TToken) => {
+  try {
+    const article = await prisma.artikel.findMany({
+      where: {
+        id_pengguna: user.id,
+      },
+    });
+
+    return article;
   } catch (error: any) {
     if (error.name === 'ValidationError') {
       throw {
