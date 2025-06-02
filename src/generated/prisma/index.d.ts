@@ -27887,7 +27887,7 @@ export namespace Prisma {
 
   export type KomentarArtikelWhereUniqueInput = Prisma.AtLeast<{
     id_komentar?: number
-    id_artikel_id_pengguna?: KomentarArtikelId_artikelId_penggunaCompoundUniqueInput
+    id_artikel_id_komentar?: KomentarArtikelId_artikelId_komentarCompoundUniqueInput
     AND?: KomentarArtikelWhereInput | KomentarArtikelWhereInput[]
     OR?: KomentarArtikelWhereInput[]
     NOT?: KomentarArtikelWhereInput | KomentarArtikelWhereInput[]
@@ -27897,7 +27897,7 @@ export namespace Prisma {
     tanggal_komentar?: DateTimeFilter<"KomentarArtikel"> | Date | string
     artikel?: XOR<ArtikelScalarRelationFilter, ArtikelWhereInput>
     pengguna?: XOR<PenggunaScalarRelationFilter, PenggunaWhereInput>
-  }, "id_komentar" | "id_artikel_id_pengguna">
+  }, "id_komentar" | "id_artikel_id_komentar">
 
   export type KomentarArtikelOrderByWithAggregationInput = {
     id_komentar?: SortOrder
@@ -30493,9 +30493,9 @@ export namespace Prisma {
     rating?: SortOrder
   }
 
-  export type KomentarArtikelId_artikelId_penggunaCompoundUniqueInput = {
+  export type KomentarArtikelId_artikelId_komentarCompoundUniqueInput = {
     id_artikel: string
-    id_pengguna: string
+    id_komentar: number
   }
 
   export type KomentarArtikelCountOrderByAggregateInput = {

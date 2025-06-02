@@ -143,7 +143,11 @@ export const getArticleById = async (id: string) => {
       },
       include: {
         kategori: true,
-        komentar_artikel: true,
+        komentar_artikel: {
+          include: {
+            pengguna: true,
+          },
+        },
         pengguna: true,
         artikel_disukai: true,
       },
