@@ -5629,7 +5629,7 @@ export namespace Prisma {
     tanggal_pembuatan_akun: Date
     kode_verifikasi: string
     status_verfikasi: boolean
-    avatar: string | null
+    avatar: string
     status_aktif: boolean
     _count: PenggunaCountAggregateOutputType | null
     _avg: PenggunaAvgAggregateOutputType | null
@@ -5758,7 +5758,7 @@ export namespace Prisma {
       tanggal_pembuatan_akun: Date
       kode_verifikasi: string
       status_verfikasi: boolean
-      avatar: string | null
+      avatar: string
       status_aktif: boolean
     }, ExtArgs["result"]["pengguna"]>
     composites: {}
@@ -6955,7 +6955,7 @@ export namespace Prisma {
     password_facilitator: string
     tanggal_pembuatan_akun: Date
     alamat_lengkap_facilitator: string
-    avatar: string | null
+    avatar: string
     status_aktif: boolean
     id_kabupaten: number
     _count: FacilitatorCountAggregateOutputType | null
@@ -7063,7 +7063,7 @@ export namespace Prisma {
       password_facilitator: string
       tanggal_pembuatan_akun: Date
       alamat_lengkap_facilitator: string
-      avatar: string | null
+      avatar: string
       status_aktif: boolean
       id_kabupaten: number
     }, ExtArgs["result"]["facilitator"]>
@@ -8091,7 +8091,7 @@ export namespace Prisma {
     email_admin: string
     password_admin: string
     tanggal_pembuatan_akun: Date
-    avatar: string | null
+    avatar: string
     _count: AdminCountAggregateOutputType | null
     _min: AdminMinAggregateOutputType | null
     _max: AdminMaxAggregateOutputType | null
@@ -8163,7 +8163,7 @@ export namespace Prisma {
       email_admin: string
       password_admin: string
       tanggal_pembuatan_akun: Date
-      avatar: string | null
+      avatar: string
     }, ExtArgs["result"]["admin"]>
     composites: {}
   }
@@ -27370,7 +27370,7 @@ export namespace Prisma {
     tanggal_pembuatan_akun?: DateTimeFilter<"Pengguna"> | Date | string
     kode_verifikasi?: StringFilter<"Pengguna"> | string
     status_verfikasi?: BoolFilter<"Pengguna"> | boolean
-    avatar?: StringNullableFilter<"Pengguna"> | string | null
+    avatar?: StringFilter<"Pengguna"> | string
     status_aktif?: BoolFilter<"Pengguna"> | boolean
     workshop_terdaftar?: WorkshopTerdaftarListRelationFilter
     artikel?: ArtikelListRelationFilter
@@ -27392,7 +27392,7 @@ export namespace Prisma {
     tanggal_pembuatan_akun?: SortOrder
     kode_verifikasi?: SortOrder
     status_verfikasi?: SortOrder
-    avatar?: SortOrderInput | SortOrder
+    avatar?: SortOrder
     status_aktif?: SortOrder
     workshop_terdaftar?: WorkshopTerdaftarOrderByRelationAggregateInput
     artikel?: ArtikelOrderByRelationAggregateInput
@@ -27417,7 +27417,7 @@ export namespace Prisma {
     tanggal_pembuatan_akun?: DateTimeFilter<"Pengguna"> | Date | string
     kode_verifikasi?: StringFilter<"Pengguna"> | string
     status_verfikasi?: BoolFilter<"Pengguna"> | boolean
-    avatar?: StringNullableFilter<"Pengguna"> | string | null
+    avatar?: StringFilter<"Pengguna"> | string
     status_aktif?: BoolFilter<"Pengguna"> | boolean
     workshop_terdaftar?: WorkshopTerdaftarListRelationFilter
     artikel?: ArtikelListRelationFilter
@@ -27439,7 +27439,7 @@ export namespace Prisma {
     tanggal_pembuatan_akun?: SortOrder
     kode_verifikasi?: SortOrder
     status_verfikasi?: SortOrder
-    avatar?: SortOrderInput | SortOrder
+    avatar?: SortOrder
     status_aktif?: SortOrder
     _count?: PenggunaCountOrderByAggregateInput
     _avg?: PenggunaAvgOrderByAggregateInput
@@ -27463,7 +27463,7 @@ export namespace Prisma {
     tanggal_pembuatan_akun?: DateTimeWithAggregatesFilter<"Pengguna"> | Date | string
     kode_verifikasi?: StringWithAggregatesFilter<"Pengguna"> | string
     status_verfikasi?: BoolWithAggregatesFilter<"Pengguna"> | boolean
-    avatar?: StringNullableWithAggregatesFilter<"Pengguna"> | string | null
+    avatar?: StringWithAggregatesFilter<"Pengguna"> | string
     status_aktif?: BoolWithAggregatesFilter<"Pengguna"> | boolean
   }
 
@@ -27478,7 +27478,7 @@ export namespace Prisma {
     password_facilitator?: StringFilter<"Facilitator"> | string
     tanggal_pembuatan_akun?: DateTimeFilter<"Facilitator"> | Date | string
     alamat_lengkap_facilitator?: StringFilter<"Facilitator"> | string
-    avatar?: StringNullableFilter<"Facilitator"> | string | null
+    avatar?: StringFilter<"Facilitator"> | string
     status_aktif?: BoolFilter<"Facilitator"> | boolean
     id_kabupaten?: IntFilter<"Facilitator"> | number
     kabupaten?: XOR<KabupatenScalarRelationFilter, KabupatenWhereInput>
@@ -27493,7 +27493,7 @@ export namespace Prisma {
     password_facilitator?: SortOrder
     tanggal_pembuatan_akun?: SortOrder
     alamat_lengkap_facilitator?: SortOrder
-    avatar?: SortOrderInput | SortOrder
+    avatar?: SortOrder
     status_aktif?: SortOrder
     id_kabupaten?: SortOrder
     kabupaten?: KabupatenOrderByWithRelationInput
@@ -27511,7 +27511,7 @@ export namespace Prisma {
     password_facilitator?: StringFilter<"Facilitator"> | string
     tanggal_pembuatan_akun?: DateTimeFilter<"Facilitator"> | Date | string
     alamat_lengkap_facilitator?: StringFilter<"Facilitator"> | string
-    avatar?: StringNullableFilter<"Facilitator"> | string | null
+    avatar?: StringFilter<"Facilitator"> | string
     status_aktif?: BoolFilter<"Facilitator"> | boolean
     id_kabupaten?: IntFilter<"Facilitator"> | number
     kabupaten?: XOR<KabupatenScalarRelationFilter, KabupatenWhereInput>
@@ -27526,7 +27526,7 @@ export namespace Prisma {
     password_facilitator?: SortOrder
     tanggal_pembuatan_akun?: SortOrder
     alamat_lengkap_facilitator?: SortOrder
-    avatar?: SortOrderInput | SortOrder
+    avatar?: SortOrder
     status_aktif?: SortOrder
     id_kabupaten?: SortOrder
     _count?: FacilitatorCountOrderByAggregateInput
@@ -27547,7 +27547,7 @@ export namespace Prisma {
     password_facilitator?: StringWithAggregatesFilter<"Facilitator"> | string
     tanggal_pembuatan_akun?: DateTimeWithAggregatesFilter<"Facilitator"> | Date | string
     alamat_lengkap_facilitator?: StringWithAggregatesFilter<"Facilitator"> | string
-    avatar?: StringNullableWithAggregatesFilter<"Facilitator"> | string | null
+    avatar?: StringWithAggregatesFilter<"Facilitator"> | string
     status_aktif?: BoolWithAggregatesFilter<"Facilitator"> | boolean
     id_kabupaten?: IntWithAggregatesFilter<"Facilitator"> | number
   }
@@ -27562,7 +27562,7 @@ export namespace Prisma {
     email_admin?: StringFilter<"Admin"> | string
     password_admin?: StringFilter<"Admin"> | string
     tanggal_pembuatan_akun?: DateTimeFilter<"Admin"> | Date | string
-    avatar?: StringNullableFilter<"Admin"> | string | null
+    avatar?: StringFilter<"Admin"> | string
   }
 
   export type AdminOrderByWithRelationInput = {
@@ -27572,7 +27572,7 @@ export namespace Prisma {
     email_admin?: SortOrder
     password_admin?: SortOrder
     tanggal_pembuatan_akun?: SortOrder
-    avatar?: SortOrderInput | SortOrder
+    avatar?: SortOrder
   }
 
   export type AdminWhereUniqueInput = Prisma.AtLeast<{
@@ -27585,7 +27585,7 @@ export namespace Prisma {
     nama_belakang_admin?: StringFilter<"Admin"> | string
     password_admin?: StringFilter<"Admin"> | string
     tanggal_pembuatan_akun?: DateTimeFilter<"Admin"> | Date | string
-    avatar?: StringNullableFilter<"Admin"> | string | null
+    avatar?: StringFilter<"Admin"> | string
   }, "id_admin" | "email_admin">
 
   export type AdminOrderByWithAggregationInput = {
@@ -27595,7 +27595,7 @@ export namespace Prisma {
     email_admin?: SortOrder
     password_admin?: SortOrder
     tanggal_pembuatan_akun?: SortOrder
-    avatar?: SortOrderInput | SortOrder
+    avatar?: SortOrder
     _count?: AdminCountOrderByAggregateInput
     _max?: AdminMaxOrderByAggregateInput
     _min?: AdminMinOrderByAggregateInput
@@ -27611,7 +27611,7 @@ export namespace Prisma {
     email_admin?: StringWithAggregatesFilter<"Admin"> | string
     password_admin?: StringWithAggregatesFilter<"Admin"> | string
     tanggal_pembuatan_akun?: DateTimeWithAggregatesFilter<"Admin"> | Date | string
-    avatar?: StringNullableWithAggregatesFilter<"Admin"> | string | null
+    avatar?: StringWithAggregatesFilter<"Admin"> | string
   }
 
   export type ArtikelWhereInput = {
@@ -28697,7 +28697,7 @@ export namespace Prisma {
     tanggal_pembuatan_akun: Date | string
     kode_verifikasi: string
     status_verfikasi: boolean
-    avatar?: string | null
+    avatar: string
     status_aktif?: boolean
     workshop_terdaftar?: WorkshopTerdaftarCreateNestedManyWithoutPenggunaInput
     artikel?: ArtikelCreateNestedManyWithoutPenggunaInput
@@ -28719,7 +28719,7 @@ export namespace Prisma {
     tanggal_pembuatan_akun: Date | string
     kode_verifikasi: string
     status_verfikasi: boolean
-    avatar?: string | null
+    avatar: string
     status_aktif?: boolean
     workshop_terdaftar?: WorkshopTerdaftarUncheckedCreateNestedManyWithoutPenggunaInput
     artikel?: ArtikelUncheckedCreateNestedManyWithoutPenggunaInput
@@ -28741,7 +28741,7 @@ export namespace Prisma {
     tanggal_pembuatan_akun?: DateTimeFieldUpdateOperationsInput | Date | string
     kode_verifikasi?: StringFieldUpdateOperationsInput | string
     status_verfikasi?: BoolFieldUpdateOperationsInput | boolean
-    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    avatar?: StringFieldUpdateOperationsInput | string
     status_aktif?: BoolFieldUpdateOperationsInput | boolean
     workshop_terdaftar?: WorkshopTerdaftarUpdateManyWithoutPenggunaNestedInput
     artikel?: ArtikelUpdateManyWithoutPenggunaNestedInput
@@ -28763,7 +28763,7 @@ export namespace Prisma {
     tanggal_pembuatan_akun?: DateTimeFieldUpdateOperationsInput | Date | string
     kode_verifikasi?: StringFieldUpdateOperationsInput | string
     status_verfikasi?: BoolFieldUpdateOperationsInput | boolean
-    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    avatar?: StringFieldUpdateOperationsInput | string
     status_aktif?: BoolFieldUpdateOperationsInput | boolean
     workshop_terdaftar?: WorkshopTerdaftarUncheckedUpdateManyWithoutPenggunaNestedInput
     artikel?: ArtikelUncheckedUpdateManyWithoutPenggunaNestedInput
@@ -28785,7 +28785,7 @@ export namespace Prisma {
     tanggal_pembuatan_akun: Date | string
     kode_verifikasi: string
     status_verfikasi: boolean
-    avatar?: string | null
+    avatar: string
     status_aktif?: boolean
   }
 
@@ -28801,7 +28801,7 @@ export namespace Prisma {
     tanggal_pembuatan_akun?: DateTimeFieldUpdateOperationsInput | Date | string
     kode_verifikasi?: StringFieldUpdateOperationsInput | string
     status_verfikasi?: BoolFieldUpdateOperationsInput | boolean
-    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    avatar?: StringFieldUpdateOperationsInput | string
     status_aktif?: BoolFieldUpdateOperationsInput | boolean
   }
 
@@ -28817,7 +28817,7 @@ export namespace Prisma {
     tanggal_pembuatan_akun?: DateTimeFieldUpdateOperationsInput | Date | string
     kode_verifikasi?: StringFieldUpdateOperationsInput | string
     status_verfikasi?: BoolFieldUpdateOperationsInput | boolean
-    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    avatar?: StringFieldUpdateOperationsInput | string
     status_aktif?: BoolFieldUpdateOperationsInput | boolean
   }
 
@@ -28829,7 +28829,7 @@ export namespace Prisma {
     password_facilitator: string
     tanggal_pembuatan_akun: Date | string
     alamat_lengkap_facilitator: string
-    avatar?: string | null
+    avatar: string
     status_aktif?: boolean
     kabupaten: KabupatenCreateNestedOneWithoutFacilitatorsInput
     workshops?: WorkshopCreateNestedManyWithoutFacilitatorInput
@@ -28843,7 +28843,7 @@ export namespace Prisma {
     password_facilitator: string
     tanggal_pembuatan_akun: Date | string
     alamat_lengkap_facilitator: string
-    avatar?: string | null
+    avatar: string
     status_aktif?: boolean
     id_kabupaten: number
     workshops?: WorkshopUncheckedCreateNestedManyWithoutFacilitatorInput
@@ -28857,7 +28857,7 @@ export namespace Prisma {
     password_facilitator?: StringFieldUpdateOperationsInput | string
     tanggal_pembuatan_akun?: DateTimeFieldUpdateOperationsInput | Date | string
     alamat_lengkap_facilitator?: StringFieldUpdateOperationsInput | string
-    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    avatar?: StringFieldUpdateOperationsInput | string
     status_aktif?: BoolFieldUpdateOperationsInput | boolean
     kabupaten?: KabupatenUpdateOneRequiredWithoutFacilitatorsNestedInput
     workshops?: WorkshopUpdateManyWithoutFacilitatorNestedInput
@@ -28871,7 +28871,7 @@ export namespace Prisma {
     password_facilitator?: StringFieldUpdateOperationsInput | string
     tanggal_pembuatan_akun?: DateTimeFieldUpdateOperationsInput | Date | string
     alamat_lengkap_facilitator?: StringFieldUpdateOperationsInput | string
-    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    avatar?: StringFieldUpdateOperationsInput | string
     status_aktif?: BoolFieldUpdateOperationsInput | boolean
     id_kabupaten?: IntFieldUpdateOperationsInput | number
     workshops?: WorkshopUncheckedUpdateManyWithoutFacilitatorNestedInput
@@ -28885,7 +28885,7 @@ export namespace Prisma {
     password_facilitator: string
     tanggal_pembuatan_akun: Date | string
     alamat_lengkap_facilitator: string
-    avatar?: string | null
+    avatar: string
     status_aktif?: boolean
     id_kabupaten: number
   }
@@ -28898,7 +28898,7 @@ export namespace Prisma {
     password_facilitator?: StringFieldUpdateOperationsInput | string
     tanggal_pembuatan_akun?: DateTimeFieldUpdateOperationsInput | Date | string
     alamat_lengkap_facilitator?: StringFieldUpdateOperationsInput | string
-    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    avatar?: StringFieldUpdateOperationsInput | string
     status_aktif?: BoolFieldUpdateOperationsInput | boolean
   }
 
@@ -28910,7 +28910,7 @@ export namespace Prisma {
     password_facilitator?: StringFieldUpdateOperationsInput | string
     tanggal_pembuatan_akun?: DateTimeFieldUpdateOperationsInput | Date | string
     alamat_lengkap_facilitator?: StringFieldUpdateOperationsInput | string
-    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    avatar?: StringFieldUpdateOperationsInput | string
     status_aktif?: BoolFieldUpdateOperationsInput | boolean
     id_kabupaten?: IntFieldUpdateOperationsInput | number
   }
@@ -28922,7 +28922,7 @@ export namespace Prisma {
     email_admin: string
     password_admin: string
     tanggal_pembuatan_akun: Date | string
-    avatar?: string | null
+    avatar: string
   }
 
   export type AdminUncheckedCreateInput = {
@@ -28932,7 +28932,7 @@ export namespace Prisma {
     email_admin: string
     password_admin: string
     tanggal_pembuatan_akun: Date | string
-    avatar?: string | null
+    avatar: string
   }
 
   export type AdminUpdateInput = {
@@ -28942,7 +28942,7 @@ export namespace Prisma {
     email_admin?: StringFieldUpdateOperationsInput | string
     password_admin?: StringFieldUpdateOperationsInput | string
     tanggal_pembuatan_akun?: DateTimeFieldUpdateOperationsInput | Date | string
-    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    avatar?: StringFieldUpdateOperationsInput | string
   }
 
   export type AdminUncheckedUpdateInput = {
@@ -28952,7 +28952,7 @@ export namespace Prisma {
     email_admin?: StringFieldUpdateOperationsInput | string
     password_admin?: StringFieldUpdateOperationsInput | string
     tanggal_pembuatan_akun?: DateTimeFieldUpdateOperationsInput | Date | string
-    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    avatar?: StringFieldUpdateOperationsInput | string
   }
 
   export type AdminCreateManyInput = {
@@ -28962,7 +28962,7 @@ export namespace Prisma {
     email_admin: string
     password_admin: string
     tanggal_pembuatan_akun: Date | string
-    avatar?: string | null
+    avatar: string
   }
 
   export type AdminUpdateManyMutationInput = {
@@ -28972,7 +28972,7 @@ export namespace Prisma {
     email_admin?: StringFieldUpdateOperationsInput | string
     password_admin?: StringFieldUpdateOperationsInput | string
     tanggal_pembuatan_akun?: DateTimeFieldUpdateOperationsInput | Date | string
-    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    avatar?: StringFieldUpdateOperationsInput | string
   }
 
   export type AdminUncheckedUpdateManyInput = {
@@ -28982,7 +28982,7 @@ export namespace Prisma {
     email_admin?: StringFieldUpdateOperationsInput | string
     password_admin?: StringFieldUpdateOperationsInput | string
     tanggal_pembuatan_akun?: DateTimeFieldUpdateOperationsInput | Date | string
-    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    avatar?: StringFieldUpdateOperationsInput | string
   }
 
   export type ArtikelCreateInput = {
@@ -30063,21 +30063,6 @@ export namespace Prisma {
     not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
-  export type StringNullableFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    mode?: QueryMode
-    not?: NestedStringNullableFilter<$PrismaModel> | string | null
-  }
-
   export type WorkshopTerdaftarListRelationFilter = {
     every?: WorkshopTerdaftarWhereInput
     some?: WorkshopTerdaftarWhereInput
@@ -30112,11 +30097,6 @@ export namespace Prisma {
     every?: TanamanPenggunaWhereInput
     some?: TanamanPenggunaWhereInput
     none?: TanamanPenggunaWhereInput
-  }
-
-  export type SortOrderInput = {
-    sort: SortOrder
-    nulls?: NullsOrder
   }
 
   export type WorkshopTerdaftarOrderByRelationAggregateInput = {
@@ -30219,24 +30199,6 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedBoolFilter<$PrismaModel>
     _max?: NestedBoolFilter<$PrismaModel>
-  }
-
-  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    mode?: QueryMode
-    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedStringNullableFilter<$PrismaModel>
-    _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
   export type KabupatenScalarRelationFilter = {
@@ -30656,6 +30618,21 @@ export namespace Prisma {
     _max?: NestedFloatFilter<$PrismaModel>
   }
 
+  export type StringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
   export type WorkshopScalarRelationFilter = {
     is?: WorkshopWhereInput
     isNot?: WorkshopWhereInput
@@ -30664,6 +30641,11 @@ export namespace Prisma {
   export type MetodePembayaranScalarRelationFilter = {
     is?: MetodePembayaranWhereInput
     isNot?: MetodePembayaranWhereInput
+  }
+
+  export type SortOrderInput = {
+    sort: SortOrder
+    nulls?: NullsOrder
   }
 
   export type WorkshopTerdaftarCountOrderByAggregateInput = {
@@ -30721,6 +30703,24 @@ export namespace Prisma {
     id_pendaftaran?: SortOrder
     jenis_kelamin_peserta?: SortOrder
     id_metode_pembayaran?: SortOrder
+  }
+
+  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
   export type MetodePembayaranCountOrderByAggregateInput = {
@@ -31299,10 +31299,6 @@ export namespace Prisma {
 
   export type BoolFieldUpdateOperationsInput = {
     set?: boolean
-  }
-
-  export type NullableStringFieldUpdateOperationsInput = {
-    set?: string | null
   }
 
   export type WorkshopTerdaftarUpdateManyWithoutPenggunaNestedInput = {
@@ -31917,6 +31913,10 @@ export namespace Prisma {
     connect?: MetodePembayaranWhereUniqueInput
   }
 
+  export type NullableStringFieldUpdateOperationsInput = {
+    set?: string | null
+  }
+
   export type PenggunaUpdateOneRequiredWithoutWorkshop_terdaftarNestedInput = {
     create?: XOR<PenggunaCreateWithoutWorkshop_terdaftarInput, PenggunaUncheckedCreateWithoutWorkshop_terdaftarInput>
     connectOrCreate?: PenggunaCreateOrConnectWithoutWorkshop_terdaftarInput
@@ -32474,20 +32474,6 @@ export namespace Prisma {
     not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
-  export type NestedStringNullableFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    not?: NestedStringNullableFilter<$PrismaModel> | string | null
-  }
-
   export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -32508,34 +32494,6 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedBoolFilter<$PrismaModel>
     _max?: NestedBoolFilter<$PrismaModel>
-  }
-
-  export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedStringNullableFilter<$PrismaModel>
-    _max?: NestedStringNullableFilter<$PrismaModel>
-  }
-
-  export type NestedIntNullableFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
   export type NestedEnumStatusArtikelFilter<$PrismaModel = never> = {
@@ -32596,6 +32554,48 @@ export namespace Prisma {
     _sum?: NestedFloatFilter<$PrismaModel>
     _min?: NestedFloatFilter<$PrismaModel>
     _max?: NestedFloatFilter<$PrismaModel>
+  }
+
+  export type NestedStringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
+  export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
+  export type NestedIntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
   export type KabupatenCreateWithoutProvinsiInput = {
@@ -32671,7 +32671,7 @@ export namespace Prisma {
     password_facilitator: string
     tanggal_pembuatan_akun: Date | string
     alamat_lengkap_facilitator: string
-    avatar?: string | null
+    avatar: string
     status_aktif?: boolean
     workshops?: WorkshopCreateNestedManyWithoutFacilitatorInput
   }
@@ -32684,7 +32684,7 @@ export namespace Prisma {
     password_facilitator: string
     tanggal_pembuatan_akun: Date | string
     alamat_lengkap_facilitator: string
-    avatar?: string | null
+    avatar: string
     status_aktif?: boolean
     workshops?: WorkshopUncheckedCreateNestedManyWithoutFacilitatorInput
   }
@@ -32790,7 +32790,7 @@ export namespace Prisma {
     password_facilitator?: StringFilter<"Facilitator"> | string
     tanggal_pembuatan_akun?: DateTimeFilter<"Facilitator"> | Date | string
     alamat_lengkap_facilitator?: StringFilter<"Facilitator"> | string
-    avatar?: StringNullableFilter<"Facilitator"> | string | null
+    avatar?: StringFilter<"Facilitator"> | string
     status_aktif?: BoolFilter<"Facilitator"> | boolean
     id_kabupaten?: IntFilter<"Facilitator"> | number
   }
@@ -33306,7 +33306,7 @@ export namespace Prisma {
     tanggal_pembuatan_akun: Date | string
     kode_verifikasi: string
     status_verfikasi: boolean
-    avatar?: string | null
+    avatar: string
     status_aktif?: boolean
     workshop_terdaftar?: WorkshopTerdaftarCreateNestedManyWithoutPenggunaInput
     artikel_disimpan?: ArtikelDisimpanCreateNestedManyWithoutPenggunaInput
@@ -33327,7 +33327,7 @@ export namespace Prisma {
     tanggal_pembuatan_akun: Date | string
     kode_verifikasi: string
     status_verfikasi: boolean
-    avatar?: string | null
+    avatar: string
     status_aktif?: boolean
     workshop_terdaftar?: WorkshopTerdaftarUncheckedCreateNestedManyWithoutPenggunaInput
     artikel_disimpan?: ArtikelDisimpanUncheckedCreateNestedManyWithoutPenggunaInput
@@ -33447,7 +33447,7 @@ export namespace Prisma {
     tanggal_pembuatan_akun?: DateTimeFieldUpdateOperationsInput | Date | string
     kode_verifikasi?: StringFieldUpdateOperationsInput | string
     status_verfikasi?: BoolFieldUpdateOperationsInput | boolean
-    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    avatar?: StringFieldUpdateOperationsInput | string
     status_aktif?: BoolFieldUpdateOperationsInput | boolean
     workshop_terdaftar?: WorkshopTerdaftarUpdateManyWithoutPenggunaNestedInput
     artikel_disimpan?: ArtikelDisimpanUpdateManyWithoutPenggunaNestedInput
@@ -33468,7 +33468,7 @@ export namespace Prisma {
     tanggal_pembuatan_akun?: DateTimeFieldUpdateOperationsInput | Date | string
     kode_verifikasi?: StringFieldUpdateOperationsInput | string
     status_verfikasi?: BoolFieldUpdateOperationsInput | boolean
-    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    avatar?: StringFieldUpdateOperationsInput | string
     status_aktif?: BoolFieldUpdateOperationsInput | boolean
     workshop_terdaftar?: WorkshopTerdaftarUncheckedUpdateManyWithoutPenggunaNestedInput
     artikel_disimpan?: ArtikelDisimpanUncheckedUpdateManyWithoutPenggunaNestedInput
@@ -33632,7 +33632,7 @@ export namespace Prisma {
     tanggal_pembuatan_akun: Date | string
     kode_verifikasi: string
     status_verfikasi: boolean
-    avatar?: string | null
+    avatar: string
     status_aktif?: boolean
     workshop_terdaftar?: WorkshopTerdaftarCreateNestedManyWithoutPenggunaInput
     artikel?: ArtikelCreateNestedManyWithoutPenggunaInput
@@ -33653,7 +33653,7 @@ export namespace Prisma {
     tanggal_pembuatan_akun: Date | string
     kode_verifikasi: string
     status_verfikasi: boolean
-    avatar?: string | null
+    avatar: string
     status_aktif?: boolean
     workshop_terdaftar?: WorkshopTerdaftarUncheckedCreateNestedManyWithoutPenggunaInput
     artikel?: ArtikelUncheckedCreateNestedManyWithoutPenggunaInput
@@ -33733,7 +33733,7 @@ export namespace Prisma {
     tanggal_pembuatan_akun?: DateTimeFieldUpdateOperationsInput | Date | string
     kode_verifikasi?: StringFieldUpdateOperationsInput | string
     status_verfikasi?: BoolFieldUpdateOperationsInput | boolean
-    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    avatar?: StringFieldUpdateOperationsInput | string
     status_aktif?: BoolFieldUpdateOperationsInput | boolean
     workshop_terdaftar?: WorkshopTerdaftarUpdateManyWithoutPenggunaNestedInput
     artikel?: ArtikelUpdateManyWithoutPenggunaNestedInput
@@ -33754,7 +33754,7 @@ export namespace Prisma {
     tanggal_pembuatan_akun?: DateTimeFieldUpdateOperationsInput | Date | string
     kode_verifikasi?: StringFieldUpdateOperationsInput | string
     status_verfikasi?: BoolFieldUpdateOperationsInput | boolean
-    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    avatar?: StringFieldUpdateOperationsInput | string
     status_aktif?: BoolFieldUpdateOperationsInput | boolean
     workshop_terdaftar?: WorkshopTerdaftarUncheckedUpdateManyWithoutPenggunaNestedInput
     artikel?: ArtikelUncheckedUpdateManyWithoutPenggunaNestedInput
@@ -33812,7 +33812,7 @@ export namespace Prisma {
     tanggal_pembuatan_akun: Date | string
     kode_verifikasi: string
     status_verfikasi: boolean
-    avatar?: string | null
+    avatar: string
     status_aktif?: boolean
     workshop_terdaftar?: WorkshopTerdaftarCreateNestedManyWithoutPenggunaInput
     artikel?: ArtikelCreateNestedManyWithoutPenggunaInput
@@ -33833,7 +33833,7 @@ export namespace Prisma {
     tanggal_pembuatan_akun: Date | string
     kode_verifikasi: string
     status_verfikasi: boolean
-    avatar?: string | null
+    avatar: string
     status_aktif?: boolean
     workshop_terdaftar?: WorkshopTerdaftarUncheckedCreateNestedManyWithoutPenggunaInput
     artikel?: ArtikelUncheckedCreateNestedManyWithoutPenggunaInput
@@ -33913,7 +33913,7 @@ export namespace Prisma {
     tanggal_pembuatan_akun?: DateTimeFieldUpdateOperationsInput | Date | string
     kode_verifikasi?: StringFieldUpdateOperationsInput | string
     status_verfikasi?: BoolFieldUpdateOperationsInput | boolean
-    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    avatar?: StringFieldUpdateOperationsInput | string
     status_aktif?: BoolFieldUpdateOperationsInput | boolean
     workshop_terdaftar?: WorkshopTerdaftarUpdateManyWithoutPenggunaNestedInput
     artikel?: ArtikelUpdateManyWithoutPenggunaNestedInput
@@ -33934,7 +33934,7 @@ export namespace Prisma {
     tanggal_pembuatan_akun?: DateTimeFieldUpdateOperationsInput | Date | string
     kode_verifikasi?: StringFieldUpdateOperationsInput | string
     status_verfikasi?: BoolFieldUpdateOperationsInput | boolean
-    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    avatar?: StringFieldUpdateOperationsInput | string
     status_aktif?: BoolFieldUpdateOperationsInput | boolean
     workshop_terdaftar?: WorkshopTerdaftarUncheckedUpdateManyWithoutPenggunaNestedInput
     artikel?: ArtikelUncheckedUpdateManyWithoutPenggunaNestedInput
@@ -33992,7 +33992,7 @@ export namespace Prisma {
     tanggal_pembuatan_akun: Date | string
     kode_verifikasi: string
     status_verfikasi: boolean
-    avatar?: string | null
+    avatar: string
     status_aktif?: boolean
     workshop_terdaftar?: WorkshopTerdaftarCreateNestedManyWithoutPenggunaInput
     artikel?: ArtikelCreateNestedManyWithoutPenggunaInput
@@ -34013,7 +34013,7 @@ export namespace Prisma {
     tanggal_pembuatan_akun: Date | string
     kode_verifikasi: string
     status_verfikasi: boolean
-    avatar?: string | null
+    avatar: string
     status_aktif?: boolean
     workshop_terdaftar?: WorkshopTerdaftarUncheckedCreateNestedManyWithoutPenggunaInput
     artikel?: ArtikelUncheckedCreateNestedManyWithoutPenggunaInput
@@ -34093,7 +34093,7 @@ export namespace Prisma {
     tanggal_pembuatan_akun?: DateTimeFieldUpdateOperationsInput | Date | string
     kode_verifikasi?: StringFieldUpdateOperationsInput | string
     status_verfikasi?: BoolFieldUpdateOperationsInput | boolean
-    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    avatar?: StringFieldUpdateOperationsInput | string
     status_aktif?: BoolFieldUpdateOperationsInput | boolean
     workshop_terdaftar?: WorkshopTerdaftarUpdateManyWithoutPenggunaNestedInput
     artikel?: ArtikelUpdateManyWithoutPenggunaNestedInput
@@ -34114,7 +34114,7 @@ export namespace Prisma {
     tanggal_pembuatan_akun?: DateTimeFieldUpdateOperationsInput | Date | string
     kode_verifikasi?: StringFieldUpdateOperationsInput | string
     status_verfikasi?: BoolFieldUpdateOperationsInput | boolean
-    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    avatar?: StringFieldUpdateOperationsInput | string
     status_aktif?: BoolFieldUpdateOperationsInput | boolean
     workshop_terdaftar?: WorkshopTerdaftarUncheckedUpdateManyWithoutPenggunaNestedInput
     artikel?: ArtikelUncheckedUpdateManyWithoutPenggunaNestedInput
@@ -34131,7 +34131,7 @@ export namespace Prisma {
     password_facilitator: string
     tanggal_pembuatan_akun: Date | string
     alamat_lengkap_facilitator: string
-    avatar?: string | null
+    avatar: string
     status_aktif?: boolean
     kabupaten: KabupatenCreateNestedOneWithoutFacilitatorsInput
   }
@@ -34144,7 +34144,7 @@ export namespace Prisma {
     password_facilitator: string
     tanggal_pembuatan_akun: Date | string
     alamat_lengkap_facilitator: string
-    avatar?: string | null
+    avatar: string
     status_aktif?: boolean
     id_kabupaten: number
   }
@@ -34230,7 +34230,7 @@ export namespace Prisma {
     password_facilitator?: StringFieldUpdateOperationsInput | string
     tanggal_pembuatan_akun?: DateTimeFieldUpdateOperationsInput | Date | string
     alamat_lengkap_facilitator?: StringFieldUpdateOperationsInput | string
-    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    avatar?: StringFieldUpdateOperationsInput | string
     status_aktif?: BoolFieldUpdateOperationsInput | boolean
     kabupaten?: KabupatenUpdateOneRequiredWithoutFacilitatorsNestedInput
   }
@@ -34243,7 +34243,7 @@ export namespace Prisma {
     password_facilitator?: StringFieldUpdateOperationsInput | string
     tanggal_pembuatan_akun?: DateTimeFieldUpdateOperationsInput | Date | string
     alamat_lengkap_facilitator?: StringFieldUpdateOperationsInput | string
-    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    avatar?: StringFieldUpdateOperationsInput | string
     status_aktif?: BoolFieldUpdateOperationsInput | boolean
     id_kabupaten?: IntFieldUpdateOperationsInput | number
   }
@@ -34302,7 +34302,7 @@ export namespace Prisma {
     tanggal_pembuatan_akun: Date | string
     kode_verifikasi: string
     status_verfikasi: boolean
-    avatar?: string | null
+    avatar: string
     status_aktif?: boolean
     artikel?: ArtikelCreateNestedManyWithoutPenggunaInput
     artikel_disimpan?: ArtikelDisimpanCreateNestedManyWithoutPenggunaInput
@@ -34323,7 +34323,7 @@ export namespace Prisma {
     tanggal_pembuatan_akun: Date | string
     kode_verifikasi: string
     status_verfikasi: boolean
-    avatar?: string | null
+    avatar: string
     status_aktif?: boolean
     artikel?: ArtikelUncheckedCreateNestedManyWithoutPenggunaInput
     artikel_disimpan?: ArtikelDisimpanUncheckedCreateNestedManyWithoutPenggunaInput
@@ -34415,7 +34415,7 @@ export namespace Prisma {
     tanggal_pembuatan_akun?: DateTimeFieldUpdateOperationsInput | Date | string
     kode_verifikasi?: StringFieldUpdateOperationsInput | string
     status_verfikasi?: BoolFieldUpdateOperationsInput | boolean
-    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    avatar?: StringFieldUpdateOperationsInput | string
     status_aktif?: BoolFieldUpdateOperationsInput | boolean
     artikel?: ArtikelUpdateManyWithoutPenggunaNestedInput
     artikel_disimpan?: ArtikelDisimpanUpdateManyWithoutPenggunaNestedInput
@@ -34436,7 +34436,7 @@ export namespace Prisma {
     tanggal_pembuatan_akun?: DateTimeFieldUpdateOperationsInput | Date | string
     kode_verifikasi?: StringFieldUpdateOperationsInput | string
     status_verfikasi?: BoolFieldUpdateOperationsInput | boolean
-    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    avatar?: StringFieldUpdateOperationsInput | string
     status_aktif?: BoolFieldUpdateOperationsInput | boolean
     artikel?: ArtikelUncheckedUpdateManyWithoutPenggunaNestedInput
     artikel_disimpan?: ArtikelDisimpanUncheckedUpdateManyWithoutPenggunaNestedInput
@@ -35034,7 +35034,7 @@ export namespace Prisma {
     tanggal_pembuatan_akun: Date | string
     kode_verifikasi: string
     status_verfikasi: boolean
-    avatar?: string | null
+    avatar: string
     status_aktif?: boolean
     workshop_terdaftar?: WorkshopTerdaftarCreateNestedManyWithoutPenggunaInput
     artikel?: ArtikelCreateNestedManyWithoutPenggunaInput
@@ -35055,7 +35055,7 @@ export namespace Prisma {
     tanggal_pembuatan_akun: Date | string
     kode_verifikasi: string
     status_verfikasi: boolean
-    avatar?: string | null
+    avatar: string
     status_aktif?: boolean
     workshop_terdaftar?: WorkshopTerdaftarUncheckedCreateNestedManyWithoutPenggunaInput
     artikel?: ArtikelUncheckedCreateNestedManyWithoutPenggunaInput
@@ -35146,7 +35146,7 @@ export namespace Prisma {
     tanggal_pembuatan_akun?: DateTimeFieldUpdateOperationsInput | Date | string
     kode_verifikasi?: StringFieldUpdateOperationsInput | string
     status_verfikasi?: BoolFieldUpdateOperationsInput | boolean
-    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    avatar?: StringFieldUpdateOperationsInput | string
     status_aktif?: BoolFieldUpdateOperationsInput | boolean
     workshop_terdaftar?: WorkshopTerdaftarUpdateManyWithoutPenggunaNestedInput
     artikel?: ArtikelUpdateManyWithoutPenggunaNestedInput
@@ -35167,7 +35167,7 @@ export namespace Prisma {
     tanggal_pembuatan_akun?: DateTimeFieldUpdateOperationsInput | Date | string
     kode_verifikasi?: StringFieldUpdateOperationsInput | string
     status_verfikasi?: BoolFieldUpdateOperationsInput | boolean
-    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    avatar?: StringFieldUpdateOperationsInput | string
     status_aktif?: BoolFieldUpdateOperationsInput | boolean
     workshop_terdaftar?: WorkshopTerdaftarUncheckedUpdateManyWithoutPenggunaNestedInput
     artikel?: ArtikelUncheckedUpdateManyWithoutPenggunaNestedInput
@@ -35370,7 +35370,7 @@ export namespace Prisma {
     password_facilitator: string
     tanggal_pembuatan_akun: Date | string
     alamat_lengkap_facilitator: string
-    avatar?: string | null
+    avatar: string
     status_aktif?: boolean
   }
 
@@ -35398,7 +35398,7 @@ export namespace Prisma {
     password_facilitator?: StringFieldUpdateOperationsInput | string
     tanggal_pembuatan_akun?: DateTimeFieldUpdateOperationsInput | Date | string
     alamat_lengkap_facilitator?: StringFieldUpdateOperationsInput | string
-    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    avatar?: StringFieldUpdateOperationsInput | string
     status_aktif?: BoolFieldUpdateOperationsInput | boolean
     workshops?: WorkshopUpdateManyWithoutFacilitatorNestedInput
   }
@@ -35411,7 +35411,7 @@ export namespace Prisma {
     password_facilitator?: StringFieldUpdateOperationsInput | string
     tanggal_pembuatan_akun?: DateTimeFieldUpdateOperationsInput | Date | string
     alamat_lengkap_facilitator?: StringFieldUpdateOperationsInput | string
-    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    avatar?: StringFieldUpdateOperationsInput | string
     status_aktif?: BoolFieldUpdateOperationsInput | boolean
     workshops?: WorkshopUncheckedUpdateManyWithoutFacilitatorNestedInput
   }
@@ -35424,7 +35424,7 @@ export namespace Prisma {
     password_facilitator?: StringFieldUpdateOperationsInput | string
     tanggal_pembuatan_akun?: DateTimeFieldUpdateOperationsInput | Date | string
     alamat_lengkap_facilitator?: StringFieldUpdateOperationsInput | string
-    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    avatar?: StringFieldUpdateOperationsInput | string
     status_aktif?: BoolFieldUpdateOperationsInput | boolean
   }
 

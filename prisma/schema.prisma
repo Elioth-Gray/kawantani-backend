@@ -45,7 +45,7 @@ model Pengguna {
   tanggal_pembuatan_akun     DateTime
   kode_verifikasi            String @db.Char(4)
   status_verfikasi           Boolean
-  avatar                     String?     @db.VarChar(255)
+  avatar                     String     @db.VarChar(255)
   status_aktif               Boolean @default(true)
 
   workshop_terdaftar         WorkshopTerdaftar[] 
@@ -67,7 +67,7 @@ model Facilitator {
   password_facilitator       String       @db.VarChar(100)
   tanggal_pembuatan_akun     DateTime
   alamat_lengkap_facilitator String       @db.VarChar(255)
-  avatar                     String?      @db.VarChar(255)
+  avatar                     String      @db.VarChar(255)
   status_aktif               Boolean      @default(true)
 
   id_kabupaten               Int
@@ -86,7 +86,7 @@ model Admin {
   email_admin                String @db.VarChar(50)
   password_admin             String @db.VarChar(100)
   tanggal_pembuatan_akun     DateTime
-  avatar                     String?     @db.VarChar(255)
+  avatar                     String     @db.VarChar(255)
 
   @@unique([email_admin])
 }

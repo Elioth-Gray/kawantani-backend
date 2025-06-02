@@ -15,12 +15,13 @@ export const generateToken = (data: TToken) => {
       email: tokenData.email,
       firstName: tokenData.firstName,
       lastName: tokenData.lastName,
+      avatar: tokenData.avatar,
       role: tokenData.role,
     },
     SECRET,
     {
       expiresIn: '1d',
-    }
+    },
   );
 
   return token;
@@ -45,6 +46,7 @@ export const decodeToken = (token: string): TToken | null => {
         id: decoded.id,
         email: decoded.email,
         firstName: decoded.firstName,
+        avatar: decoded.avatar,
         lastName: decoded.lastName,
         role: decoded.role,
       };

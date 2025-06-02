@@ -98,6 +98,7 @@ export const registerUser = async (data: TRegister) => {
       email: result.email_pengguna,
       firstName: result.nama_depan_pengguna,
       lastName: result.nama_belakang_pengguna,
+      avatar: result.avatar,
       role: 'user',
     });
 
@@ -245,6 +246,7 @@ export const loginUser = async (data: TLogin) => {
       email: user.email_pengguna,
       firstName: user.nama_depan_pengguna,
       lastName: user.nama_belakang_pengguna,
+      avatar: user.avatar,
       role: 'user',
     });
 
@@ -320,6 +322,7 @@ export const loginAdmin = async (data: TLogin) => {
       email: user.email_admin,
       firstName: user.nama_depan_admin,
       lastName: user.nama_belakang_admin,
+      avatar: user.avatar,
       role: 'admin',
     });
 
@@ -365,6 +368,7 @@ export const loginFacilitator = async (data: TLogin) => {
       email: facilitator.email_facilitator,
       firstName: facilitator.nama_facilitator,
       lastName: 'Facilitator',
+      avatar: facilitator.avatar,
       role: 'facilitator',
     });
 

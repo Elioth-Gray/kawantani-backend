@@ -25,5 +25,6 @@ export type TToken = {
   email: string;
   firstName: string;
   lastName: string;
+  avatar: string;
   role: string;
 };
