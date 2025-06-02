@@ -55,7 +55,7 @@ articlesRouter.get(
   getById,
 );
 articlesRouter.patch(
-  '/articles/:id/update',
+  '/articles/:id',
   authMiddleware,
   roleMiddleware(['user']),
   verify,

@@ -277,6 +277,7 @@ export const updateArticle = async (data: TUpdateArticle) => {
         isi_artikel: content,
         gambar_artikel: image,
         status_artikel: articleStatus as StatusArtikel,
+        status_verifikasi: false,
       },
     });
 
