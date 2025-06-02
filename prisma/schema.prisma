@@ -152,7 +152,7 @@ model KomentarArtikel {
   komentar                  String @db.Text
   tanggal_komentar          DateTime
 
-  @@unique([id_artikel, id_pengguna])
+  @@unique([id_artikel, id_komentar])
 }
 
 model Workshop {
