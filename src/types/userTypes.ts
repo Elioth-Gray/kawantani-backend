@@ -13,7 +13,8 @@ export type TUpdateUser = {
   dateOfBirth: string;
   password: string;
   confirmPassword: string;
-  gender: number;
+  gender: string;
+  avatar: string;
 };
 
 export type TUpdateProfile = {

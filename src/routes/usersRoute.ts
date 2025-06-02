@@ -1,5 +1,6 @@
 import express from 'express';
 import {
+  deleteUs,
   getAllUsers,
   getUserById,
   me,
@@ -39,13 +40,14 @@ usersRoute.put(
   '/users/edit/:id',
   authMiddleware,
   roleMiddleware(['admin']),
+  uploadUserAvatar.single('avatar'),
   update,
 );
 usersRoute.delete(
   '/users/:id',
   authMiddleware,
   roleMiddleware(['admin', 'user']),
-  update,
+  deleteUs,
 );
 
 export default usersRoute;

@@ -49,12 +49,14 @@ export const getUserById = async (req: Request, res: Response) => {
   }
 };
 
-export const update = async (req: IReqUser, res: Response) => {
+export const update = async (req: IRequestWithFileAuth, res: Response) => {
+  const fileName = req.file?.filename;
   const data = {
     id: req.params.id,
+    user: req.user,
+    avatar: fileName,
     ...req.body,
   };
-  console.log(data);
   try {
     const result = await updateUser(data);
 
@@ -127,7 +129,7 @@ export const updateProfile = async (
   }
 };
 
-const deleteUs = async (req: IReqUser, res: Response) => {
+export const deleteUs = async (req: IReqUser, res: Response) => {
   const { id } = req.params;
   const user = req.body;
   const data = {

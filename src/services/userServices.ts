@@ -67,6 +67,7 @@ export const getById = async (id: string) => {
         avatar: true,
         status_verfikasi: true,
         tanggal_lahir_pengguna: true,
+        password_pengguna: true,
       },
     });
     if (!user) {
@@ -91,6 +92,7 @@ export const updateUser = async (data: TUpdateUser) => {
     password,
     confirmPassword,
     gender,
+    avatar,
   } = data;
 
   try {
@@ -152,6 +154,29 @@ export const updateUser = async (data: TUpdateUser) => {
 
     const dateOfBirthNew = new Date(dateOfBirth);
 
+    if (avatar) {
+      if (existing.avatar) {
+        const oldAvatarPath = path.join(
+          process.cwd(),
+          'uploads',
+          'users',
+          existing.avatar,
+        );
+        fs.unlink(oldAvatarPath, (err) => {
+          if (err) {
+            console.error('Gagal menghapus file avatar lama:', err.message);
+          }
+        });
+      }
+
+      await prisma.pengguna.update({
+        where: { id_pengguna: id },
+        data: {
+          avatar: avatar,
+        },
+      });
+    }
+
     const result = await prisma.pengguna.update({
       where: { id_pengguna: id },
       data: {
@@ -161,7 +186,7 @@ export const updateUser = async (data: TUpdateUser) => {
         nomor_telepon_pengguna: phoneNumber,
         password_pengguna: finalPassword,
         tanggal_lahir_pengguna: dateOfBirthNew,
-        jenisKelamin: gender,
+        jenisKelamin: parseInt(gender, 10),
       },
     });
 
