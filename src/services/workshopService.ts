@@ -72,7 +72,7 @@ export const createWorkshop = async (data: TCreateWorskhop) => {
         tanggal_workshop: date,
         alaamt_lengkap_workshop: address,
         deskripsi_workshop: description,
-        harga_workshop: price,
+        harga_workshop: parseFloat(price),
         kapasitas: parseInt(capacity, 10),
         lat_lokasi: parseFloat(lat),
         long_lokasi: parseFloat(long),
@@ -150,6 +150,16 @@ export const getActiveWorkshops = async () => {
             nama_facilitator: true,
           },
         },
+        kabupaten: {
+          select: {
+            nama_kabupaten: true,
+            provinsi: {
+              select: {
+                nama_provinsi: true,
+              },
+            },
+          },
+        },
       },
     });
 
@@ -176,7 +186,20 @@ export const getWorkshopById = async (id: string) => {
         id_workshop: id,
       },
       include: {
-        facilitator: true,
+        facilitator: {
+          include: {
+            kabupaten: {
+              include: {
+                provinsi: true,
+              },
+            },
+          },
+        },
+        kabupaten: {
+          include: {
+            provinsi: true,
+          },
+        },
       },
     });
 
@@ -229,7 +252,7 @@ export const deleteWorkshop = async (data: TEditWorkshop) => {
     });
 
     if (!workshop) {
-      throw { status: 404, message: 'Artikel tidak ditemukan' };
+      throw { status: 404, message: 'Workshop tidak ditemukan' };
     }
 
     console.log(`Id fac artikel ${workshop.id_facilitator}`);
@@ -239,7 +262,7 @@ export const deleteWorkshop = async (data: TEditWorkshop) => {
     const isAdmin = user.role === 'admin';
 
     if (!isOwner && !isAdmin) {
-      throw { status: 403, message: 'Tidak diizinkan menghapus artikel ini' };
+      throw { status: 403, message: 'Tidak diizinkan menghapus workshop ini' };
     }
 
     const result = await prisma.workshop.update({
