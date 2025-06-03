@@ -12,6 +12,8 @@ export type TCreateWorskhop = {
   long: string;
   image: string;
   regency: string;
+  startTime: string;
+  endTime: string;
 };
 
 export type TEditWorkshop = {

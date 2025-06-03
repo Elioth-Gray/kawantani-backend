@@ -14595,6 +14595,8 @@ export namespace Prisma {
     long_lokasi: number | null
     gambar_workshop: string | null
     status_aktif: boolean | null
+    waktu_mulai: string | null
+    waktu_berakhir: string | null
     id_facilitator: string | null
     id_kabupaten: number | null
   }
@@ -14612,6 +14614,8 @@ export namespace Prisma {
     long_lokasi: number | null
     gambar_workshop: string | null
     status_aktif: boolean | null
+    waktu_mulai: string | null
+    waktu_berakhir: string | null
     id_facilitator: string | null
     id_kabupaten: number | null
   }
@@ -14629,6 +14633,8 @@ export namespace Prisma {
     long_lokasi: number
     gambar_workshop: number
     status_aktif: number
+    waktu_mulai: number
+    waktu_berakhir: number
     id_facilitator: number
     id_kabupaten: number
     _all: number
@@ -14664,6 +14670,8 @@ export namespace Prisma {
     long_lokasi?: true
     gambar_workshop?: true
     status_aktif?: true
+    waktu_mulai?: true
+    waktu_berakhir?: true
     id_facilitator?: true
     id_kabupaten?: true
   }
@@ -14681,6 +14689,8 @@ export namespace Prisma {
     long_lokasi?: true
     gambar_workshop?: true
     status_aktif?: true
+    waktu_mulai?: true
+    waktu_berakhir?: true
     id_facilitator?: true
     id_kabupaten?: true
   }
@@ -14698,6 +14708,8 @@ export namespace Prisma {
     long_lokasi?: true
     gambar_workshop?: true
     status_aktif?: true
+    waktu_mulai?: true
+    waktu_berakhir?: true
     id_facilitator?: true
     id_kabupaten?: true
     _all?: true
@@ -14802,6 +14814,8 @@ export namespace Prisma {
     long_lokasi: number
     gambar_workshop: string
     status_aktif: boolean
+    waktu_mulai: string
+    waktu_berakhir: string
     id_facilitator: string
     id_kabupaten: number
     _count: WorkshopCountAggregateOutputType | null
@@ -14838,6 +14852,8 @@ export namespace Prisma {
     long_lokasi?: boolean
     gambar_workshop?: boolean
     status_aktif?: boolean
+    waktu_mulai?: boolean
+    waktu_berakhir?: boolean
     id_facilitator?: boolean
     id_kabupaten?: boolean
     facilitator?: boolean | FacilitatorDefaultArgs<ExtArgs>
@@ -14859,6 +14875,8 @@ export namespace Prisma {
     long_lokasi?: boolean
     gambar_workshop?: boolean
     status_aktif?: boolean
+    waktu_mulai?: boolean
+    waktu_berakhir?: boolean
     id_facilitator?: boolean
     id_kabupaten?: boolean
     facilitator?: boolean | FacilitatorDefaultArgs<ExtArgs>
@@ -14878,6 +14896,8 @@ export namespace Prisma {
     long_lokasi?: boolean
     gambar_workshop?: boolean
     status_aktif?: boolean
+    waktu_mulai?: boolean
+    waktu_berakhir?: boolean
     id_facilitator?: boolean
     id_kabupaten?: boolean
     facilitator?: boolean | FacilitatorDefaultArgs<ExtArgs>
@@ -14897,11 +14917,13 @@ export namespace Prisma {
     long_lokasi?: boolean
     gambar_workshop?: boolean
     status_aktif?: boolean
+    waktu_mulai?: boolean
+    waktu_berakhir?: boolean
     id_facilitator?: boolean
     id_kabupaten?: boolean
   }
 
-  export type WorkshopOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_workshop" | "judul_workshop" | "tanggal_workshop" | "alaamt_lengkap_workshop" | "deskripsi_workshop" | "harga_workshop" | "kapasitas" | "status_verifikasi" | "lat_lokasi" | "long_lokasi" | "gambar_workshop" | "status_aktif" | "id_facilitator" | "id_kabupaten", ExtArgs["result"]["workshop"]>
+  export type WorkshopOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_workshop" | "judul_workshop" | "tanggal_workshop" | "alaamt_lengkap_workshop" | "deskripsi_workshop" | "harga_workshop" | "kapasitas" | "status_verifikasi" | "lat_lokasi" | "long_lokasi" | "gambar_workshop" | "status_aktif" | "waktu_mulai" | "waktu_berakhir" | "id_facilitator" | "id_kabupaten", ExtArgs["result"]["workshop"]>
   export type WorkshopInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     facilitator?: boolean | FacilitatorDefaultArgs<ExtArgs>
     kabupaten?: boolean | KabupatenDefaultArgs<ExtArgs>
@@ -14937,6 +14959,8 @@ export namespace Prisma {
       long_lokasi: number
       gambar_workshop: string
       status_aktif: boolean
+      waktu_mulai: string
+      waktu_berakhir: string
       id_facilitator: string
       id_kabupaten: number
     }, ExtArgs["result"]["workshop"]>
@@ -15377,6 +15401,8 @@ export namespace Prisma {
     readonly long_lokasi: FieldRef<"Workshop", 'Float'>
     readonly gambar_workshop: FieldRef<"Workshop", 'String'>
     readonly status_aktif: FieldRef<"Workshop", 'Boolean'>
+    readonly waktu_mulai: FieldRef<"Workshop", 'String'>
+    readonly waktu_berakhir: FieldRef<"Workshop", 'String'>
     readonly id_facilitator: FieldRef<"Workshop", 'String'>
     readonly id_kabupaten: FieldRef<"Workshop", 'Int'>
   }
@@ -27021,6 +27047,8 @@ export namespace Prisma {
     long_lokasi: 'long_lokasi',
     gambar_workshop: 'gambar_workshop',
     status_aktif: 'status_aktif',
+    waktu_mulai: 'waktu_mulai',
+    waktu_berakhir: 'waktu_berakhir',
     id_facilitator: 'id_facilitator',
     id_kabupaten: 'id_kabupaten'
   };
@@ -27939,6 +27967,8 @@ export namespace Prisma {
     long_lokasi?: FloatFilter<"Workshop"> | number
     gambar_workshop?: StringFilter<"Workshop"> | string
     status_aktif?: BoolFilter<"Workshop"> | boolean
+    waktu_mulai?: StringFilter<"Workshop"> | string
+    waktu_berakhir?: StringFilter<"Workshop"> | string
     id_facilitator?: StringFilter<"Workshop"> | string
     id_kabupaten?: IntFilter<"Workshop"> | number
     facilitator?: XOR<FacilitatorScalarRelationFilter, FacilitatorWhereInput>
@@ -27959,6 +27989,8 @@ export namespace Prisma {
     long_lokasi?: SortOrder
     gambar_workshop?: SortOrder
     status_aktif?: SortOrder
+    waktu_mulai?: SortOrder
+    waktu_berakhir?: SortOrder
     id_facilitator?: SortOrder
     id_kabupaten?: SortOrder
     facilitator?: FacilitatorOrderByWithRelationInput
@@ -27982,6 +28014,8 @@ export namespace Prisma {
     long_lokasi?: FloatFilter<"Workshop"> | number
     gambar_workshop?: StringFilter<"Workshop"> | string
     status_aktif?: BoolFilter<"Workshop"> | boolean
+    waktu_mulai?: StringFilter<"Workshop"> | string
+    waktu_berakhir?: StringFilter<"Workshop"> | string
     id_facilitator?: StringFilter<"Workshop"> | string
     id_kabupaten?: IntFilter<"Workshop"> | number
     facilitator?: XOR<FacilitatorScalarRelationFilter, FacilitatorWhereInput>
@@ -28002,6 +28036,8 @@ export namespace Prisma {
     long_lokasi?: SortOrder
     gambar_workshop?: SortOrder
     status_aktif?: SortOrder
+    waktu_mulai?: SortOrder
+    waktu_berakhir?: SortOrder
     id_facilitator?: SortOrder
     id_kabupaten?: SortOrder
     _count?: WorkshopCountOrderByAggregateInput
@@ -28027,6 +28063,8 @@ export namespace Prisma {
     long_lokasi?: FloatWithAggregatesFilter<"Workshop"> | number
     gambar_workshop?: StringWithAggregatesFilter<"Workshop"> | string
     status_aktif?: BoolWithAggregatesFilter<"Workshop"> | boolean
+    waktu_mulai?: StringWithAggregatesFilter<"Workshop"> | string
+    waktu_berakhir?: StringWithAggregatesFilter<"Workshop"> | string
     id_facilitator?: StringWithAggregatesFilter<"Workshop"> | string
     id_kabupaten?: IntWithAggregatesFilter<"Workshop"> | number
   }
@@ -29275,6 +29313,8 @@ export namespace Prisma {
     long_lokasi: number
     gambar_workshop: string
     status_aktif?: boolean
+    waktu_mulai?: string
+    waktu_berakhir?: string
     facilitator: FacilitatorCreateNestedOneWithoutWorkshopsInput
     kabupaten: KabupatenCreateNestedOneWithoutWorkshopInput
     pendaftaran?: WorkshopTerdaftarCreateNestedManyWithoutWorkshopInput
@@ -29293,6 +29333,8 @@ export namespace Prisma {
     long_lokasi: number
     gambar_workshop: string
     status_aktif?: boolean
+    waktu_mulai?: string
+    waktu_berakhir?: string
     id_facilitator: string
     id_kabupaten: number
     pendaftaran?: WorkshopTerdaftarUncheckedCreateNestedManyWithoutWorkshopInput
@@ -29311,6 +29353,8 @@ export namespace Prisma {
     long_lokasi?: FloatFieldUpdateOperationsInput | number
     gambar_workshop?: StringFieldUpdateOperationsInput | string
     status_aktif?: BoolFieldUpdateOperationsInput | boolean
+    waktu_mulai?: StringFieldUpdateOperationsInput | string
+    waktu_berakhir?: StringFieldUpdateOperationsInput | string
     facilitator?: FacilitatorUpdateOneRequiredWithoutWorkshopsNestedInput
     kabupaten?: KabupatenUpdateOneRequiredWithoutWorkshopNestedInput
     pendaftaran?: WorkshopTerdaftarUpdateManyWithoutWorkshopNestedInput
@@ -29329,6 +29373,8 @@ export namespace Prisma {
     long_lokasi?: FloatFieldUpdateOperationsInput | number
     gambar_workshop?: StringFieldUpdateOperationsInput | string
     status_aktif?: BoolFieldUpdateOperationsInput | boolean
+    waktu_mulai?: StringFieldUpdateOperationsInput | string
+    waktu_berakhir?: StringFieldUpdateOperationsInput | string
     id_facilitator?: StringFieldUpdateOperationsInput | string
     id_kabupaten?: IntFieldUpdateOperationsInput | number
     pendaftaran?: WorkshopTerdaftarUncheckedUpdateManyWithoutWorkshopNestedInput
@@ -29347,6 +29393,8 @@ export namespace Prisma {
     long_lokasi: number
     gambar_workshop: string
     status_aktif?: boolean
+    waktu_mulai?: string
+    waktu_berakhir?: string
     id_facilitator: string
     id_kabupaten: number
   }
@@ -29364,6 +29412,8 @@ export namespace Prisma {
     long_lokasi?: FloatFieldUpdateOperationsInput | number
     gambar_workshop?: StringFieldUpdateOperationsInput | string
     status_aktif?: BoolFieldUpdateOperationsInput | boolean
+    waktu_mulai?: StringFieldUpdateOperationsInput | string
+    waktu_berakhir?: StringFieldUpdateOperationsInput | string
   }
 
   export type WorkshopUncheckedUpdateManyInput = {
@@ -29379,6 +29429,8 @@ export namespace Prisma {
     long_lokasi?: FloatFieldUpdateOperationsInput | number
     gambar_workshop?: StringFieldUpdateOperationsInput | string
     status_aktif?: BoolFieldUpdateOperationsInput | boolean
+    waktu_mulai?: StringFieldUpdateOperationsInput | string
+    waktu_berakhir?: StringFieldUpdateOperationsInput | string
     id_facilitator?: StringFieldUpdateOperationsInput | string
     id_kabupaten?: IntFieldUpdateOperationsInput | number
   }
@@ -30532,6 +30584,8 @@ export namespace Prisma {
     long_lokasi?: SortOrder
     gambar_workshop?: SortOrder
     status_aktif?: SortOrder
+    waktu_mulai?: SortOrder
+    waktu_berakhir?: SortOrder
     id_facilitator?: SortOrder
     id_kabupaten?: SortOrder
   }
@@ -30557,6 +30611,8 @@ export namespace Prisma {
     long_lokasi?: SortOrder
     gambar_workshop?: SortOrder
     status_aktif?: SortOrder
+    waktu_mulai?: SortOrder
+    waktu_berakhir?: SortOrder
     id_facilitator?: SortOrder
     id_kabupaten?: SortOrder
   }
@@ -30574,6 +30630,8 @@ export namespace Prisma {
     long_lokasi?: SortOrder
     gambar_workshop?: SortOrder
     status_aktif?: SortOrder
+    waktu_mulai?: SortOrder
+    waktu_berakhir?: SortOrder
     id_facilitator?: SortOrder
     id_kabupaten?: SortOrder
   }
@@ -32712,6 +32770,8 @@ export namespace Prisma {
     long_lokasi: number
     gambar_workshop: string
     status_aktif?: boolean
+    waktu_mulai?: string
+    waktu_berakhir?: string
     facilitator: FacilitatorCreateNestedOneWithoutWorkshopsInput
     pendaftaran?: WorkshopTerdaftarCreateNestedManyWithoutWorkshopInput
   }
@@ -32729,6 +32789,8 @@ export namespace Prisma {
     long_lokasi: number
     gambar_workshop: string
     status_aktif?: boolean
+    waktu_mulai?: string
+    waktu_berakhir?: string
     id_facilitator: string
     pendaftaran?: WorkshopTerdaftarUncheckedCreateNestedManyWithoutWorkshopInput
   }
@@ -32827,6 +32889,8 @@ export namespace Prisma {
     long_lokasi?: FloatFilter<"Workshop"> | number
     gambar_workshop?: StringFilter<"Workshop"> | string
     status_aktif?: BoolFilter<"Workshop"> | boolean
+    waktu_mulai?: StringFilter<"Workshop"> | string
+    waktu_berakhir?: StringFilter<"Workshop"> | string
     id_facilitator?: StringFilter<"Workshop"> | string
     id_kabupaten?: IntFilter<"Workshop"> | number
   }
@@ -33207,6 +33271,8 @@ export namespace Prisma {
     long_lokasi: number
     gambar_workshop: string
     status_aktif?: boolean
+    waktu_mulai?: string
+    waktu_berakhir?: string
     kabupaten: KabupatenCreateNestedOneWithoutWorkshopInput
     pendaftaran?: WorkshopTerdaftarCreateNestedManyWithoutWorkshopInput
   }
@@ -33224,6 +33290,8 @@ export namespace Prisma {
     long_lokasi: number
     gambar_workshop: string
     status_aktif?: boolean
+    waktu_mulai?: string
+    waktu_berakhir?: string
     id_kabupaten: number
     pendaftaran?: WorkshopTerdaftarUncheckedCreateNestedManyWithoutWorkshopInput
   }
@@ -34350,6 +34418,8 @@ export namespace Prisma {
     long_lokasi: number
     gambar_workshop: string
     status_aktif?: boolean
+    waktu_mulai?: string
+    waktu_berakhir?: string
     facilitator: FacilitatorCreateNestedOneWithoutWorkshopsInput
     kabupaten: KabupatenCreateNestedOneWithoutWorkshopInput
   }
@@ -34367,6 +34437,8 @@ export namespace Prisma {
     long_lokasi: number
     gambar_workshop: string
     status_aktif?: boolean
+    waktu_mulai?: string
+    waktu_berakhir?: string
     id_facilitator: string
     id_kabupaten: number
   }
@@ -34469,6 +34541,8 @@ export namespace Prisma {
     long_lokasi?: FloatFieldUpdateOperationsInput | number
     gambar_workshop?: StringFieldUpdateOperationsInput | string
     status_aktif?: BoolFieldUpdateOperationsInput | boolean
+    waktu_mulai?: StringFieldUpdateOperationsInput | string
+    waktu_berakhir?: StringFieldUpdateOperationsInput | string
     facilitator?: FacilitatorUpdateOneRequiredWithoutWorkshopsNestedInput
     kabupaten?: KabupatenUpdateOneRequiredWithoutWorkshopNestedInput
   }
@@ -34486,6 +34560,8 @@ export namespace Prisma {
     long_lokasi?: FloatFieldUpdateOperationsInput | number
     gambar_workshop?: StringFieldUpdateOperationsInput | string
     status_aktif?: BoolFieldUpdateOperationsInput | boolean
+    waktu_mulai?: StringFieldUpdateOperationsInput | string
+    waktu_berakhir?: StringFieldUpdateOperationsInput | string
     id_facilitator?: StringFieldUpdateOperationsInput | string
     id_kabupaten?: IntFieldUpdateOperationsInput | number
   }
@@ -35387,6 +35463,8 @@ export namespace Prisma {
     long_lokasi: number
     gambar_workshop: string
     status_aktif?: boolean
+    waktu_mulai?: string
+    waktu_berakhir?: string
     id_facilitator: string
   }
 
@@ -35441,6 +35519,8 @@ export namespace Prisma {
     long_lokasi?: FloatFieldUpdateOperationsInput | number
     gambar_workshop?: StringFieldUpdateOperationsInput | string
     status_aktif?: BoolFieldUpdateOperationsInput | boolean
+    waktu_mulai?: StringFieldUpdateOperationsInput | string
+    waktu_berakhir?: StringFieldUpdateOperationsInput | string
     facilitator?: FacilitatorUpdateOneRequiredWithoutWorkshopsNestedInput
     pendaftaran?: WorkshopTerdaftarUpdateManyWithoutWorkshopNestedInput
   }
@@ -35458,6 +35538,8 @@ export namespace Prisma {
     long_lokasi?: FloatFieldUpdateOperationsInput | number
     gambar_workshop?: StringFieldUpdateOperationsInput | string
     status_aktif?: BoolFieldUpdateOperationsInput | boolean
+    waktu_mulai?: StringFieldUpdateOperationsInput | string
+    waktu_berakhir?: StringFieldUpdateOperationsInput | string
     id_facilitator?: StringFieldUpdateOperationsInput | string
     pendaftaran?: WorkshopTerdaftarUncheckedUpdateManyWithoutWorkshopNestedInput
   }
@@ -35475,6 +35557,8 @@ export namespace Prisma {
     long_lokasi?: FloatFieldUpdateOperationsInput | number
     gambar_workshop?: StringFieldUpdateOperationsInput | string
     status_aktif?: BoolFieldUpdateOperationsInput | boolean
+    waktu_mulai?: StringFieldUpdateOperationsInput | string
+    waktu_berakhir?: StringFieldUpdateOperationsInput | string
     id_facilitator?: StringFieldUpdateOperationsInput | string
   }
 
@@ -35707,6 +35791,8 @@ export namespace Prisma {
     long_lokasi: number
     gambar_workshop: string
     status_aktif?: boolean
+    waktu_mulai?: string
+    waktu_berakhir?: string
     id_kabupaten: number
   }
 
@@ -35723,6 +35809,8 @@ export namespace Prisma {
     long_lokasi?: FloatFieldUpdateOperationsInput | number
     gambar_workshop?: StringFieldUpdateOperationsInput | string
     status_aktif?: BoolFieldUpdateOperationsInput | boolean
+    waktu_mulai?: StringFieldUpdateOperationsInput | string
+    waktu_berakhir?: StringFieldUpdateOperationsInput | string
     kabupaten?: KabupatenUpdateOneRequiredWithoutWorkshopNestedInput
     pendaftaran?: WorkshopTerdaftarUpdateManyWithoutWorkshopNestedInput
   }
@@ -35740,6 +35828,8 @@ export namespace Prisma {
     long_lokasi?: FloatFieldUpdateOperationsInput | number
     gambar_workshop?: StringFieldUpdateOperationsInput | string
     status_aktif?: BoolFieldUpdateOperationsInput | boolean
+    waktu_mulai?: StringFieldUpdateOperationsInput | string
+    waktu_berakhir?: StringFieldUpdateOperationsInput | string
     id_kabupaten?: IntFieldUpdateOperationsInput | number
     pendaftaran?: WorkshopTerdaftarUncheckedUpdateManyWithoutWorkshopNestedInput
   }
@@ -35757,6 +35847,8 @@ export namespace Prisma {
     long_lokasi?: FloatFieldUpdateOperationsInput | number
     gambar_workshop?: StringFieldUpdateOperationsInput | string
     status_aktif?: BoolFieldUpdateOperationsInput | boolean
+    waktu_mulai?: StringFieldUpdateOperationsInput | string
+    waktu_berakhir?: StringFieldUpdateOperationsInput | string
     id_kabupaten?: IntFieldUpdateOperationsInput | number
   }
 

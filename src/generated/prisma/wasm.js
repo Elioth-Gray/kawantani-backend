@@ -221,6 +221,8 @@ exports.Prisma.WorkshopScalarFieldEnum = {
   long_lokasi: 'long_lokasi',
   gambar_workshop: 'gambar_workshop',
   status_aktif: 'status_aktif',
+  waktu_mulai: 'waktu_mulai',
+  waktu_berakhir: 'waktu_berakhir',
   id_facilitator: 'id_facilitator',
   id_kabupaten: 'id_kabupaten'
 };

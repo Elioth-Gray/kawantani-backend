@@ -51,6 +51,8 @@ export const createWorkshop = async (data: TCreateWorskhop) => {
     lat,
     long,
     regency,
+    startTime,
+    endTime,
   } = data;
 
   try {
@@ -79,6 +81,8 @@ export const createWorkshop = async (data: TCreateWorskhop) => {
         gambar_workshop: image,
         id_kabupaten: parseInt(regency),
         id_facilitator: user.id,
+        waktu_berakhir: endTime,
+        waktu_mulai: startTime,
       },
     });
 
@@ -145,6 +149,10 @@ export const getActiveWorkshops = async () => {
         status_verifikasi: true,
         status_aktif: true,
         gambar_workshop: true,
+        alaamt_lengkap_workshop: true,
+        harga_workshop: true,
+        waktu_berakhir: true,
+        waktu_mulai: true,
         facilitator: {
           select: {
             nama_facilitator: true,

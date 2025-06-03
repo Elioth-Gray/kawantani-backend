@@ -168,6 +168,8 @@ model Workshop {
   long_lokasi                Float
   gambar_workshop            String    @db.VarChar(255)
   status_aktif               Boolean   @default(true)
+  waktu_mulai                String @db.VarChar(100) @default("08:00")
+  waktu_berakhir             String @db.VarChar(100)  @default("16:00")
 
 
   id_facilitator             String
