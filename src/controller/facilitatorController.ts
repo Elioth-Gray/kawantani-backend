@@ -99,9 +99,11 @@ export const register = async (req: IRequestWithFile, res: Response) => {
 
 export const update = async (req: IRequestWithFile, res: Response) => {
   const fileName = req.file?.filename;
+  const { id } = req.params;
   const data: TUpdateFacilitator = {
     ...req.body,
     avatar: fileName,
+    id: id,
   };
   try {
     const result = await updateFacilitator(data);

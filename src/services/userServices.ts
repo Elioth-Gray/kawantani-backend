@@ -334,6 +334,7 @@ export const updateUserProfile = async (data: TUpdateProfile) => {
 
 export const deleteUser = async (data: TEditUser) => {
   const { user, id } = data;
+  console.log(user);
   try {
     const pengguna = await prisma.pengguna.findUnique({
       where: {
@@ -342,14 +343,14 @@ export const deleteUser = async (data: TEditUser) => {
     });
 
     if (!pengguna) {
-      throw { status: 404, message: 'Artikel tidak ditemukan' };
+      throw { status: 404, message: 'Pengguna tidak ditemukan' };
     }
 
     const isOwner = pengguna.id_pengguna === user.id;
     const isAdmin = user.role === 'admin';
 
     if (!isOwner && !isAdmin) {
-      throw { status: 403, message: 'Tidak diizinkan menghapus artikel ini' };
+      throw { status: 403, message: 'Tidak diizinkan menghapus pengguna ini' };
     }
 
     const result = await prisma.pengguna.update({

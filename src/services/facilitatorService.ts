@@ -5,6 +5,8 @@ import {
   TUpdateFacilitator,
 } from '../types/facilitatorTypes';
 import bcrypt from 'bcryptjs';
+import path from 'path';
+import fs from 'fs';
 
 const registerSchema = Yup.object({
   name: Yup.string().required('Nama depan harus diisi!'),
@@ -235,6 +237,29 @@ export const updateFacilitator = async (data: TUpdateFacilitator) => {
       finalPassword = await bcrypt.hash(password, 10);
     }
 
+    if (avatar) {
+      if (existing.avatar) {
+        const oldAvatarPath = path.join(
+          process.cwd(),
+          'uploads',
+          'facilitators',
+          existing.avatar,
+        );
+        fs.unlink(oldAvatarPath, (err) => {
+          if (err) {
+            console.error('Gagal menghapus file avatar lama:', err.message);
+          }
+        });
+      }
+
+      await prisma.facilitator.update({
+        where: { id_facilitator: id },
+        data: {
+          avatar: avatar,
+        },
+      });
+    }
+
     const result = await prisma.facilitator.update({
       where: { id_facilitator: id },
       data: {
@@ -244,7 +269,6 @@ export const updateFacilitator = async (data: TUpdateFacilitator) => {
         alamat_lengkap_facilitator: fullAddress,
         id_kabupaten: parseInt(regencyId, 10),
         password_facilitator: finalPassword,
-        avatar: avatar,
       },
     });
 

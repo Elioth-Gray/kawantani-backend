@@ -131,7 +131,10 @@ export const updateProfile = async (
 
 export const deleteUs = async (req: IReqUser, res: Response) => {
   const { id } = req.params;
-  const user = req.body;
+  const user = req.user;
+  if (!user) {
+    return res.status(401).json({ message: 'Unauthorized', data: null });
+  }
   const data = {
     id,
     user,
