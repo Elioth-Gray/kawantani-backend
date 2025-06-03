@@ -324,3 +324,118 @@ export const deleteFacilitator = async (data: string) => {
     throw error;
   }
 };
+
+export const getTotalRevenue = async (id: string) => {
+  try {
+    const revenue = await prisma.workshopTerdaftar.findMany({
+      where: {
+        status_pembayaran: true,
+        workshop: id ? { id_facilitator: id } : {},
+      },
+      include: {
+        workshop: {
+          select: {
+            harga_workshop: true,
+          },
+        },
+      },
+    });
+
+    const total = revenue.reduce((sum, item) => {
+      return sum + Number(item.workshop.harga_workshop);
+    }, 0);
+
+    const finalRevenue = Number(total);
+
+    return finalRevenue;
+  } catch (error: any) {
+    if (error.name === 'ValidationError') {
+      throw {
+        status: 400,
+        message: error.errors.join(', '),
+      };
+    }
+    throw error;
+  }
+};
+
+export const getTotalTicketsSold = async (id: string) => {
+  try {
+    const totalTickets = await prisma.workshopTerdaftar.count({
+      where: {
+        status_pembayaran: true,
+        workshop: {
+          id_facilitator: id,
+        },
+      },
+    });
+
+    return totalTickets;
+  } catch (error: any) {
+    if (error.name === 'ValidationError') {
+      throw {
+        status: 400,
+        message: error.errors.join(', '),
+      };
+    }
+    throw error;
+  }
+};
+
+export const getLatestSales = async (id: string, limit = 10) => {
+  try {
+    const latestSales = await prisma.workshopTerdaftar.findMany({
+      take: limit,
+      orderBy: {
+        tanggal_pendaftaran: 'desc',
+      },
+      include: {
+        workshop: {
+          select: {
+            judul_workshop: true,
+            harga_workshop: true,
+            gambar_workshop: true,
+            id_facilitator: true,
+          },
+        },
+        pengguna: {
+          select: {
+            nama_depan_pengguna: true,
+            nama_belakang_pengguna: true,
+            avatar: true,
+          },
+        },
+      },
+      where: {
+        status_pembayaran: true,
+        workshop: {
+          id_facilitator: id,
+        },
+      },
+    });
+
+    return {
+      sales: latestSales.map((sale) => ({
+        id: sale.id_pendaftaran,
+        participantName: `${sale.pengguna.nama_depan_pengguna} ${sale.pengguna.nama_belakang_pengguna}`,
+        workshopTitle: sale.workshop.judul_workshop,
+        amount: sale.workshop.harga_workshop,
+        formattedAmount: `Rp.${Number(
+          sale.workshop.harga_workshop,
+        ).toLocaleString('id-ID')}`,
+        registrationDate: sale.tanggal_pendaftaran,
+        avatar: sale.pengguna.avatar,
+        workshopImage: sale.workshop.gambar_workshop,
+        facilitator: sale.workshop.id_facilitator,
+      })),
+    };
+  } catch (error: any) {
+    if (error.name === 'ValidationError') {
+      throw {
+        status: 400,
+        message: error.errors.join(', '),
+      };
+    }
+    throw error;
+  }
+};

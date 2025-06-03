@@ -437,3 +437,90 @@ export const getWorkshopByFacilitator = async (user: TToken) => {
     throw error;
   }
 };
+
+export const getActiveRegistrants = async (id: string) => {
+  try {
+    const activeRegistrants = await prisma.workshopTerdaftar.count({
+      where: {
+        workshop: {
+          ...(id ? { id_facilitator: id } : {}),
+          tanggal_workshop: {
+            gte: new Date(),
+          },
+          status_aktif: true,
+        },
+      },
+    });
+
+    return activeRegistrants;
+  } catch (error: any) {
+    if (error.name === 'ValidationError') {
+      throw {
+        status: 400,
+        message: error.errors.join(', '),
+      };
+    }
+    throw error;
+  }
+};
+
+export const getPopularWorkshops = async (id: string, limit = 10) => {
+  try {
+    const popularWorkshops = await prisma.workshop.findMany({
+      take: limit,
+      include: {
+        _count: {
+          select: {
+            pendaftaran: {
+              where: {
+                status_pembayaran: true,
+              },
+            },
+          },
+        },
+        facilitator: {
+          select: {
+            nama_facilitator: true,
+          },
+        },
+      },
+      where: {
+        ...(id ? { id_facilitator: id } : {}),
+        status_aktif: true,
+      },
+      orderBy: {
+        pendaftaran: {
+          _count: 'desc',
+        },
+      },
+    });
+
+    return {
+      workshops: popularWorkshops.map((workshop, index) => ({
+        rank: index + 1,
+        id: workshop.id_workshop,
+        title: workshop.judul_workshop,
+        date: workshop.tanggal_workshop,
+        formattedDate: workshop.tanggal_workshop.toLocaleDateString('id-ID', {
+          day: 'numeric',
+          month: 'long',
+          year: 'numeric',
+        }),
+        participantCount: workshop._count.pendaftaran,
+        facilitator: workshop.facilitator.nama_facilitator,
+        facilitatorId: workshop.id_facilitator,
+        capacity: workshop.kapasitas,
+        price: workshop.harga_workshop,
+        image: workshop.gambar_workshop,
+      })),
+    };
+  } catch (error: any) {
+    if (error.name === 'ValidationError') {
+      throw {
+        status: 400,
+        message: error.errors.join(', '),
+      };
+    }
+    throw error;
+  }
+};

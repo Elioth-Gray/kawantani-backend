@@ -3,6 +3,9 @@ import {
   deleteFacilitator,
   getAllFacilitator,
   getAllFacilitatorById,
+  getLatestSales,
+  getTotalRevenue,
+  getTotalTicketsSold,
   registerFacilitator,
   updateFacilitator,
 } from '../services/facilitatorService';
@@ -13,6 +16,7 @@ import {
 import { IRequestWithFile } from '../types/multerTypes';
 import path from 'path';
 import fs from 'fs';
+import { IReqUser } from '../middlewares/authMiddleware';
 
 export const get = async (req: Request, res: Response) => {
   try {
@@ -155,6 +159,78 @@ export const deleteFac = async (req: Request, res: Response) => {
     return res.status(statusCode).json({
       success: false,
       message,
+      data: null,
+    });
+  }
+};
+
+export const totalRevenue = async (req: IReqUser, res: Response) => {
+  const user = req.user;
+
+  if (!user) {
+    return res.status(401).json({ message: 'Unauthorized', data: null });
+  }
+
+  const id = user.id;
+  try {
+    const result = await getTotalRevenue(id);
+
+    res.status(200).json({
+      message: 'Berhasil mendapatkan total keuntungan',
+      data: result,
+    });
+  } catch (error) {
+    const err = error as unknown as Error;
+    res.status(400).json({
+      message: err.message,
+      data: null,
+    });
+  }
+};
+
+export const ticketsSold = async (req: IReqUser, res: Response) => {
+  const user = req.user;
+
+  if (!user) {
+    return res.status(401).json({ message: 'Unauthorized', data: null });
+  }
+
+  const id = user.id;
+  try {
+    const result = await getTotalTicketsSold(id);
+
+    res.status(200).json({
+      message: 'Berhasil mendapatkan total tiket terjual',
+      data: result,
+    });
+  } catch (error) {
+    const err = error as unknown as Error;
+    res.status(400).json({
+      message: err.message,
+      data: null,
+    });
+  }
+};
+
+export const recentSales = async (req: IReqUser, res: Response) => {
+  const user = req.user;
+
+  if (!user) {
+    return res.status(401).json({ message: 'Unauthorized', data: null });
+  }
+
+  const id = user.id;
+  try {
+    const result = await getLatestSales(id);
+
+    res.status(200).json({
+      message: 'Berhasil mendapatkan tiket terjual',
+      data: result,
+    });
+  } catch (error) {
+    const err = error as unknown as Error;
+    res.status(400).json({
+      message: err.message,
       data: null,
     });
   }

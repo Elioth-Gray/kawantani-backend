@@ -5,8 +5,10 @@ import { IRequestWithFileAuth } from '../types/multerTypes';
 import {
   createWorkshop,
   deleteWorkshop,
+  getActiveRegistrants,
   getActiveWorkshops,
   getAllWorkshops,
+  getPopularWorkshops,
   getWorkshopByFacilitator,
   getWorkshopById,
   getWorkshopParticipant,
@@ -235,6 +237,54 @@ export const getOwnWorkshop = async (req: IReqUser, res: Response) => {
 
     res.status(200).json({
       message: 'Berhasil mendapatkan data workshop!',
+      data: result,
+    });
+  } catch (error) {
+    const err = error as unknown as Error;
+    res.status(400).json({
+      message: err.message,
+      data: null,
+    });
+  }
+};
+
+export const activeRegistrants = async (req: IReqUser, res: Response) => {
+  const user = req.user;
+
+  if (!user) {
+    return res.status(401).json({ message: 'Unauthorized', data: null });
+  }
+
+  const id = user.id;
+  try {
+    const result = await getActiveRegistrants(id);
+
+    res.status(200).json({
+      message: 'Berhasil mendapatkan peserta aktif',
+      data: result,
+    });
+  } catch (error) {
+    const err = error as unknown as Error;
+    res.status(400).json({
+      message: err.message,
+      data: null,
+    });
+  }
+};
+
+export const popularWorkshops = async (req: IReqUser, res: Response) => {
+  const user = req.user;
+
+  if (!user) {
+    return res.status(401).json({ message: 'Unauthorized', data: null });
+  }
+
+  const id = user.id;
+  try {
+    const result = await getPopularWorkshops(id);
+
+    res.status(200).json({
+      message: 'Berhasil mendapatkan data workshop populer',
       data: result,
     });
   } catch (error) {

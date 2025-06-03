@@ -10,6 +10,8 @@ import {
   getOwnWorkshop,
   getParticipant,
   getAllActive,
+  activeRegistrants,
+  popularWorkshops,
 } from '../controller/workshopController';
 import authMiddleware from '../middlewares/authMiddleware';
 import { createMulterUploader } from '../utils/multer/multer';
@@ -17,6 +19,20 @@ import roleMiddleware from '../middlewares/roleMiddleware';
 
 const workshopsRouter = express.Router();
 const uploadWorkshopImage = createMulterUploader('workshops');
+
+workshopsRouter.get(
+  '/workshops/participants/active/own',
+  authMiddleware,
+  roleMiddleware(['facilitator']),
+  activeRegistrants,
+);
+
+workshopsRouter.get(
+  '/workshops/popular/own',
+  authMiddleware,
+  roleMiddleware(['facilitator']),
+  popularWorkshops,
+);
 
 workshopsRouter.post(
   '/workshops/create',

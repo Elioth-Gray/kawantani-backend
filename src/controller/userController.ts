@@ -12,6 +12,10 @@ import { IRequestWithFileAuth } from '../types/multerTypes';
 import path from 'path';
 import fs from 'fs';
 import { TToken } from '../types/authTypes';
+import {
+  getTotalRevenue,
+  getTotalTicketsSold,
+} from '../services/facilitatorService';
 
 export const getAllUsers = async (req: Request, res: Response) => {
   try {
