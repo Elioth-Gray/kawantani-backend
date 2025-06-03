@@ -11,7 +11,7 @@ export const getCategory = async (req: Request, res: Response) => {
       success: true,
       message: 'Berhasil mendapatkan data kategori artikel',
       data: {
-        provinces: result,
+        categories: result,
       },
     });
   } catch (error: any) {

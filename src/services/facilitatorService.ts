@@ -26,12 +26,8 @@ const updateSchema = Yup.object({
   name: Yup.string().required('Nama depan harus diisi!'),
   email: Yup.string().email().required('Email harus diisi!'),
   phoneNumber: Yup.string().required('Nomor telepon harus diisi!'),
-  password: Yup.string()
-    .required('Password harus diisi!')
-    .min(6, 'Password minimal 6 karakter!'),
-  confirmPassword: Yup.string()
-    .required('Konfirmasi password harus diisi!')
-    .oneOf([Yup.ref('password')], 'Password harus sama!'),
+  password: Yup.string(),
+  confirmPassword: Yup.string(),
   fullAddress: Yup.string().required('Alamat lengkap harus diisi!'),
   regencyId: Yup.number().required('Provinsi harus diisi!'),
 });
@@ -219,22 +215,16 @@ export const updateFacilitator = async (data: TUpdateFacilitator) => {
       };
     }
 
-    if (!password) {
-      throw {
-        status: 400,
-        message: 'Password harus diisi!',
-      };
-    }
-
-    let finalPassword = existing.password_facilitator;
-
-    const isSamePassword = await bcrypt.compare(
-      password,
-      existing.password_facilitator,
-    );
-
-    if (!isSamePassword) {
-      finalPassword = await bcrypt.hash(password, 10);
+    if (password) {
+      const hashedPassword = await bcrypt.hash(password, 10);
+      await prisma.facilitator.update({
+        where: {
+          id_facilitator: id,
+        },
+        data: {
+          password_facilitator: hashedPassword,
+        },
+      });
     }
 
     if (avatar) {
@@ -268,7 +258,6 @@ export const updateFacilitator = async (data: TUpdateFacilitator) => {
         nomor_telepon_facilitator: phoneNumber,
         alamat_lengkap_facilitator: fullAddress,
         id_kabupaten: parseInt(regencyId, 10),
-        password_facilitator: finalPassword,
       },
     });
 

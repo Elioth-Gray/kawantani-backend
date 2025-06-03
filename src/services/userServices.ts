@@ -24,6 +24,17 @@ const updateProfileSchema = Yup.object({
     .oneOf([Yup.ref('password')], 'Password harus sama!'),
 });
 
+const updateUserSchema = Yup.object({
+  firstName: Yup.string().required('Nama depan harus diisi!'),
+  lastName: Yup.string().required('Nama belakang harus diisi!'),
+  email: Yup.string().email().required('Email harus diisi!'),
+  phoneNumber: Yup.string().required('Nomor telepon harus diisi!'),
+  dateOfBirth: Yup.string().required('Tanggal lahir harus diisi!'),
+  password: Yup.string(),
+  gender: Yup.string().required('Jenis kelamin harus diisi!'),
+  confirmPassword: Yup.string(),
+});
+
 export const getAll = async () => {
   try {
     const users = await prisma.pengguna.findMany({
@@ -96,7 +107,7 @@ export const updateUser = async (data: TUpdateUser) => {
   } = data;
 
   try {
-    await updateProfileSchema.validate(data);
+    await updateUserSchema.validate(data);
 
     const existing = await prisma.pengguna.findUnique({
       where: {
@@ -134,22 +145,16 @@ export const updateUser = async (data: TUpdateUser) => {
       };
     }
 
-    if (!password) {
-      throw {
-        status: 400,
-        message: 'Password harus diisi!',
-      };
-    }
-
-    let finalPassword = existing.password_pengguna;
-
-    const isSamePassword = await bcrypt.compare(
-      password,
-      existing.password_pengguna,
-    );
-
-    if (!isSamePassword) {
-      finalPassword = await bcrypt.hash(password, 10);
+    if (password) {
+      const hashedPassword = await bcrypt.hash(password, 10);
+      await prisma.pengguna.update({
+        where: {
+          id_pengguna: id,
+        },
+        data: {
+          password_pengguna: hashedPassword,
+        },
+      });
     }
 
     const dateOfBirthNew = new Date(dateOfBirth);
@@ -184,7 +189,6 @@ export const updateUser = async (data: TUpdateUser) => {
         nama_belakang_pengguna: lastName,
         email_pengguna: email,
         nomor_telepon_pengguna: phoneNumber,
-        password_pengguna: finalPassword,
         tanggal_lahir_pengguna: dateOfBirthNew,
         jenisKelamin: parseInt(gender, 10),
       },
