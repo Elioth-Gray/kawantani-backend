@@ -417,7 +417,7 @@ export const getLatestSales = async (id: string, limit = 10) => {
     return {
       sales: latestSales.map((sale) => ({
         id: sale.id_pendaftaran,
-        participantName: `${sale.pengguna.nama_depan_pengguna} ${sale.pengguna.nama_belakang_pengguna}`,
+        participantName: `${sale.nama_depan_peserta} ${sale.nama_belakang_peserta}`,
         workshopTitle: sale.workshop.judul_workshop,
         amount: sale.workshop.harga_workshop,
         formattedAmount: `Rp.${Number(

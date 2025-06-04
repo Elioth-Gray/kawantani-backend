@@ -7,6 +7,8 @@ import {
   deleteWorkshop,
   getActiveRegistrants,
   getActiveWorkshops,
+  getAllParticipants,
+  getAllSales,
   getAllWorkshops,
   getPopularWorkshops,
   getWorkshopByFacilitator,
@@ -285,6 +287,54 @@ export const popularWorkshops = async (req: IReqUser, res: Response) => {
 
     res.status(200).json({
       message: 'Berhasil mendapatkan data workshop populer',
+      data: result,
+    });
+  } catch (error) {
+    const err = error as unknown as Error;
+    res.status(400).json({
+      message: err.message,
+      data: null,
+    });
+  }
+};
+
+export const allSales = async (req: IReqUser, res: Response) => {
+  const user = req.user;
+
+  if (!user) {
+    return res.status(401).json({ message: 'Unauthorized', data: null });
+  }
+
+  const id = user.id;
+  try {
+    const result = await getAllSales(id);
+
+    res.status(200).json({
+      message: 'Berhasil mendapatkan data penjualan',
+      data: result,
+    });
+  } catch (error) {
+    const err = error as unknown as Error;
+    res.status(400).json({
+      message: err.message,
+      data: null,
+    });
+  }
+};
+
+export const allParticipants = async (req: IReqUser, res: Response) => {
+  const user = req.user;
+
+  if (!user) {
+    return res.status(401).json({ message: 'Unauthorized', data: null });
+  }
+
+  const id = user.id;
+  try {
+    const result = await getAllParticipants(id);
+
+    res.status(200).json({
+      message: 'Berhasil mendapatkan data penjualan',
       data: result,
     });
   } catch (error) {

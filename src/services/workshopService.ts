@@ -423,6 +423,7 @@ export const getWorkshopByFacilitator = async (user: TToken) => {
     const workshop = await prisma.workshop.findMany({
       where: {
         id_facilitator: user.id,
+        status_aktif: true,
       },
     });
 
@@ -514,6 +515,57 @@ export const getPopularWorkshops = async (id: string, limit = 10) => {
         image: workshop.gambar_workshop,
       })),
     };
+  } catch (error: any) {
+    if (error.name === 'ValidationError') {
+      throw {
+        status: 400,
+        message: error.errors.join(', '),
+      };
+    }
+    throw error;
+  }
+};
+
+export const getAllSales = async (id: string) => {
+  try {
+    const allSales = await prisma.workshopTerdaftar.findMany({
+      where: {
+        workshop: {
+          id_facilitator: id,
+        },
+        status_pembayaran: true,
+      },
+      include: {
+        workshop: true,
+      },
+    });
+
+    return allSales;
+  } catch (error: any) {
+    if (error.name === 'ValidationError') {
+      throw {
+        status: 400,
+        message: error.errors.join(', '),
+      };
+    }
+    throw error;
+  }
+};
+
+export const getAllParticipants = async (id: string) => {
+  try {
+    const allSales = await prisma.workshopTerdaftar.findMany({
+      where: {
+        workshop: {
+          id_facilitator: id,
+        },
+      },
+      include: {
+        workshop: true,
+      },
+    });
+
+    return allSales;
   } catch (error: any) {
     if (error.name === 'ValidationError') {
       throw {
