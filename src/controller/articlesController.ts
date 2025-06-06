@@ -170,9 +170,14 @@ export const update = async (req: IRequestWithFileAuth, res: Response) => {
 
 export const verify = async (req: IReqUser, res: Response) => {
   const { id } = req.params;
+  const { status } = req.body;
+  const data = {
+    id,
+    status,
+  };
 
   try {
-    const result = await verifyArticle(id);
+    const result = await verifyArticle(data);
 
     res.status(200).json({
       message: 'Artikel berhasil diverifikasi',

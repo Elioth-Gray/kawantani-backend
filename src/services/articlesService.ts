@@ -7,8 +7,9 @@ import {
   TLikeArticle,
   TSaveArticle,
   TUpdateArticle,
+  TVerify,
 } from '../types/articlesType';
-import { StatusArtikel } from '../generated/prisma';
+import { StatusArtikel, StatusVerifikasiArtikel } from '../generated/prisma';
 import { TToken } from '../types/authTypes';
 
 const createSchema = Yup.object({
@@ -94,7 +95,7 @@ export const getActiveArticle = async () => {
     const articles = await prisma.artikel.findMany({
       where: {
         status_aktif: true,
-        status_verifikasi: true,
+        status_verifikasi: StatusVerifikasiArtikel.DIVERIFIKASI,
         status_artikel: StatusArtikel.PUBLISHED,
       },
       select: {
@@ -221,6 +222,7 @@ export const createArticle = async (data: TCreateArticle) => {
         id_kategori_artikel: kategori.id_kategori_artikel,
         id_pengguna: user.id,
         tanggal_artikel: tanggalPembuatanArtikel,
+        status_verifikasi: StatusVerifikasiArtikel.MENUNGGU,
       },
     });
 
@@ -277,7 +279,7 @@ export const updateArticle = async (data: TUpdateArticle) => {
         isi_artikel: content,
         gambar_artikel: image,
         status_artikel: articleStatus as StatusArtikel,
-        status_verifikasi: false,
+        status_verifikasi: StatusVerifikasiArtikel.MENUNGGU,
       },
     });
 
@@ -293,14 +295,27 @@ export const updateArticle = async (data: TUpdateArticle) => {
   }
 };
 
-export const verifyArticle = async (id: string) => {
+export const verifyArticle = async (data: TVerify) => {
   try {
+    if (!['MENUNGGU', 'DIVERIFIKASI', 'DITOLAK'].includes(data.status)) {
+      throw {
+        status: 400,
+        message: 'Status verifikasi tidak valid!',
+      };
+    }
+
+    let verify: StatusVerifikasiArtikel;
+
+    data?.status === StatusVerifikasiArtikel.DIVERIFIKASI
+      ? (verify = StatusVerifikasiArtikel.DIVERIFIKASI)
+      : (verify = StatusVerifikasiArtikel.DITOLAK);
+
     const result = await prisma.artikel.update({
       where: {
-        id_artikel: id,
+        id_artikel: data.id,
       },
       data: {
-        status_verifikasi: true,
+        status_verifikasi: verify,
       },
     });
 

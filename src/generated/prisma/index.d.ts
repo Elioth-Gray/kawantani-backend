@@ -130,11 +130,37 @@ export namespace $Enums {
 
 export type StatusArtikel = (typeof StatusArtikel)[keyof typeof StatusArtikel]
 
+
+export const StatusVerifikasiArtikel: {
+  MENUNGGU: 'MENUNGGU',
+  DIVERIFIKASI: 'DIVERIFIKASI',
+  DITOLAK: 'DITOLAK'
+};
+
+export type StatusVerifikasiArtikel = (typeof StatusVerifikasiArtikel)[keyof typeof StatusVerifikasiArtikel]
+
+
+export const StatusVerifikasiWorkshop: {
+  MENUNGGU: 'MENUNGGU',
+  DIVERIFIKASI: 'DIVERIFIKASI',
+  DITOLAK: 'DITOLAK'
+};
+
+export type StatusVerifikasiWorkshop = (typeof StatusVerifikasiWorkshop)[keyof typeof StatusVerifikasiWorkshop]
+
 }
 
 export type StatusArtikel = $Enums.StatusArtikel
 
 export const StatusArtikel: typeof $Enums.StatusArtikel
+
+export type StatusVerifikasiArtikel = $Enums.StatusVerifikasiArtikel
+
+export const StatusVerifikasiArtikel: typeof $Enums.StatusVerifikasiArtikel
+
+export type StatusVerifikasiWorkshop = $Enums.StatusVerifikasiWorkshop
+
+export const StatusVerifikasiWorkshop: typeof $Enums.StatusVerifikasiWorkshop
 
 /**
  * ##  Prisma Client ʲˢ
@@ -8987,7 +9013,7 @@ export namespace Prisma {
     deskripsi_artikel: string | null
     isi_artikel: string | null
     status_artikel: $Enums.StatusArtikel | null
-    status_verifikasi: boolean | null
+    status_verifikasi: $Enums.StatusVerifikasiArtikel | null
     gambar_artikel: string | null
     status_aktif: boolean | null
     id_kategori_artikel: number | null
@@ -9001,7 +9027,7 @@ export namespace Prisma {
     deskripsi_artikel: string | null
     isi_artikel: string | null
     status_artikel: $Enums.StatusArtikel | null
-    status_verifikasi: boolean | null
+    status_verifikasi: $Enums.StatusVerifikasiArtikel | null
     gambar_artikel: string | null
     status_aktif: boolean | null
     id_kategori_artikel: number | null
@@ -9168,7 +9194,7 @@ export namespace Prisma {
     deskripsi_artikel: string
     isi_artikel: string
     status_artikel: $Enums.StatusArtikel
-    status_verifikasi: boolean
+    status_verifikasi: $Enums.StatusVerifikasiArtikel
     gambar_artikel: string
     status_aktif: boolean
     id_kategori_artikel: number
@@ -9294,7 +9320,7 @@ export namespace Prisma {
       deskripsi_artikel: string
       isi_artikel: string
       status_artikel: $Enums.StatusArtikel
-      status_verifikasi: boolean
+      status_verifikasi: $Enums.StatusVerifikasiArtikel
       gambar_artikel: string
       status_aktif: boolean
       id_kategori_artikel: number
@@ -9733,7 +9759,7 @@ export namespace Prisma {
     readonly deskripsi_artikel: FieldRef<"Artikel", 'String'>
     readonly isi_artikel: FieldRef<"Artikel", 'String'>
     readonly status_artikel: FieldRef<"Artikel", 'StatusArtikel'>
-    readonly status_verifikasi: FieldRef<"Artikel", 'Boolean'>
+    readonly status_verifikasi: FieldRef<"Artikel", 'StatusVerifikasiArtikel'>
     readonly gambar_artikel: FieldRef<"Artikel", 'String'>
     readonly status_aktif: FieldRef<"Artikel", 'Boolean'>
     readonly id_kategori_artikel: FieldRef<"Artikel", 'Int'>
@@ -14590,7 +14616,7 @@ export namespace Prisma {
     deskripsi_workshop: string | null
     harga_workshop: Decimal | null
     kapasitas: number | null
-    status_verifikasi: boolean | null
+    status_verifikasi: $Enums.StatusVerifikasiWorkshop | null
     lat_lokasi: number | null
     long_lokasi: number | null
     gambar_workshop: string | null
@@ -14609,7 +14635,7 @@ export namespace Prisma {
     deskripsi_workshop: string | null
     harga_workshop: Decimal | null
     kapasitas: number | null
-    status_verifikasi: boolean | null
+    status_verifikasi: $Enums.StatusVerifikasiWorkshop | null
     lat_lokasi: number | null
     long_lokasi: number | null
     gambar_workshop: string | null
@@ -14809,7 +14835,7 @@ export namespace Prisma {
     deskripsi_workshop: string
     harga_workshop: Decimal
     kapasitas: number
-    status_verifikasi: boolean
+    status_verifikasi: $Enums.StatusVerifikasiWorkshop
     lat_lokasi: number
     long_lokasi: number
     gambar_workshop: string
@@ -14954,7 +14980,7 @@ export namespace Prisma {
       deskripsi_workshop: string
       harga_workshop: Prisma.Decimal
       kapasitas: number
-      status_verifikasi: boolean
+      status_verifikasi: $Enums.StatusVerifikasiWorkshop
       lat_lokasi: number
       long_lokasi: number
       gambar_workshop: string
@@ -15396,7 +15422,7 @@ export namespace Prisma {
     readonly deskripsi_workshop: FieldRef<"Workshop", 'String'>
     readonly harga_workshop: FieldRef<"Workshop", 'Decimal'>
     readonly kapasitas: FieldRef<"Workshop", 'Int'>
-    readonly status_verifikasi: FieldRef<"Workshop", 'Boolean'>
+    readonly status_verifikasi: FieldRef<"Workshop", 'StatusVerifikasiWorkshop'>
     readonly lat_lokasi: FieldRef<"Workshop", 'Float'>
     readonly long_lokasi: FieldRef<"Workshop", 'Float'>
     readonly gambar_workshop: FieldRef<"Workshop", 'String'>
@@ -27253,6 +27279,20 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'StatusVerifikasiArtikel'
+   */
+  export type EnumStatusVerifikasiArtikelFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'StatusVerifikasiArtikel'>
+    
+
+
+  /**
+   * Reference to a field of type 'StatusVerifikasiArtikel[]'
+   */
+  export type ListEnumStatusVerifikasiArtikelFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'StatusVerifikasiArtikel[]'>
+    
+
+
+  /**
    * Reference to a field of type 'Decimal'
    */
   export type DecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Decimal'>
@@ -27263,6 +27303,20 @@ export namespace Prisma {
    * Reference to a field of type 'Decimal[]'
    */
   export type ListDecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Decimal[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'StatusVerifikasiWorkshop'
+   */
+  export type EnumStatusVerifikasiWorkshopFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'StatusVerifikasiWorkshop'>
+    
+
+
+  /**
+   * Reference to a field of type 'StatusVerifikasiWorkshop[]'
+   */
+  export type ListEnumStatusVerifikasiWorkshopFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'StatusVerifikasiWorkshop[]'>
     
 
 
@@ -27652,7 +27706,7 @@ export namespace Prisma {
     deskripsi_artikel?: StringFilter<"Artikel"> | string
     isi_artikel?: StringFilter<"Artikel"> | string
     status_artikel?: EnumStatusArtikelFilter<"Artikel"> | $Enums.StatusArtikel
-    status_verifikasi?: BoolFilter<"Artikel"> | boolean
+    status_verifikasi?: EnumStatusVerifikasiArtikelFilter<"Artikel"> | $Enums.StatusVerifikasiArtikel
     gambar_artikel?: StringFilter<"Artikel"> | string
     status_aktif?: BoolFilter<"Artikel"> | boolean
     id_kategori_artikel?: IntFilter<"Artikel"> | number
@@ -27693,7 +27747,7 @@ export namespace Prisma {
     deskripsi_artikel?: StringFilter<"Artikel"> | string
     isi_artikel?: StringFilter<"Artikel"> | string
     status_artikel?: EnumStatusArtikelFilter<"Artikel"> | $Enums.StatusArtikel
-    status_verifikasi?: BoolFilter<"Artikel"> | boolean
+    status_verifikasi?: EnumStatusVerifikasiArtikelFilter<"Artikel"> | $Enums.StatusVerifikasiArtikel
     gambar_artikel?: StringFilter<"Artikel"> | string
     status_aktif?: BoolFilter<"Artikel"> | boolean
     id_kategori_artikel?: IntFilter<"Artikel"> | number
@@ -27734,7 +27788,7 @@ export namespace Prisma {
     deskripsi_artikel?: StringWithAggregatesFilter<"Artikel"> | string
     isi_artikel?: StringWithAggregatesFilter<"Artikel"> | string
     status_artikel?: EnumStatusArtikelWithAggregatesFilter<"Artikel"> | $Enums.StatusArtikel
-    status_verifikasi?: BoolWithAggregatesFilter<"Artikel"> | boolean
+    status_verifikasi?: EnumStatusVerifikasiArtikelWithAggregatesFilter<"Artikel"> | $Enums.StatusVerifikasiArtikel
     gambar_artikel?: StringWithAggregatesFilter<"Artikel"> | string
     status_aktif?: BoolWithAggregatesFilter<"Artikel"> | boolean
     id_kategori_artikel?: IntWithAggregatesFilter<"Artikel"> | number
@@ -27962,7 +28016,7 @@ export namespace Prisma {
     deskripsi_workshop?: StringFilter<"Workshop"> | string
     harga_workshop?: DecimalFilter<"Workshop"> | Decimal | DecimalJsLike | number | string
     kapasitas?: IntFilter<"Workshop"> | number
-    status_verifikasi?: BoolFilter<"Workshop"> | boolean
+    status_verifikasi?: EnumStatusVerifikasiWorkshopFilter<"Workshop"> | $Enums.StatusVerifikasiWorkshop
     lat_lokasi?: FloatFilter<"Workshop"> | number
     long_lokasi?: FloatFilter<"Workshop"> | number
     gambar_workshop?: StringFilter<"Workshop"> | string
@@ -28009,7 +28063,7 @@ export namespace Prisma {
     deskripsi_workshop?: StringFilter<"Workshop"> | string
     harga_workshop?: DecimalFilter<"Workshop"> | Decimal | DecimalJsLike | number | string
     kapasitas?: IntFilter<"Workshop"> | number
-    status_verifikasi?: BoolFilter<"Workshop"> | boolean
+    status_verifikasi?: EnumStatusVerifikasiWorkshopFilter<"Workshop"> | $Enums.StatusVerifikasiWorkshop
     lat_lokasi?: FloatFilter<"Workshop"> | number
     long_lokasi?: FloatFilter<"Workshop"> | number
     gambar_workshop?: StringFilter<"Workshop"> | string
@@ -28058,7 +28112,7 @@ export namespace Prisma {
     deskripsi_workshop?: StringWithAggregatesFilter<"Workshop"> | string
     harga_workshop?: DecimalWithAggregatesFilter<"Workshop"> | Decimal | DecimalJsLike | number | string
     kapasitas?: IntWithAggregatesFilter<"Workshop"> | number
-    status_verifikasi?: BoolWithAggregatesFilter<"Workshop"> | boolean
+    status_verifikasi?: EnumStatusVerifikasiWorkshopWithAggregatesFilter<"Workshop"> | $Enums.StatusVerifikasiWorkshop
     lat_lokasi?: FloatWithAggregatesFilter<"Workshop"> | number
     long_lokasi?: FloatWithAggregatesFilter<"Workshop"> | number
     gambar_workshop?: StringWithAggregatesFilter<"Workshop"> | string
@@ -29030,7 +29084,7 @@ export namespace Prisma {
     deskripsi_artikel: string
     isi_artikel: string
     status_artikel: $Enums.StatusArtikel
-    status_verifikasi?: boolean
+    status_verifikasi: $Enums.StatusVerifikasiArtikel
     gambar_artikel: string
     status_aktif?: boolean
     kategori: KategoriArtikelCreateNestedOneWithoutArtikelInput
@@ -29047,7 +29101,7 @@ export namespace Prisma {
     deskripsi_artikel: string
     isi_artikel: string
     status_artikel: $Enums.StatusArtikel
-    status_verifikasi?: boolean
+    status_verifikasi: $Enums.StatusVerifikasiArtikel
     gambar_artikel: string
     status_aktif?: boolean
     id_kategori_artikel: number
@@ -29064,7 +29118,7 @@ export namespace Prisma {
     deskripsi_artikel?: StringFieldUpdateOperationsInput | string
     isi_artikel?: StringFieldUpdateOperationsInput | string
     status_artikel?: EnumStatusArtikelFieldUpdateOperationsInput | $Enums.StatusArtikel
-    status_verifikasi?: BoolFieldUpdateOperationsInput | boolean
+    status_verifikasi?: EnumStatusVerifikasiArtikelFieldUpdateOperationsInput | $Enums.StatusVerifikasiArtikel
     gambar_artikel?: StringFieldUpdateOperationsInput | string
     status_aktif?: BoolFieldUpdateOperationsInput | boolean
     kategori?: KategoriArtikelUpdateOneRequiredWithoutArtikelNestedInput
@@ -29081,7 +29135,7 @@ export namespace Prisma {
     deskripsi_artikel?: StringFieldUpdateOperationsInput | string
     isi_artikel?: StringFieldUpdateOperationsInput | string
     status_artikel?: EnumStatusArtikelFieldUpdateOperationsInput | $Enums.StatusArtikel
-    status_verifikasi?: BoolFieldUpdateOperationsInput | boolean
+    status_verifikasi?: EnumStatusVerifikasiArtikelFieldUpdateOperationsInput | $Enums.StatusVerifikasiArtikel
     gambar_artikel?: StringFieldUpdateOperationsInput | string
     status_aktif?: BoolFieldUpdateOperationsInput | boolean
     id_kategori_artikel?: IntFieldUpdateOperationsInput | number
@@ -29098,7 +29152,7 @@ export namespace Prisma {
     deskripsi_artikel: string
     isi_artikel: string
     status_artikel: $Enums.StatusArtikel
-    status_verifikasi?: boolean
+    status_verifikasi: $Enums.StatusVerifikasiArtikel
     gambar_artikel: string
     status_aktif?: boolean
     id_kategori_artikel: number
@@ -29112,7 +29166,7 @@ export namespace Prisma {
     deskripsi_artikel?: StringFieldUpdateOperationsInput | string
     isi_artikel?: StringFieldUpdateOperationsInput | string
     status_artikel?: EnumStatusArtikelFieldUpdateOperationsInput | $Enums.StatusArtikel
-    status_verifikasi?: BoolFieldUpdateOperationsInput | boolean
+    status_verifikasi?: EnumStatusVerifikasiArtikelFieldUpdateOperationsInput | $Enums.StatusVerifikasiArtikel
     gambar_artikel?: StringFieldUpdateOperationsInput | string
     status_aktif?: BoolFieldUpdateOperationsInput | boolean
   }
@@ -29124,7 +29178,7 @@ export namespace Prisma {
     deskripsi_artikel?: StringFieldUpdateOperationsInput | string
     isi_artikel?: StringFieldUpdateOperationsInput | string
     status_artikel?: EnumStatusArtikelFieldUpdateOperationsInput | $Enums.StatusArtikel
-    status_verifikasi?: BoolFieldUpdateOperationsInput | boolean
+    status_verifikasi?: EnumStatusVerifikasiArtikelFieldUpdateOperationsInput | $Enums.StatusVerifikasiArtikel
     gambar_artikel?: StringFieldUpdateOperationsInput | string
     status_aktif?: BoolFieldUpdateOperationsInput | boolean
     id_kategori_artikel?: IntFieldUpdateOperationsInput | number
@@ -29308,7 +29362,7 @@ export namespace Prisma {
     deskripsi_workshop: string
     harga_workshop: Decimal | DecimalJsLike | number | string
     kapasitas: number
-    status_verifikasi?: boolean
+    status_verifikasi: $Enums.StatusVerifikasiWorkshop
     lat_lokasi: number
     long_lokasi: number
     gambar_workshop: string
@@ -29328,7 +29382,7 @@ export namespace Prisma {
     deskripsi_workshop: string
     harga_workshop: Decimal | DecimalJsLike | number | string
     kapasitas: number
-    status_verifikasi?: boolean
+    status_verifikasi: $Enums.StatusVerifikasiWorkshop
     lat_lokasi: number
     long_lokasi: number
     gambar_workshop: string
@@ -29348,7 +29402,7 @@ export namespace Prisma {
     deskripsi_workshop?: StringFieldUpdateOperationsInput | string
     harga_workshop?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     kapasitas?: IntFieldUpdateOperationsInput | number
-    status_verifikasi?: BoolFieldUpdateOperationsInput | boolean
+    status_verifikasi?: EnumStatusVerifikasiWorkshopFieldUpdateOperationsInput | $Enums.StatusVerifikasiWorkshop
     lat_lokasi?: FloatFieldUpdateOperationsInput | number
     long_lokasi?: FloatFieldUpdateOperationsInput | number
     gambar_workshop?: StringFieldUpdateOperationsInput | string
@@ -29368,7 +29422,7 @@ export namespace Prisma {
     deskripsi_workshop?: StringFieldUpdateOperationsInput | string
     harga_workshop?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     kapasitas?: IntFieldUpdateOperationsInput | number
-    status_verifikasi?: BoolFieldUpdateOperationsInput | boolean
+    status_verifikasi?: EnumStatusVerifikasiWorkshopFieldUpdateOperationsInput | $Enums.StatusVerifikasiWorkshop
     lat_lokasi?: FloatFieldUpdateOperationsInput | number
     long_lokasi?: FloatFieldUpdateOperationsInput | number
     gambar_workshop?: StringFieldUpdateOperationsInput | string
@@ -29388,7 +29442,7 @@ export namespace Prisma {
     deskripsi_workshop: string
     harga_workshop: Decimal | DecimalJsLike | number | string
     kapasitas: number
-    status_verifikasi?: boolean
+    status_verifikasi: $Enums.StatusVerifikasiWorkshop
     lat_lokasi: number
     long_lokasi: number
     gambar_workshop: string
@@ -29407,7 +29461,7 @@ export namespace Prisma {
     deskripsi_workshop?: StringFieldUpdateOperationsInput | string
     harga_workshop?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     kapasitas?: IntFieldUpdateOperationsInput | number
-    status_verifikasi?: BoolFieldUpdateOperationsInput | boolean
+    status_verifikasi?: EnumStatusVerifikasiWorkshopFieldUpdateOperationsInput | $Enums.StatusVerifikasiWorkshop
     lat_lokasi?: FloatFieldUpdateOperationsInput | number
     long_lokasi?: FloatFieldUpdateOperationsInput | number
     gambar_workshop?: StringFieldUpdateOperationsInput | string
@@ -29424,7 +29478,7 @@ export namespace Prisma {
     deskripsi_workshop?: StringFieldUpdateOperationsInput | string
     harga_workshop?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     kapasitas?: IntFieldUpdateOperationsInput | number
-    status_verifikasi?: BoolFieldUpdateOperationsInput | boolean
+    status_verifikasi?: EnumStatusVerifikasiWorkshopFieldUpdateOperationsInput | $Enums.StatusVerifikasiWorkshop
     lat_lokasi?: FloatFieldUpdateOperationsInput | number
     long_lokasi?: FloatFieldUpdateOperationsInput | number
     gambar_workshop?: StringFieldUpdateOperationsInput | string
@@ -30342,6 +30396,13 @@ export namespace Prisma {
     not?: NestedEnumStatusArtikelFilter<$PrismaModel> | $Enums.StatusArtikel
   }
 
+  export type EnumStatusVerifikasiArtikelFilter<$PrismaModel = never> = {
+    equals?: $Enums.StatusVerifikasiArtikel | EnumStatusVerifikasiArtikelFieldRefInput<$PrismaModel>
+    in?: $Enums.StatusVerifikasiArtikel[] | ListEnumStatusVerifikasiArtikelFieldRefInput<$PrismaModel>
+    notIn?: $Enums.StatusVerifikasiArtikel[] | ListEnumStatusVerifikasiArtikelFieldRefInput<$PrismaModel>
+    not?: NestedEnumStatusVerifikasiArtikelFilter<$PrismaModel> | $Enums.StatusVerifikasiArtikel
+  }
+
   export type KategoriArtikelScalarRelationFilter = {
     is?: KategoriArtikelWhereInput
     isNot?: KategoriArtikelWhereInput
@@ -30410,6 +30471,16 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumStatusArtikelFilter<$PrismaModel>
     _max?: NestedEnumStatusArtikelFilter<$PrismaModel>
+  }
+
+  export type EnumStatusVerifikasiArtikelWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.StatusVerifikasiArtikel | EnumStatusVerifikasiArtikelFieldRefInput<$PrismaModel>
+    in?: $Enums.StatusVerifikasiArtikel[] | ListEnumStatusVerifikasiArtikelFieldRefInput<$PrismaModel>
+    notIn?: $Enums.StatusVerifikasiArtikel[] | ListEnumStatusVerifikasiArtikelFieldRefInput<$PrismaModel>
+    not?: NestedEnumStatusVerifikasiArtikelWithAggregatesFilter<$PrismaModel> | $Enums.StatusVerifikasiArtikel
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumStatusVerifikasiArtikelFilter<$PrismaModel>
+    _max?: NestedEnumStatusVerifikasiArtikelFilter<$PrismaModel>
   }
 
   export type KategoriArtikelCountOrderByAggregateInput = {
@@ -30555,6 +30626,13 @@ export namespace Prisma {
     not?: NestedDecimalFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
   }
 
+  export type EnumStatusVerifikasiWorkshopFilter<$PrismaModel = never> = {
+    equals?: $Enums.StatusVerifikasiWorkshop | EnumStatusVerifikasiWorkshopFieldRefInput<$PrismaModel>
+    in?: $Enums.StatusVerifikasiWorkshop[] | ListEnumStatusVerifikasiWorkshopFieldRefInput<$PrismaModel>
+    notIn?: $Enums.StatusVerifikasiWorkshop[] | ListEnumStatusVerifikasiWorkshopFieldRefInput<$PrismaModel>
+    not?: NestedEnumStatusVerifikasiWorkshopFilter<$PrismaModel> | $Enums.StatusVerifikasiWorkshop
+  }
+
   export type FloatFilter<$PrismaModel = never> = {
     equals?: number | FloatFieldRefInput<$PrismaModel>
     in?: number[] | ListFloatFieldRefInput<$PrismaModel>
@@ -30658,6 +30736,16 @@ export namespace Prisma {
     _sum?: NestedDecimalFilter<$PrismaModel>
     _min?: NestedDecimalFilter<$PrismaModel>
     _max?: NestedDecimalFilter<$PrismaModel>
+  }
+
+  export type EnumStatusVerifikasiWorkshopWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.StatusVerifikasiWorkshop | EnumStatusVerifikasiWorkshopFieldRefInput<$PrismaModel>
+    in?: $Enums.StatusVerifikasiWorkshop[] | ListEnumStatusVerifikasiWorkshopFieldRefInput<$PrismaModel>
+    notIn?: $Enums.StatusVerifikasiWorkshop[] | ListEnumStatusVerifikasiWorkshopFieldRefInput<$PrismaModel>
+    not?: NestedEnumStatusVerifikasiWorkshopWithAggregatesFilter<$PrismaModel> | $Enums.StatusVerifikasiWorkshop
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumStatusVerifikasiWorkshopFilter<$PrismaModel>
+    _max?: NestedEnumStatusVerifikasiWorkshopFilter<$PrismaModel>
   }
 
   export type FloatWithAggregatesFilter<$PrismaModel = never> = {
@@ -31641,6 +31729,10 @@ export namespace Prisma {
     set?: $Enums.StatusArtikel
   }
 
+  export type EnumStatusVerifikasiArtikelFieldUpdateOperationsInput = {
+    set?: $Enums.StatusVerifikasiArtikel
+  }
+
   export type KategoriArtikelUpdateOneRequiredWithoutArtikelNestedInput = {
     create?: XOR<KategoriArtikelCreateWithoutArtikelInput, KategoriArtikelUncheckedCreateWithoutArtikelInput>
     connectOrCreate?: KategoriArtikelCreateOrConnectWithoutArtikelInput
@@ -31899,6 +31991,10 @@ export namespace Prisma {
     decrement?: Decimal | DecimalJsLike | number | string
     multiply?: Decimal | DecimalJsLike | number | string
     divide?: Decimal | DecimalJsLike | number | string
+  }
+
+  export type EnumStatusVerifikasiWorkshopFieldUpdateOperationsInput = {
+    set?: $Enums.StatusVerifikasiWorkshop
   }
 
   export type FloatFieldUpdateOperationsInput = {
@@ -32561,6 +32657,13 @@ export namespace Prisma {
     not?: NestedEnumStatusArtikelFilter<$PrismaModel> | $Enums.StatusArtikel
   }
 
+  export type NestedEnumStatusVerifikasiArtikelFilter<$PrismaModel = never> = {
+    equals?: $Enums.StatusVerifikasiArtikel | EnumStatusVerifikasiArtikelFieldRefInput<$PrismaModel>
+    in?: $Enums.StatusVerifikasiArtikel[] | ListEnumStatusVerifikasiArtikelFieldRefInput<$PrismaModel>
+    notIn?: $Enums.StatusVerifikasiArtikel[] | ListEnumStatusVerifikasiArtikelFieldRefInput<$PrismaModel>
+    not?: NestedEnumStatusVerifikasiArtikelFilter<$PrismaModel> | $Enums.StatusVerifikasiArtikel
+  }
+
   export type NestedEnumStatusArtikelWithAggregatesFilter<$PrismaModel = never> = {
     equals?: $Enums.StatusArtikel | EnumStatusArtikelFieldRefInput<$PrismaModel>
     in?: $Enums.StatusArtikel[] | ListEnumStatusArtikelFieldRefInput<$PrismaModel>
@@ -32569,6 +32672,16 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumStatusArtikelFilter<$PrismaModel>
     _max?: NestedEnumStatusArtikelFilter<$PrismaModel>
+  }
+
+  export type NestedEnumStatusVerifikasiArtikelWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.StatusVerifikasiArtikel | EnumStatusVerifikasiArtikelFieldRefInput<$PrismaModel>
+    in?: $Enums.StatusVerifikasiArtikel[] | ListEnumStatusVerifikasiArtikelFieldRefInput<$PrismaModel>
+    notIn?: $Enums.StatusVerifikasiArtikel[] | ListEnumStatusVerifikasiArtikelFieldRefInput<$PrismaModel>
+    not?: NestedEnumStatusVerifikasiArtikelWithAggregatesFilter<$PrismaModel> | $Enums.StatusVerifikasiArtikel
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumStatusVerifikasiArtikelFilter<$PrismaModel>
+    _max?: NestedEnumStatusVerifikasiArtikelFilter<$PrismaModel>
   }
 
   export type NestedDecimalFilter<$PrismaModel = never> = {
@@ -32580,6 +32693,13 @@ export namespace Prisma {
     gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
     gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
     not?: NestedDecimalFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
+  }
+
+  export type NestedEnumStatusVerifikasiWorkshopFilter<$PrismaModel = never> = {
+    equals?: $Enums.StatusVerifikasiWorkshop | EnumStatusVerifikasiWorkshopFieldRefInput<$PrismaModel>
+    in?: $Enums.StatusVerifikasiWorkshop[] | ListEnumStatusVerifikasiWorkshopFieldRefInput<$PrismaModel>
+    notIn?: $Enums.StatusVerifikasiWorkshop[] | ListEnumStatusVerifikasiWorkshopFieldRefInput<$PrismaModel>
+    not?: NestedEnumStatusVerifikasiWorkshopFilter<$PrismaModel> | $Enums.StatusVerifikasiWorkshop
   }
 
   export type NestedDecimalWithAggregatesFilter<$PrismaModel = never> = {
@@ -32596,6 +32716,16 @@ export namespace Prisma {
     _sum?: NestedDecimalFilter<$PrismaModel>
     _min?: NestedDecimalFilter<$PrismaModel>
     _max?: NestedDecimalFilter<$PrismaModel>
+  }
+
+  export type NestedEnumStatusVerifikasiWorkshopWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.StatusVerifikasiWorkshop | EnumStatusVerifikasiWorkshopFieldRefInput<$PrismaModel>
+    in?: $Enums.StatusVerifikasiWorkshop[] | ListEnumStatusVerifikasiWorkshopFieldRefInput<$PrismaModel>
+    notIn?: $Enums.StatusVerifikasiWorkshop[] | ListEnumStatusVerifikasiWorkshopFieldRefInput<$PrismaModel>
+    not?: NestedEnumStatusVerifikasiWorkshopWithAggregatesFilter<$PrismaModel> | $Enums.StatusVerifikasiWorkshop
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumStatusVerifikasiWorkshopFilter<$PrismaModel>
+    _max?: NestedEnumStatusVerifikasiWorkshopFilter<$PrismaModel>
   }
 
   export type NestedFloatWithAggregatesFilter<$PrismaModel = never> = {
@@ -32765,7 +32895,7 @@ export namespace Prisma {
     deskripsi_workshop: string
     harga_workshop: Decimal | DecimalJsLike | number | string
     kapasitas: number
-    status_verifikasi?: boolean
+    status_verifikasi: $Enums.StatusVerifikasiWorkshop
     lat_lokasi: number
     long_lokasi: number
     gambar_workshop: string
@@ -32784,7 +32914,7 @@ export namespace Prisma {
     deskripsi_workshop: string
     harga_workshop: Decimal | DecimalJsLike | number | string
     kapasitas: number
-    status_verifikasi?: boolean
+    status_verifikasi: $Enums.StatusVerifikasiWorkshop
     lat_lokasi: number
     long_lokasi: number
     gambar_workshop: string
@@ -32884,7 +33014,7 @@ export namespace Prisma {
     deskripsi_workshop?: StringFilter<"Workshop"> | string
     harga_workshop?: DecimalFilter<"Workshop"> | Decimal | DecimalJsLike | number | string
     kapasitas?: IntFilter<"Workshop"> | number
-    status_verifikasi?: BoolFilter<"Workshop"> | boolean
+    status_verifikasi?: EnumStatusVerifikasiWorkshopFilter<"Workshop"> | $Enums.StatusVerifikasiWorkshop
     lat_lokasi?: FloatFilter<"Workshop"> | number
     long_lokasi?: FloatFilter<"Workshop"> | number
     gambar_workshop?: StringFilter<"Workshop"> | string
@@ -32939,7 +33069,7 @@ export namespace Prisma {
     deskripsi_artikel: string
     isi_artikel: string
     status_artikel: $Enums.StatusArtikel
-    status_verifikasi?: boolean
+    status_verifikasi: $Enums.StatusVerifikasiArtikel
     gambar_artikel: string
     status_aktif?: boolean
     kategori: KategoriArtikelCreateNestedOneWithoutArtikelInput
@@ -32955,7 +33085,7 @@ export namespace Prisma {
     deskripsi_artikel: string
     isi_artikel: string
     status_artikel: $Enums.StatusArtikel
-    status_verifikasi?: boolean
+    status_verifikasi: $Enums.StatusVerifikasiArtikel
     gambar_artikel: string
     status_aktif?: boolean
     id_kategori_artikel: number
@@ -33125,7 +33255,7 @@ export namespace Prisma {
     deskripsi_artikel?: StringFilter<"Artikel"> | string
     isi_artikel?: StringFilter<"Artikel"> | string
     status_artikel?: EnumStatusArtikelFilter<"Artikel"> | $Enums.StatusArtikel
-    status_verifikasi?: BoolFilter<"Artikel"> | boolean
+    status_verifikasi?: EnumStatusVerifikasiArtikelFilter<"Artikel"> | $Enums.StatusVerifikasiArtikel
     gambar_artikel?: StringFilter<"Artikel"> | string
     status_aktif?: BoolFilter<"Artikel"> | boolean
     id_kategori_artikel?: IntFilter<"Artikel"> | number
@@ -33266,7 +33396,7 @@ export namespace Prisma {
     deskripsi_workshop: string
     harga_workshop: Decimal | DecimalJsLike | number | string
     kapasitas: number
-    status_verifikasi?: boolean
+    status_verifikasi: $Enums.StatusVerifikasiWorkshop
     lat_lokasi: number
     long_lokasi: number
     gambar_workshop: string
@@ -33285,7 +33415,7 @@ export namespace Prisma {
     deskripsi_workshop: string
     harga_workshop: Decimal | DecimalJsLike | number | string
     kapasitas: number
-    status_verifikasi?: boolean
+    status_verifikasi: $Enums.StatusVerifikasiWorkshop
     lat_lokasi: number
     long_lokasi: number
     gambar_workshop: string
@@ -33600,7 +33730,7 @@ export namespace Prisma {
     deskripsi_artikel: string
     isi_artikel: string
     status_artikel: $Enums.StatusArtikel
-    status_verifikasi?: boolean
+    status_verifikasi: $Enums.StatusVerifikasiArtikel
     gambar_artikel: string
     status_aktif?: boolean
     pengguna: PenggunaCreateNestedOneWithoutArtikelInput
@@ -33616,7 +33746,7 @@ export namespace Prisma {
     deskripsi_artikel: string
     isi_artikel: string
     status_artikel: $Enums.StatusArtikel
-    status_verifikasi?: boolean
+    status_verifikasi: $Enums.StatusVerifikasiArtikel
     gambar_artikel: string
     status_aktif?: boolean
     id_pengguna: string
@@ -33658,7 +33788,7 @@ export namespace Prisma {
     deskripsi_artikel: string
     isi_artikel: string
     status_artikel: $Enums.StatusArtikel
-    status_verifikasi?: boolean
+    status_verifikasi: $Enums.StatusVerifikasiArtikel
     gambar_artikel: string
     status_aktif?: boolean
     kategori: KategoriArtikelCreateNestedOneWithoutArtikelInput
@@ -33674,7 +33804,7 @@ export namespace Prisma {
     deskripsi_artikel: string
     isi_artikel: string
     status_artikel: $Enums.StatusArtikel
-    status_verifikasi?: boolean
+    status_verifikasi: $Enums.StatusVerifikasiArtikel
     gambar_artikel: string
     status_aktif?: boolean
     id_kategori_artikel: number
@@ -33753,7 +33883,7 @@ export namespace Prisma {
     deskripsi_artikel?: StringFieldUpdateOperationsInput | string
     isi_artikel?: StringFieldUpdateOperationsInput | string
     status_artikel?: EnumStatusArtikelFieldUpdateOperationsInput | $Enums.StatusArtikel
-    status_verifikasi?: BoolFieldUpdateOperationsInput | boolean
+    status_verifikasi?: EnumStatusVerifikasiArtikelFieldUpdateOperationsInput | $Enums.StatusVerifikasiArtikel
     gambar_artikel?: StringFieldUpdateOperationsInput | string
     status_aktif?: BoolFieldUpdateOperationsInput | boolean
     kategori?: KategoriArtikelUpdateOneRequiredWithoutArtikelNestedInput
@@ -33769,7 +33899,7 @@ export namespace Prisma {
     deskripsi_artikel?: StringFieldUpdateOperationsInput | string
     isi_artikel?: StringFieldUpdateOperationsInput | string
     status_artikel?: EnumStatusArtikelFieldUpdateOperationsInput | $Enums.StatusArtikel
-    status_verifikasi?: BoolFieldUpdateOperationsInput | boolean
+    status_verifikasi?: EnumStatusVerifikasiArtikelFieldUpdateOperationsInput | $Enums.StatusVerifikasiArtikel
     gambar_artikel?: StringFieldUpdateOperationsInput | string
     status_aktif?: BoolFieldUpdateOperationsInput | boolean
     id_kategori_artikel?: IntFieldUpdateOperationsInput | number
@@ -33838,7 +33968,7 @@ export namespace Prisma {
     deskripsi_artikel: string
     isi_artikel: string
     status_artikel: $Enums.StatusArtikel
-    status_verifikasi?: boolean
+    status_verifikasi: $Enums.StatusVerifikasiArtikel
     gambar_artikel: string
     status_aktif?: boolean
     kategori: KategoriArtikelCreateNestedOneWithoutArtikelInput
@@ -33854,7 +33984,7 @@ export namespace Prisma {
     deskripsi_artikel: string
     isi_artikel: string
     status_artikel: $Enums.StatusArtikel
-    status_verifikasi?: boolean
+    status_verifikasi: $Enums.StatusVerifikasiArtikel
     gambar_artikel: string
     status_aktif?: boolean
     id_kategori_artikel: number
@@ -33933,7 +34063,7 @@ export namespace Prisma {
     deskripsi_artikel?: StringFieldUpdateOperationsInput | string
     isi_artikel?: StringFieldUpdateOperationsInput | string
     status_artikel?: EnumStatusArtikelFieldUpdateOperationsInput | $Enums.StatusArtikel
-    status_verifikasi?: BoolFieldUpdateOperationsInput | boolean
+    status_verifikasi?: EnumStatusVerifikasiArtikelFieldUpdateOperationsInput | $Enums.StatusVerifikasiArtikel
     gambar_artikel?: StringFieldUpdateOperationsInput | string
     status_aktif?: BoolFieldUpdateOperationsInput | boolean
     kategori?: KategoriArtikelUpdateOneRequiredWithoutArtikelNestedInput
@@ -33949,7 +34079,7 @@ export namespace Prisma {
     deskripsi_artikel?: StringFieldUpdateOperationsInput | string
     isi_artikel?: StringFieldUpdateOperationsInput | string
     status_artikel?: EnumStatusArtikelFieldUpdateOperationsInput | $Enums.StatusArtikel
-    status_verifikasi?: BoolFieldUpdateOperationsInput | boolean
+    status_verifikasi?: EnumStatusVerifikasiArtikelFieldUpdateOperationsInput | $Enums.StatusVerifikasiArtikel
     gambar_artikel?: StringFieldUpdateOperationsInput | string
     status_aktif?: BoolFieldUpdateOperationsInput | boolean
     id_kategori_artikel?: IntFieldUpdateOperationsInput | number
@@ -34018,7 +34148,7 @@ export namespace Prisma {
     deskripsi_artikel: string
     isi_artikel: string
     status_artikel: $Enums.StatusArtikel
-    status_verifikasi?: boolean
+    status_verifikasi: $Enums.StatusVerifikasiArtikel
     gambar_artikel: string
     status_aktif?: boolean
     kategori: KategoriArtikelCreateNestedOneWithoutArtikelInput
@@ -34034,7 +34164,7 @@ export namespace Prisma {
     deskripsi_artikel: string
     isi_artikel: string
     status_artikel: $Enums.StatusArtikel
-    status_verifikasi?: boolean
+    status_verifikasi: $Enums.StatusVerifikasiArtikel
     gambar_artikel: string
     status_aktif?: boolean
     id_kategori_artikel: number
@@ -34113,7 +34243,7 @@ export namespace Prisma {
     deskripsi_artikel?: StringFieldUpdateOperationsInput | string
     isi_artikel?: StringFieldUpdateOperationsInput | string
     status_artikel?: EnumStatusArtikelFieldUpdateOperationsInput | $Enums.StatusArtikel
-    status_verifikasi?: BoolFieldUpdateOperationsInput | boolean
+    status_verifikasi?: EnumStatusVerifikasiArtikelFieldUpdateOperationsInput | $Enums.StatusVerifikasiArtikel
     gambar_artikel?: StringFieldUpdateOperationsInput | string
     status_aktif?: BoolFieldUpdateOperationsInput | boolean
     kategori?: KategoriArtikelUpdateOneRequiredWithoutArtikelNestedInput
@@ -34129,7 +34259,7 @@ export namespace Prisma {
     deskripsi_artikel?: StringFieldUpdateOperationsInput | string
     isi_artikel?: StringFieldUpdateOperationsInput | string
     status_artikel?: EnumStatusArtikelFieldUpdateOperationsInput | $Enums.StatusArtikel
-    status_verifikasi?: BoolFieldUpdateOperationsInput | boolean
+    status_verifikasi?: EnumStatusVerifikasiArtikelFieldUpdateOperationsInput | $Enums.StatusVerifikasiArtikel
     gambar_artikel?: StringFieldUpdateOperationsInput | string
     status_aktif?: BoolFieldUpdateOperationsInput | boolean
     id_kategori_artikel?: IntFieldUpdateOperationsInput | number
@@ -34413,7 +34543,7 @@ export namespace Prisma {
     deskripsi_workshop: string
     harga_workshop: Decimal | DecimalJsLike | number | string
     kapasitas: number
-    status_verifikasi?: boolean
+    status_verifikasi: $Enums.StatusVerifikasiWorkshop
     lat_lokasi: number
     long_lokasi: number
     gambar_workshop: string
@@ -34432,7 +34562,7 @@ export namespace Prisma {
     deskripsi_workshop: string
     harga_workshop: Decimal | DecimalJsLike | number | string
     kapasitas: number
-    status_verifikasi?: boolean
+    status_verifikasi: $Enums.StatusVerifikasiWorkshop
     lat_lokasi: number
     long_lokasi: number
     gambar_workshop: string
@@ -34536,7 +34666,7 @@ export namespace Prisma {
     deskripsi_workshop?: StringFieldUpdateOperationsInput | string
     harga_workshop?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     kapasitas?: IntFieldUpdateOperationsInput | number
-    status_verifikasi?: BoolFieldUpdateOperationsInput | boolean
+    status_verifikasi?: EnumStatusVerifikasiWorkshopFieldUpdateOperationsInput | $Enums.StatusVerifikasiWorkshop
     lat_lokasi?: FloatFieldUpdateOperationsInput | number
     long_lokasi?: FloatFieldUpdateOperationsInput | number
     gambar_workshop?: StringFieldUpdateOperationsInput | string
@@ -34555,7 +34685,7 @@ export namespace Prisma {
     deskripsi_workshop?: StringFieldUpdateOperationsInput | string
     harga_workshop?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     kapasitas?: IntFieldUpdateOperationsInput | number
-    status_verifikasi?: BoolFieldUpdateOperationsInput | boolean
+    status_verifikasi?: EnumStatusVerifikasiWorkshopFieldUpdateOperationsInput | $Enums.StatusVerifikasiWorkshop
     lat_lokasi?: FloatFieldUpdateOperationsInput | number
     long_lokasi?: FloatFieldUpdateOperationsInput | number
     gambar_workshop?: StringFieldUpdateOperationsInput | string
@@ -35458,7 +35588,7 @@ export namespace Prisma {
     deskripsi_workshop: string
     harga_workshop: Decimal | DecimalJsLike | number | string
     kapasitas: number
-    status_verifikasi?: boolean
+    status_verifikasi: $Enums.StatusVerifikasiWorkshop
     lat_lokasi: number
     long_lokasi: number
     gambar_workshop: string
@@ -35514,7 +35644,7 @@ export namespace Prisma {
     deskripsi_workshop?: StringFieldUpdateOperationsInput | string
     harga_workshop?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     kapasitas?: IntFieldUpdateOperationsInput | number
-    status_verifikasi?: BoolFieldUpdateOperationsInput | boolean
+    status_verifikasi?: EnumStatusVerifikasiWorkshopFieldUpdateOperationsInput | $Enums.StatusVerifikasiWorkshop
     lat_lokasi?: FloatFieldUpdateOperationsInput | number
     long_lokasi?: FloatFieldUpdateOperationsInput | number
     gambar_workshop?: StringFieldUpdateOperationsInput | string
@@ -35533,7 +35663,7 @@ export namespace Prisma {
     deskripsi_workshop?: StringFieldUpdateOperationsInput | string
     harga_workshop?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     kapasitas?: IntFieldUpdateOperationsInput | number
-    status_verifikasi?: BoolFieldUpdateOperationsInput | boolean
+    status_verifikasi?: EnumStatusVerifikasiWorkshopFieldUpdateOperationsInput | $Enums.StatusVerifikasiWorkshop
     lat_lokasi?: FloatFieldUpdateOperationsInput | number
     long_lokasi?: FloatFieldUpdateOperationsInput | number
     gambar_workshop?: StringFieldUpdateOperationsInput | string
@@ -35552,7 +35682,7 @@ export namespace Prisma {
     deskripsi_workshop?: StringFieldUpdateOperationsInput | string
     harga_workshop?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     kapasitas?: IntFieldUpdateOperationsInput | number
-    status_verifikasi?: BoolFieldUpdateOperationsInput | boolean
+    status_verifikasi?: EnumStatusVerifikasiWorkshopFieldUpdateOperationsInput | $Enums.StatusVerifikasiWorkshop
     lat_lokasi?: FloatFieldUpdateOperationsInput | number
     long_lokasi?: FloatFieldUpdateOperationsInput | number
     gambar_workshop?: StringFieldUpdateOperationsInput | string
@@ -35583,7 +35713,7 @@ export namespace Prisma {
     deskripsi_artikel: string
     isi_artikel: string
     status_artikel: $Enums.StatusArtikel
-    status_verifikasi?: boolean
+    status_verifikasi: $Enums.StatusVerifikasiArtikel
     gambar_artikel: string
     status_aktif?: boolean
     id_kategori_artikel: number
@@ -35663,7 +35793,7 @@ export namespace Prisma {
     deskripsi_artikel?: StringFieldUpdateOperationsInput | string
     isi_artikel?: StringFieldUpdateOperationsInput | string
     status_artikel?: EnumStatusArtikelFieldUpdateOperationsInput | $Enums.StatusArtikel
-    status_verifikasi?: BoolFieldUpdateOperationsInput | boolean
+    status_verifikasi?: EnumStatusVerifikasiArtikelFieldUpdateOperationsInput | $Enums.StatusVerifikasiArtikel
     gambar_artikel?: StringFieldUpdateOperationsInput | string
     status_aktif?: BoolFieldUpdateOperationsInput | boolean
     kategori?: KategoriArtikelUpdateOneRequiredWithoutArtikelNestedInput
@@ -35679,7 +35809,7 @@ export namespace Prisma {
     deskripsi_artikel?: StringFieldUpdateOperationsInput | string
     isi_artikel?: StringFieldUpdateOperationsInput | string
     status_artikel?: EnumStatusArtikelFieldUpdateOperationsInput | $Enums.StatusArtikel
-    status_verifikasi?: BoolFieldUpdateOperationsInput | boolean
+    status_verifikasi?: EnumStatusVerifikasiArtikelFieldUpdateOperationsInput | $Enums.StatusVerifikasiArtikel
     gambar_artikel?: StringFieldUpdateOperationsInput | string
     status_aktif?: BoolFieldUpdateOperationsInput | boolean
     id_kategori_artikel?: IntFieldUpdateOperationsInput | number
@@ -35695,7 +35825,7 @@ export namespace Prisma {
     deskripsi_artikel?: StringFieldUpdateOperationsInput | string
     isi_artikel?: StringFieldUpdateOperationsInput | string
     status_artikel?: EnumStatusArtikelFieldUpdateOperationsInput | $Enums.StatusArtikel
-    status_verifikasi?: BoolFieldUpdateOperationsInput | boolean
+    status_verifikasi?: EnumStatusVerifikasiArtikelFieldUpdateOperationsInput | $Enums.StatusVerifikasiArtikel
     gambar_artikel?: StringFieldUpdateOperationsInput | string
     status_aktif?: BoolFieldUpdateOperationsInput | boolean
     id_kategori_artikel?: IntFieldUpdateOperationsInput | number
@@ -35786,7 +35916,7 @@ export namespace Prisma {
     deskripsi_workshop: string
     harga_workshop: Decimal | DecimalJsLike | number | string
     kapasitas: number
-    status_verifikasi?: boolean
+    status_verifikasi: $Enums.StatusVerifikasiWorkshop
     lat_lokasi: number
     long_lokasi: number
     gambar_workshop: string
@@ -35804,7 +35934,7 @@ export namespace Prisma {
     deskripsi_workshop?: StringFieldUpdateOperationsInput | string
     harga_workshop?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     kapasitas?: IntFieldUpdateOperationsInput | number
-    status_verifikasi?: BoolFieldUpdateOperationsInput | boolean
+    status_verifikasi?: EnumStatusVerifikasiWorkshopFieldUpdateOperationsInput | $Enums.StatusVerifikasiWorkshop
     lat_lokasi?: FloatFieldUpdateOperationsInput | number
     long_lokasi?: FloatFieldUpdateOperationsInput | number
     gambar_workshop?: StringFieldUpdateOperationsInput | string
@@ -35823,7 +35953,7 @@ export namespace Prisma {
     deskripsi_workshop?: StringFieldUpdateOperationsInput | string
     harga_workshop?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     kapasitas?: IntFieldUpdateOperationsInput | number
-    status_verifikasi?: BoolFieldUpdateOperationsInput | boolean
+    status_verifikasi?: EnumStatusVerifikasiWorkshopFieldUpdateOperationsInput | $Enums.StatusVerifikasiWorkshop
     lat_lokasi?: FloatFieldUpdateOperationsInput | number
     long_lokasi?: FloatFieldUpdateOperationsInput | number
     gambar_workshop?: StringFieldUpdateOperationsInput | string
@@ -35842,7 +35972,7 @@ export namespace Prisma {
     deskripsi_workshop?: StringFieldUpdateOperationsInput | string
     harga_workshop?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     kapasitas?: IntFieldUpdateOperationsInput | number
-    status_verifikasi?: BoolFieldUpdateOperationsInput | boolean
+    status_verifikasi?: EnumStatusVerifikasiWorkshopFieldUpdateOperationsInput | $Enums.StatusVerifikasiWorkshop
     lat_lokasi?: FloatFieldUpdateOperationsInput | number
     long_lokasi?: FloatFieldUpdateOperationsInput | number
     gambar_workshop?: StringFieldUpdateOperationsInput | string
@@ -35928,7 +36058,7 @@ export namespace Prisma {
     deskripsi_artikel: string
     isi_artikel: string
     status_artikel: $Enums.StatusArtikel
-    status_verifikasi?: boolean
+    status_verifikasi: $Enums.StatusVerifikasiArtikel
     gambar_artikel: string
     status_aktif?: boolean
     id_pengguna: string
@@ -35941,7 +36071,7 @@ export namespace Prisma {
     deskripsi_artikel?: StringFieldUpdateOperationsInput | string
     isi_artikel?: StringFieldUpdateOperationsInput | string
     status_artikel?: EnumStatusArtikelFieldUpdateOperationsInput | $Enums.StatusArtikel
-    status_verifikasi?: BoolFieldUpdateOperationsInput | boolean
+    status_verifikasi?: EnumStatusVerifikasiArtikelFieldUpdateOperationsInput | $Enums.StatusVerifikasiArtikel
     gambar_artikel?: StringFieldUpdateOperationsInput | string
     status_aktif?: BoolFieldUpdateOperationsInput | boolean
     pengguna?: PenggunaUpdateOneRequiredWithoutArtikelNestedInput
@@ -35957,7 +36087,7 @@ export namespace Prisma {
     deskripsi_artikel?: StringFieldUpdateOperationsInput | string
     isi_artikel?: StringFieldUpdateOperationsInput | string
     status_artikel?: EnumStatusArtikelFieldUpdateOperationsInput | $Enums.StatusArtikel
-    status_verifikasi?: BoolFieldUpdateOperationsInput | boolean
+    status_verifikasi?: EnumStatusVerifikasiArtikelFieldUpdateOperationsInput | $Enums.StatusVerifikasiArtikel
     gambar_artikel?: StringFieldUpdateOperationsInput | string
     status_aktif?: BoolFieldUpdateOperationsInput | boolean
     id_pengguna?: StringFieldUpdateOperationsInput | string
@@ -35973,7 +36103,7 @@ export namespace Prisma {
     deskripsi_artikel?: StringFieldUpdateOperationsInput | string
     isi_artikel?: StringFieldUpdateOperationsInput | string
     status_artikel?: EnumStatusArtikelFieldUpdateOperationsInput | $Enums.StatusArtikel
-    status_verifikasi?: BoolFieldUpdateOperationsInput | boolean
+    status_verifikasi?: EnumStatusVerifikasiArtikelFieldUpdateOperationsInput | $Enums.StatusVerifikasiArtikel
     gambar_artikel?: StringFieldUpdateOperationsInput | string
     status_aktif?: BoolFieldUpdateOperationsInput | boolean
     id_pengguna?: StringFieldUpdateOperationsInput | string

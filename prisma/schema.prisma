@@ -96,6 +96,12 @@ enum StatusArtikel {
   PUBLISHED
 }
 
+enum StatusVerifikasiArtikel {
+  MENUNGGU
+  DIVERIFIKASI
+  DITOLAK
+}
+
 model Artikel {
   id_artikel                String @id @db.VarChar(50)
   judul_artikel             String @db.VarChar(100)
@@ -103,7 +109,7 @@ model Artikel {
   deskripsi_artikel         String @db.Text
   isi_artikel               String @db.Text
   status_artikel            StatusArtikel
-  status_verifikasi         Boolean @default(false)
+  status_verifikasi         StatusVerifikasiArtikel
   gambar_artikel            String @db.VarChar(255)
   status_aktif              Boolean @default(true)
   id_kategori_artikel       Int
@@ -155,6 +161,12 @@ model KomentarArtikel {
   @@unique([id_artikel, id_komentar])
 }
 
+enum StatusVerifikasiWorkshop {
+  MENUNGGU
+  DIVERIFIKASI
+  DITOLAK
+}
+
 model Workshop {
   id_workshop                String    @id @db.VarChar(50)
   judul_workshop             String    @db.VarChar(100)
@@ -163,7 +175,7 @@ model Workshop {
   deskripsi_workshop         String    @db.VarChar(1000)
   harga_workshop             Decimal   @db.Decimal(10,2)
   kapasitas                  Int
-  status_verifikasi          Boolean   @default(false)
+  status_verifikasi          StatusVerifikasiWorkshop
   lat_lokasi                 Float
   long_lokasi                Float
   gambar_workshop            String    @db.VarChar(255)

@@ -96,20 +96,26 @@ enum StatusArtikel {
   PUBLISHED
 }
 
+enum StatusVerifikasiArtikel {
+  MENUNGGU
+  DIVERIFIKASI
+  DITOLAK
+}
+
 model Artikel {
-  id_artikel          String            @id @db.VarChar(50)
-  judul_artikel       String            @db.VarChar(100)
-  tanggal_artikel     DateTime          @default(now())
-  deskripsi_artikel   String            @db.Text
-  isi_artikel         String            @db.Text
+  id_artikel          String                  @id @db.VarChar(50)
+  judul_artikel       String                  @db.VarChar(100)
+  tanggal_artikel     DateTime                @default(now())
+  deskripsi_artikel   String                  @db.Text
+  isi_artikel         String                  @db.Text
   status_artikel      StatusArtikel
-  status_verifikasi   Boolean           @default(false)
-  gambar_artikel      String            @db.VarChar(255)
-  status_aktif        Boolean           @default(true)
+  status_verifikasi   StatusVerifikasiArtikel
+  gambar_artikel      String                  @db.VarChar(255)
+  status_aktif        Boolean                 @default(true)
   id_kategori_artikel Int
-  kategori            KategoriArtikel   @relation(fields: [id_kategori_artikel], references: [id_kategori_artikel])
+  kategori            KategoriArtikel         @relation(fields: [id_kategori_artikel], references: [id_kategori_artikel])
   id_pengguna         String
-  pengguna            Pengguna          @relation(fields: [id_pengguna], references: [id_pengguna])
+  pengguna            Pengguna                @relation(fields: [id_pengguna], references: [id_pengguna])
   artikel_disimpan    ArtikelDisimpan[]
   artikel_disukai     ArtikelDisukai[]
   komentar_artikel    KomentarArtikel[]
@@ -155,21 +161,27 @@ model KomentarArtikel {
   @@unique([id_artikel, id_komentar])
 }
 
+enum StatusVerifikasiWorkshop {
+  MENUNGGU
+  DIVERIFIKASI
+  DITOLAK
+}
+
 model Workshop {
-  id_workshop             String   @id @db.VarChar(50)
-  judul_workshop          String   @db.VarChar(100)
-  tanggal_workshop        DateTime @db.Date
-  alaamt_lengkap_workshop String   @db.VarChar(100)
-  deskripsi_workshop      String   @db.VarChar(1000)
-  harga_workshop          Decimal  @db.Decimal(10, 2)
+  id_workshop             String                   @id @db.VarChar(50)
+  judul_workshop          String                   @db.VarChar(100)
+  tanggal_workshop        DateTime                 @db.Date
+  alaamt_lengkap_workshop String                   @db.VarChar(100)
+  deskripsi_workshop      String                   @db.VarChar(1000)
+  harga_workshop          Decimal                  @db.Decimal(10, 2)
   kapasitas               Int
-  status_verifikasi       Boolean  @default(false)
+  status_verifikasi       StatusVerifikasiWorkshop
   lat_lokasi              Float
   long_lokasi             Float
-  gambar_workshop         String   @db.VarChar(255)
-  status_aktif            Boolean  @default(true)
-  waktu_mulai             String   @default("08:00") @db.VarChar(100)
-  waktu_berakhir          String   @default("16:00") @db.VarChar(100)
+  gambar_workshop         String                   @db.VarChar(255)
+  status_aktif            Boolean                  @default(true)
+  waktu_mulai             String                   @default("08:00") @db.VarChar(100)
+  waktu_berakhir          String                   @default("16:00") @db.VarChar(100)
 
   id_facilitator String
   facilitator    Facilitator         @relation(fields: [id_facilitator], references: [id_facilitator])

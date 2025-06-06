@@ -5,8 +5,10 @@ import {
   TEditWorkshop,
   TPayWorkshop,
   TRegisterWorkshop,
+  TVerify,
 } from '../types/workshopTypes';
 import { TToken } from '../types/authTypes';
+import { StatusVerifikasiWorkshop } from '../generated/prisma';
 
 const createSchema = Yup.object({
   title: Yup.string().required('Judul workshop harus diisi!'),
@@ -83,6 +85,7 @@ export const createWorkshop = async (data: TCreateWorskhop) => {
         id_facilitator: user.id,
         waktu_berakhir: endTime,
         waktu_mulai: startTime,
+        status_verifikasi: StatusVerifikasiWorkshop.MENUNGGU,
       },
     });
 
@@ -140,7 +143,7 @@ export const getActiveWorkshops = async () => {
     const workshops = await prisma.workshop.findMany({
       where: {
         status_aktif: true,
-        status_verifikasi: true,
+        status_verifikasi: StatusVerifikasiWorkshop.DIVERIFIKASI,
       },
       select: {
         id_workshop: true,
@@ -227,16 +230,36 @@ export const getWorkshopById = async (id: string) => {
   }
 };
 
-export const verifyWorkshop = async (id: string) => {
+export const verifyWorkshop = async (data: TVerify) => {
   try {
+    if (!['MENUNGGU', 'DIVERIFIKASI', 'DITOLAK'].includes(data.status)) {
+      throw {
+        status: 400,
+        message: 'Status verifikasi tidak valid!',
+      };
+    }
+
+    let verify: StatusVerifikasiWorkshop;
+
+    data?.status === StatusVerifikasiWorkshop.DIVERIFIKASI
+      ? (verify = StatusVerifikasiWorkshop.DIVERIFIKASI)
+      : (verify = StatusVerifikasiWorkshop.DITOLAK);
+
     const result = await prisma.workshop.update({
       where: {
-        id_workshop: id,
+        id_workshop: data.id,
       },
       data: {
-        status_verifikasi: true,
+        status_verifikasi: verify,
       },
     });
+
+    if (!result) {
+      throw {
+        status: 400,
+        message: 'Workshop tidak ditemukan',
+      };
+    }
 
     return result;
   } catch (error: any) {

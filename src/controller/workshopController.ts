@@ -112,8 +112,13 @@ export const getById = async (req: Request, res: Response) => {
 
 export const verify = async (req: Request, res: Response) => {
   const { id } = req.params;
+  const { status } = req.body;
+  const data = {
+    id,
+    status,
+  };
   try {
-    const result = await verifyWorkshop(id);
+    const result = await verifyWorkshop(data);
 
     res.status(200).json({
       message: 'Workshop berhasil diverifikasi',

@@ -36,3 +36,8 @@ export type TRegisterWorkshop = {
   gender: number;
   paymentMethod: number;
 };
+
+export type TVerify = {
+  id: string;
+  status: string;
+};

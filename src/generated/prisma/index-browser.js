@@ -320,6 +320,18 @@ exports.StatusArtikel = exports.$Enums.StatusArtikel = {
   PUBLISHED: 'PUBLISHED'
 };
 
+exports.StatusVerifikasiArtikel = exports.$Enums.StatusVerifikasiArtikel = {
+  MENUNGGU: 'MENUNGGU',
+  DIVERIFIKASI: 'DIVERIFIKASI',
+  DITOLAK: 'DITOLAK'
+};
+
+exports.StatusVerifikasiWorkshop = exports.$Enums.StatusVerifikasiWorkshop = {
+  MENUNGGU: 'MENUNGGU',
+  DIVERIFIKASI: 'DIVERIFIKASI',
+  DITOLAK: 'DITOLAK'
+};
+
 exports.Prisma.ModelName = {
   Provinsi: 'Provinsi',
   Kabupaten: 'Kabupaten',

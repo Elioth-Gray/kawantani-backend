@@ -41,3 +41,7 @@ export type TLikeArticle = {
   id: string;
   rating: number;
 };
+export type TVerify = {
+  id: string;
+  status: string;
+};

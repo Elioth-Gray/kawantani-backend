@@ -14,32 +14,32 @@ const locationRoute = express.Router();
 locationRoute.get(
   '/provinces',
   authMiddleware,
-  roleMiddleware(['admin']),
-  getProvince
+  roleMiddleware(['facilitator', 'admin']),
+  getProvince,
 );
 locationRoute.get(
   '/provinces/:id',
   authMiddleware,
-  roleMiddleware(['admin']),
-  getProvinceId
+  roleMiddleware(['facilitator', 'admin']),
+  getProvinceId,
 );
 locationRoute.get(
   '/regencies',
   authMiddleware,
-  roleMiddleware(['admin']),
-  getRegency
+  roleMiddleware(['facilitator', 'admin']),
+  getRegency,
 );
 locationRoute.get(
   '/regencies/:id',
   authMiddleware,
-  roleMiddleware(['admin']),
-  getRegencyId
+  roleMiddleware(['facilitator', 'admin']),
+  getRegencyId,
 );
 locationRoute.get(
   '/provinces/:id/regencies',
   authMiddleware,
-  roleMiddleware(['admin']),
-  getRegencyProvinceId
+  roleMiddleware(['facilitator', 'admin']),
+  getRegencyProvinceId,
 );
 
 export default locationRoute;
