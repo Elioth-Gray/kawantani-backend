@@ -44,6 +44,7 @@ export const getAll = async () => {
         nama_belakang_pengguna: true,
         email_pengguna: true,
         nomor_telepon_pengguna: true,
+        status_verfikasi: true,
       },
       where: {
         status_aktif: true,
