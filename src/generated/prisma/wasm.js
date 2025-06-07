@@ -259,46 +259,71 @@ exports.Prisma.TanamanScalarFieldEnum = {
   nama_latin: 'nama_latin',
   durasi_penanaman: 'durasi_penanaman',
   deskripsi_tanaman: 'deskripsi_tanaman',
+  gambar_tanaman: 'gambar_tanaman',
+  tingkat_kesulitan: 'tingkat_kesulitan',
   id_kategori_tanaman: 'id_kategori_tanaman'
 };
 
 exports.Prisma.InstruksiTanamanScalarFieldEnum = {
   id_instruksi: 'id_instruksi',
   instruksi: 'instruksi',
+  urutan: 'urutan',
   id_tanaman: 'id_tanaman'
 };
 
 exports.Prisma.HariPenanamanScalarFieldEnum = {
   id_hari_penanaman: 'id_hari_penanaman',
-  jenis_tugas: 'jenis_tugas',
+  hari_ke: 'hari_ke',
+  nama_fase: 'nama_fase',
+  deskripsi_fase: 'deskripsi_fase',
   id_tanaman: 'id_tanaman'
 };
 
 exports.Prisma.TugasPenanamanScalarFieldEnum = {
   id_tugas: 'id_tugas',
   nama_tugas: 'nama_tugas',
+  jenis_tugas: 'jenis_tugas',
+  estimasi_waktu: 'estimasi_waktu',
   id_hari_penanaman: 'id_hari_penanaman'
 };
 
 exports.Prisma.TanamanPenggunaScalarFieldEnum = {
   id_tanaman_pengguna: 'id_tanaman_pengguna',
+  nama_custom: 'nama_custom',
   tanggal_penanaman: 'tanggal_penanaman',
+  tanggal_target_panen: 'tanggal_target_panen',
   status_penanaman: 'status_penanaman',
-  nama_tanaman: 'nama_tanaman',
+  hari_ke_saat_ini: 'hari_ke_saat_ini',
+  progress_persen: 'progress_persen',
+  catatan_umum: 'catatan_umum',
   id_tanaman: 'id_tanaman',
   id_pengguna: 'id_pengguna'
 };
 
 exports.Prisma.HariTanamanPenggunaScalarFieldEnum = {
   id_hari_tanaman_pengguna: 'id_hari_tanaman_pengguna',
-  catatan: 'catatan',
+  hari_ke: 'hari_ke',
+  tanggal_aktual: 'tanggal_aktual',
+  fase_penanaman: 'fase_penanaman',
+  status_hari: 'status_hari',
+  catatan_harian: 'catatan_harian',
+  total_tugas: 'total_tugas',
+  tugas_selesai: 'tugas_selesai',
+  progress_hari_persen: 'progress_hari_persen',
   id_tanaman_pengguna: 'id_tanaman_pengguna'
 };
 
 exports.Prisma.TugasPenanamanPenggunaScalarFieldEnum = {
   id_tugas_penanaman_pengguna: 'id_tugas_penanaman_pengguna',
   nama_tugas: 'nama_tugas',
-  id_hari_tanaman_pengguna: 'id_hari_tanaman_pengguna'
+  deskripsi_tugas: 'deskripsi_tugas',
+  jenis_tugas: 'jenis_tugas',
+  status_selesai: 'status_selesai',
+  tanggal_selesai: 'tanggal_selesai',
+  durasi_pengerjaan: 'durasi_pengerjaan',
+  id_hari_tanaman_pengguna: 'id_hari_tanaman_pengguna',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
 };
 
 exports.Prisma.SortOrder = {
@@ -332,6 +357,45 @@ exports.StatusVerifikasiWorkshop = exports.$Enums.StatusVerifikasiWorkshop = {
   DITOLAK: 'DITOLAK'
 };
 
+exports.TingkatKesulitan = exports.$Enums.TingkatKesulitan = {
+  SANGAT_MUDAH: 'SANGAT_MUDAH',
+  MUDAH: 'MUDAH',
+  SEDANG: 'SEDANG',
+  SULIT: 'SULIT',
+  SANGAT_SULIT: 'SANGAT_SULIT'
+};
+
+exports.FasePenanaman = exports.$Enums.FasePenanaman = {
+  PERSIAPAN: 'PERSIAPAN',
+  PENANAMAN: 'PENANAMAN',
+  PERTUMBUHAN: 'PERTUMBUHAN',
+  PEMELIHARAAN: 'PEMELIHARAAN',
+  PRAPANEN: 'PRAPANEN',
+  PANEN: 'PANEN',
+  PASCA_PANEN: 'PASCA_PANEN'
+};
+
+exports.JenisTugas = exports.$Enums.JenisTugas = {
+  TUGAS_BIASA: 'TUGAS_BIASA',
+  PENGECEKAN_HARIAN: 'PENGECEKAN_HARIAN',
+  PERAWATAN_KHUSUS: 'PERAWATAN_KHUSUS',
+  PANEN: 'PANEN'
+};
+
+exports.StatusPenanaman = exports.$Enums.StatusPenanaman = {
+  AKTIF: 'AKTIF',
+  SELESAI: 'SELESAI',
+  DIBATALKAN: 'DIBATALKAN',
+  DITUNDA: 'DITUNDA'
+};
+
+exports.StatusHari = exports.$Enums.StatusHari = {
+  BELUM_DIMULAI: 'BELUM_DIMULAI',
+  SEDANG_BERJALAN: 'SEDANG_BERJALAN',
+  SELESAI: 'SELESAI',
+  TERLEWAT: 'TERLEWAT'
+};
+
 exports.Prisma.ModelName = {
   Provinsi: 'Provinsi',
   Kabupaten: 'Kabupaten',
@@ -346,7 +410,7 @@ exports.Prisma.ModelName = {
   Workshop: 'Workshop',
   WorkshopTerdaftar: 'WorkshopTerdaftar',
   MetodePembayaran: 'MetodePembayaran',
-  kategoriTanaman: 'kategoriTanaman',
+  KategoriTanaman: 'KategoriTanaman',
   Tanaman: 'Tanaman',
   InstruksiTanaman: 'InstruksiTanaman',
   HariPenanaman: 'HariPenanaman',

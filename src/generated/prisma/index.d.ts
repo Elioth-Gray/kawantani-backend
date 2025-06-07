@@ -79,10 +79,10 @@ export type WorkshopTerdaftar = $Result.DefaultSelection<Prisma.$WorkshopTerdaft
  */
 export type MetodePembayaran = $Result.DefaultSelection<Prisma.$MetodePembayaranPayload>
 /**
- * Model kategoriTanaman
+ * Model KategoriTanaman
  * 
  */
-export type kategoriTanaman = $Result.DefaultSelection<Prisma.$kategoriTanamanPayload>
+export type KategoriTanaman = $Result.DefaultSelection<Prisma.$KategoriTanamanPayload>
 /**
  * Model Tanaman
  * 
@@ -148,6 +148,60 @@ export const StatusVerifikasiWorkshop: {
 
 export type StatusVerifikasiWorkshop = (typeof StatusVerifikasiWorkshop)[keyof typeof StatusVerifikasiWorkshop]
 
+
+export const JenisTugas: {
+  TUGAS_BIASA: 'TUGAS_BIASA',
+  PENGECEKAN_HARIAN: 'PENGECEKAN_HARIAN',
+  PERAWATAN_KHUSUS: 'PERAWATAN_KHUSUS',
+  PANEN: 'PANEN'
+};
+
+export type JenisTugas = (typeof JenisTugas)[keyof typeof JenisTugas]
+
+
+export const FasePenanaman: {
+  PERSIAPAN: 'PERSIAPAN',
+  PENANAMAN: 'PENANAMAN',
+  PERTUMBUHAN: 'PERTUMBUHAN',
+  PEMELIHARAAN: 'PEMELIHARAAN',
+  PRAPANEN: 'PRAPANEN',
+  PANEN: 'PANEN',
+  PASCA_PANEN: 'PASCA_PANEN'
+};
+
+export type FasePenanaman = (typeof FasePenanaman)[keyof typeof FasePenanaman]
+
+
+export const StatusPenanaman: {
+  AKTIF: 'AKTIF',
+  SELESAI: 'SELESAI',
+  DIBATALKAN: 'DIBATALKAN',
+  DITUNDA: 'DITUNDA'
+};
+
+export type StatusPenanaman = (typeof StatusPenanaman)[keyof typeof StatusPenanaman]
+
+
+export const StatusHari: {
+  BELUM_DIMULAI: 'BELUM_DIMULAI',
+  SEDANG_BERJALAN: 'SEDANG_BERJALAN',
+  SELESAI: 'SELESAI',
+  TERLEWAT: 'TERLEWAT'
+};
+
+export type StatusHari = (typeof StatusHari)[keyof typeof StatusHari]
+
+
+export const TingkatKesulitan: {
+  SANGAT_MUDAH: 'SANGAT_MUDAH',
+  MUDAH: 'MUDAH',
+  SEDANG: 'SEDANG',
+  SULIT: 'SULIT',
+  SANGAT_SULIT: 'SANGAT_SULIT'
+};
+
+export type TingkatKesulitan = (typeof TingkatKesulitan)[keyof typeof TingkatKesulitan]
+
 }
 
 export type StatusArtikel = $Enums.StatusArtikel
@@ -161,6 +215,26 @@ export const StatusVerifikasiArtikel: typeof $Enums.StatusVerifikasiArtikel
 export type StatusVerifikasiWorkshop = $Enums.StatusVerifikasiWorkshop
 
 export const StatusVerifikasiWorkshop: typeof $Enums.StatusVerifikasiWorkshop
+
+export type JenisTugas = $Enums.JenisTugas
+
+export const JenisTugas: typeof $Enums.JenisTugas
+
+export type FasePenanaman = $Enums.FasePenanaman
+
+export const FasePenanaman: typeof $Enums.FasePenanaman
+
+export type StatusPenanaman = $Enums.StatusPenanaman
+
+export const StatusPenanaman: typeof $Enums.StatusPenanaman
+
+export type StatusHari = $Enums.StatusHari
+
+export const StatusHari: typeof $Enums.StatusHari
+
+export type TingkatKesulitan = $Enums.TingkatKesulitan
+
+export const TingkatKesulitan: typeof $Enums.TingkatKesulitan
 
 /**
  * ##  Prisma Client ʲˢ
@@ -418,14 +492,14 @@ export class PrismaClient<
   get metodePembayaran(): Prisma.MetodePembayaranDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.kategoriTanaman`: Exposes CRUD operations for the **kategoriTanaman** model.
+   * `prisma.kategoriTanaman`: Exposes CRUD operations for the **KategoriTanaman** model.
     * Example usage:
     * ```ts
     * // Fetch zero or more KategoriTanamen
     * const kategoriTanamen = await prisma.kategoriTanaman.findMany()
     * ```
     */
-  get kategoriTanaman(): Prisma.kategoriTanamanDelegate<ExtArgs, ClientOptions>;
+  get kategoriTanaman(): Prisma.KategoriTanamanDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.tanaman`: Exposes CRUD operations for the **Tanaman** model.
@@ -949,7 +1023,7 @@ export namespace Prisma {
     Workshop: 'Workshop',
     WorkshopTerdaftar: 'WorkshopTerdaftar',
     MetodePembayaran: 'MetodePembayaran',
-    kategoriTanaman: 'kategoriTanaman',
+    KategoriTanaman: 'KategoriTanaman',
     Tanaman: 'Tanaman',
     InstruksiTanaman: 'InstruksiTanaman',
     HariPenanaman: 'HariPenanaman',
@@ -1941,76 +2015,76 @@ export namespace Prisma {
           }
         }
       }
-      kategoriTanaman: {
-        payload: Prisma.$kategoriTanamanPayload<ExtArgs>
-        fields: Prisma.kategoriTanamanFieldRefs
+      KategoriTanaman: {
+        payload: Prisma.$KategoriTanamanPayload<ExtArgs>
+        fields: Prisma.KategoriTanamanFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.kategoriTanamanFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$kategoriTanamanPayload> | null
+            args: Prisma.KategoriTanamanFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$KategoriTanamanPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.kategoriTanamanFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$kategoriTanamanPayload>
+            args: Prisma.KategoriTanamanFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$KategoriTanamanPayload>
           }
           findFirst: {
-            args: Prisma.kategoriTanamanFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$kategoriTanamanPayload> | null
+            args: Prisma.KategoriTanamanFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$KategoriTanamanPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.kategoriTanamanFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$kategoriTanamanPayload>
+            args: Prisma.KategoriTanamanFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$KategoriTanamanPayload>
           }
           findMany: {
-            args: Prisma.kategoriTanamanFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$kategoriTanamanPayload>[]
+            args: Prisma.KategoriTanamanFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$KategoriTanamanPayload>[]
           }
           create: {
-            args: Prisma.kategoriTanamanCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$kategoriTanamanPayload>
+            args: Prisma.KategoriTanamanCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$KategoriTanamanPayload>
           }
           createMany: {
-            args: Prisma.kategoriTanamanCreateManyArgs<ExtArgs>
+            args: Prisma.KategoriTanamanCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           createManyAndReturn: {
-            args: Prisma.kategoriTanamanCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$kategoriTanamanPayload>[]
+            args: Prisma.KategoriTanamanCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$KategoriTanamanPayload>[]
           }
           delete: {
-            args: Prisma.kategoriTanamanDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$kategoriTanamanPayload>
+            args: Prisma.KategoriTanamanDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$KategoriTanamanPayload>
           }
           update: {
-            args: Prisma.kategoriTanamanUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$kategoriTanamanPayload>
+            args: Prisma.KategoriTanamanUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$KategoriTanamanPayload>
           }
           deleteMany: {
-            args: Prisma.kategoriTanamanDeleteManyArgs<ExtArgs>
+            args: Prisma.KategoriTanamanDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.kategoriTanamanUpdateManyArgs<ExtArgs>
+            args: Prisma.KategoriTanamanUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateManyAndReturn: {
-            args: Prisma.kategoriTanamanUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$kategoriTanamanPayload>[]
+            args: Prisma.KategoriTanamanUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$KategoriTanamanPayload>[]
           }
           upsert: {
-            args: Prisma.kategoriTanamanUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$kategoriTanamanPayload>
+            args: Prisma.KategoriTanamanUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$KategoriTanamanPayload>
           }
           aggregate: {
             args: Prisma.KategoriTanamanAggregateArgs<ExtArgs>
             result: $Utils.Optional<AggregateKategoriTanaman>
           }
           groupBy: {
-            args: Prisma.kategoriTanamanGroupByArgs<ExtArgs>
+            args: Prisma.KategoriTanamanGroupByArgs<ExtArgs>
             result: $Utils.Optional<KategoriTanamanGroupByOutputType>[]
           }
           count: {
-            args: Prisma.kategoriTanamanCountArgs<ExtArgs>
+            args: Prisma.KategoriTanamanCountArgs<ExtArgs>
             result: $Utils.Optional<KategoriTanamanCountAggregateOutputType> | number
           }
         }
@@ -2630,7 +2704,7 @@ export namespace Prisma {
     workshop?: WorkshopOmit
     workshopTerdaftar?: WorkshopTerdaftarOmit
     metodePembayaran?: MetodePembayaranOmit
-    kategoriTanaman?: kategoriTanamanOmit
+    kategoriTanaman?: KategoriTanamanOmit
     tanaman?: TanamanOmit
     instruksiTanaman?: InstruksiTanamanOmit
     hariPenanaman?: HariPenanamanOmit
@@ -18155,7 +18229,7 @@ export namespace Prisma {
 
 
   /**
-   * Model kategoriTanaman
+   * Model KategoriTanaman
    */
 
   export type AggregateKategoriTanaman = {
@@ -18217,37 +18291,37 @@ export namespace Prisma {
 
   export type KategoriTanamanAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which kategoriTanaman to aggregate.
+     * Filter which KategoriTanaman to aggregate.
      */
-    where?: kategoriTanamanWhereInput
+    where?: KategoriTanamanWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of kategoriTanamen to fetch.
+     * Determine the order of KategoriTanamen to fetch.
      */
-    orderBy?: kategoriTanamanOrderByWithRelationInput | kategoriTanamanOrderByWithRelationInput[]
+    orderBy?: KategoriTanamanOrderByWithRelationInput | KategoriTanamanOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: kategoriTanamanWhereUniqueInput
+    cursor?: KategoriTanamanWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` kategoriTanamen from the position of the cursor.
+     * Take `±n` KategoriTanamen from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` kategoriTanamen.
+     * Skip the first `n` KategoriTanamen.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned kategoriTanamen
+     * Count returned KategoriTanamen
     **/
     _count?: true | KategoriTanamanCountAggregateInputType
     /**
@@ -18287,11 +18361,11 @@ export namespace Prisma {
 
 
 
-  export type kategoriTanamanGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: kategoriTanamanWhereInput
-    orderBy?: kategoriTanamanOrderByWithAggregationInput | kategoriTanamanOrderByWithAggregationInput[]
+  export type KategoriTanamanGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: KategoriTanamanWhereInput
+    orderBy?: KategoriTanamanOrderByWithAggregationInput | KategoriTanamanOrderByWithAggregationInput[]
     by: KategoriTanamanScalarFieldEnum[] | KategoriTanamanScalarFieldEnum
-    having?: kategoriTanamanScalarWhereWithAggregatesInput
+    having?: KategoriTanamanScalarWhereWithAggregatesInput
     take?: number
     skip?: number
     _count?: KategoriTanamanCountAggregateInputType | true
@@ -18311,7 +18385,7 @@ export namespace Prisma {
     _max: KategoriTanamanMaxAggregateOutputType | null
   }
 
-  type GetKategoriTanamanGroupByPayload<T extends kategoriTanamanGroupByArgs> = Prisma.PrismaPromise<
+  type GetKategoriTanamanGroupByPayload<T extends KategoriTanamanGroupByArgs> = Prisma.PrismaPromise<
     Array<
       PickEnumerable<KategoriTanamanGroupByOutputType, T['by']> &
         {
@@ -18325,38 +18399,38 @@ export namespace Prisma {
     >
 
 
-  export type kategoriTanamanSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type KategoriTanamanSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id_kategori_tanaman?: boolean
     nama_kategori_tanaman?: boolean
-    tanaman?: boolean | kategoriTanaman$tanamanArgs<ExtArgs>
+    tanaman?: boolean | KategoriTanaman$tanamanArgs<ExtArgs>
     _count?: boolean | KategoriTanamanCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["kategoriTanaman"]>
 
-  export type kategoriTanamanSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type KategoriTanamanSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id_kategori_tanaman?: boolean
     nama_kategori_tanaman?: boolean
   }, ExtArgs["result"]["kategoriTanaman"]>
 
-  export type kategoriTanamanSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type KategoriTanamanSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id_kategori_tanaman?: boolean
     nama_kategori_tanaman?: boolean
   }, ExtArgs["result"]["kategoriTanaman"]>
 
-  export type kategoriTanamanSelectScalar = {
+  export type KategoriTanamanSelectScalar = {
     id_kategori_tanaman?: boolean
     nama_kategori_tanaman?: boolean
   }
 
-  export type kategoriTanamanOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_kategori_tanaman" | "nama_kategori_tanaman", ExtArgs["result"]["kategoriTanaman"]>
-  export type kategoriTanamanInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    tanaman?: boolean | kategoriTanaman$tanamanArgs<ExtArgs>
+  export type KategoriTanamanOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_kategori_tanaman" | "nama_kategori_tanaman", ExtArgs["result"]["kategoriTanaman"]>
+  export type KategoriTanamanInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    tanaman?: boolean | KategoriTanaman$tanamanArgs<ExtArgs>
     _count?: boolean | KategoriTanamanCountOutputTypeDefaultArgs<ExtArgs>
   }
-  export type kategoriTanamanIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
-  export type kategoriTanamanIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type KategoriTanamanIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type KategoriTanamanIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
 
-  export type $kategoriTanamanPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "kategoriTanaman"
+  export type $KategoriTanamanPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "KategoriTanaman"
     objects: {
       tanaman: Prisma.$TanamanPayload<ExtArgs>[]
     }
@@ -18367,18 +18441,18 @@ export namespace Prisma {
     composites: {}
   }
 
-  type kategoriTanamanGetPayload<S extends boolean | null | undefined | kategoriTanamanDefaultArgs> = $Result.GetResult<Prisma.$kategoriTanamanPayload, S>
+  type KategoriTanamanGetPayload<S extends boolean | null | undefined | KategoriTanamanDefaultArgs> = $Result.GetResult<Prisma.$KategoriTanamanPayload, S>
 
-  type kategoriTanamanCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<kategoriTanamanFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+  type KategoriTanamanCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<KategoriTanamanFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
       select?: KategoriTanamanCountAggregateInputType | true
     }
 
-  export interface kategoriTanamanDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['kategoriTanaman'], meta: { name: 'kategoriTanaman' } }
+  export interface KategoriTanamanDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['KategoriTanaman'], meta: { name: 'KategoriTanaman' } }
     /**
      * Find zero or one KategoriTanaman that matches the filter.
-     * @param {kategoriTanamanFindUniqueArgs} args - Arguments to find a KategoriTanaman
+     * @param {KategoriTanamanFindUniqueArgs} args - Arguments to find a KategoriTanaman
      * @example
      * // Get one KategoriTanaman
      * const kategoriTanaman = await prisma.kategoriTanaman.findUnique({
@@ -18387,12 +18461,12 @@ export namespace Prisma {
      *   }
      * })
      */
-    findUnique<T extends kategoriTanamanFindUniqueArgs>(args: SelectSubset<T, kategoriTanamanFindUniqueArgs<ExtArgs>>): Prisma__kategoriTanamanClient<$Result.GetResult<Prisma.$kategoriTanamanPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends KategoriTanamanFindUniqueArgs>(args: SelectSubset<T, KategoriTanamanFindUniqueArgs<ExtArgs>>): Prisma__KategoriTanamanClient<$Result.GetResult<Prisma.$KategoriTanamanPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
      * Find one KategoriTanaman that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
-     * @param {kategoriTanamanFindUniqueOrThrowArgs} args - Arguments to find a KategoriTanaman
+     * @param {KategoriTanamanFindUniqueOrThrowArgs} args - Arguments to find a KategoriTanaman
      * @example
      * // Get one KategoriTanaman
      * const kategoriTanaman = await prisma.kategoriTanaman.findUniqueOrThrow({
@@ -18401,13 +18475,13 @@ export namespace Prisma {
      *   }
      * })
      */
-    findUniqueOrThrow<T extends kategoriTanamanFindUniqueOrThrowArgs>(args: SelectSubset<T, kategoriTanamanFindUniqueOrThrowArgs<ExtArgs>>): Prisma__kategoriTanamanClient<$Result.GetResult<Prisma.$kategoriTanamanPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends KategoriTanamanFindUniqueOrThrowArgs>(args: SelectSubset<T, KategoriTanamanFindUniqueOrThrowArgs<ExtArgs>>): Prisma__KategoriTanamanClient<$Result.GetResult<Prisma.$KategoriTanamanPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Find the first KategoriTanaman that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {kategoriTanamanFindFirstArgs} args - Arguments to find a KategoriTanaman
+     * @param {KategoriTanamanFindFirstArgs} args - Arguments to find a KategoriTanaman
      * @example
      * // Get one KategoriTanaman
      * const kategoriTanaman = await prisma.kategoriTanaman.findFirst({
@@ -18416,14 +18490,14 @@ export namespace Prisma {
      *   }
      * })
      */
-    findFirst<T extends kategoriTanamanFindFirstArgs>(args?: SelectSubset<T, kategoriTanamanFindFirstArgs<ExtArgs>>): Prisma__kategoriTanamanClient<$Result.GetResult<Prisma.$kategoriTanamanPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends KategoriTanamanFindFirstArgs>(args?: SelectSubset<T, KategoriTanamanFindFirstArgs<ExtArgs>>): Prisma__KategoriTanamanClient<$Result.GetResult<Prisma.$KategoriTanamanPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
      * Find the first KategoriTanaman that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {kategoriTanamanFindFirstOrThrowArgs} args - Arguments to find a KategoriTanaman
+     * @param {KategoriTanamanFindFirstOrThrowArgs} args - Arguments to find a KategoriTanaman
      * @example
      * // Get one KategoriTanaman
      * const kategoriTanaman = await prisma.kategoriTanaman.findFirstOrThrow({
@@ -18432,13 +18506,13 @@ export namespace Prisma {
      *   }
      * })
      */
-    findFirstOrThrow<T extends kategoriTanamanFindFirstOrThrowArgs>(args?: SelectSubset<T, kategoriTanamanFindFirstOrThrowArgs<ExtArgs>>): Prisma__kategoriTanamanClient<$Result.GetResult<Prisma.$kategoriTanamanPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends KategoriTanamanFindFirstOrThrowArgs>(args?: SelectSubset<T, KategoriTanamanFindFirstOrThrowArgs<ExtArgs>>): Prisma__KategoriTanamanClient<$Result.GetResult<Prisma.$KategoriTanamanPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Find zero or more KategoriTanamen that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {kategoriTanamanFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {KategoriTanamanFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
      * // Get all KategoriTanamen
      * const kategoriTanamen = await prisma.kategoriTanaman.findMany()
@@ -18450,11 +18524,11 @@ export namespace Prisma {
      * const kategoriTanamanWithId_kategori_tanamanOnly = await prisma.kategoriTanaman.findMany({ select: { id_kategori_tanaman: true } })
      * 
      */
-    findMany<T extends kategoriTanamanFindManyArgs>(args?: SelectSubset<T, kategoriTanamanFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$kategoriTanamanPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends KategoriTanamanFindManyArgs>(args?: SelectSubset<T, KategoriTanamanFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$KategoriTanamanPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
     /**
      * Create a KategoriTanaman.
-     * @param {kategoriTanamanCreateArgs} args - Arguments to create a KategoriTanaman.
+     * @param {KategoriTanamanCreateArgs} args - Arguments to create a KategoriTanaman.
      * @example
      * // Create one KategoriTanaman
      * const KategoriTanaman = await prisma.kategoriTanaman.create({
@@ -18464,11 +18538,11 @@ export namespace Prisma {
      * })
      * 
      */
-    create<T extends kategoriTanamanCreateArgs>(args: SelectSubset<T, kategoriTanamanCreateArgs<ExtArgs>>): Prisma__kategoriTanamanClient<$Result.GetResult<Prisma.$kategoriTanamanPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends KategoriTanamanCreateArgs>(args: SelectSubset<T, KategoriTanamanCreateArgs<ExtArgs>>): Prisma__KategoriTanamanClient<$Result.GetResult<Prisma.$KategoriTanamanPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Create many KategoriTanamen.
-     * @param {kategoriTanamanCreateManyArgs} args - Arguments to create many KategoriTanamen.
+     * @param {KategoriTanamanCreateManyArgs} args - Arguments to create many KategoriTanamen.
      * @example
      * // Create many KategoriTanamen
      * const kategoriTanaman = await prisma.kategoriTanaman.createMany({
@@ -18478,11 +18552,11 @@ export namespace Prisma {
      * })
      *     
      */
-    createMany<T extends kategoriTanamanCreateManyArgs>(args?: SelectSubset<T, kategoriTanamanCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends KategoriTanamanCreateManyArgs>(args?: SelectSubset<T, KategoriTanamanCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
      * Create many KategoriTanamen and returns the data saved in the database.
-     * @param {kategoriTanamanCreateManyAndReturnArgs} args - Arguments to create many KategoriTanamen.
+     * @param {KategoriTanamanCreateManyAndReturnArgs} args - Arguments to create many KategoriTanamen.
      * @example
      * // Create many KategoriTanamen
      * const kategoriTanaman = await prisma.kategoriTanaman.createManyAndReturn({
@@ -18502,11 +18576,11 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends kategoriTanamanCreateManyAndReturnArgs>(args?: SelectSubset<T, kategoriTanamanCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$kategoriTanamanPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends KategoriTanamanCreateManyAndReturnArgs>(args?: SelectSubset<T, KategoriTanamanCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$KategoriTanamanPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
 
     /**
      * Delete a KategoriTanaman.
-     * @param {kategoriTanamanDeleteArgs} args - Arguments to delete one KategoriTanaman.
+     * @param {KategoriTanamanDeleteArgs} args - Arguments to delete one KategoriTanaman.
      * @example
      * // Delete one KategoriTanaman
      * const KategoriTanaman = await prisma.kategoriTanaman.delete({
@@ -18516,11 +18590,11 @@ export namespace Prisma {
      * })
      * 
      */
-    delete<T extends kategoriTanamanDeleteArgs>(args: SelectSubset<T, kategoriTanamanDeleteArgs<ExtArgs>>): Prisma__kategoriTanamanClient<$Result.GetResult<Prisma.$kategoriTanamanPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends KategoriTanamanDeleteArgs>(args: SelectSubset<T, KategoriTanamanDeleteArgs<ExtArgs>>): Prisma__KategoriTanamanClient<$Result.GetResult<Prisma.$KategoriTanamanPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Update one KategoriTanaman.
-     * @param {kategoriTanamanUpdateArgs} args - Arguments to update one KategoriTanaman.
+     * @param {KategoriTanamanUpdateArgs} args - Arguments to update one KategoriTanaman.
      * @example
      * // Update one KategoriTanaman
      * const kategoriTanaman = await prisma.kategoriTanaman.update({
@@ -18533,11 +18607,11 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends kategoriTanamanUpdateArgs>(args: SelectSubset<T, kategoriTanamanUpdateArgs<ExtArgs>>): Prisma__kategoriTanamanClient<$Result.GetResult<Prisma.$kategoriTanamanPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends KategoriTanamanUpdateArgs>(args: SelectSubset<T, KategoriTanamanUpdateArgs<ExtArgs>>): Prisma__KategoriTanamanClient<$Result.GetResult<Prisma.$KategoriTanamanPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Delete zero or more KategoriTanamen.
-     * @param {kategoriTanamanDeleteManyArgs} args - Arguments to filter KategoriTanamen to delete.
+     * @param {KategoriTanamanDeleteManyArgs} args - Arguments to filter KategoriTanamen to delete.
      * @example
      * // Delete a few KategoriTanamen
      * const { count } = await prisma.kategoriTanaman.deleteMany({
@@ -18547,13 +18621,13 @@ export namespace Prisma {
      * })
      * 
      */
-    deleteMany<T extends kategoriTanamanDeleteManyArgs>(args?: SelectSubset<T, kategoriTanamanDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends KategoriTanamanDeleteManyArgs>(args?: SelectSubset<T, KategoriTanamanDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
      * Update zero or more KategoriTanamen.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {kategoriTanamanUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {KategoriTanamanUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
      * // Update many KategoriTanamen
      * const kategoriTanaman = await prisma.kategoriTanaman.updateMany({
@@ -18566,11 +18640,11 @@ export namespace Prisma {
      * })
      * 
      */
-    updateMany<T extends kategoriTanamanUpdateManyArgs>(args: SelectSubset<T, kategoriTanamanUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends KategoriTanamanUpdateManyArgs>(args: SelectSubset<T, KategoriTanamanUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
      * Update zero or more KategoriTanamen and returns the data updated in the database.
-     * @param {kategoriTanamanUpdateManyAndReturnArgs} args - Arguments to update many KategoriTanamen.
+     * @param {KategoriTanamanUpdateManyAndReturnArgs} args - Arguments to update many KategoriTanamen.
      * @example
      * // Update many KategoriTanamen
      * const kategoriTanaman = await prisma.kategoriTanaman.updateManyAndReturn({
@@ -18596,11 +18670,11 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    updateManyAndReturn<T extends kategoriTanamanUpdateManyAndReturnArgs>(args: SelectSubset<T, kategoriTanamanUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$kategoriTanamanPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+    updateManyAndReturn<T extends KategoriTanamanUpdateManyAndReturnArgs>(args: SelectSubset<T, KategoriTanamanUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$KategoriTanamanPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
      * Create or update one KategoriTanaman.
-     * @param {kategoriTanamanUpsertArgs} args - Arguments to update or create a KategoriTanaman.
+     * @param {KategoriTanamanUpsertArgs} args - Arguments to update or create a KategoriTanaman.
      * @example
      * // Update or create a KategoriTanaman
      * const kategoriTanaman = await prisma.kategoriTanaman.upsert({
@@ -18615,14 +18689,14 @@ export namespace Prisma {
      *   }
      * })
      */
-    upsert<T extends kategoriTanamanUpsertArgs>(args: SelectSubset<T, kategoriTanamanUpsertArgs<ExtArgs>>): Prisma__kategoriTanamanClient<$Result.GetResult<Prisma.$kategoriTanamanPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends KategoriTanamanUpsertArgs>(args: SelectSubset<T, KategoriTanamanUpsertArgs<ExtArgs>>): Prisma__KategoriTanamanClient<$Result.GetResult<Prisma.$KategoriTanamanPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
     /**
      * Count the number of KategoriTanamen.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {kategoriTanamanCountArgs} args - Arguments to filter KategoriTanamen to count.
+     * @param {KategoriTanamanCountArgs} args - Arguments to filter KategoriTanamen to count.
      * @example
      * // Count the number of KategoriTanamen
      * const count = await prisma.kategoriTanaman.count({
@@ -18631,8 +18705,8 @@ export namespace Prisma {
      *   }
      * })
     **/
-    count<T extends kategoriTanamanCountArgs>(
-      args?: Subset<T, kategoriTanamanCountArgs>,
+    count<T extends KategoriTanamanCountArgs>(
+      args?: Subset<T, KategoriTanamanCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
@@ -18671,7 +18745,7 @@ export namespace Prisma {
      * Group by KategoriTanaman.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {kategoriTanamanGroupByArgs} args - Group by arguments.
+     * @param {KategoriTanamanGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -18686,14 +18760,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends kategoriTanamanGroupByArgs,
+      T extends KategoriTanamanGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: kategoriTanamanGroupByArgs['orderBy'] }
-        : { orderBy?: kategoriTanamanGroupByArgs['orderBy'] },
+        ? { orderBy: KategoriTanamanGroupByArgs['orderBy'] }
+        : { orderBy?: KategoriTanamanGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -18742,22 +18816,22 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, kategoriTanamanGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetKategoriTanamanGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, KategoriTanamanGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetKategoriTanamanGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the kategoriTanaman model
+   * Fields of the KategoriTanaman model
    */
-  readonly fields: kategoriTanamanFieldRefs;
+  readonly fields: KategoriTanamanFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for kategoriTanaman.
+   * The delegate class that acts as a "Promise-like" for KategoriTanaman.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__kategoriTanamanClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__KategoriTanamanClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    tanaman<T extends kategoriTanaman$tanamanArgs<ExtArgs> = {}>(args?: Subset<T, kategoriTanaman$tanamanArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TanamanPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    tanaman<T extends KategoriTanaman$tanamanArgs<ExtArgs> = {}>(args?: Subset<T, KategoriTanaman$tanamanArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TanamanPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -18784,402 +18858,402 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the kategoriTanaman model
+   * Fields of the KategoriTanaman model
    */
-  interface kategoriTanamanFieldRefs {
-    readonly id_kategori_tanaman: FieldRef<"kategoriTanaman", 'Int'>
-    readonly nama_kategori_tanaman: FieldRef<"kategoriTanaman", 'String'>
+  interface KategoriTanamanFieldRefs {
+    readonly id_kategori_tanaman: FieldRef<"KategoriTanaman", 'Int'>
+    readonly nama_kategori_tanaman: FieldRef<"KategoriTanaman", 'String'>
   }
     
 
   // Custom InputTypes
   /**
-   * kategoriTanaman findUnique
+   * KategoriTanaman findUnique
    */
-  export type kategoriTanamanFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type KategoriTanamanFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the kategoriTanaman
+     * Select specific fields to fetch from the KategoriTanaman
      */
-    select?: kategoriTanamanSelect<ExtArgs> | null
+    select?: KategoriTanamanSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the kategoriTanaman
+     * Omit specific fields from the KategoriTanaman
      */
-    omit?: kategoriTanamanOmit<ExtArgs> | null
+    omit?: KategoriTanamanOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: kategoriTanamanInclude<ExtArgs> | null
+    include?: KategoriTanamanInclude<ExtArgs> | null
     /**
-     * Filter, which kategoriTanaman to fetch.
+     * Filter, which KategoriTanaman to fetch.
      */
-    where: kategoriTanamanWhereUniqueInput
+    where: KategoriTanamanWhereUniqueInput
   }
 
   /**
-   * kategoriTanaman findUniqueOrThrow
+   * KategoriTanaman findUniqueOrThrow
    */
-  export type kategoriTanamanFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type KategoriTanamanFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the kategoriTanaman
+     * Select specific fields to fetch from the KategoriTanaman
      */
-    select?: kategoriTanamanSelect<ExtArgs> | null
+    select?: KategoriTanamanSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the kategoriTanaman
+     * Omit specific fields from the KategoriTanaman
      */
-    omit?: kategoriTanamanOmit<ExtArgs> | null
+    omit?: KategoriTanamanOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: kategoriTanamanInclude<ExtArgs> | null
+    include?: KategoriTanamanInclude<ExtArgs> | null
     /**
-     * Filter, which kategoriTanaman to fetch.
+     * Filter, which KategoriTanaman to fetch.
      */
-    where: kategoriTanamanWhereUniqueInput
+    where: KategoriTanamanWhereUniqueInput
   }
 
   /**
-   * kategoriTanaman findFirst
+   * KategoriTanaman findFirst
    */
-  export type kategoriTanamanFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type KategoriTanamanFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the kategoriTanaman
+     * Select specific fields to fetch from the KategoriTanaman
      */
-    select?: kategoriTanamanSelect<ExtArgs> | null
+    select?: KategoriTanamanSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the kategoriTanaman
+     * Omit specific fields from the KategoriTanaman
      */
-    omit?: kategoriTanamanOmit<ExtArgs> | null
+    omit?: KategoriTanamanOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: kategoriTanamanInclude<ExtArgs> | null
+    include?: KategoriTanamanInclude<ExtArgs> | null
     /**
-     * Filter, which kategoriTanaman to fetch.
+     * Filter, which KategoriTanaman to fetch.
      */
-    where?: kategoriTanamanWhereInput
+    where?: KategoriTanamanWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of kategoriTanamen to fetch.
+     * Determine the order of KategoriTanamen to fetch.
      */
-    orderBy?: kategoriTanamanOrderByWithRelationInput | kategoriTanamanOrderByWithRelationInput[]
+    orderBy?: KategoriTanamanOrderByWithRelationInput | KategoriTanamanOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for kategoriTanamen.
+     * Sets the position for searching for KategoriTanamen.
      */
-    cursor?: kategoriTanamanWhereUniqueInput
+    cursor?: KategoriTanamanWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` kategoriTanamen from the position of the cursor.
+     * Take `±n` KategoriTanamen from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` kategoriTanamen.
+     * Skip the first `n` KategoriTanamen.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of kategoriTanamen.
+     * Filter by unique combinations of KategoriTanamen.
      */
     distinct?: KategoriTanamanScalarFieldEnum | KategoriTanamanScalarFieldEnum[]
   }
 
   /**
-   * kategoriTanaman findFirstOrThrow
+   * KategoriTanaman findFirstOrThrow
    */
-  export type kategoriTanamanFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type KategoriTanamanFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the kategoriTanaman
+     * Select specific fields to fetch from the KategoriTanaman
      */
-    select?: kategoriTanamanSelect<ExtArgs> | null
+    select?: KategoriTanamanSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the kategoriTanaman
+     * Omit specific fields from the KategoriTanaman
      */
-    omit?: kategoriTanamanOmit<ExtArgs> | null
+    omit?: KategoriTanamanOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: kategoriTanamanInclude<ExtArgs> | null
+    include?: KategoriTanamanInclude<ExtArgs> | null
     /**
-     * Filter, which kategoriTanaman to fetch.
+     * Filter, which KategoriTanaman to fetch.
      */
-    where?: kategoriTanamanWhereInput
+    where?: KategoriTanamanWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of kategoriTanamen to fetch.
+     * Determine the order of KategoriTanamen to fetch.
      */
-    orderBy?: kategoriTanamanOrderByWithRelationInput | kategoriTanamanOrderByWithRelationInput[]
+    orderBy?: KategoriTanamanOrderByWithRelationInput | KategoriTanamanOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for kategoriTanamen.
+     * Sets the position for searching for KategoriTanamen.
      */
-    cursor?: kategoriTanamanWhereUniqueInput
+    cursor?: KategoriTanamanWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` kategoriTanamen from the position of the cursor.
+     * Take `±n` KategoriTanamen from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` kategoriTanamen.
+     * Skip the first `n` KategoriTanamen.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of kategoriTanamen.
+     * Filter by unique combinations of KategoriTanamen.
      */
     distinct?: KategoriTanamanScalarFieldEnum | KategoriTanamanScalarFieldEnum[]
   }
 
   /**
-   * kategoriTanaman findMany
+   * KategoriTanaman findMany
    */
-  export type kategoriTanamanFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type KategoriTanamanFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the kategoriTanaman
+     * Select specific fields to fetch from the KategoriTanaman
      */
-    select?: kategoriTanamanSelect<ExtArgs> | null
+    select?: KategoriTanamanSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the kategoriTanaman
+     * Omit specific fields from the KategoriTanaman
      */
-    omit?: kategoriTanamanOmit<ExtArgs> | null
+    omit?: KategoriTanamanOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: kategoriTanamanInclude<ExtArgs> | null
+    include?: KategoriTanamanInclude<ExtArgs> | null
     /**
-     * Filter, which kategoriTanamen to fetch.
+     * Filter, which KategoriTanamen to fetch.
      */
-    where?: kategoriTanamanWhereInput
+    where?: KategoriTanamanWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of kategoriTanamen to fetch.
+     * Determine the order of KategoriTanamen to fetch.
      */
-    orderBy?: kategoriTanamanOrderByWithRelationInput | kategoriTanamanOrderByWithRelationInput[]
+    orderBy?: KategoriTanamanOrderByWithRelationInput | KategoriTanamanOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing kategoriTanamen.
+     * Sets the position for listing KategoriTanamen.
      */
-    cursor?: kategoriTanamanWhereUniqueInput
+    cursor?: KategoriTanamanWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` kategoriTanamen from the position of the cursor.
+     * Take `±n` KategoriTanamen from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` kategoriTanamen.
+     * Skip the first `n` KategoriTanamen.
      */
     skip?: number
     distinct?: KategoriTanamanScalarFieldEnum | KategoriTanamanScalarFieldEnum[]
   }
 
   /**
-   * kategoriTanaman create
+   * KategoriTanaman create
    */
-  export type kategoriTanamanCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type KategoriTanamanCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the kategoriTanaman
+     * Select specific fields to fetch from the KategoriTanaman
      */
-    select?: kategoriTanamanSelect<ExtArgs> | null
+    select?: KategoriTanamanSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the kategoriTanaman
+     * Omit specific fields from the KategoriTanaman
      */
-    omit?: kategoriTanamanOmit<ExtArgs> | null
+    omit?: KategoriTanamanOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: kategoriTanamanInclude<ExtArgs> | null
+    include?: KategoriTanamanInclude<ExtArgs> | null
     /**
-     * The data needed to create a kategoriTanaman.
+     * The data needed to create a KategoriTanaman.
      */
-    data: XOR<kategoriTanamanCreateInput, kategoriTanamanUncheckedCreateInput>
+    data: XOR<KategoriTanamanCreateInput, KategoriTanamanUncheckedCreateInput>
   }
 
   /**
-   * kategoriTanaman createMany
+   * KategoriTanaman createMany
    */
-  export type kategoriTanamanCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type KategoriTanamanCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many kategoriTanamen.
+     * The data used to create many KategoriTanamen.
      */
-    data: kategoriTanamanCreateManyInput | kategoriTanamanCreateManyInput[]
+    data: KategoriTanamanCreateManyInput | KategoriTanamanCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * kategoriTanaman createManyAndReturn
+   * KategoriTanaman createManyAndReturn
    */
-  export type kategoriTanamanCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type KategoriTanamanCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the kategoriTanaman
+     * Select specific fields to fetch from the KategoriTanaman
      */
-    select?: kategoriTanamanSelectCreateManyAndReturn<ExtArgs> | null
+    select?: KategoriTanamanSelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the kategoriTanaman
+     * Omit specific fields from the KategoriTanaman
      */
-    omit?: kategoriTanamanOmit<ExtArgs> | null
+    omit?: KategoriTanamanOmit<ExtArgs> | null
     /**
-     * The data used to create many kategoriTanamen.
+     * The data used to create many KategoriTanamen.
      */
-    data: kategoriTanamanCreateManyInput | kategoriTanamanCreateManyInput[]
+    data: KategoriTanamanCreateManyInput | KategoriTanamanCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * kategoriTanaman update
+   * KategoriTanaman update
    */
-  export type kategoriTanamanUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type KategoriTanamanUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the kategoriTanaman
+     * Select specific fields to fetch from the KategoriTanaman
      */
-    select?: kategoriTanamanSelect<ExtArgs> | null
+    select?: KategoriTanamanSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the kategoriTanaman
+     * Omit specific fields from the KategoriTanaman
      */
-    omit?: kategoriTanamanOmit<ExtArgs> | null
+    omit?: KategoriTanamanOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: kategoriTanamanInclude<ExtArgs> | null
+    include?: KategoriTanamanInclude<ExtArgs> | null
     /**
-     * The data needed to update a kategoriTanaman.
+     * The data needed to update a KategoriTanaman.
      */
-    data: XOR<kategoriTanamanUpdateInput, kategoriTanamanUncheckedUpdateInput>
+    data: XOR<KategoriTanamanUpdateInput, KategoriTanamanUncheckedUpdateInput>
     /**
-     * Choose, which kategoriTanaman to update.
+     * Choose, which KategoriTanaman to update.
      */
-    where: kategoriTanamanWhereUniqueInput
+    where: KategoriTanamanWhereUniqueInput
   }
 
   /**
-   * kategoriTanaman updateMany
+   * KategoriTanaman updateMany
    */
-  export type kategoriTanamanUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type KategoriTanamanUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update kategoriTanamen.
+     * The data used to update KategoriTanamen.
      */
-    data: XOR<kategoriTanamanUpdateManyMutationInput, kategoriTanamanUncheckedUpdateManyInput>
+    data: XOR<KategoriTanamanUpdateManyMutationInput, KategoriTanamanUncheckedUpdateManyInput>
     /**
-     * Filter which kategoriTanamen to update
+     * Filter which KategoriTanamen to update
      */
-    where?: kategoriTanamanWhereInput
+    where?: KategoriTanamanWhereInput
     /**
-     * Limit how many kategoriTanamen to update.
+     * Limit how many KategoriTanamen to update.
      */
     limit?: number
   }
 
   /**
-   * kategoriTanaman updateManyAndReturn
+   * KategoriTanaman updateManyAndReturn
    */
-  export type kategoriTanamanUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type KategoriTanamanUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the kategoriTanaman
+     * Select specific fields to fetch from the KategoriTanaman
      */
-    select?: kategoriTanamanSelectUpdateManyAndReturn<ExtArgs> | null
+    select?: KategoriTanamanSelectUpdateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the kategoriTanaman
+     * Omit specific fields from the KategoriTanaman
      */
-    omit?: kategoriTanamanOmit<ExtArgs> | null
+    omit?: KategoriTanamanOmit<ExtArgs> | null
     /**
-     * The data used to update kategoriTanamen.
+     * The data used to update KategoriTanamen.
      */
-    data: XOR<kategoriTanamanUpdateManyMutationInput, kategoriTanamanUncheckedUpdateManyInput>
+    data: XOR<KategoriTanamanUpdateManyMutationInput, KategoriTanamanUncheckedUpdateManyInput>
     /**
-     * Filter which kategoriTanamen to update
+     * Filter which KategoriTanamen to update
      */
-    where?: kategoriTanamanWhereInput
+    where?: KategoriTanamanWhereInput
     /**
-     * Limit how many kategoriTanamen to update.
+     * Limit how many KategoriTanamen to update.
      */
     limit?: number
   }
 
   /**
-   * kategoriTanaman upsert
+   * KategoriTanaman upsert
    */
-  export type kategoriTanamanUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type KategoriTanamanUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the kategoriTanaman
+     * Select specific fields to fetch from the KategoriTanaman
      */
-    select?: kategoriTanamanSelect<ExtArgs> | null
+    select?: KategoriTanamanSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the kategoriTanaman
+     * Omit specific fields from the KategoriTanaman
      */
-    omit?: kategoriTanamanOmit<ExtArgs> | null
+    omit?: KategoriTanamanOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: kategoriTanamanInclude<ExtArgs> | null
+    include?: KategoriTanamanInclude<ExtArgs> | null
     /**
-     * The filter to search for the kategoriTanaman to update in case it exists.
+     * The filter to search for the KategoriTanaman to update in case it exists.
      */
-    where: kategoriTanamanWhereUniqueInput
+    where: KategoriTanamanWhereUniqueInput
     /**
-     * In case the kategoriTanaman found by the `where` argument doesn't exist, create a new kategoriTanaman with this data.
+     * In case the KategoriTanaman found by the `where` argument doesn't exist, create a new KategoriTanaman with this data.
      */
-    create: XOR<kategoriTanamanCreateInput, kategoriTanamanUncheckedCreateInput>
+    create: XOR<KategoriTanamanCreateInput, KategoriTanamanUncheckedCreateInput>
     /**
-     * In case the kategoriTanaman was found with the provided `where` argument, update it with this data.
+     * In case the KategoriTanaman was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<kategoriTanamanUpdateInput, kategoriTanamanUncheckedUpdateInput>
+    update: XOR<KategoriTanamanUpdateInput, KategoriTanamanUncheckedUpdateInput>
   }
 
   /**
-   * kategoriTanaman delete
+   * KategoriTanaman delete
    */
-  export type kategoriTanamanDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type KategoriTanamanDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the kategoriTanaman
+     * Select specific fields to fetch from the KategoriTanaman
      */
-    select?: kategoriTanamanSelect<ExtArgs> | null
+    select?: KategoriTanamanSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the kategoriTanaman
+     * Omit specific fields from the KategoriTanaman
      */
-    omit?: kategoriTanamanOmit<ExtArgs> | null
+    omit?: KategoriTanamanOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: kategoriTanamanInclude<ExtArgs> | null
+    include?: KategoriTanamanInclude<ExtArgs> | null
     /**
-     * Filter which kategoriTanaman to delete.
+     * Filter which KategoriTanaman to delete.
      */
-    where: kategoriTanamanWhereUniqueInput
+    where: KategoriTanamanWhereUniqueInput
   }
 
   /**
-   * kategoriTanaman deleteMany
+   * KategoriTanaman deleteMany
    */
-  export type kategoriTanamanDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type KategoriTanamanDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which kategoriTanamen to delete
+     * Filter which KategoriTanamen to delete
      */
-    where?: kategoriTanamanWhereInput
+    where?: KategoriTanamanWhereInput
     /**
-     * Limit how many kategoriTanamen to delete.
+     * Limit how many KategoriTanamen to delete.
      */
     limit?: number
   }
 
   /**
-   * kategoriTanaman.tanaman
+   * KategoriTanaman.tanaman
    */
-  export type kategoriTanaman$tanamanArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type KategoriTanaman$tanamanArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Tanaman
      */
@@ -19201,21 +19275,21 @@ export namespace Prisma {
   }
 
   /**
-   * kategoriTanaman without action
+   * KategoriTanaman without action
    */
-  export type kategoriTanamanDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type KategoriTanamanDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the kategoriTanaman
+     * Select specific fields to fetch from the KategoriTanaman
      */
-    select?: kategoriTanamanSelect<ExtArgs> | null
+    select?: KategoriTanamanSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the kategoriTanaman
+     * Omit specific fields from the KategoriTanaman
      */
-    omit?: kategoriTanamanOmit<ExtArgs> | null
+    omit?: KategoriTanamanOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: kategoriTanamanInclude<ExtArgs> | null
+    include?: KategoriTanamanInclude<ExtArgs> | null
   }
 
 
@@ -19247,6 +19321,8 @@ export namespace Prisma {
     nama_latin: string | null
     durasi_penanaman: number | null
     deskripsi_tanaman: string | null
+    gambar_tanaman: string | null
+    tingkat_kesulitan: $Enums.TingkatKesulitan | null
     id_kategori_tanaman: number | null
   }
 
@@ -19256,6 +19332,8 @@ export namespace Prisma {
     nama_latin: string | null
     durasi_penanaman: number | null
     deskripsi_tanaman: string | null
+    gambar_tanaman: string | null
+    tingkat_kesulitan: $Enums.TingkatKesulitan | null
     id_kategori_tanaman: number | null
   }
 
@@ -19265,6 +19343,8 @@ export namespace Prisma {
     nama_latin: number
     durasi_penanaman: number
     deskripsi_tanaman: number
+    gambar_tanaman: number
+    tingkat_kesulitan: number
     id_kategori_tanaman: number
     _all: number
   }
@@ -19286,6 +19366,8 @@ export namespace Prisma {
     nama_latin?: true
     durasi_penanaman?: true
     deskripsi_tanaman?: true
+    gambar_tanaman?: true
+    tingkat_kesulitan?: true
     id_kategori_tanaman?: true
   }
 
@@ -19295,6 +19377,8 @@ export namespace Prisma {
     nama_latin?: true
     durasi_penanaman?: true
     deskripsi_tanaman?: true
+    gambar_tanaman?: true
+    tingkat_kesulitan?: true
     id_kategori_tanaman?: true
   }
 
@@ -19304,6 +19388,8 @@ export namespace Prisma {
     nama_latin?: true
     durasi_penanaman?: true
     deskripsi_tanaman?: true
+    gambar_tanaman?: true
+    tingkat_kesulitan?: true
     id_kategori_tanaman?: true
     _all?: true
   }
@@ -19400,6 +19486,8 @@ export namespace Prisma {
     nama_latin: string
     durasi_penanaman: number
     deskripsi_tanaman: string
+    gambar_tanaman: string | null
+    tingkat_kesulitan: $Enums.TingkatKesulitan
     id_kategori_tanaman: number
     _count: TanamanCountAggregateOutputType | null
     _avg: TanamanAvgAggregateOutputType | null
@@ -19428,8 +19516,10 @@ export namespace Prisma {
     nama_latin?: boolean
     durasi_penanaman?: boolean
     deskripsi_tanaman?: boolean
+    gambar_tanaman?: boolean
+    tingkat_kesulitan?: boolean
     id_kategori_tanaman?: boolean
-    kategori?: boolean | kategoriTanamanDefaultArgs<ExtArgs>
+    kategori?: boolean | KategoriTanamanDefaultArgs<ExtArgs>
     instruksi_tanaman?: boolean | Tanaman$instruksi_tanamanArgs<ExtArgs>
     hari_penanaman?: boolean | Tanaman$hari_penanamanArgs<ExtArgs>
     tanaman_pengguna?: boolean | Tanaman$tanaman_penggunaArgs<ExtArgs>
@@ -19442,8 +19532,10 @@ export namespace Prisma {
     nama_latin?: boolean
     durasi_penanaman?: boolean
     deskripsi_tanaman?: boolean
+    gambar_tanaman?: boolean
+    tingkat_kesulitan?: boolean
     id_kategori_tanaman?: boolean
-    kategori?: boolean | kategoriTanamanDefaultArgs<ExtArgs>
+    kategori?: boolean | KategoriTanamanDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["tanaman"]>
 
   export type TanamanSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -19452,8 +19544,10 @@ export namespace Prisma {
     nama_latin?: boolean
     durasi_penanaman?: boolean
     deskripsi_tanaman?: boolean
+    gambar_tanaman?: boolean
+    tingkat_kesulitan?: boolean
     id_kategori_tanaman?: boolean
-    kategori?: boolean | kategoriTanamanDefaultArgs<ExtArgs>
+    kategori?: boolean | KategoriTanamanDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["tanaman"]>
 
   export type TanamanSelectScalar = {
@@ -19462,28 +19556,30 @@ export namespace Prisma {
     nama_latin?: boolean
     durasi_penanaman?: boolean
     deskripsi_tanaman?: boolean
+    gambar_tanaman?: boolean
+    tingkat_kesulitan?: boolean
     id_kategori_tanaman?: boolean
   }
 
-  export type TanamanOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_tanaman" | "nama_tanaman" | "nama_latin" | "durasi_penanaman" | "deskripsi_tanaman" | "id_kategori_tanaman", ExtArgs["result"]["tanaman"]>
+  export type TanamanOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_tanaman" | "nama_tanaman" | "nama_latin" | "durasi_penanaman" | "deskripsi_tanaman" | "gambar_tanaman" | "tingkat_kesulitan" | "id_kategori_tanaman", ExtArgs["result"]["tanaman"]>
   export type TanamanInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    kategori?: boolean | kategoriTanamanDefaultArgs<ExtArgs>
+    kategori?: boolean | KategoriTanamanDefaultArgs<ExtArgs>
     instruksi_tanaman?: boolean | Tanaman$instruksi_tanamanArgs<ExtArgs>
     hari_penanaman?: boolean | Tanaman$hari_penanamanArgs<ExtArgs>
     tanaman_pengguna?: boolean | Tanaman$tanaman_penggunaArgs<ExtArgs>
     _count?: boolean | TanamanCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type TanamanIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    kategori?: boolean | kategoriTanamanDefaultArgs<ExtArgs>
+    kategori?: boolean | KategoriTanamanDefaultArgs<ExtArgs>
   }
   export type TanamanIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    kategori?: boolean | kategoriTanamanDefaultArgs<ExtArgs>
+    kategori?: boolean | KategoriTanamanDefaultArgs<ExtArgs>
   }
 
   export type $TanamanPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Tanaman"
     objects: {
-      kategori: Prisma.$kategoriTanamanPayload<ExtArgs>
+      kategori: Prisma.$KategoriTanamanPayload<ExtArgs>
       instruksi_tanaman: Prisma.$InstruksiTanamanPayload<ExtArgs>[]
       hari_penanaman: Prisma.$HariPenanamanPayload<ExtArgs>[]
       tanaman_pengguna: Prisma.$TanamanPenggunaPayload<ExtArgs>[]
@@ -19494,6 +19590,8 @@ export namespace Prisma {
       nama_latin: string
       durasi_penanaman: number
       deskripsi_tanaman: string
+      gambar_tanaman: string | null
+      tingkat_kesulitan: $Enums.TingkatKesulitan
       id_kategori_tanaman: number
     }, ExtArgs["result"]["tanaman"]>
     composites: {}
@@ -19889,7 +19987,7 @@ export namespace Prisma {
    */
   export interface Prisma__TanamanClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    kategori<T extends kategoriTanamanDefaultArgs<ExtArgs> = {}>(args?: Subset<T, kategoriTanamanDefaultArgs<ExtArgs>>): Prisma__kategoriTanamanClient<$Result.GetResult<Prisma.$kategoriTanamanPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    kategori<T extends KategoriTanamanDefaultArgs<ExtArgs> = {}>(args?: Subset<T, KategoriTanamanDefaultArgs<ExtArgs>>): Prisma__KategoriTanamanClient<$Result.GetResult<Prisma.$KategoriTanamanPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     instruksi_tanaman<T extends Tanaman$instruksi_tanamanArgs<ExtArgs> = {}>(args?: Subset<T, Tanaman$instruksi_tanamanArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InstruksiTanamanPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     hari_penanaman<T extends Tanaman$hari_penanamanArgs<ExtArgs> = {}>(args?: Subset<T, Tanaman$hari_penanamanArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$HariPenanamanPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     tanaman_pengguna<T extends Tanaman$tanaman_penggunaArgs<ExtArgs> = {}>(args?: Subset<T, Tanaman$tanaman_penggunaArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TanamanPenggunaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -19927,6 +20025,8 @@ export namespace Prisma {
     readonly nama_latin: FieldRef<"Tanaman", 'String'>
     readonly durasi_penanaman: FieldRef<"Tanaman", 'Int'>
     readonly deskripsi_tanaman: FieldRef<"Tanaman", 'String'>
+    readonly gambar_tanaman: FieldRef<"Tanaman", 'String'>
+    readonly tingkat_kesulitan: FieldRef<"Tanaman", 'TingkatKesulitan'>
     readonly id_kategori_tanaman: FieldRef<"Tanaman", 'Int'>
   }
     
@@ -20428,27 +20528,32 @@ export namespace Prisma {
 
   export type InstruksiTanamanAvgAggregateOutputType = {
     id_instruksi: number | null
+    urutan: number | null
   }
 
   export type InstruksiTanamanSumAggregateOutputType = {
     id_instruksi: number | null
+    urutan: number | null
   }
 
   export type InstruksiTanamanMinAggregateOutputType = {
     id_instruksi: number | null
     instruksi: string | null
+    urutan: number | null
     id_tanaman: string | null
   }
 
   export type InstruksiTanamanMaxAggregateOutputType = {
     id_instruksi: number | null
     instruksi: string | null
+    urutan: number | null
     id_tanaman: string | null
   }
 
   export type InstruksiTanamanCountAggregateOutputType = {
     id_instruksi: number
     instruksi: number
+    urutan: number
     id_tanaman: number
     _all: number
   }
@@ -20456,27 +20561,32 @@ export namespace Prisma {
 
   export type InstruksiTanamanAvgAggregateInputType = {
     id_instruksi?: true
+    urutan?: true
   }
 
   export type InstruksiTanamanSumAggregateInputType = {
     id_instruksi?: true
+    urutan?: true
   }
 
   export type InstruksiTanamanMinAggregateInputType = {
     id_instruksi?: true
     instruksi?: true
+    urutan?: true
     id_tanaman?: true
   }
 
   export type InstruksiTanamanMaxAggregateInputType = {
     id_instruksi?: true
     instruksi?: true
+    urutan?: true
     id_tanaman?: true
   }
 
   export type InstruksiTanamanCountAggregateInputType = {
     id_instruksi?: true
     instruksi?: true
+    urutan?: true
     id_tanaman?: true
     _all?: true
   }
@@ -20570,6 +20680,7 @@ export namespace Prisma {
   export type InstruksiTanamanGroupByOutputType = {
     id_instruksi: number
     instruksi: string
+    urutan: number
     id_tanaman: string
     _count: InstruksiTanamanCountAggregateOutputType | null
     _avg: InstruksiTanamanAvgAggregateOutputType | null
@@ -20595,6 +20706,7 @@ export namespace Prisma {
   export type InstruksiTanamanSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id_instruksi?: boolean
     instruksi?: boolean
+    urutan?: boolean
     id_tanaman?: boolean
     tanaman?: boolean | TanamanDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["instruksiTanaman"]>
@@ -20602,6 +20714,7 @@ export namespace Prisma {
   export type InstruksiTanamanSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id_instruksi?: boolean
     instruksi?: boolean
+    urutan?: boolean
     id_tanaman?: boolean
     tanaman?: boolean | TanamanDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["instruksiTanaman"]>
@@ -20609,6 +20722,7 @@ export namespace Prisma {
   export type InstruksiTanamanSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id_instruksi?: boolean
     instruksi?: boolean
+    urutan?: boolean
     id_tanaman?: boolean
     tanaman?: boolean | TanamanDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["instruksiTanaman"]>
@@ -20616,10 +20730,11 @@ export namespace Prisma {
   export type InstruksiTanamanSelectScalar = {
     id_instruksi?: boolean
     instruksi?: boolean
+    urutan?: boolean
     id_tanaman?: boolean
   }
 
-  export type InstruksiTanamanOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_instruksi" | "instruksi" | "id_tanaman", ExtArgs["result"]["instruksiTanaman"]>
+  export type InstruksiTanamanOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_instruksi" | "instruksi" | "urutan" | "id_tanaman", ExtArgs["result"]["instruksiTanaman"]>
   export type InstruksiTanamanInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     tanaman?: boolean | TanamanDefaultArgs<ExtArgs>
   }
@@ -20638,6 +20753,7 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id_instruksi: number
       instruksi: string
+      urutan: number
       id_tanaman: string
     }, ExtArgs["result"]["instruksiTanaman"]>
     composites: {}
@@ -21065,6 +21181,7 @@ export namespace Prisma {
   interface InstruksiTanamanFieldRefs {
     readonly id_instruksi: FieldRef<"InstruksiTanaman", 'Int'>
     readonly instruksi: FieldRef<"InstruksiTanaman", 'String'>
+    readonly urutan: FieldRef<"InstruksiTanaman", 'Int'>
     readonly id_tanaman: FieldRef<"InstruksiTanaman", 'String'>
   }
     
@@ -21494,29 +21611,35 @@ export namespace Prisma {
 
   export type HariPenanamanAvgAggregateOutputType = {
     id_hari_penanaman: number | null
-    jenis_tugas: number | null
+    hari_ke: number | null
   }
 
   export type HariPenanamanSumAggregateOutputType = {
     id_hari_penanaman: number | null
-    jenis_tugas: number | null
+    hari_ke: number | null
   }
 
   export type HariPenanamanMinAggregateOutputType = {
     id_hari_penanaman: number | null
-    jenis_tugas: number | null
+    hari_ke: number | null
+    nama_fase: $Enums.FasePenanaman | null
+    deskripsi_fase: string | null
     id_tanaman: string | null
   }
 
   export type HariPenanamanMaxAggregateOutputType = {
     id_hari_penanaman: number | null
-    jenis_tugas: number | null
+    hari_ke: number | null
+    nama_fase: $Enums.FasePenanaman | null
+    deskripsi_fase: string | null
     id_tanaman: string | null
   }
 
   export type HariPenanamanCountAggregateOutputType = {
     id_hari_penanaman: number
-    jenis_tugas: number
+    hari_ke: number
+    nama_fase: number
+    deskripsi_fase: number
     id_tanaman: number
     _all: number
   }
@@ -21524,29 +21647,35 @@ export namespace Prisma {
 
   export type HariPenanamanAvgAggregateInputType = {
     id_hari_penanaman?: true
-    jenis_tugas?: true
+    hari_ke?: true
   }
 
   export type HariPenanamanSumAggregateInputType = {
     id_hari_penanaman?: true
-    jenis_tugas?: true
+    hari_ke?: true
   }
 
   export type HariPenanamanMinAggregateInputType = {
     id_hari_penanaman?: true
-    jenis_tugas?: true
+    hari_ke?: true
+    nama_fase?: true
+    deskripsi_fase?: true
     id_tanaman?: true
   }
 
   export type HariPenanamanMaxAggregateInputType = {
     id_hari_penanaman?: true
-    jenis_tugas?: true
+    hari_ke?: true
+    nama_fase?: true
+    deskripsi_fase?: true
     id_tanaman?: true
   }
 
   export type HariPenanamanCountAggregateInputType = {
     id_hari_penanaman?: true
-    jenis_tugas?: true
+    hari_ke?: true
+    nama_fase?: true
+    deskripsi_fase?: true
     id_tanaman?: true
     _all?: true
   }
@@ -21639,7 +21768,9 @@ export namespace Prisma {
 
   export type HariPenanamanGroupByOutputType = {
     id_hari_penanaman: number
-    jenis_tugas: number
+    hari_ke: number
+    nama_fase: $Enums.FasePenanaman
+    deskripsi_fase: string | null
     id_tanaman: string
     _count: HariPenanamanCountAggregateOutputType | null
     _avg: HariPenanamanAvgAggregateOutputType | null
@@ -21664,7 +21795,9 @@ export namespace Prisma {
 
   export type HariPenanamanSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id_hari_penanaman?: boolean
-    jenis_tugas?: boolean
+    hari_ke?: boolean
+    nama_fase?: boolean
+    deskripsi_fase?: boolean
     id_tanaman?: boolean
     tanaman?: boolean | TanamanDefaultArgs<ExtArgs>
     tugas_penanaman?: boolean | HariPenanaman$tugas_penanamanArgs<ExtArgs>
@@ -21673,25 +21806,31 @@ export namespace Prisma {
 
   export type HariPenanamanSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id_hari_penanaman?: boolean
-    jenis_tugas?: boolean
+    hari_ke?: boolean
+    nama_fase?: boolean
+    deskripsi_fase?: boolean
     id_tanaman?: boolean
     tanaman?: boolean | TanamanDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["hariPenanaman"]>
 
   export type HariPenanamanSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id_hari_penanaman?: boolean
-    jenis_tugas?: boolean
+    hari_ke?: boolean
+    nama_fase?: boolean
+    deskripsi_fase?: boolean
     id_tanaman?: boolean
     tanaman?: boolean | TanamanDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["hariPenanaman"]>
 
   export type HariPenanamanSelectScalar = {
     id_hari_penanaman?: boolean
-    jenis_tugas?: boolean
+    hari_ke?: boolean
+    nama_fase?: boolean
+    deskripsi_fase?: boolean
     id_tanaman?: boolean
   }
 
-  export type HariPenanamanOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_hari_penanaman" | "jenis_tugas" | "id_tanaman", ExtArgs["result"]["hariPenanaman"]>
+  export type HariPenanamanOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_hari_penanaman" | "hari_ke" | "nama_fase" | "deskripsi_fase" | "id_tanaman", ExtArgs["result"]["hariPenanaman"]>
   export type HariPenanamanInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     tanaman?: boolean | TanamanDefaultArgs<ExtArgs>
     tugas_penanaman?: boolean | HariPenanaman$tugas_penanamanArgs<ExtArgs>
@@ -21712,7 +21851,9 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id_hari_penanaman: number
-      jenis_tugas: number
+      hari_ke: number
+      nama_fase: $Enums.FasePenanaman
+      deskripsi_fase: string | null
       id_tanaman: string
     }, ExtArgs["result"]["hariPenanaman"]>
     composites: {}
@@ -22140,7 +22281,9 @@ export namespace Prisma {
    */
   interface HariPenanamanFieldRefs {
     readonly id_hari_penanaman: FieldRef<"HariPenanaman", 'Int'>
-    readonly jenis_tugas: FieldRef<"HariPenanaman", 'Int'>
+    readonly hari_ke: FieldRef<"HariPenanaman", 'Int'>
+    readonly nama_fase: FieldRef<"HariPenanaman", 'FasePenanaman'>
+    readonly deskripsi_fase: FieldRef<"HariPenanaman", 'String'>
     readonly id_tanaman: FieldRef<"HariPenanaman", 'String'>
   }
     
@@ -22594,29 +22737,37 @@ export namespace Prisma {
 
   export type TugasPenanamanAvgAggregateOutputType = {
     id_tugas: number | null
+    estimasi_waktu: number | null
     id_hari_penanaman: number | null
   }
 
   export type TugasPenanamanSumAggregateOutputType = {
     id_tugas: number | null
+    estimasi_waktu: number | null
     id_hari_penanaman: number | null
   }
 
   export type TugasPenanamanMinAggregateOutputType = {
     id_tugas: number | null
     nama_tugas: string | null
+    jenis_tugas: $Enums.JenisTugas | null
+    estimasi_waktu: number | null
     id_hari_penanaman: number | null
   }
 
   export type TugasPenanamanMaxAggregateOutputType = {
     id_tugas: number | null
     nama_tugas: string | null
+    jenis_tugas: $Enums.JenisTugas | null
+    estimasi_waktu: number | null
     id_hari_penanaman: number | null
   }
 
   export type TugasPenanamanCountAggregateOutputType = {
     id_tugas: number
     nama_tugas: number
+    jenis_tugas: number
+    estimasi_waktu: number
     id_hari_penanaman: number
     _all: number
   }
@@ -22624,29 +22775,37 @@ export namespace Prisma {
 
   export type TugasPenanamanAvgAggregateInputType = {
     id_tugas?: true
+    estimasi_waktu?: true
     id_hari_penanaman?: true
   }
 
   export type TugasPenanamanSumAggregateInputType = {
     id_tugas?: true
+    estimasi_waktu?: true
     id_hari_penanaman?: true
   }
 
   export type TugasPenanamanMinAggregateInputType = {
     id_tugas?: true
     nama_tugas?: true
+    jenis_tugas?: true
+    estimasi_waktu?: true
     id_hari_penanaman?: true
   }
 
   export type TugasPenanamanMaxAggregateInputType = {
     id_tugas?: true
     nama_tugas?: true
+    jenis_tugas?: true
+    estimasi_waktu?: true
     id_hari_penanaman?: true
   }
 
   export type TugasPenanamanCountAggregateInputType = {
     id_tugas?: true
     nama_tugas?: true
+    jenis_tugas?: true
+    estimasi_waktu?: true
     id_hari_penanaman?: true
     _all?: true
   }
@@ -22740,6 +22899,8 @@ export namespace Prisma {
   export type TugasPenanamanGroupByOutputType = {
     id_tugas: number
     nama_tugas: string
+    jenis_tugas: $Enums.JenisTugas
+    estimasi_waktu: number | null
     id_hari_penanaman: number
     _count: TugasPenanamanCountAggregateOutputType | null
     _avg: TugasPenanamanAvgAggregateOutputType | null
@@ -22765,6 +22926,8 @@ export namespace Prisma {
   export type TugasPenanamanSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id_tugas?: boolean
     nama_tugas?: boolean
+    jenis_tugas?: boolean
+    estimasi_waktu?: boolean
     id_hari_penanaman?: boolean
     hari_penanaman?: boolean | HariPenanamanDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["tugasPenanaman"]>
@@ -22772,6 +22935,8 @@ export namespace Prisma {
   export type TugasPenanamanSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id_tugas?: boolean
     nama_tugas?: boolean
+    jenis_tugas?: boolean
+    estimasi_waktu?: boolean
     id_hari_penanaman?: boolean
     hari_penanaman?: boolean | HariPenanamanDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["tugasPenanaman"]>
@@ -22779,6 +22944,8 @@ export namespace Prisma {
   export type TugasPenanamanSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id_tugas?: boolean
     nama_tugas?: boolean
+    jenis_tugas?: boolean
+    estimasi_waktu?: boolean
     id_hari_penanaman?: boolean
     hari_penanaman?: boolean | HariPenanamanDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["tugasPenanaman"]>
@@ -22786,10 +22953,12 @@ export namespace Prisma {
   export type TugasPenanamanSelectScalar = {
     id_tugas?: boolean
     nama_tugas?: boolean
+    jenis_tugas?: boolean
+    estimasi_waktu?: boolean
     id_hari_penanaman?: boolean
   }
 
-  export type TugasPenanamanOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_tugas" | "nama_tugas" | "id_hari_penanaman", ExtArgs["result"]["tugasPenanaman"]>
+  export type TugasPenanamanOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_tugas" | "nama_tugas" | "jenis_tugas" | "estimasi_waktu" | "id_hari_penanaman", ExtArgs["result"]["tugasPenanaman"]>
   export type TugasPenanamanInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     hari_penanaman?: boolean | HariPenanamanDefaultArgs<ExtArgs>
   }
@@ -22808,6 +22977,8 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id_tugas: number
       nama_tugas: string
+      jenis_tugas: $Enums.JenisTugas
+      estimasi_waktu: number | null
       id_hari_penanaman: number
     }, ExtArgs["result"]["tugasPenanaman"]>
     composites: {}
@@ -23235,6 +23406,8 @@ export namespace Prisma {
   interface TugasPenanamanFieldRefs {
     readonly id_tugas: FieldRef<"TugasPenanaman", 'Int'>
     readonly nama_tugas: FieldRef<"TugasPenanaman", 'String'>
+    readonly jenis_tugas: FieldRef<"TugasPenanaman", 'JenisTugas'>
+    readonly estimasi_waktu: FieldRef<"TugasPenanaman", 'Int'>
     readonly id_hari_penanaman: FieldRef<"TugasPenanaman", 'Int'>
   }
     
@@ -23656,62 +23829,108 @@ export namespace Prisma {
 
   export type AggregateTanamanPengguna = {
     _count: TanamanPenggunaCountAggregateOutputType | null
+    _avg: TanamanPenggunaAvgAggregateOutputType | null
+    _sum: TanamanPenggunaSumAggregateOutputType | null
     _min: TanamanPenggunaMinAggregateOutputType | null
     _max: TanamanPenggunaMaxAggregateOutputType | null
   }
 
+  export type TanamanPenggunaAvgAggregateOutputType = {
+    hari_ke_saat_ini: number | null
+    progress_persen: number | null
+  }
+
+  export type TanamanPenggunaSumAggregateOutputType = {
+    hari_ke_saat_ini: number | null
+    progress_persen: number | null
+  }
+
   export type TanamanPenggunaMinAggregateOutputType = {
     id_tanaman_pengguna: string | null
+    nama_custom: string | null
     tanggal_penanaman: Date | null
-    status_penanaman: boolean | null
-    nama_tanaman: string | null
+    tanggal_target_panen: Date | null
+    status_penanaman: $Enums.StatusPenanaman | null
+    hari_ke_saat_ini: number | null
+    progress_persen: number | null
+    catatan_umum: string | null
     id_tanaman: string | null
     id_pengguna: string | null
   }
 
   export type TanamanPenggunaMaxAggregateOutputType = {
     id_tanaman_pengguna: string | null
+    nama_custom: string | null
     tanggal_penanaman: Date | null
-    status_penanaman: boolean | null
-    nama_tanaman: string | null
+    tanggal_target_panen: Date | null
+    status_penanaman: $Enums.StatusPenanaman | null
+    hari_ke_saat_ini: number | null
+    progress_persen: number | null
+    catatan_umum: string | null
     id_tanaman: string | null
     id_pengguna: string | null
   }
 
   export type TanamanPenggunaCountAggregateOutputType = {
     id_tanaman_pengguna: number
+    nama_custom: number
     tanggal_penanaman: number
+    tanggal_target_panen: number
     status_penanaman: number
-    nama_tanaman: number
+    hari_ke_saat_ini: number
+    progress_persen: number
+    catatan_umum: number
     id_tanaman: number
     id_pengguna: number
     _all: number
   }
 
 
+  export type TanamanPenggunaAvgAggregateInputType = {
+    hari_ke_saat_ini?: true
+    progress_persen?: true
+  }
+
+  export type TanamanPenggunaSumAggregateInputType = {
+    hari_ke_saat_ini?: true
+    progress_persen?: true
+  }
+
   export type TanamanPenggunaMinAggregateInputType = {
     id_tanaman_pengguna?: true
+    nama_custom?: true
     tanggal_penanaman?: true
+    tanggal_target_panen?: true
     status_penanaman?: true
-    nama_tanaman?: true
+    hari_ke_saat_ini?: true
+    progress_persen?: true
+    catatan_umum?: true
     id_tanaman?: true
     id_pengguna?: true
   }
 
   export type TanamanPenggunaMaxAggregateInputType = {
     id_tanaman_pengguna?: true
+    nama_custom?: true
     tanggal_penanaman?: true
+    tanggal_target_panen?: true
     status_penanaman?: true
-    nama_tanaman?: true
+    hari_ke_saat_ini?: true
+    progress_persen?: true
+    catatan_umum?: true
     id_tanaman?: true
     id_pengguna?: true
   }
 
   export type TanamanPenggunaCountAggregateInputType = {
     id_tanaman_pengguna?: true
+    nama_custom?: true
     tanggal_penanaman?: true
+    tanggal_target_panen?: true
     status_penanaman?: true
-    nama_tanaman?: true
+    hari_ke_saat_ini?: true
+    progress_persen?: true
+    catatan_umum?: true
     id_tanaman?: true
     id_pengguna?: true
     _all?: true
@@ -23755,6 +23974,18 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
+     * Select which fields to average
+    **/
+    _avg?: TanamanPenggunaAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: TanamanPenggunaSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
      * Select which fields to find the minimum value
     **/
     _min?: TanamanPenggunaMinAggregateInputType
@@ -23785,18 +24016,26 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: TanamanPenggunaCountAggregateInputType | true
+    _avg?: TanamanPenggunaAvgAggregateInputType
+    _sum?: TanamanPenggunaSumAggregateInputType
     _min?: TanamanPenggunaMinAggregateInputType
     _max?: TanamanPenggunaMaxAggregateInputType
   }
 
   export type TanamanPenggunaGroupByOutputType = {
     id_tanaman_pengguna: string
+    nama_custom: string | null
     tanggal_penanaman: Date
-    status_penanaman: boolean
-    nama_tanaman: string
+    tanggal_target_panen: Date | null
+    status_penanaman: $Enums.StatusPenanaman
+    hari_ke_saat_ini: number
+    progress_persen: number
+    catatan_umum: string | null
     id_tanaman: string
     id_pengguna: string
     _count: TanamanPenggunaCountAggregateOutputType | null
+    _avg: TanamanPenggunaAvgAggregateOutputType | null
+    _sum: TanamanPenggunaSumAggregateOutputType | null
     _min: TanamanPenggunaMinAggregateOutputType | null
     _max: TanamanPenggunaMaxAggregateOutputType | null
   }
@@ -23817,9 +24056,13 @@ export namespace Prisma {
 
   export type TanamanPenggunaSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id_tanaman_pengguna?: boolean
+    nama_custom?: boolean
     tanggal_penanaman?: boolean
+    tanggal_target_panen?: boolean
     status_penanaman?: boolean
-    nama_tanaman?: boolean
+    hari_ke_saat_ini?: boolean
+    progress_persen?: boolean
+    catatan_umum?: boolean
     id_tanaman?: boolean
     id_pengguna?: boolean
     tanaman?: boolean | TanamanDefaultArgs<ExtArgs>
@@ -23830,9 +24073,13 @@ export namespace Prisma {
 
   export type TanamanPenggunaSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id_tanaman_pengguna?: boolean
+    nama_custom?: boolean
     tanggal_penanaman?: boolean
+    tanggal_target_panen?: boolean
     status_penanaman?: boolean
-    nama_tanaman?: boolean
+    hari_ke_saat_ini?: boolean
+    progress_persen?: boolean
+    catatan_umum?: boolean
     id_tanaman?: boolean
     id_pengguna?: boolean
     tanaman?: boolean | TanamanDefaultArgs<ExtArgs>
@@ -23841,9 +24088,13 @@ export namespace Prisma {
 
   export type TanamanPenggunaSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id_tanaman_pengguna?: boolean
+    nama_custom?: boolean
     tanggal_penanaman?: boolean
+    tanggal_target_panen?: boolean
     status_penanaman?: boolean
-    nama_tanaman?: boolean
+    hari_ke_saat_ini?: boolean
+    progress_persen?: boolean
+    catatan_umum?: boolean
     id_tanaman?: boolean
     id_pengguna?: boolean
     tanaman?: boolean | TanamanDefaultArgs<ExtArgs>
@@ -23852,14 +24103,18 @@ export namespace Prisma {
 
   export type TanamanPenggunaSelectScalar = {
     id_tanaman_pengguna?: boolean
+    nama_custom?: boolean
     tanggal_penanaman?: boolean
+    tanggal_target_panen?: boolean
     status_penanaman?: boolean
-    nama_tanaman?: boolean
+    hari_ke_saat_ini?: boolean
+    progress_persen?: boolean
+    catatan_umum?: boolean
     id_tanaman?: boolean
     id_pengguna?: boolean
   }
 
-  export type TanamanPenggunaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_tanaman_pengguna" | "tanggal_penanaman" | "status_penanaman" | "nama_tanaman" | "id_tanaman" | "id_pengguna", ExtArgs["result"]["tanamanPengguna"]>
+  export type TanamanPenggunaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_tanaman_pengguna" | "nama_custom" | "tanggal_penanaman" | "tanggal_target_panen" | "status_penanaman" | "hari_ke_saat_ini" | "progress_persen" | "catatan_umum" | "id_tanaman" | "id_pengguna", ExtArgs["result"]["tanamanPengguna"]>
   export type TanamanPenggunaInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     tanaman?: boolean | TanamanDefaultArgs<ExtArgs>
     pengguna?: boolean | PenggunaDefaultArgs<ExtArgs>
@@ -23884,9 +24139,13 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id_tanaman_pengguna: string
+      nama_custom: string | null
       tanggal_penanaman: Date
-      status_penanaman: boolean
-      nama_tanaman: string
+      tanggal_target_panen: Date | null
+      status_penanaman: $Enums.StatusPenanaman
+      hari_ke_saat_ini: number
+      progress_persen: number
+      catatan_umum: string | null
       id_tanaman: string
       id_pengguna: string
     }, ExtArgs["result"]["tanamanPengguna"]>
@@ -24316,9 +24575,13 @@ export namespace Prisma {
    */
   interface TanamanPenggunaFieldRefs {
     readonly id_tanaman_pengguna: FieldRef<"TanamanPengguna", 'String'>
+    readonly nama_custom: FieldRef<"TanamanPengguna", 'String'>
     readonly tanggal_penanaman: FieldRef<"TanamanPengguna", 'DateTime'>
-    readonly status_penanaman: FieldRef<"TanamanPengguna", 'Boolean'>
-    readonly nama_tanaman: FieldRef<"TanamanPengguna", 'String'>
+    readonly tanggal_target_panen: FieldRef<"TanamanPengguna", 'DateTime'>
+    readonly status_penanaman: FieldRef<"TanamanPengguna", 'StatusPenanaman'>
+    readonly hari_ke_saat_ini: FieldRef<"TanamanPengguna", 'Int'>
+    readonly progress_persen: FieldRef<"TanamanPengguna", 'Float'>
+    readonly catatan_umum: FieldRef<"TanamanPengguna", 'String'>
     readonly id_tanaman: FieldRef<"TanamanPengguna", 'String'>
     readonly id_pengguna: FieldRef<"TanamanPengguna", 'String'>
   }
@@ -24773,27 +25036,56 @@ export namespace Prisma {
 
   export type HariTanamanPenggunaAvgAggregateOutputType = {
     id_hari_tanaman_pengguna: number | null
+    hari_ke: number | null
+    total_tugas: number | null
+    tugas_selesai: number | null
+    progress_hari_persen: number | null
   }
 
   export type HariTanamanPenggunaSumAggregateOutputType = {
     id_hari_tanaman_pengguna: number | null
+    hari_ke: number | null
+    total_tugas: number | null
+    tugas_selesai: number | null
+    progress_hari_persen: number | null
   }
 
   export type HariTanamanPenggunaMinAggregateOutputType = {
     id_hari_tanaman_pengguna: number | null
-    catatan: string | null
+    hari_ke: number | null
+    tanggal_aktual: Date | null
+    fase_penanaman: $Enums.FasePenanaman | null
+    status_hari: $Enums.StatusHari | null
+    catatan_harian: string | null
+    total_tugas: number | null
+    tugas_selesai: number | null
+    progress_hari_persen: number | null
     id_tanaman_pengguna: string | null
   }
 
   export type HariTanamanPenggunaMaxAggregateOutputType = {
     id_hari_tanaman_pengguna: number | null
-    catatan: string | null
+    hari_ke: number | null
+    tanggal_aktual: Date | null
+    fase_penanaman: $Enums.FasePenanaman | null
+    status_hari: $Enums.StatusHari | null
+    catatan_harian: string | null
+    total_tugas: number | null
+    tugas_selesai: number | null
+    progress_hari_persen: number | null
     id_tanaman_pengguna: string | null
   }
 
   export type HariTanamanPenggunaCountAggregateOutputType = {
     id_hari_tanaman_pengguna: number
-    catatan: number
+    hari_ke: number
+    tanggal_aktual: number
+    fase_penanaman: number
+    status_hari: number
+    catatan_harian: number
+    total_tugas: number
+    tugas_selesai: number
+    progress_hari_persen: number
     id_tanaman_pengguna: number
     _all: number
   }
@@ -24801,27 +25093,56 @@ export namespace Prisma {
 
   export type HariTanamanPenggunaAvgAggregateInputType = {
     id_hari_tanaman_pengguna?: true
+    hari_ke?: true
+    total_tugas?: true
+    tugas_selesai?: true
+    progress_hari_persen?: true
   }
 
   export type HariTanamanPenggunaSumAggregateInputType = {
     id_hari_tanaman_pengguna?: true
+    hari_ke?: true
+    total_tugas?: true
+    tugas_selesai?: true
+    progress_hari_persen?: true
   }
 
   export type HariTanamanPenggunaMinAggregateInputType = {
     id_hari_tanaman_pengguna?: true
-    catatan?: true
+    hari_ke?: true
+    tanggal_aktual?: true
+    fase_penanaman?: true
+    status_hari?: true
+    catatan_harian?: true
+    total_tugas?: true
+    tugas_selesai?: true
+    progress_hari_persen?: true
     id_tanaman_pengguna?: true
   }
 
   export type HariTanamanPenggunaMaxAggregateInputType = {
     id_hari_tanaman_pengguna?: true
-    catatan?: true
+    hari_ke?: true
+    tanggal_aktual?: true
+    fase_penanaman?: true
+    status_hari?: true
+    catatan_harian?: true
+    total_tugas?: true
+    tugas_selesai?: true
+    progress_hari_persen?: true
     id_tanaman_pengguna?: true
   }
 
   export type HariTanamanPenggunaCountAggregateInputType = {
     id_hari_tanaman_pengguna?: true
-    catatan?: true
+    hari_ke?: true
+    tanggal_aktual?: true
+    fase_penanaman?: true
+    status_hari?: true
+    catatan_harian?: true
+    total_tugas?: true
+    tugas_selesai?: true
+    progress_hari_persen?: true
     id_tanaman_pengguna?: true
     _all?: true
   }
@@ -24914,7 +25235,14 @@ export namespace Prisma {
 
   export type HariTanamanPenggunaGroupByOutputType = {
     id_hari_tanaman_pengguna: number
-    catatan: string
+    hari_ke: number
+    tanggal_aktual: Date
+    fase_penanaman: $Enums.FasePenanaman
+    status_hari: $Enums.StatusHari
+    catatan_harian: string | null
+    total_tugas: number
+    tugas_selesai: number
+    progress_hari_persen: number
     id_tanaman_pengguna: string
     _count: HariTanamanPenggunaCountAggregateOutputType | null
     _avg: HariTanamanPenggunaAvgAggregateOutputType | null
@@ -24939,37 +25267,65 @@ export namespace Prisma {
 
   export type HariTanamanPenggunaSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id_hari_tanaman_pengguna?: boolean
-    catatan?: boolean
+    hari_ke?: boolean
+    tanggal_aktual?: boolean
+    fase_penanaman?: boolean
+    status_hari?: boolean
+    catatan_harian?: boolean
+    total_tugas?: boolean
+    tugas_selesai?: boolean
+    progress_hari_persen?: boolean
     id_tanaman_pengguna?: boolean
-    tugas_penanaman?: boolean | HariTanamanPengguna$tugas_penanamanArgs<ExtArgs>
     tanaman_pengguna?: boolean | TanamanPenggunaDefaultArgs<ExtArgs>
+    tugas_penanaman?: boolean | HariTanamanPengguna$tugas_penanamanArgs<ExtArgs>
     _count?: boolean | HariTanamanPenggunaCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["hariTanamanPengguna"]>
 
   export type HariTanamanPenggunaSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id_hari_tanaman_pengguna?: boolean
-    catatan?: boolean
+    hari_ke?: boolean
+    tanggal_aktual?: boolean
+    fase_penanaman?: boolean
+    status_hari?: boolean
+    catatan_harian?: boolean
+    total_tugas?: boolean
+    tugas_selesai?: boolean
+    progress_hari_persen?: boolean
     id_tanaman_pengguna?: boolean
     tanaman_pengguna?: boolean | TanamanPenggunaDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["hariTanamanPengguna"]>
 
   export type HariTanamanPenggunaSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id_hari_tanaman_pengguna?: boolean
-    catatan?: boolean
+    hari_ke?: boolean
+    tanggal_aktual?: boolean
+    fase_penanaman?: boolean
+    status_hari?: boolean
+    catatan_harian?: boolean
+    total_tugas?: boolean
+    tugas_selesai?: boolean
+    progress_hari_persen?: boolean
     id_tanaman_pengguna?: boolean
     tanaman_pengguna?: boolean | TanamanPenggunaDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["hariTanamanPengguna"]>
 
   export type HariTanamanPenggunaSelectScalar = {
     id_hari_tanaman_pengguna?: boolean
-    catatan?: boolean
+    hari_ke?: boolean
+    tanggal_aktual?: boolean
+    fase_penanaman?: boolean
+    status_hari?: boolean
+    catatan_harian?: boolean
+    total_tugas?: boolean
+    tugas_selesai?: boolean
+    progress_hari_persen?: boolean
     id_tanaman_pengguna?: boolean
   }
 
-  export type HariTanamanPenggunaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_hari_tanaman_pengguna" | "catatan" | "id_tanaman_pengguna", ExtArgs["result"]["hariTanamanPengguna"]>
+  export type HariTanamanPenggunaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_hari_tanaman_pengguna" | "hari_ke" | "tanggal_aktual" | "fase_penanaman" | "status_hari" | "catatan_harian" | "total_tugas" | "tugas_selesai" | "progress_hari_persen" | "id_tanaman_pengguna", ExtArgs["result"]["hariTanamanPengguna"]>
   export type HariTanamanPenggunaInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    tugas_penanaman?: boolean | HariTanamanPengguna$tugas_penanamanArgs<ExtArgs>
     tanaman_pengguna?: boolean | TanamanPenggunaDefaultArgs<ExtArgs>
+    tugas_penanaman?: boolean | HariTanamanPengguna$tugas_penanamanArgs<ExtArgs>
     _count?: boolean | HariTanamanPenggunaCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type HariTanamanPenggunaIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -24982,12 +25338,19 @@ export namespace Prisma {
   export type $HariTanamanPenggunaPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "HariTanamanPengguna"
     objects: {
-      tugas_penanaman: Prisma.$TugasPenanamanPenggunaPayload<ExtArgs>[]
       tanaman_pengguna: Prisma.$TanamanPenggunaPayload<ExtArgs>
+      tugas_penanaman: Prisma.$TugasPenanamanPenggunaPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id_hari_tanaman_pengguna: number
-      catatan: string
+      hari_ke: number
+      tanggal_aktual: Date
+      fase_penanaman: $Enums.FasePenanaman
+      status_hari: $Enums.StatusHari
+      catatan_harian: string | null
+      total_tugas: number
+      tugas_selesai: number
+      progress_hari_persen: number
       id_tanaman_pengguna: string
     }, ExtArgs["result"]["hariTanamanPengguna"]>
     composites: {}
@@ -25383,8 +25746,8 @@ export namespace Prisma {
    */
   export interface Prisma__HariTanamanPenggunaClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    tugas_penanaman<T extends HariTanamanPengguna$tugas_penanamanArgs<ExtArgs> = {}>(args?: Subset<T, HariTanamanPengguna$tugas_penanamanArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TugasPenanamanPenggunaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     tanaman_pengguna<T extends TanamanPenggunaDefaultArgs<ExtArgs> = {}>(args?: Subset<T, TanamanPenggunaDefaultArgs<ExtArgs>>): Prisma__TanamanPenggunaClient<$Result.GetResult<Prisma.$TanamanPenggunaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    tugas_penanaman<T extends HariTanamanPengguna$tugas_penanamanArgs<ExtArgs> = {}>(args?: Subset<T, HariTanamanPengguna$tugas_penanamanArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TugasPenanamanPenggunaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -25415,7 +25778,14 @@ export namespace Prisma {
    */
   interface HariTanamanPenggunaFieldRefs {
     readonly id_hari_tanaman_pengguna: FieldRef<"HariTanamanPengguna", 'Int'>
-    readonly catatan: FieldRef<"HariTanamanPengguna", 'String'>
+    readonly hari_ke: FieldRef<"HariTanamanPengguna", 'Int'>
+    readonly tanggal_aktual: FieldRef<"HariTanamanPengguna", 'DateTime'>
+    readonly fase_penanaman: FieldRef<"HariTanamanPengguna", 'FasePenanaman'>
+    readonly status_hari: FieldRef<"HariTanamanPengguna", 'StatusHari'>
+    readonly catatan_harian: FieldRef<"HariTanamanPengguna", 'String'>
+    readonly total_tugas: FieldRef<"HariTanamanPengguna", 'Int'>
+    readonly tugas_selesai: FieldRef<"HariTanamanPengguna", 'Int'>
+    readonly progress_hari_persen: FieldRef<"HariTanamanPengguna", 'Float'>
     readonly id_tanaman_pengguna: FieldRef<"HariTanamanPengguna", 'String'>
   }
     
@@ -25869,60 +26239,106 @@ export namespace Prisma {
 
   export type TugasPenanamanPenggunaAvgAggregateOutputType = {
     id_tugas_penanaman_pengguna: number | null
+    durasi_pengerjaan: number | null
     id_hari_tanaman_pengguna: number | null
   }
 
   export type TugasPenanamanPenggunaSumAggregateOutputType = {
     id_tugas_penanaman_pengguna: number | null
+    durasi_pengerjaan: number | null
     id_hari_tanaman_pengguna: number | null
   }
 
   export type TugasPenanamanPenggunaMinAggregateOutputType = {
     id_tugas_penanaman_pengguna: number | null
     nama_tugas: string | null
+    deskripsi_tugas: string | null
+    jenis_tugas: $Enums.JenisTugas | null
+    status_selesai: boolean | null
+    tanggal_selesai: Date | null
+    durasi_pengerjaan: number | null
     id_hari_tanaman_pengguna: number | null
+    created_at: Date | null
+    updated_at: Date | null
   }
 
   export type TugasPenanamanPenggunaMaxAggregateOutputType = {
     id_tugas_penanaman_pengguna: number | null
     nama_tugas: string | null
+    deskripsi_tugas: string | null
+    jenis_tugas: $Enums.JenisTugas | null
+    status_selesai: boolean | null
+    tanggal_selesai: Date | null
+    durasi_pengerjaan: number | null
     id_hari_tanaman_pengguna: number | null
+    created_at: Date | null
+    updated_at: Date | null
   }
 
   export type TugasPenanamanPenggunaCountAggregateOutputType = {
     id_tugas_penanaman_pengguna: number
     nama_tugas: number
+    deskripsi_tugas: number
+    jenis_tugas: number
+    status_selesai: number
+    tanggal_selesai: number
+    durasi_pengerjaan: number
     id_hari_tanaman_pengguna: number
+    created_at: number
+    updated_at: number
     _all: number
   }
 
 
   export type TugasPenanamanPenggunaAvgAggregateInputType = {
     id_tugas_penanaman_pengguna?: true
+    durasi_pengerjaan?: true
     id_hari_tanaman_pengguna?: true
   }
 
   export type TugasPenanamanPenggunaSumAggregateInputType = {
     id_tugas_penanaman_pengguna?: true
+    durasi_pengerjaan?: true
     id_hari_tanaman_pengguna?: true
   }
 
   export type TugasPenanamanPenggunaMinAggregateInputType = {
     id_tugas_penanaman_pengguna?: true
     nama_tugas?: true
+    deskripsi_tugas?: true
+    jenis_tugas?: true
+    status_selesai?: true
+    tanggal_selesai?: true
+    durasi_pengerjaan?: true
     id_hari_tanaman_pengguna?: true
+    created_at?: true
+    updated_at?: true
   }
 
   export type TugasPenanamanPenggunaMaxAggregateInputType = {
     id_tugas_penanaman_pengguna?: true
     nama_tugas?: true
+    deskripsi_tugas?: true
+    jenis_tugas?: true
+    status_selesai?: true
+    tanggal_selesai?: true
+    durasi_pengerjaan?: true
     id_hari_tanaman_pengguna?: true
+    created_at?: true
+    updated_at?: true
   }
 
   export type TugasPenanamanPenggunaCountAggregateInputType = {
     id_tugas_penanaman_pengguna?: true
     nama_tugas?: true
+    deskripsi_tugas?: true
+    jenis_tugas?: true
+    status_selesai?: true
+    tanggal_selesai?: true
+    durasi_pengerjaan?: true
     id_hari_tanaman_pengguna?: true
+    created_at?: true
+    updated_at?: true
     _all?: true
   }
 
@@ -26015,7 +26431,14 @@ export namespace Prisma {
   export type TugasPenanamanPenggunaGroupByOutputType = {
     id_tugas_penanaman_pengguna: number
     nama_tugas: string
+    deskripsi_tugas: string | null
+    jenis_tugas: $Enums.JenisTugas
+    status_selesai: boolean
+    tanggal_selesai: Date | null
+    durasi_pengerjaan: number | null
     id_hari_tanaman_pengguna: number
+    created_at: Date
+    updated_at: Date
     _count: TugasPenanamanPenggunaCountAggregateOutputType | null
     _avg: TugasPenanamanPenggunaAvgAggregateOutputType | null
     _sum: TugasPenanamanPenggunaSumAggregateOutputType | null
@@ -26040,31 +26463,59 @@ export namespace Prisma {
   export type TugasPenanamanPenggunaSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id_tugas_penanaman_pengguna?: boolean
     nama_tugas?: boolean
+    deskripsi_tugas?: boolean
+    jenis_tugas?: boolean
+    status_selesai?: boolean
+    tanggal_selesai?: boolean
+    durasi_pengerjaan?: boolean
     id_hari_tanaman_pengguna?: boolean
+    created_at?: boolean
+    updated_at?: boolean
     hari_tanaman?: boolean | HariTanamanPenggunaDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["tugasPenanamanPengguna"]>
 
   export type TugasPenanamanPenggunaSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id_tugas_penanaman_pengguna?: boolean
     nama_tugas?: boolean
+    deskripsi_tugas?: boolean
+    jenis_tugas?: boolean
+    status_selesai?: boolean
+    tanggal_selesai?: boolean
+    durasi_pengerjaan?: boolean
     id_hari_tanaman_pengguna?: boolean
+    created_at?: boolean
+    updated_at?: boolean
     hari_tanaman?: boolean | HariTanamanPenggunaDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["tugasPenanamanPengguna"]>
 
   export type TugasPenanamanPenggunaSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id_tugas_penanaman_pengguna?: boolean
     nama_tugas?: boolean
+    deskripsi_tugas?: boolean
+    jenis_tugas?: boolean
+    status_selesai?: boolean
+    tanggal_selesai?: boolean
+    durasi_pengerjaan?: boolean
     id_hari_tanaman_pengguna?: boolean
+    created_at?: boolean
+    updated_at?: boolean
     hari_tanaman?: boolean | HariTanamanPenggunaDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["tugasPenanamanPengguna"]>
 
   export type TugasPenanamanPenggunaSelectScalar = {
     id_tugas_penanaman_pengguna?: boolean
     nama_tugas?: boolean
+    deskripsi_tugas?: boolean
+    jenis_tugas?: boolean
+    status_selesai?: boolean
+    tanggal_selesai?: boolean
+    durasi_pengerjaan?: boolean
     id_hari_tanaman_pengguna?: boolean
+    created_at?: boolean
+    updated_at?: boolean
   }
 
-  export type TugasPenanamanPenggunaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_tugas_penanaman_pengguna" | "nama_tugas" | "id_hari_tanaman_pengguna", ExtArgs["result"]["tugasPenanamanPengguna"]>
+  export type TugasPenanamanPenggunaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_tugas_penanaman_pengguna" | "nama_tugas" | "deskripsi_tugas" | "jenis_tugas" | "status_selesai" | "tanggal_selesai" | "durasi_pengerjaan" | "id_hari_tanaman_pengguna" | "created_at" | "updated_at", ExtArgs["result"]["tugasPenanamanPengguna"]>
   export type TugasPenanamanPenggunaInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     hari_tanaman?: boolean | HariTanamanPenggunaDefaultArgs<ExtArgs>
   }
@@ -26083,7 +26534,14 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id_tugas_penanaman_pengguna: number
       nama_tugas: string
+      deskripsi_tugas: string | null
+      jenis_tugas: $Enums.JenisTugas
+      status_selesai: boolean
+      tanggal_selesai: Date | null
+      durasi_pengerjaan: number | null
       id_hari_tanaman_pengguna: number
+      created_at: Date
+      updated_at: Date
     }, ExtArgs["result"]["tugasPenanamanPengguna"]>
     composites: {}
   }
@@ -26510,7 +26968,14 @@ export namespace Prisma {
   interface TugasPenanamanPenggunaFieldRefs {
     readonly id_tugas_penanaman_pengguna: FieldRef<"TugasPenanamanPengguna", 'Int'>
     readonly nama_tugas: FieldRef<"TugasPenanamanPengguna", 'String'>
+    readonly deskripsi_tugas: FieldRef<"TugasPenanamanPengguna", 'String'>
+    readonly jenis_tugas: FieldRef<"TugasPenanamanPengguna", 'JenisTugas'>
+    readonly status_selesai: FieldRef<"TugasPenanamanPengguna", 'Boolean'>
+    readonly tanggal_selesai: FieldRef<"TugasPenanamanPengguna", 'DateTime'>
+    readonly durasi_pengerjaan: FieldRef<"TugasPenanamanPengguna", 'Int'>
     readonly id_hari_tanaman_pengguna: FieldRef<"TugasPenanamanPengguna", 'Int'>
+    readonly created_at: FieldRef<"TugasPenanamanPengguna", 'DateTime'>
+    readonly updated_at: FieldRef<"TugasPenanamanPengguna", 'DateTime'>
   }
     
 
@@ -27123,6 +27588,8 @@ export namespace Prisma {
     nama_latin: 'nama_latin',
     durasi_penanaman: 'durasi_penanaman',
     deskripsi_tanaman: 'deskripsi_tanaman',
+    gambar_tanaman: 'gambar_tanaman',
+    tingkat_kesulitan: 'tingkat_kesulitan',
     id_kategori_tanaman: 'id_kategori_tanaman'
   };
 
@@ -27132,6 +27599,7 @@ export namespace Prisma {
   export const InstruksiTanamanScalarFieldEnum: {
     id_instruksi: 'id_instruksi',
     instruksi: 'instruksi',
+    urutan: 'urutan',
     id_tanaman: 'id_tanaman'
   };
 
@@ -27140,7 +27608,9 @@ export namespace Prisma {
 
   export const HariPenanamanScalarFieldEnum: {
     id_hari_penanaman: 'id_hari_penanaman',
-    jenis_tugas: 'jenis_tugas',
+    hari_ke: 'hari_ke',
+    nama_fase: 'nama_fase',
+    deskripsi_fase: 'deskripsi_fase',
     id_tanaman: 'id_tanaman'
   };
 
@@ -27150,6 +27620,8 @@ export namespace Prisma {
   export const TugasPenanamanScalarFieldEnum: {
     id_tugas: 'id_tugas',
     nama_tugas: 'nama_tugas',
+    jenis_tugas: 'jenis_tugas',
+    estimasi_waktu: 'estimasi_waktu',
     id_hari_penanaman: 'id_hari_penanaman'
   };
 
@@ -27158,9 +27630,13 @@ export namespace Prisma {
 
   export const TanamanPenggunaScalarFieldEnum: {
     id_tanaman_pengguna: 'id_tanaman_pengguna',
+    nama_custom: 'nama_custom',
     tanggal_penanaman: 'tanggal_penanaman',
+    tanggal_target_panen: 'tanggal_target_panen',
     status_penanaman: 'status_penanaman',
-    nama_tanaman: 'nama_tanaman',
+    hari_ke_saat_ini: 'hari_ke_saat_ini',
+    progress_persen: 'progress_persen',
+    catatan_umum: 'catatan_umum',
     id_tanaman: 'id_tanaman',
     id_pengguna: 'id_pengguna'
   };
@@ -27170,7 +27646,14 @@ export namespace Prisma {
 
   export const HariTanamanPenggunaScalarFieldEnum: {
     id_hari_tanaman_pengguna: 'id_hari_tanaman_pengguna',
-    catatan: 'catatan',
+    hari_ke: 'hari_ke',
+    tanggal_aktual: 'tanggal_aktual',
+    fase_penanaman: 'fase_penanaman',
+    status_hari: 'status_hari',
+    catatan_harian: 'catatan_harian',
+    total_tugas: 'total_tugas',
+    tugas_selesai: 'tugas_selesai',
+    progress_hari_persen: 'progress_hari_persen',
     id_tanaman_pengguna: 'id_tanaman_pengguna'
   };
 
@@ -27180,7 +27663,14 @@ export namespace Prisma {
   export const TugasPenanamanPenggunaScalarFieldEnum: {
     id_tugas_penanaman_pengguna: 'id_tugas_penanaman_pengguna',
     nama_tugas: 'nama_tugas',
-    id_hari_tanaman_pengguna: 'id_hari_tanaman_pengguna'
+    deskripsi_tugas: 'deskripsi_tugas',
+    jenis_tugas: 'jenis_tugas',
+    status_selesai: 'status_selesai',
+    tanggal_selesai: 'tanggal_selesai',
+    durasi_pengerjaan: 'durasi_pengerjaan',
+    id_hari_tanaman_pengguna: 'id_hari_tanaman_pengguna',
+    created_at: 'created_at',
+    updated_at: 'updated_at'
   };
 
   export type TugasPenanamanPenggunaScalarFieldEnum = (typeof TugasPenanamanPenggunaScalarFieldEnum)[keyof typeof TugasPenanamanPenggunaScalarFieldEnum]
@@ -27331,6 +27821,76 @@ export namespace Prisma {
    * Reference to a field of type 'Float[]'
    */
   export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'TingkatKesulitan'
+   */
+  export type EnumTingkatKesulitanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TingkatKesulitan'>
+    
+
+
+  /**
+   * Reference to a field of type 'TingkatKesulitan[]'
+   */
+  export type ListEnumTingkatKesulitanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TingkatKesulitan[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'FasePenanaman'
+   */
+  export type EnumFasePenanamanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'FasePenanaman'>
+    
+
+
+  /**
+   * Reference to a field of type 'FasePenanaman[]'
+   */
+  export type ListEnumFasePenanamanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'FasePenanaman[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'JenisTugas'
+   */
+  export type EnumJenisTugasFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'JenisTugas'>
+    
+
+
+  /**
+   * Reference to a field of type 'JenisTugas[]'
+   */
+  export type ListEnumJenisTugasFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'JenisTugas[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'StatusPenanaman'
+   */
+  export type EnumStatusPenanamanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'StatusPenanaman'>
+    
+
+
+  /**
+   * Reference to a field of type 'StatusPenanaman[]'
+   */
+  export type ListEnumStatusPenanamanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'StatusPenanaman[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'StatusHari'
+   */
+  export type EnumStatusHariFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'StatusHari'>
+    
+
+
+  /**
+   * Reference to a field of type 'StatusHari[]'
+   */
+  export type ListEnumStatusHariFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'StatusHari[]'>
     
   /**
    * Deep Input Types
@@ -28268,46 +28828,46 @@ export namespace Prisma {
     gambar_metode_pembayaran?: StringWithAggregatesFilter<"MetodePembayaran"> | string
   }
 
-  export type kategoriTanamanWhereInput = {
-    AND?: kategoriTanamanWhereInput | kategoriTanamanWhereInput[]
-    OR?: kategoriTanamanWhereInput[]
-    NOT?: kategoriTanamanWhereInput | kategoriTanamanWhereInput[]
-    id_kategori_tanaman?: IntFilter<"kategoriTanaman"> | number
-    nama_kategori_tanaman?: StringFilter<"kategoriTanaman"> | string
+  export type KategoriTanamanWhereInput = {
+    AND?: KategoriTanamanWhereInput | KategoriTanamanWhereInput[]
+    OR?: KategoriTanamanWhereInput[]
+    NOT?: KategoriTanamanWhereInput | KategoriTanamanWhereInput[]
+    id_kategori_tanaman?: IntFilter<"KategoriTanaman"> | number
+    nama_kategori_tanaman?: StringFilter<"KategoriTanaman"> | string
     tanaman?: TanamanListRelationFilter
   }
 
-  export type kategoriTanamanOrderByWithRelationInput = {
+  export type KategoriTanamanOrderByWithRelationInput = {
     id_kategori_tanaman?: SortOrder
     nama_kategori_tanaman?: SortOrder
     tanaman?: TanamanOrderByRelationAggregateInput
   }
 
-  export type kategoriTanamanWhereUniqueInput = Prisma.AtLeast<{
+  export type KategoriTanamanWhereUniqueInput = Prisma.AtLeast<{
     id_kategori_tanaman?: number
-    AND?: kategoriTanamanWhereInput | kategoriTanamanWhereInput[]
-    OR?: kategoriTanamanWhereInput[]
-    NOT?: kategoriTanamanWhereInput | kategoriTanamanWhereInput[]
-    nama_kategori_tanaman?: StringFilter<"kategoriTanaman"> | string
+    AND?: KategoriTanamanWhereInput | KategoriTanamanWhereInput[]
+    OR?: KategoriTanamanWhereInput[]
+    NOT?: KategoriTanamanWhereInput | KategoriTanamanWhereInput[]
+    nama_kategori_tanaman?: StringFilter<"KategoriTanaman"> | string
     tanaman?: TanamanListRelationFilter
   }, "id_kategori_tanaman">
 
-  export type kategoriTanamanOrderByWithAggregationInput = {
+  export type KategoriTanamanOrderByWithAggregationInput = {
     id_kategori_tanaman?: SortOrder
     nama_kategori_tanaman?: SortOrder
-    _count?: kategoriTanamanCountOrderByAggregateInput
-    _avg?: kategoriTanamanAvgOrderByAggregateInput
-    _max?: kategoriTanamanMaxOrderByAggregateInput
-    _min?: kategoriTanamanMinOrderByAggregateInput
-    _sum?: kategoriTanamanSumOrderByAggregateInput
+    _count?: KategoriTanamanCountOrderByAggregateInput
+    _avg?: KategoriTanamanAvgOrderByAggregateInput
+    _max?: KategoriTanamanMaxOrderByAggregateInput
+    _min?: KategoriTanamanMinOrderByAggregateInput
+    _sum?: KategoriTanamanSumOrderByAggregateInput
   }
 
-  export type kategoriTanamanScalarWhereWithAggregatesInput = {
-    AND?: kategoriTanamanScalarWhereWithAggregatesInput | kategoriTanamanScalarWhereWithAggregatesInput[]
-    OR?: kategoriTanamanScalarWhereWithAggregatesInput[]
-    NOT?: kategoriTanamanScalarWhereWithAggregatesInput | kategoriTanamanScalarWhereWithAggregatesInput[]
-    id_kategori_tanaman?: IntWithAggregatesFilter<"kategoriTanaman"> | number
-    nama_kategori_tanaman?: StringWithAggregatesFilter<"kategoriTanaman"> | string
+  export type KategoriTanamanScalarWhereWithAggregatesInput = {
+    AND?: KategoriTanamanScalarWhereWithAggregatesInput | KategoriTanamanScalarWhereWithAggregatesInput[]
+    OR?: KategoriTanamanScalarWhereWithAggregatesInput[]
+    NOT?: KategoriTanamanScalarWhereWithAggregatesInput | KategoriTanamanScalarWhereWithAggregatesInput[]
+    id_kategori_tanaman?: IntWithAggregatesFilter<"KategoriTanaman"> | number
+    nama_kategori_tanaman?: StringWithAggregatesFilter<"KategoriTanaman"> | string
   }
 
   export type TanamanWhereInput = {
@@ -28319,8 +28879,10 @@ export namespace Prisma {
     nama_latin?: StringFilter<"Tanaman"> | string
     durasi_penanaman?: IntFilter<"Tanaman"> | number
     deskripsi_tanaman?: StringFilter<"Tanaman"> | string
+    gambar_tanaman?: StringNullableFilter<"Tanaman"> | string | null
+    tingkat_kesulitan?: EnumTingkatKesulitanFilter<"Tanaman"> | $Enums.TingkatKesulitan
     id_kategori_tanaman?: IntFilter<"Tanaman"> | number
-    kategori?: XOR<KategoriTanamanScalarRelationFilter, kategoriTanamanWhereInput>
+    kategori?: XOR<KategoriTanamanScalarRelationFilter, KategoriTanamanWhereInput>
     instruksi_tanaman?: InstruksiTanamanListRelationFilter
     hari_penanaman?: HariPenanamanListRelationFilter
     tanaman_pengguna?: TanamanPenggunaListRelationFilter
@@ -28332,8 +28894,10 @@ export namespace Prisma {
     nama_latin?: SortOrder
     durasi_penanaman?: SortOrder
     deskripsi_tanaman?: SortOrder
+    gambar_tanaman?: SortOrderInput | SortOrder
+    tingkat_kesulitan?: SortOrder
     id_kategori_tanaman?: SortOrder
-    kategori?: kategoriTanamanOrderByWithRelationInput
+    kategori?: KategoriTanamanOrderByWithRelationInput
     instruksi_tanaman?: InstruksiTanamanOrderByRelationAggregateInput
     hari_penanaman?: HariPenanamanOrderByRelationAggregateInput
     tanaman_pengguna?: TanamanPenggunaOrderByRelationAggregateInput
@@ -28348,8 +28912,10 @@ export namespace Prisma {
     nama_latin?: StringFilter<"Tanaman"> | string
     durasi_penanaman?: IntFilter<"Tanaman"> | number
     deskripsi_tanaman?: StringFilter<"Tanaman"> | string
+    gambar_tanaman?: StringNullableFilter<"Tanaman"> | string | null
+    tingkat_kesulitan?: EnumTingkatKesulitanFilter<"Tanaman"> | $Enums.TingkatKesulitan
     id_kategori_tanaman?: IntFilter<"Tanaman"> | number
-    kategori?: XOR<KategoriTanamanScalarRelationFilter, kategoriTanamanWhereInput>
+    kategori?: XOR<KategoriTanamanScalarRelationFilter, KategoriTanamanWhereInput>
     instruksi_tanaman?: InstruksiTanamanListRelationFilter
     hari_penanaman?: HariPenanamanListRelationFilter
     tanaman_pengguna?: TanamanPenggunaListRelationFilter
@@ -28361,6 +28927,8 @@ export namespace Prisma {
     nama_latin?: SortOrder
     durasi_penanaman?: SortOrder
     deskripsi_tanaman?: SortOrder
+    gambar_tanaman?: SortOrderInput | SortOrder
+    tingkat_kesulitan?: SortOrder
     id_kategori_tanaman?: SortOrder
     _count?: TanamanCountOrderByAggregateInput
     _avg?: TanamanAvgOrderByAggregateInput
@@ -28378,6 +28946,8 @@ export namespace Prisma {
     nama_latin?: StringWithAggregatesFilter<"Tanaman"> | string
     durasi_penanaman?: IntWithAggregatesFilter<"Tanaman"> | number
     deskripsi_tanaman?: StringWithAggregatesFilter<"Tanaman"> | string
+    gambar_tanaman?: StringNullableWithAggregatesFilter<"Tanaman"> | string | null
+    tingkat_kesulitan?: EnumTingkatKesulitanWithAggregatesFilter<"Tanaman"> | $Enums.TingkatKesulitan
     id_kategori_tanaman?: IntWithAggregatesFilter<"Tanaman"> | number
   }
 
@@ -28387,6 +28957,7 @@ export namespace Prisma {
     NOT?: InstruksiTanamanWhereInput | InstruksiTanamanWhereInput[]
     id_instruksi?: IntFilter<"InstruksiTanaman"> | number
     instruksi?: StringFilter<"InstruksiTanaman"> | string
+    urutan?: IntFilter<"InstruksiTanaman"> | number
     id_tanaman?: StringFilter<"InstruksiTanaman"> | string
     tanaman?: XOR<TanamanScalarRelationFilter, TanamanWhereInput>
   }
@@ -28394,6 +28965,7 @@ export namespace Prisma {
   export type InstruksiTanamanOrderByWithRelationInput = {
     id_instruksi?: SortOrder
     instruksi?: SortOrder
+    urutan?: SortOrder
     id_tanaman?: SortOrder
     tanaman?: TanamanOrderByWithRelationInput
   }
@@ -28404,6 +28976,7 @@ export namespace Prisma {
     OR?: InstruksiTanamanWhereInput[]
     NOT?: InstruksiTanamanWhereInput | InstruksiTanamanWhereInput[]
     instruksi?: StringFilter<"InstruksiTanaman"> | string
+    urutan?: IntFilter<"InstruksiTanaman"> | number
     id_tanaman?: StringFilter<"InstruksiTanaman"> | string
     tanaman?: XOR<TanamanScalarRelationFilter, TanamanWhereInput>
   }, "id_instruksi">
@@ -28411,6 +28984,7 @@ export namespace Prisma {
   export type InstruksiTanamanOrderByWithAggregationInput = {
     id_instruksi?: SortOrder
     instruksi?: SortOrder
+    urutan?: SortOrder
     id_tanaman?: SortOrder
     _count?: InstruksiTanamanCountOrderByAggregateInput
     _avg?: InstruksiTanamanAvgOrderByAggregateInput
@@ -28425,6 +28999,7 @@ export namespace Prisma {
     NOT?: InstruksiTanamanScalarWhereWithAggregatesInput | InstruksiTanamanScalarWhereWithAggregatesInput[]
     id_instruksi?: IntWithAggregatesFilter<"InstruksiTanaman"> | number
     instruksi?: StringWithAggregatesFilter<"InstruksiTanaman"> | string
+    urutan?: IntWithAggregatesFilter<"InstruksiTanaman"> | number
     id_tanaman?: StringWithAggregatesFilter<"InstruksiTanaman"> | string
   }
 
@@ -28433,7 +29008,9 @@ export namespace Prisma {
     OR?: HariPenanamanWhereInput[]
     NOT?: HariPenanamanWhereInput | HariPenanamanWhereInput[]
     id_hari_penanaman?: IntFilter<"HariPenanaman"> | number
-    jenis_tugas?: IntFilter<"HariPenanaman"> | number
+    hari_ke?: IntFilter<"HariPenanaman"> | number
+    nama_fase?: EnumFasePenanamanFilter<"HariPenanaman"> | $Enums.FasePenanaman
+    deskripsi_fase?: StringNullableFilter<"HariPenanaman"> | string | null
     id_tanaman?: StringFilter<"HariPenanaman"> | string
     tanaman?: XOR<TanamanScalarRelationFilter, TanamanWhereInput>
     tugas_penanaman?: TugasPenanamanListRelationFilter
@@ -28441,7 +29018,9 @@ export namespace Prisma {
 
   export type HariPenanamanOrderByWithRelationInput = {
     id_hari_penanaman?: SortOrder
-    jenis_tugas?: SortOrder
+    hari_ke?: SortOrder
+    nama_fase?: SortOrder
+    deskripsi_fase?: SortOrderInput | SortOrder
     id_tanaman?: SortOrder
     tanaman?: TanamanOrderByWithRelationInput
     tugas_penanaman?: TugasPenanamanOrderByRelationAggregateInput
@@ -28449,18 +29028,23 @@ export namespace Prisma {
 
   export type HariPenanamanWhereUniqueInput = Prisma.AtLeast<{
     id_hari_penanaman?: number
+    id_tanaman_hari_ke?: HariPenanamanId_tanamanHari_keCompoundUniqueInput
     AND?: HariPenanamanWhereInput | HariPenanamanWhereInput[]
     OR?: HariPenanamanWhereInput[]
     NOT?: HariPenanamanWhereInput | HariPenanamanWhereInput[]
-    jenis_tugas?: IntFilter<"HariPenanaman"> | number
+    hari_ke?: IntFilter<"HariPenanaman"> | number
+    nama_fase?: EnumFasePenanamanFilter<"HariPenanaman"> | $Enums.FasePenanaman
+    deskripsi_fase?: StringNullableFilter<"HariPenanaman"> | string | null
     id_tanaman?: StringFilter<"HariPenanaman"> | string
     tanaman?: XOR<TanamanScalarRelationFilter, TanamanWhereInput>
     tugas_penanaman?: TugasPenanamanListRelationFilter
-  }, "id_hari_penanaman">
+  }, "id_hari_penanaman" | "id_tanaman_hari_ke">
 
   export type HariPenanamanOrderByWithAggregationInput = {
     id_hari_penanaman?: SortOrder
-    jenis_tugas?: SortOrder
+    hari_ke?: SortOrder
+    nama_fase?: SortOrder
+    deskripsi_fase?: SortOrderInput | SortOrder
     id_tanaman?: SortOrder
     _count?: HariPenanamanCountOrderByAggregateInput
     _avg?: HariPenanamanAvgOrderByAggregateInput
@@ -28474,7 +29058,9 @@ export namespace Prisma {
     OR?: HariPenanamanScalarWhereWithAggregatesInput[]
     NOT?: HariPenanamanScalarWhereWithAggregatesInput | HariPenanamanScalarWhereWithAggregatesInput[]
     id_hari_penanaman?: IntWithAggregatesFilter<"HariPenanaman"> | number
-    jenis_tugas?: IntWithAggregatesFilter<"HariPenanaman"> | number
+    hari_ke?: IntWithAggregatesFilter<"HariPenanaman"> | number
+    nama_fase?: EnumFasePenanamanWithAggregatesFilter<"HariPenanaman"> | $Enums.FasePenanaman
+    deskripsi_fase?: StringNullableWithAggregatesFilter<"HariPenanaman"> | string | null
     id_tanaman?: StringWithAggregatesFilter<"HariPenanaman"> | string
   }
 
@@ -28484,6 +29070,8 @@ export namespace Prisma {
     NOT?: TugasPenanamanWhereInput | TugasPenanamanWhereInput[]
     id_tugas?: IntFilter<"TugasPenanaman"> | number
     nama_tugas?: StringFilter<"TugasPenanaman"> | string
+    jenis_tugas?: EnumJenisTugasFilter<"TugasPenanaman"> | $Enums.JenisTugas
+    estimasi_waktu?: IntNullableFilter<"TugasPenanaman"> | number | null
     id_hari_penanaman?: IntFilter<"TugasPenanaman"> | number
     hari_penanaman?: XOR<HariPenanamanScalarRelationFilter, HariPenanamanWhereInput>
   }
@@ -28491,6 +29079,8 @@ export namespace Prisma {
   export type TugasPenanamanOrderByWithRelationInput = {
     id_tugas?: SortOrder
     nama_tugas?: SortOrder
+    jenis_tugas?: SortOrder
+    estimasi_waktu?: SortOrderInput | SortOrder
     id_hari_penanaman?: SortOrder
     hari_penanaman?: HariPenanamanOrderByWithRelationInput
   }
@@ -28501,6 +29091,8 @@ export namespace Prisma {
     OR?: TugasPenanamanWhereInput[]
     NOT?: TugasPenanamanWhereInput | TugasPenanamanWhereInput[]
     nama_tugas?: StringFilter<"TugasPenanaman"> | string
+    jenis_tugas?: EnumJenisTugasFilter<"TugasPenanaman"> | $Enums.JenisTugas
+    estimasi_waktu?: IntNullableFilter<"TugasPenanaman"> | number | null
     id_hari_penanaman?: IntFilter<"TugasPenanaman"> | number
     hari_penanaman?: XOR<HariPenanamanScalarRelationFilter, HariPenanamanWhereInput>
   }, "id_tugas">
@@ -28508,6 +29100,8 @@ export namespace Prisma {
   export type TugasPenanamanOrderByWithAggregationInput = {
     id_tugas?: SortOrder
     nama_tugas?: SortOrder
+    jenis_tugas?: SortOrder
+    estimasi_waktu?: SortOrderInput | SortOrder
     id_hari_penanaman?: SortOrder
     _count?: TugasPenanamanCountOrderByAggregateInput
     _avg?: TugasPenanamanAvgOrderByAggregateInput
@@ -28522,6 +29116,8 @@ export namespace Prisma {
     NOT?: TugasPenanamanScalarWhereWithAggregatesInput | TugasPenanamanScalarWhereWithAggregatesInput[]
     id_tugas?: IntWithAggregatesFilter<"TugasPenanaman"> | number
     nama_tugas?: StringWithAggregatesFilter<"TugasPenanaman"> | string
+    jenis_tugas?: EnumJenisTugasWithAggregatesFilter<"TugasPenanaman"> | $Enums.JenisTugas
+    estimasi_waktu?: IntNullableWithAggregatesFilter<"TugasPenanaman"> | number | null
     id_hari_penanaman?: IntWithAggregatesFilter<"TugasPenanaman"> | number
   }
 
@@ -28530,9 +29126,13 @@ export namespace Prisma {
     OR?: TanamanPenggunaWhereInput[]
     NOT?: TanamanPenggunaWhereInput | TanamanPenggunaWhereInput[]
     id_tanaman_pengguna?: StringFilter<"TanamanPengguna"> | string
+    nama_custom?: StringNullableFilter<"TanamanPengguna"> | string | null
     tanggal_penanaman?: DateTimeFilter<"TanamanPengguna"> | Date | string
-    status_penanaman?: BoolFilter<"TanamanPengguna"> | boolean
-    nama_tanaman?: StringFilter<"TanamanPengguna"> | string
+    tanggal_target_panen?: DateTimeNullableFilter<"TanamanPengguna"> | Date | string | null
+    status_penanaman?: EnumStatusPenanamanFilter<"TanamanPengguna"> | $Enums.StatusPenanaman
+    hari_ke_saat_ini?: IntFilter<"TanamanPengguna"> | number
+    progress_persen?: FloatFilter<"TanamanPengguna"> | number
+    catatan_umum?: StringNullableFilter<"TanamanPengguna"> | string | null
     id_tanaman?: StringFilter<"TanamanPengguna"> | string
     id_pengguna?: StringFilter<"TanamanPengguna"> | string
     tanaman?: XOR<TanamanScalarRelationFilter, TanamanWhereInput>
@@ -28542,9 +29142,13 @@ export namespace Prisma {
 
   export type TanamanPenggunaOrderByWithRelationInput = {
     id_tanaman_pengguna?: SortOrder
+    nama_custom?: SortOrderInput | SortOrder
     tanggal_penanaman?: SortOrder
+    tanggal_target_panen?: SortOrderInput | SortOrder
     status_penanaman?: SortOrder
-    nama_tanaman?: SortOrder
+    hari_ke_saat_ini?: SortOrder
+    progress_persen?: SortOrder
+    catatan_umum?: SortOrderInput | SortOrder
     id_tanaman?: SortOrder
     id_pengguna?: SortOrder
     tanaman?: TanamanOrderByWithRelationInput
@@ -28557,9 +29161,13 @@ export namespace Prisma {
     AND?: TanamanPenggunaWhereInput | TanamanPenggunaWhereInput[]
     OR?: TanamanPenggunaWhereInput[]
     NOT?: TanamanPenggunaWhereInput | TanamanPenggunaWhereInput[]
+    nama_custom?: StringNullableFilter<"TanamanPengguna"> | string | null
     tanggal_penanaman?: DateTimeFilter<"TanamanPengguna"> | Date | string
-    status_penanaman?: BoolFilter<"TanamanPengguna"> | boolean
-    nama_tanaman?: StringFilter<"TanamanPengguna"> | string
+    tanggal_target_panen?: DateTimeNullableFilter<"TanamanPengguna"> | Date | string | null
+    status_penanaman?: EnumStatusPenanamanFilter<"TanamanPengguna"> | $Enums.StatusPenanaman
+    hari_ke_saat_ini?: IntFilter<"TanamanPengguna"> | number
+    progress_persen?: FloatFilter<"TanamanPengguna"> | number
+    catatan_umum?: StringNullableFilter<"TanamanPengguna"> | string | null
     id_tanaman?: StringFilter<"TanamanPengguna"> | string
     id_pengguna?: StringFilter<"TanamanPengguna"> | string
     tanaman?: XOR<TanamanScalarRelationFilter, TanamanWhereInput>
@@ -28569,14 +29177,20 @@ export namespace Prisma {
 
   export type TanamanPenggunaOrderByWithAggregationInput = {
     id_tanaman_pengguna?: SortOrder
+    nama_custom?: SortOrderInput | SortOrder
     tanggal_penanaman?: SortOrder
+    tanggal_target_panen?: SortOrderInput | SortOrder
     status_penanaman?: SortOrder
-    nama_tanaman?: SortOrder
+    hari_ke_saat_ini?: SortOrder
+    progress_persen?: SortOrder
+    catatan_umum?: SortOrderInput | SortOrder
     id_tanaman?: SortOrder
     id_pengguna?: SortOrder
     _count?: TanamanPenggunaCountOrderByAggregateInput
+    _avg?: TanamanPenggunaAvgOrderByAggregateInput
     _max?: TanamanPenggunaMaxOrderByAggregateInput
     _min?: TanamanPenggunaMinOrderByAggregateInput
+    _sum?: TanamanPenggunaSumOrderByAggregateInput
   }
 
   export type TanamanPenggunaScalarWhereWithAggregatesInput = {
@@ -28584,9 +29198,13 @@ export namespace Prisma {
     OR?: TanamanPenggunaScalarWhereWithAggregatesInput[]
     NOT?: TanamanPenggunaScalarWhereWithAggregatesInput | TanamanPenggunaScalarWhereWithAggregatesInput[]
     id_tanaman_pengguna?: StringWithAggregatesFilter<"TanamanPengguna"> | string
+    nama_custom?: StringNullableWithAggregatesFilter<"TanamanPengguna"> | string | null
     tanggal_penanaman?: DateTimeWithAggregatesFilter<"TanamanPengguna"> | Date | string
-    status_penanaman?: BoolWithAggregatesFilter<"TanamanPengguna"> | boolean
-    nama_tanaman?: StringWithAggregatesFilter<"TanamanPengguna"> | string
+    tanggal_target_panen?: DateTimeNullableWithAggregatesFilter<"TanamanPengguna"> | Date | string | null
+    status_penanaman?: EnumStatusPenanamanWithAggregatesFilter<"TanamanPengguna"> | $Enums.StatusPenanaman
+    hari_ke_saat_ini?: IntWithAggregatesFilter<"TanamanPengguna"> | number
+    progress_persen?: FloatWithAggregatesFilter<"TanamanPengguna"> | number
+    catatan_umum?: StringNullableWithAggregatesFilter<"TanamanPengguna"> | string | null
     id_tanaman?: StringWithAggregatesFilter<"TanamanPengguna"> | string
     id_pengguna?: StringWithAggregatesFilter<"TanamanPengguna"> | string
   }
@@ -28596,34 +29214,63 @@ export namespace Prisma {
     OR?: HariTanamanPenggunaWhereInput[]
     NOT?: HariTanamanPenggunaWhereInput | HariTanamanPenggunaWhereInput[]
     id_hari_tanaman_pengguna?: IntFilter<"HariTanamanPengguna"> | number
-    catatan?: StringFilter<"HariTanamanPengguna"> | string
+    hari_ke?: IntFilter<"HariTanamanPengguna"> | number
+    tanggal_aktual?: DateTimeFilter<"HariTanamanPengguna"> | Date | string
+    fase_penanaman?: EnumFasePenanamanFilter<"HariTanamanPengguna"> | $Enums.FasePenanaman
+    status_hari?: EnumStatusHariFilter<"HariTanamanPengguna"> | $Enums.StatusHari
+    catatan_harian?: StringNullableFilter<"HariTanamanPengguna"> | string | null
+    total_tugas?: IntFilter<"HariTanamanPengguna"> | number
+    tugas_selesai?: IntFilter<"HariTanamanPengguna"> | number
+    progress_hari_persen?: FloatFilter<"HariTanamanPengguna"> | number
     id_tanaman_pengguna?: StringFilter<"HariTanamanPengguna"> | string
-    tugas_penanaman?: TugasPenanamanPenggunaListRelationFilter
     tanaman_pengguna?: XOR<TanamanPenggunaScalarRelationFilter, TanamanPenggunaWhereInput>
+    tugas_penanaman?: TugasPenanamanPenggunaListRelationFilter
   }
 
   export type HariTanamanPenggunaOrderByWithRelationInput = {
     id_hari_tanaman_pengguna?: SortOrder
-    catatan?: SortOrder
+    hari_ke?: SortOrder
+    tanggal_aktual?: SortOrder
+    fase_penanaman?: SortOrder
+    status_hari?: SortOrder
+    catatan_harian?: SortOrderInput | SortOrder
+    total_tugas?: SortOrder
+    tugas_selesai?: SortOrder
+    progress_hari_persen?: SortOrder
     id_tanaman_pengguna?: SortOrder
-    tugas_penanaman?: TugasPenanamanPenggunaOrderByRelationAggregateInput
     tanaman_pengguna?: TanamanPenggunaOrderByWithRelationInput
+    tugas_penanaman?: TugasPenanamanPenggunaOrderByRelationAggregateInput
   }
 
   export type HariTanamanPenggunaWhereUniqueInput = Prisma.AtLeast<{
     id_hari_tanaman_pengguna?: number
+    id_tanaman_pengguna_hari_ke?: HariTanamanPenggunaId_tanaman_penggunaHari_keCompoundUniqueInput
     AND?: HariTanamanPenggunaWhereInput | HariTanamanPenggunaWhereInput[]
     OR?: HariTanamanPenggunaWhereInput[]
     NOT?: HariTanamanPenggunaWhereInput | HariTanamanPenggunaWhereInput[]
-    catatan?: StringFilter<"HariTanamanPengguna"> | string
+    hari_ke?: IntFilter<"HariTanamanPengguna"> | number
+    tanggal_aktual?: DateTimeFilter<"HariTanamanPengguna"> | Date | string
+    fase_penanaman?: EnumFasePenanamanFilter<"HariTanamanPengguna"> | $Enums.FasePenanaman
+    status_hari?: EnumStatusHariFilter<"HariTanamanPengguna"> | $Enums.StatusHari
+    catatan_harian?: StringNullableFilter<"HariTanamanPengguna"> | string | null
+    total_tugas?: IntFilter<"HariTanamanPengguna"> | number
+    tugas_selesai?: IntFilter<"HariTanamanPengguna"> | number
+    progress_hari_persen?: FloatFilter<"HariTanamanPengguna"> | number
     id_tanaman_pengguna?: StringFilter<"HariTanamanPengguna"> | string
-    tugas_penanaman?: TugasPenanamanPenggunaListRelationFilter
     tanaman_pengguna?: XOR<TanamanPenggunaScalarRelationFilter, TanamanPenggunaWhereInput>
-  }, "id_hari_tanaman_pengguna">
+    tugas_penanaman?: TugasPenanamanPenggunaListRelationFilter
+  }, "id_hari_tanaman_pengguna" | "id_tanaman_pengguna_hari_ke">
 
   export type HariTanamanPenggunaOrderByWithAggregationInput = {
     id_hari_tanaman_pengguna?: SortOrder
-    catatan?: SortOrder
+    hari_ke?: SortOrder
+    tanggal_aktual?: SortOrder
+    fase_penanaman?: SortOrder
+    status_hari?: SortOrder
+    catatan_harian?: SortOrderInput | SortOrder
+    total_tugas?: SortOrder
+    tugas_selesai?: SortOrder
+    progress_hari_persen?: SortOrder
     id_tanaman_pengguna?: SortOrder
     _count?: HariTanamanPenggunaCountOrderByAggregateInput
     _avg?: HariTanamanPenggunaAvgOrderByAggregateInput
@@ -28637,7 +29284,14 @@ export namespace Prisma {
     OR?: HariTanamanPenggunaScalarWhereWithAggregatesInput[]
     NOT?: HariTanamanPenggunaScalarWhereWithAggregatesInput | HariTanamanPenggunaScalarWhereWithAggregatesInput[]
     id_hari_tanaman_pengguna?: IntWithAggregatesFilter<"HariTanamanPengguna"> | number
-    catatan?: StringWithAggregatesFilter<"HariTanamanPengguna"> | string
+    hari_ke?: IntWithAggregatesFilter<"HariTanamanPengguna"> | number
+    tanggal_aktual?: DateTimeWithAggregatesFilter<"HariTanamanPengguna"> | Date | string
+    fase_penanaman?: EnumFasePenanamanWithAggregatesFilter<"HariTanamanPengguna"> | $Enums.FasePenanaman
+    status_hari?: EnumStatusHariWithAggregatesFilter<"HariTanamanPengguna"> | $Enums.StatusHari
+    catatan_harian?: StringNullableWithAggregatesFilter<"HariTanamanPengguna"> | string | null
+    total_tugas?: IntWithAggregatesFilter<"HariTanamanPengguna"> | number
+    tugas_selesai?: IntWithAggregatesFilter<"HariTanamanPengguna"> | number
+    progress_hari_persen?: FloatWithAggregatesFilter<"HariTanamanPengguna"> | number
     id_tanaman_pengguna?: StringWithAggregatesFilter<"HariTanamanPengguna"> | string
   }
 
@@ -28647,14 +29301,28 @@ export namespace Prisma {
     NOT?: TugasPenanamanPenggunaWhereInput | TugasPenanamanPenggunaWhereInput[]
     id_tugas_penanaman_pengguna?: IntFilter<"TugasPenanamanPengguna"> | number
     nama_tugas?: StringFilter<"TugasPenanamanPengguna"> | string
+    deskripsi_tugas?: StringNullableFilter<"TugasPenanamanPengguna"> | string | null
+    jenis_tugas?: EnumJenisTugasFilter<"TugasPenanamanPengguna"> | $Enums.JenisTugas
+    status_selesai?: BoolFilter<"TugasPenanamanPengguna"> | boolean
+    tanggal_selesai?: DateTimeNullableFilter<"TugasPenanamanPengguna"> | Date | string | null
+    durasi_pengerjaan?: IntNullableFilter<"TugasPenanamanPengguna"> | number | null
     id_hari_tanaman_pengguna?: IntFilter<"TugasPenanamanPengguna"> | number
+    created_at?: DateTimeFilter<"TugasPenanamanPengguna"> | Date | string
+    updated_at?: DateTimeFilter<"TugasPenanamanPengguna"> | Date | string
     hari_tanaman?: XOR<HariTanamanPenggunaScalarRelationFilter, HariTanamanPenggunaWhereInput>
   }
 
   export type TugasPenanamanPenggunaOrderByWithRelationInput = {
     id_tugas_penanaman_pengguna?: SortOrder
     nama_tugas?: SortOrder
+    deskripsi_tugas?: SortOrderInput | SortOrder
+    jenis_tugas?: SortOrder
+    status_selesai?: SortOrder
+    tanggal_selesai?: SortOrderInput | SortOrder
+    durasi_pengerjaan?: SortOrderInput | SortOrder
     id_hari_tanaman_pengguna?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
     hari_tanaman?: HariTanamanPenggunaOrderByWithRelationInput
   }
 
@@ -28664,14 +29332,28 @@ export namespace Prisma {
     OR?: TugasPenanamanPenggunaWhereInput[]
     NOT?: TugasPenanamanPenggunaWhereInput | TugasPenanamanPenggunaWhereInput[]
     nama_tugas?: StringFilter<"TugasPenanamanPengguna"> | string
+    deskripsi_tugas?: StringNullableFilter<"TugasPenanamanPengguna"> | string | null
+    jenis_tugas?: EnumJenisTugasFilter<"TugasPenanamanPengguna"> | $Enums.JenisTugas
+    status_selesai?: BoolFilter<"TugasPenanamanPengguna"> | boolean
+    tanggal_selesai?: DateTimeNullableFilter<"TugasPenanamanPengguna"> | Date | string | null
+    durasi_pengerjaan?: IntNullableFilter<"TugasPenanamanPengguna"> | number | null
     id_hari_tanaman_pengguna?: IntFilter<"TugasPenanamanPengguna"> | number
+    created_at?: DateTimeFilter<"TugasPenanamanPengguna"> | Date | string
+    updated_at?: DateTimeFilter<"TugasPenanamanPengguna"> | Date | string
     hari_tanaman?: XOR<HariTanamanPenggunaScalarRelationFilter, HariTanamanPenggunaWhereInput>
   }, "id_tugas_penanaman_pengguna">
 
   export type TugasPenanamanPenggunaOrderByWithAggregationInput = {
     id_tugas_penanaman_pengguna?: SortOrder
     nama_tugas?: SortOrder
+    deskripsi_tugas?: SortOrderInput | SortOrder
+    jenis_tugas?: SortOrder
+    status_selesai?: SortOrder
+    tanggal_selesai?: SortOrderInput | SortOrder
+    durasi_pengerjaan?: SortOrderInput | SortOrder
     id_hari_tanaman_pengguna?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
     _count?: TugasPenanamanPenggunaCountOrderByAggregateInput
     _avg?: TugasPenanamanPenggunaAvgOrderByAggregateInput
     _max?: TugasPenanamanPenggunaMaxOrderByAggregateInput
@@ -28685,7 +29367,14 @@ export namespace Prisma {
     NOT?: TugasPenanamanPenggunaScalarWhereWithAggregatesInput | TugasPenanamanPenggunaScalarWhereWithAggregatesInput[]
     id_tugas_penanaman_pengguna?: IntWithAggregatesFilter<"TugasPenanamanPengguna"> | number
     nama_tugas?: StringWithAggregatesFilter<"TugasPenanamanPengguna"> | string
+    deskripsi_tugas?: StringNullableWithAggregatesFilter<"TugasPenanamanPengguna"> | string | null
+    jenis_tugas?: EnumJenisTugasWithAggregatesFilter<"TugasPenanamanPengguna"> | $Enums.JenisTugas
+    status_selesai?: BoolWithAggregatesFilter<"TugasPenanamanPengguna"> | boolean
+    tanggal_selesai?: DateTimeNullableWithAggregatesFilter<"TugasPenanamanPengguna"> | Date | string | null
+    durasi_pengerjaan?: IntNullableWithAggregatesFilter<"TugasPenanamanPengguna"> | number | null
     id_hari_tanaman_pengguna?: IntWithAggregatesFilter<"TugasPenanamanPengguna"> | number
+    created_at?: DateTimeWithAggregatesFilter<"TugasPenanamanPengguna"> | Date | string
+    updated_at?: DateTimeWithAggregatesFilter<"TugasPenanamanPengguna"> | Date | string
   }
 
   export type ProvinsiCreateInput = {
@@ -29631,38 +30320,38 @@ export namespace Prisma {
     gambar_metode_pembayaran?: StringFieldUpdateOperationsInput | string
   }
 
-  export type kategoriTanamanCreateInput = {
+  export type KategoriTanamanCreateInput = {
     nama_kategori_tanaman: string
     tanaman?: TanamanCreateNestedManyWithoutKategoriInput
   }
 
-  export type kategoriTanamanUncheckedCreateInput = {
+  export type KategoriTanamanUncheckedCreateInput = {
     id_kategori_tanaman?: number
     nama_kategori_tanaman: string
     tanaman?: TanamanUncheckedCreateNestedManyWithoutKategoriInput
   }
 
-  export type kategoriTanamanUpdateInput = {
+  export type KategoriTanamanUpdateInput = {
     nama_kategori_tanaman?: StringFieldUpdateOperationsInput | string
     tanaman?: TanamanUpdateManyWithoutKategoriNestedInput
   }
 
-  export type kategoriTanamanUncheckedUpdateInput = {
+  export type KategoriTanamanUncheckedUpdateInput = {
     id_kategori_tanaman?: IntFieldUpdateOperationsInput | number
     nama_kategori_tanaman?: StringFieldUpdateOperationsInput | string
     tanaman?: TanamanUncheckedUpdateManyWithoutKategoriNestedInput
   }
 
-  export type kategoriTanamanCreateManyInput = {
+  export type KategoriTanamanCreateManyInput = {
     id_kategori_tanaman?: number
     nama_kategori_tanaman: string
   }
 
-  export type kategoriTanamanUpdateManyMutationInput = {
+  export type KategoriTanamanUpdateManyMutationInput = {
     nama_kategori_tanaman?: StringFieldUpdateOperationsInput | string
   }
 
-  export type kategoriTanamanUncheckedUpdateManyInput = {
+  export type KategoriTanamanUncheckedUpdateManyInput = {
     id_kategori_tanaman?: IntFieldUpdateOperationsInput | number
     nama_kategori_tanaman?: StringFieldUpdateOperationsInput | string
   }
@@ -29673,7 +30362,9 @@ export namespace Prisma {
     nama_latin: string
     durasi_penanaman: number
     deskripsi_tanaman: string
-    kategori: kategoriTanamanCreateNestedOneWithoutTanamanInput
+    gambar_tanaman?: string | null
+    tingkat_kesulitan?: $Enums.TingkatKesulitan
+    kategori: KategoriTanamanCreateNestedOneWithoutTanamanInput
     instruksi_tanaman?: InstruksiTanamanCreateNestedManyWithoutTanamanInput
     hari_penanaman?: HariPenanamanCreateNestedManyWithoutTanamanInput
     tanaman_pengguna?: TanamanPenggunaCreateNestedManyWithoutTanamanInput
@@ -29685,6 +30376,8 @@ export namespace Prisma {
     nama_latin: string
     durasi_penanaman: number
     deskripsi_tanaman: string
+    gambar_tanaman?: string | null
+    tingkat_kesulitan?: $Enums.TingkatKesulitan
     id_kategori_tanaman: number
     instruksi_tanaman?: InstruksiTanamanUncheckedCreateNestedManyWithoutTanamanInput
     hari_penanaman?: HariPenanamanUncheckedCreateNestedManyWithoutTanamanInput
@@ -29697,7 +30390,9 @@ export namespace Prisma {
     nama_latin?: StringFieldUpdateOperationsInput | string
     durasi_penanaman?: IntFieldUpdateOperationsInput | number
     deskripsi_tanaman?: StringFieldUpdateOperationsInput | string
-    kategori?: kategoriTanamanUpdateOneRequiredWithoutTanamanNestedInput
+    gambar_tanaman?: NullableStringFieldUpdateOperationsInput | string | null
+    tingkat_kesulitan?: EnumTingkatKesulitanFieldUpdateOperationsInput | $Enums.TingkatKesulitan
+    kategori?: KategoriTanamanUpdateOneRequiredWithoutTanamanNestedInput
     instruksi_tanaman?: InstruksiTanamanUpdateManyWithoutTanamanNestedInput
     hari_penanaman?: HariPenanamanUpdateManyWithoutTanamanNestedInput
     tanaman_pengguna?: TanamanPenggunaUpdateManyWithoutTanamanNestedInput
@@ -29709,6 +30404,8 @@ export namespace Prisma {
     nama_latin?: StringFieldUpdateOperationsInput | string
     durasi_penanaman?: IntFieldUpdateOperationsInput | number
     deskripsi_tanaman?: StringFieldUpdateOperationsInput | string
+    gambar_tanaman?: NullableStringFieldUpdateOperationsInput | string | null
+    tingkat_kesulitan?: EnumTingkatKesulitanFieldUpdateOperationsInput | $Enums.TingkatKesulitan
     id_kategori_tanaman?: IntFieldUpdateOperationsInput | number
     instruksi_tanaman?: InstruksiTanamanUncheckedUpdateManyWithoutTanamanNestedInput
     hari_penanaman?: HariPenanamanUncheckedUpdateManyWithoutTanamanNestedInput
@@ -29721,6 +30418,8 @@ export namespace Prisma {
     nama_latin: string
     durasi_penanaman: number
     deskripsi_tanaman: string
+    gambar_tanaman?: string | null
+    tingkat_kesulitan?: $Enums.TingkatKesulitan
     id_kategori_tanaman: number
   }
 
@@ -29730,6 +30429,8 @@ export namespace Prisma {
     nama_latin?: StringFieldUpdateOperationsInput | string
     durasi_penanaman?: IntFieldUpdateOperationsInput | number
     deskripsi_tanaman?: StringFieldUpdateOperationsInput | string
+    gambar_tanaman?: NullableStringFieldUpdateOperationsInput | string | null
+    tingkat_kesulitan?: EnumTingkatKesulitanFieldUpdateOperationsInput | $Enums.TingkatKesulitan
   }
 
   export type TanamanUncheckedUpdateManyInput = {
@@ -29738,132 +30439,173 @@ export namespace Prisma {
     nama_latin?: StringFieldUpdateOperationsInput | string
     durasi_penanaman?: IntFieldUpdateOperationsInput | number
     deskripsi_tanaman?: StringFieldUpdateOperationsInput | string
+    gambar_tanaman?: NullableStringFieldUpdateOperationsInput | string | null
+    tingkat_kesulitan?: EnumTingkatKesulitanFieldUpdateOperationsInput | $Enums.TingkatKesulitan
     id_kategori_tanaman?: IntFieldUpdateOperationsInput | number
   }
 
   export type InstruksiTanamanCreateInput = {
     instruksi: string
+    urutan?: number
     tanaman: TanamanCreateNestedOneWithoutInstruksi_tanamanInput
   }
 
   export type InstruksiTanamanUncheckedCreateInput = {
     id_instruksi?: number
     instruksi: string
+    urutan?: number
     id_tanaman: string
   }
 
   export type InstruksiTanamanUpdateInput = {
     instruksi?: StringFieldUpdateOperationsInput | string
+    urutan?: IntFieldUpdateOperationsInput | number
     tanaman?: TanamanUpdateOneRequiredWithoutInstruksi_tanamanNestedInput
   }
 
   export type InstruksiTanamanUncheckedUpdateInput = {
     id_instruksi?: IntFieldUpdateOperationsInput | number
     instruksi?: StringFieldUpdateOperationsInput | string
+    urutan?: IntFieldUpdateOperationsInput | number
     id_tanaman?: StringFieldUpdateOperationsInput | string
   }
 
   export type InstruksiTanamanCreateManyInput = {
     id_instruksi?: number
     instruksi: string
+    urutan?: number
     id_tanaman: string
   }
 
   export type InstruksiTanamanUpdateManyMutationInput = {
     instruksi?: StringFieldUpdateOperationsInput | string
+    urutan?: IntFieldUpdateOperationsInput | number
   }
 
   export type InstruksiTanamanUncheckedUpdateManyInput = {
     id_instruksi?: IntFieldUpdateOperationsInput | number
     instruksi?: StringFieldUpdateOperationsInput | string
+    urutan?: IntFieldUpdateOperationsInput | number
     id_tanaman?: StringFieldUpdateOperationsInput | string
   }
 
   export type HariPenanamanCreateInput = {
-    jenis_tugas: number
+    hari_ke: number
+    nama_fase: $Enums.FasePenanaman
+    deskripsi_fase?: string | null
     tanaman: TanamanCreateNestedOneWithoutHari_penanamanInput
     tugas_penanaman?: TugasPenanamanCreateNestedManyWithoutHari_penanamanInput
   }
 
   export type HariPenanamanUncheckedCreateInput = {
     id_hari_penanaman?: number
-    jenis_tugas: number
+    hari_ke: number
+    nama_fase: $Enums.FasePenanaman
+    deskripsi_fase?: string | null
     id_tanaman: string
     tugas_penanaman?: TugasPenanamanUncheckedCreateNestedManyWithoutHari_penanamanInput
   }
 
   export type HariPenanamanUpdateInput = {
-    jenis_tugas?: IntFieldUpdateOperationsInput | number
+    hari_ke?: IntFieldUpdateOperationsInput | number
+    nama_fase?: EnumFasePenanamanFieldUpdateOperationsInput | $Enums.FasePenanaman
+    deskripsi_fase?: NullableStringFieldUpdateOperationsInput | string | null
     tanaman?: TanamanUpdateOneRequiredWithoutHari_penanamanNestedInput
     tugas_penanaman?: TugasPenanamanUpdateManyWithoutHari_penanamanNestedInput
   }
 
   export type HariPenanamanUncheckedUpdateInput = {
     id_hari_penanaman?: IntFieldUpdateOperationsInput | number
-    jenis_tugas?: IntFieldUpdateOperationsInput | number
+    hari_ke?: IntFieldUpdateOperationsInput | number
+    nama_fase?: EnumFasePenanamanFieldUpdateOperationsInput | $Enums.FasePenanaman
+    deskripsi_fase?: NullableStringFieldUpdateOperationsInput | string | null
     id_tanaman?: StringFieldUpdateOperationsInput | string
     tugas_penanaman?: TugasPenanamanUncheckedUpdateManyWithoutHari_penanamanNestedInput
   }
 
   export type HariPenanamanCreateManyInput = {
     id_hari_penanaman?: number
-    jenis_tugas: number
+    hari_ke: number
+    nama_fase: $Enums.FasePenanaman
+    deskripsi_fase?: string | null
     id_tanaman: string
   }
 
   export type HariPenanamanUpdateManyMutationInput = {
-    jenis_tugas?: IntFieldUpdateOperationsInput | number
+    hari_ke?: IntFieldUpdateOperationsInput | number
+    nama_fase?: EnumFasePenanamanFieldUpdateOperationsInput | $Enums.FasePenanaman
+    deskripsi_fase?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type HariPenanamanUncheckedUpdateManyInput = {
     id_hari_penanaman?: IntFieldUpdateOperationsInput | number
-    jenis_tugas?: IntFieldUpdateOperationsInput | number
+    hari_ke?: IntFieldUpdateOperationsInput | number
+    nama_fase?: EnumFasePenanamanFieldUpdateOperationsInput | $Enums.FasePenanaman
+    deskripsi_fase?: NullableStringFieldUpdateOperationsInput | string | null
     id_tanaman?: StringFieldUpdateOperationsInput | string
   }
 
   export type TugasPenanamanCreateInput = {
     nama_tugas: string
+    jenis_tugas: $Enums.JenisTugas
+    estimasi_waktu?: number | null
     hari_penanaman: HariPenanamanCreateNestedOneWithoutTugas_penanamanInput
   }
 
   export type TugasPenanamanUncheckedCreateInput = {
     id_tugas?: number
     nama_tugas: string
+    jenis_tugas: $Enums.JenisTugas
+    estimasi_waktu?: number | null
     id_hari_penanaman: number
   }
 
   export type TugasPenanamanUpdateInput = {
     nama_tugas?: StringFieldUpdateOperationsInput | string
+    jenis_tugas?: EnumJenisTugasFieldUpdateOperationsInput | $Enums.JenisTugas
+    estimasi_waktu?: NullableIntFieldUpdateOperationsInput | number | null
     hari_penanaman?: HariPenanamanUpdateOneRequiredWithoutTugas_penanamanNestedInput
   }
 
   export type TugasPenanamanUncheckedUpdateInput = {
     id_tugas?: IntFieldUpdateOperationsInput | number
     nama_tugas?: StringFieldUpdateOperationsInput | string
+    jenis_tugas?: EnumJenisTugasFieldUpdateOperationsInput | $Enums.JenisTugas
+    estimasi_waktu?: NullableIntFieldUpdateOperationsInput | number | null
     id_hari_penanaman?: IntFieldUpdateOperationsInput | number
   }
 
   export type TugasPenanamanCreateManyInput = {
     id_tugas?: number
     nama_tugas: string
+    jenis_tugas: $Enums.JenisTugas
+    estimasi_waktu?: number | null
     id_hari_penanaman: number
   }
 
   export type TugasPenanamanUpdateManyMutationInput = {
     nama_tugas?: StringFieldUpdateOperationsInput | string
+    jenis_tugas?: EnumJenisTugasFieldUpdateOperationsInput | $Enums.JenisTugas
+    estimasi_waktu?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type TugasPenanamanUncheckedUpdateManyInput = {
     id_tugas?: IntFieldUpdateOperationsInput | number
     nama_tugas?: StringFieldUpdateOperationsInput | string
+    jenis_tugas?: EnumJenisTugasFieldUpdateOperationsInput | $Enums.JenisTugas
+    estimasi_waktu?: NullableIntFieldUpdateOperationsInput | number | null
     id_hari_penanaman?: IntFieldUpdateOperationsInput | number
   }
 
   export type TanamanPenggunaCreateInput = {
     id_tanaman_pengguna: string
-    tanggal_penanaman: Date | string
-    status_penanaman: boolean
-    nama_tanaman: string
+    nama_custom?: string | null
+    tanggal_penanaman?: Date | string
+    tanggal_target_panen?: Date | string | null
+    status_penanaman?: $Enums.StatusPenanaman
+    hari_ke_saat_ini?: number
+    progress_persen?: number
+    catatan_umum?: string | null
     tanaman: TanamanCreateNestedOneWithoutTanaman_penggunaInput
     pengguna: PenggunaCreateNestedOneWithoutTanaman_penggunaInput
     hari_tanaman?: HariTanamanPenggunaCreateNestedManyWithoutTanaman_penggunaInput
@@ -29871,9 +30613,13 @@ export namespace Prisma {
 
   export type TanamanPenggunaUncheckedCreateInput = {
     id_tanaman_pengguna: string
-    tanggal_penanaman: Date | string
-    status_penanaman: boolean
-    nama_tanaman: string
+    nama_custom?: string | null
+    tanggal_penanaman?: Date | string
+    tanggal_target_panen?: Date | string | null
+    status_penanaman?: $Enums.StatusPenanaman
+    hari_ke_saat_ini?: number
+    progress_persen?: number
+    catatan_umum?: string | null
     id_tanaman: string
     id_pengguna: string
     hari_tanaman?: HariTanamanPenggunaUncheckedCreateNestedManyWithoutTanaman_penggunaInput
@@ -29881,9 +30627,13 @@ export namespace Prisma {
 
   export type TanamanPenggunaUpdateInput = {
     id_tanaman_pengguna?: StringFieldUpdateOperationsInput | string
+    nama_custom?: NullableStringFieldUpdateOperationsInput | string | null
     tanggal_penanaman?: DateTimeFieldUpdateOperationsInput | Date | string
-    status_penanaman?: BoolFieldUpdateOperationsInput | boolean
-    nama_tanaman?: StringFieldUpdateOperationsInput | string
+    tanggal_target_panen?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status_penanaman?: EnumStatusPenanamanFieldUpdateOperationsInput | $Enums.StatusPenanaman
+    hari_ke_saat_ini?: IntFieldUpdateOperationsInput | number
+    progress_persen?: FloatFieldUpdateOperationsInput | number
+    catatan_umum?: NullableStringFieldUpdateOperationsInput | string | null
     tanaman?: TanamanUpdateOneRequiredWithoutTanaman_penggunaNestedInput
     pengguna?: PenggunaUpdateOneRequiredWithoutTanaman_penggunaNestedInput
     hari_tanaman?: HariTanamanPenggunaUpdateManyWithoutTanaman_penggunaNestedInput
@@ -29891,9 +30641,13 @@ export namespace Prisma {
 
   export type TanamanPenggunaUncheckedUpdateInput = {
     id_tanaman_pengguna?: StringFieldUpdateOperationsInput | string
+    nama_custom?: NullableStringFieldUpdateOperationsInput | string | null
     tanggal_penanaman?: DateTimeFieldUpdateOperationsInput | Date | string
-    status_penanaman?: BoolFieldUpdateOperationsInput | boolean
-    nama_tanaman?: StringFieldUpdateOperationsInput | string
+    tanggal_target_panen?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status_penanaman?: EnumStatusPenanamanFieldUpdateOperationsInput | $Enums.StatusPenanaman
+    hari_ke_saat_ini?: IntFieldUpdateOperationsInput | number
+    progress_persen?: FloatFieldUpdateOperationsInput | number
+    catatan_umum?: NullableStringFieldUpdateOperationsInput | string | null
     id_tanaman?: StringFieldUpdateOperationsInput | string
     id_pengguna?: StringFieldUpdateOperationsInput | string
     hari_tanaman?: HariTanamanPenggunaUncheckedUpdateManyWithoutTanaman_penggunaNestedInput
@@ -29901,107 +30655,217 @@ export namespace Prisma {
 
   export type TanamanPenggunaCreateManyInput = {
     id_tanaman_pengguna: string
-    tanggal_penanaman: Date | string
-    status_penanaman: boolean
-    nama_tanaman: string
+    nama_custom?: string | null
+    tanggal_penanaman?: Date | string
+    tanggal_target_panen?: Date | string | null
+    status_penanaman?: $Enums.StatusPenanaman
+    hari_ke_saat_ini?: number
+    progress_persen?: number
+    catatan_umum?: string | null
     id_tanaman: string
     id_pengguna: string
   }
 
   export type TanamanPenggunaUpdateManyMutationInput = {
     id_tanaman_pengguna?: StringFieldUpdateOperationsInput | string
+    nama_custom?: NullableStringFieldUpdateOperationsInput | string | null
     tanggal_penanaman?: DateTimeFieldUpdateOperationsInput | Date | string
-    status_penanaman?: BoolFieldUpdateOperationsInput | boolean
-    nama_tanaman?: StringFieldUpdateOperationsInput | string
+    tanggal_target_panen?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status_penanaman?: EnumStatusPenanamanFieldUpdateOperationsInput | $Enums.StatusPenanaman
+    hari_ke_saat_ini?: IntFieldUpdateOperationsInput | number
+    progress_persen?: FloatFieldUpdateOperationsInput | number
+    catatan_umum?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type TanamanPenggunaUncheckedUpdateManyInput = {
     id_tanaman_pengguna?: StringFieldUpdateOperationsInput | string
+    nama_custom?: NullableStringFieldUpdateOperationsInput | string | null
     tanggal_penanaman?: DateTimeFieldUpdateOperationsInput | Date | string
-    status_penanaman?: BoolFieldUpdateOperationsInput | boolean
-    nama_tanaman?: StringFieldUpdateOperationsInput | string
+    tanggal_target_panen?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status_penanaman?: EnumStatusPenanamanFieldUpdateOperationsInput | $Enums.StatusPenanaman
+    hari_ke_saat_ini?: IntFieldUpdateOperationsInput | number
+    progress_persen?: FloatFieldUpdateOperationsInput | number
+    catatan_umum?: NullableStringFieldUpdateOperationsInput | string | null
     id_tanaman?: StringFieldUpdateOperationsInput | string
     id_pengguna?: StringFieldUpdateOperationsInput | string
   }
 
   export type HariTanamanPenggunaCreateInput = {
-    catatan: string
-    tugas_penanaman?: TugasPenanamanPenggunaCreateNestedManyWithoutHari_tanamanInput
+    hari_ke: number
+    tanggal_aktual: Date | string
+    fase_penanaman: $Enums.FasePenanaman
+    status_hari?: $Enums.StatusHari
+    catatan_harian?: string | null
+    total_tugas?: number
+    tugas_selesai?: number
+    progress_hari_persen?: number
     tanaman_pengguna: TanamanPenggunaCreateNestedOneWithoutHari_tanamanInput
+    tugas_penanaman?: TugasPenanamanPenggunaCreateNestedManyWithoutHari_tanamanInput
   }
 
   export type HariTanamanPenggunaUncheckedCreateInput = {
     id_hari_tanaman_pengguna?: number
-    catatan: string
+    hari_ke: number
+    tanggal_aktual: Date | string
+    fase_penanaman: $Enums.FasePenanaman
+    status_hari?: $Enums.StatusHari
+    catatan_harian?: string | null
+    total_tugas?: number
+    tugas_selesai?: number
+    progress_hari_persen?: number
     id_tanaman_pengguna: string
     tugas_penanaman?: TugasPenanamanPenggunaUncheckedCreateNestedManyWithoutHari_tanamanInput
   }
 
   export type HariTanamanPenggunaUpdateInput = {
-    catatan?: StringFieldUpdateOperationsInput | string
-    tugas_penanaman?: TugasPenanamanPenggunaUpdateManyWithoutHari_tanamanNestedInput
+    hari_ke?: IntFieldUpdateOperationsInput | number
+    tanggal_aktual?: DateTimeFieldUpdateOperationsInput | Date | string
+    fase_penanaman?: EnumFasePenanamanFieldUpdateOperationsInput | $Enums.FasePenanaman
+    status_hari?: EnumStatusHariFieldUpdateOperationsInput | $Enums.StatusHari
+    catatan_harian?: NullableStringFieldUpdateOperationsInput | string | null
+    total_tugas?: IntFieldUpdateOperationsInput | number
+    tugas_selesai?: IntFieldUpdateOperationsInput | number
+    progress_hari_persen?: FloatFieldUpdateOperationsInput | number
     tanaman_pengguna?: TanamanPenggunaUpdateOneRequiredWithoutHari_tanamanNestedInput
+    tugas_penanaman?: TugasPenanamanPenggunaUpdateManyWithoutHari_tanamanNestedInput
   }
 
   export type HariTanamanPenggunaUncheckedUpdateInput = {
     id_hari_tanaman_pengguna?: IntFieldUpdateOperationsInput | number
-    catatan?: StringFieldUpdateOperationsInput | string
+    hari_ke?: IntFieldUpdateOperationsInput | number
+    tanggal_aktual?: DateTimeFieldUpdateOperationsInput | Date | string
+    fase_penanaman?: EnumFasePenanamanFieldUpdateOperationsInput | $Enums.FasePenanaman
+    status_hari?: EnumStatusHariFieldUpdateOperationsInput | $Enums.StatusHari
+    catatan_harian?: NullableStringFieldUpdateOperationsInput | string | null
+    total_tugas?: IntFieldUpdateOperationsInput | number
+    tugas_selesai?: IntFieldUpdateOperationsInput | number
+    progress_hari_persen?: FloatFieldUpdateOperationsInput | number
     id_tanaman_pengguna?: StringFieldUpdateOperationsInput | string
     tugas_penanaman?: TugasPenanamanPenggunaUncheckedUpdateManyWithoutHari_tanamanNestedInput
   }
 
   export type HariTanamanPenggunaCreateManyInput = {
     id_hari_tanaman_pengguna?: number
-    catatan: string
+    hari_ke: number
+    tanggal_aktual: Date | string
+    fase_penanaman: $Enums.FasePenanaman
+    status_hari?: $Enums.StatusHari
+    catatan_harian?: string | null
+    total_tugas?: number
+    tugas_selesai?: number
+    progress_hari_persen?: number
     id_tanaman_pengguna: string
   }
 
   export type HariTanamanPenggunaUpdateManyMutationInput = {
-    catatan?: StringFieldUpdateOperationsInput | string
+    hari_ke?: IntFieldUpdateOperationsInput | number
+    tanggal_aktual?: DateTimeFieldUpdateOperationsInput | Date | string
+    fase_penanaman?: EnumFasePenanamanFieldUpdateOperationsInput | $Enums.FasePenanaman
+    status_hari?: EnumStatusHariFieldUpdateOperationsInput | $Enums.StatusHari
+    catatan_harian?: NullableStringFieldUpdateOperationsInput | string | null
+    total_tugas?: IntFieldUpdateOperationsInput | number
+    tugas_selesai?: IntFieldUpdateOperationsInput | number
+    progress_hari_persen?: FloatFieldUpdateOperationsInput | number
   }
 
   export type HariTanamanPenggunaUncheckedUpdateManyInput = {
     id_hari_tanaman_pengguna?: IntFieldUpdateOperationsInput | number
-    catatan?: StringFieldUpdateOperationsInput | string
+    hari_ke?: IntFieldUpdateOperationsInput | number
+    tanggal_aktual?: DateTimeFieldUpdateOperationsInput | Date | string
+    fase_penanaman?: EnumFasePenanamanFieldUpdateOperationsInput | $Enums.FasePenanaman
+    status_hari?: EnumStatusHariFieldUpdateOperationsInput | $Enums.StatusHari
+    catatan_harian?: NullableStringFieldUpdateOperationsInput | string | null
+    total_tugas?: IntFieldUpdateOperationsInput | number
+    tugas_selesai?: IntFieldUpdateOperationsInput | number
+    progress_hari_persen?: FloatFieldUpdateOperationsInput | number
     id_tanaman_pengguna?: StringFieldUpdateOperationsInput | string
   }
 
   export type TugasPenanamanPenggunaCreateInput = {
     nama_tugas: string
+    deskripsi_tugas?: string | null
+    jenis_tugas: $Enums.JenisTugas
+    status_selesai?: boolean
+    tanggal_selesai?: Date | string | null
+    durasi_pengerjaan?: number | null
+    created_at?: Date | string
+    updated_at?: Date | string
     hari_tanaman: HariTanamanPenggunaCreateNestedOneWithoutTugas_penanamanInput
   }
 
   export type TugasPenanamanPenggunaUncheckedCreateInput = {
     id_tugas_penanaman_pengguna?: number
     nama_tugas: string
+    deskripsi_tugas?: string | null
+    jenis_tugas: $Enums.JenisTugas
+    status_selesai?: boolean
+    tanggal_selesai?: Date | string | null
+    durasi_pengerjaan?: number | null
     id_hari_tanaman_pengguna: number
+    created_at?: Date | string
+    updated_at?: Date | string
   }
 
   export type TugasPenanamanPenggunaUpdateInput = {
     nama_tugas?: StringFieldUpdateOperationsInput | string
+    deskripsi_tugas?: NullableStringFieldUpdateOperationsInput | string | null
+    jenis_tugas?: EnumJenisTugasFieldUpdateOperationsInput | $Enums.JenisTugas
+    status_selesai?: BoolFieldUpdateOperationsInput | boolean
+    tanggal_selesai?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    durasi_pengerjaan?: NullableIntFieldUpdateOperationsInput | number | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     hari_tanaman?: HariTanamanPenggunaUpdateOneRequiredWithoutTugas_penanamanNestedInput
   }
 
   export type TugasPenanamanPenggunaUncheckedUpdateInput = {
     id_tugas_penanaman_pengguna?: IntFieldUpdateOperationsInput | number
     nama_tugas?: StringFieldUpdateOperationsInput | string
+    deskripsi_tugas?: NullableStringFieldUpdateOperationsInput | string | null
+    jenis_tugas?: EnumJenisTugasFieldUpdateOperationsInput | $Enums.JenisTugas
+    status_selesai?: BoolFieldUpdateOperationsInput | boolean
+    tanggal_selesai?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    durasi_pengerjaan?: NullableIntFieldUpdateOperationsInput | number | null
     id_hari_tanaman_pengguna?: IntFieldUpdateOperationsInput | number
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type TugasPenanamanPenggunaCreateManyInput = {
     id_tugas_penanaman_pengguna?: number
     nama_tugas: string
+    deskripsi_tugas?: string | null
+    jenis_tugas: $Enums.JenisTugas
+    status_selesai?: boolean
+    tanggal_selesai?: Date | string | null
+    durasi_pengerjaan?: number | null
     id_hari_tanaman_pengguna: number
+    created_at?: Date | string
+    updated_at?: Date | string
   }
 
   export type TugasPenanamanPenggunaUpdateManyMutationInput = {
     nama_tugas?: StringFieldUpdateOperationsInput | string
+    deskripsi_tugas?: NullableStringFieldUpdateOperationsInput | string | null
+    jenis_tugas?: EnumJenisTugasFieldUpdateOperationsInput | $Enums.JenisTugas
+    status_selesai?: BoolFieldUpdateOperationsInput | boolean
+    tanggal_selesai?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    durasi_pengerjaan?: NullableIntFieldUpdateOperationsInput | number | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type TugasPenanamanPenggunaUncheckedUpdateManyInput = {
     id_tugas_penanaman_pengguna?: IntFieldUpdateOperationsInput | number
     nama_tugas?: StringFieldUpdateOperationsInput | string
+    deskripsi_tugas?: NullableStringFieldUpdateOperationsInput | string | null
+    jenis_tugas?: EnumJenisTugasFieldUpdateOperationsInput | $Enums.JenisTugas
+    status_selesai?: BoolFieldUpdateOperationsInput | boolean
+    tanggal_selesai?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    durasi_pengerjaan?: NullableIntFieldUpdateOperationsInput | number | null
     id_hari_tanaman_pengguna?: IntFieldUpdateOperationsInput | number
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -30905,32 +31769,39 @@ export namespace Prisma {
     _count?: SortOrder
   }
 
-  export type kategoriTanamanCountOrderByAggregateInput = {
+  export type KategoriTanamanCountOrderByAggregateInput = {
     id_kategori_tanaman?: SortOrder
     nama_kategori_tanaman?: SortOrder
   }
 
-  export type kategoriTanamanAvgOrderByAggregateInput = {
+  export type KategoriTanamanAvgOrderByAggregateInput = {
     id_kategori_tanaman?: SortOrder
   }
 
-  export type kategoriTanamanMaxOrderByAggregateInput = {
+  export type KategoriTanamanMaxOrderByAggregateInput = {
     id_kategori_tanaman?: SortOrder
     nama_kategori_tanaman?: SortOrder
   }
 
-  export type kategoriTanamanMinOrderByAggregateInput = {
+  export type KategoriTanamanMinOrderByAggregateInput = {
     id_kategori_tanaman?: SortOrder
     nama_kategori_tanaman?: SortOrder
   }
 
-  export type kategoriTanamanSumOrderByAggregateInput = {
+  export type KategoriTanamanSumOrderByAggregateInput = {
     id_kategori_tanaman?: SortOrder
+  }
+
+  export type EnumTingkatKesulitanFilter<$PrismaModel = never> = {
+    equals?: $Enums.TingkatKesulitan | EnumTingkatKesulitanFieldRefInput<$PrismaModel>
+    in?: $Enums.TingkatKesulitan[] | ListEnumTingkatKesulitanFieldRefInput<$PrismaModel>
+    notIn?: $Enums.TingkatKesulitan[] | ListEnumTingkatKesulitanFieldRefInput<$PrismaModel>
+    not?: NestedEnumTingkatKesulitanFilter<$PrismaModel> | $Enums.TingkatKesulitan
   }
 
   export type KategoriTanamanScalarRelationFilter = {
-    is?: kategoriTanamanWhereInput
-    isNot?: kategoriTanamanWhereInput
+    is?: KategoriTanamanWhereInput
+    isNot?: KategoriTanamanWhereInput
   }
 
   export type InstruksiTanamanListRelationFilter = {
@@ -30959,6 +31830,8 @@ export namespace Prisma {
     nama_latin?: SortOrder
     durasi_penanaman?: SortOrder
     deskripsi_tanaman?: SortOrder
+    gambar_tanaman?: SortOrder
+    tingkat_kesulitan?: SortOrder
     id_kategori_tanaman?: SortOrder
   }
 
@@ -30973,6 +31846,8 @@ export namespace Prisma {
     nama_latin?: SortOrder
     durasi_penanaman?: SortOrder
     deskripsi_tanaman?: SortOrder
+    gambar_tanaman?: SortOrder
+    tingkat_kesulitan?: SortOrder
     id_kategori_tanaman?: SortOrder
   }
 
@@ -30982,12 +31857,24 @@ export namespace Prisma {
     nama_latin?: SortOrder
     durasi_penanaman?: SortOrder
     deskripsi_tanaman?: SortOrder
+    gambar_tanaman?: SortOrder
+    tingkat_kesulitan?: SortOrder
     id_kategori_tanaman?: SortOrder
   }
 
   export type TanamanSumOrderByAggregateInput = {
     durasi_penanaman?: SortOrder
     id_kategori_tanaman?: SortOrder
+  }
+
+  export type EnumTingkatKesulitanWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.TingkatKesulitan | EnumTingkatKesulitanFieldRefInput<$PrismaModel>
+    in?: $Enums.TingkatKesulitan[] | ListEnumTingkatKesulitanFieldRefInput<$PrismaModel>
+    notIn?: $Enums.TingkatKesulitan[] | ListEnumTingkatKesulitanFieldRefInput<$PrismaModel>
+    not?: NestedEnumTingkatKesulitanWithAggregatesFilter<$PrismaModel> | $Enums.TingkatKesulitan
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumTingkatKesulitanFilter<$PrismaModel>
+    _max?: NestedEnumTingkatKesulitanFilter<$PrismaModel>
   }
 
   export type TanamanScalarRelationFilter = {
@@ -30998,27 +31885,39 @@ export namespace Prisma {
   export type InstruksiTanamanCountOrderByAggregateInput = {
     id_instruksi?: SortOrder
     instruksi?: SortOrder
+    urutan?: SortOrder
     id_tanaman?: SortOrder
   }
 
   export type InstruksiTanamanAvgOrderByAggregateInput = {
     id_instruksi?: SortOrder
+    urutan?: SortOrder
   }
 
   export type InstruksiTanamanMaxOrderByAggregateInput = {
     id_instruksi?: SortOrder
     instruksi?: SortOrder
+    urutan?: SortOrder
     id_tanaman?: SortOrder
   }
 
   export type InstruksiTanamanMinOrderByAggregateInput = {
     id_instruksi?: SortOrder
     instruksi?: SortOrder
+    urutan?: SortOrder
     id_tanaman?: SortOrder
   }
 
   export type InstruksiTanamanSumOrderByAggregateInput = {
     id_instruksi?: SortOrder
+    urutan?: SortOrder
+  }
+
+  export type EnumFasePenanamanFilter<$PrismaModel = never> = {
+    equals?: $Enums.FasePenanaman | EnumFasePenanamanFieldRefInput<$PrismaModel>
+    in?: $Enums.FasePenanaman[] | ListEnumFasePenanamanFieldRefInput<$PrismaModel>
+    notIn?: $Enums.FasePenanaman[] | ListEnumFasePenanamanFieldRefInput<$PrismaModel>
+    not?: NestedEnumFasePenanamanFilter<$PrismaModel> | $Enums.FasePenanaman
   }
 
   export type TugasPenanamanListRelationFilter = {
@@ -31031,32 +31930,71 @@ export namespace Prisma {
     _count?: SortOrder
   }
 
+  export type HariPenanamanId_tanamanHari_keCompoundUniqueInput = {
+    id_tanaman: string
+    hari_ke: number
+  }
+
   export type HariPenanamanCountOrderByAggregateInput = {
     id_hari_penanaman?: SortOrder
-    jenis_tugas?: SortOrder
+    hari_ke?: SortOrder
+    nama_fase?: SortOrder
+    deskripsi_fase?: SortOrder
     id_tanaman?: SortOrder
   }
 
   export type HariPenanamanAvgOrderByAggregateInput = {
     id_hari_penanaman?: SortOrder
-    jenis_tugas?: SortOrder
+    hari_ke?: SortOrder
   }
 
   export type HariPenanamanMaxOrderByAggregateInput = {
     id_hari_penanaman?: SortOrder
-    jenis_tugas?: SortOrder
+    hari_ke?: SortOrder
+    nama_fase?: SortOrder
+    deskripsi_fase?: SortOrder
     id_tanaman?: SortOrder
   }
 
   export type HariPenanamanMinOrderByAggregateInput = {
     id_hari_penanaman?: SortOrder
-    jenis_tugas?: SortOrder
+    hari_ke?: SortOrder
+    nama_fase?: SortOrder
+    deskripsi_fase?: SortOrder
     id_tanaman?: SortOrder
   }
 
   export type HariPenanamanSumOrderByAggregateInput = {
     id_hari_penanaman?: SortOrder
-    jenis_tugas?: SortOrder
+    hari_ke?: SortOrder
+  }
+
+  export type EnumFasePenanamanWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.FasePenanaman | EnumFasePenanamanFieldRefInput<$PrismaModel>
+    in?: $Enums.FasePenanaman[] | ListEnumFasePenanamanFieldRefInput<$PrismaModel>
+    notIn?: $Enums.FasePenanaman[] | ListEnumFasePenanamanFieldRefInput<$PrismaModel>
+    not?: NestedEnumFasePenanamanWithAggregatesFilter<$PrismaModel> | $Enums.FasePenanaman
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumFasePenanamanFilter<$PrismaModel>
+    _max?: NestedEnumFasePenanamanFilter<$PrismaModel>
+  }
+
+  export type EnumJenisTugasFilter<$PrismaModel = never> = {
+    equals?: $Enums.JenisTugas | EnumJenisTugasFieldRefInput<$PrismaModel>
+    in?: $Enums.JenisTugas[] | ListEnumJenisTugasFieldRefInput<$PrismaModel>
+    notIn?: $Enums.JenisTugas[] | ListEnumJenisTugasFieldRefInput<$PrismaModel>
+    not?: NestedEnumJenisTugasFilter<$PrismaModel> | $Enums.JenisTugas
+  }
+
+  export type IntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
   export type HariPenanamanScalarRelationFilter = {
@@ -31067,29 +32005,81 @@ export namespace Prisma {
   export type TugasPenanamanCountOrderByAggregateInput = {
     id_tugas?: SortOrder
     nama_tugas?: SortOrder
+    jenis_tugas?: SortOrder
+    estimasi_waktu?: SortOrder
     id_hari_penanaman?: SortOrder
   }
 
   export type TugasPenanamanAvgOrderByAggregateInput = {
     id_tugas?: SortOrder
+    estimasi_waktu?: SortOrder
     id_hari_penanaman?: SortOrder
   }
 
   export type TugasPenanamanMaxOrderByAggregateInput = {
     id_tugas?: SortOrder
     nama_tugas?: SortOrder
+    jenis_tugas?: SortOrder
+    estimasi_waktu?: SortOrder
     id_hari_penanaman?: SortOrder
   }
 
   export type TugasPenanamanMinOrderByAggregateInput = {
     id_tugas?: SortOrder
     nama_tugas?: SortOrder
+    jenis_tugas?: SortOrder
+    estimasi_waktu?: SortOrder
     id_hari_penanaman?: SortOrder
   }
 
   export type TugasPenanamanSumOrderByAggregateInput = {
     id_tugas?: SortOrder
+    estimasi_waktu?: SortOrder
     id_hari_penanaman?: SortOrder
+  }
+
+  export type EnumJenisTugasWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.JenisTugas | EnumJenisTugasFieldRefInput<$PrismaModel>
+    in?: $Enums.JenisTugas[] | ListEnumJenisTugasFieldRefInput<$PrismaModel>
+    notIn?: $Enums.JenisTugas[] | ListEnumJenisTugasFieldRefInput<$PrismaModel>
+    not?: NestedEnumJenisTugasWithAggregatesFilter<$PrismaModel> | $Enums.JenisTugas
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumJenisTugasFilter<$PrismaModel>
+    _max?: NestedEnumJenisTugasFilter<$PrismaModel>
+  }
+
+  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type DateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
+  export type EnumStatusPenanamanFilter<$PrismaModel = never> = {
+    equals?: $Enums.StatusPenanaman | EnumStatusPenanamanFieldRefInput<$PrismaModel>
+    in?: $Enums.StatusPenanaman[] | ListEnumStatusPenanamanFieldRefInput<$PrismaModel>
+    notIn?: $Enums.StatusPenanaman[] | ListEnumStatusPenanamanFieldRefInput<$PrismaModel>
+    not?: NestedEnumStatusPenanamanFilter<$PrismaModel> | $Enums.StatusPenanaman
   }
 
   export type HariTanamanPenggunaListRelationFilter = {
@@ -31104,29 +32094,87 @@ export namespace Prisma {
 
   export type TanamanPenggunaCountOrderByAggregateInput = {
     id_tanaman_pengguna?: SortOrder
+    nama_custom?: SortOrder
     tanggal_penanaman?: SortOrder
+    tanggal_target_panen?: SortOrder
     status_penanaman?: SortOrder
-    nama_tanaman?: SortOrder
+    hari_ke_saat_ini?: SortOrder
+    progress_persen?: SortOrder
+    catatan_umum?: SortOrder
     id_tanaman?: SortOrder
     id_pengguna?: SortOrder
   }
 
+  export type TanamanPenggunaAvgOrderByAggregateInput = {
+    hari_ke_saat_ini?: SortOrder
+    progress_persen?: SortOrder
+  }
+
   export type TanamanPenggunaMaxOrderByAggregateInput = {
     id_tanaman_pengguna?: SortOrder
+    nama_custom?: SortOrder
     tanggal_penanaman?: SortOrder
+    tanggal_target_panen?: SortOrder
     status_penanaman?: SortOrder
-    nama_tanaman?: SortOrder
+    hari_ke_saat_ini?: SortOrder
+    progress_persen?: SortOrder
+    catatan_umum?: SortOrder
     id_tanaman?: SortOrder
     id_pengguna?: SortOrder
   }
 
   export type TanamanPenggunaMinOrderByAggregateInput = {
     id_tanaman_pengguna?: SortOrder
+    nama_custom?: SortOrder
     tanggal_penanaman?: SortOrder
+    tanggal_target_panen?: SortOrder
     status_penanaman?: SortOrder
-    nama_tanaman?: SortOrder
+    hari_ke_saat_ini?: SortOrder
+    progress_persen?: SortOrder
+    catatan_umum?: SortOrder
     id_tanaman?: SortOrder
     id_pengguna?: SortOrder
+  }
+
+  export type TanamanPenggunaSumOrderByAggregateInput = {
+    hari_ke_saat_ini?: SortOrder
+    progress_persen?: SortOrder
+  }
+
+  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
+  }
+
+  export type EnumStatusPenanamanWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.StatusPenanaman | EnumStatusPenanamanFieldRefInput<$PrismaModel>
+    in?: $Enums.StatusPenanaman[] | ListEnumStatusPenanamanFieldRefInput<$PrismaModel>
+    notIn?: $Enums.StatusPenanaman[] | ListEnumStatusPenanamanFieldRefInput<$PrismaModel>
+    not?: NestedEnumStatusPenanamanWithAggregatesFilter<$PrismaModel> | $Enums.StatusPenanaman
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumStatusPenanamanFilter<$PrismaModel>
+    _max?: NestedEnumStatusPenanamanFilter<$PrismaModel>
+  }
+
+  export type EnumStatusHariFilter<$PrismaModel = never> = {
+    equals?: $Enums.StatusHari | EnumStatusHariFieldRefInput<$PrismaModel>
+    in?: $Enums.StatusHari[] | ListEnumStatusHariFieldRefInput<$PrismaModel>
+    notIn?: $Enums.StatusHari[] | ListEnumStatusHariFieldRefInput<$PrismaModel>
+    not?: NestedEnumStatusHariFilter<$PrismaModel> | $Enums.StatusHari
+  }
+
+  export type TanamanPenggunaScalarRelationFilter = {
+    is?: TanamanPenggunaWhereInput
+    isNot?: TanamanPenggunaWhereInput
   }
 
   export type TugasPenanamanPenggunaListRelationFilter = {
@@ -31135,39 +32183,78 @@ export namespace Prisma {
     none?: TugasPenanamanPenggunaWhereInput
   }
 
-  export type TanamanPenggunaScalarRelationFilter = {
-    is?: TanamanPenggunaWhereInput
-    isNot?: TanamanPenggunaWhereInput
-  }
-
   export type TugasPenanamanPenggunaOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
+  export type HariTanamanPenggunaId_tanaman_penggunaHari_keCompoundUniqueInput = {
+    id_tanaman_pengguna: string
+    hari_ke: number
+  }
+
   export type HariTanamanPenggunaCountOrderByAggregateInput = {
     id_hari_tanaman_pengguna?: SortOrder
-    catatan?: SortOrder
+    hari_ke?: SortOrder
+    tanggal_aktual?: SortOrder
+    fase_penanaman?: SortOrder
+    status_hari?: SortOrder
+    catatan_harian?: SortOrder
+    total_tugas?: SortOrder
+    tugas_selesai?: SortOrder
+    progress_hari_persen?: SortOrder
     id_tanaman_pengguna?: SortOrder
   }
 
   export type HariTanamanPenggunaAvgOrderByAggregateInput = {
     id_hari_tanaman_pengguna?: SortOrder
+    hari_ke?: SortOrder
+    total_tugas?: SortOrder
+    tugas_selesai?: SortOrder
+    progress_hari_persen?: SortOrder
   }
 
   export type HariTanamanPenggunaMaxOrderByAggregateInput = {
     id_hari_tanaman_pengguna?: SortOrder
-    catatan?: SortOrder
+    hari_ke?: SortOrder
+    tanggal_aktual?: SortOrder
+    fase_penanaman?: SortOrder
+    status_hari?: SortOrder
+    catatan_harian?: SortOrder
+    total_tugas?: SortOrder
+    tugas_selesai?: SortOrder
+    progress_hari_persen?: SortOrder
     id_tanaman_pengguna?: SortOrder
   }
 
   export type HariTanamanPenggunaMinOrderByAggregateInput = {
     id_hari_tanaman_pengguna?: SortOrder
-    catatan?: SortOrder
+    hari_ke?: SortOrder
+    tanggal_aktual?: SortOrder
+    fase_penanaman?: SortOrder
+    status_hari?: SortOrder
+    catatan_harian?: SortOrder
+    total_tugas?: SortOrder
+    tugas_selesai?: SortOrder
+    progress_hari_persen?: SortOrder
     id_tanaman_pengguna?: SortOrder
   }
 
   export type HariTanamanPenggunaSumOrderByAggregateInput = {
     id_hari_tanaman_pengguna?: SortOrder
+    hari_ke?: SortOrder
+    total_tugas?: SortOrder
+    tugas_selesai?: SortOrder
+    progress_hari_persen?: SortOrder
+  }
+
+  export type EnumStatusHariWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.StatusHari | EnumStatusHariFieldRefInput<$PrismaModel>
+    in?: $Enums.StatusHari[] | ListEnumStatusHariFieldRefInput<$PrismaModel>
+    notIn?: $Enums.StatusHari[] | ListEnumStatusHariFieldRefInput<$PrismaModel>
+    not?: NestedEnumStatusHariWithAggregatesFilter<$PrismaModel> | $Enums.StatusHari
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumStatusHariFilter<$PrismaModel>
+    _max?: NestedEnumStatusHariFilter<$PrismaModel>
   }
 
   export type HariTanamanPenggunaScalarRelationFilter = {
@@ -31178,28 +32265,51 @@ export namespace Prisma {
   export type TugasPenanamanPenggunaCountOrderByAggregateInput = {
     id_tugas_penanaman_pengguna?: SortOrder
     nama_tugas?: SortOrder
+    deskripsi_tugas?: SortOrder
+    jenis_tugas?: SortOrder
+    status_selesai?: SortOrder
+    tanggal_selesai?: SortOrder
+    durasi_pengerjaan?: SortOrder
     id_hari_tanaman_pengguna?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
   }
 
   export type TugasPenanamanPenggunaAvgOrderByAggregateInput = {
     id_tugas_penanaman_pengguna?: SortOrder
+    durasi_pengerjaan?: SortOrder
     id_hari_tanaman_pengguna?: SortOrder
   }
 
   export type TugasPenanamanPenggunaMaxOrderByAggregateInput = {
     id_tugas_penanaman_pengguna?: SortOrder
     nama_tugas?: SortOrder
+    deskripsi_tugas?: SortOrder
+    jenis_tugas?: SortOrder
+    status_selesai?: SortOrder
+    tanggal_selesai?: SortOrder
+    durasi_pengerjaan?: SortOrder
     id_hari_tanaman_pengguna?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
   }
 
   export type TugasPenanamanPenggunaMinOrderByAggregateInput = {
     id_tugas_penanaman_pengguna?: SortOrder
     nama_tugas?: SortOrder
+    deskripsi_tugas?: SortOrder
+    jenis_tugas?: SortOrder
+    status_selesai?: SortOrder
+    tanggal_selesai?: SortOrder
+    durasi_pengerjaan?: SortOrder
     id_hari_tanaman_pengguna?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
   }
 
   export type TugasPenanamanPenggunaSumOrderByAggregateInput = {
     id_tugas_penanaman_pengguna?: SortOrder
+    durasi_pengerjaan?: SortOrder
     id_hari_tanaman_pengguna?: SortOrder
   }
 
@@ -32179,10 +33289,10 @@ export namespace Prisma {
     deleteMany?: TanamanScalarWhereInput | TanamanScalarWhereInput[]
   }
 
-  export type kategoriTanamanCreateNestedOneWithoutTanamanInput = {
-    create?: XOR<kategoriTanamanCreateWithoutTanamanInput, kategoriTanamanUncheckedCreateWithoutTanamanInput>
-    connectOrCreate?: kategoriTanamanCreateOrConnectWithoutTanamanInput
-    connect?: kategoriTanamanWhereUniqueInput
+  export type KategoriTanamanCreateNestedOneWithoutTanamanInput = {
+    create?: XOR<KategoriTanamanCreateWithoutTanamanInput, KategoriTanamanUncheckedCreateWithoutTanamanInput>
+    connectOrCreate?: KategoriTanamanCreateOrConnectWithoutTanamanInput
+    connect?: KategoriTanamanWhereUniqueInput
   }
 
   export type InstruksiTanamanCreateNestedManyWithoutTanamanInput = {
@@ -32227,12 +33337,16 @@ export namespace Prisma {
     connect?: TanamanPenggunaWhereUniqueInput | TanamanPenggunaWhereUniqueInput[]
   }
 
-  export type kategoriTanamanUpdateOneRequiredWithoutTanamanNestedInput = {
-    create?: XOR<kategoriTanamanCreateWithoutTanamanInput, kategoriTanamanUncheckedCreateWithoutTanamanInput>
-    connectOrCreate?: kategoriTanamanCreateOrConnectWithoutTanamanInput
-    upsert?: kategoriTanamanUpsertWithoutTanamanInput
-    connect?: kategoriTanamanWhereUniqueInput
-    update?: XOR<XOR<kategoriTanamanUpdateToOneWithWhereWithoutTanamanInput, kategoriTanamanUpdateWithoutTanamanInput>, kategoriTanamanUncheckedUpdateWithoutTanamanInput>
+  export type EnumTingkatKesulitanFieldUpdateOperationsInput = {
+    set?: $Enums.TingkatKesulitan
+  }
+
+  export type KategoriTanamanUpdateOneRequiredWithoutTanamanNestedInput = {
+    create?: XOR<KategoriTanamanCreateWithoutTanamanInput, KategoriTanamanUncheckedCreateWithoutTanamanInput>
+    connectOrCreate?: KategoriTanamanCreateOrConnectWithoutTanamanInput
+    upsert?: KategoriTanamanUpsertWithoutTanamanInput
+    connect?: KategoriTanamanWhereUniqueInput
+    update?: XOR<XOR<KategoriTanamanUpdateToOneWithWhereWithoutTanamanInput, KategoriTanamanUpdateWithoutTanamanInput>, KategoriTanamanUncheckedUpdateWithoutTanamanInput>
   }
 
   export type InstruksiTanamanUpdateManyWithoutTanamanNestedInput = {
@@ -32353,6 +33467,10 @@ export namespace Prisma {
     connect?: TugasPenanamanWhereUniqueInput | TugasPenanamanWhereUniqueInput[]
   }
 
+  export type EnumFasePenanamanFieldUpdateOperationsInput = {
+    set?: $Enums.FasePenanaman
+  }
+
   export type TanamanUpdateOneRequiredWithoutHari_penanamanNestedInput = {
     create?: XOR<TanamanCreateWithoutHari_penanamanInput, TanamanUncheckedCreateWithoutHari_penanamanInput>
     connectOrCreate?: TanamanCreateOrConnectWithoutHari_penanamanInput
@@ -32395,6 +33513,18 @@ export namespace Prisma {
     connect?: HariPenanamanWhereUniqueInput
   }
 
+  export type EnumJenisTugasFieldUpdateOperationsInput = {
+    set?: $Enums.JenisTugas
+  }
+
+  export type NullableIntFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
   export type HariPenanamanUpdateOneRequiredWithoutTugas_penanamanNestedInput = {
     create?: XOR<HariPenanamanCreateWithoutTugas_penanamanInput, HariPenanamanUncheckedCreateWithoutTugas_penanamanInput>
     connectOrCreate?: HariPenanamanCreateOrConnectWithoutTugas_penanamanInput
@@ -32427,6 +33557,14 @@ export namespace Prisma {
     connectOrCreate?: HariTanamanPenggunaCreateOrConnectWithoutTanaman_penggunaInput | HariTanamanPenggunaCreateOrConnectWithoutTanaman_penggunaInput[]
     createMany?: HariTanamanPenggunaCreateManyTanaman_penggunaInputEnvelope
     connect?: HariTanamanPenggunaWhereUniqueInput | HariTanamanPenggunaWhereUniqueInput[]
+  }
+
+  export type NullableDateTimeFieldUpdateOperationsInput = {
+    set?: Date | string | null
+  }
+
+  export type EnumStatusPenanamanFieldUpdateOperationsInput = {
+    set?: $Enums.StatusPenanaman
   }
 
   export type TanamanUpdateOneRequiredWithoutTanaman_penggunaNestedInput = {
@@ -32473,6 +33611,12 @@ export namespace Prisma {
     deleteMany?: HariTanamanPenggunaScalarWhereInput | HariTanamanPenggunaScalarWhereInput[]
   }
 
+  export type TanamanPenggunaCreateNestedOneWithoutHari_tanamanInput = {
+    create?: XOR<TanamanPenggunaCreateWithoutHari_tanamanInput, TanamanPenggunaUncheckedCreateWithoutHari_tanamanInput>
+    connectOrCreate?: TanamanPenggunaCreateOrConnectWithoutHari_tanamanInput
+    connect?: TanamanPenggunaWhereUniqueInput
+  }
+
   export type TugasPenanamanPenggunaCreateNestedManyWithoutHari_tanamanInput = {
     create?: XOR<TugasPenanamanPenggunaCreateWithoutHari_tanamanInput, TugasPenanamanPenggunaUncheckedCreateWithoutHari_tanamanInput> | TugasPenanamanPenggunaCreateWithoutHari_tanamanInput[] | TugasPenanamanPenggunaUncheckedCreateWithoutHari_tanamanInput[]
     connectOrCreate?: TugasPenanamanPenggunaCreateOrConnectWithoutHari_tanamanInput | TugasPenanamanPenggunaCreateOrConnectWithoutHari_tanamanInput[]
@@ -32480,17 +33624,23 @@ export namespace Prisma {
     connect?: TugasPenanamanPenggunaWhereUniqueInput | TugasPenanamanPenggunaWhereUniqueInput[]
   }
 
-  export type TanamanPenggunaCreateNestedOneWithoutHari_tanamanInput = {
-    create?: XOR<TanamanPenggunaCreateWithoutHari_tanamanInput, TanamanPenggunaUncheckedCreateWithoutHari_tanamanInput>
-    connectOrCreate?: TanamanPenggunaCreateOrConnectWithoutHari_tanamanInput
-    connect?: TanamanPenggunaWhereUniqueInput
-  }
-
   export type TugasPenanamanPenggunaUncheckedCreateNestedManyWithoutHari_tanamanInput = {
     create?: XOR<TugasPenanamanPenggunaCreateWithoutHari_tanamanInput, TugasPenanamanPenggunaUncheckedCreateWithoutHari_tanamanInput> | TugasPenanamanPenggunaCreateWithoutHari_tanamanInput[] | TugasPenanamanPenggunaUncheckedCreateWithoutHari_tanamanInput[]
     connectOrCreate?: TugasPenanamanPenggunaCreateOrConnectWithoutHari_tanamanInput | TugasPenanamanPenggunaCreateOrConnectWithoutHari_tanamanInput[]
     createMany?: TugasPenanamanPenggunaCreateManyHari_tanamanInputEnvelope
     connect?: TugasPenanamanPenggunaWhereUniqueInput | TugasPenanamanPenggunaWhereUniqueInput[]
+  }
+
+  export type EnumStatusHariFieldUpdateOperationsInput = {
+    set?: $Enums.StatusHari
+  }
+
+  export type TanamanPenggunaUpdateOneRequiredWithoutHari_tanamanNestedInput = {
+    create?: XOR<TanamanPenggunaCreateWithoutHari_tanamanInput, TanamanPenggunaUncheckedCreateWithoutHari_tanamanInput>
+    connectOrCreate?: TanamanPenggunaCreateOrConnectWithoutHari_tanamanInput
+    upsert?: TanamanPenggunaUpsertWithoutHari_tanamanInput
+    connect?: TanamanPenggunaWhereUniqueInput
+    update?: XOR<XOR<TanamanPenggunaUpdateToOneWithWhereWithoutHari_tanamanInput, TanamanPenggunaUpdateWithoutHari_tanamanInput>, TanamanPenggunaUncheckedUpdateWithoutHari_tanamanInput>
   }
 
   export type TugasPenanamanPenggunaUpdateManyWithoutHari_tanamanNestedInput = {
@@ -32505,14 +33655,6 @@ export namespace Prisma {
     update?: TugasPenanamanPenggunaUpdateWithWhereUniqueWithoutHari_tanamanInput | TugasPenanamanPenggunaUpdateWithWhereUniqueWithoutHari_tanamanInput[]
     updateMany?: TugasPenanamanPenggunaUpdateManyWithWhereWithoutHari_tanamanInput | TugasPenanamanPenggunaUpdateManyWithWhereWithoutHari_tanamanInput[]
     deleteMany?: TugasPenanamanPenggunaScalarWhereInput | TugasPenanamanPenggunaScalarWhereInput[]
-  }
-
-  export type TanamanPenggunaUpdateOneRequiredWithoutHari_tanamanNestedInput = {
-    create?: XOR<TanamanPenggunaCreateWithoutHari_tanamanInput, TanamanPenggunaUncheckedCreateWithoutHari_tanamanInput>
-    connectOrCreate?: TanamanPenggunaCreateOrConnectWithoutHari_tanamanInput
-    upsert?: TanamanPenggunaUpsertWithoutHari_tanamanInput
-    connect?: TanamanPenggunaWhereUniqueInput
-    update?: XOR<XOR<TanamanPenggunaUpdateToOneWithWhereWithoutHari_tanamanInput, TanamanPenggunaUpdateWithoutHari_tanamanInput>, TanamanPenggunaUncheckedUpdateWithoutHari_tanamanInput>
   }
 
   export type TugasPenanamanPenggunaUncheckedUpdateManyWithoutHari_tanamanNestedInput = {
@@ -32784,6 +33926,143 @@ export namespace Prisma {
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type NestedEnumTingkatKesulitanFilter<$PrismaModel = never> = {
+    equals?: $Enums.TingkatKesulitan | EnumTingkatKesulitanFieldRefInput<$PrismaModel>
+    in?: $Enums.TingkatKesulitan[] | ListEnumTingkatKesulitanFieldRefInput<$PrismaModel>
+    notIn?: $Enums.TingkatKesulitan[] | ListEnumTingkatKesulitanFieldRefInput<$PrismaModel>
+    not?: NestedEnumTingkatKesulitanFilter<$PrismaModel> | $Enums.TingkatKesulitan
+  }
+
+  export type NestedEnumTingkatKesulitanWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.TingkatKesulitan | EnumTingkatKesulitanFieldRefInput<$PrismaModel>
+    in?: $Enums.TingkatKesulitan[] | ListEnumTingkatKesulitanFieldRefInput<$PrismaModel>
+    notIn?: $Enums.TingkatKesulitan[] | ListEnumTingkatKesulitanFieldRefInput<$PrismaModel>
+    not?: NestedEnumTingkatKesulitanWithAggregatesFilter<$PrismaModel> | $Enums.TingkatKesulitan
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumTingkatKesulitanFilter<$PrismaModel>
+    _max?: NestedEnumTingkatKesulitanFilter<$PrismaModel>
+  }
+
+  export type NestedEnumFasePenanamanFilter<$PrismaModel = never> = {
+    equals?: $Enums.FasePenanaman | EnumFasePenanamanFieldRefInput<$PrismaModel>
+    in?: $Enums.FasePenanaman[] | ListEnumFasePenanamanFieldRefInput<$PrismaModel>
+    notIn?: $Enums.FasePenanaman[] | ListEnumFasePenanamanFieldRefInput<$PrismaModel>
+    not?: NestedEnumFasePenanamanFilter<$PrismaModel> | $Enums.FasePenanaman
+  }
+
+  export type NestedEnumFasePenanamanWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.FasePenanaman | EnumFasePenanamanFieldRefInput<$PrismaModel>
+    in?: $Enums.FasePenanaman[] | ListEnumFasePenanamanFieldRefInput<$PrismaModel>
+    notIn?: $Enums.FasePenanaman[] | ListEnumFasePenanamanFieldRefInput<$PrismaModel>
+    not?: NestedEnumFasePenanamanWithAggregatesFilter<$PrismaModel> | $Enums.FasePenanaman
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumFasePenanamanFilter<$PrismaModel>
+    _max?: NestedEnumFasePenanamanFilter<$PrismaModel>
+  }
+
+  export type NestedEnumJenisTugasFilter<$PrismaModel = never> = {
+    equals?: $Enums.JenisTugas | EnumJenisTugasFieldRefInput<$PrismaModel>
+    in?: $Enums.JenisTugas[] | ListEnumJenisTugasFieldRefInput<$PrismaModel>
+    notIn?: $Enums.JenisTugas[] | ListEnumJenisTugasFieldRefInput<$PrismaModel>
+    not?: NestedEnumJenisTugasFilter<$PrismaModel> | $Enums.JenisTugas
+  }
+
+  export type NestedEnumJenisTugasWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.JenisTugas | EnumJenisTugasFieldRefInput<$PrismaModel>
+    in?: $Enums.JenisTugas[] | ListEnumJenisTugasFieldRefInput<$PrismaModel>
+    notIn?: $Enums.JenisTugas[] | ListEnumJenisTugasFieldRefInput<$PrismaModel>
+    not?: NestedEnumJenisTugasWithAggregatesFilter<$PrismaModel> | $Enums.JenisTugas
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumJenisTugasFilter<$PrismaModel>
+    _max?: NestedEnumJenisTugasFilter<$PrismaModel>
+  }
+
+  export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type NestedFloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
+  export type NestedEnumStatusPenanamanFilter<$PrismaModel = never> = {
+    equals?: $Enums.StatusPenanaman | EnumStatusPenanamanFieldRefInput<$PrismaModel>
+    in?: $Enums.StatusPenanaman[] | ListEnumStatusPenanamanFieldRefInput<$PrismaModel>
+    notIn?: $Enums.StatusPenanaman[] | ListEnumStatusPenanamanFieldRefInput<$PrismaModel>
+    not?: NestedEnumStatusPenanamanFilter<$PrismaModel> | $Enums.StatusPenanaman
+  }
+
+  export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
+  }
+
+  export type NestedEnumStatusPenanamanWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.StatusPenanaman | EnumStatusPenanamanFieldRefInput<$PrismaModel>
+    in?: $Enums.StatusPenanaman[] | ListEnumStatusPenanamanFieldRefInput<$PrismaModel>
+    notIn?: $Enums.StatusPenanaman[] | ListEnumStatusPenanamanFieldRefInput<$PrismaModel>
+    not?: NestedEnumStatusPenanamanWithAggregatesFilter<$PrismaModel> | $Enums.StatusPenanaman
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumStatusPenanamanFilter<$PrismaModel>
+    _max?: NestedEnumStatusPenanamanFilter<$PrismaModel>
+  }
+
+  export type NestedEnumStatusHariFilter<$PrismaModel = never> = {
+    equals?: $Enums.StatusHari | EnumStatusHariFieldRefInput<$PrismaModel>
+    in?: $Enums.StatusHari[] | ListEnumStatusHariFieldRefInput<$PrismaModel>
+    notIn?: $Enums.StatusHari[] | ListEnumStatusHariFieldRefInput<$PrismaModel>
+    not?: NestedEnumStatusHariFilter<$PrismaModel> | $Enums.StatusHari
+  }
+
+  export type NestedEnumStatusHariWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.StatusHari | EnumStatusHariFieldRefInput<$PrismaModel>
+    in?: $Enums.StatusHari[] | ListEnumStatusHariFieldRefInput<$PrismaModel>
+    notIn?: $Enums.StatusHari[] | ListEnumStatusHariFieldRefInput<$PrismaModel>
+    not?: NestedEnumStatusHariWithAggregatesFilter<$PrismaModel> | $Enums.StatusHari
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumStatusHariFilter<$PrismaModel>
+    _max?: NestedEnumStatusHariFilter<$PrismaModel>
   }
 
   export type KabupatenCreateWithoutProvinsiInput = {
@@ -33169,18 +34448,26 @@ export namespace Prisma {
 
   export type TanamanPenggunaCreateWithoutPenggunaInput = {
     id_tanaman_pengguna: string
-    tanggal_penanaman: Date | string
-    status_penanaman: boolean
-    nama_tanaman: string
+    nama_custom?: string | null
+    tanggal_penanaman?: Date | string
+    tanggal_target_panen?: Date | string | null
+    status_penanaman?: $Enums.StatusPenanaman
+    hari_ke_saat_ini?: number
+    progress_persen?: number
+    catatan_umum?: string | null
     tanaman: TanamanCreateNestedOneWithoutTanaman_penggunaInput
     hari_tanaman?: HariTanamanPenggunaCreateNestedManyWithoutTanaman_penggunaInput
   }
 
   export type TanamanPenggunaUncheckedCreateWithoutPenggunaInput = {
     id_tanaman_pengguna: string
-    tanggal_penanaman: Date | string
-    status_penanaman: boolean
-    nama_tanaman: string
+    nama_custom?: string | null
+    tanggal_penanaman?: Date | string
+    tanggal_target_panen?: Date | string | null
+    status_penanaman?: $Enums.StatusPenanaman
+    hari_ke_saat_ini?: number
+    progress_persen?: number
+    catatan_umum?: string | null
     id_tanaman: string
     hari_tanaman?: HariTanamanPenggunaUncheckedCreateNestedManyWithoutTanaman_penggunaInput
   }
@@ -33361,9 +34648,13 @@ export namespace Prisma {
     OR?: TanamanPenggunaScalarWhereInput[]
     NOT?: TanamanPenggunaScalarWhereInput | TanamanPenggunaScalarWhereInput[]
     id_tanaman_pengguna?: StringFilter<"TanamanPengguna"> | string
+    nama_custom?: StringNullableFilter<"TanamanPengguna"> | string | null
     tanggal_penanaman?: DateTimeFilter<"TanamanPengguna"> | Date | string
-    status_penanaman?: BoolFilter<"TanamanPengguna"> | boolean
-    nama_tanaman?: StringFilter<"TanamanPengguna"> | string
+    tanggal_target_panen?: DateTimeNullableFilter<"TanamanPengguna"> | Date | string | null
+    status_penanaman?: EnumStatusPenanamanFilter<"TanamanPengguna"> | $Enums.StatusPenanaman
+    hari_ke_saat_ini?: IntFilter<"TanamanPengguna"> | number
+    progress_persen?: FloatFilter<"TanamanPengguna"> | number
+    catatan_umum?: StringNullableFilter<"TanamanPengguna"> | string | null
     id_tanaman?: StringFilter<"TanamanPengguna"> | string
     id_pengguna?: StringFilter<"TanamanPengguna"> | string
   }
@@ -34777,6 +36068,8 @@ export namespace Prisma {
     nama_latin: string
     durasi_penanaman: number
     deskripsi_tanaman: string
+    gambar_tanaman?: string | null
+    tingkat_kesulitan?: $Enums.TingkatKesulitan
     instruksi_tanaman?: InstruksiTanamanCreateNestedManyWithoutTanamanInput
     hari_penanaman?: HariPenanamanCreateNestedManyWithoutTanamanInput
     tanaman_pengguna?: TanamanPenggunaCreateNestedManyWithoutTanamanInput
@@ -34788,6 +36081,8 @@ export namespace Prisma {
     nama_latin: string
     durasi_penanaman: number
     deskripsi_tanaman: string
+    gambar_tanaman?: string | null
+    tingkat_kesulitan?: $Enums.TingkatKesulitan
     instruksi_tanaman?: InstruksiTanamanUncheckedCreateNestedManyWithoutTanamanInput
     hari_penanaman?: HariPenanamanUncheckedCreateNestedManyWithoutTanamanInput
     tanaman_pengguna?: TanamanPenggunaUncheckedCreateNestedManyWithoutTanamanInput
@@ -34828,30 +36123,34 @@ export namespace Prisma {
     nama_latin?: StringFilter<"Tanaman"> | string
     durasi_penanaman?: IntFilter<"Tanaman"> | number
     deskripsi_tanaman?: StringFilter<"Tanaman"> | string
+    gambar_tanaman?: StringNullableFilter<"Tanaman"> | string | null
+    tingkat_kesulitan?: EnumTingkatKesulitanFilter<"Tanaman"> | $Enums.TingkatKesulitan
     id_kategori_tanaman?: IntFilter<"Tanaman"> | number
   }
 
-  export type kategoriTanamanCreateWithoutTanamanInput = {
+  export type KategoriTanamanCreateWithoutTanamanInput = {
     nama_kategori_tanaman: string
   }
 
-  export type kategoriTanamanUncheckedCreateWithoutTanamanInput = {
+  export type KategoriTanamanUncheckedCreateWithoutTanamanInput = {
     id_kategori_tanaman?: number
     nama_kategori_tanaman: string
   }
 
-  export type kategoriTanamanCreateOrConnectWithoutTanamanInput = {
-    where: kategoriTanamanWhereUniqueInput
-    create: XOR<kategoriTanamanCreateWithoutTanamanInput, kategoriTanamanUncheckedCreateWithoutTanamanInput>
+  export type KategoriTanamanCreateOrConnectWithoutTanamanInput = {
+    where: KategoriTanamanWhereUniqueInput
+    create: XOR<KategoriTanamanCreateWithoutTanamanInput, KategoriTanamanUncheckedCreateWithoutTanamanInput>
   }
 
   export type InstruksiTanamanCreateWithoutTanamanInput = {
     instruksi: string
+    urutan?: number
   }
 
   export type InstruksiTanamanUncheckedCreateWithoutTanamanInput = {
     id_instruksi?: number
     instruksi: string
+    urutan?: number
   }
 
   export type InstruksiTanamanCreateOrConnectWithoutTanamanInput = {
@@ -34865,13 +36164,17 @@ export namespace Prisma {
   }
 
   export type HariPenanamanCreateWithoutTanamanInput = {
-    jenis_tugas: number
+    hari_ke: number
+    nama_fase: $Enums.FasePenanaman
+    deskripsi_fase?: string | null
     tugas_penanaman?: TugasPenanamanCreateNestedManyWithoutHari_penanamanInput
   }
 
   export type HariPenanamanUncheckedCreateWithoutTanamanInput = {
     id_hari_penanaman?: number
-    jenis_tugas: number
+    hari_ke: number
+    nama_fase: $Enums.FasePenanaman
+    deskripsi_fase?: string | null
     tugas_penanaman?: TugasPenanamanUncheckedCreateNestedManyWithoutHari_penanamanInput
   }
 
@@ -34887,18 +36190,26 @@ export namespace Prisma {
 
   export type TanamanPenggunaCreateWithoutTanamanInput = {
     id_tanaman_pengguna: string
-    tanggal_penanaman: Date | string
-    status_penanaman: boolean
-    nama_tanaman: string
+    nama_custom?: string | null
+    tanggal_penanaman?: Date | string
+    tanggal_target_panen?: Date | string | null
+    status_penanaman?: $Enums.StatusPenanaman
+    hari_ke_saat_ini?: number
+    progress_persen?: number
+    catatan_umum?: string | null
     pengguna: PenggunaCreateNestedOneWithoutTanaman_penggunaInput
     hari_tanaman?: HariTanamanPenggunaCreateNestedManyWithoutTanaman_penggunaInput
   }
 
   export type TanamanPenggunaUncheckedCreateWithoutTanamanInput = {
     id_tanaman_pengguna: string
-    tanggal_penanaman: Date | string
-    status_penanaman: boolean
-    nama_tanaman: string
+    nama_custom?: string | null
+    tanggal_penanaman?: Date | string
+    tanggal_target_panen?: Date | string | null
+    status_penanaman?: $Enums.StatusPenanaman
+    hari_ke_saat_ini?: number
+    progress_persen?: number
+    catatan_umum?: string | null
     id_pengguna: string
     hari_tanaman?: HariTanamanPenggunaUncheckedCreateNestedManyWithoutTanaman_penggunaInput
   }
@@ -34913,22 +36224,22 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type kategoriTanamanUpsertWithoutTanamanInput = {
-    update: XOR<kategoriTanamanUpdateWithoutTanamanInput, kategoriTanamanUncheckedUpdateWithoutTanamanInput>
-    create: XOR<kategoriTanamanCreateWithoutTanamanInput, kategoriTanamanUncheckedCreateWithoutTanamanInput>
-    where?: kategoriTanamanWhereInput
+  export type KategoriTanamanUpsertWithoutTanamanInput = {
+    update: XOR<KategoriTanamanUpdateWithoutTanamanInput, KategoriTanamanUncheckedUpdateWithoutTanamanInput>
+    create: XOR<KategoriTanamanCreateWithoutTanamanInput, KategoriTanamanUncheckedCreateWithoutTanamanInput>
+    where?: KategoriTanamanWhereInput
   }
 
-  export type kategoriTanamanUpdateToOneWithWhereWithoutTanamanInput = {
-    where?: kategoriTanamanWhereInput
-    data: XOR<kategoriTanamanUpdateWithoutTanamanInput, kategoriTanamanUncheckedUpdateWithoutTanamanInput>
+  export type KategoriTanamanUpdateToOneWithWhereWithoutTanamanInput = {
+    where?: KategoriTanamanWhereInput
+    data: XOR<KategoriTanamanUpdateWithoutTanamanInput, KategoriTanamanUncheckedUpdateWithoutTanamanInput>
   }
 
-  export type kategoriTanamanUpdateWithoutTanamanInput = {
+  export type KategoriTanamanUpdateWithoutTanamanInput = {
     nama_kategori_tanaman?: StringFieldUpdateOperationsInput | string
   }
 
-  export type kategoriTanamanUncheckedUpdateWithoutTanamanInput = {
+  export type KategoriTanamanUncheckedUpdateWithoutTanamanInput = {
     id_kategori_tanaman?: IntFieldUpdateOperationsInput | number
     nama_kategori_tanaman?: StringFieldUpdateOperationsInput | string
   }
@@ -34955,6 +36266,7 @@ export namespace Prisma {
     NOT?: InstruksiTanamanScalarWhereInput | InstruksiTanamanScalarWhereInput[]
     id_instruksi?: IntFilter<"InstruksiTanaman"> | number
     instruksi?: StringFilter<"InstruksiTanaman"> | string
+    urutan?: IntFilter<"InstruksiTanaman"> | number
     id_tanaman?: StringFilter<"InstruksiTanaman"> | string
   }
 
@@ -34979,7 +36291,9 @@ export namespace Prisma {
     OR?: HariPenanamanScalarWhereInput[]
     NOT?: HariPenanamanScalarWhereInput | HariPenanamanScalarWhereInput[]
     id_hari_penanaman?: IntFilter<"HariPenanaman"> | number
-    jenis_tugas?: IntFilter<"HariPenanaman"> | number
+    hari_ke?: IntFilter<"HariPenanaman"> | number
+    nama_fase?: EnumFasePenanamanFilter<"HariPenanaman"> | $Enums.FasePenanaman
+    deskripsi_fase?: StringNullableFilter<"HariPenanaman"> | string | null
     id_tanaman?: StringFilter<"HariPenanaman"> | string
   }
 
@@ -35005,7 +36319,9 @@ export namespace Prisma {
     nama_latin: string
     durasi_penanaman: number
     deskripsi_tanaman: string
-    kategori: kategoriTanamanCreateNestedOneWithoutTanamanInput
+    gambar_tanaman?: string | null
+    tingkat_kesulitan?: $Enums.TingkatKesulitan
+    kategori: KategoriTanamanCreateNestedOneWithoutTanamanInput
     hari_penanaman?: HariPenanamanCreateNestedManyWithoutTanamanInput
     tanaman_pengguna?: TanamanPenggunaCreateNestedManyWithoutTanamanInput
   }
@@ -35016,6 +36332,8 @@ export namespace Prisma {
     nama_latin: string
     durasi_penanaman: number
     deskripsi_tanaman: string
+    gambar_tanaman?: string | null
+    tingkat_kesulitan?: $Enums.TingkatKesulitan
     id_kategori_tanaman: number
     hari_penanaman?: HariPenanamanUncheckedCreateNestedManyWithoutTanamanInput
     tanaman_pengguna?: TanamanPenggunaUncheckedCreateNestedManyWithoutTanamanInput
@@ -35043,7 +36361,9 @@ export namespace Prisma {
     nama_latin?: StringFieldUpdateOperationsInput | string
     durasi_penanaman?: IntFieldUpdateOperationsInput | number
     deskripsi_tanaman?: StringFieldUpdateOperationsInput | string
-    kategori?: kategoriTanamanUpdateOneRequiredWithoutTanamanNestedInput
+    gambar_tanaman?: NullableStringFieldUpdateOperationsInput | string | null
+    tingkat_kesulitan?: EnumTingkatKesulitanFieldUpdateOperationsInput | $Enums.TingkatKesulitan
+    kategori?: KategoriTanamanUpdateOneRequiredWithoutTanamanNestedInput
     hari_penanaman?: HariPenanamanUpdateManyWithoutTanamanNestedInput
     tanaman_pengguna?: TanamanPenggunaUpdateManyWithoutTanamanNestedInput
   }
@@ -35054,6 +36374,8 @@ export namespace Prisma {
     nama_latin?: StringFieldUpdateOperationsInput | string
     durasi_penanaman?: IntFieldUpdateOperationsInput | number
     deskripsi_tanaman?: StringFieldUpdateOperationsInput | string
+    gambar_tanaman?: NullableStringFieldUpdateOperationsInput | string | null
+    tingkat_kesulitan?: EnumTingkatKesulitanFieldUpdateOperationsInput | $Enums.TingkatKesulitan
     id_kategori_tanaman?: IntFieldUpdateOperationsInput | number
     hari_penanaman?: HariPenanamanUncheckedUpdateManyWithoutTanamanNestedInput
     tanaman_pengguna?: TanamanPenggunaUncheckedUpdateManyWithoutTanamanNestedInput
@@ -35065,7 +36387,9 @@ export namespace Prisma {
     nama_latin: string
     durasi_penanaman: number
     deskripsi_tanaman: string
-    kategori: kategoriTanamanCreateNestedOneWithoutTanamanInput
+    gambar_tanaman?: string | null
+    tingkat_kesulitan?: $Enums.TingkatKesulitan
+    kategori: KategoriTanamanCreateNestedOneWithoutTanamanInput
     instruksi_tanaman?: InstruksiTanamanCreateNestedManyWithoutTanamanInput
     tanaman_pengguna?: TanamanPenggunaCreateNestedManyWithoutTanamanInput
   }
@@ -35076,6 +36400,8 @@ export namespace Prisma {
     nama_latin: string
     durasi_penanaman: number
     deskripsi_tanaman: string
+    gambar_tanaman?: string | null
+    tingkat_kesulitan?: $Enums.TingkatKesulitan
     id_kategori_tanaman: number
     instruksi_tanaman?: InstruksiTanamanUncheckedCreateNestedManyWithoutTanamanInput
     tanaman_pengguna?: TanamanPenggunaUncheckedCreateNestedManyWithoutTanamanInput
@@ -35088,11 +36414,15 @@ export namespace Prisma {
 
   export type TugasPenanamanCreateWithoutHari_penanamanInput = {
     nama_tugas: string
+    jenis_tugas: $Enums.JenisTugas
+    estimasi_waktu?: number | null
   }
 
   export type TugasPenanamanUncheckedCreateWithoutHari_penanamanInput = {
     id_tugas?: number
     nama_tugas: string
+    jenis_tugas: $Enums.JenisTugas
+    estimasi_waktu?: number | null
   }
 
   export type TugasPenanamanCreateOrConnectWithoutHari_penanamanInput = {
@@ -35122,7 +36452,9 @@ export namespace Prisma {
     nama_latin?: StringFieldUpdateOperationsInput | string
     durasi_penanaman?: IntFieldUpdateOperationsInput | number
     deskripsi_tanaman?: StringFieldUpdateOperationsInput | string
-    kategori?: kategoriTanamanUpdateOneRequiredWithoutTanamanNestedInput
+    gambar_tanaman?: NullableStringFieldUpdateOperationsInput | string | null
+    tingkat_kesulitan?: EnumTingkatKesulitanFieldUpdateOperationsInput | $Enums.TingkatKesulitan
+    kategori?: KategoriTanamanUpdateOneRequiredWithoutTanamanNestedInput
     instruksi_tanaman?: InstruksiTanamanUpdateManyWithoutTanamanNestedInput
     tanaman_pengguna?: TanamanPenggunaUpdateManyWithoutTanamanNestedInput
   }
@@ -35133,6 +36465,8 @@ export namespace Prisma {
     nama_latin?: StringFieldUpdateOperationsInput | string
     durasi_penanaman?: IntFieldUpdateOperationsInput | number
     deskripsi_tanaman?: StringFieldUpdateOperationsInput | string
+    gambar_tanaman?: NullableStringFieldUpdateOperationsInput | string | null
+    tingkat_kesulitan?: EnumTingkatKesulitanFieldUpdateOperationsInput | $Enums.TingkatKesulitan
     id_kategori_tanaman?: IntFieldUpdateOperationsInput | number
     instruksi_tanaman?: InstruksiTanamanUncheckedUpdateManyWithoutTanamanNestedInput
     tanaman_pengguna?: TanamanPenggunaUncheckedUpdateManyWithoutTanamanNestedInput
@@ -35160,17 +36494,23 @@ export namespace Prisma {
     NOT?: TugasPenanamanScalarWhereInput | TugasPenanamanScalarWhereInput[]
     id_tugas?: IntFilter<"TugasPenanaman"> | number
     nama_tugas?: StringFilter<"TugasPenanaman"> | string
+    jenis_tugas?: EnumJenisTugasFilter<"TugasPenanaman"> | $Enums.JenisTugas
+    estimasi_waktu?: IntNullableFilter<"TugasPenanaman"> | number | null
     id_hari_penanaman?: IntFilter<"TugasPenanaman"> | number
   }
 
   export type HariPenanamanCreateWithoutTugas_penanamanInput = {
-    jenis_tugas: number
+    hari_ke: number
+    nama_fase: $Enums.FasePenanaman
+    deskripsi_fase?: string | null
     tanaman: TanamanCreateNestedOneWithoutHari_penanamanInput
   }
 
   export type HariPenanamanUncheckedCreateWithoutTugas_penanamanInput = {
     id_hari_penanaman?: number
-    jenis_tugas: number
+    hari_ke: number
+    nama_fase: $Enums.FasePenanaman
+    deskripsi_fase?: string | null
     id_tanaman: string
   }
 
@@ -35191,13 +36531,17 @@ export namespace Prisma {
   }
 
   export type HariPenanamanUpdateWithoutTugas_penanamanInput = {
-    jenis_tugas?: IntFieldUpdateOperationsInput | number
+    hari_ke?: IntFieldUpdateOperationsInput | number
+    nama_fase?: EnumFasePenanamanFieldUpdateOperationsInput | $Enums.FasePenanaman
+    deskripsi_fase?: NullableStringFieldUpdateOperationsInput | string | null
     tanaman?: TanamanUpdateOneRequiredWithoutHari_penanamanNestedInput
   }
 
   export type HariPenanamanUncheckedUpdateWithoutTugas_penanamanInput = {
     id_hari_penanaman?: IntFieldUpdateOperationsInput | number
-    jenis_tugas?: IntFieldUpdateOperationsInput | number
+    hari_ke?: IntFieldUpdateOperationsInput | number
+    nama_fase?: EnumFasePenanamanFieldUpdateOperationsInput | $Enums.FasePenanaman
+    deskripsi_fase?: NullableStringFieldUpdateOperationsInput | string | null
     id_tanaman?: StringFieldUpdateOperationsInput | string
   }
 
@@ -35207,7 +36551,9 @@ export namespace Prisma {
     nama_latin: string
     durasi_penanaman: number
     deskripsi_tanaman: string
-    kategori: kategoriTanamanCreateNestedOneWithoutTanamanInput
+    gambar_tanaman?: string | null
+    tingkat_kesulitan?: $Enums.TingkatKesulitan
+    kategori: KategoriTanamanCreateNestedOneWithoutTanamanInput
     instruksi_tanaman?: InstruksiTanamanCreateNestedManyWithoutTanamanInput
     hari_penanaman?: HariPenanamanCreateNestedManyWithoutTanamanInput
   }
@@ -35218,6 +36564,8 @@ export namespace Prisma {
     nama_latin: string
     durasi_penanaman: number
     deskripsi_tanaman: string
+    gambar_tanaman?: string | null
+    tingkat_kesulitan?: $Enums.TingkatKesulitan
     id_kategori_tanaman: number
     instruksi_tanaman?: InstruksiTanamanUncheckedCreateNestedManyWithoutTanamanInput
     hari_penanaman?: HariPenanamanUncheckedCreateNestedManyWithoutTanamanInput
@@ -35276,13 +36624,27 @@ export namespace Prisma {
   }
 
   export type HariTanamanPenggunaCreateWithoutTanaman_penggunaInput = {
-    catatan: string
+    hari_ke: number
+    tanggal_aktual: Date | string
+    fase_penanaman: $Enums.FasePenanaman
+    status_hari?: $Enums.StatusHari
+    catatan_harian?: string | null
+    total_tugas?: number
+    tugas_selesai?: number
+    progress_hari_persen?: number
     tugas_penanaman?: TugasPenanamanPenggunaCreateNestedManyWithoutHari_tanamanInput
   }
 
   export type HariTanamanPenggunaUncheckedCreateWithoutTanaman_penggunaInput = {
     id_hari_tanaman_pengguna?: number
-    catatan: string
+    hari_ke: number
+    tanggal_aktual: Date | string
+    fase_penanaman: $Enums.FasePenanaman
+    status_hari?: $Enums.StatusHari
+    catatan_harian?: string | null
+    total_tugas?: number
+    tugas_selesai?: number
+    progress_hari_persen?: number
     tugas_penanaman?: TugasPenanamanPenggunaUncheckedCreateNestedManyWithoutHari_tanamanInput
   }
 
@@ -35313,7 +36675,9 @@ export namespace Prisma {
     nama_latin?: StringFieldUpdateOperationsInput | string
     durasi_penanaman?: IntFieldUpdateOperationsInput | number
     deskripsi_tanaman?: StringFieldUpdateOperationsInput | string
-    kategori?: kategoriTanamanUpdateOneRequiredWithoutTanamanNestedInput
+    gambar_tanaman?: NullableStringFieldUpdateOperationsInput | string | null
+    tingkat_kesulitan?: EnumTingkatKesulitanFieldUpdateOperationsInput | $Enums.TingkatKesulitan
+    kategori?: KategoriTanamanUpdateOneRequiredWithoutTanamanNestedInput
     instruksi_tanaman?: InstruksiTanamanUpdateManyWithoutTanamanNestedInput
     hari_penanaman?: HariPenanamanUpdateManyWithoutTanamanNestedInput
   }
@@ -35324,6 +36688,8 @@ export namespace Prisma {
     nama_latin?: StringFieldUpdateOperationsInput | string
     durasi_penanaman?: IntFieldUpdateOperationsInput | number
     deskripsi_tanaman?: StringFieldUpdateOperationsInput | string
+    gambar_tanaman?: NullableStringFieldUpdateOperationsInput | string | null
+    tingkat_kesulitan?: EnumTingkatKesulitanFieldUpdateOperationsInput | $Enums.TingkatKesulitan
     id_kategori_tanaman?: IntFieldUpdateOperationsInput | number
     instruksi_tanaman?: InstruksiTanamanUncheckedUpdateManyWithoutTanamanNestedInput
     hari_penanaman?: HariPenanamanUncheckedUpdateManyWithoutTanamanNestedInput
@@ -35403,17 +36769,69 @@ export namespace Prisma {
     OR?: HariTanamanPenggunaScalarWhereInput[]
     NOT?: HariTanamanPenggunaScalarWhereInput | HariTanamanPenggunaScalarWhereInput[]
     id_hari_tanaman_pengguna?: IntFilter<"HariTanamanPengguna"> | number
-    catatan?: StringFilter<"HariTanamanPengguna"> | string
+    hari_ke?: IntFilter<"HariTanamanPengguna"> | number
+    tanggal_aktual?: DateTimeFilter<"HariTanamanPengguna"> | Date | string
+    fase_penanaman?: EnumFasePenanamanFilter<"HariTanamanPengguna"> | $Enums.FasePenanaman
+    status_hari?: EnumStatusHariFilter<"HariTanamanPengguna"> | $Enums.StatusHari
+    catatan_harian?: StringNullableFilter<"HariTanamanPengguna"> | string | null
+    total_tugas?: IntFilter<"HariTanamanPengguna"> | number
+    tugas_selesai?: IntFilter<"HariTanamanPengguna"> | number
+    progress_hari_persen?: FloatFilter<"HariTanamanPengguna"> | number
     id_tanaman_pengguna?: StringFilter<"HariTanamanPengguna"> | string
+  }
+
+  export type TanamanPenggunaCreateWithoutHari_tanamanInput = {
+    id_tanaman_pengguna: string
+    nama_custom?: string | null
+    tanggal_penanaman?: Date | string
+    tanggal_target_panen?: Date | string | null
+    status_penanaman?: $Enums.StatusPenanaman
+    hari_ke_saat_ini?: number
+    progress_persen?: number
+    catatan_umum?: string | null
+    tanaman: TanamanCreateNestedOneWithoutTanaman_penggunaInput
+    pengguna: PenggunaCreateNestedOneWithoutTanaman_penggunaInput
+  }
+
+  export type TanamanPenggunaUncheckedCreateWithoutHari_tanamanInput = {
+    id_tanaman_pengguna: string
+    nama_custom?: string | null
+    tanggal_penanaman?: Date | string
+    tanggal_target_panen?: Date | string | null
+    status_penanaman?: $Enums.StatusPenanaman
+    hari_ke_saat_ini?: number
+    progress_persen?: number
+    catatan_umum?: string | null
+    id_tanaman: string
+    id_pengguna: string
+  }
+
+  export type TanamanPenggunaCreateOrConnectWithoutHari_tanamanInput = {
+    where: TanamanPenggunaWhereUniqueInput
+    create: XOR<TanamanPenggunaCreateWithoutHari_tanamanInput, TanamanPenggunaUncheckedCreateWithoutHari_tanamanInput>
   }
 
   export type TugasPenanamanPenggunaCreateWithoutHari_tanamanInput = {
     nama_tugas: string
+    deskripsi_tugas?: string | null
+    jenis_tugas: $Enums.JenisTugas
+    status_selesai?: boolean
+    tanggal_selesai?: Date | string | null
+    durasi_pengerjaan?: number | null
+    created_at?: Date | string
+    updated_at?: Date | string
   }
 
   export type TugasPenanamanPenggunaUncheckedCreateWithoutHari_tanamanInput = {
     id_tugas_penanaman_pengguna?: number
     nama_tugas: string
+    deskripsi_tugas?: string | null
+    jenis_tugas: $Enums.JenisTugas
+    status_selesai?: boolean
+    tanggal_selesai?: Date | string | null
+    durasi_pengerjaan?: number | null
+    created_at?: Date | string
+    updated_at?: Date | string
   }
 
   export type TugasPenanamanPenggunaCreateOrConnectWithoutHari_tanamanInput = {
@@ -35426,27 +36844,41 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type TanamanPenggunaCreateWithoutHari_tanamanInput = {
-    id_tanaman_pengguna: string
-    tanggal_penanaman: Date | string
-    status_penanaman: boolean
-    nama_tanaman: string
-    tanaman: TanamanCreateNestedOneWithoutTanaman_penggunaInput
-    pengguna: PenggunaCreateNestedOneWithoutTanaman_penggunaInput
-  }
-
-  export type TanamanPenggunaUncheckedCreateWithoutHari_tanamanInput = {
-    id_tanaman_pengguna: string
-    tanggal_penanaman: Date | string
-    status_penanaman: boolean
-    nama_tanaman: string
-    id_tanaman: string
-    id_pengguna: string
-  }
-
-  export type TanamanPenggunaCreateOrConnectWithoutHari_tanamanInput = {
-    where: TanamanPenggunaWhereUniqueInput
+  export type TanamanPenggunaUpsertWithoutHari_tanamanInput = {
+    update: XOR<TanamanPenggunaUpdateWithoutHari_tanamanInput, TanamanPenggunaUncheckedUpdateWithoutHari_tanamanInput>
     create: XOR<TanamanPenggunaCreateWithoutHari_tanamanInput, TanamanPenggunaUncheckedCreateWithoutHari_tanamanInput>
+    where?: TanamanPenggunaWhereInput
+  }
+
+  export type TanamanPenggunaUpdateToOneWithWhereWithoutHari_tanamanInput = {
+    where?: TanamanPenggunaWhereInput
+    data: XOR<TanamanPenggunaUpdateWithoutHari_tanamanInput, TanamanPenggunaUncheckedUpdateWithoutHari_tanamanInput>
+  }
+
+  export type TanamanPenggunaUpdateWithoutHari_tanamanInput = {
+    id_tanaman_pengguna?: StringFieldUpdateOperationsInput | string
+    nama_custom?: NullableStringFieldUpdateOperationsInput | string | null
+    tanggal_penanaman?: DateTimeFieldUpdateOperationsInput | Date | string
+    tanggal_target_panen?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status_penanaman?: EnumStatusPenanamanFieldUpdateOperationsInput | $Enums.StatusPenanaman
+    hari_ke_saat_ini?: IntFieldUpdateOperationsInput | number
+    progress_persen?: FloatFieldUpdateOperationsInput | number
+    catatan_umum?: NullableStringFieldUpdateOperationsInput | string | null
+    tanaman?: TanamanUpdateOneRequiredWithoutTanaman_penggunaNestedInput
+    pengguna?: PenggunaUpdateOneRequiredWithoutTanaman_penggunaNestedInput
+  }
+
+  export type TanamanPenggunaUncheckedUpdateWithoutHari_tanamanInput = {
+    id_tanaman_pengguna?: StringFieldUpdateOperationsInput | string
+    nama_custom?: NullableStringFieldUpdateOperationsInput | string | null
+    tanggal_penanaman?: DateTimeFieldUpdateOperationsInput | Date | string
+    tanggal_target_panen?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status_penanaman?: EnumStatusPenanamanFieldUpdateOperationsInput | $Enums.StatusPenanaman
+    hari_ke_saat_ini?: IntFieldUpdateOperationsInput | number
+    progress_persen?: FloatFieldUpdateOperationsInput | number
+    catatan_umum?: NullableStringFieldUpdateOperationsInput | string | null
+    id_tanaman?: StringFieldUpdateOperationsInput | string
+    id_pengguna?: StringFieldUpdateOperationsInput | string
   }
 
   export type TugasPenanamanPenggunaUpsertWithWhereUniqueWithoutHari_tanamanInput = {
@@ -35471,46 +36903,38 @@ export namespace Prisma {
     NOT?: TugasPenanamanPenggunaScalarWhereInput | TugasPenanamanPenggunaScalarWhereInput[]
     id_tugas_penanaman_pengguna?: IntFilter<"TugasPenanamanPengguna"> | number
     nama_tugas?: StringFilter<"TugasPenanamanPengguna"> | string
+    deskripsi_tugas?: StringNullableFilter<"TugasPenanamanPengguna"> | string | null
+    jenis_tugas?: EnumJenisTugasFilter<"TugasPenanamanPengguna"> | $Enums.JenisTugas
+    status_selesai?: BoolFilter<"TugasPenanamanPengguna"> | boolean
+    tanggal_selesai?: DateTimeNullableFilter<"TugasPenanamanPengguna"> | Date | string | null
+    durasi_pengerjaan?: IntNullableFilter<"TugasPenanamanPengguna"> | number | null
     id_hari_tanaman_pengguna?: IntFilter<"TugasPenanamanPengguna"> | number
-  }
-
-  export type TanamanPenggunaUpsertWithoutHari_tanamanInput = {
-    update: XOR<TanamanPenggunaUpdateWithoutHari_tanamanInput, TanamanPenggunaUncheckedUpdateWithoutHari_tanamanInput>
-    create: XOR<TanamanPenggunaCreateWithoutHari_tanamanInput, TanamanPenggunaUncheckedCreateWithoutHari_tanamanInput>
-    where?: TanamanPenggunaWhereInput
-  }
-
-  export type TanamanPenggunaUpdateToOneWithWhereWithoutHari_tanamanInput = {
-    where?: TanamanPenggunaWhereInput
-    data: XOR<TanamanPenggunaUpdateWithoutHari_tanamanInput, TanamanPenggunaUncheckedUpdateWithoutHari_tanamanInput>
-  }
-
-  export type TanamanPenggunaUpdateWithoutHari_tanamanInput = {
-    id_tanaman_pengguna?: StringFieldUpdateOperationsInput | string
-    tanggal_penanaman?: DateTimeFieldUpdateOperationsInput | Date | string
-    status_penanaman?: BoolFieldUpdateOperationsInput | boolean
-    nama_tanaman?: StringFieldUpdateOperationsInput | string
-    tanaman?: TanamanUpdateOneRequiredWithoutTanaman_penggunaNestedInput
-    pengguna?: PenggunaUpdateOneRequiredWithoutTanaman_penggunaNestedInput
-  }
-
-  export type TanamanPenggunaUncheckedUpdateWithoutHari_tanamanInput = {
-    id_tanaman_pengguna?: StringFieldUpdateOperationsInput | string
-    tanggal_penanaman?: DateTimeFieldUpdateOperationsInput | Date | string
-    status_penanaman?: BoolFieldUpdateOperationsInput | boolean
-    nama_tanaman?: StringFieldUpdateOperationsInput | string
-    id_tanaman?: StringFieldUpdateOperationsInput | string
-    id_pengguna?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFilter<"TugasPenanamanPengguna"> | Date | string
+    updated_at?: DateTimeFilter<"TugasPenanamanPengguna"> | Date | string
   }
 
   export type HariTanamanPenggunaCreateWithoutTugas_penanamanInput = {
-    catatan: string
+    hari_ke: number
+    tanggal_aktual: Date | string
+    fase_penanaman: $Enums.FasePenanaman
+    status_hari?: $Enums.StatusHari
+    catatan_harian?: string | null
+    total_tugas?: number
+    tugas_selesai?: number
+    progress_hari_persen?: number
     tanaman_pengguna: TanamanPenggunaCreateNestedOneWithoutHari_tanamanInput
   }
 
   export type HariTanamanPenggunaUncheckedCreateWithoutTugas_penanamanInput = {
     id_hari_tanaman_pengguna?: number
-    catatan: string
+    hari_ke: number
+    tanggal_aktual: Date | string
+    fase_penanaman: $Enums.FasePenanaman
+    status_hari?: $Enums.StatusHari
+    catatan_harian?: string | null
+    total_tugas?: number
+    tugas_selesai?: number
+    progress_hari_persen?: number
     id_tanaman_pengguna: string
   }
 
@@ -35531,13 +36955,27 @@ export namespace Prisma {
   }
 
   export type HariTanamanPenggunaUpdateWithoutTugas_penanamanInput = {
-    catatan?: StringFieldUpdateOperationsInput | string
+    hari_ke?: IntFieldUpdateOperationsInput | number
+    tanggal_aktual?: DateTimeFieldUpdateOperationsInput | Date | string
+    fase_penanaman?: EnumFasePenanamanFieldUpdateOperationsInput | $Enums.FasePenanaman
+    status_hari?: EnumStatusHariFieldUpdateOperationsInput | $Enums.StatusHari
+    catatan_harian?: NullableStringFieldUpdateOperationsInput | string | null
+    total_tugas?: IntFieldUpdateOperationsInput | number
+    tugas_selesai?: IntFieldUpdateOperationsInput | number
+    progress_hari_persen?: FloatFieldUpdateOperationsInput | number
     tanaman_pengguna?: TanamanPenggunaUpdateOneRequiredWithoutHari_tanamanNestedInput
   }
 
   export type HariTanamanPenggunaUncheckedUpdateWithoutTugas_penanamanInput = {
     id_hari_tanaman_pengguna?: IntFieldUpdateOperationsInput | number
-    catatan?: StringFieldUpdateOperationsInput | string
+    hari_ke?: IntFieldUpdateOperationsInput | number
+    tanggal_aktual?: DateTimeFieldUpdateOperationsInput | Date | string
+    fase_penanaman?: EnumFasePenanamanFieldUpdateOperationsInput | $Enums.FasePenanaman
+    status_hari?: EnumStatusHariFieldUpdateOperationsInput | $Enums.StatusHari
+    catatan_harian?: NullableStringFieldUpdateOperationsInput | string | null
+    total_tugas?: IntFieldUpdateOperationsInput | number
+    tugas_selesai?: IntFieldUpdateOperationsInput | number
+    progress_hari_persen?: FloatFieldUpdateOperationsInput | number
     id_tanaman_pengguna?: StringFieldUpdateOperationsInput | string
   }
 
@@ -35739,9 +37177,13 @@ export namespace Prisma {
 
   export type TanamanPenggunaCreateManyPenggunaInput = {
     id_tanaman_pengguna: string
-    tanggal_penanaman: Date | string
-    status_penanaman: boolean
-    nama_tanaman: string
+    nama_custom?: string | null
+    tanggal_penanaman?: Date | string
+    tanggal_target_panen?: Date | string | null
+    status_penanaman?: $Enums.StatusPenanaman
+    hari_ke_saat_ini?: number
+    progress_persen?: number
+    catatan_umum?: string | null
     id_tanaman: string
   }
 
@@ -35884,27 +37326,39 @@ export namespace Prisma {
 
   export type TanamanPenggunaUpdateWithoutPenggunaInput = {
     id_tanaman_pengguna?: StringFieldUpdateOperationsInput | string
+    nama_custom?: NullableStringFieldUpdateOperationsInput | string | null
     tanggal_penanaman?: DateTimeFieldUpdateOperationsInput | Date | string
-    status_penanaman?: BoolFieldUpdateOperationsInput | boolean
-    nama_tanaman?: StringFieldUpdateOperationsInput | string
+    tanggal_target_panen?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status_penanaman?: EnumStatusPenanamanFieldUpdateOperationsInput | $Enums.StatusPenanaman
+    hari_ke_saat_ini?: IntFieldUpdateOperationsInput | number
+    progress_persen?: FloatFieldUpdateOperationsInput | number
+    catatan_umum?: NullableStringFieldUpdateOperationsInput | string | null
     tanaman?: TanamanUpdateOneRequiredWithoutTanaman_penggunaNestedInput
     hari_tanaman?: HariTanamanPenggunaUpdateManyWithoutTanaman_penggunaNestedInput
   }
 
   export type TanamanPenggunaUncheckedUpdateWithoutPenggunaInput = {
     id_tanaman_pengguna?: StringFieldUpdateOperationsInput | string
+    nama_custom?: NullableStringFieldUpdateOperationsInput | string | null
     tanggal_penanaman?: DateTimeFieldUpdateOperationsInput | Date | string
-    status_penanaman?: BoolFieldUpdateOperationsInput | boolean
-    nama_tanaman?: StringFieldUpdateOperationsInput | string
+    tanggal_target_panen?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status_penanaman?: EnumStatusPenanamanFieldUpdateOperationsInput | $Enums.StatusPenanaman
+    hari_ke_saat_ini?: IntFieldUpdateOperationsInput | number
+    progress_persen?: FloatFieldUpdateOperationsInput | number
+    catatan_umum?: NullableStringFieldUpdateOperationsInput | string | null
     id_tanaman?: StringFieldUpdateOperationsInput | string
     hari_tanaman?: HariTanamanPenggunaUncheckedUpdateManyWithoutTanaman_penggunaNestedInput
   }
 
   export type TanamanPenggunaUncheckedUpdateManyWithoutPenggunaInput = {
     id_tanaman_pengguna?: StringFieldUpdateOperationsInput | string
+    nama_custom?: NullableStringFieldUpdateOperationsInput | string | null
     tanggal_penanaman?: DateTimeFieldUpdateOperationsInput | Date | string
-    status_penanaman?: BoolFieldUpdateOperationsInput | boolean
-    nama_tanaman?: StringFieldUpdateOperationsInput | string
+    tanggal_target_panen?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status_penanaman?: EnumStatusPenanamanFieldUpdateOperationsInput | $Enums.StatusPenanaman
+    hari_ke_saat_ini?: IntFieldUpdateOperationsInput | number
+    progress_persen?: FloatFieldUpdateOperationsInput | number
+    catatan_umum?: NullableStringFieldUpdateOperationsInput | string | null
     id_tanaman?: StringFieldUpdateOperationsInput | string
   }
 
@@ -36225,6 +37679,8 @@ export namespace Prisma {
     nama_latin: string
     durasi_penanaman: number
     deskripsi_tanaman: string
+    gambar_tanaman?: string | null
+    tingkat_kesulitan?: $Enums.TingkatKesulitan
   }
 
   export type TanamanUpdateWithoutKategoriInput = {
@@ -36233,6 +37689,8 @@ export namespace Prisma {
     nama_latin?: StringFieldUpdateOperationsInput | string
     durasi_penanaman?: IntFieldUpdateOperationsInput | number
     deskripsi_tanaman?: StringFieldUpdateOperationsInput | string
+    gambar_tanaman?: NullableStringFieldUpdateOperationsInput | string | null
+    tingkat_kesulitan?: EnumTingkatKesulitanFieldUpdateOperationsInput | $Enums.TingkatKesulitan
     instruksi_tanaman?: InstruksiTanamanUpdateManyWithoutTanamanNestedInput
     hari_penanaman?: HariPenanamanUpdateManyWithoutTanamanNestedInput
     tanaman_pengguna?: TanamanPenggunaUpdateManyWithoutTanamanNestedInput
@@ -36244,6 +37702,8 @@ export namespace Prisma {
     nama_latin?: StringFieldUpdateOperationsInput | string
     durasi_penanaman?: IntFieldUpdateOperationsInput | number
     deskripsi_tanaman?: StringFieldUpdateOperationsInput | string
+    gambar_tanaman?: NullableStringFieldUpdateOperationsInput | string | null
+    tingkat_kesulitan?: EnumTingkatKesulitanFieldUpdateOperationsInput | $Enums.TingkatKesulitan
     instruksi_tanaman?: InstruksiTanamanUncheckedUpdateManyWithoutTanamanNestedInput
     hari_penanaman?: HariPenanamanUncheckedUpdateManyWithoutTanamanNestedInput
     tanaman_pengguna?: TanamanPenggunaUncheckedUpdateManyWithoutTanamanNestedInput
@@ -36255,139 +37715,233 @@ export namespace Prisma {
     nama_latin?: StringFieldUpdateOperationsInput | string
     durasi_penanaman?: IntFieldUpdateOperationsInput | number
     deskripsi_tanaman?: StringFieldUpdateOperationsInput | string
+    gambar_tanaman?: NullableStringFieldUpdateOperationsInput | string | null
+    tingkat_kesulitan?: EnumTingkatKesulitanFieldUpdateOperationsInput | $Enums.TingkatKesulitan
   }
 
   export type InstruksiTanamanCreateManyTanamanInput = {
     id_instruksi?: number
     instruksi: string
+    urutan?: number
   }
 
   export type HariPenanamanCreateManyTanamanInput = {
     id_hari_penanaman?: number
-    jenis_tugas: number
+    hari_ke: number
+    nama_fase: $Enums.FasePenanaman
+    deskripsi_fase?: string | null
   }
 
   export type TanamanPenggunaCreateManyTanamanInput = {
     id_tanaman_pengguna: string
-    tanggal_penanaman: Date | string
-    status_penanaman: boolean
-    nama_tanaman: string
+    nama_custom?: string | null
+    tanggal_penanaman?: Date | string
+    tanggal_target_panen?: Date | string | null
+    status_penanaman?: $Enums.StatusPenanaman
+    hari_ke_saat_ini?: number
+    progress_persen?: number
+    catatan_umum?: string | null
     id_pengguna: string
   }
 
   export type InstruksiTanamanUpdateWithoutTanamanInput = {
     instruksi?: StringFieldUpdateOperationsInput | string
+    urutan?: IntFieldUpdateOperationsInput | number
   }
 
   export type InstruksiTanamanUncheckedUpdateWithoutTanamanInput = {
     id_instruksi?: IntFieldUpdateOperationsInput | number
     instruksi?: StringFieldUpdateOperationsInput | string
+    urutan?: IntFieldUpdateOperationsInput | number
   }
 
   export type InstruksiTanamanUncheckedUpdateManyWithoutTanamanInput = {
     id_instruksi?: IntFieldUpdateOperationsInput | number
     instruksi?: StringFieldUpdateOperationsInput | string
+    urutan?: IntFieldUpdateOperationsInput | number
   }
 
   export type HariPenanamanUpdateWithoutTanamanInput = {
-    jenis_tugas?: IntFieldUpdateOperationsInput | number
+    hari_ke?: IntFieldUpdateOperationsInput | number
+    nama_fase?: EnumFasePenanamanFieldUpdateOperationsInput | $Enums.FasePenanaman
+    deskripsi_fase?: NullableStringFieldUpdateOperationsInput | string | null
     tugas_penanaman?: TugasPenanamanUpdateManyWithoutHari_penanamanNestedInput
   }
 
   export type HariPenanamanUncheckedUpdateWithoutTanamanInput = {
     id_hari_penanaman?: IntFieldUpdateOperationsInput | number
-    jenis_tugas?: IntFieldUpdateOperationsInput | number
+    hari_ke?: IntFieldUpdateOperationsInput | number
+    nama_fase?: EnumFasePenanamanFieldUpdateOperationsInput | $Enums.FasePenanaman
+    deskripsi_fase?: NullableStringFieldUpdateOperationsInput | string | null
     tugas_penanaman?: TugasPenanamanUncheckedUpdateManyWithoutHari_penanamanNestedInput
   }
 
   export type HariPenanamanUncheckedUpdateManyWithoutTanamanInput = {
     id_hari_penanaman?: IntFieldUpdateOperationsInput | number
-    jenis_tugas?: IntFieldUpdateOperationsInput | number
+    hari_ke?: IntFieldUpdateOperationsInput | number
+    nama_fase?: EnumFasePenanamanFieldUpdateOperationsInput | $Enums.FasePenanaman
+    deskripsi_fase?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type TanamanPenggunaUpdateWithoutTanamanInput = {
     id_tanaman_pengguna?: StringFieldUpdateOperationsInput | string
+    nama_custom?: NullableStringFieldUpdateOperationsInput | string | null
     tanggal_penanaman?: DateTimeFieldUpdateOperationsInput | Date | string
-    status_penanaman?: BoolFieldUpdateOperationsInput | boolean
-    nama_tanaman?: StringFieldUpdateOperationsInput | string
+    tanggal_target_panen?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status_penanaman?: EnumStatusPenanamanFieldUpdateOperationsInput | $Enums.StatusPenanaman
+    hari_ke_saat_ini?: IntFieldUpdateOperationsInput | number
+    progress_persen?: FloatFieldUpdateOperationsInput | number
+    catatan_umum?: NullableStringFieldUpdateOperationsInput | string | null
     pengguna?: PenggunaUpdateOneRequiredWithoutTanaman_penggunaNestedInput
     hari_tanaman?: HariTanamanPenggunaUpdateManyWithoutTanaman_penggunaNestedInput
   }
 
   export type TanamanPenggunaUncheckedUpdateWithoutTanamanInput = {
     id_tanaman_pengguna?: StringFieldUpdateOperationsInput | string
+    nama_custom?: NullableStringFieldUpdateOperationsInput | string | null
     tanggal_penanaman?: DateTimeFieldUpdateOperationsInput | Date | string
-    status_penanaman?: BoolFieldUpdateOperationsInput | boolean
-    nama_tanaman?: StringFieldUpdateOperationsInput | string
+    tanggal_target_panen?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status_penanaman?: EnumStatusPenanamanFieldUpdateOperationsInput | $Enums.StatusPenanaman
+    hari_ke_saat_ini?: IntFieldUpdateOperationsInput | number
+    progress_persen?: FloatFieldUpdateOperationsInput | number
+    catatan_umum?: NullableStringFieldUpdateOperationsInput | string | null
     id_pengguna?: StringFieldUpdateOperationsInput | string
     hari_tanaman?: HariTanamanPenggunaUncheckedUpdateManyWithoutTanaman_penggunaNestedInput
   }
 
   export type TanamanPenggunaUncheckedUpdateManyWithoutTanamanInput = {
     id_tanaman_pengguna?: StringFieldUpdateOperationsInput | string
+    nama_custom?: NullableStringFieldUpdateOperationsInput | string | null
     tanggal_penanaman?: DateTimeFieldUpdateOperationsInput | Date | string
-    status_penanaman?: BoolFieldUpdateOperationsInput | boolean
-    nama_tanaman?: StringFieldUpdateOperationsInput | string
+    tanggal_target_panen?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status_penanaman?: EnumStatusPenanamanFieldUpdateOperationsInput | $Enums.StatusPenanaman
+    hari_ke_saat_ini?: IntFieldUpdateOperationsInput | number
+    progress_persen?: FloatFieldUpdateOperationsInput | number
+    catatan_umum?: NullableStringFieldUpdateOperationsInput | string | null
     id_pengguna?: StringFieldUpdateOperationsInput | string
   }
 
   export type TugasPenanamanCreateManyHari_penanamanInput = {
     id_tugas?: number
     nama_tugas: string
+    jenis_tugas: $Enums.JenisTugas
+    estimasi_waktu?: number | null
   }
 
   export type TugasPenanamanUpdateWithoutHari_penanamanInput = {
     nama_tugas?: StringFieldUpdateOperationsInput | string
+    jenis_tugas?: EnumJenisTugasFieldUpdateOperationsInput | $Enums.JenisTugas
+    estimasi_waktu?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type TugasPenanamanUncheckedUpdateWithoutHari_penanamanInput = {
     id_tugas?: IntFieldUpdateOperationsInput | number
     nama_tugas?: StringFieldUpdateOperationsInput | string
+    jenis_tugas?: EnumJenisTugasFieldUpdateOperationsInput | $Enums.JenisTugas
+    estimasi_waktu?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type TugasPenanamanUncheckedUpdateManyWithoutHari_penanamanInput = {
     id_tugas?: IntFieldUpdateOperationsInput | number
     nama_tugas?: StringFieldUpdateOperationsInput | string
+    jenis_tugas?: EnumJenisTugasFieldUpdateOperationsInput | $Enums.JenisTugas
+    estimasi_waktu?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type HariTanamanPenggunaCreateManyTanaman_penggunaInput = {
     id_hari_tanaman_pengguna?: number
-    catatan: string
+    hari_ke: number
+    tanggal_aktual: Date | string
+    fase_penanaman: $Enums.FasePenanaman
+    status_hari?: $Enums.StatusHari
+    catatan_harian?: string | null
+    total_tugas?: number
+    tugas_selesai?: number
+    progress_hari_persen?: number
   }
 
   export type HariTanamanPenggunaUpdateWithoutTanaman_penggunaInput = {
-    catatan?: StringFieldUpdateOperationsInput | string
+    hari_ke?: IntFieldUpdateOperationsInput | number
+    tanggal_aktual?: DateTimeFieldUpdateOperationsInput | Date | string
+    fase_penanaman?: EnumFasePenanamanFieldUpdateOperationsInput | $Enums.FasePenanaman
+    status_hari?: EnumStatusHariFieldUpdateOperationsInput | $Enums.StatusHari
+    catatan_harian?: NullableStringFieldUpdateOperationsInput | string | null
+    total_tugas?: IntFieldUpdateOperationsInput | number
+    tugas_selesai?: IntFieldUpdateOperationsInput | number
+    progress_hari_persen?: FloatFieldUpdateOperationsInput | number
     tugas_penanaman?: TugasPenanamanPenggunaUpdateManyWithoutHari_tanamanNestedInput
   }
 
   export type HariTanamanPenggunaUncheckedUpdateWithoutTanaman_penggunaInput = {
     id_hari_tanaman_pengguna?: IntFieldUpdateOperationsInput | number
-    catatan?: StringFieldUpdateOperationsInput | string
+    hari_ke?: IntFieldUpdateOperationsInput | number
+    tanggal_aktual?: DateTimeFieldUpdateOperationsInput | Date | string
+    fase_penanaman?: EnumFasePenanamanFieldUpdateOperationsInput | $Enums.FasePenanaman
+    status_hari?: EnumStatusHariFieldUpdateOperationsInput | $Enums.StatusHari
+    catatan_harian?: NullableStringFieldUpdateOperationsInput | string | null
+    total_tugas?: IntFieldUpdateOperationsInput | number
+    tugas_selesai?: IntFieldUpdateOperationsInput | number
+    progress_hari_persen?: FloatFieldUpdateOperationsInput | number
     tugas_penanaman?: TugasPenanamanPenggunaUncheckedUpdateManyWithoutHari_tanamanNestedInput
   }
 
   export type HariTanamanPenggunaUncheckedUpdateManyWithoutTanaman_penggunaInput = {
     id_hari_tanaman_pengguna?: IntFieldUpdateOperationsInput | number
-    catatan?: StringFieldUpdateOperationsInput | string
+    hari_ke?: IntFieldUpdateOperationsInput | number
+    tanggal_aktual?: DateTimeFieldUpdateOperationsInput | Date | string
+    fase_penanaman?: EnumFasePenanamanFieldUpdateOperationsInput | $Enums.FasePenanaman
+    status_hari?: EnumStatusHariFieldUpdateOperationsInput | $Enums.StatusHari
+    catatan_harian?: NullableStringFieldUpdateOperationsInput | string | null
+    total_tugas?: IntFieldUpdateOperationsInput | number
+    tugas_selesai?: IntFieldUpdateOperationsInput | number
+    progress_hari_persen?: FloatFieldUpdateOperationsInput | number
   }
 
   export type TugasPenanamanPenggunaCreateManyHari_tanamanInput = {
     id_tugas_penanaman_pengguna?: number
     nama_tugas: string
+    deskripsi_tugas?: string | null
+    jenis_tugas: $Enums.JenisTugas
+    status_selesai?: boolean
+    tanggal_selesai?: Date | string | null
+    durasi_pengerjaan?: number | null
+    created_at?: Date | string
+    updated_at?: Date | string
   }
 
   export type TugasPenanamanPenggunaUpdateWithoutHari_tanamanInput = {
     nama_tugas?: StringFieldUpdateOperationsInput | string
+    deskripsi_tugas?: NullableStringFieldUpdateOperationsInput | string | null
+    jenis_tugas?: EnumJenisTugasFieldUpdateOperationsInput | $Enums.JenisTugas
+    status_selesai?: BoolFieldUpdateOperationsInput | boolean
+    tanggal_selesai?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    durasi_pengerjaan?: NullableIntFieldUpdateOperationsInput | number | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type TugasPenanamanPenggunaUncheckedUpdateWithoutHari_tanamanInput = {
     id_tugas_penanaman_pengguna?: IntFieldUpdateOperationsInput | number
     nama_tugas?: StringFieldUpdateOperationsInput | string
+    deskripsi_tugas?: NullableStringFieldUpdateOperationsInput | string | null
+    jenis_tugas?: EnumJenisTugasFieldUpdateOperationsInput | $Enums.JenisTugas
+    status_selesai?: BoolFieldUpdateOperationsInput | boolean
+    tanggal_selesai?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    durasi_pengerjaan?: NullableIntFieldUpdateOperationsInput | number | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type TugasPenanamanPenggunaUncheckedUpdateManyWithoutHari_tanamanInput = {
     id_tugas_penanaman_pengguna?: IntFieldUpdateOperationsInput | number
     nama_tugas?: StringFieldUpdateOperationsInput | string
+    deskripsi_tugas?: NullableStringFieldUpdateOperationsInput | string | null
+    jenis_tugas?: EnumJenisTugasFieldUpdateOperationsInput | $Enums.JenisTugas
+    status_selesai?: BoolFieldUpdateOperationsInput | boolean
+    tanggal_selesai?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    durasi_pengerjaan?: NullableIntFieldUpdateOperationsInput | number | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
 

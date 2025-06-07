@@ -220,74 +220,169 @@ model MetodePembayaran {
   workshop_terdaftar        WorkshopTerdaftar[]
 }
 
-model kategoriTanaman {
-  id_kategori_tanaman Int @id @default(autoincrement())
-  nama_kategori_tanaman String @db.VarChar()
-
-  tanaman                  Tanaman[]
+model KategoriTanaman {
+  id_kategori_tanaman   Int @id @default(autoincrement())
+  nama_kategori_tanaman String @db.VarChar(100)
+  tanaman               Tanaman[]
 }
 
 model Tanaman {
-  id_tanaman         String @id @db.VarChar
-  nama_tanaman       String @db.VarChar
-  nama_latin         String @db.VarChar
-  durasi_penanaman   Int
-  deskripsi_tanaman  String @db.VarChar
-
+  id_tanaman          String @id @db.VarChar(36)
+  nama_tanaman        String @db.VarChar(100)
+  nama_latin          String @db.VarChar(100)
+  durasi_penanaman    Int 
+  deskripsi_tanaman   String @db.Text
+  gambar_tanaman      String? @db.VarChar(255)
+  tingkat_kesulitan   TingkatKesulitan @default(MUDAH)
   id_kategori_tanaman Int
-  kategori           kategoriTanaman @relation(fields: [id_kategori_tanaman], references: [id_kategori_tanaman])
-  instruksi_tanaman  InstruksiTanaman[]
-  hari_penanaman     HariPenanaman[] 
-  tanaman_pengguna   TanamanPengguna[]
+  
+  kategori            KategoriTanaman @relation(fields: [id_kategori_tanaman], references: [id_kategori_tanaman])
+  instruksi_tanaman   InstruksiTanaman[]
+  hari_penanaman      HariPenanaman[]
+  tanaman_pengguna    TanamanPengguna[]
 }
 
 model InstruksiTanaman {
-  id_instruksi       Int @id @default(autoincrement())
-  instruksi          String @db.Text
+  id_instruksi    Int @id @default(autoincrement())
+  instruksi       String @db.Text
+  urutan          Int @default(1)
+  id_tanaman      String @db.VarChar(36)
 
-  id_tanaman         String
-  tanaman            Tanaman @relation(fields: [id_tanaman], references: [id_tanaman])
+  tanaman         Tanaman @relation(fields: [id_tanaman], references: [id_tanaman], onDelete: Cascade)
 }
 
+
 model HariPenanaman {
-  id_hari_penanaman   Int @id @default(autoincrement())
-  jenis_tugas         Int 
-  id_tanaman          String
-  tanaman             Tanaman @relation(fields: [id_tanaman], references: [id_tanaman])
-  tugas_penanaman     TugasPenanaman[]
+  id_hari_penanaman Int @id @default(autoincrement())
+  hari_ke           Int
+  nama_fase         FasePenanaman
+  deskripsi_fase    String? @db.Text
+  id_tanaman        String @db.VarChar(36)
+  
+  tanaman           Tanaman @relation(fields: [id_tanaman], references: [id_tanaman], onDelete: Cascade)
+  tugas_penanaman   TugasPenanaman[]
+  
+  @@unique([id_tanaman, hari_ke])
 }
 
 model TugasPenanaman {
-  id_tugas            Int @id @default(autoincrement())
-  nama_tugas          String @db.Text
-  id_hari_penanaman   Int
-  hari_penanaman      HariPenanaman @relation(fields: [id_hari_penanaman], references: [id_hari_penanaman])
+  id_tugas          Int @id @default(autoincrement())
+  nama_tugas        String @db.VarChar(255)
+  jenis_tugas       JenisTugas
+  estimasi_waktu    Int? 
+  id_hari_penanaman Int
+
+  hari_penanaman    HariPenanaman @relation(fields: [id_hari_penanaman], references: [id_hari_penanaman], onDelete: Cascade)
+  
+  @@map("tugas_penanaman")
 }
 
 model TanamanPengguna {
-  id_tanaman_pengguna  String @id @db.VarChar
-  tanggal_penanaman    DateTime
-  status_penanaman     Boolean
-  nama_tanaman         String @db.VarChar(50)
-
-  id_tanaman           String
-  tanaman              Tanaman @relation(fields: [id_tanaman], references: [id_tanaman])
-  id_pengguna          String
-  pengguna             Pengguna @relation(fields: [id_pengguna], references: [id_pengguna])
-  hari_tanaman         HariTanamanPengguna[]
+  id_tanaman_pengguna String @id @db.VarChar(36)
+  nama_custom         String? @db.VarChar(100) 
+  tanggal_penanaman   DateTime @default(now())
+  tanggal_target_panen DateTime? // Dihitung otomatis
+  status_penanaman    StatusPenanaman @default(AKTIF)
+  hari_ke_saat_ini    Int @default(1)
+  progress_persen     Float @default(0.0)
+  catatan_umum        String? @db.Text
+  id_tanaman          String @db.VarChar(36)
+  id_pengguna         String @db.VarChar(36)
+  
+  // Relations
+  tanaman             Tanaman @relation(fields: [id_tanaman], references: [id_tanaman])
+  pengguna            Pengguna @relation(fields: [id_pengguna], references: [id_pengguna])
+  hari_tanaman        HariTanamanPengguna[]
+  
+  @@map("tanaman_pengguna")
 }
 
+// Model Hari Tanaman Pengguna (Instance hari untuk user)
 model HariTanamanPengguna {
-  id_hari_tanaman_pengguna    Int @id @default(autoincrement())
-  catatan                     String @db.VarChar
-  tugas_penanaman             TugasPenanamanPengguna[]
-  id_tanaman_pengguna         String
-  tanaman_pengguna            TanamanPengguna @relation(fields: [id_tanaman_pengguna], references: [id_tanaman_pengguna])
+  id_hari_tanaman_pengguna Int @id @default(autoincrement())
+  hari_ke                  Int
+  tanggal_aktual           DateTime
+  fase_penanaman           FasePenanaman
+  status_hari              StatusHari @default(BELUM_DIMULAI)
+  catatan_harian           String? @db.Text
+  total_tugas              Int @default(0)
+  tugas_selesai            Int @default(0)
+  progress_hari_persen     Float @default(0.0)
+  id_tanaman_pengguna      String @db.VarChar(36)
+  
+  // Relations
+  tanaman_pengguna         TanamanPengguna @relation(fields: [id_tanaman_pengguna], references: [id_tanaman_pengguna], onDelete: Cascade)
+  tugas_penanaman          TugasPenanamanPengguna[]
+  
+  @@unique([id_tanaman_pengguna, hari_ke])
+  @@map("hari_tanaman_pengguna")
 }
 
+// Model Tugas Penanaman Pengguna (Instance tugas untuk user)
 model TugasPenanamanPengguna {
   id_tugas_penanaman_pengguna Int @id @default(autoincrement())
-  nama_tugas                  String @db.VarChar
+  nama_tugas                  String @db.VarChar(255)
+  deskripsi_tugas             String? @db.Text
+  jenis_tugas                 JenisTugas
+  status_selesai              Boolean @default(false)
+  tanggal_selesai             DateTime?
+  durasi_pengerjaan           Int? // dalam menit
   id_hari_tanaman_pengguna    Int
-  hari_tanaman                HariTanamanPengguna @relation(fields: [id_hari_tanaman_pengguna], references: [id_hari_tanaman_pengguna])
+  created_at                  DateTime @default(now())
+  updated_at                  DateTime @updatedAt
+  
+  // Relations
+  hari_tanaman                HariTanamanPengguna @relation(fields: [id_hari_tanaman_pengguna], references: [id_hari_tanaman_pengguna], onDelete: Cascade)
+  
+  @@map("tugas_penanaman_pengguna")
+}
+
+// ENUMS
+enum JenisTugas {
+  TUGAS_BIASA       // Tugas rutin seperti menyiram
+  PENGECEKAN_HARIAN // Cek kondisi tanaman
+  PERAWATAN_KHUSUS  // Pemupukan, penyemprotan
+  PANEN             // Tugas panen
+  
+  @@map("jenis_tugas")
+}
+
+enum FasePenanaman {
+  PERSIAPAN         // Fase persiapan lahan/pot
+  PENANAMAN         // Fase penanaman benih/bibit
+  PERTUMBUHAN       // Fase pertumbuhan
+  PEMELIHARAAN      // Fase pemeliharaan intensif
+  PRAPANEN          // Fase menjelang panen
+  PANEN             // Fase panen
+  PASCA_PANEN       // Fase setelah panen
+  
+  @@map("fase_penanaman")
+}
+
+enum StatusPenanaman {
+  AKTIF             // Sedang dalam proses penanaman
+  SELESAI           // Sudah selesai (panen)
+  DIBATALKAN        // Dibatalkan/gagal
+  DITUNDA           // Sementara ditunda
+  
+  @@map("status_penanaman")
+}
+
+enum StatusHari {
+  BELUM_DIMULAI     
+  SEDANG_BERJALAN   
+  SELESAI          
+  TERLEWAT          
+  
+  @@map("status_hari")
+}
+
+enum TingkatKesulitan {
+  SANGAT_MUDAH
+  MUDAH
+  SEDANG
+  SULIT
+  SANGAT_SULIT
+  
+  @@map("tingkat_kesulitan")
 }
