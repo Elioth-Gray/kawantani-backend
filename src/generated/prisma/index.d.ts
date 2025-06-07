@@ -151,9 +151,7 @@ export type StatusVerifikasiWorkshop = (typeof StatusVerifikasiWorkshop)[keyof t
 
 export const JenisTugas: {
   TUGAS_BIASA: 'TUGAS_BIASA',
-  PENGECEKAN_HARIAN: 'PENGECEKAN_HARIAN',
-  PERAWATAN_KHUSUS: 'PERAWATAN_KHUSUS',
-  PANEN: 'PANEN'
+  PENGECEKAN_HARIAN: 'PENGECEKAN_HARIAN'
 };
 
 export type JenisTugas = (typeof JenisTugas)[keyof typeof JenisTugas]

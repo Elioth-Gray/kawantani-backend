@@ -273,8 +273,6 @@ model TugasPenanaman {
   id_hari_penanaman Int
 
   hari_penanaman    HariPenanaman @relation(fields: [id_hari_penanaman], references: [id_hari_penanaman], onDelete: Cascade)
-  
-  @@map("tugas_penanaman")
 }
 
 model TanamanPengguna {
@@ -293,8 +291,7 @@ model TanamanPengguna {
   tanaman             Tanaman @relation(fields: [id_tanaman], references: [id_tanaman])
   pengguna            Pengguna @relation(fields: [id_pengguna], references: [id_pengguna])
   hari_tanaman        HariTanamanPengguna[]
-  
-  @@map("tanaman_pengguna")
+
 }
 
 // Model Hari Tanaman Pengguna (Instance hari untuk user)
@@ -315,7 +312,6 @@ model HariTanamanPengguna {
   tugas_penanaman          TugasPenanamanPengguna[]
   
   @@unique([id_tanaman_pengguna, hari_ke])
-  @@map("hari_tanaman_pengguna")
 }
 
 // Model Tugas Penanaman Pengguna (Instance tugas untuk user)
@@ -334,17 +330,12 @@ model TugasPenanamanPengguna {
   // Relations
   hari_tanaman                HariTanamanPengguna @relation(fields: [id_hari_tanaman_pengguna], references: [id_hari_tanaman_pengguna], onDelete: Cascade)
   
-  @@map("tugas_penanaman_pengguna")
 }
 
 // ENUMS
 enum JenisTugas {
   TUGAS_BIASA       // Tugas rutin seperti menyiram
-  PENGECEKAN_HARIAN // Cek kondisi tanaman
-  PERAWATAN_KHUSUS  // Pemupukan, penyemprotan
-  PANEN             // Tugas panen
-  
-  @@map("jenis_tugas")
+  PENGECEKAN_HARIAN // Cek kondisi tanaman  
 }
 
 enum FasePenanaman {
@@ -356,7 +347,6 @@ enum FasePenanaman {
   PANEN             // Fase panen
   PASCA_PANEN       // Fase setelah panen
   
-  @@map("fase_penanaman")
 }
 
 enum StatusPenanaman {
@@ -365,7 +355,6 @@ enum StatusPenanaman {
   DIBATALKAN        // Dibatalkan/gagal
   DITUNDA           // Sementara ditunda
   
-  @@map("status_penanaman")
 }
 
 enum StatusHari {
@@ -373,8 +362,7 @@ enum StatusHari {
   SEDANG_BERJALAN   
   SELESAI          
   TERLEWAT          
-  
-  @@map("status_hari")
+
 }
 
 enum TingkatKesulitan {
@@ -384,5 +372,4 @@ enum TingkatKesulitan {
   SULIT
   SANGAT_SULIT
   
-  @@map("tingkat_kesulitan")
 }

@@ -377,9 +377,7 @@ exports.FasePenanaman = exports.$Enums.FasePenanaman = {
 
 exports.JenisTugas = exports.$Enums.JenisTugas = {
   TUGAS_BIASA: 'TUGAS_BIASA',
-  PENGECEKAN_HARIAN: 'PENGECEKAN_HARIAN',
-  PERAWATAN_KHUSUS: 'PERAWATAN_KHUSUS',
-  PANEN: 'PANEN'
+  PENGECEKAN_HARIAN: 'PENGECEKAN_HARIAN'
 };
 
 exports.StatusPenanaman = exports.$Enums.StatusPenanaman = {
