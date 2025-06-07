@@ -103,6 +103,7 @@ export const getActiveArticle = async () => {
         judul_artikel: true,
         kategori: {
           select: {
+            id_kategori_artikel: true,
             nama_kategori_artikel: true,
           },
         },

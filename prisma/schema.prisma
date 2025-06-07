@@ -281,9 +281,7 @@ model TanamanPengguna {
   tanggal_penanaman   DateTime @default(now())
   tanggal_target_panen DateTime? // Dihitung otomatis
   status_penanaman    StatusPenanaman @default(AKTIF)
-  hari_ke_saat_ini    Int @default(1)
   progress_persen     Float @default(0.0)
-  catatan_umum        String? @db.Text
   id_tanaman          String @db.VarChar(36)
   id_pengguna         String @db.VarChar(36)
   
@@ -291,7 +289,6 @@ model TanamanPengguna {
   tanaman             Tanaman @relation(fields: [id_tanaman], references: [id_tanaman])
   pengguna            Pengguna @relation(fields: [id_pengguna], references: [id_pengguna])
   hari_tanaman        HariTanamanPengguna[]
-
 }
 
 // Model Hari Tanaman Pengguna (Instance hari untuk user)
@@ -322,14 +319,11 @@ model TugasPenanamanPengguna {
   jenis_tugas                 JenisTugas
   status_selesai              Boolean @default(false)
   tanggal_selesai             DateTime?
-  durasi_pengerjaan           Int? // dalam menit
+  estimasi_waktu              Int? 
   id_hari_tanaman_pengguna    Int
-  created_at                  DateTime @default(now())
-  updated_at                  DateTime @updatedAt
   
   // Relations
   hari_tanaman                HariTanamanPengguna @relation(fields: [id_hari_tanaman_pengguna], references: [id_hari_tanaman_pengguna], onDelete: Cascade)
-  
 }
 
 // ENUMS
@@ -351,10 +345,7 @@ enum FasePenanaman {
 
 enum StatusPenanaman {
   AKTIF             // Sedang dalam proses penanaman
-  SELESAI           // Sudah selesai (panen)
-  DIBATALKAN        // Dibatalkan/gagal
-  DITUNDA           // Sementara ditunda
-  
+  SELESAI           // Sudah selesai (panen)  
 }
 
 enum StatusHari {
@@ -371,5 +362,4 @@ enum TingkatKesulitan {
   SEDANG
   SULIT
   SANGAT_SULIT
-  
 }
