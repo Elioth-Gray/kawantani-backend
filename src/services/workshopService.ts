@@ -379,6 +379,18 @@ export const registerWorkshop = async (data: TRegisterWorkshop) => {
   }
 };
 
+export const getRegisteredWorkshop = async (user: TToken) => {
+  try {
+    const registered = await prisma.workshopTerdaftar.findMany({
+      where: {
+        id_pengguna: user.id,
+      },
+    });
+
+    return registered;
+  } catch (error: any) {}
+};
+
 export const payRegistration = async (data: TPayWorkshop) => {
   const { ticketNumber, user } = data;
   try {

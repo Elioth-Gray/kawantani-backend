@@ -11,6 +11,7 @@ import {
   getAllSales,
   getAllWorkshops,
   getPopularWorkshops,
+  getRegisteredWorkshop,
   getWorkshopByFacilitator,
   getWorkshopById,
   getWorkshopParticipant,
@@ -122,6 +123,24 @@ export const verify = async (req: Request, res: Response) => {
 
     res.status(200).json({
       message: 'Workshop berhasil diverifikasi',
+      data: result,
+    });
+  } catch (error) {
+    const err = error as unknown as Error;
+    res.status(400).json({
+      message: err.message,
+      data: null,
+    });
+  }
+};
+
+export const registered = async (req: IReqUser, res: Response) => {
+  const { user } = req.body;
+  try {
+    const result = await getRegisteredWorkshop(user);
+
+    res.status(200).json({
+      message: 'Workshop berhasil didapatkan',
       data: result,
     });
   } catch (error) {

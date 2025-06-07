@@ -14,6 +14,7 @@ import {
   unSave,
   verify,
   getAllActive,
+  update,
 } from '../controller/articlesController';
 import authMiddleware from '../middlewares/authMiddleware';
 import roleMiddleware from '../middlewares/roleMiddleware';
@@ -53,6 +54,12 @@ articlesRouter.get(
   authMiddleware,
   roleMiddleware(['user', 'admin']),
   getById,
+);
+articlesRouter.put(
+  '/articles/:id',
+  authMiddleware,
+  roleMiddleware(['user']),
+  update,
 );
 articlesRouter.patch(
   '/articles/:id',

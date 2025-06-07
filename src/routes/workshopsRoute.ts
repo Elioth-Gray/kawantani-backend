@@ -14,6 +14,7 @@ import {
   popularWorkshops,
   allSales,
   allParticipants,
+  registered,
 } from '../controller/workshopController';
 import authMiddleware from '../middlewares/authMiddleware';
 import { createMulterUploader } from '../utils/multer/multer';
@@ -48,6 +49,13 @@ workshopsRouter.get(
   authMiddleware,
   roleMiddleware(['facilitator']),
   popularWorkshops,
+);
+
+workshopsRouter.get(
+  '/workshops/registered',
+  authMiddleware,
+  roleMiddleware(['user']),
+  registered,
 );
 
 workshopsRouter.post(
