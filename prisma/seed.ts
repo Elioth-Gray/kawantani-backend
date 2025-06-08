@@ -1,5 +1,7 @@
 // prisma/seed.ts
 import {
+  FasePenanaman,
+  JenisTugas,
   StatusArtikel,
   StatusVerifikasiArtikel,
   StatusVerifikasiWorkshop,
@@ -3806,6 +3808,307 @@ async function main() {
     ],
     skipDuplicates: true,
   });
+
+  async function seedJagung() {
+    console.log('Seeding Jagung (90 days)...');
+
+    for (let i = 1; i <= 90; i++) {
+      let fase: FasePenanaman;
+      let deskripsi: string;
+      let tugas1: string;
+      let tugas2: string;
+      let jenis1: JenisTugas;
+      let jenis2: JenisTugas;
+      let waktu1: number;
+      let waktu2: number;
+
+      // Tentukan fase dan deskripsi berdasarkan hari ke-
+      if (i <= 7) {
+        fase = FasePenanaman.PERSIAPAN;
+        deskripsi = 'Persiapan lahan dan benih';
+
+        if (i === 1) {
+          tugas1 = 'Pengolahan tanah';
+          tugas2 = 'Pemilihan benih';
+          jenis1 = JenisTugas.PENGECEKAN_HARIAN;
+          jenis2 = JenisTugas.PENGECEKAN_HARIAN;
+          waktu1 = 120;
+          waktu2 = 30;
+        } else {
+          tugas1 = 'Pengecekan kondisi lahan';
+          tugas2 = 'Penyiraman persiapan';
+          jenis1 = JenisTugas.PENGECEKAN_HARIAN;
+          jenis2 = JenisTugas.TUGAS_BIASA;
+          waktu1 = 20;
+          waktu2 = 15;
+        }
+      } else if (i <= 14) {
+        fase = FasePenanaman.PENANAMAN;
+        deskripsi = 'Penanaman benih jagung';
+
+        if (i === 8) {
+          // Perbaikan: seharusnya hari ke-8, bukan 7
+          tugas1 = 'Penanaman benih';
+          tugas2 = 'Penyiraman pertama';
+          jenis1 = JenisTugas.TUGAS_BIASA;
+          jenis2 = JenisTugas.TUGAS_BIASA;
+          waktu1 = 60;
+          waktu2 = 15;
+        } else {
+          tugas1 = 'Pemantauan perkecambahan';
+          tugas2 = 'Penyiraman rutin';
+          jenis1 = JenisTugas.PENGECEKAN_HARIAN;
+          jenis2 = JenisTugas.TUGAS_BIASA;
+          waktu1 = 15;
+          waktu2 = 10;
+        }
+      } else if (i <= 60) {
+        fase = FasePenanaman.PERTUMBUHAN;
+        deskripsi = 'Perawatan tanaman muda';
+
+        if (i === 14 || i === 30 || i === 45) {
+          const urutan = Math.floor((i - 14) / 15) + 1;
+          tugas1 = `Pemupukan ke-${urutan}`;
+          tugas2 = 'Penyiangan gulma';
+          jenis1 = JenisTugas.PENGECEKAN_HARIAN;
+          jenis2 = JenisTugas.TUGAS_BIASA;
+          waktu1 = 30;
+          waktu2 = 45;
+        } else {
+          tugas1 = 'Pemantauan pertumbuhan';
+          tugas2 = 'Penyiraman rutin';
+          jenis1 = JenisTugas.PENGECEKAN_HARIAN;
+          jenis2 = JenisTugas.TUGAS_BIASA;
+          waktu1 = 15;
+          waktu2 = 10;
+        }
+      } else if (i <= 80) {
+        fase = FasePenanaman.PEMELIHARAAN;
+        deskripsi = 'Pemeliharaan intensif';
+
+        if (i === 60) {
+          tugas1 = 'Pemupukan intensif';
+          tugas2 = 'Penyemprotan pestisida';
+          jenis1 = JenisTugas.PENGECEKAN_HARIAN;
+          jenis2 = JenisTugas.PENGECEKAN_HARIAN;
+          waktu1 = 45;
+          waktu2 = 30;
+        } else {
+          tugas1 = 'Pemantauan kesehatan tanaman';
+          tugas2 = 'Penyiraman sesuai kebutuhan';
+          jenis1 = JenisTugas.PENGECEKAN_HARIAN;
+          jenis2 = JenisTugas.TUGAS_BIASA;
+          waktu1 = 20;
+          waktu2 = 15;
+        }
+      } else if (i <= 85) {
+        fase = FasePenanaman.PRAPANEN;
+        deskripsi = 'Persiapan panen';
+
+        tugas1 = 'Pengecekan kematangan';
+        tugas2 = 'Persiapan alat panen';
+        jenis1 = JenisTugas.PENGECEKAN_HARIAN;
+        jenis2 = JenisTugas.TUGAS_BIASA;
+        waktu1 = 20;
+        waktu2 = 30;
+      } else {
+        fase = FasePenanaman.PANEN;
+        deskripsi = 'Panen jagung';
+
+        if (i === 90) {
+          tugas1 = 'Panen jagung';
+          tugas2 = 'Sortasi hasil panen';
+          jenis1 = JenisTugas.TUGAS_BIASA;
+          jenis2 = JenisTugas.TUGAS_BIASA;
+          waktu1 = 180;
+          waktu2 = 120;
+        } else {
+          tugas1 = 'Panen bertahap';
+          tugas2 = 'Pengepakan hasil';
+          jenis1 = JenisTugas.TUGAS_BIASA;
+          jenis2 = JenisTugas.TUGAS_BIASA;
+          waktu1 = 150;
+          waktu2 = 90;
+        }
+      }
+
+      // Insert hari penanaman dan tugas
+      const hariPenanaman = await prisma.hariPenanaman.create({
+        data: {
+          hari_ke: i,
+          nama_fase: fase,
+          deskripsi_fase: deskripsi,
+          id_tanaman: 'pang-001',
+        },
+      });
+
+      // Insert tugas harian
+      await prisma.tugasPenanaman.createMany({
+        data: [
+          {
+            nama_tugas: tugas1,
+            jenis_tugas: jenis1,
+            estimasi_waktu: waktu1,
+            id_hari_penanaman: hariPenanaman.id_hari_penanaman,
+          },
+          {
+            nama_tugas: tugas2,
+            jenis_tugas: jenis2,
+            estimasi_waktu: waktu2,
+            id_hari_penanaman: hariPenanaman.id_hari_penanaman,
+          },
+        ],
+      });
+    }
+
+    console.log('Jagung seeding completed!');
+  }
+
+  async function seedBayam() {
+    console.log('Seeding Bayam (30 days)...');
+
+    for (let i = 1; i <= 30; i++) {
+      let fase: FasePenanaman;
+      let deskripsi: string;
+      let tugas1: string;
+      let tugas2: string;
+      let jenis1: JenisTugas;
+      let jenis2: JenisTugas;
+      let waktu1: number;
+      let waktu2: number;
+
+      // Tentukan fase dan deskripsi berdasarkan hari ke-
+      if (i <= 3) {
+        fase = FasePenanaman.PERSIAPAN;
+        deskripsi = 'Persiapan media tanam';
+
+        if (i === 1) {
+          tugas1 = 'Penyiapan media tanam';
+          tugas2 = 'Perendaman benih';
+          jenis1 = JenisTugas.PENGECEKAN_HARIAN;
+          jenis2 = JenisTugas.PENGECEKAN_HARIAN;
+          waktu1 = 60;
+          waktu2 = 15;
+        } else {
+          tugas1 = 'Pengecekan media tanam';
+          tugas2 = 'Penyiraman persiapan';
+          jenis1 = JenisTugas.PENGECEKAN_HARIAN;
+          jenis2 = JenisTugas.TUGAS_BIASA;
+          waktu1 = 15;
+          waktu2 = 10;
+        }
+      } else if (i <= 7) {
+        fase = FasePenanaman.PENANAMAN;
+        deskripsi = 'Penaburan benih bayam';
+
+        if (i === 4) {
+          tugas1 = 'Penaburan benih';
+          tugas2 = 'Penyiraman pertama';
+          jenis1 = JenisTugas.TUGAS_BIASA;
+          jenis2 = JenisTugas.TUGAS_BIASA;
+          waktu1 = 20;
+          waktu2 = 10;
+        } else {
+          tugas1 = 'Pemantauan perkecambahan';
+          tugas2 = 'Penyiraman rutin';
+          jenis1 = JenisTugas.PENGECEKAN_HARIAN;
+          jenis2 = JenisTugas.TUGAS_BIASA;
+          waktu1 = 10;
+          waktu2 = 5;
+        }
+      } else if (i <= 20) {
+        fase = FasePenanaman.PERTUMBUHAN;
+        deskripsi = 'Perawatan tanaman bayam';
+
+        if (i === 10 || i === 15) {
+          tugas1 = 'Pemupukan cair';
+          tugas2 = 'Penyiangan gulma';
+          jenis1 = JenisTugas.PENGECEKAN_HARIAN;
+          jenis2 = JenisTugas.TUGAS_BIASA;
+          waktu1 = 20;
+          waktu2 = 30;
+        } else {
+          tugas1 = 'Pemantauan pertumbuhan';
+          tugas2 = 'Penyiraman rutin';
+          jenis1 = JenisTugas.PENGECEKAN_HARIAN;
+          jenis2 = JenisTugas.TUGAS_BIASA;
+          waktu1 = 10;
+          waktu2 = 5;
+        }
+      } else if (i <= 25) {
+        fase = FasePenanaman.PEMELIHARAAN;
+        deskripsi = 'Pemeliharaan intensif';
+
+        if (i === 20) {
+          tugas1 = 'Penyemprotan pestisida organik';
+          tugas2 = 'Pemupukan akhir';
+          jenis1 = JenisTugas.PENGECEKAN_HARIAN;
+          jenis2 = JenisTugas.PENGECEKAN_HARIAN;
+          waktu1 = 25;
+          waktu2 = 20;
+        } else {
+          tugas1 = 'Pemantauan kesehatan tanaman';
+          tugas2 = 'Penyiraman sesuai kebutuhan';
+          jenis1 = JenisTugas.PENGECEKAN_HARIAN;
+          jenis2 = JenisTugas.TUGAS_BIASA;
+          waktu1 = 15;
+          waktu2 = 10;
+        }
+      } else {
+        fase = FasePenanaman.PANEN;
+        deskripsi = 'Panen bayam';
+
+        if (i === 30) {
+          tugas1 = 'Panen bayam';
+          tugas2 = 'Sortasi hasil panen';
+          jenis1 = JenisTugas.TUGAS_BIASA;
+          jenis2 = JenisTugas.TUGAS_BIASA;
+          waktu1 = 90;
+          waktu2 = 60;
+        } else {
+          tugas1 = 'Panen bertahap';
+          tugas2 = 'Pengepakan hasil';
+          jenis1 = JenisTugas.TUGAS_BIASA;
+          jenis2 = JenisTugas.TUGAS_BIASA;
+          waktu1 = 60;
+          waktu2 = 45;
+        }
+      }
+
+      // Insert hari penanaman dan tugas
+      const hariPenanaman = await prisma.hariPenanaman.create({
+        data: {
+          hari_ke: i,
+          nama_fase: fase,
+          deskripsi_fase: deskripsi,
+          id_tanaman: 'perk-001',
+        },
+      });
+
+      // Insert tugas harian
+      await prisma.tugasPenanaman.createMany({
+        data: [
+          {
+            nama_tugas: tugas1,
+            jenis_tugas: jenis1,
+            estimasi_waktu: waktu1,
+            id_hari_penanaman: hariPenanaman.id_hari_penanaman,
+          },
+          {
+            nama_tugas: tugas2,
+            jenis_tugas: jenis2,
+            estimasi_waktu: waktu2,
+            id_hari_penanaman: hariPenanaman.id_hari_penanaman,
+          },
+        ],
+      });
+    }
+
+    console.log('Bayam seeding completed!');
+  }
+
+  seedJagung();
+  seedBayam();
 }
 main()
   .catch((e) => {
