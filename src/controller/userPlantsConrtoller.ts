@@ -11,7 +11,12 @@ import {
 } from '../services/userPlantsService';
 
 export const create = async (req: IReqUser, res: Response) => {
-  const { plantId, user, customName } = req.body;
+  const { plantId, customName } = req.body;
+  const user = req.user;
+  if (!user) {
+    throw { status: 400, message: 'Invalid' };
+  }
+
   const data = {
     plantId,
     user,
@@ -34,7 +39,11 @@ export const create = async (req: IReqUser, res: Response) => {
 };
 
 export const getPlant = async (req: IReqUser, res: Response) => {
-  const { user } = req.body;
+  const user = req.user;
+  if (!user) {
+    throw { status: 400, message: 'Invalid' };
+  }
+
   try {
     const plant = await getUserPlant(user);
 
@@ -52,7 +61,10 @@ export const getPlant = async (req: IReqUser, res: Response) => {
 };
 
 export const getPlantDetail = async (req: IReqUser, res: Response) => {
-  const { user } = req.body;
+  const user = req.user;
+  if (!user) {
+    throw { status: 400, message: 'Invalid' };
+  }
   const { id } = req.params;
   const data = {
     user,
@@ -75,7 +87,11 @@ export const getPlantDetail = async (req: IReqUser, res: Response) => {
 };
 
 export const getDailyTasks = async (req: IReqUser, res: Response) => {
-  const { date, user } = req.body;
+  const { date } = req.body;
+  const user = req.user;
+  if (!user) {
+    throw { status: 400, message: 'Invalid' };
+  }
   const { id } = req.params;
   const data = {
     userPlantId: id,
@@ -124,7 +140,10 @@ export const updateTask = async (req: IReqUser, res: Response) => {
 };
 
 export const getToday = async (req: IReqUser, res: Response) => {
-  const { user } = req.body;
+  const user = req.user;
+  if (!user) {
+    throw { status: 400, message: 'Invalid' };
+  }
   try {
     const plant = await getTodayTasks(user);
 

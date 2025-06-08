@@ -7,6 +7,8 @@ import {
   TGetPlantDetail,
   TUpdateProgress,
 } from '../types/userPlantsType';
+import { startOfDay, endOfDay } from 'date-fns';
+import { toZonedTime, fromZonedTime } from 'date-fns-tz';
 import * as Yup from 'yup';
 
 const createSchema = Yup.object({
@@ -163,19 +165,18 @@ export const getUserPlantDetail = async (data: TGetPlantDetail) => {
 export const getUserDailyTasks = async (data: TGetDailyTasks) => {
   const { userPlantId, date, user } = data;
   try {
-    const tanggal = date || new Date();
-    const startOfDay = new Date(tanggal);
-    startOfDay.setHours(0, 0, 0, 0);
-    const endOfDay = new Date(tanggal);
-    endOfDay.setHours(23, 59, 59, 999);
-
     const tugasHarian = await prisma.hariTanamanPengguna.findMany({
       where: {
         id_tanaman_pengguna: userPlantId,
-        tanggal_aktual: {
-          gte: startOfDay,
-          lte: endOfDay,
-        },
+        tanggal_aktual: date
+          ? {
+              gte: new Date(date + 'T00:00:00.000Z'),
+              lt: new Date(date + 'T23:59:59.999Z'),
+            }
+          : {
+              gte: new Date(new Date().toDateString()), // Start of today
+              lt: new Date(new Date().getTime() + 24 * 60 * 60 * 1000), // End of today
+            },
         tanaman_pengguna: {
           id_pengguna: user.id,
         },

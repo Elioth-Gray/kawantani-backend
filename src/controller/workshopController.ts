@@ -135,7 +135,10 @@ export const verify = async (req: Request, res: Response) => {
 };
 
 export const registered = async (req: IReqUser, res: Response) => {
-  const { user } = req.body;
+  const user = req.user;
+  if (!user) {
+    return res.status(401).json({ message: 'Unauthorized', data: null });
+  }
   try {
     const result = await getRegisteredWorkshop(user);
 
