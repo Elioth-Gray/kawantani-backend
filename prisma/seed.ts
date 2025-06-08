@@ -1,4 +1,9 @@
 // prisma/seed.ts
+import {
+  StatusArtikel,
+  StatusVerifikasiArtikel,
+  StatusVerifikasiWorkshop,
+} from '../src/generated/prisma';
 import prisma from '../src/prisma/prismaClient';
 
 async function main() {
@@ -3245,6 +3250,97 @@ async function main() {
     skipDuplicates: true,
   });
 
+  const tanggalPembuatanAkun = new Date();
+  tanggalPembuatanAkun.setHours(0, 0, 0, 0);
+
+  const tanggalLahir = new Date('12-03-1999');
+  tanggalLahir.setHours(0, 0, 0, 0);
+
+  await prisma.pengguna.createMany({
+    data: [
+      {
+        id_pengguna: 'cmbnw2d03000007l4dnaj99yf',
+        nama_depan_pengguna: 'Elena',
+        nama_belakang_pengguna: 'Susanto',
+        tanggal_lahir_pengguna: tanggalLahir,
+        email_pengguna: 'elena@gmail.com',
+        nomor_telepon_pengguna: '08123826312',
+        jenisKelamin: 1,
+        password_pengguna:
+          '$2y$10$4jPkO1PD4zkL8MeoQ92Cu.ezq6N0fwqopVcC3dowEJOOF5xYa/UDq',
+        avatar: 'elena.jpg',
+        status_verfikasi: true,
+        status_aktif: true,
+        tanggal_pembuatan_akun: tanggalPembuatanAkun,
+        kode_verifikasi: '8082',
+      },
+      {
+        id_pengguna: 'cmbnw2d03000007l4dnaj99yg',
+        nama_depan_pengguna: 'Andi',
+        nama_belakang_pengguna: 'Wijaya',
+        tanggal_lahir_pengguna: tanggalLahir,
+        email_pengguna: 'andi@gmail.com',
+        nomor_telepon_pengguna: '08123456789',
+        jenisKelamin: 0,
+        password_pengguna:
+          '$2y$10$4jPkO1PD4zkL8MeoQ92Cu.ezq6N0fwqopVcC3dowEJOOF5xYa/UDq',
+        avatar: 'andi.jpg',
+        status_verfikasi: true,
+        status_aktif: true,
+        tanggal_pembuatan_akun: tanggalPembuatanAkun,
+        kode_verifikasi: '1234',
+      },
+      {
+        id_pengguna: 'cmbnw2d03000007l4dnaj99yh',
+        nama_depan_pengguna: 'Budi',
+        nama_belakang_pengguna: 'Santoso',
+        tanggal_lahir_pengguna: tanggalLahir,
+        email_pengguna: 'budi@gmail.com',
+        nomor_telepon_pengguna: '08987654321',
+        jenisKelamin: 0,
+        password_pengguna:
+          '$2y$10$4jPkO1PD4zkL8MeoQ92Cu.ezq6N0fwqopVcC3dowEJOOF5xYa/UDq',
+        avatar: 'budi.jpg',
+        status_verfikasi: true,
+        status_aktif: true,
+        tanggal_pembuatan_akun: tanggalPembuatanAkun,
+        kode_verifikasi: '5678',
+      },
+      {
+        id_pengguna: 'cmbnw2d03000007l4dnaj99yi',
+        nama_depan_pengguna: 'Citra',
+        nama_belakang_pengguna: 'Putri',
+        tanggal_lahir_pengguna: tanggalLahir,
+        email_pengguna: 'citra@gmail.com',
+        nomor_telepon_pengguna: '08211234567',
+        jenisKelamin: 1,
+        password_pengguna:
+          '$2y$10$4jPkO1PD4zkL8MeoQ92Cu.ezq6N0fwqopVcC3dowEJOOF5xYa/UDq',
+        avatar: 'citra.jpg',
+        status_verfikasi: true,
+        status_aktif: true,
+        tanggal_pembuatan_akun: tanggalPembuatanAkun,
+        kode_verifikasi: '9012',
+      },
+      {
+        id_pengguna: 'cmbnw2d03000007l4dnaj99yj',
+        nama_depan_pengguna: 'Dewi',
+        nama_belakang_pengguna: 'Lestari',
+        tanggal_lahir_pengguna: tanggalLahir,
+        email_pengguna: 'dewi@gmail.com',
+        nomor_telepon_pengguna: '08331112222',
+        jenisKelamin: 1,
+        password_pengguna:
+          '$2y$10$4jPkO1PD4zkL8MeoQ92Cu.ezq6N0fwqopVcC3dowEJOOF5xYa/UDq',
+        avatar: 'dewi.jpg',
+        status_verfikasi: true,
+        status_aktif: true,
+        tanggal_pembuatan_akun: tanggalPembuatanAkun,
+        kode_verifikasi: '3456',
+      },
+    ],
+  });
+
   await prisma.kategoriArtikel.createMany({
     data: [
       {
@@ -3271,6 +3367,165 @@ async function main() {
     skipDuplicates: true,
   });
 
+  await prisma.artikel.createMany({
+    data: [
+      {
+        id_artikel: 'peningkatan-kualitas-pertanian-001',
+        judul_artikel: 'Peningkatan kualitas dan ketahanan padi anda',
+        deskripsi_artikel:
+          'Tips dan strategi untuk meningkatkan kualitas dan ketahanan hasil panen padi Anda.',
+        isi_artikel:
+          'Ketahanan padi terhadap hama dan penyakit sangat penting untuk menjamin hasil panen yang maksimal. Artikel ini membahas penggunaan benih unggul, pemupukan seimbang, serta teknik rotasi tanaman yang terbukti efektif meningkatkan kualitas dan produktivitas padi.',
+        status_artikel: StatusArtikel.PUBLISHED,
+        status_verifikasi: StatusVerifikasiArtikel.DIVERIFIKASI,
+        status_aktif: true,
+        id_kategori_artikel: 1,
+        id_pengguna: 'cmbnw2d03000007l4dnaj99yj',
+        gambar_artikel: 'artikel1.jpg',
+      },
+      {
+        id_artikel: 'peningkatan-kualitas-pertanian-002',
+        judul_artikel: 'Strategi menanam padi dengan efisien',
+        deskripsi_artikel:
+          'Panduan lengkap bagaimana menanam padi dengan efisien, hemat biaya, dan hasil maksimal.',
+        isi_artikel:
+          'Efisiensi dalam budidaya padi dapat dicapai melalui teknik tanam jajar legowo, penggunaan pupuk organik, serta irigasi terjadwal. Dengan mengatur pola tanam dan input secara cermat, petani bisa mengurangi biaya produksi tanpa mengorbankan hasil panen.',
+        status_artikel: StatusArtikel.PUBLISHED,
+        status_verifikasi: StatusVerifikasiArtikel.DIVERIFIKASI,
+        status_aktif: true,
+        id_kategori_artikel: 1,
+        id_pengguna: 'cmbnw2d03000007l4dnaj99yj',
+        gambar_artikel: 'artikel2.jpg',
+      },
+      {
+        id_artikel: 'peningkatan-kualitas-pertanian-003',
+        judul_artikel: 'Teknik pertanian modern yang ramah lingkungan',
+        deskripsi_artikel:
+          'Pelajari teknologi pertanian terkini yang mendukung produksi berkelanjutan.',
+        isi_artikel:
+          'Pertanian modern menggabungkan prinsip efisiensi dan keberlanjutan, seperti penggunaan drone untuk monitoring lahan, sistem pertanian presisi, serta aplikasi smart irrigation. Teknik ini tidak hanya meningkatkan hasil, tapi juga menjaga lingkungan hidup.',
+        status_artikel: StatusArtikel.PUBLISHED,
+        status_verifikasi: StatusVerifikasiArtikel.DIVERIFIKASI,
+        status_aktif: true,
+        id_kategori_artikel: 1,
+        id_pengguna: 'cmbnw2d03000007l4dnaj99yj',
+        gambar_artikel: 'artikel3.jpg',
+      },
+      {
+        id_artikel: 'peningkatan-kualitas-pertanian-004',
+        judul_artikel: 'Cara mengatasi hama padi secara alami',
+        deskripsi_artikel:
+          'Solusi organik dan alami untuk memberantas hama tanpa merusak ekosistem sawah.',
+        isi_artikel:
+          'Menggunakan predator alami seperti burung dan ikan, serta tanaman pengusir serangga seperti serai, merupakan cara yang efektif dan ramah lingkungan untuk mengendalikan populasi hama. Teknik ini membantu menjaga keseimbangan ekosistem sawah.',
+        status_artikel: StatusArtikel.PUBLISHED,
+        status_verifikasi: StatusVerifikasiArtikel.DIVERIFIKASI,
+        status_aktif: true,
+        id_kategori_artikel: 1,
+        id_pengguna: 'cmbnw2d03000007l4dnaj99yj',
+        gambar_artikel: 'artikel4.jpg',
+      },
+      {
+        id_artikel: 'peningkatan-kualitas-pertanian-005',
+        judul_artikel: 'Pemanfaatan teknologi dalam pertanian',
+        deskripsi_artikel:
+          'Mengupas bagaimana teknologi digital membantu petani menjadi lebih produktif.',
+        isi_artikel:
+          'Teknologi seperti aplikasi prediksi cuaca, sensor tanah, dan platform pasar online kini membantu petani dalam pengambilan keputusan, memaksimalkan hasil panen, serta menjual produk secara langsung tanpa perantara.',
+        status_artikel: StatusArtikel.PUBLISHED,
+        status_verifikasi: StatusVerifikasiArtikel.DIVERIFIKASI,
+        status_aktif: true,
+        id_kategori_artikel: 1,
+        id_pengguna: 'cmbnw2d03000007l4dnaj99yj',
+        gambar_artikel: 'artikel5.jpg',
+      },
+      {
+        id_artikel: 'peningkatan-kualitas-pertanian-006',
+        judul_artikel: 'Manajemen air untuk hasil panen optimal',
+        deskripsi_artikel:
+          'Manajemen air yang tepat akan menentukan keberhasilan panen padi Anda.',
+        isi_artikel:
+          'Sistem irigasi tetes, penggunaan embung, serta pemanfaatan air hujan dapat membantu petani menjaga ketersediaan air sepanjang musim tanam. Pengaturan volume dan waktu penyiraman menjadi kunci utama menjaga kualitas tanaman.',
+        status_artikel: StatusArtikel.PUBLISHED,
+        status_verifikasi: StatusVerifikasiArtikel.DIVERIFIKASI,
+        status_aktif: true,
+        id_kategori_artikel: 1,
+        id_pengguna: 'cmbnw2d03000007l4dnaj99yj',
+        gambar_artikel: 'artikel6.jpg',
+      },
+    ],
+  });
+
+  await prisma.facilitator.createMany({
+    data: [
+      {
+        id_facilitator: 'cmbnwysgy000007jtasf15hfe',
+        nama_facilitator: 'PT Rokok Javier',
+        email_facilitator: 'javierrokok@gmail.com',
+        nomor_telepon_facilitator: '0821324362',
+        password_facilitator:
+          '$2y$10$5h7NuiHIE6/knsnfSqbHdOoXxKm7eatNa6QphlDlkg0.D23ZWNQ5u',
+        tanggal_pembuatan_akun: tanggalPembuatanAkun,
+        id_kabupaten: 1116,
+        alamat_lengkap_facilitator: 'JL Simulaki',
+        avatar: 'facilitator1.jpg',
+        status_aktif: true,
+      },
+      {
+        id_facilitator: 'cmbnwysgy000007jtasf15hff',
+        nama_facilitator: 'CV Tani Maju Bersama',
+        email_facilitator: 'tanimaju@gmail.com',
+        nomor_telepon_facilitator: '0821456789',
+        password_facilitator:
+          '$2y$10$5h7NuiHIE6/knsnfSqbHdOoXxKm7eatNa6QphlDlkg0.D23ZWNQ5u',
+        tanggal_pembuatan_akun: tanggalPembuatanAkun,
+        id_kabupaten: 1116,
+        alamat_lengkap_facilitator: 'JL Lintas Tani',
+        avatar: 'facilitator2.jpg',
+        status_aktif: true,
+      },
+      {
+        id_facilitator: 'cmbnwysgy000007jtasf15hfg',
+        nama_facilitator: 'PT Agro Sejahtera',
+        email_facilitator: 'agrosejahtera@gmail.com',
+        nomor_telepon_facilitator: '08531234987',
+        password_facilitator:
+          '$2y$10$5h7NuiHIE6/knsnfSqbHdOoXxKm7eatNa6QphlDlkg0.D23ZWNQ5u',
+        tanggal_pembuatan_akun: tanggalPembuatanAkun,
+        id_kabupaten: 1116,
+        alamat_lengkap_facilitator: 'JL Cinta Tani',
+        avatar: 'facilitator3.jpg',
+        status_aktif: true,
+      },
+      {
+        id_facilitator: 'cmbnwysgy000007jtasf15hfh',
+        nama_facilitator: 'Koperasi Makmur Jaya',
+        email_facilitator: 'makmurjaya@gmail.com',
+        nomor_telepon_facilitator: '0811223344',
+        password_facilitator:
+          '$2y$10$5h7NuiHIE6/knsnfSqbHdOoXxKm7eatNa6QphlDlkg0.D23ZWNQ5u',
+        tanggal_pembuatan_akun: tanggalPembuatanAkun,
+        id_kabupaten: 1116,
+        alamat_lengkap_facilitator: 'JL Kemakmuran Raya',
+        avatar: 'facilitator4.jpg',
+        status_aktif: true,
+      },
+      {
+        id_facilitator: 'cmbnwysgy000007jtasf15hfi',
+        nama_facilitator: 'Bumdes Tani Subur',
+        email_facilitator: 'tanisubur@gmail.com',
+        nomor_telepon_facilitator: '08999887766',
+        password_facilitator:
+          '$2y$10$5h7NuiHIE6/knsnfSqbHdOoXxKm7eatNa6QphlDlkg0.D23ZWNQ5u',
+        tanggal_pembuatan_akun: tanggalPembuatanAkun,
+        id_kabupaten: 1116,
+        alamat_lengkap_facilitator: 'JL Persawahan Indah',
+        avatar: 'facilitator5.jpg',
+        status_aktif: true,
+      },
+    ],
+  });
+
   await prisma.metodePembayaran.createMany({
     data: [
       {
@@ -3295,6 +3550,91 @@ async function main() {
       },
     ],
     skipDuplicates: true,
+  });
+
+  await prisma.workshop.createMany({
+    data: [
+      {
+        id_workshop: 'pt-rokok-javier-001',
+        judul_workshop: 'Teknik Menanam Padi untuk Pemula',
+        tanggal_workshop: tanggalPembuatanAkun,
+        alaamt_lengkap_workshop: 'Jl Sukolilo',
+        deskripsi_workshop:
+          'Pelatihan dasar untuk petani baru yang ingin memahami teknik menanam padi secara efisien dan produktif.',
+        harga_workshop: 100000,
+        kapasitas: 100,
+        status_verifikasi: StatusVerifikasiWorkshop.DIVERIFIKASI,
+        lat_lokasi: -7.2575,
+        long_lokasi: 112.7521,
+        id_facilitator: 'cmbnwysgy000007jtasf15hfe',
+        gambar_workshop: 'workshop1.jpg',
+        id_kabupaten: 1116,
+      },
+      {
+        id_workshop: 'pt-rokok-javier-002',
+        judul_workshop: 'Penggunaan Pupuk Organik yang Efektif',
+        tanggal_workshop: tanggalPembuatanAkun,
+        alaamt_lengkap_workshop: 'Jl Pahlawan Tani',
+        deskripsi_workshop:
+          'Workshop ini membahas bagaimana memilih, membuat, dan menggunakan pupuk organik untuk hasil panen maksimal.',
+        harga_workshop: 120000,
+        kapasitas: 80,
+        status_verifikasi: StatusVerifikasiWorkshop.DIVERIFIKASI,
+        lat_lokasi: -6.9147,
+        long_lokasi: 107.6098,
+        id_facilitator: 'cmbnwysgy000007jtasf15hfe',
+        gambar_workshop: 'workshop2.jpg',
+        id_kabupaten: 1116,
+      },
+      {
+        id_workshop: 'pt-rokok-javier-003',
+        judul_workshop: 'Manajemen Irigasi untuk Lahan Sawah',
+        tanggal_workshop: tanggalPembuatanAkun,
+        alaamt_lengkap_workshop: 'Jl Irigasi Barat',
+        deskripsi_workshop:
+          'Pelajari bagaimana mengelola sistem pengairan secara efisien untuk meningkatkan hasil pertanian.',
+        harga_workshop: 150000,
+        kapasitas: 60,
+        status_verifikasi: StatusVerifikasiWorkshop.DIVERIFIKASI,
+        lat_lokasi: -8.4095,
+        long_lokasi: 115.1889,
+        id_facilitator: 'cmbnwysgy000007jtasf15hfe',
+        gambar_workshop: 'workshop3.jpg',
+        id_kabupaten: 1116,
+      },
+      {
+        id_workshop: 'pt-rokok-javier-004',
+        judul_workshop: 'Teknologi Digital dalam Pertanian',
+        tanggal_workshop: tanggalPembuatanAkun,
+        alaamt_lengkap_workshop: 'Jl Teknologi Hijau',
+        deskripsi_workshop:
+          'Mengenalkan pemanfaatan teknologi seperti sensor, drone, dan aplikasi monitoring untuk mendukung pertanian cerdas.',
+        harga_workshop: 175000,
+        kapasitas: 50,
+        status_verifikasi: StatusVerifikasiWorkshop.DIVERIFIKASI,
+        lat_lokasi: -7.8014,
+        long_lokasi: 110.3647,
+        id_facilitator: 'cmbnwysgy000007jtasf15hfe',
+        gambar_workshop: 'workshop4.jpg',
+        id_kabupaten: 1116,
+      },
+      {
+        id_workshop: 'pt-rokok-javier-005',
+        judul_workshop: 'Pengendalian Hama Terpadu',
+        tanggal_workshop: tanggalPembuatanAkun,
+        alaamt_lengkap_workshop: 'Jl Agroindustri',
+        deskripsi_workshop:
+          'Pelatihan ini mengajarkan cara mengidentifikasi dan mengatasi hama secara terpadu dan ramah lingkungan.',
+        harga_workshop: 130000,
+        kapasitas: 70,
+        status_verifikasi: StatusVerifikasiWorkshop.DIVERIFIKASI,
+        lat_lokasi: -0.7893,
+        long_lokasi: 113.9213,
+        id_facilitator: 'cmbnwysgy000007jtasf15hfe',
+        gambar_workshop: 'workshop5.jpg',
+        id_kabupaten: 1116,
+      },
+    ],
   });
 
   await prisma.kategoriTanaman.createMany({
