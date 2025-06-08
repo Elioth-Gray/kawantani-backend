@@ -172,9 +172,7 @@ export type FasePenanaman = (typeof FasePenanaman)[keyof typeof FasePenanaman]
 
 export const StatusPenanaman: {
   AKTIF: 'AKTIF',
-  SELESAI: 'SELESAI',
-  DIBATALKAN: 'DIBATALKAN',
-  DITUNDA: 'DITUNDA'
+  SELESAI: 'SELESAI'
 };
 
 export type StatusPenanaman = (typeof StatusPenanaman)[keyof typeof StatusPenanaman]
@@ -23834,12 +23832,10 @@ export namespace Prisma {
   }
 
   export type TanamanPenggunaAvgAggregateOutputType = {
-    hari_ke_saat_ini: number | null
     progress_persen: number | null
   }
 
   export type TanamanPenggunaSumAggregateOutputType = {
-    hari_ke_saat_ini: number | null
     progress_persen: number | null
   }
 
@@ -23849,9 +23845,7 @@ export namespace Prisma {
     tanggal_penanaman: Date | null
     tanggal_target_panen: Date | null
     status_penanaman: $Enums.StatusPenanaman | null
-    hari_ke_saat_ini: number | null
     progress_persen: number | null
-    catatan_umum: string | null
     id_tanaman: string | null
     id_pengguna: string | null
   }
@@ -23862,9 +23856,7 @@ export namespace Prisma {
     tanggal_penanaman: Date | null
     tanggal_target_panen: Date | null
     status_penanaman: $Enums.StatusPenanaman | null
-    hari_ke_saat_ini: number | null
     progress_persen: number | null
-    catatan_umum: string | null
     id_tanaman: string | null
     id_pengguna: string | null
   }
@@ -23875,9 +23867,7 @@ export namespace Prisma {
     tanggal_penanaman: number
     tanggal_target_panen: number
     status_penanaman: number
-    hari_ke_saat_ini: number
     progress_persen: number
-    catatan_umum: number
     id_tanaman: number
     id_pengguna: number
     _all: number
@@ -23885,12 +23875,10 @@ export namespace Prisma {
 
 
   export type TanamanPenggunaAvgAggregateInputType = {
-    hari_ke_saat_ini?: true
     progress_persen?: true
   }
 
   export type TanamanPenggunaSumAggregateInputType = {
-    hari_ke_saat_ini?: true
     progress_persen?: true
   }
 
@@ -23900,9 +23888,7 @@ export namespace Prisma {
     tanggal_penanaman?: true
     tanggal_target_panen?: true
     status_penanaman?: true
-    hari_ke_saat_ini?: true
     progress_persen?: true
-    catatan_umum?: true
     id_tanaman?: true
     id_pengguna?: true
   }
@@ -23913,9 +23899,7 @@ export namespace Prisma {
     tanggal_penanaman?: true
     tanggal_target_panen?: true
     status_penanaman?: true
-    hari_ke_saat_ini?: true
     progress_persen?: true
-    catatan_umum?: true
     id_tanaman?: true
     id_pengguna?: true
   }
@@ -23926,9 +23910,7 @@ export namespace Prisma {
     tanggal_penanaman?: true
     tanggal_target_panen?: true
     status_penanaman?: true
-    hari_ke_saat_ini?: true
     progress_persen?: true
-    catatan_umum?: true
     id_tanaman?: true
     id_pengguna?: true
     _all?: true
@@ -24026,9 +24008,7 @@ export namespace Prisma {
     tanggal_penanaman: Date
     tanggal_target_panen: Date | null
     status_penanaman: $Enums.StatusPenanaman
-    hari_ke_saat_ini: number
     progress_persen: number
-    catatan_umum: string | null
     id_tanaman: string
     id_pengguna: string
     _count: TanamanPenggunaCountAggregateOutputType | null
@@ -24058,9 +24038,7 @@ export namespace Prisma {
     tanggal_penanaman?: boolean
     tanggal_target_panen?: boolean
     status_penanaman?: boolean
-    hari_ke_saat_ini?: boolean
     progress_persen?: boolean
-    catatan_umum?: boolean
     id_tanaman?: boolean
     id_pengguna?: boolean
     tanaman?: boolean | TanamanDefaultArgs<ExtArgs>
@@ -24075,9 +24053,7 @@ export namespace Prisma {
     tanggal_penanaman?: boolean
     tanggal_target_panen?: boolean
     status_penanaman?: boolean
-    hari_ke_saat_ini?: boolean
     progress_persen?: boolean
-    catatan_umum?: boolean
     id_tanaman?: boolean
     id_pengguna?: boolean
     tanaman?: boolean | TanamanDefaultArgs<ExtArgs>
@@ -24090,9 +24066,7 @@ export namespace Prisma {
     tanggal_penanaman?: boolean
     tanggal_target_panen?: boolean
     status_penanaman?: boolean
-    hari_ke_saat_ini?: boolean
     progress_persen?: boolean
-    catatan_umum?: boolean
     id_tanaman?: boolean
     id_pengguna?: boolean
     tanaman?: boolean | TanamanDefaultArgs<ExtArgs>
@@ -24105,14 +24079,12 @@ export namespace Prisma {
     tanggal_penanaman?: boolean
     tanggal_target_panen?: boolean
     status_penanaman?: boolean
-    hari_ke_saat_ini?: boolean
     progress_persen?: boolean
-    catatan_umum?: boolean
     id_tanaman?: boolean
     id_pengguna?: boolean
   }
 
-  export type TanamanPenggunaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_tanaman_pengguna" | "nama_custom" | "tanggal_penanaman" | "tanggal_target_panen" | "status_penanaman" | "hari_ke_saat_ini" | "progress_persen" | "catatan_umum" | "id_tanaman" | "id_pengguna", ExtArgs["result"]["tanamanPengguna"]>
+  export type TanamanPenggunaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_tanaman_pengguna" | "nama_custom" | "tanggal_penanaman" | "tanggal_target_panen" | "status_penanaman" | "progress_persen" | "id_tanaman" | "id_pengguna", ExtArgs["result"]["tanamanPengguna"]>
   export type TanamanPenggunaInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     tanaman?: boolean | TanamanDefaultArgs<ExtArgs>
     pengguna?: boolean | PenggunaDefaultArgs<ExtArgs>
@@ -24141,9 +24113,7 @@ export namespace Prisma {
       tanggal_penanaman: Date
       tanggal_target_panen: Date | null
       status_penanaman: $Enums.StatusPenanaman
-      hari_ke_saat_ini: number
       progress_persen: number
-      catatan_umum: string | null
       id_tanaman: string
       id_pengguna: string
     }, ExtArgs["result"]["tanamanPengguna"]>
@@ -24577,9 +24547,7 @@ export namespace Prisma {
     readonly tanggal_penanaman: FieldRef<"TanamanPengguna", 'DateTime'>
     readonly tanggal_target_panen: FieldRef<"TanamanPengguna", 'DateTime'>
     readonly status_penanaman: FieldRef<"TanamanPengguna", 'StatusPenanaman'>
-    readonly hari_ke_saat_ini: FieldRef<"TanamanPengguna", 'Int'>
     readonly progress_persen: FieldRef<"TanamanPengguna", 'Float'>
-    readonly catatan_umum: FieldRef<"TanamanPengguna", 'String'>
     readonly id_tanaman: FieldRef<"TanamanPengguna", 'String'>
     readonly id_pengguna: FieldRef<"TanamanPengguna", 'String'>
   }
@@ -26237,13 +26205,13 @@ export namespace Prisma {
 
   export type TugasPenanamanPenggunaAvgAggregateOutputType = {
     id_tugas_penanaman_pengguna: number | null
-    durasi_pengerjaan: number | null
+    estimasi_waktu: number | null
     id_hari_tanaman_pengguna: number | null
   }
 
   export type TugasPenanamanPenggunaSumAggregateOutputType = {
     id_tugas_penanaman_pengguna: number | null
-    durasi_pengerjaan: number | null
+    estimasi_waktu: number | null
     id_hari_tanaman_pengguna: number | null
   }
 
@@ -26254,10 +26222,8 @@ export namespace Prisma {
     jenis_tugas: $Enums.JenisTugas | null
     status_selesai: boolean | null
     tanggal_selesai: Date | null
-    durasi_pengerjaan: number | null
+    estimasi_waktu: number | null
     id_hari_tanaman_pengguna: number | null
-    created_at: Date | null
-    updated_at: Date | null
   }
 
   export type TugasPenanamanPenggunaMaxAggregateOutputType = {
@@ -26267,10 +26233,8 @@ export namespace Prisma {
     jenis_tugas: $Enums.JenisTugas | null
     status_selesai: boolean | null
     tanggal_selesai: Date | null
-    durasi_pengerjaan: number | null
+    estimasi_waktu: number | null
     id_hari_tanaman_pengguna: number | null
-    created_at: Date | null
-    updated_at: Date | null
   }
 
   export type TugasPenanamanPenggunaCountAggregateOutputType = {
@@ -26280,23 +26244,21 @@ export namespace Prisma {
     jenis_tugas: number
     status_selesai: number
     tanggal_selesai: number
-    durasi_pengerjaan: number
+    estimasi_waktu: number
     id_hari_tanaman_pengguna: number
-    created_at: number
-    updated_at: number
     _all: number
   }
 
 
   export type TugasPenanamanPenggunaAvgAggregateInputType = {
     id_tugas_penanaman_pengguna?: true
-    durasi_pengerjaan?: true
+    estimasi_waktu?: true
     id_hari_tanaman_pengguna?: true
   }
 
   export type TugasPenanamanPenggunaSumAggregateInputType = {
     id_tugas_penanaman_pengguna?: true
-    durasi_pengerjaan?: true
+    estimasi_waktu?: true
     id_hari_tanaman_pengguna?: true
   }
 
@@ -26307,10 +26269,8 @@ export namespace Prisma {
     jenis_tugas?: true
     status_selesai?: true
     tanggal_selesai?: true
-    durasi_pengerjaan?: true
+    estimasi_waktu?: true
     id_hari_tanaman_pengguna?: true
-    created_at?: true
-    updated_at?: true
   }
 
   export type TugasPenanamanPenggunaMaxAggregateInputType = {
@@ -26320,10 +26280,8 @@ export namespace Prisma {
     jenis_tugas?: true
     status_selesai?: true
     tanggal_selesai?: true
-    durasi_pengerjaan?: true
+    estimasi_waktu?: true
     id_hari_tanaman_pengguna?: true
-    created_at?: true
-    updated_at?: true
   }
 
   export type TugasPenanamanPenggunaCountAggregateInputType = {
@@ -26333,10 +26291,8 @@ export namespace Prisma {
     jenis_tugas?: true
     status_selesai?: true
     tanggal_selesai?: true
-    durasi_pengerjaan?: true
+    estimasi_waktu?: true
     id_hari_tanaman_pengguna?: true
-    created_at?: true
-    updated_at?: true
     _all?: true
   }
 
@@ -26433,10 +26389,8 @@ export namespace Prisma {
     jenis_tugas: $Enums.JenisTugas
     status_selesai: boolean
     tanggal_selesai: Date | null
-    durasi_pengerjaan: number | null
+    estimasi_waktu: number | null
     id_hari_tanaman_pengguna: number
-    created_at: Date
-    updated_at: Date
     _count: TugasPenanamanPenggunaCountAggregateOutputType | null
     _avg: TugasPenanamanPenggunaAvgAggregateOutputType | null
     _sum: TugasPenanamanPenggunaSumAggregateOutputType | null
@@ -26465,10 +26419,8 @@ export namespace Prisma {
     jenis_tugas?: boolean
     status_selesai?: boolean
     tanggal_selesai?: boolean
-    durasi_pengerjaan?: boolean
+    estimasi_waktu?: boolean
     id_hari_tanaman_pengguna?: boolean
-    created_at?: boolean
-    updated_at?: boolean
     hari_tanaman?: boolean | HariTanamanPenggunaDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["tugasPenanamanPengguna"]>
 
@@ -26479,10 +26431,8 @@ export namespace Prisma {
     jenis_tugas?: boolean
     status_selesai?: boolean
     tanggal_selesai?: boolean
-    durasi_pengerjaan?: boolean
+    estimasi_waktu?: boolean
     id_hari_tanaman_pengguna?: boolean
-    created_at?: boolean
-    updated_at?: boolean
     hari_tanaman?: boolean | HariTanamanPenggunaDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["tugasPenanamanPengguna"]>
 
@@ -26493,10 +26443,8 @@ export namespace Prisma {
     jenis_tugas?: boolean
     status_selesai?: boolean
     tanggal_selesai?: boolean
-    durasi_pengerjaan?: boolean
+    estimasi_waktu?: boolean
     id_hari_tanaman_pengguna?: boolean
-    created_at?: boolean
-    updated_at?: boolean
     hari_tanaman?: boolean | HariTanamanPenggunaDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["tugasPenanamanPengguna"]>
 
@@ -26507,13 +26455,11 @@ export namespace Prisma {
     jenis_tugas?: boolean
     status_selesai?: boolean
     tanggal_selesai?: boolean
-    durasi_pengerjaan?: boolean
+    estimasi_waktu?: boolean
     id_hari_tanaman_pengguna?: boolean
-    created_at?: boolean
-    updated_at?: boolean
   }
 
-  export type TugasPenanamanPenggunaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_tugas_penanaman_pengguna" | "nama_tugas" | "deskripsi_tugas" | "jenis_tugas" | "status_selesai" | "tanggal_selesai" | "durasi_pengerjaan" | "id_hari_tanaman_pengguna" | "created_at" | "updated_at", ExtArgs["result"]["tugasPenanamanPengguna"]>
+  export type TugasPenanamanPenggunaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_tugas_penanaman_pengguna" | "nama_tugas" | "deskripsi_tugas" | "jenis_tugas" | "status_selesai" | "tanggal_selesai" | "estimasi_waktu" | "id_hari_tanaman_pengguna", ExtArgs["result"]["tugasPenanamanPengguna"]>
   export type TugasPenanamanPenggunaInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     hari_tanaman?: boolean | HariTanamanPenggunaDefaultArgs<ExtArgs>
   }
@@ -26536,10 +26482,8 @@ export namespace Prisma {
       jenis_tugas: $Enums.JenisTugas
       status_selesai: boolean
       tanggal_selesai: Date | null
-      durasi_pengerjaan: number | null
+      estimasi_waktu: number | null
       id_hari_tanaman_pengguna: number
-      created_at: Date
-      updated_at: Date
     }, ExtArgs["result"]["tugasPenanamanPengguna"]>
     composites: {}
   }
@@ -26970,10 +26914,8 @@ export namespace Prisma {
     readonly jenis_tugas: FieldRef<"TugasPenanamanPengguna", 'JenisTugas'>
     readonly status_selesai: FieldRef<"TugasPenanamanPengguna", 'Boolean'>
     readonly tanggal_selesai: FieldRef<"TugasPenanamanPengguna", 'DateTime'>
-    readonly durasi_pengerjaan: FieldRef<"TugasPenanamanPengguna", 'Int'>
+    readonly estimasi_waktu: FieldRef<"TugasPenanamanPengguna", 'Int'>
     readonly id_hari_tanaman_pengguna: FieldRef<"TugasPenanamanPengguna", 'Int'>
-    readonly created_at: FieldRef<"TugasPenanamanPengguna", 'DateTime'>
-    readonly updated_at: FieldRef<"TugasPenanamanPengguna", 'DateTime'>
   }
     
 
@@ -27632,9 +27574,7 @@ export namespace Prisma {
     tanggal_penanaman: 'tanggal_penanaman',
     tanggal_target_panen: 'tanggal_target_panen',
     status_penanaman: 'status_penanaman',
-    hari_ke_saat_ini: 'hari_ke_saat_ini',
     progress_persen: 'progress_persen',
-    catatan_umum: 'catatan_umum',
     id_tanaman: 'id_tanaman',
     id_pengguna: 'id_pengguna'
   };
@@ -27665,10 +27605,8 @@ export namespace Prisma {
     jenis_tugas: 'jenis_tugas',
     status_selesai: 'status_selesai',
     tanggal_selesai: 'tanggal_selesai',
-    durasi_pengerjaan: 'durasi_pengerjaan',
-    id_hari_tanaman_pengguna: 'id_hari_tanaman_pengguna',
-    created_at: 'created_at',
-    updated_at: 'updated_at'
+    estimasi_waktu: 'estimasi_waktu',
+    id_hari_tanaman_pengguna: 'id_hari_tanaman_pengguna'
   };
 
   export type TugasPenanamanPenggunaScalarFieldEnum = (typeof TugasPenanamanPenggunaScalarFieldEnum)[keyof typeof TugasPenanamanPenggunaScalarFieldEnum]
@@ -29128,9 +29066,7 @@ export namespace Prisma {
     tanggal_penanaman?: DateTimeFilter<"TanamanPengguna"> | Date | string
     tanggal_target_panen?: DateTimeNullableFilter<"TanamanPengguna"> | Date | string | null
     status_penanaman?: EnumStatusPenanamanFilter<"TanamanPengguna"> | $Enums.StatusPenanaman
-    hari_ke_saat_ini?: IntFilter<"TanamanPengguna"> | number
     progress_persen?: FloatFilter<"TanamanPengguna"> | number
-    catatan_umum?: StringNullableFilter<"TanamanPengguna"> | string | null
     id_tanaman?: StringFilter<"TanamanPengguna"> | string
     id_pengguna?: StringFilter<"TanamanPengguna"> | string
     tanaman?: XOR<TanamanScalarRelationFilter, TanamanWhereInput>
@@ -29144,9 +29080,7 @@ export namespace Prisma {
     tanggal_penanaman?: SortOrder
     tanggal_target_panen?: SortOrderInput | SortOrder
     status_penanaman?: SortOrder
-    hari_ke_saat_ini?: SortOrder
     progress_persen?: SortOrder
-    catatan_umum?: SortOrderInput | SortOrder
     id_tanaman?: SortOrder
     id_pengguna?: SortOrder
     tanaman?: TanamanOrderByWithRelationInput
@@ -29163,9 +29097,7 @@ export namespace Prisma {
     tanggal_penanaman?: DateTimeFilter<"TanamanPengguna"> | Date | string
     tanggal_target_panen?: DateTimeNullableFilter<"TanamanPengguna"> | Date | string | null
     status_penanaman?: EnumStatusPenanamanFilter<"TanamanPengguna"> | $Enums.StatusPenanaman
-    hari_ke_saat_ini?: IntFilter<"TanamanPengguna"> | number
     progress_persen?: FloatFilter<"TanamanPengguna"> | number
-    catatan_umum?: StringNullableFilter<"TanamanPengguna"> | string | null
     id_tanaman?: StringFilter<"TanamanPengguna"> | string
     id_pengguna?: StringFilter<"TanamanPengguna"> | string
     tanaman?: XOR<TanamanScalarRelationFilter, TanamanWhereInput>
@@ -29179,9 +29111,7 @@ export namespace Prisma {
     tanggal_penanaman?: SortOrder
     tanggal_target_panen?: SortOrderInput | SortOrder
     status_penanaman?: SortOrder
-    hari_ke_saat_ini?: SortOrder
     progress_persen?: SortOrder
-    catatan_umum?: SortOrderInput | SortOrder
     id_tanaman?: SortOrder
     id_pengguna?: SortOrder
     _count?: TanamanPenggunaCountOrderByAggregateInput
@@ -29200,9 +29130,7 @@ export namespace Prisma {
     tanggal_penanaman?: DateTimeWithAggregatesFilter<"TanamanPengguna"> | Date | string
     tanggal_target_panen?: DateTimeNullableWithAggregatesFilter<"TanamanPengguna"> | Date | string | null
     status_penanaman?: EnumStatusPenanamanWithAggregatesFilter<"TanamanPengguna"> | $Enums.StatusPenanaman
-    hari_ke_saat_ini?: IntWithAggregatesFilter<"TanamanPengguna"> | number
     progress_persen?: FloatWithAggregatesFilter<"TanamanPengguna"> | number
-    catatan_umum?: StringNullableWithAggregatesFilter<"TanamanPengguna"> | string | null
     id_tanaman?: StringWithAggregatesFilter<"TanamanPengguna"> | string
     id_pengguna?: StringWithAggregatesFilter<"TanamanPengguna"> | string
   }
@@ -29303,10 +29231,8 @@ export namespace Prisma {
     jenis_tugas?: EnumJenisTugasFilter<"TugasPenanamanPengguna"> | $Enums.JenisTugas
     status_selesai?: BoolFilter<"TugasPenanamanPengguna"> | boolean
     tanggal_selesai?: DateTimeNullableFilter<"TugasPenanamanPengguna"> | Date | string | null
-    durasi_pengerjaan?: IntNullableFilter<"TugasPenanamanPengguna"> | number | null
+    estimasi_waktu?: IntNullableFilter<"TugasPenanamanPengguna"> | number | null
     id_hari_tanaman_pengguna?: IntFilter<"TugasPenanamanPengguna"> | number
-    created_at?: DateTimeFilter<"TugasPenanamanPengguna"> | Date | string
-    updated_at?: DateTimeFilter<"TugasPenanamanPengguna"> | Date | string
     hari_tanaman?: XOR<HariTanamanPenggunaScalarRelationFilter, HariTanamanPenggunaWhereInput>
   }
 
@@ -29317,10 +29243,8 @@ export namespace Prisma {
     jenis_tugas?: SortOrder
     status_selesai?: SortOrder
     tanggal_selesai?: SortOrderInput | SortOrder
-    durasi_pengerjaan?: SortOrderInput | SortOrder
+    estimasi_waktu?: SortOrderInput | SortOrder
     id_hari_tanaman_pengguna?: SortOrder
-    created_at?: SortOrder
-    updated_at?: SortOrder
     hari_tanaman?: HariTanamanPenggunaOrderByWithRelationInput
   }
 
@@ -29334,10 +29258,8 @@ export namespace Prisma {
     jenis_tugas?: EnumJenisTugasFilter<"TugasPenanamanPengguna"> | $Enums.JenisTugas
     status_selesai?: BoolFilter<"TugasPenanamanPengguna"> | boolean
     tanggal_selesai?: DateTimeNullableFilter<"TugasPenanamanPengguna"> | Date | string | null
-    durasi_pengerjaan?: IntNullableFilter<"TugasPenanamanPengguna"> | number | null
+    estimasi_waktu?: IntNullableFilter<"TugasPenanamanPengguna"> | number | null
     id_hari_tanaman_pengguna?: IntFilter<"TugasPenanamanPengguna"> | number
-    created_at?: DateTimeFilter<"TugasPenanamanPengguna"> | Date | string
-    updated_at?: DateTimeFilter<"TugasPenanamanPengguna"> | Date | string
     hari_tanaman?: XOR<HariTanamanPenggunaScalarRelationFilter, HariTanamanPenggunaWhereInput>
   }, "id_tugas_penanaman_pengguna">
 
@@ -29348,10 +29270,8 @@ export namespace Prisma {
     jenis_tugas?: SortOrder
     status_selesai?: SortOrder
     tanggal_selesai?: SortOrderInput | SortOrder
-    durasi_pengerjaan?: SortOrderInput | SortOrder
+    estimasi_waktu?: SortOrderInput | SortOrder
     id_hari_tanaman_pengguna?: SortOrder
-    created_at?: SortOrder
-    updated_at?: SortOrder
     _count?: TugasPenanamanPenggunaCountOrderByAggregateInput
     _avg?: TugasPenanamanPenggunaAvgOrderByAggregateInput
     _max?: TugasPenanamanPenggunaMaxOrderByAggregateInput
@@ -29369,10 +29289,8 @@ export namespace Prisma {
     jenis_tugas?: EnumJenisTugasWithAggregatesFilter<"TugasPenanamanPengguna"> | $Enums.JenisTugas
     status_selesai?: BoolWithAggregatesFilter<"TugasPenanamanPengguna"> | boolean
     tanggal_selesai?: DateTimeNullableWithAggregatesFilter<"TugasPenanamanPengguna"> | Date | string | null
-    durasi_pengerjaan?: IntNullableWithAggregatesFilter<"TugasPenanamanPengguna"> | number | null
+    estimasi_waktu?: IntNullableWithAggregatesFilter<"TugasPenanamanPengguna"> | number | null
     id_hari_tanaman_pengguna?: IntWithAggregatesFilter<"TugasPenanamanPengguna"> | number
-    created_at?: DateTimeWithAggregatesFilter<"TugasPenanamanPengguna"> | Date | string
-    updated_at?: DateTimeWithAggregatesFilter<"TugasPenanamanPengguna"> | Date | string
   }
 
   export type ProvinsiCreateInput = {
@@ -30596,28 +30514,24 @@ export namespace Prisma {
   }
 
   export type TanamanPenggunaCreateInput = {
-    id_tanaman_pengguna: string
+    id_tanaman_pengguna?: string
     nama_custom?: string | null
     tanggal_penanaman?: Date | string
     tanggal_target_panen?: Date | string | null
     status_penanaman?: $Enums.StatusPenanaman
-    hari_ke_saat_ini?: number
     progress_persen?: number
-    catatan_umum?: string | null
     tanaman: TanamanCreateNestedOneWithoutTanaman_penggunaInput
     pengguna: PenggunaCreateNestedOneWithoutTanaman_penggunaInput
     hari_tanaman?: HariTanamanPenggunaCreateNestedManyWithoutTanaman_penggunaInput
   }
 
   export type TanamanPenggunaUncheckedCreateInput = {
-    id_tanaman_pengguna: string
+    id_tanaman_pengguna?: string
     nama_custom?: string | null
     tanggal_penanaman?: Date | string
     tanggal_target_panen?: Date | string | null
     status_penanaman?: $Enums.StatusPenanaman
-    hari_ke_saat_ini?: number
     progress_persen?: number
-    catatan_umum?: string | null
     id_tanaman: string
     id_pengguna: string
     hari_tanaman?: HariTanamanPenggunaUncheckedCreateNestedManyWithoutTanaman_penggunaInput
@@ -30629,9 +30543,7 @@ export namespace Prisma {
     tanggal_penanaman?: DateTimeFieldUpdateOperationsInput | Date | string
     tanggal_target_panen?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     status_penanaman?: EnumStatusPenanamanFieldUpdateOperationsInput | $Enums.StatusPenanaman
-    hari_ke_saat_ini?: IntFieldUpdateOperationsInput | number
     progress_persen?: FloatFieldUpdateOperationsInput | number
-    catatan_umum?: NullableStringFieldUpdateOperationsInput | string | null
     tanaman?: TanamanUpdateOneRequiredWithoutTanaman_penggunaNestedInput
     pengguna?: PenggunaUpdateOneRequiredWithoutTanaman_penggunaNestedInput
     hari_tanaman?: HariTanamanPenggunaUpdateManyWithoutTanaman_penggunaNestedInput
@@ -30643,23 +30555,19 @@ export namespace Prisma {
     tanggal_penanaman?: DateTimeFieldUpdateOperationsInput | Date | string
     tanggal_target_panen?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     status_penanaman?: EnumStatusPenanamanFieldUpdateOperationsInput | $Enums.StatusPenanaman
-    hari_ke_saat_ini?: IntFieldUpdateOperationsInput | number
     progress_persen?: FloatFieldUpdateOperationsInput | number
-    catatan_umum?: NullableStringFieldUpdateOperationsInput | string | null
     id_tanaman?: StringFieldUpdateOperationsInput | string
     id_pengguna?: StringFieldUpdateOperationsInput | string
     hari_tanaman?: HariTanamanPenggunaUncheckedUpdateManyWithoutTanaman_penggunaNestedInput
   }
 
   export type TanamanPenggunaCreateManyInput = {
-    id_tanaman_pengguna: string
+    id_tanaman_pengguna?: string
     nama_custom?: string | null
     tanggal_penanaman?: Date | string
     tanggal_target_panen?: Date | string | null
     status_penanaman?: $Enums.StatusPenanaman
-    hari_ke_saat_ini?: number
     progress_persen?: number
-    catatan_umum?: string | null
     id_tanaman: string
     id_pengguna: string
   }
@@ -30670,9 +30578,7 @@ export namespace Prisma {
     tanggal_penanaman?: DateTimeFieldUpdateOperationsInput | Date | string
     tanggal_target_panen?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     status_penanaman?: EnumStatusPenanamanFieldUpdateOperationsInput | $Enums.StatusPenanaman
-    hari_ke_saat_ini?: IntFieldUpdateOperationsInput | number
     progress_persen?: FloatFieldUpdateOperationsInput | number
-    catatan_umum?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type TanamanPenggunaUncheckedUpdateManyInput = {
@@ -30681,9 +30587,7 @@ export namespace Prisma {
     tanggal_penanaman?: DateTimeFieldUpdateOperationsInput | Date | string
     tanggal_target_panen?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     status_penanaman?: EnumStatusPenanamanFieldUpdateOperationsInput | $Enums.StatusPenanaman
-    hari_ke_saat_ini?: IntFieldUpdateOperationsInput | number
     progress_persen?: FloatFieldUpdateOperationsInput | number
-    catatan_umum?: NullableStringFieldUpdateOperationsInput | string | null
     id_tanaman?: StringFieldUpdateOperationsInput | string
     id_pengguna?: StringFieldUpdateOperationsInput | string
   }
@@ -30785,9 +30689,7 @@ export namespace Prisma {
     jenis_tugas: $Enums.JenisTugas
     status_selesai?: boolean
     tanggal_selesai?: Date | string | null
-    durasi_pengerjaan?: number | null
-    created_at?: Date | string
-    updated_at?: Date | string
+    estimasi_waktu?: number | null
     hari_tanaman: HariTanamanPenggunaCreateNestedOneWithoutTugas_penanamanInput
   }
 
@@ -30798,10 +30700,8 @@ export namespace Prisma {
     jenis_tugas: $Enums.JenisTugas
     status_selesai?: boolean
     tanggal_selesai?: Date | string | null
-    durasi_pengerjaan?: number | null
+    estimasi_waktu?: number | null
     id_hari_tanaman_pengguna: number
-    created_at?: Date | string
-    updated_at?: Date | string
   }
 
   export type TugasPenanamanPenggunaUpdateInput = {
@@ -30810,9 +30710,7 @@ export namespace Prisma {
     jenis_tugas?: EnumJenisTugasFieldUpdateOperationsInput | $Enums.JenisTugas
     status_selesai?: BoolFieldUpdateOperationsInput | boolean
     tanggal_selesai?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    durasi_pengerjaan?: NullableIntFieldUpdateOperationsInput | number | null
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    estimasi_waktu?: NullableIntFieldUpdateOperationsInput | number | null
     hari_tanaman?: HariTanamanPenggunaUpdateOneRequiredWithoutTugas_penanamanNestedInput
   }
 
@@ -30823,10 +30721,8 @@ export namespace Prisma {
     jenis_tugas?: EnumJenisTugasFieldUpdateOperationsInput | $Enums.JenisTugas
     status_selesai?: BoolFieldUpdateOperationsInput | boolean
     tanggal_selesai?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    durasi_pengerjaan?: NullableIntFieldUpdateOperationsInput | number | null
+    estimasi_waktu?: NullableIntFieldUpdateOperationsInput | number | null
     id_hari_tanaman_pengguna?: IntFieldUpdateOperationsInput | number
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type TugasPenanamanPenggunaCreateManyInput = {
@@ -30836,10 +30732,8 @@ export namespace Prisma {
     jenis_tugas: $Enums.JenisTugas
     status_selesai?: boolean
     tanggal_selesai?: Date | string | null
-    durasi_pengerjaan?: number | null
+    estimasi_waktu?: number | null
     id_hari_tanaman_pengguna: number
-    created_at?: Date | string
-    updated_at?: Date | string
   }
 
   export type TugasPenanamanPenggunaUpdateManyMutationInput = {
@@ -30848,9 +30742,7 @@ export namespace Prisma {
     jenis_tugas?: EnumJenisTugasFieldUpdateOperationsInput | $Enums.JenisTugas
     status_selesai?: BoolFieldUpdateOperationsInput | boolean
     tanggal_selesai?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    durasi_pengerjaan?: NullableIntFieldUpdateOperationsInput | number | null
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    estimasi_waktu?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type TugasPenanamanPenggunaUncheckedUpdateManyInput = {
@@ -30860,10 +30752,8 @@ export namespace Prisma {
     jenis_tugas?: EnumJenisTugasFieldUpdateOperationsInput | $Enums.JenisTugas
     status_selesai?: BoolFieldUpdateOperationsInput | boolean
     tanggal_selesai?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    durasi_pengerjaan?: NullableIntFieldUpdateOperationsInput | number | null
+    estimasi_waktu?: NullableIntFieldUpdateOperationsInput | number | null
     id_hari_tanaman_pengguna?: IntFieldUpdateOperationsInput | number
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -32096,15 +31986,12 @@ export namespace Prisma {
     tanggal_penanaman?: SortOrder
     tanggal_target_panen?: SortOrder
     status_penanaman?: SortOrder
-    hari_ke_saat_ini?: SortOrder
     progress_persen?: SortOrder
-    catatan_umum?: SortOrder
     id_tanaman?: SortOrder
     id_pengguna?: SortOrder
   }
 
   export type TanamanPenggunaAvgOrderByAggregateInput = {
-    hari_ke_saat_ini?: SortOrder
     progress_persen?: SortOrder
   }
 
@@ -32114,9 +32001,7 @@ export namespace Prisma {
     tanggal_penanaman?: SortOrder
     tanggal_target_panen?: SortOrder
     status_penanaman?: SortOrder
-    hari_ke_saat_ini?: SortOrder
     progress_persen?: SortOrder
-    catatan_umum?: SortOrder
     id_tanaman?: SortOrder
     id_pengguna?: SortOrder
   }
@@ -32127,15 +32012,12 @@ export namespace Prisma {
     tanggal_penanaman?: SortOrder
     tanggal_target_panen?: SortOrder
     status_penanaman?: SortOrder
-    hari_ke_saat_ini?: SortOrder
     progress_persen?: SortOrder
-    catatan_umum?: SortOrder
     id_tanaman?: SortOrder
     id_pengguna?: SortOrder
   }
 
   export type TanamanPenggunaSumOrderByAggregateInput = {
-    hari_ke_saat_ini?: SortOrder
     progress_persen?: SortOrder
   }
 
@@ -32267,15 +32149,13 @@ export namespace Prisma {
     jenis_tugas?: SortOrder
     status_selesai?: SortOrder
     tanggal_selesai?: SortOrder
-    durasi_pengerjaan?: SortOrder
+    estimasi_waktu?: SortOrder
     id_hari_tanaman_pengguna?: SortOrder
-    created_at?: SortOrder
-    updated_at?: SortOrder
   }
 
   export type TugasPenanamanPenggunaAvgOrderByAggregateInput = {
     id_tugas_penanaman_pengguna?: SortOrder
-    durasi_pengerjaan?: SortOrder
+    estimasi_waktu?: SortOrder
     id_hari_tanaman_pengguna?: SortOrder
   }
 
@@ -32286,10 +32166,8 @@ export namespace Prisma {
     jenis_tugas?: SortOrder
     status_selesai?: SortOrder
     tanggal_selesai?: SortOrder
-    durasi_pengerjaan?: SortOrder
+    estimasi_waktu?: SortOrder
     id_hari_tanaman_pengguna?: SortOrder
-    created_at?: SortOrder
-    updated_at?: SortOrder
   }
 
   export type TugasPenanamanPenggunaMinOrderByAggregateInput = {
@@ -32299,15 +32177,13 @@ export namespace Prisma {
     jenis_tugas?: SortOrder
     status_selesai?: SortOrder
     tanggal_selesai?: SortOrder
-    durasi_pengerjaan?: SortOrder
+    estimasi_waktu?: SortOrder
     id_hari_tanaman_pengguna?: SortOrder
-    created_at?: SortOrder
-    updated_at?: SortOrder
   }
 
   export type TugasPenanamanPenggunaSumOrderByAggregateInput = {
     id_tugas_penanaman_pengguna?: SortOrder
-    durasi_pengerjaan?: SortOrder
+    estimasi_waktu?: SortOrder
     id_hari_tanaman_pengguna?: SortOrder
   }
 
@@ -34445,27 +34321,23 @@ export namespace Prisma {
   }
 
   export type TanamanPenggunaCreateWithoutPenggunaInput = {
-    id_tanaman_pengguna: string
+    id_tanaman_pengguna?: string
     nama_custom?: string | null
     tanggal_penanaman?: Date | string
     tanggal_target_panen?: Date | string | null
     status_penanaman?: $Enums.StatusPenanaman
-    hari_ke_saat_ini?: number
     progress_persen?: number
-    catatan_umum?: string | null
     tanaman: TanamanCreateNestedOneWithoutTanaman_penggunaInput
     hari_tanaman?: HariTanamanPenggunaCreateNestedManyWithoutTanaman_penggunaInput
   }
 
   export type TanamanPenggunaUncheckedCreateWithoutPenggunaInput = {
-    id_tanaman_pengguna: string
+    id_tanaman_pengguna?: string
     nama_custom?: string | null
     tanggal_penanaman?: Date | string
     tanggal_target_panen?: Date | string | null
     status_penanaman?: $Enums.StatusPenanaman
-    hari_ke_saat_ini?: number
     progress_persen?: number
-    catatan_umum?: string | null
     id_tanaman: string
     hari_tanaman?: HariTanamanPenggunaUncheckedCreateNestedManyWithoutTanaman_penggunaInput
   }
@@ -34650,9 +34522,7 @@ export namespace Prisma {
     tanggal_penanaman?: DateTimeFilter<"TanamanPengguna"> | Date | string
     tanggal_target_panen?: DateTimeNullableFilter<"TanamanPengguna"> | Date | string | null
     status_penanaman?: EnumStatusPenanamanFilter<"TanamanPengguna"> | $Enums.StatusPenanaman
-    hari_ke_saat_ini?: IntFilter<"TanamanPengguna"> | number
     progress_persen?: FloatFilter<"TanamanPengguna"> | number
-    catatan_umum?: StringNullableFilter<"TanamanPengguna"> | string | null
     id_tanaman?: StringFilter<"TanamanPengguna"> | string
     id_pengguna?: StringFilter<"TanamanPengguna"> | string
   }
@@ -36187,27 +36057,23 @@ export namespace Prisma {
   }
 
   export type TanamanPenggunaCreateWithoutTanamanInput = {
-    id_tanaman_pengguna: string
+    id_tanaman_pengguna?: string
     nama_custom?: string | null
     tanggal_penanaman?: Date | string
     tanggal_target_panen?: Date | string | null
     status_penanaman?: $Enums.StatusPenanaman
-    hari_ke_saat_ini?: number
     progress_persen?: number
-    catatan_umum?: string | null
     pengguna: PenggunaCreateNestedOneWithoutTanaman_penggunaInput
     hari_tanaman?: HariTanamanPenggunaCreateNestedManyWithoutTanaman_penggunaInput
   }
 
   export type TanamanPenggunaUncheckedCreateWithoutTanamanInput = {
-    id_tanaman_pengguna: string
+    id_tanaman_pengguna?: string
     nama_custom?: string | null
     tanggal_penanaman?: Date | string
     tanggal_target_panen?: Date | string | null
     status_penanaman?: $Enums.StatusPenanaman
-    hari_ke_saat_ini?: number
     progress_persen?: number
-    catatan_umum?: string | null
     id_pengguna: string
     hari_tanaman?: HariTanamanPenggunaUncheckedCreateNestedManyWithoutTanaman_penggunaInput
   }
@@ -36779,27 +36645,23 @@ export namespace Prisma {
   }
 
   export type TanamanPenggunaCreateWithoutHari_tanamanInput = {
-    id_tanaman_pengguna: string
+    id_tanaman_pengguna?: string
     nama_custom?: string | null
     tanggal_penanaman?: Date | string
     tanggal_target_panen?: Date | string | null
     status_penanaman?: $Enums.StatusPenanaman
-    hari_ke_saat_ini?: number
     progress_persen?: number
-    catatan_umum?: string | null
     tanaman: TanamanCreateNestedOneWithoutTanaman_penggunaInput
     pengguna: PenggunaCreateNestedOneWithoutTanaman_penggunaInput
   }
 
   export type TanamanPenggunaUncheckedCreateWithoutHari_tanamanInput = {
-    id_tanaman_pengguna: string
+    id_tanaman_pengguna?: string
     nama_custom?: string | null
     tanggal_penanaman?: Date | string
     tanggal_target_panen?: Date | string | null
     status_penanaman?: $Enums.StatusPenanaman
-    hari_ke_saat_ini?: number
     progress_persen?: number
-    catatan_umum?: string | null
     id_tanaman: string
     id_pengguna: string
   }
@@ -36815,9 +36677,7 @@ export namespace Prisma {
     jenis_tugas: $Enums.JenisTugas
     status_selesai?: boolean
     tanggal_selesai?: Date | string | null
-    durasi_pengerjaan?: number | null
-    created_at?: Date | string
-    updated_at?: Date | string
+    estimasi_waktu?: number | null
   }
 
   export type TugasPenanamanPenggunaUncheckedCreateWithoutHari_tanamanInput = {
@@ -36827,9 +36687,7 @@ export namespace Prisma {
     jenis_tugas: $Enums.JenisTugas
     status_selesai?: boolean
     tanggal_selesai?: Date | string | null
-    durasi_pengerjaan?: number | null
-    created_at?: Date | string
-    updated_at?: Date | string
+    estimasi_waktu?: number | null
   }
 
   export type TugasPenanamanPenggunaCreateOrConnectWithoutHari_tanamanInput = {
@@ -36859,9 +36717,7 @@ export namespace Prisma {
     tanggal_penanaman?: DateTimeFieldUpdateOperationsInput | Date | string
     tanggal_target_panen?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     status_penanaman?: EnumStatusPenanamanFieldUpdateOperationsInput | $Enums.StatusPenanaman
-    hari_ke_saat_ini?: IntFieldUpdateOperationsInput | number
     progress_persen?: FloatFieldUpdateOperationsInput | number
-    catatan_umum?: NullableStringFieldUpdateOperationsInput | string | null
     tanaman?: TanamanUpdateOneRequiredWithoutTanaman_penggunaNestedInput
     pengguna?: PenggunaUpdateOneRequiredWithoutTanaman_penggunaNestedInput
   }
@@ -36872,9 +36728,7 @@ export namespace Prisma {
     tanggal_penanaman?: DateTimeFieldUpdateOperationsInput | Date | string
     tanggal_target_panen?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     status_penanaman?: EnumStatusPenanamanFieldUpdateOperationsInput | $Enums.StatusPenanaman
-    hari_ke_saat_ini?: IntFieldUpdateOperationsInput | number
     progress_persen?: FloatFieldUpdateOperationsInput | number
-    catatan_umum?: NullableStringFieldUpdateOperationsInput | string | null
     id_tanaman?: StringFieldUpdateOperationsInput | string
     id_pengguna?: StringFieldUpdateOperationsInput | string
   }
@@ -36905,10 +36759,8 @@ export namespace Prisma {
     jenis_tugas?: EnumJenisTugasFilter<"TugasPenanamanPengguna"> | $Enums.JenisTugas
     status_selesai?: BoolFilter<"TugasPenanamanPengguna"> | boolean
     tanggal_selesai?: DateTimeNullableFilter<"TugasPenanamanPengguna"> | Date | string | null
-    durasi_pengerjaan?: IntNullableFilter<"TugasPenanamanPengguna"> | number | null
+    estimasi_waktu?: IntNullableFilter<"TugasPenanamanPengguna"> | number | null
     id_hari_tanaman_pengguna?: IntFilter<"TugasPenanamanPengguna"> | number
-    created_at?: DateTimeFilter<"TugasPenanamanPengguna"> | Date | string
-    updated_at?: DateTimeFilter<"TugasPenanamanPengguna"> | Date | string
   }
 
   export type HariTanamanPenggunaCreateWithoutTugas_penanamanInput = {
@@ -37174,14 +37026,12 @@ export namespace Prisma {
   }
 
   export type TanamanPenggunaCreateManyPenggunaInput = {
-    id_tanaman_pengguna: string
+    id_tanaman_pengguna?: string
     nama_custom?: string | null
     tanggal_penanaman?: Date | string
     tanggal_target_panen?: Date | string | null
     status_penanaman?: $Enums.StatusPenanaman
-    hari_ke_saat_ini?: number
     progress_persen?: number
-    catatan_umum?: string | null
     id_tanaman: string
   }
 
@@ -37328,9 +37178,7 @@ export namespace Prisma {
     tanggal_penanaman?: DateTimeFieldUpdateOperationsInput | Date | string
     tanggal_target_panen?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     status_penanaman?: EnumStatusPenanamanFieldUpdateOperationsInput | $Enums.StatusPenanaman
-    hari_ke_saat_ini?: IntFieldUpdateOperationsInput | number
     progress_persen?: FloatFieldUpdateOperationsInput | number
-    catatan_umum?: NullableStringFieldUpdateOperationsInput | string | null
     tanaman?: TanamanUpdateOneRequiredWithoutTanaman_penggunaNestedInput
     hari_tanaman?: HariTanamanPenggunaUpdateManyWithoutTanaman_penggunaNestedInput
   }
@@ -37341,9 +37189,7 @@ export namespace Prisma {
     tanggal_penanaman?: DateTimeFieldUpdateOperationsInput | Date | string
     tanggal_target_panen?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     status_penanaman?: EnumStatusPenanamanFieldUpdateOperationsInput | $Enums.StatusPenanaman
-    hari_ke_saat_ini?: IntFieldUpdateOperationsInput | number
     progress_persen?: FloatFieldUpdateOperationsInput | number
-    catatan_umum?: NullableStringFieldUpdateOperationsInput | string | null
     id_tanaman?: StringFieldUpdateOperationsInput | string
     hari_tanaman?: HariTanamanPenggunaUncheckedUpdateManyWithoutTanaman_penggunaNestedInput
   }
@@ -37354,9 +37200,7 @@ export namespace Prisma {
     tanggal_penanaman?: DateTimeFieldUpdateOperationsInput | Date | string
     tanggal_target_panen?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     status_penanaman?: EnumStatusPenanamanFieldUpdateOperationsInput | $Enums.StatusPenanaman
-    hari_ke_saat_ini?: IntFieldUpdateOperationsInput | number
     progress_persen?: FloatFieldUpdateOperationsInput | number
-    catatan_umum?: NullableStringFieldUpdateOperationsInput | string | null
     id_tanaman?: StringFieldUpdateOperationsInput | string
   }
 
@@ -37731,14 +37575,12 @@ export namespace Prisma {
   }
 
   export type TanamanPenggunaCreateManyTanamanInput = {
-    id_tanaman_pengguna: string
+    id_tanaman_pengguna?: string
     nama_custom?: string | null
     tanggal_penanaman?: Date | string
     tanggal_target_panen?: Date | string | null
     status_penanaman?: $Enums.StatusPenanaman
-    hari_ke_saat_ini?: number
     progress_persen?: number
-    catatan_umum?: string | null
     id_pengguna: string
   }
 
@@ -37787,9 +37629,7 @@ export namespace Prisma {
     tanggal_penanaman?: DateTimeFieldUpdateOperationsInput | Date | string
     tanggal_target_panen?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     status_penanaman?: EnumStatusPenanamanFieldUpdateOperationsInput | $Enums.StatusPenanaman
-    hari_ke_saat_ini?: IntFieldUpdateOperationsInput | number
     progress_persen?: FloatFieldUpdateOperationsInput | number
-    catatan_umum?: NullableStringFieldUpdateOperationsInput | string | null
     pengguna?: PenggunaUpdateOneRequiredWithoutTanaman_penggunaNestedInput
     hari_tanaman?: HariTanamanPenggunaUpdateManyWithoutTanaman_penggunaNestedInput
   }
@@ -37800,9 +37640,7 @@ export namespace Prisma {
     tanggal_penanaman?: DateTimeFieldUpdateOperationsInput | Date | string
     tanggal_target_panen?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     status_penanaman?: EnumStatusPenanamanFieldUpdateOperationsInput | $Enums.StatusPenanaman
-    hari_ke_saat_ini?: IntFieldUpdateOperationsInput | number
     progress_persen?: FloatFieldUpdateOperationsInput | number
-    catatan_umum?: NullableStringFieldUpdateOperationsInput | string | null
     id_pengguna?: StringFieldUpdateOperationsInput | string
     hari_tanaman?: HariTanamanPenggunaUncheckedUpdateManyWithoutTanaman_penggunaNestedInput
   }
@@ -37813,9 +37651,7 @@ export namespace Prisma {
     tanggal_penanaman?: DateTimeFieldUpdateOperationsInput | Date | string
     tanggal_target_panen?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     status_penanaman?: EnumStatusPenanamanFieldUpdateOperationsInput | $Enums.StatusPenanaman
-    hari_ke_saat_ini?: IntFieldUpdateOperationsInput | number
     progress_persen?: FloatFieldUpdateOperationsInput | number
-    catatan_umum?: NullableStringFieldUpdateOperationsInput | string | null
     id_pengguna?: StringFieldUpdateOperationsInput | string
   }
 
@@ -37902,9 +37738,7 @@ export namespace Prisma {
     jenis_tugas: $Enums.JenisTugas
     status_selesai?: boolean
     tanggal_selesai?: Date | string | null
-    durasi_pengerjaan?: number | null
-    created_at?: Date | string
-    updated_at?: Date | string
+    estimasi_waktu?: number | null
   }
 
   export type TugasPenanamanPenggunaUpdateWithoutHari_tanamanInput = {
@@ -37913,9 +37747,7 @@ export namespace Prisma {
     jenis_tugas?: EnumJenisTugasFieldUpdateOperationsInput | $Enums.JenisTugas
     status_selesai?: BoolFieldUpdateOperationsInput | boolean
     tanggal_selesai?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    durasi_pengerjaan?: NullableIntFieldUpdateOperationsInput | number | null
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    estimasi_waktu?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type TugasPenanamanPenggunaUncheckedUpdateWithoutHari_tanamanInput = {
@@ -37925,9 +37757,7 @@ export namespace Prisma {
     jenis_tugas?: EnumJenisTugasFieldUpdateOperationsInput | $Enums.JenisTugas
     status_selesai?: BoolFieldUpdateOperationsInput | boolean
     tanggal_selesai?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    durasi_pengerjaan?: NullableIntFieldUpdateOperationsInput | number | null
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    estimasi_waktu?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type TugasPenanamanPenggunaUncheckedUpdateManyWithoutHari_tanamanInput = {
@@ -37937,9 +37767,7 @@ export namespace Prisma {
     jenis_tugas?: EnumJenisTugasFieldUpdateOperationsInput | $Enums.JenisTugas
     status_selesai?: BoolFieldUpdateOperationsInput | boolean
     tanggal_selesai?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    durasi_pengerjaan?: NullableIntFieldUpdateOperationsInput | number | null
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    estimasi_waktu?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
 

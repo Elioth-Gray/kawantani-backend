@@ -276,7 +276,7 @@ model TugasPenanaman {
 }
 
 model TanamanPengguna {
-  id_tanaman_pengguna String @id @db.VarChar(36)
+  id_tanaman_pengguna String @id @db.VarChar(36) @default(cuid())
   nama_custom         String? @db.VarChar(100) 
   tanggal_penanaman   DateTime @default(now())
   tanggal_target_panen DateTime? // Dihitung otomatis

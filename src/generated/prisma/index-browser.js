@@ -293,9 +293,7 @@ exports.Prisma.TanamanPenggunaScalarFieldEnum = {
   tanggal_penanaman: 'tanggal_penanaman',
   tanggal_target_panen: 'tanggal_target_panen',
   status_penanaman: 'status_penanaman',
-  hari_ke_saat_ini: 'hari_ke_saat_ini',
   progress_persen: 'progress_persen',
-  catatan_umum: 'catatan_umum',
   id_tanaman: 'id_tanaman',
   id_pengguna: 'id_pengguna'
 };
@@ -320,10 +318,8 @@ exports.Prisma.TugasPenanamanPenggunaScalarFieldEnum = {
   jenis_tugas: 'jenis_tugas',
   status_selesai: 'status_selesai',
   tanggal_selesai: 'tanggal_selesai',
-  durasi_pengerjaan: 'durasi_pengerjaan',
-  id_hari_tanaman_pengguna: 'id_hari_tanaman_pengguna',
-  created_at: 'created_at',
-  updated_at: 'updated_at'
+  estimasi_waktu: 'estimasi_waktu',
+  id_hari_tanaman_pengguna: 'id_hari_tanaman_pengguna'
 };
 
 exports.Prisma.SortOrder = {
@@ -382,9 +378,7 @@ exports.JenisTugas = exports.$Enums.JenisTugas = {
 
 exports.StatusPenanaman = exports.$Enums.StatusPenanaman = {
   AKTIF: 'AKTIF',
-  SELESAI: 'SELESAI',
-  DIBATALKAN: 'DIBATALKAN',
-  DITUNDA: 'DITUNDA'
+  SELESAI: 'SELESAI'
 };
 
 exports.StatusHari = exports.$Enums.StatusHari = {
