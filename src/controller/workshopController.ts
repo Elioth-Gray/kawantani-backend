@@ -12,10 +12,10 @@ import {
   getAllWorkshops,
   getPopularWorkshops,
   getRegisteredWorkshop,
+  getRegisteredWorkshopDetail,
   getWorkshopByFacilitator,
   getWorkshopById,
   getWorkshopParticipant,
-  payRegistration,
   registerWorkshop,
   verifyWorkshop,
 } from '../services/workshopService';
@@ -155,6 +155,33 @@ export const registered = async (req: IReqUser, res: Response) => {
   }
 };
 
+export const registeredDetail = async (req: IReqUser, res: Response) => {
+  const user = req.user;
+  if (!user) {
+    return res.status(401).json({ message: 'Unauthorized', data: null });
+  }
+  const { id } = req.params;
+  const data = {
+    user,
+    id,
+  };
+
+  try {
+    const result = await getRegisteredWorkshopDetail(data);
+
+    res.status(200).json({
+      message: 'Partisipan workshop berhasil didapatkan',
+      data: result,
+    });
+  } catch (error) {
+    const err = error as unknown as Error;
+    res.status(400).json({
+      message: err.message,
+      data: null,
+    });
+  }
+};
+
 export const deleteWorks = async (req: IReqUser, res: Response) => {
   const { id } = req.params;
   const user = req.user;
@@ -208,30 +235,30 @@ export const register = async (req: IReqUser, res: Response) => {
   }
 };
 
-export const pay = async (req: IReqUser, res: Response) => {
-  const user = req.user;
-  if (!user) {
-    return res.status(401).json({ message: 'Unauthorized', data: null });
-  }
-  const data = {
-    user,
-    ...req.body,
-  };
-  try {
-    const result = await payRegistration(data);
+// export const pay = async (req: IReqUser, res: Response) => {
+//   const user = req.user;
+//   if (!user) {
+//     return res.status(401).json({ message: 'Unauthorized', data: null });
+//   }
+//   const data = {
+//     user,
+//     ...req.body,
+//   };
+//   try {
+//     const result = await payRegistration(data);
 
-    res.status(200).json({
-      message: 'Berhasil membayar pendaftaran!',
-      data: result,
-    });
-  } catch (error) {
-    const err = error as unknown as Error;
-    res.status(400).json({
-      message: err.message,
-      data: null,
-    });
-  }
-};
+//     res.status(200).json({
+//       message: 'Berhasil membayar pendaftaran!',
+//       data: result,
+//     });
+//   } catch (error) {
+//     const err = error as unknown as Error;
+//     res.status(400).json({
+//       message: err.message,
+//       data: null,
+//     });
+//   }
+// };
 
 export const getParticipant = async (req: IReqUser, res: Response) => {
   const user = req.user;

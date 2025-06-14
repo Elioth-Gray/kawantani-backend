@@ -6,7 +6,6 @@ import {
   verify,
   getById,
   register,
-  pay,
   getOwnWorkshop,
   getParticipant,
   getAllActive,
@@ -15,6 +14,7 @@ import {
   allSales,
   allParticipants,
   registered,
+  registeredDetail,
 } from '../controller/workshopController';
 import authMiddleware from '../middlewares/authMiddleware';
 import { createMulterUploader } from '../utils/multer/multer';
@@ -56,6 +56,13 @@ workshopsRouter.get(
   authMiddleware,
   roleMiddleware(['user']),
   registered,
+);
+
+workshopsRouter.get(
+  '/workshops/registered/:id',
+  authMiddleware,
+  roleMiddleware(['user']),
+  registeredDetail,
 );
 
 workshopsRouter.post(
@@ -102,12 +109,6 @@ workshopsRouter.post(
   authMiddleware,
   roleMiddleware(['user']),
   register,
-);
-workshopsRouter.patch(
-  '/workshops/:id/register',
-  authMiddleware,
-  roleMiddleware(['user']),
-  pay,
 );
 
 export default workshopsRouter;

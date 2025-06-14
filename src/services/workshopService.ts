@@ -6,6 +6,7 @@ import {
   TPayWorkshop,
   TRegisterWorkshop,
   TVerify,
+  TGetParticipant,
 } from '../types/workshopTypes';
 import { TToken } from '../types/authTypes';
 import { StatusVerifikasiWorkshop } from '../generated/prisma';
@@ -360,6 +361,7 @@ export const registerWorkshop = async (data: TRegisterWorkshop) => {
         id_pengguna: user.id,
         id_workshop: id,
         id_metode_pembayaran: paymentMethod,
+        status_pembayaran: true,
       },
     });
 
@@ -385,37 +387,10 @@ export const getRegisteredWorkshop = async (user: TToken) => {
       where: {
         id_pengguna: user.id,
       },
+      distinct: ['id_workshop'],
     });
 
     return registered;
-  } catch (error: any) {}
-};
-
-export const payRegistration = async (data: TPayWorkshop) => {
-  const { ticketNumber, user } = data;
-  try {
-    const available = await prisma.workshopTerdaftar.findUnique({
-      where: {
-        nomor_tiket: ticketNumber,
-        id_pengguna: user.id,
-      },
-    });
-
-    if (!available) {
-      throw { status: 400, message: 'Pendaftaran tidak ditemukan!' };
-    }
-
-    const result = await prisma.workshopTerdaftar.update({
-      where: {
-        nomor_tiket: ticketNumber,
-        id_pengguna: user.id,
-      },
-      data: {
-        status_pembayaran: true,
-      },
-    });
-
-    return result;
   } catch (error: any) {
     if (error.name === 'ValidationError') {
       throw {
@@ -426,6 +401,64 @@ export const payRegistration = async (data: TPayWorkshop) => {
     throw error;
   }
 };
+
+export const getRegisteredWorkshopDetail = async (data: TGetParticipant) => {
+  const { user, id } = data;
+  try {
+    const registered = await prisma.workshopTerdaftar.findMany({
+      where: {
+        id_pengguna: user.id,
+        id_workshop: id,
+      },
+    });
+
+    return registered;
+  } catch (error: any) {
+    if (error.name === 'ValidationError') {
+      throw {
+        status: 400,
+        message: error.errors.join(', '),
+      };
+    }
+    throw error;
+  }
+};
+
+// export const payRegistration = async (data: TPayWorkshop) => {
+//   const { ticketNumber, user } = data;
+//   try {
+//     const available = await prisma.workshopTerdaftar.findUnique({
+//       where: {
+//         nomor_tiket: ticketNumber,
+//         id_pengguna: user.id,
+//       },
+//     });
+
+//     if (!available) {
+//       throw { status: 400, message: 'Pendaftaran tidak ditemukan!' };
+//     }
+
+//     const result = await prisma.workshopTerdaftar.update({
+//       where: {
+//         nomor_tiket: ticketNumber,
+//         id_pengguna: user.id,
+//       },
+//       data: {
+//         status_pembayaran: true,
+//       },
+//     });
+
+//     return result;
+//   } catch (error: any) {
+//     if (error.name === 'ValidationError') {
+//       throw {
+//         status: 400,
+//         message: error.errors.join(', '),
+//       };
+//     }
+//     throw error;
+//   }
+// };
 
 export const getWorkshopParticipant = async (user: TToken) => {
   try {

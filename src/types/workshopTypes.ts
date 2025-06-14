@@ -41,3 +41,8 @@ export type TVerify = {
   id: string;
   status: string;
 };
+
+export type TGetParticipant = {
+  user: TToken;
+  id: string;
+};
