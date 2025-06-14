@@ -7,11 +7,7 @@ import {
 
 const plantCategoriesRoute = express.Router();
 
-plantCategoriesRoute.get('/categories/plants', authMiddleware, getCategory);
-plantCategoriesRoute.get(
-  '/categories/plants/:id',
-  authMiddleware,
-  getCategoryId,
-);
+plantCategoriesRoute.get('/categories/plants', getCategory);
+plantCategoriesRoute.get('/categories/plants/:id', getCategoryId);
 
 export default plantCategoriesRoute;
