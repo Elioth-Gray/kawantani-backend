@@ -59,10 +59,21 @@ export const getAllFacilitatorById = async (id: string) => {
         id_facilitator: id,
         status_aktif: true,
       },
-      include: {
+      select: {
+        nama_facilitator: true,
+        email_facilitator: true,
+        nomor_telepon_facilitator: true,
+        avatar: true,
+        alamat_lengkap_facilitator: true,
         kabupaten: {
-          include: {
-            provinsi: true,
+          select: {
+            nama_kabupaten: true,
+            type: true,
+            provinsi: {
+              select: {
+                nama_provinsi: true,
+              },
+            },
           },
         },
       },

@@ -6,6 +6,7 @@ import {
   update,
   getById,
   recentSales,
+  me,
 } from '../controller/facilitatorController';
 import authMiddleware from '../middlewares/authMiddleware';
 import roleMiddleware from '../middlewares/roleMiddleware';
@@ -20,6 +21,13 @@ facilitatorRoute.get(
   authMiddleware,
   roleMiddleware(['facilitator']),
   recentSales,
+);
+
+facilitatorRoute.get(
+  '/facilitator/me',
+  authMiddleware,
+  roleMiddleware(['facilitator']),
+  me,
 );
 
 facilitatorRoute.get(

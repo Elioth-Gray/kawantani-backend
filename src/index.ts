@@ -14,6 +14,7 @@ import paymentMethodRoute from './routes/paymentMethodRoute';
 import plantCategoriesRoute from './routes/plantCategoryRoute';
 import plantRoute from './routes/plantRoute';
 import usePlantsRoute from './routes/userPlantsRoute';
+import adminRoute from './routes/adminRoute';
 
 dotenv.config();
 
@@ -37,6 +38,7 @@ app.use('/api', paymentMethodRoute);
 app.use('/api', plantCategoriesRoute);
 app.use('/api', plantRoute);
 app.use('/api', usePlantsRoute);
+app.use('/api', adminRoute);
 
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
