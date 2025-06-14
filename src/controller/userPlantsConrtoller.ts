@@ -116,7 +116,11 @@ export const getDailyTasks = async (req: IReqUser, res: Response) => {
 
 export const updateTask = async (req: IReqUser, res: Response) => {
   const { userPlantId, taskId } = req.params;
-  const { user, doneStatus } = req.body;
+  const { doneStatus } = req.body;
+  const user = req.user;
+  if (!user) {
+    throw { status: 400, message: 'Invalid' };
+  }
   const data = {
     userPlantId,
     taskId: parseInt(taskId, 10),
@@ -162,7 +166,10 @@ export const getToday = async (req: IReqUser, res: Response) => {
 
 export const finish = async (req: IReqUser, res: Response) => {
   const { id } = req.params;
-  const { user } = req.body;
+  const user = req.user;
+  if (!user) {
+    throw { status: 400, message: 'Invalid' };
+  }
   const data = {
     id,
     user,
