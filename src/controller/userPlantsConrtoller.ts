@@ -194,7 +194,7 @@ export const finish = async (req: IReqUser, res: Response) => {
 export const note = async (req: IReqUser, res: Response) => {
   const { plantDayId } = req.params;
   const user = req.user;
-  const note = req.body;
+  const { note } = req.body;
   if (!user) {
     throw { status: 400, message: 'Invalid' };
   }
