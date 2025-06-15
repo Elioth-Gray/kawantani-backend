@@ -8,6 +8,7 @@ import {
   getUserPlant,
   getUserPlantDetail,
   updateTaskProgress,
+  addDailyNote,
 } from '../services/userPlantsService';
 
 export const create = async (req: IReqUser, res: Response) => {
@@ -179,6 +180,35 @@ export const finish = async (req: IReqUser, res: Response) => {
 
     res.status(200).json({
       message: 'Tanaman berhasil diselesaikan',
+      data: plant,
+    });
+  } catch (error) {
+    const err = error as unknown as Error;
+    res.status(400).json({
+      message: err.message,
+      data: null,
+    });
+  }
+};
+
+export const note = async (req: IReqUser, res: Response) => {
+  const { plantDayId } = req.params;
+  const user = req.user;
+  const note = req.body;
+  if (!user) {
+    throw { status: 400, message: 'Invalid' };
+  }
+  const parsedId = parseInt(plantDayId, 10);
+  const data = {
+    id: parsedId,
+    user,
+    note,
+  };
+  try {
+    const plant = await addDailyNote(data);
+
+    res.status(200).json({
+      message: 'Catatan berhasil di',
       data: plant,
     });
   } catch (error) {

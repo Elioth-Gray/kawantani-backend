@@ -28,3 +28,9 @@ export type TFinishPlant = {
   id: string;
   user: TToken;
 };
+
+export type TAddDailyNote = {
+  user: TToken;
+  id: number;
+  note: string;
+};

@@ -10,6 +10,7 @@ import {
   updateTask,
   getToday,
   finish,
+  note,
 } from '../controller/userPlantsConrtoller';
 
 const usePlantsRoute = express.Router();
@@ -55,6 +56,12 @@ usePlantsRoute.patch(
   authMiddleware,
   roleMiddleware(['user']),
   updateTask,
+);
+usePlantsRoute.post(
+  '/user-plants/:userPlantId/:plantDayId',
+  authMiddleware,
+  roleMiddleware(['user']),
+  note,
 );
 
 export default usePlantsRoute;

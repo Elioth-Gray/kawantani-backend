@@ -6,6 +6,7 @@ import {
   TGetDailyTasks,
   TGetPlantDetail,
   TUpdateProgress,
+  TAddDailyNote,
 } from '../types/userPlantsType';
 import { startOfDay, endOfDay } from 'date-fns';
 import { toZonedTime, fromZonedTime } from 'date-fns-tz';
@@ -351,5 +352,43 @@ export const finishPlant = async (data: TFinishPlant) => {
   } catch (error) {
     console.error('Error selesaikan tanaman:', error);
     throw new Error('Gagal menyelesaikan tanaman');
+  }
+};
+
+export const addDailyNote = async (data: TAddDailyNote) => {
+  const { user, id, note } = data;
+
+  try {
+    const hari = await prisma.hariTanamanPengguna.findFirst({
+      where: {
+        id_hari_tanaman_pengguna: id,
+        tanaman_pengguna: {
+          id_pengguna: user.id,
+        },
+      },
+    });
+
+    if (!hari) {
+      throw {
+        status: 404,
+        message: 'Hari tanaman pengguna tidak ditemukan',
+      };
+    }
+
+    const updatedHari = await prisma.hariTanamanPengguna.update({
+      where: { id_hari_tanaman_pengguna: id },
+      data: { catatan_harian: note },
+    });
+
+    return {
+      success: true,
+      data: updatedHari,
+      message: 'Catatan harian berhasil ditambahkan.',
+    };
+  } catch (error: any) {
+    if (error.name === 'ValidationError') {
+      throw { status: 400, message: error.errors.join(', ') };
+    }
+    throw error;
   }
 };
