@@ -149,6 +149,7 @@ export const getUserPlantDetail = async (data: TGetPlantDetail) => {
           include: {
             tugas_penanaman: true,
           },
+          orderBy: { id_hari_tanaman_pengguna: 'asc' },
         },
       },
     });
