@@ -31,6 +31,7 @@ export type TFinishPlant = {
 
 export type TAddDailyNote = {
   user: TToken;
-  id: number;
+  plantId: string;
+  dayId: number;
   note: string;
 };

@@ -192,7 +192,7 @@ export const finish = async (req: IReqUser, res: Response) => {
 };
 
 export const note = async (req: IReqUser, res: Response) => {
-  const { plantDayId } = req.params;
+  const { plantDayId, userPlantId } = req.params;
   const user = req.user;
   const { note } = req.body;
   if (!user) {
@@ -200,7 +200,8 @@ export const note = async (req: IReqUser, res: Response) => {
   }
   const parsedId = parseInt(plantDayId, 10);
   const data = {
-    id: parsedId,
+    plantId: userPlantId,
+    dayId: parsedId,
     user,
     note,
   };

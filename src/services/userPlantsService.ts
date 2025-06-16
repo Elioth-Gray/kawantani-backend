@@ -357,15 +357,29 @@ export const finishPlant = async (data: TFinishPlant) => {
 };
 
 export const addDailyNote = async (data: TAddDailyNote) => {
-  const { user, id, note } = data;
+  const { user, dayId, plantId, note } = data;
 
   try {
+    // First, verify the plant belongs to the user
+    const tanamanPengguna = await prisma.tanamanPengguna.findFirst({
+      where: {
+        id_tanaman_pengguna: plantId,
+        id_pengguna: user.id,
+      },
+    });
+
+    if (!tanamanPengguna) {
+      throw {
+        status: 404,
+        message: 'Tanaman pengguna tidak ditemukan atau tidak memiliki akses',
+      };
+    }
+
+    // Then find the specific day
     const hari = await prisma.hariTanamanPengguna.findFirst({
       where: {
-        id_hari_tanaman_pengguna: id,
-        tanaman_pengguna: {
-          id_pengguna: user.id,
-        },
+        id_hari_tanaman_pengguna: dayId,
+        id_tanaman_pengguna: plantId,
       },
     });
 
@@ -377,7 +391,9 @@ export const addDailyNote = async (data: TAddDailyNote) => {
     }
 
     const updatedHari = await prisma.hariTanamanPengguna.update({
-      where: { id_hari_tanaman_pengguna: id },
+      where: {
+        id_hari_tanaman_pengguna: dayId,
+      },
       data: { catatan_harian: note },
     });
 
