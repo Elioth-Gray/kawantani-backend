@@ -27,10 +27,10 @@ const updateSchema = Yup.object({
   title: Yup.string().required('Judul artikel harus diisi!'),
   description: Yup.string().required('Deskripsi artikel harus diisi!'),
   content: Yup.string().required('Konten artikel harus diisi!'),
-  image: Yup.string().required('Gambar artikel harus diisi!'),
-  articleStatus: Yup.mixed<'DRAFT' | 'PUBLISHED'>()
-    .oneOf(['DRAFT', 'PUBLISHED'])
-    .required('Status artikel tidak valid!'),
+  image: Yup.string().notRequired(),
+  articleStatus: Yup.mixed()
+    .oneOf(['DRAFT', 'PUBLISHED'], 'Status artikel tidak valid!')
+    .required('Status artikel tidak boleh kosong!'),
 });
 
 const commentSchema = Yup.object({
@@ -628,10 +628,48 @@ export const getArticleByUser = async (user: TToken) => {
     const article = await prisma.artikel.findMany({
       where: {
         id_pengguna: user.id,
+        status_aktif: true,
       },
     });
 
     return article;
+  } catch (error: any) {
+    if (error.name === 'ValidationError') {
+      throw {
+        status: 400,
+        message: error.errors.join(', '),
+      };
+    }
+    throw error;
+  }
+};
+
+export const getArticleByUserById = async (data: TSaveArticle) => {
+  const { user, id } = data;
+  try {
+    const result = await prisma.artikel.findUnique({
+      where: {
+        id_artikel: id,
+        id_pengguna: user.id,
+        status_aktif: true,
+      },
+      include: {
+        kategori: true,
+        komentar_artikel: {
+          include: {
+            pengguna: true,
+          },
+        },
+        pengguna: true,
+        artikel_disukai: true,
+      },
+    });
+
+    if (!result) {
+      throw { status: 400, message: 'Artikel tidak ditemukan' };
+    }
+
+    return result;
   } catch (error: any) {
     if (error.name === 'ValidationError') {
       throw {

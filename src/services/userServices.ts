@@ -15,13 +15,9 @@ const updateProfileSchema = Yup.object({
   email: Yup.string().email().required('Email harus diisi!'),
   phoneNumber: Yup.string().required('Nomor telepon harus diisi!'),
   dateOfBirth: Yup.string().required('Tanggal lahir harus diisi!'),
-  password: Yup.string()
-    .required('Password harus diisi!')
-    .min(6, 'Password minimal 6 karakter!'),
+  password: Yup.string(),
   gender: Yup.string().required('Jenis kelamin harus diisi!'),
-  confirmPassword: Yup.string()
-    .required('Konfirmasi password harus diisi!')
-    .oneOf([Yup.ref('password')], 'Password harus sama!'),
+  confirmPassword: Yup.string(),
 });
 
 const updateUserSchema = Yup.object({
@@ -79,7 +75,6 @@ export const getById = async (id: string) => {
         avatar: true,
         status_verfikasi: true,
         tanggal_lahir_pengguna: true,
-        password_pengguna: true,
       },
     });
     if (!user) {

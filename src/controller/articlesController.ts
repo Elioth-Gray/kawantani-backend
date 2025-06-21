@@ -10,6 +10,7 @@ import {
   getAllArticle,
   getArticleById,
   getArticleByUser,
+  getArticleByUserById,
   getSavedArticle,
   likeArticle,
   saveArticle,
@@ -64,6 +65,33 @@ export const getOwnArticle = async (req: IReqUser, res: Response) => {
   try {
     const result = await getArticleByUser(user);
 
+    res.status(200).json({
+      message: 'Berhasil mendapatkan data artikel!',
+      data: result,
+    });
+  } catch (error) {
+    const err = error as unknown as Error;
+    res.status(400).json({
+      message: err.message,
+      data: null,
+    });
+  }
+};
+
+export const getOwnArticleById = async (req: IReqUser, res: Response) => {
+  const user = req.user;
+  const { id } = req.params;
+
+  if (!user) {
+    return res.status(401).json({ message: 'Unauthorized', data: null });
+  }
+
+  const data = {
+    id,
+    user,
+  };
+  try {
+    const result = await getArticleByUserById(data);
     res.status(200).json({
       message: 'Berhasil mendapatkan data artikel!',
       data: result,
@@ -135,11 +163,14 @@ export const create = async (req: IRequestWithFileAuth, res: Response) => {
 
 export const update = async (req: IRequestWithFileAuth, res: Response) => {
   const fileName = req.file?.filename;
+  const { id } = req.params;
   const data = {
     user: req.user,
     image: fileName,
+    id,
     ...req.body,
   };
+
   try {
     const result = await updateArticle(data);
 

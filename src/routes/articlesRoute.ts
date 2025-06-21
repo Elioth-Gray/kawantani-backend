@@ -15,6 +15,7 @@ import {
   verify,
   getAllActive,
   update,
+  getOwnArticleById,
 } from '../controller/articlesController';
 import authMiddleware from '../middlewares/authMiddleware';
 import roleMiddleware from '../middlewares/roleMiddleware';
@@ -50,6 +51,13 @@ articlesRouter.get(
   getOwnArticle,
 );
 articlesRouter.get(
+  '/articles/own/:id',
+  authMiddleware,
+  roleMiddleware(['user', 'admin']),
+  getOwnArticleById,
+);
+
+articlesRouter.get(
   '/articles/:id',
   authMiddleware,
   roleMiddleware(['user', 'admin']),
@@ -59,6 +67,7 @@ articlesRouter.put(
   '/articles/:id',
   authMiddleware,
   roleMiddleware(['user']),
+  uploadArticleImage.single('image'),
   update,
 );
 articlesRouter.patch(
