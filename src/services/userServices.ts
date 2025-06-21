@@ -260,22 +260,16 @@ export const updateUserProfile = async (data: TUpdateProfile) => {
       };
     }
 
-    if (!password) {
-      throw {
-        status: 400,
-        message: 'Password harus diisi!',
-      };
-    }
-
-    let finalPassword = existing.password_pengguna;
-
-    const isSamePassword = await bcrypt.compare(
-      password,
-      existing.password_pengguna,
-    );
-
-    if (!isSamePassword) {
-      finalPassword = await bcrypt.hash(password, 10);
+    if (password) {
+      const hashedPassword = await bcrypt.hash(password, 10);
+      await prisma.pengguna.update({
+        where: {
+          id_pengguna: user.id,
+        },
+        data: {
+          password_pengguna: hashedPassword,
+        },
+      });
     }
 
     const dateOfBirthNew = new Date(dateOfBirth);
@@ -310,7 +304,6 @@ export const updateUserProfile = async (data: TUpdateProfile) => {
         nama_belakang_pengguna: lastName,
         email_pengguna: email,
         nomor_telepon_pengguna: phoneNumber,
-        password_pengguna: finalPassword,
         tanggal_lahir_pengguna: dateOfBirthNew,
         jenisKelamin: parseInt(gender, 10),
       },
@@ -319,11 +312,12 @@ export const updateUserProfile = async (data: TUpdateProfile) => {
     return {
       pengguna: {
         id: result.id_pengguna,
-        fistName: result.nama_depan_pengguna,
+        firstName: result.nama_depan_pengguna,
         lastName: result.nama_belakang_pengguna,
         email: result.email_pengguna,
         phoneNumber: result.nomor_telepon_pengguna,
         gender: result.jenisKelamin,
+        avatar: result.avatar,
       },
     };
   } catch (error: any) {
