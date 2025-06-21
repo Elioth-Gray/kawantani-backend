@@ -233,7 +233,7 @@ export const toggle = async (req: IReqUser, res: Response) => {
     id,
     user,
   };
-  console.log(data);
+
   try {
     const result = await toggleArticle(data);
 
