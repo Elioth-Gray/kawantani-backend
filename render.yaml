@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: kawan-tani-backend
+    env: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        fromDatabase:
+          name: nama-db
+          property: connectionString
+      - key: JWT_SECRET
+        value: your-secret-key

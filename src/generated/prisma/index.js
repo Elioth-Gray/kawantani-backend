@@ -427,7 +427,7 @@ const config = {
     "db": {
       "url": {
         "fromEnvVar": "DATABASE_URL",
-        "value": "postgres://tripitropi:tripitropi123@localhost:5432/kawantani"
+        "value": "postgres://neondb_owner:npg_xQ7Vofur8wTq@ep-bitter-pine-a1w4ga4i-pooler.ap-southeast-1.aws.neon.tech/neondb?sslmode=require"
       }
     }
   },
