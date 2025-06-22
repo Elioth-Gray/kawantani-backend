@@ -167,18 +167,32 @@ export const getUserPlantDetail = async (data: TGetPlantDetail) => {
 export const getUserDailyTasks = async (data: TGetDailyTasks) => {
   const { userPlantId, date, user } = data;
   try {
+    const tanamanPengguna = await prisma.tanamanPengguna.findFirst({
+      where: {
+        id_tanaman_pengguna: userPlantId,
+        id_pengguna: user.id,
+      },
+      select: {
+        tanggal_penanaman: true,
+      },
+    });
+
+    if (!tanamanPengguna) {
+      throw new Error('Tanaman pengguna tidak ditemukan');
+    }
+
+    const endDate = date ? new Date(date + 'T23:59:59.999Z') : new Date();
+
+    const startDate = new Date(tanamanPengguna.tanggal_penanaman);
+    startDate.setHours(0, 0, 0, 0);
+
     const tugasHarian = await prisma.hariTanamanPengguna.findMany({
       where: {
         id_tanaman_pengguna: userPlantId,
-        tanggal_aktual: date
-          ? {
-              gte: new Date(date + 'T00:00:00.000Z'),
-              lt: new Date(date + 'T23:59:59.999Z'),
-            }
-          : {
-              gte: new Date(new Date().toDateString()), // Start of today
-              lt: new Date(new Date().getTime() + 24 * 60 * 60 * 1000), // End of today
-            },
+        tanggal_aktual: {
+          gte: startDate,
+          lte: endDate,
+        },
         tanaman_pengguna: {
           id_pengguna: user.id,
         },
@@ -190,6 +204,9 @@ export const getUserDailyTasks = async (data: TGetDailyTasks) => {
             tanaman: true,
           },
         },
+      },
+      orderBy: {
+        tanggal_aktual: 'asc',
       },
     });
 
