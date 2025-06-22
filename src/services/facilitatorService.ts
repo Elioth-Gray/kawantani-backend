@@ -352,7 +352,7 @@ export const getTotalRevenue = async (id: string) => {
       },
     });
 
-    const total = revenue.reduce((sum, item) => {
+    const total = revenue.reduce((sum: any, item: any) => {
       return sum + Number(item.workshop.harga_workshop);
     }, 0);
 
@@ -426,7 +426,7 @@ export const getLatestSales = async (id: string, limit = 10) => {
     });
 
     return {
-      sales: latestSales.map((sale) => ({
+      sales: latestSales.map((sale: any) => ({
         id: sale.id_pendaftaran,
         participantName: `${sale.nama_depan_peserta} ${sale.nama_belakang_peserta}`,
         workshopTitle: sale.workshop.judul_workshop,

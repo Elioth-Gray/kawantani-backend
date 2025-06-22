@@ -565,7 +565,7 @@ export const getPopularWorkshops = async (id: string, limit = 10) => {
     });
 
     return {
-      workshops: popularWorkshops.map((workshop, index) => ({
+      workshops: popularWorkshops.map((workshop: any, index: any) => ({
         rank: index + 1,
         id: workshop.id_workshop,
         title: workshop.judul_workshop,

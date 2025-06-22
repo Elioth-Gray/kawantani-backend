@@ -74,7 +74,7 @@ export const createUserPlant = async (data: TCreateUserPlant) => {
         },
       });
 
-      const tugasData = hariPenanaman.tugas_penanaman.map((tugas) => ({
+      const tugasData = hariPenanaman.tugas_penanaman.map((tugas: any) => ({
         nama_tugas: tugas.nama_tugas,
         jenis_tugas: tugas.jenis_tugas,
         estimasi_waktu: tugas.estimasi_waktu,
@@ -257,7 +257,7 @@ export const updateTaskProgress = async (data: TUpdateProgress) => {
 
     if (hariTanaman) {
       const tugasSelesai = hariTanaman.tugas_penanaman.filter(
-        (tugas) => tugas.status_selesai,
+        (tugas: any) => tugas.status_selesai,
       ).length;
       const totalTugas = hariTanaman.tugas_penanaman.length;
       const progressHari =
@@ -302,7 +302,7 @@ const updatePlantProgress = async (id: string) => {
 
     if (hariTanaman.length > 0) {
       const totalProgress = hariTanaman.reduce(
-        (sum, hari) => sum + hari.progress_hari_persen,
+        (sum: any, hari: any) => sum + hari.progress_hari_persen,
         0,
       );
       const averageProgress = totalProgress / hariTanaman.length;
