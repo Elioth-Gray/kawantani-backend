@@ -5,7 +5,7 @@ import {
   StatusArtikel,
   StatusVerifikasiArtikel,
   StatusVerifikasiWorkshop,
-} from '../src/generated/prisma';
+} from '@prisma/client';
 import prisma from '../src/prisma/prismaClient';
 
 async function main() {

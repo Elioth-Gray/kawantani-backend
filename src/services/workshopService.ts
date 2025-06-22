@@ -9,7 +9,7 @@ import {
   TGetParticipant,
 } from '../types/workshopTypes';
 import { TToken } from '../types/authTypes';
-import { StatusVerifikasiWorkshop } from '../generated/prisma';
+import { StatusVerifikasiWorkshop } from '@prisma/client';
 
 const createSchema = Yup.object({
   title: Yup.string().required('Judul workshop harus diisi!'),

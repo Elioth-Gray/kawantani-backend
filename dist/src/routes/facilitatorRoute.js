@@ -1,0 +1,23 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = __importDefault(require("express"));
+const facilitatorController_1 = require("../controller/facilitatorController");
+const authMiddleware_1 = __importDefault(require("../middlewares/authMiddleware"));
+const roleMiddleware_1 = __importDefault(require("../middlewares/roleMiddleware"));
+const multer_1 = require("../utils/multer/multer");
+const facilitatorController_2 = require("../controller/facilitatorController");
+const facilitatorRoute = express_1.default.Router();
+const uploadFacilitatorAvatar = (0, multer_1.createMulterUploader)('facilitators');
+facilitatorRoute.get('/facilitator/sales/recent', authMiddleware_1.default, (0, roleMiddleware_1.default)(['facilitator']), facilitatorController_1.recentSales);
+facilitatorRoute.get('/facilitator/me', authMiddleware_1.default, (0, roleMiddleware_1.default)(['facilitator']), facilitatorController_1.me);
+facilitatorRoute.get('/facilitator/revenue', authMiddleware_1.default, (0, roleMiddleware_1.default)(['facilitator']), facilitatorController_2.totalRevenue);
+facilitatorRoute.get('/facilitator/sold', authMiddleware_1.default, (0, roleMiddleware_1.default)(['facilitator']), facilitatorController_2.ticketsSold);
+facilitatorRoute.get('/facilitator', authMiddleware_1.default, (0, roleMiddleware_1.default)(['admin']), facilitatorController_1.get);
+facilitatorRoute.get('/facilitator/:id', authMiddleware_1.default, (0, roleMiddleware_1.default)(['admin']), facilitatorController_1.getById);
+facilitatorRoute.post('/facilitator/register', authMiddleware_1.default, (0, roleMiddleware_1.default)(['admin']), uploadFacilitatorAvatar.single('avatar'), facilitatorController_1.register);
+facilitatorRoute.put('/facilitator/:id', authMiddleware_1.default, (0, roleMiddleware_1.default)(['admin', 'facilitator']), uploadFacilitatorAvatar.single('avatar'), facilitatorController_1.update);
+facilitatorRoute.delete('/facilitator/:id', authMiddleware_1.default, facilitatorController_1.deleteFac);
+exports.default = facilitatorRoute;

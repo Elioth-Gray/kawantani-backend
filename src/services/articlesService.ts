@@ -9,7 +9,7 @@ import {
   TUpdateArticle,
   TVerify,
 } from '../types/articlesType';
-import { StatusArtikel, StatusVerifikasiArtikel } from '../generated/prisma';
+import { StatusArtikel, StatusVerifikasiArtikel } from '@prisma/client';
 import { TToken } from '../types/authTypes';
 
 const createSchema = Yup.object({

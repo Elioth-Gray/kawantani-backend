@@ -1,0 +1,28 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = __importDefault(require("express"));
+const workshopController_1 = require("../controller/workshopController");
+const authMiddleware_1 = __importDefault(require("../middlewares/authMiddleware"));
+const multer_1 = require("../utils/multer/multer");
+const roleMiddleware_1 = __importDefault(require("../middlewares/roleMiddleware"));
+const workshopsRouter = express_1.default.Router();
+const uploadWorkshopImage = (0, multer_1.createMulterUploader)('workshops');
+workshopsRouter.get('/workshops/sales', authMiddleware_1.default, (0, roleMiddleware_1.default)(['facilitator']), workshopController_1.allSales);
+workshopsRouter.get('/workshops/participants', authMiddleware_1.default, (0, roleMiddleware_1.default)(['facilitator']), workshopController_1.allParticipants);
+workshopsRouter.get('/workshops/participants/active/own', authMiddleware_1.default, (0, roleMiddleware_1.default)(['facilitator']), workshopController_1.activeRegistrants);
+workshopsRouter.get('/workshops/popular/own', authMiddleware_1.default, (0, roleMiddleware_1.default)(['facilitator']), workshopController_1.popularWorkshops);
+workshopsRouter.get('/workshops/registered', authMiddleware_1.default, (0, roleMiddleware_1.default)(['user']), workshopController_1.registered);
+workshopsRouter.get('/workshops/registered/:id', authMiddleware_1.default, (0, roleMiddleware_1.default)(['user']), workshopController_1.registeredDetail);
+workshopsRouter.post('/workshops/create', authMiddleware_1.default, (0, roleMiddleware_1.default)(['facilitator']), uploadWorkshopImage.single('image'), workshopController_1.create);
+workshopsRouter.put('/workshops/:id', authMiddleware_1.default, (0, roleMiddleware_1.default)(['admin']), workshopController_1.verify);
+workshopsRouter.get('/workshops', authMiddleware_1.default, (0, roleMiddleware_1.default)(['facilitator', 'admin']), workshopController_1.getAll);
+workshopsRouter.get('/workshops/verified', workshopController_1.getAllActive);
+workshopsRouter.get('/workshops/own', authMiddleware_1.default, (0, roleMiddleware_1.default)(['facilitator', 'admin']), workshopController_1.getOwnWorkshop);
+workshopsRouter.get('/workshops/participants', authMiddleware_1.default, (0, roleMiddleware_1.default)(['facilitator']), workshopController_1.getParticipant);
+workshopsRouter.get('/workshops/:id', authMiddleware_1.default, workshopController_1.getById);
+workshopsRouter.delete('/workshops/:id', authMiddleware_1.default, (0, roleMiddleware_1.default)(['admin', 'facilitator']), workshopController_1.deleteWorks);
+workshopsRouter.post('/workshops/:id/register', authMiddleware_1.default, (0, roleMiddleware_1.default)(['user']), workshopController_1.register);
+exports.default = workshopsRouter;
