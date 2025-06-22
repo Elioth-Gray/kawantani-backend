@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Selamat Datang - KawanTani</title>
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+      }
+
+      .container {
+        max-width: 600px;
+        margin: 24px auto;
+        background-color: #ffffff;
+        border: 1px solid #e0e0e0;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+      }
+
+      .header {
+        background-color: #4caf50;
+        color: #ffffff;
+        padding: 28px 20px;
+        text-align: center;
+      }
+
+      .header h1 {
+        margin: 0;
+        font-size: 24px;
+      }
+
+      .content {
+        padding: 24px 20px;
+        color: #333333;
+        line-height: 1.6;
+        font-size: 16px;
+      }
+
+      .content ul {
+        padding-left: 20px;
+        margin-top: 10px;
+        margin-bottom: 20px;
+      }
+
+      .code-box {
+        background-color: #f0f0f0;
+        border: 1px dashed #4caf50;
+        padding: 12px;
+        font-weight: bold;
+        font-size: 18px;
+        text-align: center;
+        margin: 20px 0;
+        border-radius: 6px;
+        color: #2e7d32;
+      }
+
+      .footer {
+        background-color: #f9f9f9;
+        color: #777777;
+        padding: 14px;
+        text-align: center;
+        font-size: 12px;
+        border-top: 1px solid #e0e0e0;
+      }
+
+      @media (max-width: 600px) {
+        .container {
+          margin: 12px;
+          border-radius: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>Selamat Datang!</h1>
+      </div>
+      <div class="content">
+        <p>Halo <%= fullname %>,</p>
+        <p>
+          Terima kasih telah mendaftar di layanan <strong>KawanTani</strong>.
+          Berikut adalah informasi akun Anda:
+        </p>
+        <ul>
+          <li><strong>Nama:</strong> <%= fullname %></li>
+          <li><strong>Email:</strong> <%= email %></li>
+          <li><strong>Tanggal Pendaftaran:</strong> <%= createdAt %></li>
+        </ul>
+        <p>Kode aktivasi akun Anda adalah:</p>
+        <div class="code-box"><%= activationCode %></div>
+        <p>
+          Jika Anda memiliki pertanyaan, jangan ragu untuk menghubungi kami.
+        </p>
+        <p>Salam hangat,</p>
+        <p><strong>KawanTani</strong></p>
+      </div>
+      <div class="footer">
+        <p>&copy; 2025 KawanTani. Semua hak dilindungi.</p>
+      </div>
+    </div>
+  </body>
+</html>

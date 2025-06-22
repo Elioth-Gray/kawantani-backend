@@ -45,7 +45,7 @@ export const renderMailHtml = async (
   data: any,
 ): Promise<string> => {
   const content = await ejs.renderFile(
-    path.join(process.cwd(), 'src/utils/mail/templates', template),
+    path.join(__dirname, `templates/${template}`),
     data,
   );
 
