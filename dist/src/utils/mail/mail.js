@@ -39,7 +39,7 @@ const sendEmail = (_a) => __awaiter(void 0, [_a], void 0, function* ({ to, from,
 });
 exports.sendEmail = sendEmail;
 const renderMailHtml = (template, data) => __awaiter(void 0, void 0, void 0, function* () {
-    const content = yield ejs_1.default.renderFile(path_1.default.join(__dirname, `templates/${template}`), data);
+    const content = yield ejs_1.default.renderFile(path_1.default.join(process.cwd(), 'src/utils/mail/templates', template), data);
     return content;
 });
 exports.renderMailHtml = renderMailHtml;

@@ -1,6 +1,6 @@
-import nodemailer from "nodemailer";
-import ejs from "ejs";
-import path from "path";
+import nodemailer from 'nodemailer';
+import ejs from 'ejs';
+import path from 'path';
 
 import {
   EMAIL_SMTP_HOST,
@@ -9,7 +9,7 @@ import {
   EMAIL_SMTP_SECURE,
   EMAIL_SMTP_SERVICE_NAME,
   EMAIL_SMTP_USER,
-} from "../env";
+} from '../env';
 
 const transporter = nodemailer.createTransport({
   service: EMAIL_SMTP_SERVICE_NAME,
@@ -42,11 +42,11 @@ export const sendEmail = async ({ to, from, subject, html }: ISendEmail) => {
 
 export const renderMailHtml = async (
   template: string,
-  data: any
+  data: any,
 ): Promise<string> => {
   const content = await ejs.renderFile(
-    path.join(__dirname, `templates/${template}`),
-    data
+    path.join(process.cwd(), 'src/utils/mail/templates', template),
+    data,
   );
 
   return content as string;
