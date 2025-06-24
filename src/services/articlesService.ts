@@ -442,6 +442,16 @@ export const addComment = async (data: TCommentArticle) => {
         komentar: content,
         tanggal_komentar: tanggalPembuatanKomentar,
       },
+      include: {
+        pengguna: {
+          select: {
+            id_pengguna: true,
+            nama_depan_pengguna: true,
+            nama_belakang_pengguna: true,
+            avatar: true,
+          },
+        },
+      },
     });
 
     return result;
