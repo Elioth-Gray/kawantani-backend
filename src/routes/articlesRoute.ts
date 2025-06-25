@@ -30,6 +30,7 @@ articlesRouter.get(
   roleMiddleware(['user']),
   getSaved,
 );
+
 articlesRouter.post(
   '/articles/create',
   authMiddleware,
@@ -37,6 +38,7 @@ articlesRouter.post(
   uploadArticleImage.single('image'),
   create,
 );
+
 articlesRouter.get(
   '/articles',
   authMiddleware,

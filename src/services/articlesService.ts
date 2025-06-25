@@ -607,11 +607,11 @@ export const unlikeArticle = async (data: TLikeArticle) => {
   }
 };
 
-export const getSavedArticle = async (id: string) => {
+export const getSavedArticle = async (user: TToken) => {
   try {
     const articles = await prisma.artikelDisimpan.findMany({
       where: {
-        id_pengguna: id,
+        id_pengguna: user.id,
         artikel: {
           status_aktif: true,
         },

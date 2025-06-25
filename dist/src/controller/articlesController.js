@@ -366,9 +366,12 @@ const unLike = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
 });
 exports.unLike = unLike;
 const getSaved = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { id } = req.params;
+    const user = req.user;
+    if (!user) {
+        return res.status(401).json({ message: 'Unauthorized', data: null });
+    }
     try {
-        const result = yield (0, articlesService_1.getSavedArticle)(id);
+        const result = yield (0, articlesService_1.getSavedArticle)(user);
         res.status(200).json({
             message: 'Artikel berhasil didapatkan!',
             data: result,

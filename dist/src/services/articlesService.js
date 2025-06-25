@@ -584,11 +584,11 @@ const unlikeArticle = (data) => __awaiter(void 0, void 0, void 0, function* () {
     }
 });
 exports.unlikeArticle = unlikeArticle;
-const getSavedArticle = (id) => __awaiter(void 0, void 0, void 0, function* () {
+const getSavedArticle = (user) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const articles = yield prismaClient_1.default.artikelDisimpan.findMany({
             where: {
-                id_pengguna: id,
+                id_pengguna: user.id,
                 artikel: {
                     status_aktif: true,
                 },

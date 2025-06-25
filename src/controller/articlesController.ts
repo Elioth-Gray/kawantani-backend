@@ -412,9 +412,12 @@ export const unLike = async (req: IReqUser, res: Response) => {
 };
 
 export const getSaved = async (req: IReqUser, res: Response) => {
-  const { id } = req.params;
+  const user = req.user;
+  if (!user) {
+    return res.status(401).json({ message: 'Unauthorized', data: null });
+  }
   try {
-    const result = await getSavedArticle(id);
+    const result = await getSavedArticle(user);
 
     res.status(200).json({
       message: 'Artikel berhasil didapatkan!',
