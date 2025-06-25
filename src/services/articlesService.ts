@@ -618,6 +618,13 @@ export const getSavedArticle = async (user: TToken) => {
       },
       include: {
         artikel: true,
+        pengguna: {
+          select: {
+            id_pengguna: true,
+            nama_depan_pengguna: true,
+            nama_belakang_pengguna: true,
+          },
+        },
       },
     });
 
