@@ -3270,7 +3270,7 @@ async function main() {
         jenisKelamin: 1,
         password_pengguna:
           '$2y$10$4jPkO1PD4zkL8MeoQ92Cu.ezq6N0fwqopVcC3dowEJOOF5xYa/UDq',
-        avatar: 'elena.jpg',
+        avatar: 'elena.webp',
         status_verfikasi: true,
         status_aktif: true,
         tanggal_pembuatan_akun: tanggalPembuatanAkun,
@@ -3286,7 +3286,7 @@ async function main() {
         jenisKelamin: 0,
         password_pengguna:
           '$2y$10$4jPkO1PD4zkL8MeoQ92Cu.ezq6N0fwqopVcC3dowEJOOF5xYa/UDq',
-        avatar: 'andi.jpg',
+        avatar: 'andi.webp',
         status_verfikasi: true,
         status_aktif: true,
         tanggal_pembuatan_akun: tanggalPembuatanAkun,
@@ -3302,7 +3302,7 @@ async function main() {
         jenisKelamin: 0,
         password_pengguna:
           '$2y$10$4jPkO1PD4zkL8MeoQ92Cu.ezq6N0fwqopVcC3dowEJOOF5xYa/UDq',
-        avatar: 'budi.jpg',
+        avatar: 'budi.webp',
         status_verfikasi: true,
         status_aktif: true,
         tanggal_pembuatan_akun: tanggalPembuatanAkun,
@@ -3318,7 +3318,7 @@ async function main() {
         jenisKelamin: 1,
         password_pengguna:
           '$2y$10$4jPkO1PD4zkL8MeoQ92Cu.ezq6N0fwqopVcC3dowEJOOF5xYa/UDq',
-        avatar: 'citra.jpg',
+        avatar: 'citra.webp',
         status_verfikasi: true,
         status_aktif: true,
         tanggal_pembuatan_akun: tanggalPembuatanAkun,
@@ -3334,7 +3334,7 @@ async function main() {
         jenisKelamin: 1,
         password_pengguna:
           '$2y$10$4jPkO1PD4zkL8MeoQ92Cu.ezq6N0fwqopVcC3dowEJOOF5xYa/UDq',
-        avatar: 'dewi.jpg',
+        avatar: 'dewi.webp',
         status_verfikasi: true,
         status_aktif: true,
         tanggal_pembuatan_akun: tanggalPembuatanAkun,
@@ -3383,7 +3383,7 @@ async function main() {
         status_aktif: true,
         id_kategori_artikel: 3,
         id_pengguna: 'cmbnw2d03000007l4dnaj99yj',
-        gambar_artikel: 'artikel1.jpg',
+        gambar_artikel: 'artikel1.webp',
       },
       {
         id_artikel: 'peningkatan-kualitas-pertanian-002',
@@ -3397,7 +3397,7 @@ async function main() {
         status_aktif: true,
         id_kategori_artikel: 3,
         id_pengguna: 'cmbnw2d03000007l4dnaj99yj',
-        gambar_artikel: 'artikel2.jpg',
+        gambar_artikel: 'artikel2.webp',
       },
       {
         id_artikel: 'peningkatan-kualitas-pertanian-003',
@@ -3411,7 +3411,7 @@ async function main() {
         status_aktif: true,
         id_kategori_artikel: 3,
         id_pengguna: 'cmbnw2d03000007l4dnaj99yj',
-        gambar_artikel: 'artikel3.jpg',
+        gambar_artikel: 'artikel3.webp',
       },
       {
         id_artikel: 'peningkatan-kualitas-pertanian-004',
@@ -3425,7 +3425,7 @@ async function main() {
         status_aktif: true,
         id_kategori_artikel: 3,
         id_pengguna: 'cmbnw2d03000007l4dnaj99yj',
-        gambar_artikel: 'artikel4.jpg',
+        gambar_artikel: 'artikel4.webp',
       },
       {
         id_artikel: 'peningkatan-kualitas-pertanian-005',
@@ -3439,7 +3439,7 @@ async function main() {
         status_aktif: true,
         id_kategori_artikel: 3,
         id_pengguna: 'cmbnw2d03000007l4dnaj99yj',
-        gambar_artikel: 'artikel5.jpg',
+        gambar_artikel: 'artikel5.webp',
       },
       {
         id_artikel: 'peningkatan-kualitas-pertanian-006',
@@ -3453,7 +3453,7 @@ async function main() {
         status_aktif: true,
         id_kategori_artikel: 3,
         id_pengguna: 'cmbnw2d03000007l4dnaj99yj',
-        gambar_artikel: 'artikel6.jpg',
+        gambar_artikel: 'artikel6.webp',
       },
     ],
   });
@@ -3470,7 +3470,7 @@ async function main() {
         tanggal_pembuatan_akun: tanggalPembuatanAkun,
         id_kabupaten: 1116,
         alamat_lengkap_facilitator: 'JL Simulaki',
-        avatar: 'facilitator1.jpg',
+        avatar: 'facilitator1.webp',
         status_aktif: true,
       },
       {
@@ -3483,7 +3483,7 @@ async function main() {
         tanggal_pembuatan_akun: tanggalPembuatanAkun,
         id_kabupaten: 1116,
         alamat_lengkap_facilitator: 'JL Lintas Tani',
-        avatar: 'facilitator2.jpg',
+        avatar: 'facilitator2.webp',
         status_aktif: true,
       },
       {
@@ -3496,7 +3496,7 @@ async function main() {
         tanggal_pembuatan_akun: tanggalPembuatanAkun,
         id_kabupaten: 1116,
         alamat_lengkap_facilitator: 'JL Cinta Tani',
-        avatar: 'facilitator3.jpg',
+        avatar: 'facilitator3.webp',
         status_aktif: true,
       },
       {
@@ -3509,7 +3509,7 @@ async function main() {
         tanggal_pembuatan_akun: tanggalPembuatanAkun,
         id_kabupaten: 1116,
         alamat_lengkap_facilitator: 'JL Kemakmuran Raya',
-        avatar: 'facilitator4.jpg',
+        avatar: 'facilitator4.webp',
         status_aktif: true,
       },
       {
@@ -3522,7 +3522,7 @@ async function main() {
         tanggal_pembuatan_akun: tanggalPembuatanAkun,
         id_kabupaten: 1116,
         alamat_lengkap_facilitator: 'JL Persawahan Indah',
-        avatar: 'facilitator5.jpg',
+        avatar: 'facilitator5.webp',
         status_aktif: true,
       },
     ],
@@ -3569,7 +3569,7 @@ async function main() {
         lat_lokasi: -7.2575,
         long_lokasi: 112.7521,
         id_facilitator: 'cmbnwysgy000007jtasf15hfe',
-        gambar_workshop: 'workshop1.jpg',
+        gambar_workshop: 'workshop1.webp',
         id_kabupaten: 1116,
       },
       {
@@ -3585,7 +3585,7 @@ async function main() {
         lat_lokasi: -6.9147,
         long_lokasi: 107.6098,
         id_facilitator: 'cmbnwysgy000007jtasf15hfe',
-        gambar_workshop: 'workshop2.jpg',
+        gambar_workshop: 'workshop2.webp',
         id_kabupaten: 1116,
       },
       {
@@ -3601,7 +3601,7 @@ async function main() {
         lat_lokasi: -8.4095,
         long_lokasi: 115.1889,
         id_facilitator: 'cmbnwysgy000007jtasf15hfe',
-        gambar_workshop: 'workshop3.jpg',
+        gambar_workshop: 'workshop3.webp',
         id_kabupaten: 1116,
       },
       {
@@ -3617,7 +3617,7 @@ async function main() {
         lat_lokasi: -7.8014,
         long_lokasi: 110.3647,
         id_facilitator: 'cmbnwysgy000007jtasf15hfe',
-        gambar_workshop: 'workshop4.jpg',
+        gambar_workshop: 'workshop4.webp',
         id_kabupaten: 1116,
       },
       {
@@ -3633,7 +3633,7 @@ async function main() {
         lat_lokasi: -0.7893,
         long_lokasi: 113.9213,
         id_facilitator: 'cmbnwysgy000007jtasf15hfe',
-        gambar_workshop: 'workshop5.jpg',
+        gambar_workshop: 'workshop5.webp',
         id_kabupaten: 1116,
       },
     ],
@@ -3668,7 +3668,7 @@ async function main() {
           'Jagung (Zea mays) adalah tanaman serealia penting yang tumbuh dengan cepat dan memiliki nilai ekonomi tinggi. Tanaman ini banyak dibudidayakan untuk dikonsumsi dalam bentuk jagung manis, tepung jagung, atau pakan ternak. Selain mudah ditanam di berbagai jenis tanah, jagung juga tahan terhadap kekeringan ringan dan membutuhkan sinar matahari penuh selama masa pertumbuhan.',
         tingkat_kesulitan: 'MUDAH',
         id_kategori_tanaman: 1,
-        gambar_tanaman: 'jagung.jpg',
+        gambar_tanaman: 'jagung.webp',
       },
       {
         id_tanaman: 'perk-001',
@@ -3679,7 +3679,7 @@ async function main() {
           'Bayam (Spinacia oleracea) adalah sayuran daun hijau yang sangat bergizi, kaya akan zat besi, vitamin A, C, dan K, serta antioksidan. Tanaman ini tumbuh dengan cepat dan cocok untuk ditanam di pekarangan rumah atau pot. Bayam membutuhkan penyiraman teratur dan tempat yang mendapatkan cahaya matahari cukup, namun tidak terlalu terik. Karena kemudahan perawatannya, bayam sangat cocok bagi pemula dalam dunia bercocok tanam.',
         tingkat_kesulitan: 'SANGAT_MUDAH',
         id_kategori_tanaman: 2,
-        gambar_tanaman: 'bayam.jpg',
+        gambar_tanaman: 'bayam.webp',
       },
     ],
     skipDuplicates: true,
